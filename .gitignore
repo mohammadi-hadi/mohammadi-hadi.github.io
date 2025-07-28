@@ -2,6 +2,22 @@
 serena/
 agent-ui/
 
+# Claude-related files and directories
+.claude/
+*.claude
+claude_*
+*claude*
+
+# Development and testing files
+test-update.html
+website-update-check.md
+check_serena_status.sh
+setup_claude_mcp.sh
+setup_serena_complete.sh
+start_serena.sh
+stop_serena.sh
+start_local_server.sh
+
 # Node modules
 node_modules/
 
