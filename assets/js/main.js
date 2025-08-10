@@ -267,4 +267,18 @@ window.addEventListener('load', () => {
    */
   new PureCounter();
 
+  /**
+   * Supervisory Team Dropdown Toggle
+   */
+  const supervisoryCollapse = document.getElementById('supervisoryTeam');
+  if (supervisoryCollapse) {
+    supervisoryCollapse.addEventListener('show.bs.collapse', function () {
+      document.getElementById('supervisoryIcon').style.transform = 'rotate(90deg)';
+    });
+    
+    supervisoryCollapse.addEventListener('hide.bs.collapse', function () {
+      document.getElementById('supervisoryIcon').style.transform = 'rotate(0deg)';
+    });
+  }
+
 })()
