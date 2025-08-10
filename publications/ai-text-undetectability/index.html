@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Explainability-Based Token Replacement on LLM-Generated Text: Enhancing AI-Generated Text Undetectability">
+  <meta property="og:title" content="Explainability-Based Token Replacement on LLM-Generated Text"/>
+  <meta property="og:description" content="A novel approach to enhance the undetectability of AI-generated text using explainability techniques"/>
+  <meta property="og:url" content="https://arxiv.org/abs/2506.04050"/>
+  <meta name="twitter:title" content="Explainability-Based Token Replacement on LLM-Generated Text">
+  <meta name="twitter:description" content="A novel approach to enhance the undetectability of AI-generated text using explainability techniques">
+  <meta name="keywords" content="LLM, AI-Generated Text, Explainability, Token Replacement, Text Detection, NLP">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Explainability-Based Token Replacement on LLM-Generated Text</title>
+  <link rel="icon" type="image/x-icon" href="../../Logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  
+  <style>
+    .hero-body {
+      padding: 3rem 1.5rem;
+    }
+    .publication-authors {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .publication-venue {
+      font-size: 1.1rem;
+      color: #888;
+      font-style: italic;
+    }
+    .content-section {
+      padding: 3rem 0;
+    }
+    .abstract-box {
+      background-color: #f8f9fa;
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Explainability-Based Token Replacement on LLM-Generated Text</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <strong>Hadi Mohammadi</strong><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Anastasia Giachanou<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Daniel Oberski<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Ayoub Bagheri<sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Utrecht University, The Netherlands</span>
+          </div>
+
+          <div class="publication-venue">
+            Under review at Journal of Artificial Intelligence Research
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2506.04050"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/mohammadi-hadi/Enhancing-AI-Generated-Text-Undetectability"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2506.04050"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="../../index.html"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-home"></i>
+                  </span>
+                  <span>Back to Main</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="abstract-box">
+          <div class="content has-text-justified">
+            <p>
+              The widespread use of Large Language Models (LLMs) has raised concerns about the potential misuse of AI-generated text in academic, journalistic, and creative contexts. While various detection methods have been developed to identify AI-generated content, they often struggle with modified or carefully crafted text. This paper presents a novel approach that leverages explainability techniques to strategically modify AI-generated text, making it less detectable while preserving semantic meaning and readability.
+            </p>
+            <p>
+              Our method uses attribution-based explainability to identify tokens that most strongly signal AI generation to detection models. By replacing these high-attribution tokens with semantically similar alternatives, we can significantly reduce detectability while maintaining text coherence. We evaluate our approach against multiple state-of-the-art AI text detectors, demonstrating that our method reduces detection accuracy by up to 45% while preserving 92% of the original semantic content.
+            </p>
+            <p>
+              This research has important implications for understanding the robustness of AI text detection systems and highlights the need for more sophisticated detection methods that go beyond surface-level features. We discuss the ethical considerations of this work and propose guidelines for responsible use of such techniques.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Key Contributions</h2>
+        <div class="content has-text-justified">
+          <ul>
+            <li><strong>Novel Approach:</strong> We introduce the first method that systematically uses explainability techniques to enhance AI-generated text undetectability.</li>
+            <li><strong>Comprehensive Evaluation:</strong> We test against multiple detection systems including GPTZero, OpenAI's detector, and GLTR, showing consistent improvements in evading detection.</li>
+            <li><strong>Semantic Preservation:</strong> Our token replacement strategy maintains high semantic similarity (>0.92 cosine similarity) with the original text.</li>
+            <li><strong>Theoretical Framework:</strong> We provide a theoretical analysis of why certain tokens are more indicative of AI generation and how this knowledge can be exploited.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Methodology</h2>
+        <div class="content has-text-justified">
+          <h3>Explainability-Based Token Identification</h3>
+          <p>
+            Our approach consists of three main steps:
+          </p>
+          <ol>
+            <li><strong>Attribution Analysis:</strong> We use gradient-based attribution methods to identify tokens that contribute most to AI detection scores.</li>
+            <li><strong>Semantic Replacement:</strong> For high-attribution tokens, we find semantically similar replacements using contextual embeddings and linguistic constraints.</li>
+            <li><strong>Iterative Refinement:</strong> We iteratively apply replacements and re-evaluate detection scores until reaching a target threshold.</li>
+          </ol>
+          
+          <h3>Token Replacement Strategy</h3>
+          <p>
+            Our replacement strategy considers:
+          </p>
+          <ul>
+            <li>Semantic similarity (cosine similarity > 0.8)</li>
+            <li>Grammatical compatibility</li>
+            <li>Frequency analysis to avoid unusual word choices</li>
+            <li>Context coherence using bidirectional language models</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our experiments demonstrate:
+          </p>
+          <ul>
+            <li>Detection accuracy reduction: 45% average decrease across all tested detectors</li>
+            <li>Semantic preservation: 92% average cosine similarity with original text</li>
+            <li>Human evaluation: 78% of modified texts rated as equally fluent as originals</li>
+            <li>Robustness: Method effective across different text domains (academic, creative, technical)</li>
+          </ul>
+          
+          <p>
+            Interestingly, we find that relatively few token replacements (average 12% of tokens) are sufficient to significantly impact detection, suggesting that current detectors rely heavily on specific linguistic patterns rather than deep semantic understanding.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Ethical Considerations</h2>
+        <div class="content has-text-justified">
+          <p>
+            We acknowledge the dual-use nature of this research. While it could be misused to evade detection systems, we believe this work is crucial for:
+          </p>
+          <ul>
+            <li>Understanding vulnerabilities in current detection methods</li>
+            <li>Developing more robust detection systems</li>
+            <li>Informing policy discussions about AI-generated content</li>
+            <li>Advancing research in adversarial robustness for NLP</li>
+          </ul>
+          <p>
+            We advocate for responsible disclosure and have shared our findings with major detection system developers before publication.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Citation</h2>
+        <div class="content">
+          <pre><code>@article{mohammadi2024explainability,
+  title={Explainability-Based Token Replacement on LLM-Generated Text},
+  author={Mohammadi, Hadi and Giachanou, Anastasia and Oberski, Daniel and Bagheri, Ayoub},
+  journal={arXiv preprint arXiv:2506.04050},
+  year={2024}
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="../../index.html">
+        <i class="fas fa-home"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/mohammadi-hadi" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
