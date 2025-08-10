@@ -281,4 +281,18 @@ window.addEventListener('load', () => {
     });
   }
 
+  /**
+   * Open to Opportunities Dropdown Toggle
+   */
+  const opportunitiesCollapse = document.getElementById('opportunities');
+  if (opportunitiesCollapse) {
+    opportunitiesCollapse.addEventListener('show.bs.collapse', function () {
+      document.getElementById('opportunitiesIcon').style.transform = 'rotate(90deg)';
+    });
+    
+    opportunitiesCollapse.addEventListener('hide.bs.collapse', function () {
+      document.getElementById('opportunitiesIcon').style.transform = 'rotate(0deg)';
+    });
+  }
+
 })()
