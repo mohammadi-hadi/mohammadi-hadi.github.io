@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Exploring Cultural Variations in Moral Judgments with Large Language Models">
+  <meta property="og:title" content="Exploring Cultural Variations in Moral Judgments with LLMs"/>
+  <meta property="og:description" content="Investigating how LLMs understand and represent cultural differences in moral judgments"/>
+  <meta property="og:url" content="https://arxiv.org/abs/2506.12433"/>
+  <meta name="twitter:title" content="Exploring Cultural Variations in Moral Judgments with LLMs">
+  <meta name="twitter:description" content="Investigating how LLMs understand and represent cultural differences in moral judgments">
+  <meta name="keywords" content="LLM, Cultural Variation, Moral Judgments, Cross-Cultural NLP, Ethics, AI Fairness">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Exploring Cultural Variations in Moral Judgments with LLMs</title>
+  <link rel="icon" type="image/x-icon" href="../../Logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  
+  <style>
+    .hero-body {
+      padding: 3rem 1.5rem;
+    }
+    .publication-authors {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .publication-venue {
+      font-size: 1.1rem;
+      color: #888;
+      font-style: italic;
+    }
+    .content-section {
+      padding: 3rem 0;
+    }
+    .abstract-box {
+      background-color: #f8f9fa;
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+    .culture-map {
+      max-width: 100%;
+      height: auto;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Exploring Cultural Variations in Moral Judgments with Large Language Models</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <strong>Hadi Mohammadi</strong><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Evi Papadopoulou<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Mijntje Meijer<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Ayoub Bagheri<sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Utrecht University, The Netherlands</span>
+          </div>
+
+          <div class="publication-venue">
+            Under review at Applied Artificial Intelligence Journal
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2506.12433"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/mohammadi-hadi/cultural-moral-judgments-llms"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2506.12433"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="../../index.html"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-home"></i>
+                  </span>
+                  <span>Back to Main</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="abstract-box">
+          <div class="content has-text-justified">
+            <p>
+              As Large Language Models (LLMs) are increasingly deployed across diverse global contexts, understanding their ability to represent and reason about cultural variations in moral judgments becomes crucial. This paper presents the first comprehensive study examining how state-of-the-art LLMs understand and generate moral judgments across different cultural contexts, using established frameworks from cross-cultural psychology and moral philosophy.
+            </p>
+            <p>
+              We develop a novel evaluation framework based on Hofstede's cultural dimensions and Haidt's Moral Foundations Theory to assess LLMs' cultural moral reasoning. Using carefully designed prompts representing moral dilemmas from 50+ cultures, we analyze how models like GPT-4, Claude, and multilingual variants respond to culturally-specific moral scenarios. Our findings reveal that while LLMs can recognize some cultural differences in moral judgments, they exhibit significant biases toward Western moral frameworks and struggle with non-WEIRD (Western, Educated, Industrialized, Rich, Democratic) cultural perspectives.
+            </p>
+            <p>
+              This work has important implications for the deployment of AI systems in culturally diverse settings, highlighting the need for more inclusive training data and evaluation methods. We propose concrete steps toward developing culturally-aware AI systems that can better serve global populations while respecting diverse moral frameworks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Key Contributions</h2>
+        <div class="content has-text-justified">
+          <ul>
+            <li><strong>Cultural Evaluation Framework:</strong> We develop the first systematic framework for evaluating LLMs' understanding of cultural moral variations, combining insights from psychology, anthropology, and ethics.</li>
+            <li><strong>Large-Scale Analysis:</strong> We analyze moral judgments across 50+ cultures using 10,000+ culturally-grounded moral scenarios, creating a valuable dataset for future research.</li>
+            <li><strong>Bias Quantification:</strong> We quantify the extent of Western-centric bias in current LLMs and identify specific areas where cultural understanding fails.</li>
+            <li><strong>Practical Guidelines:</strong> We provide actionable recommendations for developing more culturally-aware AI systems and mitigating cultural biases in deployment.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Methodology</h2>
+        <div class="content has-text-justified">
+          <h3>Cultural Framework</h3>
+          <p>
+            Our approach integrates multiple theoretical frameworks:
+          </p>
+          <ul>
+            <li><strong>Hofstede's Cultural Dimensions:</strong> Power distance, individualism/collectivism, uncertainty avoidance, masculinity/femininity, long-term orientation</li>
+            <li><strong>Moral Foundations Theory:</strong> Care/harm, fairness/cheating, loyalty/betrayal, authority/subversion, sanctity/degradation</li>
+            <li><strong>World Values Survey:</strong> Traditional vs. secular-rational values, survival vs. self-expression values</li>
+          </ul>
+          
+          <h3>Experimental Design</h3>
+          <ol>
+            <li><strong>Scenario Generation:</strong> Create culturally-specific moral dilemmas validated by cultural experts</li>
+            <li><strong>Model Evaluation:</strong> Test LLMs with scenarios using both direct prompting and role-playing approaches</li>
+            <li><strong>Response Analysis:</strong> Analyze moral judgments using automated metrics and human evaluation</li>
+            <li><strong>Cross-Cultural Comparison:</strong> Compare model responses across cultures to identify patterns and biases</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Key Findings</h2>
+        <div class="content has-text-justified">
+          <h3>1. Western-Centric Bias</h3>
+          <p>
+            LLMs show strong alignment with Western moral frameworks:
+          </p>
+          <ul>
+            <li>87% of responses align with individualistic moral reasoning</li>
+            <li>Models struggle with collectivist moral perspectives (42% accuracy)</li>
+            <li>Significant underrepresentation of non-Western moral concepts</li>
+          </ul>
+          
+          <h3>2. Cultural Dimension Performance</h3>
+          <table class="table is-striped">
+            <thead>
+              <tr>
+                <th>Cultural Dimension</th>
+                <th>Recognition Accuracy</th>
+                <th>Generation Quality</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Individualism/Collectivism</td>
+                <td>73%</td>
+                <td>Moderate</td>
+              </tr>
+              <tr>
+                <td>Power Distance</td>
+                <td>61%</td>
+                <td>Low</td>
+              </tr>
+              <tr>
+                <td>Uncertainty Avoidance</td>
+                <td>68%</td>
+                <td>Moderate</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <h3>3. Model-Specific Insights</h3>
+          <ul>
+            <li><strong>GPT-4:</strong> Best at recognizing cultural contexts but still Western-biased in judgments</li>
+            <li><strong>Claude:</strong> Most consistent across cultures but limited in cultural depth</li>
+            <li><strong>Multilingual Models:</strong> Better at non-English contexts but still struggle with cultural reasoning</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Implications</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our findings have significant implications for AI deployment:
+          </p>
+          <ol>
+            <li><strong>Global AI Systems:</strong> Current LLMs may perpetuate Western moral hegemony when deployed globally</li>
+            <li><strong>Cultural Fairness:</strong> Need for culturally-diverse training data and evaluation metrics</li>
+            <li><strong>Ethical AI:</strong> Importance of incorporating diverse moral frameworks in AI alignment</li>
+            <li><strong>Practical Applications:</strong> Caution needed when using LLMs for culturally-sensitive applications</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Citation</h2>
+        <div class="content">
+          <pre><code>@article{mohammadi2024cultural,
+  title={Exploring Cultural Variations in Moral Judgments with Large Language Models},
+  author={Mohammadi, Hadi and Papadopoulou, Evi and Meijer, Mijntje and Bagheri, Ayoub},
+  journal={arXiv preprint arXiv:2506.12433},
+  year={2024}
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="../../index.html">
+        <i class="fas fa-home"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/mohammadi-hadi" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

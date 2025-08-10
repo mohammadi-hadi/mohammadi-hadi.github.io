@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="A Transparent Pipeline for Identifying Sexism in Social Media: Combining Explainability with Model Prediction">
+  <meta property="og:title" content="A Transparent Pipeline for Identifying Sexism in Social Media"/>
+  <meta property="og:description" content="An explainable AI approach for detecting sexism in social media with transparent decision-making"/>
+  <meta property="og:url" content="https://www.mdpi.com/2076-3417/14/19/8620"/>
+  <meta name="twitter:title" content="A Transparent Pipeline for Identifying Sexism in Social Media">
+  <meta name="twitter:description" content="An explainable AI approach for detecting sexism in social media with transparent decision-making">
+  <meta name="keywords" content="Sexism Detection, Explainable AI, Social Media, NLP, LIME, SHAP, Hate Speech">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>A Transparent Pipeline for Identifying Sexism in Social Media</title>
+  <link rel="icon" type="image/x-icon" href="../../Logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  
+  <style>
+    .hero-body {
+      padding: 3rem 1.5rem;
+    }
+    .publication-authors {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .publication-venue {
+      font-size: 1.1rem;
+      color: #888;
+      font-style: italic;
+    }
+    .content-section {
+      padding: 3rem 0;
+    }
+    .abstract-box {
+      background-color: #f8f9fa;
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+    .results-image {
+      max-width: 100%;
+      height: auto;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">A Transparent Pipeline for Identifying Sexism in Social Media: Combining Explainability with Model Prediction</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <strong>Hadi Mohammadi</strong><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Anastasia Giachanou<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Ayoub Bagheri<sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Utrecht University, The Netherlands</span>
+          </div>
+
+          <div class="publication-venue">
+            Applied Sciences Journal, Volume 14, Issue 19, 2024
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://www.mdpi.com/2076-3417/14/19/8620"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/mohammadi-hadi/Explainable-Sexim-Detection"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://www.mdpi.com/2076-3417/14/19/8620"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-journal-whills"></i>
+                  </span>
+                  <span>Journal</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="../../index.html"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-home"></i>
+                  </span>
+                  <span>Back to Main</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="abstract-box">
+          <div class="content has-text-justified">
+            <p>
+              Sexism, a form of discrimination based on gender, is increasingly prevalent on social media platforms, where it often manifests as hate speech targeted at individuals or groups based on their gender. While machine learning models can detect such content, their "black box" nature obscures their decision-making processes, making it difficult for users to understand why certain posts are flagged as sexist.
+            </p>
+            <p>
+              This paper addresses the critical need for transparency in automated sexism detection by proposing an explainable pipeline that combines accurate classification with interpretable explanations. We demonstrate that incorporating explainability techniques like LIME and SHAP not only maintains high detection accuracy but also provides valuable insights into model behavior, revealing which words and phrases most strongly indicate sexist content.
+            </p>
+            <p>
+              Our comprehensive evaluation on the EXIST 2021 dataset shows that our transparent approach achieves an F1-score of 0.82 while providing clear, understandable explanations for each prediction. This dual focus on accuracy and interpretability makes our system particularly suitable for real-world deployment, where understanding the reasoning behind content moderation decisions is crucial for both platform operators and users.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Key Contributions</h2>
+        <div class="content has-text-justified">
+          <ul>
+            <li><strong>Transparent Pipeline:</strong> We develop a comprehensive pipeline that integrates multiple explainability techniques (LIME, SHAP, attention weights) with state-of-the-art classification models for sexism detection.</li>
+            <li><strong>Multi-Model Evaluation:</strong> We evaluate various models including traditional ML (SVM, Random Forest) and deep learning approaches (BERT, RoBERTa) to identify the best balance between performance and explainability.</li>
+            <li><strong>Linguistic Analysis:</strong> Through explainability techniques, we identify key linguistic patterns and markers that indicate sexist content, providing insights for both researchers and content moderators.</li>
+            <li><strong>Practical Implementation:</strong> We provide a fully implemented system with code and guidelines for deployment, making our approach accessible to practitioners and researchers.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Methodology</h2>
+        <div class="content has-text-justified">
+          <h3>Pipeline Architecture</h3>
+          <p>
+            Our transparent pipeline consists of four main components:
+          </p>
+          <ol>
+            <li><strong>Data Preprocessing:</strong> Text cleaning, normalization, and feature extraction tailored for social media content.</li>
+            <li><strong>Model Training:</strong> Training multiple classifiers with different architectures to compare performance and explainability trade-offs.</li>
+            <li><strong>Explainability Generation:</strong> Applying LIME for local explanations and SHAP for global feature importance analysis.</li>
+            <li><strong>Explanation Visualization:</strong> Creating intuitive visualizations that highlight important words and their contribution to the prediction.</li>
+          </ol>
+          
+          <h3>Explainability Techniques</h3>
+          <p>
+            We employ three complementary explainability approaches:
+          </p>
+          <ul>
+            <li><strong>LIME (Local Interpretable Model-agnostic Explanations):</strong> Provides instance-level explanations by approximating the model locally.</li>
+            <li><strong>SHAP (SHapley Additive exPlanations):</strong> Offers both local and global explanations based on game theory principles.</li>
+            <li><strong>Attention Visualization:</strong> For transformer-based models, we visualize attention weights to understand model focus.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our experiments on the EXIST 2021 dataset demonstrate that:
+          </p>
+          <ul>
+            <li>The RoBERTa-based model achieves the best performance with an F1-score of 0.82</li>
+            <li>Traditional ML models with SHAP explanations provide the most interpretable results while maintaining competitive accuracy (F1: 0.78)</li>
+            <li>Key indicators of sexist content include gender-specific slurs, stereotypical role assignments, and objectifying language</li>
+            <li>The explainability overhead is minimal, adding only 2-3 seconds per prediction for real-time applications</li>
+          </ul>
+          
+          <p>
+            Our analysis reveals that combining multiple explainability techniques provides complementary insights, with LIME excelling at instance-level explanations and SHAP better for understanding overall model behavior.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Code and Resources</h2>
+        <div class="content has-text-justified">
+          <p>
+            All code for this project is available on GitHub, including:
+          </p>
+          <ul>
+            <li>Complete implementation of the transparent pipeline</li>
+            <li>Pre-trained models for immediate use</li>
+            <li>Jupyter notebooks with examples and tutorials</li>
+            <li>Scripts for reproducing all experimental results</li>
+          </ul>
+          <p>
+            Visit our <a href="https://github.com/mohammadi-hadi/Explainable-Sexim-Detection">GitHub repository</a> for more information.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Citation</h2>
+        <div class="content">
+          <pre><code>@article{mohammadi2024transparent,
+  title={A Transparent Pipeline for Identifying Sexism in Social Media: Combining Explainability with Model Prediction},
+  author={Mohammadi, Hadi and Giachanou, Anastasia and Bagheri, Ayoub},
+  journal={Applied Sciences},
+  volume={14},
+  number={19},
+  pages={8620},
+  year={2024},
+  publisher={MDPI}
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="../../index.html">
+        <i class="fas fa-home"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/mohammadi-hadi" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

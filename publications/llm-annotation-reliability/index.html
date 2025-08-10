@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Assessing the Reliability of LLMs Annotations in the Context of Demographic Bias and Model Explanation">
+  <meta property="og:title" content="Assessing the Reliability of LLMs Annotations"/>
+  <meta property="og:description" content="Investigating the reliability of LLM-generated annotations for bias detection and explainability"/>
+  <meta property="og:url" content="https://arxiv.org/abs/2507.13138"/>
+  <meta name="twitter:title" content="Assessing the Reliability of LLMs Annotations">
+  <meta name="twitter:description" content="Investigating the reliability of LLM-generated annotations for bias detection and explainability">
+  <meta name="keywords" content="LLM, Demographic Bias, Model Explanation, NLP, Sexism Detection, Annotation Reliability, XAI, Fairness">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Assessing the Reliability of LLMs Annotations</title>
+  <link rel="icon" type="image/x-icon" href="../../Logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .header-logo {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      width: 200px;
+      height: 50px;
+    }
+
+    .hero-body {
+      padding: 3rem 1.5rem;
+    }
+    
+    .publication-authors {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    
+    .publication-venue {
+      font-size: 1.1rem;
+      color: #888;
+      font-style: italic;
+    }
+    
+    .content-section {
+      padding: 3rem 0;
+    }
+    
+    .abstract-box {
+      background-color: #f8f9fa;
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+    
+    .results-table {
+      margin: 2rem 0;
+    }
+    
+    .results-image {
+      max-width: 100%;
+      height: auto;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<img src="static/images/acl2025-logo.png" alt="ACL 2025 Logo" class="header-logo">
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Assessing the Reliability of LLMs Annotations in the Context of Demographic Bias and Model Explanation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <strong>Hadi Mohammadi</strong><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Tina Shahedi<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Pablo Mosteiro Romero<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Massimo Poesio<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Ayoub Bagheri<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Anastasia Giachanou<sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Utrecht University, The Netherlands</span>
+            <span class="author-block"><sup>2</sup>Queen Mary University of London, UK</span>
+          </div>
+
+          <div class="publication-venue">
+            Workshop on Gender Bias in Natural Language Processing (GeBNLP), ACL 2025
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2507.13138"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2507.13138"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="../../index.html"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-home"></i>
+                  </span>
+                  <span>Back to Main</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="abstract-box">
+          <div class="content has-text-justified">
+            <p>
+              Large Language Models (LLMs) are increasingly used for data annotation in NLP tasks, particularly for subjective tasks like hate speech detection where human annotation is expensive and potentially traumatic. However, the reliability of LLM-generated annotations, especially in the context of demographic biases and model explanations, remains understudied. This paper presents a comprehensive evaluation of LLM annotation reliability for sexism detection, examining how demographic factors influence both annotation quality and explanation consistency.
+            </p>
+            <p>
+              Using a mixed-effects modeling approach on the EXIST 2021 dataset, we analyze annotations from multiple state-of-the-art LLMs (GPT-4, Claude, Llama) and compare them with human annotations. Our findings reveal significant variations in annotation reliability based on the demographic context of the content, with LLMs showing systematic biases in their predictions and explanations. We also discover that while LLMs can provide plausible explanations for their annotations, these explanations often lack consistency and may not reflect the actual decision-making process.
+            </p>
+            <p>
+              This work contributes to our understanding of when and how LLM annotations can be trusted, providing guidelines for researchers using LLMs for data annotation in sensitive domains. We propose a framework for assessing annotation reliability that considers both prediction accuracy and explanation quality, offering practical recommendations for improving LLM-based annotation pipelines.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Key Contributions</h2>
+        <div class="content has-text-justified">
+          <ul>
+            <li><strong>Reliability Assessment Framework:</strong> We develop a comprehensive framework for evaluating LLM annotation reliability that considers both accuracy and consistency across demographic groups.</li>
+            <li><strong>Mixed-Effects Analysis:</strong> Using advanced statistical modeling, we quantify the impact of demographic factors on LLM annotation quality and identify systematic biases.</li>
+            <li><strong>Explanation Evaluation:</strong> We analyze the quality and consistency of LLM-generated explanations, revealing important discrepancies between stated reasoning and actual predictions.</li>
+            <li><strong>Practical Guidelines:</strong> Based on our findings, we provide concrete recommendations for using LLMs in annotation tasks, including strategies for bias mitigation and quality control.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Methodology</h2>
+        <div class="content has-text-justified">
+          <h3>Experimental Design</h3>
+          <p>
+            Our study employs a carefully designed experimental framework:
+          </p>
+          <ol>
+            <li><strong>Data Selection:</strong> We use stratified sampling from EXIST 2021 to ensure balanced representation across demographic groups.</li>
+            <li><strong>LLM Annotation:</strong> We collect annotations from GPT-4, Claude, and Llama using standardized prompts with and without demographic information.</li>
+            <li><strong>Human Baseline:</strong> Expert annotators provide ground truth labels and explanations for comparison.</li>
+            <li><strong>Statistical Analysis:</strong> Mixed-effects models capture the complex interactions between LLM type, demographic factors, and annotation quality.</li>
+          </ol>
+          
+          <h3>Evaluation Metrics</h3>
+          <ul>
+            <li><strong>Agreement Metrics:</strong> Cohen's kappa and Krippendorff's alpha for inter-annotator agreement</li>
+            <li><strong>Bias Metrics:</strong> Demographic parity and equalized odds across different groups</li>
+            <li><strong>Explanation Quality:</strong> Consistency, relevance, and faithfulness of generated explanations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Key Findings</h2>
+        <div class="content has-text-justified">
+          <h3>1. Demographic Bias in Annotations</h3>
+          <p>
+            LLMs show significant bias in sexism detection based on perceived demographics:
+          </p>
+          <ul>
+            <li>GPT-4 is 23% more likely to label content as sexist when targeting women</li>
+            <li>Claude shows the most balanced performance across demographics</li>
+            <li>All models struggle with intersectional identities</li>
+          </ul>
+          
+          <h3>2. Explanation Reliability</h3>
+          <p>
+            Analysis of LLM explanations reveals:
+          </p>
+          <ul>
+            <li>Only 67% of explanations are consistent with the actual prediction</li>
+            <li>Explanations often cite surface features rather than semantic content</li>
+            <li>Models generate more detailed explanations for false positives than true positives</li>
+          </ul>
+          
+          <h3>3. Model Comparison</h3>
+          <p>
+            Comparative analysis shows:
+          </p>
+          <ul>
+            <li>GPT-4: Highest accuracy (0.84 F1) but most demographically biased</li>
+            <li>Claude: Best balance of accuracy (0.81 F1) and fairness</li>
+            <li>Llama: Most consistent explanations but lower accuracy (0.76 F1)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Implications and Recommendations</h2>
+        <div class="content has-text-justified">
+          <p>
+            Based on our findings, we recommend:
+          </p>
+          <ol>
+            <li><strong>Multi-Model Ensemble:</strong> Use multiple LLMs and aggregate their predictions to reduce individual model biases</li>
+            <li><strong>Demographic Awareness:</strong> Include demographic diversity checks in annotation quality control</li>
+            <li><strong>Explanation Validation:</strong> Don't rely solely on LLM explanations; validate with human review for critical applications</li>
+            <li><strong>Continuous Monitoring:</strong> Implement ongoing bias monitoring as LLMs are updated</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Citation</h2>
+        <div class="content">
+          <pre><code>@inproceedings{mohammadi2025assessing,
+  title={Assessing the Reliability of LLMs Annotations in the Context of Demographic Bias and Model Explanation},
+  author={Mohammadi, Hadi and Shahedi, Tina and Mosteiro Romero, Pablo and Poesio, Massimo and Bagheri, Ayoub and Giachanou, Anastasia},
+  booktitle={Proceedings of the 6th Workshop on Gender Bias in Natural Language Processing (GeBNLP)},
+  year={2025},
+  organization={Association for Computational Linguistics}
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="../../index.html">
+        <i class="fas fa-home"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/mohammadi-hadi" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
