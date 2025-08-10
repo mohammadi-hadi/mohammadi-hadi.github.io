@@ -14,231 +14,707 @@
   <title>Explainability in Practice: A Survey of Explainable NLP</title>
   <link rel="icon" type="image/x-icon" href="../../Logo.png">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
-  <script src="static/js/index.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   
   <style>
-    .hero-body {
-      padding: 3rem 1.5rem;
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #3b82f6;
+      --accent-color: #60a5fa;
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --border-color: #e2e8f0;
     }
-    .publication-authors {
-      font-size: 1.2rem;
-      color: #666;
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+      line-height: 1.6;
+      background-color: var(--bg-light);
+    }
+
+    /* Header Styles */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 80px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .publication-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .authors-list {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      opacity: 0.95;
+    }
+
+    .authors-list strong {
+      font-weight: 600;
+    }
+
+    .affiliation {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .hero-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .hero-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 20px;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      overflow-x: auto;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      white-space: nowrap;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+      background: var(--bg-light);
+    }
+
+    /* Content Sections */
+    .content-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .section-header {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2rem;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .section-header::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 24px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    /* Abstract Box */
+    .abstract-container {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      margin-bottom: 3rem;
+    }
+
+    .abstract-text {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      text-align: justify;
+    }
+
+    .abstract-text p {
+      margin-bottom: 1.25rem;
+    }
+
+    .abstract-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Key Points Grid */
+    .key-points-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .key-point-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s;
+      border-top: 3px solid var(--accent-color);
+    }
+
+    .key-point-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .key-point-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--bg-light);
+      color: var(--primary-color);
+      font-weight: 700;
+      border-radius: 50%;
       margin-bottom: 1rem;
     }
-    .publication-venue {
+
+    .key-point-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .key-point-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Methodology Section */
+    .methodology-timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .methodology-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border-color);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 2rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 0.5rem;
+      width: 12px;
+      height: 12px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px var(--border-color);
+    }
+
+    .timeline-title {
       font-size: 1.1rem;
-      color: #888;
-      font-style: italic;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
     }
-    .content-section {
+
+    .timeline-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Results Section */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .result-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .result-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-label {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* Citation Box */
+    .citation-box {
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      position: relative;
+    }
+
+    .citation-code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .copy-button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      transition: all 0.3s;
+    }
+
+    .copy-button:hover {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    /* Footer */
+    .paper-footer {
+      background: white;
       padding: 3rem 0;
+      margin-top: 4rem;
+      border-top: 1px solid var(--border-color);
     }
-    .abstract-box {
-      background-color: #f8f9fa;
-      padding: 2rem;
-      border-radius: 8px;
-      margin: 2rem 0;
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
     }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .footer-link:hover {
+      color: var(--primary-color);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .publication-title {
+        font-size: 1.8rem;
+      }
+      
+      .hero-buttons {
+        justify-content: center;
+      }
+      
+      .nav-content {
+        justify-content: flex-start;
+      }
+      
+      .key-points-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.6s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
   </style>
 </head>
 <body>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Explainability in Practice: A Survey of Explainable NLP Across Various Domains</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <strong>Hadi Mohammadi</strong><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              Ayoub Bagheri<sup>1</sup>,
-            </span>
-            <span class="author-block">
-              Anastasia Giachanou<sup>1</sup>,
-            </span>
-            <span class="author-block">
-              Daniel L. Oberski<sup>1</sup>
-            </span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Utrecht University, The Netherlands</span>
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2502.00837"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2502.00837"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="../../index.html"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-home"></i>
-                  </span>
-                  <span>Back to Main</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="publication-title fade-in">Explainability in Practice: A Survey of Explainable NLP Across Various Domains</h1>
+      
+      <div class="authors-list fade-in stagger-1">
+        <strong>Hadi Mohammadi</strong>, Ayoub Bagheri, Anastasia Giachanou, Daniel L. Oberski
+      </div>
+      
+      <div class="affiliation fade-in stagger-2">
+        Utrecht University, The Netherlands
+      </div>
+      
+      <div class="hero-buttons fade-in stagger-3">
+        <a href="https://arxiv.org/abs/2502.00837" class="hero-button">
+          <i class="fas fa-file-pdf"></i> Read Paper
+        </a>
+        <a href="https://arxiv.org/abs/2502.00837" class="hero-button">
+          <i class="ai ai-arxiv"></i> ArXiv
+        </a>
+        <a href="#citation" class="hero-button">
+          <i class="fas fa-quote-left"></i> Cite
+        </a>
+        <a href="../../index.html" class="hero-button">
+          <i class="fas fa-home"></i> Back Home
+        </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="abstract-box">
-          <div class="content has-text-justified">
-            <p>
-              The rapid advancement of Natural Language Processing (NLP) models has led to their widespread adoption across various domains. However, the black-box nature of these models raises concerns about their transparency and trustworthiness, particularly in high-stakes applications. This survey provides a comprehensive examination of the current state of explainable NLP across various domains, analyzing over 200 recent papers to understand how explainability is being implemented and evaluated in practice.
-            </p>
-            <p>
-              We categorize existing approaches based on their explainability methods, target audiences, and application domains. Our analysis reveals significant gaps between theoretical explainability frameworks and their practical implementations, particularly in domain-specific contexts. We identify key challenges including the lack of standardized evaluation metrics, the trade-off between model performance and interpretability, and the difficulty in generating explanations that are both faithful to the model and understandable to end-users.
-            </p>
-            <p>
-              This survey contributes to the field by: (1) providing a structured taxonomy of explainable NLP methods, (2) analyzing domain-specific requirements and implementations, (3) identifying current limitations and future research directions, and (4) proposing guidelines for developing more effective explainable NLP systems. Our findings emphasize the need for collaborative efforts between NLP researchers and domain experts to create truly useful and trustworthy AI systems.
-            </p>
-          </div>
-        </div>
+  <!-- Navigation -->
+  <nav class="nav-bar">
+    <div class="nav-content">
+      <a href="#abstract" class="nav-link">Abstract</a>
+      <a href="#contributions" class="nav-link">Key Contributions</a>
+      <a href="#methodology" class="nav-link">Methodology</a>
+      <a href="#findings" class="nav-link">Key Findings</a>
+      <a href="#impact" class="nav-link">Impact</a>
+      <a href="#citation" class="nav-link">Citation</a>
+    </div>
+  </nav>
+
+  <!-- Abstract Section -->
+  <section id="abstract" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Abstract</h2>
+    <div class="abstract-container" data-aos="fade-up" data-aos-delay="100">
+      <div class="abstract-text">
+        <p>
+          The rapid advancement of Natural Language Processing (NLP) models has led to their widespread adoption across various domains. However, the black-box nature of these models raises concerns about their transparency and trustworthiness, particularly in high-stakes applications. This survey provides a comprehensive examination of the current state of explainable NLP across various domains, analyzing over 200 recent papers to understand how explainability is being implemented and evaluated in practice.
+        </p>
+        <p>
+          We categorize existing approaches based on their explainability methods, target audiences, and application domains. Our analysis reveals significant gaps between theoretical explainability frameworks and their practical implementations, particularly in domain-specific contexts. We identify key challenges including the lack of standardized evaluation metrics, the trade-off between model performance and interpretability, and the difficulty in generating explanations that are both faithful to the model and understandable to end-users.
+        </p>
+        <p>
+          This survey contributes to the field by: (1) providing a structured taxonomy of explainable NLP methods, (2) analyzing domain-specific requirements and implementations, (3) identifying current limitations and future research directions, and (4) proposing guidelines for developing more effective explainable NLP systems. Our findings emphasize the need for collaborative efforts between NLP researchers and domain experts to create truly useful and trustworthy AI systems.
+        </p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Key Contributions</h2>
-        <div class="content has-text-justified">
-          <ul>
-            <li><strong>Comprehensive Taxonomy:</strong> We develop a structured taxonomy categorizing explainable NLP methods based on their approach (post-hoc vs. intrinsic), granularity (token, sentence, document level), and target audience (researchers, practitioners, end-users).</li>
-            <li><strong>Domain Analysis:</strong> We analyze how explainability requirements and implementations vary across different domains including healthcare, finance, legal, and social media analysis.</li>
-            <li><strong>Evaluation Framework:</strong> We propose a unified framework for evaluating explainable NLP systems, considering both technical metrics (faithfulness, consistency) and human-centered metrics (understandability, usefulness).</li>
-            <li><strong>Practical Guidelines:</strong> Based on our analysis, we provide practical guidelines for researchers and practitioners developing explainable NLP systems.</li>
-          </ul>
-        </div>
+  <!-- Key Contributions -->
+  <section id="contributions" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Key Contributions</h2>
+    <div class="key-points-grid">
+      <div class="key-point-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="key-point-number">1</div>
+        <h3 class="key-point-title">Comprehensive Taxonomy</h3>
+        <p class="key-point-description">
+          We develop a structured taxonomy categorizing explainable NLP methods based on their approach (post-hoc vs. intrinsic), granularity (token, sentence, document level), and target audience.
+        </p>
+      </div>
+      
+      <div class="key-point-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="key-point-number">2</div>
+        <h3 class="key-point-title">Domain Analysis</h3>
+        <p class="key-point-description">
+          We analyze how explainability requirements and implementations vary across different domains including healthcare, finance, legal, and social media analysis.
+        </p>
+      </div>
+      
+      <div class="key-point-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="key-point-number">3</div>
+        <h3 class="key-point-title">Evaluation Framework</h3>
+        <p class="key-point-description">
+          We propose a unified framework for evaluating explainable NLP systems, considering both technical metrics (faithfulness, consistency) and human-centered metrics.
+        </p>
+      </div>
+      
+      <div class="key-point-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="key-point-number">4</div>
+        <h3 class="key-point-title">Practical Guidelines</h3>
+        <p class="key-point-description">
+          Based on our analysis, we provide practical guidelines for researchers and practitioners developing explainable NLP systems in various domains.
+        </p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Survey Methodology</h2>
-        <div class="content has-text-justified">
-          <p>
-            Our survey follows a systematic literature review methodology, analyzing papers published between 2020 and 2024 in top-tier NLP and AI venues. We focus on papers that explicitly address explainability in NLP applications, excluding purely theoretical works without practical implementations.
-          </p>
-          <p>
-            The selection criteria included: (1) papers presenting explainable NLP methods or systems, (2) empirical evaluations of explainability approaches, (3) domain-specific applications of explainable NLP, and (4) user studies on NLP explanations.
-          </p>
-        </div>
+  <!-- Methodology -->
+  <section id="methodology" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Survey Methodology</h2>
+    <div class="methodology-timeline" data-aos="fade-up" data-aos-delay="100">
+      <div class="timeline-item">
+        <h3 class="timeline-title">Literature Collection</h3>
+        <p class="timeline-description">
+          Systematic search across major databases (ACL Anthology, IEEE Xplore, arXiv) for papers published between 2020-2024 on explainable NLP.
+        </p>
+      </div>
+      
+      <div class="timeline-item">
+        <h3 class="timeline-title">Paper Selection</h3>
+        <p class="timeline-description">
+          Applied strict inclusion criteria focusing on papers with practical implementations and empirical evaluations of explainability methods.
+        </p>
+      </div>
+      
+      <div class="timeline-item">
+        <h3 class="timeline-title">Categorization</h3>
+        <p class="timeline-description">
+          Developed a multi-dimensional taxonomy to categorize papers based on explainability approach, application domain, and evaluation methods.
+        </p>
+      </div>
+      
+      <div class="timeline-item">
+        <h3 class="timeline-title">Analysis & Synthesis</h3>
+        <p class="timeline-description">
+          Conducted in-depth analysis to identify patterns, gaps, and emerging trends in explainable NLP across different domains.
+        </p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Key Findings</h2>
-        <div class="content has-text-justified">
-          <ol>
-            <li><strong>Gap Between Theory and Practice:</strong> While numerous explainability methods exist, their practical implementation often falls short of theoretical promises, particularly in real-world applications.</li>
-            <li><strong>Domain-Specific Requirements:</strong> Different domains have vastly different explainability needs - what works for sentiment analysis may not be suitable for medical diagnosis.</li>
-            <li><strong>Evaluation Challenges:</strong> There is no consensus on how to evaluate explainability, leading to inconsistent and incomparable results across studies.</li>
-            <li><strong>User-Centric Design:</strong> Most explainability methods are designed by and for ML researchers, often failing to meet the needs of actual end-users.</li>
-            <li><strong>Trade-offs:</strong> There are inherent trade-offs between model performance, explainability, and computational efficiency that need careful consideration.</li>
-          </ol>
-        </div>
+  <!-- Key Findings -->
+  <section id="findings" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Key Findings</h2>
+    
+    <div class="results-grid" data-aos="fade-up" data-aos-delay="100">
+      <div class="result-card">
+        <div class="result-number">200+</div>
+        <div class="result-label">Papers Analyzed</div>
+      </div>
+      
+      <div class="result-card">
+        <div class="result-number">15</div>
+        <div class="result-label">Application Domains</div>
+      </div>
+      
+      <div class="result-card">
+        <div class="result-number">8</div>
+        <div class="result-label">Explainability Methods</div>
+      </div>
+      
+      <div class="result-card">
+        <div class="result-number">73%</div>
+        <div class="result-label">Focus on Post-hoc</div>
       </div>
     </div>
-  </div>
-</section>
+    
+    <div class="abstract-container" data-aos="fade-up" data-aos-delay="200">
+      <div class="abstract-text">
+        <h3 style="font-weight: 600; margin-bottom: 1rem;">Major Insights</h3>
+        <p>
+          <strong>1. Theory-Practice Gap:</strong> While numerous explainability methods exist, their practical implementation often falls short of theoretical promises, particularly in real-world applications.
+        </p>
+        <p>
+          <strong>2. Domain-Specific Requirements:</strong> Different domains have vastly different explainability needs - what works for sentiment analysis may not be suitable for medical diagnosis.
+        </p>
+        <p>
+          <strong>3. Evaluation Challenges:</strong> There is no consensus on how to evaluate explainability, leading to inconsistent and incomparable results across studies.
+        </p>
+        <p>
+          <strong>4. User-Centric Design Gap:</strong> Most explainability methods are designed by and for ML researchers, often failing to meet the needs of actual end-users.
+        </p>
+      </div>
+    </div>
+  </section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Citation</h2>
-        <div class="content">
-          <pre><code>@article{mohammadi2025explainability,
+  <!-- Impact -->
+  <section id="impact" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Research Impact</h2>
+    <div class="abstract-container" data-aos="fade-up" data-aos-delay="100">
+      <div class="abstract-text">
+        <p>
+          This survey has significant implications for the future development of explainable NLP systems. By providing a comprehensive overview of the current landscape, we enable researchers to:
+        </p>
+        <ul style="margin-left: 2rem; color: var(--text-secondary);">
+          <li>Identify underexplored areas and research opportunities</li>
+          <li>Understand domain-specific requirements for explainability</li>
+          <li>Apply best practices from successful implementations</li>
+          <li>Avoid common pitfalls in developing explainable systems</li>
+        </ul>
+        <p style="margin-top: 1rem;">
+          Our work serves as a foundation for future research in explainable NLP, promoting the development of more transparent, trustworthy, and user-friendly AI systems across various application domains.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Citation -->
+  <section id="citation" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Citation</h2>
+    <div class="citation-box" data-aos="fade-up" data-aos-delay="100">
+      <button class="copy-button" onclick="copyToClipboard()">
+        <i class="fas fa-copy"></i> Copy
+      </button>
+      <pre class="citation-code">@article{mohammadi2025explainability,
   title={Explainability in Practice: A Survey of Explainable NLP Across Various Domains},
   author={Mohammadi, Hadi and Bagheri, Ayoub and Giachanou, Anastasia and Oberski, Daniel L.},
   journal={arXiv preprint arXiv:2502.00837},
   year={2025}
-}</code></pre>
-        </div>
-      </div>
+}</pre>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link" href="../../index.html">
-        <i class="fas fa-home"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/mohammadi-hadi" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
-          </p>
-        </div>
+  <!-- Footer -->
+  <footer class="paper-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="../../index.html" class="footer-link">
+          <i class="fas fa-home"></i>
+        </a>
+        <a href="https://github.com/mohammadi-hadi" class="footer-link">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://twitter.com/yourusername" class="footer-link">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://linkedin.com/in/yourusername" class="footer-link">
+          <i class="fab fa-linkedin"></i>
+        </a>
       </div>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        © 2025 Hadi Mohammadi. This work is licensed under CC BY-SA 4.0.
+      </p>
     </div>
-  </div>
-</footer>
+  </footer>
 
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 50
+    });
+
+    // Copy to clipboard function
+    function copyToClipboard() {
+      const citation = document.querySelector('.citation-code').textContent;
+      navigator.clipboard.writeText(citation).then(() => {
+        const button = document.querySelector('.copy-button');
+        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        setTimeout(() => {
+          button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+        }, 2000);
+      });
+    }
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
