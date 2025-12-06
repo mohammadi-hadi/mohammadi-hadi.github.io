@@ -157,11 +157,20 @@
       color: var(--gold);
     }
 
+    .hero-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      max-width: 400px;
+    }
+
     .hero-buttons .btn {
-      margin: 5px;
+      margin: 0;
       padding: 12px 24px;
       border-radius: 6px;
       font-weight: 600;
+      width: 100%;
+      justify-content: center;
     }
 
     .btn-gold {
@@ -615,10 +624,11 @@
       }
 
       .hero-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 8px;
+        max-width: 300px;
+        margin: 0 auto;
       }
 
       .hero-buttons .btn {
@@ -626,6 +636,8 @@
         padding: 8px 12px;
         font-size: 0.75rem;
         min-height: 36px;
+        width: 100%;
+        justify-content: center;
       }
 
       .floating-badge {
@@ -796,9 +808,14 @@
         font-size: 11px;
       }
 
+      .hero-buttons {
+        max-width: 260px;
+      }
+
       .hero-buttons .btn {
-        padding: 6px 10px;
-        font-size: 0.7rem;
+        padding: 6px 8px;
+        font-size: 0.68rem;
+        min-height: 34px;
       }
 
       .stats-row {
