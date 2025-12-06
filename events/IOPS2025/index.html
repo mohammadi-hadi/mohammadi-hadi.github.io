@@ -1,1029 +1,565 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>IOPS Best Oral Presentation Award 2025 - Hadi Mohammadi</title>
   <meta name="description" content="IOPS Best Oral Presentation Award 2025 - EvalMORAAL: Moral Alignment in Large Language Models">
   <meta property="og:title" content="IOPS Best Oral Presentation Award 2025"/>
   <meta property="og:description" content="Received the Best Oral Presentation Award at IOPS Winter Conference 2025 for research on cultural moral alignment in LLMs"/>
-  <meta property="og:url" content="https://arxiv.org/abs/2510.05942"/>
-  <meta name="twitter:title" content="IOPS Best Oral Presentation Award 2025">
-  <meta name="twitter:description" content="EvalMORAAL: Understanding how LLMs make moral judgments across cultures">
   <meta name="keywords" content="IOPS, Award, LLM, Moral Alignment, Cultural AI, EvalMORAAL, Utrecht University">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>IOPS Best Oral Presentation Award 2025</title>
-  <link rel="icon" type="image/x-icon" href="../../Logo.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Favicons -->
+  <link href="../../Logo.png" rel="icon">
+  <link href="../../Logo.png" rel="apple-touch-icon">
 
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <!-- Fonts (same as main site) -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Raleway:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap & Icons -->
+  <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
 
   <style>
     :root {
+      --accent-color: #0563bb;
+      --heading-color: #45505b;
+      --text-color: #272829;
+      --light-bg: #f9f9f9;
       --gold: #ffc107;
       --gold-dark: #d4a012;
-      --gold-light: #fff8e1;
-      --blue: #0563bb;
-      --blue-dark: #044a8a;
-      --gray-100: #f8f9fa;
-      --gray-200: #e9ecef;
-      --gray-600: #6c757d;
-      --gray-800: #343a40;
-    }
-
-    * {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     body {
-      background: #fff;
-      color: var(--gray-800);
-    }
-
-    /* ========== HERO SECTION ========== */
-    .hero-award {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-award::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffc107' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      opacity: 0.5;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      padding: 2rem;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .hero-text {
-      color: white;
-    }
-
-    .award-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: linear-gradient(135deg, var(--gold) 0%, #ffdb4d 100%);
-      color: #5c4813;
-      padding: 0.6rem 1.2rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 4px 20px rgba(255, 193, 7, 0.4);
-    }
-
-    .award-label i {
-      font-size: 1rem;
-    }
-
-    .hero-title {
-      font-size: 3.5rem;
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 0.5rem;
-      font-weight: 400;
-    }
-
-    .hero-venue {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin: 1.5rem 0 2rem;
-      flex-wrap: wrap;
-    }
-
-    .venue-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.95rem;
-    }
-
-    .venue-item i {
-      color: var(--gold);
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn-hero {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.85rem 1.5rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary-gold {
-      background: linear-gradient(135deg, var(--gold) 0%, #ffdb4d 100%);
-      color: #5c4813;
-      box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
-    }
-
-    .btn-primary-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(255, 193, 7, 0.4);
-      color: #5c4813;
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: white;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.5);
-      color: white;
-    }
-
-    .hero-image {
-      position: relative;
-    }
-
-    .award-frame {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
-      transform: perspective(1000px) rotateY(-5deg);
-      transition: transform 0.5s ease;
-    }
-
-    .award-frame:hover {
-      transform: perspective(1000px) rotateY(0deg);
-    }
-
-    .award-frame img {
-      width: 100%;
-      display: block;
-    }
-
-    .award-frame::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    .floating-badge {
-      position: absolute;
-      bottom: -20px;
-      right: -20px;
-      width: 100px;
-      height: 100px;
-      background: linear-gradient(135deg, var(--gold) 0%, #ffdb4d 100%);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 40px rgba(255, 193, 7, 0.5);
-      animation: pulse 2s infinite;
-    }
-
-    .floating-badge i {
-      font-size: 2.5rem;
-      color: #5c4813;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    /* ========== PRESENTATION SECTION ========== */
-    .section-presentation {
-      padding: 6rem 2rem;
-      background: white;
-    }
-
-    .presentation-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .presentation-image {
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-    }
-
-    .presentation-image img {
-      width: 100%;
-      display: block;
-    }
-
-    .presentation-content h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--gray-800);
-      margin-bottom: 0.5rem;
-    }
-
-    .paper-title {
-      font-size: 1.1rem;
-      color: var(--gray-600);
-      font-style: italic;
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
-    }
-
-    .authors {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.95rem;
-      color: var(--gray-600);
-    }
-
-    .authors strong {
-      color: var(--blue);
-    }
-
-    .presentation-text {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--gray-600);
-      margin-bottom: 2rem;
-    }
-
-    .metrics-row {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .metric {
-      text-align: center;
-    }
-
-    .metric-value {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--blue);
-      line-height: 1;
-    }
-
-    .metric-label {
-      font-size: 0.85rem;
-      color: var(--gray-600);
-      margin-top: 0.25rem;
-    }
-
-    /* ========== KEY FINDING SECTION ========== */
-    .section-finding {
-      padding: 5rem 2rem;
-      background: linear-gradient(135deg, var(--gold-light) 0%, #fff 50%, var(--gold-light) 100%);
-      border-top: 3px solid var(--gold);
-      border-bottom: 3px solid var(--gold);
-    }
-
-    .finding-content {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .finding-icon {
-      width: 70px;
-      height: 70px;
-      background: linear-gradient(135deg, var(--gold) 0%, #ffdb4d 100%);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.5rem;
-      box-shadow: 0 8px 30px rgba(255, 193, 7, 0.3);
-    }
-
-    .finding-icon i {
-      font-size: 1.8rem;
-      color: #5c4813;
-    }
-
-    .finding-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--gold-dark);
-      margin-bottom: 1rem;
-    }
-
-    .finding-text {
-      font-size: 1.15rem;
-      line-height: 1.8;
-      color: var(--gray-800);
-    }
-
-    .finding-text strong {
-      color: var(--blue);
-    }
-
-    .finding-stats {
-      display: flex;
-      justify-content: center;
-      gap: 4rem;
-      margin-top: 2.5rem;
-    }
-
-    .finding-stat {
-      text-align: center;
-    }
-
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--gray-600);
-      margin-bottom: 0.25rem;
-    }
-
-    .stat-value {
-      font-size: 2rem;
-      font-weight: 800;
-    }
-
-    .stat-value.western { color: #27ae60; }
-    .stat-value.non-western { color: #e74c3c; }
-    .stat-value.gap { color: var(--blue); }
-
-    /* ========== GALLERY SECTION ========== */
-    .section-gallery {
-      padding: 5rem 2rem;
-      background: var(--gray-100);
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-header h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--gray-800);
-    }
-
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .bento-item {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-      cursor: pointer;
-      transition: all 0.4s ease;
-    }
-
-    .bento-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    }
-
-    .bento-item img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .bento-item:hover img {
-      transform: scale(1.05);
-    }
-
-    .bento-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 3rem 1.25rem 1.25rem;
-      background: linear-gradient(transparent, rgba(0,0,0,0.8));
-      color: white;
-    }
-
-    .bento-title {
-      font-weight: 600;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .bento-title i {
-      color: var(--gold);
-    }
-
-    /* ========== RESOURCES SECTION ========== */
-    .section-resources {
-      padding: 5rem 2rem;
-      background: white;
-    }
-
-    .resources-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .resource-card {
-      background: var(--gray-100);
-      border-radius: 16px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-    }
-
-    .resource-card:hover {
-      border-color: var(--blue);
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-    }
-
-    .resource-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-    }
-
-    .resource-icon.paper {
-      background: linear-gradient(135deg, var(--blue) 0%, #0984e3 100%);
-    }
-
-    .resource-icon.slides {
-      background: linear-gradient(135deg, #e17055 0%, #d63031 100%);
-    }
-
-    .resource-icon.arxiv {
-      background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
-    }
-
-    .resource-icon i {
-      font-size: 1.5rem;
-      color: white;
-    }
-
-    .resource-title {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--gray-800);
-      margin-bottom: 0.5rem;
-    }
-
-    .resource-desc {
-      font-size: 0.9rem;
-      color: var(--gray-600);
-      margin-bottom: 1rem;
-    }
-
-    .resource-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--blue);
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-    }
-
-    .resource-link:hover {
-      text-decoration: underline;
-    }
-
-    /* ========== CONTRIBUTIONS SECTION ========== */
-    .section-contributions {
-      padding: 5rem 2rem;
-      background: var(--gray-100);
-    }
-
-    .contributions-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .contribution-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      border-left: 4px solid var(--blue);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .contribution-card h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--gray-800);
-      margin-bottom: 0.5rem;
-    }
-
-    .contribution-card p {
-      font-size: 0.9rem;
-      color: var(--gray-600);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    /* ========== FOOTER SECTION ========== */
-    .section-footer {
-      padding: 4rem 2rem;
-      background: #1a1a2e;
-      color: white;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .footer-section h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--gold);
-    }
-
-    .footer-section p {
-      font-size: 0.95rem;
-      color: rgba(255, 255, 255, 0.7);
+      font-family: 'Roboto', sans-serif;
+      color: var(--text-color);
       line-height: 1.7;
     }
 
-    .footer-section a {
+    h1, h2, h3, h4 {
+      font-family: 'Raleway', sans-serif;
+      color: var(--heading-color);
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #044a8a;
+    }
+
+    .section {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    /* Header */
+    .page-header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    .award-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold) 0%, #ffdb4d 100%);
+      color: #5c4813;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .page-header h1 {
+      color: #fff;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .page-header .subtitle {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+
+    .page-header .meta {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+    }
+
+    .page-header .meta i {
+      color: var(--gold);
+      margin-right: 5px;
+    }
+
+    .header-buttons {
+      margin-top: 25px;
+    }
+
+    .header-buttons .btn {
+      margin: 5px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #5c4813;
+      border: none;
+    }
+
+    .btn-gold:hover {
+      background: #e0a800;
+      color: #5c4813;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* Award Image Section */
+    .award-section {
+      background: var(--light-bg);
+    }
+
+    .award-image {
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .award-image img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Research Section */
+    .research-intro {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    /* Key Finding */
+    .key-finding {
+      background: linear-gradient(135deg, #fff8e1 0%, #fff 100%);
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      padding: 25px 30px;
+      margin: 30px 0;
+    }
+
+    .key-finding h4 {
+      color: var(--gold-dark);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .key-finding p {
+      margin-bottom: 0;
+      color: #444;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .gallery-item {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: #fff;
+      padding: 30px 15px 15px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Resources */
+    .resource-card {
+      background: var(--light-bg);
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      height: 100%;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .resource-card:hover {
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .resource-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    .resource-icon.paper { background: var(--accent-color); }
+    .resource-icon.slides { background: #e17055; }
+    .resource-icon.arxiv { background: #6c5ce7; }
+
+    .resource-card h5 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .resource-card p {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    /* Contributions */
+    .contribution-item {
+      background: #fff;
+      border-left: 4px solid var(--accent-color);
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 0 8px 8px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .contribution-item h5 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .contribution-item p {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0;
+    }
+
+    /* Footer */
+    .page-footer {
+      background: #1a1a2e;
+      color: rgba(255,255,255,0.7);
+      padding: 50px 0 30px;
+    }
+
+    .page-footer h5 {
+      color: var(--gold);
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .page-footer a {
       color: var(--gold);
     }
 
     .citation-box {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      padding: 1rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: 6px;
+      padding: 15px;
       font-family: 'Courier New', monospace;
       font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.8);
       overflow-x: auto;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .footer-bottom {
-      max-width: 1000px;
-      margin: 3rem auto 0;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
     }
 
     .footer-links a {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 1.25rem;
-      transition: color 0.3s ease;
+      color: rgba(255,255,255,0.6);
+      font-size: 1.2rem;
+      margin: 0 10px;
+      transition: color 0.3s;
     }
 
     .footer-links a:hover {
       color: var(--gold);
     }
 
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 1.8rem;
+      }
 
-    .back-link:hover {
-      color: white;
-    }
-
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 968px) {
-      .hero-grid {
+      .gallery-grid {
         grid-template-columns: 1fr;
-        gap: 3rem;
-        text-align: center;
       }
 
-      .hero-title {
-        font-size: 2.5rem;
+      .stats-row {
+        gap: 25px;
       }
 
-      .hero-venue {
-        justify-content: center;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .hero-image {
-        order: -1;
-        max-width: 400px;
-        margin: 0 auto;
-      }
-
-      .award-frame {
-        transform: none;
-      }
-
-      .floating-badge {
-        width: 80px;
-        height: 80px;
-        bottom: -15px;
-        right: -15px;
-      }
-
-      .floating-badge i {
+      .stat-value {
         font-size: 2rem;
-      }
-
-      .presentation-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .presentation-image {
-        order: -1;
-      }
-
-      .metrics-row {
-        justify-content: center;
-      }
-
-      .finding-stats {
-        gap: 2rem;
-      }
-
-      .bento-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .bento-item img {
-        height: 250px;
-      }
-
-      .resources-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contributions-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .hero-title {
-        font-size: 2rem;
-      }
-
-      .hero-venue {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .finding-stats {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .metrics-row {
-        flex-wrap: wrap;
-        gap: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
 
-<!-- ========== HERO SECTION ========== -->
-<section class="hero-award">
-  <div class="hero-content">
-    <div class="hero-grid">
-      <div class="hero-text">
-        <div class="award-label">
-          <i class="fas fa-trophy"></i>
-          Best Oral Presentation Award
-        </div>
+<!-- Header -->
+<header class="page-header">
+  <div class="container">
+    <div class="award-badge">
+      <i class="fas fa-trophy me-2"></i>Best Oral Presentation Award
+    </div>
+    <h1>IOPS Winter Conference 2025</h1>
+    <p class="subtitle">EvalMORAAL: Moral Alignment in Large Language Models</p>
+    <p class="meta">
+      <span class="me-3"><i class="fas fa-university"></i>Utrecht University</span>
+      <span class="me-3"><i class="fas fa-map-marker-alt"></i>The Netherlands</span>
+      <span><i class="fas fa-calendar"></i>December 2025</span>
+    </p>
+    <div class="header-buttons">
+      <a href="https://arxiv.org/abs/2510.05942" target="_blank" class="btn btn-gold">
+        <i class="ai ai-arxiv me-1"></i> arXiv Paper
+      </a>
+      <a href="../../assets/docs/Events/IOPS2025/EvalMORAAL.pdf" class="btn btn-outline-light">
+        <i class="fas fa-file-powerpoint me-1"></i> Slides
+      </a>
+      <a href="../../index.html" class="btn btn-outline-light">
+        <i class="fas fa-home me-1"></i> Back to Main
+      </a>
+    </div>
+  </div>
+</header>
 
-        <h1 class="hero-title">IOPS Winter Conference 2025</h1>
-
-        <p class="hero-subtitle">EvalMORAAL: Moral Alignment in Large Language Models</p>
-
-        <div class="hero-venue">
-          <div class="venue-item">
-            <i class="fas fa-university"></i>
-            <span>Utrecht University</span>
-          </div>
-          <div class="venue-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>The Netherlands</span>
-          </div>
-          <div class="venue-item">
-            <i class="fas fa-calendar"></i>
-            <span>December 2025</span>
-          </div>
-        </div>
-
-        <div class="hero-buttons">
-          <a href="https://arxiv.org/abs/2510.05942" target="_blank" class="btn-hero btn-primary-gold">
-            <i class="ai ai-arxiv"></i> Read on arXiv
-          </a>
-          <a href="../../assets/docs/Events/IOPS2025/EvalMORAAL.pdf" class="btn-hero btn-outline">
-            <i class="fas fa-file-powerpoint"></i> View Slides
-          </a>
-          <a href="https://www.iops.nl/" target="_blank" class="btn-hero btn-outline">
-            <i class="fas fa-external-link-alt"></i> About IOPS
-          </a>
-        </div>
-      </div>
-
-      <div class="hero-image">
-        <div class="award-frame">
+<!-- Award Section -->
+<section class="section award-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <div class="award-image">
           <img src="static/images/conference.jpg" alt="IOPS Best Oral Presentation Award Certificate">
         </div>
-        <div class="floating-badge">
-          <i class="fas fa-award"></i>
+      </div>
+      <div class="col-lg-6">
+        <h2>The Presentation</h2>
+        <p class="text-muted fst-italic mb-3">
+          Interpretable Chain-of-Thought and LLM-as-Judge Evaluation for Moral Alignment in Large Language Models
+        </p>
+        <p class="mb-2">
+          <i class="fas fa-users me-2 text-primary"></i>
+          <strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Ayoub Bagheri
+        </p>
+        <p>
+          How do AI systems understand morality across different cultures? This research investigates how 20 leading Large Language Models make moral judgments, comparing them against human values from 64 countries using the World Values Survey.
+        </p>
+        <div class="stats-row justify-content-start">
+          <div class="stat-item">
+            <div class="stat-value">20</div>
+            <div class="stat-label">LLMs Evaluated</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">64</div>
+            <div class="stat-label">Countries</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">23</div>
+            <div class="stat-label">Moral Topics</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== PRESENTATION SECTION ========== -->
-<section class="section-presentation">
-  <div class="presentation-grid">
-    <div class="presentation-image">
-      <img src="static/images/presentation.jpg" alt="Presenting EvalMORAAL at IOPS Winter Conference 2025">
+<!-- Key Finding -->
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Key Discovery</h2>
     </div>
-
-    <div class="presentation-content">
-      <h2>The Presentation</h2>
-      <p class="paper-title">Interpretable Chain-of-Thought and LLM-as-Judge Evaluation for Moral Alignment in Large Language Models</p>
-
-      <div class="authors">
-        <i class="fas fa-users"></i>
-        <span><strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Ayoub Bagheri</span>
-      </div>
-
-      <p class="presentation-text">
-        How do AI systems understand morality across different cultures? This research investigates how leading Large Language Models make moral judgments, comparing them against human values from around the world using the World Values Survey.
-      </p>
-
-      <div class="metrics-row">
-        <div class="metric">
-          <div class="metric-value">20</div>
-          <div class="metric-label">LLMs Evaluated</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value">64</div>
-          <div class="metric-label">Countries</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value">23</div>
-          <div class="metric-label">Moral Topics</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== KEY FINDING SECTION ========== -->
-<section class="section-finding">
-  <div class="finding-content">
-    <div class="finding-icon">
-      <i class="fas fa-lightbulb"></i>
-    </div>
-
-    <h2 class="finding-title">Key Discovery: The Cultural Gap in AI</h2>
-
-    <p class="finding-text">
-      Top AI models (Claude-3-Opus, GPT-4o) achieve approximately <strong>90% alignment</strong> with the World Values Survey. However, there's a significant gap between how well AI understands Western cultures versus non-Western cultures. This reveals the urgent need for more culturally-aware AI systems.
-    </p>
-
-    <div class="finding-stats">
-      <div class="finding-stat">
-        <div class="stat-label">Western Alignment</div>
-        <div class="stat-value western">r = 0.82</div>
-      </div>
-      <div class="finding-stat">
-        <div class="stat-label">Non-Western Alignment</div>
-        <div class="stat-value non-western">r = 0.61</div>
-      </div>
-      <div class="finding-stat">
-        <div class="stat-label">Cultural Gap</div>
-        <div class="stat-value gap">21 points</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== GALLERY SECTION ========== -->
-<section class="section-gallery">
-  <div class="section-header">
-    <h2>Conference Moments</h2>
-  </div>
-
-  <div class="bento-grid">
-    <div class="bento-item">
-      <img src="static/images/presentation.jpg" alt="Presenting at IOPS 2025">
-      <div class="bento-overlay">
-        <div class="bento-title"><i class="fas fa-microphone-alt"></i> Presenting EvalMORAAL</div>
-      </div>
-    </div>
-
-    <div class="bento-item">
-      <img src="static/images/conference.jpg" alt="Award Certificate">
-      <div class="bento-overlay">
-        <div class="bento-title"><i class="fas fa-trophy"></i> The Award</div>
-      </div>
-    </div>
-
-    <div class="bento-item">
-      <img src="static/images/colleagues.jpg" alt="With Colleagues">
-      <div class="bento-overlay">
-        <div class="bento-title"><i class="fas fa-users"></i> With Colleagues</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== RESOURCES SECTION ========== -->
-<section class="section-resources">
-  <div class="section-header">
-    <h2>Resources</h2>
-  </div>
-
-  <div class="resources-grid">
-    <div class="resource-card">
-      <div class="resource-icon paper">
-        <i class="fas fa-file-pdf"></i>
-      </div>
-      <div class="resource-title">Research Paper</div>
-      <div class="resource-desc">Full paper with methodology and results</div>
-      <a href="../../assets/docs/Events/IOPS2025/2510.05942v2.pdf" class="resource-link" target="_blank">
-        Download PDF <i class="fas fa-download"></i>
-      </a>
-    </div>
-
-    <div class="resource-card">
-      <div class="resource-icon slides">
-        <i class="fas fa-file-powerpoint"></i>
-      </div>
-      <div class="resource-title">Presentation Slides</div>
-      <div class="resource-desc">Slides from the IOPS presentation</div>
-      <a href="../../assets/docs/Events/IOPS2025/EvalMORAAL.pdf" class="resource-link" target="_blank">
-        Download PDF <i class="fas fa-download"></i>
-      </a>
-    </div>
-
-    <div class="resource-card">
-      <div class="resource-icon arxiv">
-        <i class="ai ai-arxiv"></i>
-      </div>
-      <div class="resource-title">arXiv Preprint</div>
-      <div class="resource-desc">Open access on arXiv</div>
-      <a href="https://arxiv.org/abs/2510.05942" class="resource-link" target="_blank">
-        View on arXiv <i class="fas fa-external-link-alt"></i>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ========== CONTRIBUTIONS SECTION ========== -->
-<section class="section-contributions">
-  <div class="section-header">
-    <h2>Key Contributions</h2>
-  </div>
-
-  <div class="contributions-grid">
-    <div class="contribution-card">
-      <h4>Dual Scoring Framework</h4>
-      <p>Two complementary methods (log-probabilities and direct ratings) for fair cross-model comparison</p>
-    </div>
-
-    <div class="contribution-card">
-      <h4>Structured CoT Protocol</h4>
-      <p>Chain-of-thought reasoning with self-consistency checks to stabilize moral judgments</p>
-    </div>
-
-    <div class="contribution-card">
-      <h4>LLM-as-Judge Peer Review</h4>
-      <p>Novel peer-review methodology where models evaluate each other's reasoning quality</p>
-    </div>
-
-    <div class="contribution-card">
-      <h4>Cultural Bias Quantification</h4>
-      <p>Systematic measurement of Western vs. non-Western performance gaps in AI moral alignment</p>
-    </div>
-  </div>
-</section>
-
-<!-- ========== FOOTER SECTION ========== -->
-<section class="section-footer">
-  <div class="footer-grid">
-    <div class="footer-section">
-      <h3>About IOPS</h3>
+    <div class="key-finding">
+      <h4><i class="fas fa-lightbulb me-2"></i>The Cultural Gap in AI</h4>
       <p>
-        The <strong>Interuniversity Graduate School of Psychometrics and Sociometrics (IOPS)</strong> is a collaborative research school in the Netherlands focusing on methodological and statistical research in the social and behavioral sciences.
-      </p>
-      <p style="margin-top: 1rem;">
-        <a href="https://www.iops.nl/" target="_blank">Visit IOPS</a> &nbsp;|&nbsp;
-        <a href="https://www.uu.nl/en/events/iops-winter-conference-2025" target="_blank">Conference Page</a>
+        Top AI models (Claude-3-Opus, GPT-4o) achieve approximately <strong>90% alignment</strong> with the World Values Survey. However, there's a significant <strong>21-point gap</strong> between how well AI understands Western cultures (r=0.82) versus non-Western cultures (r=0.61). This reveals the urgent need for more culturally-aware AI systems.
       </p>
     </div>
+  </div>
+</section>
 
-    <div class="footer-section">
-      <h3>Citation</h3>
-      <div class="citation-box">
+<!-- Gallery -->
+<section class="section" style="background: var(--light-bg);">
+  <div class="container">
+    <div class="section-title">
+      <h2>Conference Moments</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="static/images/presentation.jpg" alt="Presenting at IOPS 2025">
+        <div class="gallery-caption"><i class="fas fa-microphone-alt me-2"></i>Presenting EvalMORAAL</div>
+      </div>
+      <div class="gallery-item">
+        <img src="static/images/conference.jpg" alt="Award Certificate">
+        <div class="gallery-caption"><i class="fas fa-trophy me-2"></i>The Award</div>
+      </div>
+      <div class="gallery-item">
+        <img src="static/images/colleagues.jpg" alt="With Colleagues">
+        <div class="gallery-caption"><i class="fas fa-users me-2"></i>With Colleagues</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Resources -->
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Resources</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="resource-card">
+          <div class="resource-icon paper"><i class="fas fa-file-pdf"></i></div>
+          <h5>Research Paper</h5>
+          <p>Full paper with methodology and results</p>
+          <a href="../../assets/docs/Events/IOPS2025/2510.05942v2.pdf" target="_blank">
+            Download PDF <i class="fas fa-download ms-1"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="resource-card">
+          <div class="resource-icon slides"><i class="fas fa-file-powerpoint"></i></div>
+          <h5>Presentation Slides</h5>
+          <p>Slides from the IOPS presentation</p>
+          <a href="../../assets/docs/Events/IOPS2025/EvalMORAAL.pdf" target="_blank">
+            Download PDF <i class="fas fa-download ms-1"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="resource-card">
+          <div class="resource-icon arxiv"><i class="ai ai-arxiv"></i></div>
+          <h5>arXiv Preprint</h5>
+          <p>Open access on arXiv</p>
+          <a href="https://arxiv.org/abs/2510.05942" target="_blank">
+            View on arXiv <i class="fas fa-external-link-alt ms-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contributions -->
+<section class="section" style="background: var(--light-bg);">
+  <div class="container">
+    <div class="section-title">
+      <h2>Key Contributions</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="contribution-item">
+          <h5>Dual Scoring Framework</h5>
+          <p>Two complementary methods (log-probabilities and direct ratings) for fair cross-model comparison</p>
+        </div>
+        <div class="contribution-item">
+          <h5>Structured CoT Protocol</h5>
+          <p>Chain-of-thought reasoning with self-consistency checks to stabilize moral judgments</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="contribution-item">
+          <h5>LLM-as-Judge Peer Review</h5>
+          <p>Novel peer-review methodology where models evaluate each other's reasoning quality</p>
+        </div>
+        <div class="contribution-item">
+          <h5>Cultural Bias Quantification</h5>
+          <p>Systematic measurement of Western vs. non-Western performance gaps in AI moral alignment</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <h5>About IOPS</h5>
+        <p>
+          The <strong>Interuniversity Graduate School of Psychometrics and Sociometrics (IOPS)</strong> is a collaborative research school in the Netherlands focusing on methodological and statistical research.
+        </p>
+        <p>
+          <a href="https://www.iops.nl/" target="_blank">Visit IOPS</a> |
+          <a href="https://www.uu.nl/en/events/iops-winter-conference-2025" target="_blank">Conference Page</a>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h5>Citation</h5>
+        <div class="citation-box">
 @article{mohammadi2025evalmoraal,
   title={EvalMORAAL: Interpretable CoT and
          LLM-as-Judge for Moral Alignment},
@@ -1032,22 +568,24 @@
   journal={arXiv:2510.05942},
   year={2025}
 }
+        </div>
+      </div>
+    </div>
+    <hr style="border-color: rgba(255,255,255,0.1); margin: 30px 0;">
+    <div class="d-flex justify-content-between align-items-center flex-wrap">
+      <a href="../../index.html" style="color: rgba(255,255,255,0.6);">
+        <i class="fas fa-arrow-left me-2"></i>Back to Main Site
+      </a>
+      <div class="footer-links">
+        <a href="../../index.html" title="Home"><i class="fas fa-home"></i></a>
+        <a href="https://github.com/mohammadi-hadi" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/hadimohammadi/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </div>
   </div>
+</footer>
 
-  <div class="footer-bottom">
-    <a href="../../index.html" class="back-link">
-      <i class="fas fa-arrow-left"></i> Back to Main Site
-    </a>
-
-    <div class="footer-links">
-      <a href="../../index.html" title="Home"><i class="fas fa-home"></i></a>
-      <a href="https://github.com/mohammadi-hadi" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/hadimohammadi/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    </div>
-  </div>
-</section>
-
+<!-- Bootstrap JS -->
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
