@@ -616,17 +616,16 @@
 
       .hero-buttons {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
       }
 
       .hero-buttons .btn {
-        width: 100%;
-        max-width: 280px;
         margin: 0;
-        padding: 14px 20px;
-        font-size: 0.95rem;
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        min-height: 36px;
       }
 
       .floating-badge {
@@ -795,6 +794,11 @@
       .award-badge {
         padding: 6px 14px;
         font-size: 11px;
+      }
+
+      .hero-buttons .btn {
+        padding: 6px 10px;
+        font-size: 0.7rem;
       }
 
       .stats-row {
