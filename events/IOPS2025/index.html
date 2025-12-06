@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="IOPS Best Oral Presentation Award 2025 - EvalMORAAL: Moral Alignment in Large Language Models">
+  <meta property="og:title" content="IOPS Best Oral Presentation Award 2025"/>
+  <meta property="og:description" content="Received the Best Oral Presentation Award at IOPS Winter Conference 2025 for research on cultural moral alignment in LLMs"/>
+  <meta property="og:url" content="https://arxiv.org/abs/2510.05942"/>
+  <meta name="twitter:title" content="IOPS Best Oral Presentation Award 2025">
+  <meta name="twitter:description" content="EvalMORAAL: Understanding how LLMs make moral judgments across cultures">
+  <meta name="keywords" content="IOPS, Award, LLM, Moral Alignment, Cultural AI, EvalMORAAL, Utrecht University">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>IOPS Best Oral Presentation Award 2025</title>
+  <link rel="icon" type="image/x-icon" href="../../Logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+
+  <style>
+    .hero-body {
+      padding: 3rem 1.5rem;
+    }
+    .publication-authors {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .publication-venue {
+      font-size: 1.1rem;
+      color: #888;
+      font-style: italic;
+    }
+    .content-section {
+      padding: 3rem 0;
+    }
+
+    /* Award-specific styling */
+    .award-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #ffc107 0%, #ffdb4d 50%, #ffc107 100%);
+      color: #5c4813;
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+    }
+
+    .award-badge i {
+      margin-right: 0.5rem;
+    }
+
+    .personal-message {
+      background-color: #fffef5;
+      padding: 2.5rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      border-left: 5px solid #ffc107;
+      font-size: 1.1rem;
+      line-height: 1.9;
+      font-style: italic;
+      color: #444;
+    }
+
+    .personal-message .signature {
+      margin-top: 1.5rem;
+      font-style: normal;
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* Photo gallery */
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .photo-item {
+      text-align: center;
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .photo-item img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .photo-caption {
+      font-size: 0.95rem;
+      color: #666;
+      margin-top: 0.75rem;
+      font-style: italic;
+    }
+
+    /* Research highlights */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .highlight-card {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .highlight-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0563bb;
+      line-height: 1.2;
+    }
+
+    .highlight-label {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+
+    .key-finding {
+      background: linear-gradient(135deg, #fff8e1 0%, #ffffff 100%);
+      border: 2px solid #ffc107;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+    }
+
+    .key-finding-title {
+      color: #d4a012;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .abstract-box {
+      background-color: #f8f9fa;
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .photo-gallery {
+        grid-template-columns: 1fr;
+      }
+      .photo-item img {
+        height: 220px;
+      }
+      .personal-message {
+        padding: 1.5rem;
+        font-size: 1rem;
+      }
+      .highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <div class="award-badge">
+            <i class="fas fa-trophy"></i> Best Oral Presentation Award
+          </div>
+
+          <h1 class="title is-1 publication-title">IOPS Winter Conference 2025</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <strong>Hadi Mohammadi</strong>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Department of Methodology and Statistics, Utrecht University</span>
+          </div>
+
+          <div class="publication-venue">
+            Utrecht, The Netherlands | December 2025
+          </div>
+
+          <div class="column has-text-centered" style="margin-top: 1.5rem;">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="../../assets/docs/Events/IOPS2025/2510.05942v2.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="../../assets/docs/Events/IOPS2025/EvalMORAAL.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-powerpoint"></i>
+                  </span>
+                  <span>Slides</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2510.05942"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://www.uu.nl/en/events/iops-winter-conference-2025"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="fas fa-calendar-alt"></i>
+                  </span>
+                  <span>Conference</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://www.iops.nl/"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="fas fa-university"></i>
+                  </span>
+                  <span>IOPS</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="../../index.html"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-home"></i>
+                  </span>
+                  <span>Back to Main</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Personal Message Section -->
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="personal-message">
+          <p>
+            I'm very happy to share that I received the <strong>IOPS Best Oral Presentation Award</strong> at this year's conference!
+          </p>
+          <p>
+            My presentation was based on our recent work on understanding how large language models make moral judgments across different cultures. The project shows why cultural awareness in AI is essential and how we can build evaluation tools that reflect real social values, not just patterns in training data. I'm proud that our research contributes to building fairer, more globally responsible AI systems.
+          </p>
+          <p>
+            A big thank-you to the IOPS organizers, the local team at Utrecht University, and the amazing PhD students who worked so hard to make this conference happen. Your effort, support, and warm atmosphere made this experience truly special.
+          </p>
+          <div class="signature">
+            &mdash; Hadi
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Photo Gallery Section -->
+<section class="section content-section" style="background-color: #f8f9fa;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Conference Moments</h2>
+        <div class="photo-gallery">
+          <div class="photo-item">
+            <img src="static/images/presentation.jpg" alt="Presenting EvalMORAAL at IOPS 2025">
+            <p class="photo-caption">Presenting EvalMORAAL at the IOPS Winter Conference</p>
+          </div>
+          <div class="photo-item">
+            <img src="static/images/colleagues.jpg" alt="With colleagues at Utrecht University">
+            <p class="photo-caption">With colleagues at Utrecht University</p>
+          </div>
+          <div class="photo-item">
+            <img src="static/images/conference.jpg" alt="IOPS Best Oral Presentation Award 2025 - Certificate and Trophy">
+            <p class="photo-caption">The IOPS Best Oral Presentation Award</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Research Summary Section -->
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">About the Research: EvalMORAAL</h2>
+        <p class="subtitle is-5" style="color: #666;">
+          Interpretable Chain-of-Thought and LLM-as-Judge Evaluation for Moral Alignment in Large Language Models
+        </p>
+
+        <div class="content has-text-justified">
+          <p>
+            How do AI systems understand morality across different cultures? This research investigates how 20 leading Large Language Models make moral judgments, comparing them against human values from 64 countries around the world using the World Values Survey and PEW Global Attitudes Survey.
+          </p>
+        </div>
+
+        <div class="highlights-grid">
+          <div class="highlight-card">
+            <div class="highlight-number">20</div>
+            <div class="highlight-label">LLMs Evaluated</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-number">64</div>
+            <div class="highlight-label">Countries Covered</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-number">23</div>
+            <div class="highlight-label">Moral Topics</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-number">135K+</div>
+            <div class="highlight-label">CoT Traces Analyzed</div>
+          </div>
+        </div>
+
+        <div class="key-finding">
+          <div class="key-finding-title">
+            <i class="fas fa-lightbulb"></i> Key Discovery: The Cultural Gap in AI
+          </div>
+          <p style="margin-bottom: 0;">
+            Top AI models (Claude-3-Opus, GPT-4o) achieve approximately <strong>90% alignment</strong> with the World Values Survey. However, there's a significant <strong>21-point gap</strong> between how well AI understands Western cultures (r=0.82) versus non-Western cultures (r=0.61). This reveals the urgent need for more culturally-aware AI systems.
+          </p>
+        </div>
+
+        <h3 class="title is-4" style="margin-top: 2rem;">Key Contributions</h3>
+        <div class="content has-text-justified">
+          <ul>
+            <li><strong>Dual Scoring Framework:</strong> Two complementary methods (log-probabilities and direct ratings) for fair cross-model comparison</li>
+            <li><strong>Structured CoT Protocol:</strong> Chain-of-thought reasoning with self-consistency checks to stabilize moral judgments</li>
+            <li><strong>LLM-as-Judge Peer Review:</strong> Novel peer-review methodology where models evaluate each other's reasoning quality</li>
+            <li><strong>Cultural Bias Quantification:</strong> Systematic measurement of Western vs. non-Western performance gaps</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About IOPS Section -->
+<section class="section content-section" style="background-color: #f8f9fa;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">About IOPS</h2>
+        <div class="content has-text-justified">
+          <p>
+            The <strong>Interuniversity Graduate School of Psychometrics and Sociometrics (IOPS)</strong> is a collaborative research school in the Netherlands focusing on methodological and statistical research in the social and behavioral sciences. IOPS brings together PhD candidates and researchers from major Dutch universities working on quantitative methodology, data science, and related fields.
+          </p>
+          <p>
+            The annual <strong>IOPS Winter Conference</strong> provides a platform for PhD students and researchers to present their latest work, exchange ideas, and foster collaboration across institutions.
+          </p>
+          <p>
+            <a href="https://www.iops.nl/" target="_blank"><i class="fas fa-external-link-alt"></i> Visit IOPS website</a> |
+            <a href="https://www.uu.nl/en/events/iops-winter-conference-2025" target="_blank"><i class="fas fa-external-link-alt"></i> Conference page</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Citation Section -->
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Citation</h2>
+        <div class="content">
+          <pre><code>@article{mohammadi2025evalmoraal,
+  title={EvalMORAAL: Interpretable Chain-of-Thought and LLM-as-Judge
+         Evaluation for Moral Alignment in Large Language Models},
+  author={Mohammadi, Hadi and Giachanou, Anastasia and Bagheri, Ayoub},
+  journal={arXiv preprint arXiv:2510.05942},
+  year={2025}
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="../../index.html" title="Home">
+        <i class="fas fa-home"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/mohammadi-hadi" class="external-link" target="_blank" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a class="icon-link" href="https://www.linkedin.com/in/hadimohammadi/" class="external-link" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content" style="text-align: center;">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
