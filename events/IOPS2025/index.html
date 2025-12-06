@@ -63,62 +63,131 @@
       margin-right: 0.5rem;
     }
 
-    .personal-message {
-      background-color: #fffef5;
-      padding: 2.5rem;
-      border-radius: 12px;
+    /* Enhanced Photo Gallery */
+    .gallery-container {
       margin: 2rem 0;
-      border-left: 5px solid #ffc107;
-      font-size: 1.1rem;
-      line-height: 1.9;
-      font-style: italic;
-      color: #444;
     }
 
-    .personal-message .signature {
-      margin-top: 1.5rem;
-      font-style: normal;
-      font-weight: 600;
-      color: #333;
-    }
-
-    /* Photo gallery */
-    .photo-gallery {
+    .gallery-main {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
+      grid-template-columns: 2fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
     }
 
-    .photo-item {
+    .gallery-main-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .gallery-main-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-main-image:hover img {
+      transform: scale(1.02);
+    }
+
+    .gallery-side {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .gallery-side-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      flex: 1;
+    }
+
+    .gallery-side-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-side-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: white;
+      padding: 1.5rem 1rem 1rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    /* PDF Sidebar */
+    .content-with-sidebar {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .pdf-sidebar {
+      position: sticky;
+      top: 2rem;
+    }
+
+    .pdf-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .pdf-card-header {
+      background: linear-gradient(135deg, #0563bb 0%, #0984e3 100%);
+      color: white;
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pdf-card-header.slides {
+      background: linear-gradient(135deg, #e17055 0%, #d63031 100%);
+    }
+
+    .pdf-preview {
+      height: 400px;
+      border: none;
+      width: 100%;
+    }
+
+    .pdf-card-footer {
+      padding: 0.75rem 1rem;
+      background: #f8f9fa;
       text-align: center;
     }
 
-    .photo-item img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .photo-item img:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    }
-
-    .photo-caption {
-      font-size: 0.95rem;
-      color: #666;
-      margin-top: 0.75rem;
-      font-style: italic;
+    .pdf-card-footer a {
+      color: #0563bb;
+      font-weight: 500;
+      font-size: 0.9rem;
     }
 
     /* Research highlights */
     .highlights-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
       margin: 2rem 0;
     }
@@ -171,19 +240,48 @@
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
-      .photo-gallery {
+    @media (max-width: 1024px) {
+      .content-with-sidebar {
         grid-template-columns: 1fr;
       }
-      .photo-item img {
-        height: 220px;
+      .pdf-sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
       }
-      .personal-message {
-        padding: 1.5rem;
-        font-size: 1rem;
+      .pdf-preview {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .gallery-main {
+        grid-template-columns: 1fr;
+      }
+      .gallery-main-image img {
+        height: 280px;
+      }
+      .gallery-side {
+        flex-direction: row;
+      }
+      .gallery-side-image img {
+        height: 180px;
       }
       .highlights-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .pdf-sidebar {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .gallery-side {
+        flex-direction: column;
+      }
+      .gallery-side-image img {
+        height: 200px;
       }
     }
   </style>
@@ -280,48 +378,34 @@
   </div>
 </section>
 
-<!-- Personal Message Section -->
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <div class="personal-message">
-          <p>
-            I'm very happy to share that I received the <strong>IOPS Best Oral Presentation Award</strong> at this year's conference!
-          </p>
-          <p>
-            My presentation was based on our recent work on understanding how large language models make moral judgments across different cultures. The project shows why cultural awareness in AI is essential and how we can build evaluation tools that reflect real social values, not just patterns in training data. I'm proud that our research contributes to building fairer, more globally responsible AI systems.
-          </p>
-          <p>
-            A big thank-you to the IOPS organizers, the local team at Utrecht University, and the amazing PhD students who worked so hard to make this conference happen. Your effort, support, and warm atmosphere made this experience truly special.
-          </p>
-          <div class="signature">
-            &mdash; Hadi
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Photo Gallery Section -->
+<!-- Enhanced Photo Gallery Section -->
 <section class="section content-section" style="background-color: #f8f9fa;">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3 has-text-centered">Conference Moments</h2>
-        <div class="photo-gallery">
-          <div class="photo-item">
-            <img src="static/images/presentation.jpg" alt="Presenting EvalMORAAL at IOPS 2025">
-            <p class="photo-caption">Presenting EvalMORAAL at the IOPS Winter Conference</p>
-          </div>
-          <div class="photo-item">
-            <img src="static/images/colleagues.jpg" alt="With colleagues at Utrecht University">
-            <p class="photo-caption">With colleagues at Utrecht University</p>
-          </div>
-          <div class="photo-item">
-            <img src="static/images/conference.jpg" alt="IOPS Best Oral Presentation Award 2025 - Certificate and Trophy">
-            <p class="photo-caption">The IOPS Best Oral Presentation Award</p>
+      <div class="column">
+        <h2 class="title is-3 has-text-centered" style="margin-bottom: 1.5rem;">Conference Moments</h2>
+        <div class="gallery-container">
+          <div class="gallery-main">
+            <div class="gallery-main-image">
+              <img src="static/images/presentation.jpg" alt="Presenting EvalMORAAL at IOPS 2025">
+              <div class="image-overlay">
+                <i class="fas fa-microphone-alt"></i> Presenting EvalMORAAL at IOPS Winter Conference 2025
+              </div>
+            </div>
+            <div class="gallery-side">
+              <div class="gallery-side-image">
+                <img src="static/images/conference.jpg" alt="IOPS Best Oral Presentation Award Certificate">
+                <div class="image-overlay">
+                  <i class="fas fa-trophy"></i> The Award
+                </div>
+              </div>
+              <div class="gallery-side-image">
+                <img src="static/images/colleagues.jpg" alt="With colleagues at Utrecht University">
+                <div class="image-overlay">
+                  <i class="fas fa-users"></i> With Colleagues
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -329,11 +413,12 @@
   </div>
 </section>
 
-<!-- Research Summary Section -->
+<!-- Research Summary with PDF Sidebar -->
 <section class="section content-section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
+    <div class="content-with-sidebar">
+      <!-- Main Content -->
+      <div class="main-content">
         <h2 class="title is-3">About the Research: EvalMORAAL</h2>
         <p class="subtitle is-5" style="color: #666;">
           Interpretable Chain-of-Thought and LLM-as-Judge Evaluation for Moral Alignment in Large Language Models
@@ -358,10 +443,6 @@
             <div class="highlight-number">23</div>
             <div class="highlight-label">Moral Topics</div>
           </div>
-          <div class="highlight-card">
-            <div class="highlight-number">135K+</div>
-            <div class="highlight-label">CoT Traces Analyzed</div>
-          </div>
         </div>
 
         <div class="key-finding">
@@ -381,6 +462,33 @@
             <li><strong>LLM-as-Judge Peer Review:</strong> Novel peer-review methodology where models evaluate each other's reasoning quality</li>
             <li><strong>Cultural Bias Quantification:</strong> Systematic measurement of Western vs. non-Western performance gaps</li>
           </ul>
+        </div>
+      </div>
+
+      <!-- PDF Sidebar -->
+      <div class="pdf-sidebar">
+        <div class="pdf-card">
+          <div class="pdf-card-header">
+            <i class="fas fa-file-pdf"></i> Research Paper
+          </div>
+          <iframe class="pdf-preview" src="../../assets/docs/Events/IOPS2025/2510.05942v2.pdf"></iframe>
+          <div class="pdf-card-footer">
+            <a href="../../assets/docs/Events/IOPS2025/2510.05942v2.pdf" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Open Full Paper
+            </a>
+          </div>
+        </div>
+
+        <div class="pdf-card">
+          <div class="pdf-card-header slides">
+            <i class="fas fa-file-powerpoint"></i> Presentation Slides
+          </div>
+          <iframe class="pdf-preview" src="../../assets/docs/Events/IOPS2025/EvalMORAAL.pdf"></iframe>
+          <div class="pdf-card-footer">
+            <a href="../../assets/docs/Events/IOPS2025/EvalMORAAL.pdf" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Open Full Slides
+            </a>
+          </div>
         </div>
       </div>
     </div>
