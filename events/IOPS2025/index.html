@@ -35,10 +35,21 @@
       --gold-light: #fff8e1;
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Roboto', sans-serif;
       color: var(--text-color);
       line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
     }
 
     h1, h2, h3, h4 {
@@ -158,6 +169,7 @@
       color: #5c4813;
       border: none;
       box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+      min-height: 44px; /* Touch-friendly */
     }
 
     .btn-gold:hover {
@@ -168,11 +180,37 @@
 
     .btn-outline-light {
       border: 2px solid rgba(255,255,255,0.3);
+      min-height: 44px; /* Touch-friendly */
     }
 
     .btn-outline-light:hover {
       background: rgba(255,255,255,0.1);
       border-color: rgba(255,255,255,0.5);
+    }
+
+    /* Touch device optimizations */
+    @media (hover: none) {
+      .btn-gold:hover,
+      .btn-outline-light:hover {
+        transform: none;
+      }
+
+      .gallery-item:hover img,
+      .presentation-image:hover img {
+        transform: none;
+      }
+
+      .award-frame:hover {
+        transform: none;
+      }
+
+      .contribution-card:hover {
+        transform: none;
+      }
+
+      .resource-card:hover {
+        transform: none;
+      }
     }
 
     /* Award Image */
@@ -513,6 +551,8 @@
     }
 
     /* ===== RESPONSIVE ===== */
+
+    /* Tablet */
     @media (max-width: 992px) {
       .hero-title {
         font-size: 2.2rem;
@@ -533,33 +573,264 @@
       .floating-badge i {
         font-size: 1.8rem;
       }
+
+      .section {
+        padding: 50px 0;
+      }
     }
 
+    /* Mobile */
     @media (max-width: 768px) {
       .hero-award {
         min-height: auto;
-        padding: 80px 0 60px;
+        padding: 60px 0 50px;
+      }
+
+      .hero-content {
+        text-align: center;
       }
 
       .hero-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        line-height: 1.3;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .award-badge {
+        padding: 8px 16px;
+        font-size: 12px;
       }
 
       .hero-meta {
+        justify-content: center;
         flex-direction: column;
+        gap: 8px;
+      }
+
+      .hero-meta-item {
+        font-size: 0.85rem;
+      }
+
+      .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         gap: 10px;
       }
 
-      .gallery-grid {
-        grid-template-columns: 1fr;
+      .hero-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+        margin: 0;
+        padding: 14px 20px;
+        font-size: 0.95rem;
       }
 
-      .finding-stats {
-        gap: 30px;
+      .floating-badge {
+        width: 60px;
+        height: 60px;
+        bottom: -8px;
+        right: -8px;
+      }
+
+      .floating-badge i {
+        font-size: 1.5rem;
+      }
+
+      .section {
+        padding: 40px 0;
+      }
+
+      .section-title {
+        margin-bottom: 25px;
+      }
+
+      .section-title h2 {
+        font-size: 1.5rem;
+      }
+
+      /* Presentation Section */
+      .presentation-image {
+        margin-bottom: 25px;
+      }
+
+      h2 {
+        font-size: 1.4rem;
       }
 
       .stats-row {
         justify-content: center;
+        gap: 20px;
+      }
+
+      .stat-value {
+        font-size: 2rem;
+      }
+
+      .stat-label {
+        font-size: 0.8rem;
+      }
+
+      /* Key Finding */
+      .finding-icon {
+        width: 60px;
+        height: 60px;
+      }
+
+      .finding-icon i {
+        font-size: 1.5rem;
+      }
+
+      .finding-title {
+        font-size: 1.2rem;
+      }
+
+      .finding-text {
+        font-size: 1rem;
+        padding: 0 10px;
+      }
+
+      .finding-stats {
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 25px;
+      }
+
+      .finding-stat-value {
+        font-size: 1.5rem;
+      }
+
+      /* Gallery */
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .gallery-item img {
+        height: 200px;
+      }
+
+      .gallery-caption {
+        padding: 30px 15px 15px;
+        font-size: 0.9rem;
+      }
+
+      /* Resources */
+      .resource-card {
+        padding: 25px 20px;
+      }
+
+      .resource-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+      }
+
+      .resource-card h5 {
+        font-size: 1rem;
+      }
+
+      /* Contributions */
+      .contribution-card {
+        padding: 20px;
+        margin-bottom: 15px;
+      }
+
+      .contribution-card h5 {
+        font-size: 1rem;
+      }
+
+      .contribution-card p {
+        font-size: 0.9rem;
+      }
+
+      /* Footer */
+      .page-footer {
+        padding: 40px 0 30px;
+        text-align: center;
+      }
+
+      .page-footer h5 {
+        font-size: 1rem;
+      }
+
+      .citation-box {
+        font-size: 0.7rem;
+        padding: 15px;
+        text-align: left;
+      }
+
+      .page-footer .d-flex {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .footer-links {
+        order: -1;
+      }
+
+      .footer-links a {
+        font-size: 1.5rem;
+        margin: 0 15px;
+      }
+    }
+
+    /* Small Mobile */
+    @media (max-width: 480px) {
+      .hero-award {
+        padding: 50px 0 40px;
+      }
+
+      .hero-title {
+        font-size: 1.4rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+
+      .award-badge {
+        padding: 6px 14px;
+        font-size: 11px;
+      }
+
+      .stats-row {
+        gap: 15px;
+      }
+
+      .stat-item {
+        min-width: 80px;
+      }
+
+      .stat-value {
+        font-size: 1.6rem;
+      }
+
+      .finding-stats {
+        gap: 15px;
+      }
+
+      .finding-stat-label {
+        font-size: 0.75rem;
+      }
+
+      .finding-stat-value {
+        font-size: 1.3rem;
+      }
+
+      .gallery-item img {
+        height: 180px;
+      }
+
+      .resource-card {
+        padding: 20px 15px;
+      }
+
+      .contribution-card {
+        padding: 15px;
       }
     }
   </style>
