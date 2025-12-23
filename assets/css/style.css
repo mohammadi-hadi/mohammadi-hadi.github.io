@@ -565,21 +565,22 @@ section,
 --------------------------------------------------------------*/
 .hero {
   width: 100%;
-  height: calc(100vw * 6 / 16);
-  min-height: auto;
+  height: calc(100vw * 7 / 16);
+  min-height: 400px;
+  max-height: 600px;
   position: relative;
-  padding: 80px 0;
+  padding: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow: hidden;
 }
 
 .hero img {
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 6;
+  height: 100%;
   object-fit: cover;
-  object-position: 70% center; /* Shift focus to the right, cropping left side */
+  object-position: 25% center; /* Focus on presentation screen, crop out presenter on right */
   position: absolute;
   inset: 0;
   display: block;
@@ -589,10 +590,11 @@ section,
 .hero:before {
   content: "";
   background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.7) 0%,
-    rgba(0, 0, 0, 0.5) 50%,
-    rgba(0, 0, 0, 0.4) 100%
+    135deg,
+    rgba(15, 23, 42, 0.92) 0%,
+    rgba(30, 41, 59, 0.85) 40%,
+    rgba(51, 65, 85, 0.6) 70%,
+    rgba(71, 85, 105, 0.3) 100%
   );
   position: absolute;
   inset: 0;
@@ -602,76 +604,154 @@ section,
 .hero .container {
   position: relative;
   z-index: 3;
+  padding: 40px 0;
+}
+
+.hero .row {
+  justify-content: flex-start !important;
+}
+
+.hero .col-lg-9 {
+  text-align: left;
+  padding-left: 20px;
 }
 
 .hero h2 {
-  margin: 0;
-  font-size: 64px;
-  font-weight: 700;
+  margin: 0 0 15px 0;
+  font-size: 56px;
+  font-weight: 800;
   color: #ffffff;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.5);
+  letter-spacing: -1px;
+  line-height: 1.1;
 }
 
 .hero p {
-  margin: 5px 0 0 0;
-  font-size: 26px;
+  margin: 8px 0;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.4);
+  line-height: 1.6;
+  max-width: 650px;
+}
+
+.hero p strong {
   color: #ffffff;
-  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+  font-weight: 600;
 }
 
 .hero p a {
-  color: #7cb9ff;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  color: #60a5fa;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-.hero p span {
-  letter-spacing: 1px;
-  border-bottom: 2px solid var(--accent-color);
+.hero p a:hover {
+  color: #93c5fd;
+}
+
+.hero p span.typed {
+  letter-spacing: 0;
+  border-bottom: 2px solid #60a5fa;
+  padding-bottom: 2px;
+}
+
+.hero .hero-tagline {
+  font-size: 20px;
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+
+.hero .hero-subtitle {
+  font-size: 16px;
+  opacity: 0.9;
+  margin-bottom: 12px;
+}
+
+.hero .hero-typed {
+  font-size: 22px;
+  margin-top: 15px;
 }
 
 .hero .social-links {
-  margin-top: 25px;
+  margin-top: 30px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .hero .social-links a {
-  font-size: 20px;
-  display: inline-block;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
-  line-height: 1;
-  margin-right: 20px;
-  transition: 0.3s;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .hero .social-links a:hover {
-  color: var(--accent-color);
+  background: rgba(96, 165, 250, 0.3);
+  color: #ffffff;
+  transform: translateY(-3px);
+  border-color: rgba(96, 165, 250, 0.5);
+}
+
+@media (max-width: 1200px) {
+  .hero h2 {
+    font-size: 48px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 768px) {
   .hero {
     height: auto;
-    min-height: 50vh;
-    padding: 60px 0;
+    min-height: 70vh;
+    max-height: none;
   }
 
   .hero img {
-    aspect-ratio: auto;
-    height: 100%;
+    object-position: 30% center;
+  }
+
+  .hero .col-lg-9 {
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .hero .row {
+    justify-content: center !important;
   }
 
   .hero h2 {
-    font-size: 32px;
+    font-size: 36px;
+    margin-bottom: 12px;
   }
 
   .hero p {
-    font-size: 20px;
+    font-size: 15px;
+    max-width: 100%;
+  }
+
+  .hero .social-links {
+    justify-content: center;
   }
 }
 
 @media (max-width: 576px) {
   .hero {
-    min-height: 40vh;
-    padding: 40px 0;
+    min-height: 60vh;
   }
 
   .hero h2 {
@@ -679,7 +759,13 @@ section,
   }
 
   .hero p {
-    font-size: 18px;
+    font-size: 14px;
+  }
+
+  .hero .social-links a {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
   }
 }
 
