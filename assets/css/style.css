@@ -580,7 +580,7 @@ section,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 25% center; /* Focus on presentation screen, crop out presenter on right */
+  object-position: center top; /* Center on presenter and slide */
   position: absolute;
   inset: 0;
   display: block;
@@ -721,7 +721,7 @@ section,
   }
 
   .hero img {
-    object-position: 30% center;
+    object-position: center top;
   }
 
   .hero .col-lg-9 {
