@@ -579,6 +579,7 @@ section,
   height: auto;
   aspect-ratio: 16 / 6;
   object-fit: cover;
+  object-position: 70% center; /* Shift focus to the right, cropping left side */
   position: absolute;
   inset: 0;
   display: block;
@@ -587,7 +588,12 @@ section,
 
 .hero:before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 30%);
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -602,11 +608,20 @@ section,
   margin: 0;
   font-size: 64px;
   font-weight: 700;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .hero p {
   margin: 5px 0 0 0;
   font-size: 26px;
+  color: #ffffff;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+.hero p a {
+  color: #7cb9ff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .hero p span {
@@ -621,10 +636,11 @@ section,
 .hero .social-links a {
   font-size: 20px;
   display: inline-block;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  color: #ffffff;
   line-height: 1;
   margin-right: 20px;
   transition: 0.3s;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .hero .social-links a:hover {
