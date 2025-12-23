@@ -677,30 +677,104 @@ section,
 .hero .social-links {
   margin-top: 30px;
   display: flex;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
 .hero .social-links a {
-  font-size: 18px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   color: #ffffff;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero .social-links a svg {
+  fill: #ffffff;
+  transition: fill 0.3s ease;
+}
+
+.hero .social-links a i {
+  font-size: 20px;
 }
 
 .hero .social-links a:hover {
-  background: rgba(96, 165, 250, 0.3);
+  background: rgba(96, 165, 250, 0.4);
   color: #ffffff;
-  transform: translateY(-3px);
-  border-color: rgba(96, 165, 250, 0.5);
+  transform: translateY(-4px) scale(1.05);
+  border-color: rgba(96, 165, 250, 0.6);
+  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.3);
+}
+
+.hero .social-links a:hover svg {
+  fill: #ffffff;
+}
+
+/* Scroll Indicator */
+.hero .scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.hero .scroll-indicator:hover {
+  opacity: 1;
+}
+
+.hero .scroll-indicator span {
+  font-size: 12px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+.hero .scroll-indicator .mouse {
+  width: 26px;
+  height: 42px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  position: relative;
+}
+
+.hero .scroll-indicator .mouse::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 2px;
+  animation: scroll-bounce 2s infinite;
+}
+
+@keyframes scroll-bounce {
+  0%, 100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(-50%) translateY(10px);
+  }
 }
 
 @media (max-width: 1200px) {
@@ -749,6 +823,12 @@ section,
   }
 }
 
+@media (max-width: 768px) {
+  .hero .scroll-indicator {
+    display: none;
+  }
+}
+
 @media (max-width: 576px) {
   .hero {
     min-height: 60vh;
@@ -763,8 +843,17 @@ section,
   }
 
   .hero .social-links a {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+  }
+
+  .hero .social-links a svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .hero .social-links a i {
     font-size: 16px;
   }
 }
