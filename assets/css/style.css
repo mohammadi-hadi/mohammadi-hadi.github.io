@@ -565,9 +565,9 @@ section,
 --------------------------------------------------------------*/
 .hero {
   width: 100%;
-  height: calc(100vw * 7 / 16);
-  min-height: 400px;
-  max-height: 600px;
+  height: calc(100vw * 9 / 16);
+  min-height: 450px;
+  max-height: 700px;
   position: relative;
   padding: 0;
   display: flex;
@@ -580,7 +580,7 @@ section,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top; /* Center on presenter and slide */
+  object-position: center 65%; /* Show presenter at bottom-center */
   position: absolute;
   inset: 0;
   display: block;
@@ -721,7 +721,7 @@ section,
   }
 
   .hero img {
-    object-position: center top;
+    object-position: center 60%;
   }
 
   .hero .col-lg-9 {
