@@ -565,9 +565,9 @@ section,
 --------------------------------------------------------------*/
 .hero {
   width: 100%;
-  height: calc(100vw * 9 / 16);
-  min-height: 450px;
-  max-height: 700px;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: none;
   position: relative;
   padding: 0;
   display: flex;
@@ -789,8 +789,8 @@ section,
 
 @media (max-width: 768px) {
   .hero {
-    height: auto;
-    min-height: 70vh;
+    height: 100vh;
+    min-height: 100vh;
     max-height: none;
   }
 
@@ -831,7 +831,8 @@ section,
 
 @media (max-width: 576px) {
   .hero {
-    min-height: 60vh;
+    height: 100vh;
+    min-height: 100vh;
   }
 
   .hero h2 {
