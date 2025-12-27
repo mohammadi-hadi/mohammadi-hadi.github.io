@@ -13,289 +13,840 @@
 
   <title>Explainability-Based Token Replacement on LLM-Generated Text</title>
   <link rel="icon" type="image/x-icon" href="../../Logo.png">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script src="static/js/bulma-carousel.min.js"></script>
-  <script src="static/js/bulma-slider.min.js"></script>
-  <script src="static/js/index.js"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
   <style>
-    .hero-body {
-      padding: 3rem 1.5rem;
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #3b82f6;
+      --accent-color: #60a5fa;
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --border-color: #e2e8f0;
     }
-    .publication-authors {
-      font-size: 1.2rem;
-      color: #666;
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+      line-height: 1.6;
+      background-color: var(--bg-light);
+    }
+
+    /* Header Styles */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 80px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .publication-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .authors-list {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.95;
+    }
+
+    .authors-list strong {
+      font-weight: 600;
+    }
+
+    .affiliation {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+    }
+
+    .venue {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .hero-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .hero-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 20px;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+      overflow-x: auto;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      white-space: nowrap;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+      background: var(--bg-light);
+    }
+
+    /* Content Sections */
+    .content-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .section-header {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2rem;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .section-header::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 24px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    /* Abstract Box */
+    .abstract-container {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      margin-bottom: 3rem;
+    }
+
+    .abstract-text {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      text-align: justify;
+    }
+
+    .abstract-text p {
+      margin-bottom: 1.25rem;
+    }
+
+    .abstract-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Key Points Grid */
+    .key-points-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .key-point-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s;
+      border-top: 3px solid var(--accent-color);
+    }
+
+    .key-point-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .key-point-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: var(--bg-light);
+      color: var(--primary-color);
+      font-size: 1.25rem;
+      border-radius: 12px;
       margin-bottom: 1rem;
     }
-    .publication-venue {
-      font-size: 1.1rem;
-      color: #888;
+
+    .key-point-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .key-point-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    /* Methodology Section */
+    .methodology-container {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .methodology-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .methodology-title:first-child {
+      margin-top: 0;
+    }
+
+    .methodology-timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .methodology-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border-color);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 1.5rem;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 0.5rem;
+      width: 12px;
+      height: 12px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px var(--border-color);
+    }
+
+    .timeline-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .strategy-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .strategy-item {
+      background: var(--bg-light);
+      padding: 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .strategy-item i {
+      color: var(--primary-color);
+    }
+
+    .strategy-item span {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Results Section */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .result-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .result-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .results-details {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .results-details p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* Ethics Section */
+    .ethics-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .ethics-intro {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .ethics-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .ethics-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .ethics-list li:last-child {
+      border-bottom: none;
+    }
+
+    .ethics-list li::before {
+      content: '✓';
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .ethics-note {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: var(--bg-light);
+      border-radius: 8px;
+      color: var(--text-secondary);
       font-style: italic;
     }
-    .content-section {
+
+    /* Citation Box */
+    .citation-box {
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      position: relative;
+    }
+
+    .citation-code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .copy-button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      transition: all 0.3s;
+    }
+
+    .copy-button:hover {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    /* Footer */
+    .paper-footer {
+      background: white;
       padding: 3rem 0;
+      margin-top: 4rem;
+      border-top: 1px solid var(--border-color);
     }
-    .abstract-box {
-      background-color: #f8f9fa;
-      padding: 2rem;
-      border-radius: 8px;
-      margin: 2rem 0;
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
     }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .footer-link:hover {
+      color: var(--primary-color);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .publication-title {
+        font-size: 1.75rem;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .nav-content {
+        justify-content: flex-start;
+      }
+
+      .key-points-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.6s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
   </style>
 </head>
 <body>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Explainability-Based Token Replacement on LLM-Generated Text</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <strong>Hadi Mohammadi</strong><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              Anastasia Giachanou<sup>1</sup>,
-            </span>
-            <span class="author-block">
-              Daniel Oberski<sup>1</sup>,
-            </span>
-            <span class="author-block">
-              Ayoub Bagheri<sup>1</sup>
-            </span>
-          </div>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="publication-title fade-in">Explainability-Based Token Replacement on LLM-Generated Text</h1>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Utrecht University, The Netherlands</span>
-          </div>
+      <div class="authors-list fade-in stagger-1">
+        <strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Daniel Oberski, Ayoub Bagheri
+      </div>
 
-          <div class="publication-venue">
-            Under review at Journal of Artificial Intelligence Research
-          </div>
+      <div class="affiliation fade-in stagger-2">
+        Utrecht University, The Netherlands
+      </div>
 
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2506.04050"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://github.com/mohammadi-hadi/Token-Replacement"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2506.04050"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="../../index.html"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-home"></i>
-                  </span>
-                  <span>Back to Main</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
+      <div class="venue fade-in stagger-2">
+        Under review at Journal of Artificial Intelligence Research
+      </div>
+
+      <div class="hero-buttons fade-in stagger-3">
+        <a href="https://arxiv.org/abs/2506.04050" class="hero-button">
+          <i class="fas fa-file-pdf"></i> Read Paper
+        </a>
+        <a href="https://github.com/mohammadi-hadi/Token-Replacement" class="hero-button">
+          <i class="fab fa-github"></i> Code
+        </a>
+        <a href="https://arxiv.org/abs/2506.04050" class="hero-button">
+          <i class="ai ai-arxiv"></i> arXiv
+        </a>
+        <a href="#citation" class="hero-button">
+          <i class="fas fa-quote-left"></i> Cite
+        </a>
+        <a href="../../index.html" class="hero-button">
+          <i class="fas fa-home"></i> Back Home
+        </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="abstract-box">
-          <div class="content has-text-justified">
-            <p>
-              The widespread use of Large Language Models (LLMs) has raised concerns about the potential misuse of AI-generated text in academic, journalistic, and creative contexts. While various detection methods have been developed to identify AI-generated content, they often struggle with modified or carefully crafted text. This paper presents a novel approach that leverages explainability techniques to strategically modify AI-generated text, making it less detectable while preserving semantic meaning and readability.
-            </p>
-            <p>
-              Our method uses attribution-based explainability to identify tokens that most strongly signal AI generation to detection models. By replacing these high-attribution tokens with semantically similar alternatives, we can significantly reduce detectability while maintaining text coherence. We evaluate our approach against multiple state-of-the-art AI text detectors, demonstrating that our method reduces detection accuracy by up to 45% while preserving 92% of the original semantic content.
-            </p>
-            <p>
-              This research has important implications for understanding the robustness of AI text detection systems and highlights the need for more sophisticated detection methods that go beyond surface-level features. We discuss the ethical considerations of this work and propose guidelines for responsible use of such techniques.
-            </p>
-          </div>
-        </div>
+  <!-- Navigation -->
+  <nav class="nav-bar">
+    <div class="nav-content">
+      <a href="#abstract" class="nav-link">Abstract</a>
+      <a href="#contributions" class="nav-link">Key Contributions</a>
+      <a href="#methodology" class="nav-link">Methodology</a>
+      <a href="#results" class="nav-link">Results</a>
+      <a href="#ethics" class="nav-link">Ethics</a>
+      <a href="#citation" class="nav-link">Citation</a>
+    </div>
+  </nav>
+
+  <!-- Abstract Section -->
+  <section id="abstract" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Abstract</h2>
+    <div class="abstract-container" data-aos="fade-up" data-aos-delay="100">
+      <div class="abstract-text">
+        <p>
+          The widespread use of Large Language Models (LLMs) has raised concerns about the potential misuse of AI-generated text in academic, journalistic, and creative contexts. While various detection methods have been developed to identify AI-generated content, they often struggle with modified or carefully crafted text. This paper presents a novel approach that leverages explainability techniques to strategically modify AI-generated text, making it less detectable while preserving semantic meaning and readability.
+        </p>
+        <p>
+          Our method uses attribution-based explainability to identify tokens that most strongly signal AI generation to detection models. By replacing these high-attribution tokens with semantically similar alternatives, we can significantly reduce detectability while maintaining text coherence. We evaluate our approach against multiple state-of-the-art AI text detectors, demonstrating that our method reduces detection accuracy by up to 45% while preserving 92% of the original semantic content.
+        </p>
+        <p>
+          This research has important implications for understanding the robustness of AI text detection systems and highlights the need for more sophisticated detection methods that go beyond surface-level features. We discuss the ethical considerations of this work and propose guidelines for responsible use of such techniques.
+        </p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Key Contributions</h2>
-        <div class="content has-text-justified">
-          <ul>
-            <li><strong>Novel Approach:</strong> We introduce the first method that systematically uses explainability techniques to enhance AI-generated text undetectability.</li>
-            <li><strong>Comprehensive Evaluation:</strong> We test against multiple detection systems including GPTZero, OpenAI's detector, and GLTR, showing consistent improvements in evading detection.</li>
-            <li><strong>Semantic Preservation:</strong> Our token replacement strategy maintains high semantic similarity (>0.92 cosine similarity) with the original text.</li>
-            <li><strong>Theoretical Framework:</strong> We provide a theoretical analysis of why certain tokens are more indicative of AI generation and how this knowledge can be exploited.</li>
-          </ul>
+  <!-- Key Contributions -->
+  <section id="contributions" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Key Contributions</h2>
+    <div class="key-points-grid">
+      <div class="key-point-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="key-point-icon">
+          <i class="fas fa-lightbulb"></i>
         </div>
+        <h3 class="key-point-title">Novel Approach</h3>
+        <p class="key-point-description">
+          First method that systematically uses explainability techniques to enhance AI-generated text undetectability.
+        </p>
+      </div>
+
+      <div class="key-point-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="key-point-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3 class="key-point-title">Comprehensive Evaluation</h3>
+        <p class="key-point-description">
+          Tested against multiple detection systems including GPTZero, OpenAI's detector, and GLTR, showing consistent improvements in evading detection.
+        </p>
+      </div>
+
+      <div class="key-point-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="key-point-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h3 class="key-point-title">Semantic Preservation</h3>
+        <p class="key-point-description">
+          Token replacement strategy maintains high semantic similarity (>0.92 cosine similarity) with the original text.
+        </p>
+      </div>
+
+      <div class="key-point-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="key-point-icon">
+          <i class="fas fa-book"></i>
+        </div>
+        <h3 class="key-point-title">Theoretical Framework</h3>
+        <p class="key-point-description">
+          Theoretical analysis of why certain tokens are more indicative of AI generation and how this knowledge can be exploited.
+        </p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Methodology</h2>
-        <div class="content has-text-justified">
-          <h3>Explainability-Based Token Identification</h3>
-          <p>
-            Our approach consists of three main steps:
+  <!-- Methodology -->
+  <section id="methodology" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Methodology</h2>
+    <div class="methodology-container" data-aos="fade-up" data-aos-delay="100">
+      <h3 class="methodology-title">Explainability-Based Token Identification</h3>
+      <div class="methodology-timeline">
+        <div class="timeline-item">
+          <h4 class="timeline-title">1. Attribution Analysis</h4>
+          <p class="timeline-description">
+            We use gradient-based attribution methods to identify tokens that contribute most to AI detection scores.
           </p>
-          <ol>
-            <li><strong>Attribution Analysis:</strong> We use gradient-based attribution methods to identify tokens that contribute most to AI detection scores.</li>
-            <li><strong>Semantic Replacement:</strong> For high-attribution tokens, we find semantically similar replacements using contextual embeddings and linguistic constraints.</li>
-            <li><strong>Iterative Refinement:</strong> We iteratively apply replacements and re-evaluate detection scores until reaching a target threshold.</li>
-          </ol>
-          
-          <h3>Token Replacement Strategy</h3>
-          <p>
-            Our replacement strategy considers:
-          </p>
-          <ul>
-            <li>Semantic similarity (cosine similarity > 0.8)</li>
-            <li>Grammatical compatibility</li>
-            <li>Frequency analysis to avoid unusual word choices</li>
-            <li>Context coherence using bidirectional language models</li>
-          </ul>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Results</h2>
-        <div class="content has-text-justified">
-          <p>
-            Our experiments demonstrate:
+        <div class="timeline-item">
+          <h4 class="timeline-title">2. Semantic Replacement</h4>
+          <p class="timeline-description">
+            For high-attribution tokens, we find semantically similar replacements using contextual embeddings and linguistic constraints.
           </p>
-          <ul>
-            <li>Detection accuracy reduction: 45% average decrease across all tested detectors</li>
-            <li>Semantic preservation: 92% average cosine similarity with original text</li>
-            <li>Human evaluation: 78% of modified texts rated as equally fluent as originals</li>
-            <li>Robustness: Method effective across different text domains (academic, creative, technical)</li>
-          </ul>
-          
-          <p>
-            Interestingly, we find that relatively few token replacements (average 12% of tokens) are sufficient to significantly impact detection, suggesting that current detectors rely heavily on specific linguistic patterns rather than deep semantic understanding.
+        </div>
+
+        <div class="timeline-item">
+          <h4 class="timeline-title">3. Iterative Refinement</h4>
+          <p class="timeline-description">
+            We iteratively apply replacements and re-evaluate detection scores until reaching a target threshold.
           </p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Ethical Considerations</h2>
-        <div class="content has-text-justified">
-          <p>
-            We acknowledge the dual-use nature of this research. While it could be misused to evade detection systems, we believe this work is crucial for:
-          </p>
-          <ul>
-            <li>Understanding vulnerabilities in current detection methods</li>
-            <li>Developing more robust detection systems</li>
-            <li>Informing policy discussions about AI-generated content</li>
-            <li>Advancing research in adversarial robustness for NLP</li>
-          </ul>
-          <p>
-            We advocate for responsible disclosure and have shared our findings with major detection system developers before publication.
-          </p>
-        </div>
+      <h3 class="methodology-title">Token Replacement Strategy</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 1rem;">Our replacement strategy considers:</p>
+      <ul class="strategy-list">
+        <li class="strategy-item">
+          <i class="fas fa-check"></i>
+          <span>Semantic similarity (cosine > 0.8)</span>
+        </li>
+        <li class="strategy-item">
+          <i class="fas fa-check"></i>
+          <span>Grammatical compatibility</span>
+        </li>
+        <li class="strategy-item">
+          <i class="fas fa-check"></i>
+          <span>Frequency analysis</span>
+        </li>
+        <li class="strategy-item">
+          <i class="fas fa-check"></i>
+          <span>Context coherence</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section id="results" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Results</h2>
+
+    <div class="results-grid" data-aos="fade-up" data-aos-delay="100">
+      <div class="result-card">
+        <div class="result-number">45%</div>
+        <div class="result-label">Detection Reduction</div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-number">92%</div>
+        <div class="result-label">Semantic Preservation</div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-number">78%</div>
+        <div class="result-label">Fluency Rating</div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-number">12%</div>
+        <div class="result-label">Tokens Replaced</div>
       </div>
     </div>
-  </div>
-</section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Citation</h2>
-        <div class="content">
-          <pre><code>@article{mohammadi2024explainability,
+    <div class="results-details" data-aos="fade-up" data-aos-delay="200">
+      <p>
+        Interestingly, we find that relatively few token replacements (average 12% of tokens) are sufficient to significantly impact detection, suggesting that current detectors rely heavily on specific linguistic patterns rather than deep semantic understanding. Our method is effective across different text domains including academic, creative, and technical writing.
+      </p>
+    </div>
+  </section>
+
+  <!-- Ethical Considerations -->
+  <section id="ethics" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Ethical Considerations</h2>
+    <div class="ethics-container" data-aos="fade-up" data-aos-delay="100">
+      <p class="ethics-intro">
+        We acknowledge the dual-use nature of this research. While it could be misused to evade detection systems, we believe this work is crucial for:
+      </p>
+      <ul class="ethics-list">
+        <li>Understanding vulnerabilities in current detection methods</li>
+        <li>Developing more robust detection systems</li>
+        <li>Informing policy discussions about AI-generated content</li>
+        <li>Advancing research in adversarial robustness for NLP</li>
+      </ul>
+      <p class="ethics-note">
+        We advocate for responsible disclosure and have shared our findings with major detection system developers before publication.
+      </p>
+    </div>
+  </section>
+
+  <!-- Citation -->
+  <section id="citation" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Citation</h2>
+    <div class="citation-box" data-aos="fade-up" data-aos-delay="100">
+      <button class="copy-button" onclick="copyToClipboard()">
+        <i class="fas fa-copy"></i> Copy
+      </button>
+      <pre class="citation-code">@article{mohammadi2024explainability,
   title={Explainability-Based Token Replacement on LLM-Generated Text},
   author={Mohammadi, Hadi and Giachanou, Anastasia and Oberski, Daniel and Bagheri, Ayoub},
   journal={arXiv preprint arXiv:2506.04050},
   year={2024}
-}</code></pre>
-        </div>
-      </div>
+}</pre>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link" href="../../index.html">
-        <i class="fas fa-home"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/mohammadi-hadi" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
-          </p>
-        </div>
+  <!-- Footer -->
+  <footer class="paper-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="../../index.html" class="footer-link">
+          <i class="fas fa-home"></i>
+        </a>
+        <a href="https://github.com/mohammadi-hadi" class="footer-link">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/hadi-mohammadi-phd/" class="footer-link">
+          <i class="fab fa-linkedin"></i>
+        </a>
       </div>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        © 2024 Hadi Mohammadi. This work is licensed under CC BY-SA 4.0.
+      </p>
     </div>
-  </div>
-</footer>
+  </footer>
 
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 50
+    });
+
+    // Copy to clipboard function
+    function copyToClipboard() {
+      const citation = document.querySelector('.citation-code').textContent;
+      navigator.clipboard.writeText(citation).then(() => {
+        const button = document.querySelector('.copy-button');
+        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        setTimeout(() => {
+          button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+        }, 2000);
+      });
+    }
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>

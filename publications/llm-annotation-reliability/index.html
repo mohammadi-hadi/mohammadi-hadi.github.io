@@ -13,328 +13,921 @@
 
   <title>Assessing the Reliability of LLMs Annotations</title>
   <link rel="icon" type="image/x-icon" href="../../Logo.png">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script src="static/js/bulma-carousel.min.js"></script>
-  <script src="static/js/bulma-slider.min.js"></script>
-  <script src="static/js/index.js"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
   <style>
-    body {
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #3b82f6;
+      --accent-color: #60a5fa;
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --border-color: #e2e8f0;
+    }
+
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    
-    .header-logo {
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+      line-height: 1.6;
+      background-color: var(--bg-light);
+    }
+
+    /* Conference Badge */
+    .conference-badge {
       position: fixed;
       top: 20px;
       left: 20px;
       z-index: 1000;
-      width: 200px;
-      height: 50px;
+      background: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      font-weight: 600;
+      color: var(--primary-color);
+      font-size: 0.9rem;
     }
 
-    .hero-body {
-      padding: 3rem 1.5rem;
+    /* Header Styles */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 80px 0 60px;
+      position: relative;
+      overflow: hidden;
     }
-    
-    .publication-authors {
-      font-size: 1.2rem;
-      color: #666;
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .publication-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .authors-list {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.95;
+    }
+
+    .authors-list strong {
+      font-weight: 600;
+    }
+
+    .affiliation {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+    }
+
+    .venue {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .hero-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .hero-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 20px;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+      overflow-x: auto;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      white-space: nowrap;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+      background: var(--bg-light);
+    }
+
+    /* Content Sections */
+    .content-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .section-header {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2rem;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .section-header::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 24px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    /* Abstract Box */
+    .abstract-container {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      margin-bottom: 3rem;
+    }
+
+    .abstract-text {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      text-align: justify;
+    }
+
+    .abstract-text p {
+      margin-bottom: 1.25rem;
+    }
+
+    .abstract-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Key Points Grid */
+    .key-points-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .key-point-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s;
+      border-top: 3px solid var(--accent-color);
+    }
+
+    .key-point-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .key-point-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: var(--bg-light);
+      color: var(--primary-color);
+      font-size: 1.25rem;
+      border-radius: 12px;
       margin-bottom: 1rem;
     }
-    
-    .publication-venue {
-      font-size: 1.1rem;
-      color: #888;
-      font-style: italic;
+
+    .key-point-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
     }
-    
-    .content-section {
-      padding: 3rem 0;
+
+    .key-point-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: 0.95rem;
     }
-    
-    .abstract-box {
-      background-color: #f8f9fa;
-      padding: 2rem;
+
+    /* Methodology Section */
+    .methodology-container {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .methodology-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .methodology-title:first-child {
+      margin-top: 0;
+    }
+
+    .methodology-timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .methodology-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border-color);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 1.5rem;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 0.5rem;
+      width: 12px;
+      height: 12px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px var(--border-color);
+    }
+
+    .timeline-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .metric-item {
+      background: var(--bg-light);
+      padding: 1rem;
       border-radius: 8px;
-      margin: 2rem 0;
     }
-    
-    .results-table {
-      margin: 2rem 0;
+
+    .metric-name {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+      font-size: 0.9rem;
     }
-    
-    .results-image {
-      max-width: 100%;
-      height: auto;
-      margin: 1rem 0;
+
+    .metric-desc {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
     }
+
+    /* Findings Section */
+    .findings-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+    }
+
+    .finding-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .finding-title i {
+      color: var(--primary-color);
+    }
+
+    .finding-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .finding-list li {
+      padding: 0.5rem 0;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .finding-list li::before {
+      content: '•';
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    /* Model Comparison */
+    .model-comparison {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .model-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid var(--accent-color);
+    }
+
+    .model-name {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .model-score {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .model-note {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Recommendations */
+    .recommendations-list {
+      list-style: none;
+      padding: 0;
+      counter-reset: recommendation;
+    }
+
+    .recommendations-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem;
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .recommendation-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .recommendation-content {
+      flex: 1;
+    }
+
+    .recommendation-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .recommendation-desc {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Citation Box */
+    .citation-box {
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      position: relative;
+    }
+
+    .citation-code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .copy-button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      transition: all 0.3s;
+    }
+
+    .copy-button:hover {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    /* Footer */
+    .paper-footer {
+      background: white;
+      padding: 3rem 0;
+      margin-top: 4rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .footer-link:hover {
+      color: var(--primary-color);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .publication-title {
+        font-size: 1.75rem;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .nav-content {
+        justify-content: flex-start;
+      }
+
+      .key-points-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .conference-badge {
+        position: static;
+        display: inline-block;
+        margin-bottom: 1rem;
+      }
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.6s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
   </style>
 </head>
 <body>
 
-<img src="static/images/acl2025-logo.png" alt="ACL 2025 Logo" class="header-logo">
+  <div class="conference-badge">
+    <i class="fas fa-award"></i> ACL 2025 - GeBNLP Workshop
+  </div>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Assessing the Reliability of LLMs Annotations in the Context of Demographic Bias and Model Explanation</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <strong>Hadi Mohammadi</strong><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              Tina Shahedi<sup>1</sup>,
-            </span>
-            <span class="author-block">
-              Pablo Mosteiro Romero<sup>1</sup>,
-            </span>
-            <span class="author-block">
-              Massimo Poesio<sup>2</sup>,
-            </span>
-            <span class="author-block">
-              Ayoub Bagheri<sup>1</sup>,
-            </span>
-            <span class="author-block">
-              Anastasia Giachanou<sup>1</sup>
-            </span>
-          </div>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="publication-title fade-in">Assessing the Reliability of LLMs Annotations in the Context of Demographic Bias and Model Explanation</h1>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Utrecht University, The Netherlands</span>
-            <span class="author-block"><sup>2</sup>Queen Mary University of London, UK</span>
-          </div>
+      <div class="authors-list fade-in stagger-1">
+        <strong>Hadi Mohammadi</strong>, Tina Shahedi, Pablo Mosteiro Romero, Massimo Poesio, Ayoub Bagheri, Anastasia Giachanou
+      </div>
 
-          <div class="publication-venue">
-            Workshop on Gender Bias in Natural Language Processing (GeBNLP), ACL 2025
-          </div>
+      <div class="affiliation fade-in stagger-2">
+        <sup>1</sup>Utrecht University, The Netherlands &nbsp;|&nbsp; <sup>2</sup>Queen Mary University of London, UK
+      </div>
 
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2507.13138"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2507.13138"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="../../index.html"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-home"></i>
-                  </span>
-                  <span>Back to Main</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
+      <div class="venue fade-in stagger-2">
+        Workshop on Gender Bias in Natural Language Processing (GeBNLP), ACL 2025
+      </div>
+
+      <div class="hero-buttons fade-in stagger-3">
+        <a href="https://arxiv.org/abs/2507.13138" class="hero-button">
+          <i class="fas fa-file-pdf"></i> Read Paper
+        </a>
+        <a href="https://arxiv.org/abs/2507.13138" class="hero-button">
+          <i class="ai ai-arxiv"></i> arXiv
+        </a>
+        <a href="#citation" class="hero-button">
+          <i class="fas fa-quote-left"></i> Cite
+        </a>
+        <a href="../../index.html" class="hero-button">
+          <i class="fas fa-home"></i> Back Home
+        </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="abstract-box">
-          <div class="content has-text-justified">
-            <p>
-              Large Language Models (LLMs) are increasingly used for data annotation in NLP tasks, particularly for subjective tasks like hate speech detection where human annotation is expensive and potentially traumatic. However, the reliability of LLM-generated annotations, especially in the context of demographic biases and model explanations, remains understudied. This paper presents a comprehensive evaluation of LLM annotation reliability for sexism detection, examining how demographic factors influence both annotation quality and explanation consistency.
-            </p>
-            <p>
-              Using a mixed-effects modeling approach on the EXIST 2021 dataset, we analyze annotations from multiple state-of-the-art LLMs (GPT-4, Claude, Llama) and compare them with human annotations. Our findings reveal significant variations in annotation reliability based on the demographic context of the content, with LLMs showing systematic biases in their predictions and explanations. We also discover that while LLMs can provide plausible explanations for their annotations, these explanations often lack consistency and may not reflect the actual decision-making process.
-            </p>
-            <p>
-              This work contributes to our understanding of when and how LLM annotations can be trusted, providing guidelines for researchers using LLMs for data annotation in sensitive domains. We propose a framework for assessing annotation reliability that considers both prediction accuracy and explanation quality, offering practical recommendations for improving LLM-based annotation pipelines.
-            </p>
-          </div>
-        </div>
+  <!-- Navigation -->
+  <nav class="nav-bar">
+    <div class="nav-content">
+      <a href="#abstract" class="nav-link">Abstract</a>
+      <a href="#contributions" class="nav-link">Contributions</a>
+      <a href="#methodology" class="nav-link">Methodology</a>
+      <a href="#findings" class="nav-link">Key Findings</a>
+      <a href="#recommendations" class="nav-link">Recommendations</a>
+      <a href="#citation" class="nav-link">Citation</a>
+    </div>
+  </nav>
+
+  <!-- Abstract Section -->
+  <section id="abstract" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Abstract</h2>
+    <div class="abstract-container" data-aos="fade-up" data-aos-delay="100">
+      <div class="abstract-text">
+        <p>
+          Large Language Models (LLMs) are increasingly used for data annotation in NLP tasks, particularly for subjective tasks like hate speech detection where human annotation is expensive and potentially traumatic. However, the reliability of LLM-generated annotations, especially in the context of demographic biases and model explanations, remains understudied. This paper presents a comprehensive evaluation of LLM annotation reliability for sexism detection, examining how demographic factors influence both annotation quality and explanation consistency.
+        </p>
+        <p>
+          Using a mixed-effects modeling approach on the EXIST 2021 dataset, we analyze annotations from multiple state-of-the-art LLMs (GPT-4, Claude, Llama) and compare them with human annotations. Our findings reveal significant variations in annotation reliability based on the demographic context of the content, with LLMs showing systematic biases in their predictions and explanations. We also discover that while LLMs can provide plausible explanations for their annotations, these explanations often lack consistency and may not reflect the actual decision-making process.
+        </p>
+        <p>
+          This work contributes to our understanding of when and how LLM annotations can be trusted, providing guidelines for researchers using LLMs for data annotation in sensitive domains. We propose a framework for assessing annotation reliability that considers both prediction accuracy and explanation quality, offering practical recommendations for improving LLM-based annotation pipelines.
+        </p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Key Contributions</h2>
-        <div class="content has-text-justified">
-          <ul>
-            <li><strong>Reliability Assessment Framework:</strong> We develop a comprehensive framework for evaluating LLM annotation reliability that considers both accuracy and consistency across demographic groups.</li>
-            <li><strong>Mixed-Effects Analysis:</strong> Using advanced statistical modeling, we quantify the impact of demographic factors on LLM annotation quality and identify systematic biases.</li>
-            <li><strong>Explanation Evaluation:</strong> We analyze the quality and consistency of LLM-generated explanations, revealing important discrepancies between stated reasoning and actual predictions.</li>
-            <li><strong>Practical Guidelines:</strong> Based on our findings, we provide concrete recommendations for using LLMs in annotation tasks, including strategies for bias mitigation and quality control.</li>
-          </ul>
+  <!-- Key Contributions -->
+  <section id="contributions" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Key Contributions</h2>
+    <div class="key-points-grid">
+      <div class="key-point-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="key-point-icon">
+          <i class="fas fa-chart-pie"></i>
         </div>
+        <h3 class="key-point-title">Reliability Assessment Framework</h3>
+        <p class="key-point-description">
+          A comprehensive framework for evaluating LLM annotation reliability that considers both accuracy and consistency across demographic groups.
+        </p>
+      </div>
+
+      <div class="key-point-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="key-point-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3 class="key-point-title">Mixed-Effects Analysis</h3>
+        <p class="key-point-description">
+          Advanced statistical modeling to quantify the impact of demographic factors on LLM annotation quality and identify systematic biases.
+        </p>
+      </div>
+
+      <div class="key-point-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="key-point-icon">
+          <i class="fas fa-comment-dots"></i>
+        </div>
+        <h3 class="key-point-title">Explanation Evaluation</h3>
+        <p class="key-point-description">
+          Analysis of LLM-generated explanations quality and consistency, revealing discrepancies between stated reasoning and actual predictions.
+        </p>
+      </div>
+
+      <div class="key-point-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="key-point-icon">
+          <i class="fas fa-clipboard-list"></i>
+        </div>
+        <h3 class="key-point-title">Practical Guidelines</h3>
+        <p class="key-point-description">
+          Concrete recommendations for using LLMs in annotation tasks, including strategies for bias mitigation and quality control.
+        </p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Methodology</h2>
-        <div class="content has-text-justified">
-          <h3>Experimental Design</h3>
-          <p>
-            Our study employs a carefully designed experimental framework:
+  <!-- Methodology -->
+  <section id="methodology" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Methodology</h2>
+    <div class="methodology-container" data-aos="fade-up" data-aos-delay="100">
+      <h3 class="methodology-title">Experimental Design</h3>
+      <div class="methodology-timeline">
+        <div class="timeline-item">
+          <h4 class="timeline-title">1. Data Selection</h4>
+          <p class="timeline-description">
+            Stratified sampling from EXIST 2021 to ensure balanced representation across demographic groups.
           </p>
-          <ol>
-            <li><strong>Data Selection:</strong> We use stratified sampling from EXIST 2021 to ensure balanced representation across demographic groups.</li>
-            <li><strong>LLM Annotation:</strong> We collect annotations from GPT-4, Claude, and Llama using standardized prompts with and without demographic information.</li>
-            <li><strong>Human Baseline:</strong> Expert annotators provide ground truth labels and explanations for comparison.</li>
-            <li><strong>Statistical Analysis:</strong> Mixed-effects models capture the complex interactions between LLM type, demographic factors, and annotation quality.</li>
-          </ol>
-          
-          <h3>Evaluation Metrics</h3>
-          <ul>
-            <li><strong>Agreement Metrics:</strong> Cohen's kappa and Krippendorff's alpha for inter-annotator agreement</li>
-            <li><strong>Bias Metrics:</strong> Demographic parity and equalized odds across different groups</li>
-            <li><strong>Explanation Quality:</strong> Consistency, relevance, and faithfulness of generated explanations</li>
-          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <h4 class="timeline-title">2. LLM Annotation</h4>
+          <p class="timeline-description">
+            Collected annotations from GPT-4, Claude, and Llama using standardized prompts with and without demographic information.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h4 class="timeline-title">3. Human Baseline</h4>
+          <p class="timeline-description">
+            Expert annotators provided ground truth labels and explanations for comparison.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h4 class="timeline-title">4. Statistical Analysis</h4>
+          <p class="timeline-description">
+            Mixed-effects models capture complex interactions between LLM type, demographic factors, and annotation quality.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="methodology-title">Evaluation Metrics</h3>
+      <div class="metrics-grid">
+        <div class="metric-item">
+          <div class="metric-name">Agreement Metrics</div>
+          <div class="metric-desc">Cohen's kappa and Krippendorff's alpha for inter-annotator agreement</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-name">Bias Metrics</div>
+          <div class="metric-desc">Demographic parity and equalized odds across different groups</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-name">Explanation Quality</div>
+          <div class="metric-desc">Consistency, relevance, and faithfulness of generated explanations</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Key Findings</h2>
-        <div class="content has-text-justified">
-          <h3>1. Demographic Bias in Annotations</h3>
-          <p>
-            LLMs show significant bias in sexism detection based on perceived demographics:
-          </p>
-          <ul>
-            <li>GPT-4 is 23% more likely to label content as sexist when targeting women</li>
-            <li>Claude shows the most balanced performance across demographics</li>
-            <li>All models struggle with intersectional identities</li>
-          </ul>
-          
-          <h3>2. Explanation Reliability</h3>
-          <p>
-            Analysis of LLM explanations reveals:
-          </p>
-          <ul>
-            <li>Only 67% of explanations are consistent with the actual prediction</li>
-            <li>Explanations often cite surface features rather than semantic content</li>
-            <li>Models generate more detailed explanations for false positives than true positives</li>
-          </ul>
-          
-          <h3>3. Model Comparison</h3>
-          <p>
-            Comparative analysis shows:
-          </p>
-          <ul>
-            <li>GPT-4: Highest accuracy (0.84 F1) but most demographically biased</li>
-            <li>Claude: Best balance of accuracy (0.81 F1) and fairness</li>
-            <li>Llama: Most consistent explanations but lower accuracy (0.76 F1)</li>
-          </ul>
-        </div>
+  <!-- Key Findings -->
+  <section id="findings" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Key Findings</h2>
+
+    <div class="findings-container" data-aos="fade-up" data-aos-delay="100">
+      <h3 class="finding-title"><i class="fas fa-users"></i> Demographic Bias in Annotations</h3>
+      <ul class="finding-list">
+        <li>GPT-4 is 23% more likely to label content as sexist when targeting women</li>
+        <li>Claude shows the most balanced performance across demographics</li>
+        <li>All models struggle with intersectional identities</li>
+      </ul>
+    </div>
+
+    <div class="findings-container" data-aos="fade-up" data-aos-delay="200">
+      <h3 class="finding-title"><i class="fas fa-comment-alt"></i> Explanation Reliability</h3>
+      <ul class="finding-list">
+        <li>Only 67% of explanations are consistent with the actual prediction</li>
+        <li>Explanations often cite surface features rather than semantic content</li>
+        <li>Models generate more detailed explanations for false positives than true positives</li>
+      </ul>
+    </div>
+
+    <h3 class="section-header" style="margin-top: 2rem;" data-aos="fade-up">Model Comparison</h3>
+    <div class="model-comparison" data-aos="fade-up" data-aos-delay="100">
+      <div class="model-card">
+        <div class="model-name">GPT-4</div>
+        <div class="model-score">0.84 F1</div>
+        <div class="model-note">Highest accuracy but most demographically biased</div>
+      </div>
+      <div class="model-card">
+        <div class="model-name">Claude</div>
+        <div class="model-score">0.81 F1</div>
+        <div class="model-note">Best balance of accuracy and fairness</div>
+      </div>
+      <div class="model-card">
+        <div class="model-name">Llama</div>
+        <div class="model-score">0.76 F1</div>
+        <div class="model-note">Most consistent explanations but lower accuracy</div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Implications and Recommendations</h2>
-        <div class="content has-text-justified">
-          <p>
-            Based on our findings, we recommend:
-          </p>
-          <ol>
-            <li><strong>Multi-Model Ensemble:</strong> Use multiple LLMs and aggregate their predictions to reduce individual model biases</li>
-            <li><strong>Demographic Awareness:</strong> Include demographic diversity checks in annotation quality control</li>
-            <li><strong>Explanation Validation:</strong> Don't rely solely on LLM explanations; validate with human review for critical applications</li>
-            <li><strong>Continuous Monitoring:</strong> Implement ongoing bias monitoring as LLMs are updated</li>
-          </ol>
+  <!-- Recommendations -->
+  <section id="recommendations" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Implications and Recommendations</h2>
+    <ul class="recommendations-list" data-aos="fade-up" data-aos-delay="100">
+      <li>
+        <span class="recommendation-number">1</span>
+        <div class="recommendation-content">
+          <div class="recommendation-title">Multi-Model Ensemble</div>
+          <div class="recommendation-desc">Use multiple LLMs and aggregate their predictions to reduce individual model biases</div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </li>
+      <li>
+        <span class="recommendation-number">2</span>
+        <div class="recommendation-content">
+          <div class="recommendation-title">Demographic Awareness</div>
+          <div class="recommendation-desc">Include demographic diversity checks in annotation quality control</div>
+        </div>
+      </li>
+      <li>
+        <span class="recommendation-number">3</span>
+        <div class="recommendation-content">
+          <div class="recommendation-title">Explanation Validation</div>
+          <div class="recommendation-desc">Don't rely solely on LLM explanations; validate with human review for critical applications</div>
+        </div>
+      </li>
+      <li>
+        <span class="recommendation-number">4</span>
+        <div class="recommendation-content">
+          <div class="recommendation-title">Continuous Monitoring</div>
+          <div class="recommendation-desc">Implement ongoing bias monitoring as LLMs are updated</div>
+        </div>
+      </li>
+    </ul>
+  </section>
 
-<section class="section content-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Citation</h2>
-        <div class="content">
-          <pre><code>@inproceedings{mohammadi2025assessing,
+  <!-- Citation -->
+  <section id="citation" class="content-section">
+    <h2 class="section-header" data-aos="fade-up">Citation</h2>
+    <div class="citation-box" data-aos="fade-up" data-aos-delay="100">
+      <button class="copy-button" onclick="copyToClipboard()">
+        <i class="fas fa-copy"></i> Copy
+      </button>
+      <pre class="citation-code">@inproceedings{mohammadi2025assessing,
   title={Assessing the Reliability of LLMs Annotations in the Context of Demographic Bias and Model Explanation},
   author={Mohammadi, Hadi and Shahedi, Tina and Mosteiro Romero, Pablo and Poesio, Massimo and Bagheri, Ayoub and Giachanou, Anastasia},
   booktitle={Proceedings of the 6th Workshop on Gender Bias in Natural Language Processing (GeBNLP)},
   year={2025},
   organization={Association for Computational Linguistics}
-}</code></pre>
-        </div>
-      </div>
+}</pre>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link" href="../../index.html">
-        <i class="fas fa-home"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/mohammadi-hadi" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
-          </p>
-        </div>
+  <!-- Footer -->
+  <footer class="paper-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="../../index.html" class="footer-link">
+          <i class="fas fa-home"></i>
+        </a>
+        <a href="https://github.com/mohammadi-hadi" class="footer-link">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/hadi-mohammadi-phd/" class="footer-link">
+          <i class="fab fa-linkedin"></i>
+        </a>
       </div>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        © 2025 Hadi Mohammadi. This work is licensed under CC BY-SA 4.0.
+      </p>
     </div>
-  </div>
-</footer>
+  </footer>
 
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 50
+    });
+
+    // Copy to clipboard function
+    function copyToClipboard() {
+      const citation = document.querySelector('.citation-code').textContent;
+      navigator.clipboard.writeText(citation).then(() => {
+        const button = document.querySelector('.copy-button');
+        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        setTimeout(() => {
+          button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+        }, 2000);
+      });
+    }
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
