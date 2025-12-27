@@ -1,499 +1,401 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Explainability in Practice: A Survey of Explainable NLP Across Various Domains">
-  <meta property="og:title" content="Explainability in Practice: A Survey of Explainable NLP"/>
-  <meta property="og:description" content="A comprehensive survey examining the current state of explainable NLP across various domains"/>
-  <meta property="og:url" content="https://arxiv.org/abs/2502.00837"/>
-  <meta name="twitter:title" content="Explainability in Practice: A Survey of Explainable NLP">
-  <meta name="twitter:description" content="A comprehensive survey examining the current state of explainable NLP across various domains">
-  <meta name="keywords" content="Explainable AI, NLP, Interpretability, Survey, Machine Learning, XAI">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Explainability in Practice: A Survey of Explainable NLP</title>
+  <meta name="description" content="A comprehensive survey examining the current state of explainable NLP across various domains">
+  <meta property="og:title" content="Explainability in Practice: A Survey of Explainable NLP">
+  <meta property="og:description" content="A comprehensive survey examining the current state of explainable NLP across various domains">
+  <meta property="og:url" content="https://arxiv.org/abs/2502.00837">
+  <meta name="keywords" content="Explainable AI, NLP, Interpretability, Survey, Machine Learning, XAI, BERT, GPT">
+
   <link rel="icon" type="image/x-icon" href="../../Logo.png">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script src="static/js/bulma-carousel.min.js"></script>
-  <script src="static/js/bulma-slider.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  
   <style>
     :root {
-      --primary-color: #2563eb;
-      --secondary-color: #3b82f6;
-      --accent-color: #60a5fa;
-      --text-primary: #1e293b;
-      --text-secondary: #64748b;
-      --bg-light: #f8fafc;
+      --text-black: #000000;
+      --text-dark: #1a1a1a;
+      --text-primary: #2d2d2d;
+      --text-secondary: #555555;
+      --text-muted: #777777;
       --bg-white: #ffffff;
-      --border-color: #e2e8f0;
+      --bg-light: #fafafa;
+      --bg-subtle: #f5f5f5;
+      --border: #e0e0e0;
+      --border-dark: #cccccc;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
       color: var(--text-primary);
-      line-height: 1.6;
-      background-color: var(--bg-light);
+      background: var(--bg-white);
     }
 
-    /* Header Styles */
-    .hero-section {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: white;
-      padding: 80px 0 60px;
-      position: relative;
-      overflow: hidden;
+    h1, h2, h3, h4 {
+      font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      font-weight: 600;
+      color: var(--text-black);
     }
 
-    .hero-section::before {
-      content: '';
-      position: absolute;
+    a { color: var(--text-dark); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--text-secondary); }
+
+    .nav-bar {
+      position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .publication-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-    }
-
-    .authors-list {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      opacity: 0.95;
-    }
-
-    .authors-list strong {
-      font-weight: 600;
-    }
-
-    .affiliation {
-      font-size: 1rem;
-      opacity: 0.9;
-      margin-bottom: 2rem;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .hero-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: all 0.3s;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .hero-button:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: translateY(-2px);
-    }
-
-    /* Navigation Bar */
-    .nav-bar {
-      background: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
       z-index: 100;
+      padding: 0.75rem 2rem;
     }
 
     .nav-content {
-      max-width: 1200px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 1rem 20px;
       display: flex;
-      gap: 2rem;
+      justify-content: space-between;
       align-items: center;
-      overflow-x: auto;
     }
 
-    .nav-link {
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       color: var(--text-secondary);
-      text-decoration: none;
-      font-weight: 500;
-      white-space: nowrap;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      transition: all 0.3s;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .nav-link:hover {
-      color: var(--primary-color);
-      background: var(--bg-light);
-    }
+    .nav-back:hover { color: var(--text-black); }
 
-    /* Content Sections */
-    .content-section {
-      max-width: 1200px;
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { color: var(--text-muted); font-size: 0.85rem; }
+    .nav-links a:hover { color: var(--text-black); }
+
+    .paper-header {
+      padding: 6rem 2rem 3rem;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 60px 20px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .section-header {
-      font-size: 2rem;
+    .paper-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .paper-type {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      padding: 0.25rem 0.5rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+    }
+
+    .paper-status {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .paper-title {
+      font-size: 2.25rem;
       font-weight: 700;
-      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    .paper-authors {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .paper-authors strong { color: var(--text-black); font-weight: 600; }
+
+    .paper-affiliation {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .paper-venue {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-style: italic;
       margin-bottom: 2rem;
-      position: relative;
-      padding-left: 1rem;
     }
 
-    .section-header::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 4px;
-      height: 24px;
-      background: var(--primary-color);
-      border-radius: 2px;
+    .paper-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+    .paper-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid var(--border-dark);
+      background: var(--bg-white);
+      color: var(--text-secondary);
+      transition: all 0.2s;
     }
 
-    /* Abstract Box */
-    .abstract-container {
-      background: white;
-      padding: 2.5rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      margin-bottom: 3rem;
+    .paper-link:hover {
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
+    }
+
+    .paper-link.primary {
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
+    }
+
+    .paper-link.primary:hover { background: var(--text-dark); }
+
+    .content { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+    .section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--text-black);
+      display: inline-block;
     }
 
     .abstract-text {
+      font-size: 1.05rem;
+      line-height: 1.85;
       color: var(--text-secondary);
-      line-height: 1.8;
       text-align: justify;
     }
 
-    .abstract-text p {
-      margin-bottom: 1.25rem;
-    }
+    .abstract-text p { margin-bottom: 1.25rem; }
+    .abstract-text p:last-child { margin-bottom: 0; }
 
-    .abstract-text p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Key Points Grid */
-    .key-points-grid {
+    .contributions-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
     }
 
-    .key-point-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s;
-      border-top: 3px solid var(--accent-color);
+    .contribution-item {
+      padding: 1.5rem;
+      background: var(--bg-subtle);
+      border-left: 3px solid var(--text-black);
     }
 
-    .key-point-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    }
-
-    .key-point-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: var(--bg-light);
-      color: var(--primary-color);
-      font-weight: 700;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-    }
-
-    .key-point-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.75rem;
-    }
-
-    .key-point-description {
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    /* Methodology Section */
-    .methodology-timeline {
-      position: relative;
-      padding-left: 2rem;
-    }
-
-    .methodology-timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--border-color);
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-bottom: 2rem;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -2.5rem;
-      top: 0.5rem;
-      width: 12px;
-      height: 12px;
-      background: var(--primary-color);
-      border-radius: 50%;
-      border: 3px solid white;
-      box-shadow: 0 0 0 2px var(--border-color);
-    }
-
-    .timeline-title {
+    .contribution-title {
+      font-family: 'Source Serif 4', Georgia, serif;
       font-size: 1.1rem;
       font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-black);
     }
 
-    .timeline-description {
+    .contribution-desc {
+      font-size: 0.9rem;
       color: var(--text-secondary);
       line-height: 1.6;
     }
 
-    /* Results Section */
-    .results-grid {
+    .domains-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
-      margin-bottom: 2rem;
     }
 
-    .result-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
+    .domain-item {
       text-align: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem 1rem;
+      background: var(--bg-subtle);
     }
 
-    .result-number {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--primary-color);
-      margin-bottom: 0.5rem;
+    .domain-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-black);
     }
 
-    .result-label {
+    .domain-name {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600;
+      color: var(--text-black);
+      margin-bottom: 0.35rem;
+    }
+
+    .domain-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .findings-list {
+      list-style: none;
+    }
+
+    .findings-list li {
+      display: flex;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
       color: var(--text-secondary);
       font-size: 0.95rem;
+      line-height: 1.6;
     }
 
-    /* Citation Box */
+    .findings-list li:last-child { border-bottom: none; }
+
+    .finding-num {
+      width: 28px;
+      height: 28px;
+      background: var(--text-black);
+      color: var(--bg-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
     .citation-box {
-      background: var(--bg-light);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
       padding: 1.5rem;
-      margin-top: 2rem;
       position: relative;
     }
 
     .citation-code {
-      font-family: 'Courier New', monospace;
-      font-size: 0.9rem;
+      font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+      font-size: 0.8rem;
       color: var(--text-primary);
       white-space: pre-wrap;
-      word-break: break-all;
+      line-height: 1.6;
     }
 
-    .copy-button {
+    .copy-btn {
       position: absolute;
       top: 1rem;
       right: 1rem;
-      padding: 0.5rem 1rem;
-      background: white;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
+      padding: 0.4rem 0.75rem;
+      background: var(--bg-white);
+      border: 1px solid var(--border-dark);
+      font-size: 0.8rem;
       cursor: pointer;
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      transition: all 0.3s;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
     }
 
-    .copy-button:hover {
-      background: var(--primary-color);
+    .copy-btn:hover {
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
+    }
+
+    .footer {
+      background: var(--text-black);
       color: white;
-      border-color: var(--primary-color);
-    }
-
-    /* Footer */
-    .paper-footer {
-      background: white;
-      padding: 3rem 0;
-      margin-top: 4rem;
-      border-top: 1px solid var(--border-color);
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+      padding: 2rem;
       text-align: center;
+      margin-top: 3rem;
     }
 
     .footer-links {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      margin-bottom: 2rem;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
     }
 
-    .footer-link {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 1.5rem;
-      transition: color 0.3s;
-    }
+    .footer-links a { color: rgba(255, 255, 255, 0.7); font-size: 1.25rem; }
+    .footer-links a:hover { color: white; }
+    .footer p { color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; }
+    .footer p a { color: rgba(255, 255, 255, 0.7); }
 
-    .footer-link:hover {
-      color: var(--primary-color);
-    }
-
-    /* Responsive */
     @media (max-width: 768px) {
-      .publication-title {
-        font-size: 1.8rem;
-      }
-      
-      .hero-buttons {
-        justify-content: center;
-      }
-      
-      .nav-content {
-        justify-content: flex-start;
-      }
-      
-      .key-points-grid {
-        grid-template-columns: 1fr;
-      }
+      .nav-links { display: none; }
+      .paper-header { padding: 5rem 1.5rem 2rem; }
+      .paper-title { font-size: 1.75rem; }
+      .content { padding: 0 1.5rem; }
+      .contributions-grid, .domains-grid { grid-template-columns: 1fr; }
     }
-
-    /* Animations */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 0.6s forwards;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .stagger-1 { animation-delay: 0.1s; }
-    .stagger-2 { animation-delay: 0.2s; }
-    .stagger-3 { animation-delay: 0.3s; }
-    .stagger-4 { animation-delay: 0.4s; }
   </style>
 </head>
 <body>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-content">
-      <h1 class="publication-title fade-in">Explainability in Practice: A Survey of Explainable NLP Across Various Domains</h1>
-      
-      <div class="authors-list fade-in stagger-1">
-        <strong>Hadi Mohammadi</strong>, Ayoub Bagheri, Anastasia Giachanou, Daniel L. Oberski
-      </div>
-      
-      <div class="affiliation fade-in stagger-2">
-        Utrecht University, The Netherlands
-      </div>
-      
-      <div class="hero-buttons fade-in stagger-3">
-        <a href="https://arxiv.org/abs/2502.00837" class="hero-button">
-          <i class="fas fa-file-pdf"></i> Read Paper
-        </a>
-        <a href="https://arxiv.org/abs/2502.00837" class="hero-button">
-          <i class="ai ai-arxiv"></i> ArXiv
-        </a>
-        <a href="#citation" class="hero-button">
-          <i class="fas fa-quote-left"></i> Cite
-        </a>
-        <a href="../../index.html" class="hero-button">
-          <i class="fas fa-home"></i> Back Home
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Navigation -->
   <nav class="nav-bar">
     <div class="nav-content">
-      <a href="#abstract" class="nav-link">Abstract</a>
-      <a href="#contributions" class="nav-link">Key Contributions</a>
-      <a href="#methodology" class="nav-link">Methodology</a>
-      <a href="#findings" class="nav-link">Key Findings</a>
-      <a href="#impact" class="nav-link">Impact</a>
-      <a href="#citation" class="nav-link">Citation</a>
+      <a href="../../Publications.html" class="nav-back">
+        <i class="fas fa-arrow-left"></i> Publications
+      </a>
+      <div class="nav-links">
+        <a href="#abstract">Abstract</a>
+        <a href="#contributions">Contributions</a>
+        <a href="#domains">Domains</a>
+        <a href="#findings">Findings</a>
+        <a href="#citation">Citation</a>
+      </div>
     </div>
   </nav>
 
-  <!-- Abstract Section -->
-  <section id="abstract" class="content-section">
-    <h2 class="section-header" data-aos="fade-up">Abstract</h2>
-    <div class="abstract-container" data-aos="fade-up" data-aos-delay="100">
+  <header class="paper-header">
+    <div class="paper-meta">
+      <span class="paper-type">Under Review</span>
+      <span class="paper-status">arXiv:2502.00837</span>
+    </div>
+
+    <h1 class="paper-title">Explainability in Practice: A Survey of Explainable NLP Across Various Domains</h1>
+
+    <p class="paper-authors">
+      <strong>Hadi Mohammadi</strong>, Ayoub Bagheri, Anastasia Giachanou, Daniel L. Oberski
+    </p>
+    <p class="paper-affiliation">Utrecht University, The Netherlands</p>
+    <p class="paper-venue">Under review at Journal of Information Science</p>
+
+    <div class="paper-links">
+      <a href="https://arxiv.org/abs/2502.00837" class="paper-link primary" target="_blank">
+        <i class="fas fa-file-pdf"></i> Read Paper
+      </a>
+      <a href="https://arxiv.org/abs/2502.00837" class="paper-link" target="_blank">
+        <i class="fas fa-external-link-alt"></i> arXiv
+      </a>
+      <a href="#citation" class="paper-link">
+        <i class="fas fa-quote-left"></i> Cite
+      </a>
+    </div>
+  </header>
+
+  <main class="content">
+
+    <section id="abstract" class="section">
+      <h2 class="section-title">Abstract</h2>
       <div class="abstract-text">
         <p>
           The rapid advancement of Natural Language Processing (NLP) models, particularly advanced models like GPT and BERT, has led to their widespread adoption in critical decision-making across healthcare, finance, and customer relationship management. However, the black-box nature of these advanced NLP models has created an urgent need for transparency and trustworthiness.
@@ -505,194 +407,125 @@
           Our work aims to bridge knowledge gaps in XNLP literature through domain-specific exploration, addressing practical deployment challenges, and suggesting future research directions for broader XNLP application.
         </p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Key Contributions -->
-  <section id="contributions" class="content-section">
-    <h2 class="section-header" data-aos="fade-up">Key Contributions</h2>
-    <div class="key-points-grid">
-      <div class="key-point-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="key-point-number">1</div>
-        <h3 class="key-point-title">Domain-Specific Exploration</h3>
-        <p class="key-point-description">
-          Examination of explainable NLP across critical domains including healthcare, finance, and customer relationship management.
-        </p>
+    <section id="contributions" class="section">
+      <h2 class="section-title">Key Contributions</h2>
+      <div class="contributions-grid">
+        <div class="contribution-item">
+          <h3 class="contribution-title">Domain-Specific Exploration</h3>
+          <p class="contribution-desc">Examination of explainable NLP across critical domains including healthcare, finance, and customer relationship management.</p>
+        </div>
+        <div class="contribution-item">
+          <h3 class="contribution-title">Real-World Applicability</h3>
+          <p class="contribution-desc">Focus on practical deployment challenges and how XNLP methods can be effectively implemented in real-world contexts.</p>
+        </div>
+        <div class="contribution-item">
+          <h3 class="contribution-title">Evaluation Metrics</h3>
+          <p class="contribution-desc">Analysis of underexplored areas in evaluation metrics for explainable NLP systems.</p>
+        </div>
+        <div class="contribution-item">
+          <h3 class="contribution-title">Future Directions</h3>
+          <p class="contribution-desc">Suggestions for future research directions to enable broader XNLP application and address current knowledge gaps.</p>
+        </div>
       </div>
+    </section>
 
-      <div class="key-point-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="key-point-number">2</div>
-        <h3 class="key-point-title">Real-World Applicability</h3>
-        <p class="key-point-description">
-          Focus on practical deployment challenges and how XNLP methods can be effectively implemented in real-world contexts.
-        </p>
+    <section id="domains" class="section">
+      <h2 class="section-title">Application Domains</h2>
+      <div class="domains-grid">
+        <div class="domain-item">
+          <div class="domain-icon"><i class="fas fa-heartbeat"></i></div>
+          <div class="domain-name">Healthcare</div>
+          <div class="domain-desc">Clinical decision support and medical diagnosis</div>
+        </div>
+        <div class="domain-item">
+          <div class="domain-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="domain-name">Finance</div>
+          <div class="domain-desc">Risk assessment and fraud detection</div>
+        </div>
+        <div class="domain-item">
+          <div class="domain-icon"><i class="fas fa-users"></i></div>
+          <div class="domain-name">Customer Management</div>
+          <div class="domain-desc">Sentiment analysis and service optimization</div>
+        </div>
       </div>
+    </section>
 
-      <div class="key-point-card" data-aos="fade-up" data-aos-delay="300">
-        <div class="key-point-number">3</div>
-        <h3 class="key-point-title">Evaluation Metrics</h3>
-        <p class="key-point-description">
-          Analysis of underexplored areas in evaluation metrics for explainable NLP systems.
-        </p>
-      </div>
+    <section id="findings" class="section">
+      <h2 class="section-title">Key Findings</h2>
+      <ul class="findings-list">
+        <li>
+          <span class="finding-num">1</span>
+          <span>Advanced NLP models (GPT, BERT) are increasingly used in high-stakes domains where transparency is essential for trust and accountability.</span>
+        </li>
+        <li>
+          <span class="finding-num">2</span>
+          <span>The black-box nature of these models creates an urgent need for explainability methods in real-world deployments.</span>
+        </li>
+        <li>
+          <span class="finding-num">3</span>
+          <span>Key gaps exist in real-world applicability of XNLP methods, standardized evaluation metrics, and human interaction in model assessment.</span>
+        </li>
+        <li>
+          <span class="finding-num">4</span>
+          <span>Different application domains require tailored explainability approaches to address their unique requirements and constraints.</span>
+        </li>
+      </ul>
+    </section>
 
-      <div class="key-point-card" data-aos="fade-up" data-aos-delay="400">
-        <div class="key-point-number">4</div>
-        <h3 class="key-point-title">Future Directions</h3>
-        <p class="key-point-description">
-          Suggestions for future research directions to enable broader XNLP application and address current knowledge gaps.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Methodology -->
-  <section id="methodology" class="content-section">
-    <h2 class="section-header" data-aos="fade-up">Survey Methodology</h2>
-    <div class="methodology-timeline" data-aos="fade-up" data-aos-delay="100">
-      <div class="timeline-item">
-        <h3 class="timeline-title">Literature Collection</h3>
-        <p class="timeline-description">
-          Systematic search across major databases (ACL Anthology, IEEE Xplore, arXiv) for papers published between 2020-2024 on explainable NLP.
-        </p>
-      </div>
-      
-      <div class="timeline-item">
-        <h3 class="timeline-title">Paper Selection</h3>
-        <p class="timeline-description">
-          Applied strict inclusion criteria focusing on papers with practical implementations and empirical evaluations of explainability methods.
-        </p>
-      </div>
-      
-      <div class="timeline-item">
-        <h3 class="timeline-title">Categorization</h3>
-        <p class="timeline-description">
-          Developed a multi-dimensional taxonomy to categorize papers based on explainability approach, application domain, and evaluation methods.
-        </p>
-      </div>
-      
-      <div class="timeline-item">
-        <h3 class="timeline-title">Analysis & Synthesis</h3>
-        <p class="timeline-description">
-          Conducted in-depth analysis to identify patterns, gaps, and emerging trends in explainable NLP across different domains.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Key Findings -->
-  <section id="findings" class="content-section">
-    <h2 class="section-header" data-aos="fade-up">Key Findings</h2>
-
-    <div class="abstract-container" data-aos="fade-up" data-aos-delay="200">
-      <div class="abstract-text">
-        <h3 style="font-weight: 600; margin-bottom: 1rem;">Major Insights</h3>
-        <p>
-          <strong>1. Critical Domain Applications:</strong> Advanced NLP models are increasingly used in high-stakes domains including healthcare, finance, and customer relationship management, where transparency is essential.
-        </p>
-        <p>
-          <strong>2. Transparency Imperative:</strong> The black-box nature of models like GPT and BERT creates an urgent need for explainability in real-world deployments.
-        </p>
-        <p>
-          <strong>3. Underexplored Areas:</strong> Key gaps exist in real-world applicability of XNLP methods, standardized evaluation metrics, and human interaction in model assessment.
-        </p>
-        <p>
-          <strong>4. Domain-Specific Challenges:</strong> Different application domains require tailored explainability approaches to address their unique requirements and constraints.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Impact -->
-  <section id="impact" class="content-section">
-    <h2 class="section-header" data-aos="fade-up">Research Impact</h2>
-    <div class="abstract-container" data-aos="fade-up" data-aos-delay="100">
-      <div class="abstract-text">
-        <p>
-          This survey has significant implications for the future development of explainable NLP systems. By providing a comprehensive overview of the current landscape, we enable researchers to:
-        </p>
-        <ul style="margin-left: 2rem; color: var(--text-secondary);">
-          <li>Identify underexplored areas and research opportunities</li>
-          <li>Understand domain-specific requirements for explainability</li>
-          <li>Apply best practices from successful implementations</li>
-          <li>Avoid common pitfalls in developing explainable systems</li>
-        </ul>
-        <p style="margin-top: 1rem;">
-          Our work serves as a foundation for future research in explainable NLP, promoting the development of more transparent, trustworthy, and user-friendly AI systems across various application domains.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Citation -->
-  <section id="citation" class="content-section">
-    <h2 class="section-header" data-aos="fade-up">Citation</h2>
-    <div class="citation-box" data-aos="fade-up" data-aos-delay="100">
-      <button class="copy-button" onclick="copyToClipboard()">
-        <i class="fas fa-copy"></i> Copy
-      </button>
-      <pre class="citation-code">@article{mohammadi2025explainability,
+    <section id="citation" class="section">
+      <h2 class="section-title">Citation</h2>
+      <div class="citation-box">
+        <button class="copy-btn" onclick="copyBibtex()">
+          <i class="fas fa-copy"></i> Copy
+        </button>
+        <pre class="citation-code">@article{mohammadi2025explainability,
   title={Explainability in Practice: A Survey of Explainable NLP Across Various Domains},
   author={Mohammadi, Hadi and Bagheri, Ayoub and Giachanou, Anastasia and Oberski, Daniel L.},
   journal={arXiv preprint arXiv:2502.00837},
   year={2025}
 }</pre>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="paper-footer">
-    <div class="footer-content">
-      <div class="footer-links">
-        <a href="../../index.html" class="footer-link">
-          <i class="fas fa-home"></i>
-        </a>
-        <a href="https://github.com/mohammadi-hadi" class="footer-link">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://twitter.com/yourusername" class="footer-link">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://linkedin.com/in/yourusername" class="footer-link">
-          <i class="fab fa-linkedin"></i>
-        </a>
       </div>
-      <p style="color: var(--text-secondary); font-size: 0.9rem;">
-        © 2025 Hadi Mohammadi. This work is licensed under CC BY-SA 4.0.
-      </p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="../../index.html" title="Home"><i class="fas fa-home"></i></a>
+      <a href="https://github.com/mohammadi-hadi" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://scholar.google.com/citations?user=SCHOLAR_ID" title="Google Scholar" target="_blank"><i class="fas fa-graduation-cap"></i></a>
     </div>
+    <p>&copy; 2025 Hadi Mohammadi. Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
   </footer>
 
   <script>
-    // Initialize AOS
-    AOS.init({
-      duration: 800,
-      once: true,
-      offset: 50
-    });
-
-    // Copy to clipboard function
-    function copyToClipboard() {
+    function copyBibtex() {
       const citation = document.querySelector('.citation-code').textContent;
       navigator.clipboard.writeText(citation).then(() => {
-        const button = document.querySelector('.copy-button');
-        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        const btn = document.querySelector('.copy-btn');
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied';
         setTimeout(() => {
-          button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+          btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
         }, 2000);
       });
     }
 
-    // Smooth scroll for navigation links
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function(e) {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const navHeight = document.querySelector('.nav-bar').offsetHeight;
+          window.scrollTo({
+            top: target.offsetTop - navHeight - 20,
+            behavior: 'smooth'
+          });
         }
       });
     });
   </script>
+
 </body>
 </html>
