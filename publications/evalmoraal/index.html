@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="EvalMORAAL: Interpretable Chain-of-Thought and LLM-as-Judge Evaluation for Moral Alignment">
+  <meta property="og:title" content="EvalMORAAL: Moral Alignment Evaluation for LLMs"/>
+  <meta property="og:description" content="Comprehensive evaluation framework for moral alignment in LLMs using chain-of-thought reasoning and peer review"/>
+  <meta property="og:url" content="https://github.com/mohammadi-hadi/EvalMORAAL"/>
+  <meta name="twitter:title" content="EvalMORAAL: Moral Alignment Evaluation for LLMs">
+  <meta name="twitter:description" content="Comprehensive evaluation framework for moral alignment in LLMs using chain-of-thought reasoning and peer review">
+  <meta name="keywords" content="LLM, Moral Alignment, Chain-of-Thought, LLM-as-Judge, Cross-Cultural NLP, Ethics, AI Fairness, WVS">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>EvalMORAAL: Moral Alignment Evaluation for LLMs</title>
+  <link rel="icon" type="image/x-icon" href="../../Logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+
+  <style>
+    .hero-body {
+      padding: 3rem 1.5rem;
+    }
+    .publication-authors {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .publication-venue {
+      font-size: 1.1rem;
+      color: #888;
+      font-style: italic;
+    }
+    .content-section {
+      padding: 3rem 0;
+    }
+    .abstract-box {
+      background-color: #f8f9fa;
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+    .metric-box {
+      background-color: #e8f4f8;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      margin: 0.5rem;
+    }
+    .metric-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #0066cc;
+    }
+    .metric-label {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .tier-high {
+      border-left: 4px solid #28a745;
+    }
+    .tier-mid {
+      border-left: 4px solid #ffc107;
+    }
+    .tier-low {
+      border-left: 4px solid #dc3545;
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">EvalMORAAL: Interpretable Chain-of-Thought and LLM-as-Judge Evaluation for Moral Alignment in Large Language Models</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <strong>Hadi Mohammadi</strong><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Evi Papadopoulou<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Mijntje Meijer<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Ayoub Bagheri<sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Utrecht University, The Netherlands</span>
+          </div>
+
+          <div class="publication-venue">
+            ACL 2025 (Under Review)
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark" disabled>
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper (Coming Soon)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/mohammadi-hadi/EvalMORAAL"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="../../index.html"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-home"></i>
+                  </span>
+                  <span>Back to Main</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="abstract-box">
+          <div class="content has-text-justified">
+            <p>
+              Deploying Large Language Models (LLMs) across diverse cultural contexts demands reliable assessment of their ability to mirror varied moral perspectives. We present <strong>EvalMORAAL</strong>, a comprehensive evaluation framework that combines interpretable chain-of-thought (CoT) reasoning with LLM-as-judge peer review, covering 135,700 moral-alignment judgments across 20 models.
+            </p>
+            <p>
+              Using survey data from 64 countries (World Values Survey) and 34 countries (PEW Global Attitudes), we evaluate models on 1,357 distinct country-topic pairs. Our <strong>dual elicitation</strong> approach contrasts implicit (log-probability) and explicit (CoT) moral reasoning to expose hidden inconsistencies, while reciprocal peer review surfaces cross-model agreement patterns.
+            </p>
+            <p>
+              Top performers such as Claude-3-Opus, GPT-4o, and Gemini-Pro reach WVS correlations r > 0.90; yet we observe a persistent <strong>21-point gap</strong> between Western (r = 0.82) and non-Western (r = 0.61) alignment. These findings underscore both advances in moral reasoning and the urgency of region-specific calibration before global deployment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section" style="background-color: #f8f9fa;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Key Results</h2>
+    <div class="columns is-centered">
+      <div class="column is-2">
+        <div class="metric-box">
+          <div class="metric-value">20</div>
+          <div class="metric-label">LLMs Evaluated</div>
+        </div>
+      </div>
+      <div class="column is-2">
+        <div class="metric-box">
+          <div class="metric-value">135K</div>
+          <div class="metric-label">CoT Traces</div>
+        </div>
+      </div>
+      <div class="column is-2">
+        <div class="metric-box">
+          <div class="metric-value">64</div>
+          <div class="metric-label">Countries (WVS)</div>
+        </div>
+      </div>
+      <div class="column is-2">
+        <div class="metric-box">
+          <div class="metric-value">0.90+</div>
+          <div class="metric-label">Top Model r</div>
+        </div>
+      </div>
+      <div class="column is-2">
+        <div class="metric-box">
+          <div class="metric-value">21%</div>
+          <div class="metric-label">Regional Gap</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Key Contributions</h2>
+        <div class="content has-text-justified">
+          <ul>
+            <li><strong>Dual Elicitation Framework:</strong> Combines log-probability scoring with chain-of-thought reasoning to expose hidden inconsistencies in moral judgments.</li>
+            <li><strong>LLM-as-Judge Peer Review:</strong> Models critique each other's reasoning with VALID/INVALID verdicts, providing cross-model validation without human annotation.</li>
+            <li><strong>Comprehensive Scale:</strong> 135,700 moral judgments across 20 models, 64 countries, and 23 moral topics from WVS and PEW surveys.</li>
+            <li><strong>Regional Gap Analysis:</strong> Documents a 21-point performance gap between Western and non-Western contexts, highlighting deployment risks.</li>
+            <li><strong>Practitioner Checklist:</strong> Actionable guidelines for deploying LLMs in culturally diverse settings.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section" style="background-color: #f8f9fa;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Model Performance Tiers</h2>
+        <div class="content">
+
+          <div class="box tier-high" style="margin-bottom: 1rem;">
+            <h4>High Tier (r >= 0.85)</h4>
+            <p><strong>Models:</strong> Claude-3-Opus, GPT-4o, Gemini-Pro</p>
+            <p><strong>WVS Correlation:</strong> r > 0.90 | <strong>Self-Consistency:</strong> > 0.90</p>
+          </div>
+
+          <div class="box tier-mid" style="margin-bottom: 1rem;">
+            <h4>Mid-High Tier (0.75 <= r < 0.85)</h4>
+            <p><strong>Models:</strong> GPT-4, GPT-4o-mini, Mistral-Large, Phi-3-medium, Command-R-Plus</p>
+            <p><strong>WVS Correlation:</strong> 0.80-0.89 | <strong>Self-Consistency:</strong> 0.85-0.90</p>
+          </div>
+
+          <div class="box" style="border-left: 4px solid #fd7e14; margin-bottom: 1rem;">
+            <h4>Mid-Lower Tier (0.65 <= r < 0.75)</h4>
+            <p><strong>Models:</strong> Claude-3-Haiku, o1-mini, Gemma-2-9B, Mistral-Small</p>
+            <p><strong>WVS Correlation:</strong> 0.70-0.79 | <strong>Self-Consistency:</strong> 0.80-0.85</p>
+          </div>
+
+          <div class="box tier-low">
+            <h4>Lower Tier (r < 0.65)</h4>
+            <p><strong>Models:</strong> Smaller open models (Llama-3.1-8B, Phi-3-mini, etc.)</p>
+            <p><strong>WVS Correlation:</strong> < 0.70 | <strong>Self-Consistency:</strong> < 0.80</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Methodology</h2>
+        <div class="content has-text-justified">
+          <h4>1. Survey Data Processing</h4>
+          <p>We process moral judgment data from the World Values Survey (WVS, 2017-2022) covering 64 countries and PEW Global Attitudes Survey covering 34 countries. Topics include divorce, abortion, euthanasia, homosexuality, and 19 other moral issues.</p>
+
+          <h4>2. Dual Elicitation</h4>
+          <ul>
+            <li><strong>Log-Probability Method:</strong> Compare probabilities between moral framings ("always justifiable" vs "never justifiable")</li>
+            <li><strong>Chain-of-Thought:</strong> 3-step reasoning: social norms recall -> moral reasoning -> numerical score</li>
+          </ul>
+
+          <h4>3. Peer Review System</h4>
+          <p>Each model evaluates other models' reasoning traces, providing VALID/INVALID verdicts with confidence scores. This enables cross-model validation without human annotation.</p>
+
+          <h4>4. Conflict Detection</h4>
+          <p>Cases where dual scores diverge by more than 0.4 are flagged for human arbitration, revealing systematic reasoning failures.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section" style="background-color: #f8f9fa;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Regional Performance Gap</h2>
+        <div class="content has-text-justified">
+          <p>A critical finding is the persistent gap between Western and non-Western moral alignment:</p>
+
+          <table class="table is-striped is-fullwidth">
+            <thead>
+              <tr>
+                <th>Region</th>
+                <th>Average Correlation</th>
+                <th>Gap from Western</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Western Europe & North America</td>
+                <td>r = 0.82</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>East Asia</td>
+                <td>r = 0.71</td>
+                <td>-11 points</td>
+              </tr>
+              <tr>
+                <td>Middle East & North Africa</td>
+                <td>r = 0.65</td>
+                <td>-17 points</td>
+              </tr>
+              <tr>
+                <td>Sub-Saharan Africa</td>
+                <td>r = 0.61</td>
+                <td>-21 points</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>This gap persists even among top-tier models, suggesting fundamental limitations in training data diversity rather than model capability.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Practitioner Checklist</h2>
+        <div class="content has-text-justified">
+          <p>For organizations deploying LLMs across diverse cultural contexts, we recommend:</p>
+          <ol>
+            <li><strong>Baseline regional metrics</strong> using survey-based ground truth before deployment</li>
+            <li><strong>Monitor self-consistency</strong> and peer-agreement as early-warning indicators</li>
+            <li><strong>Audit conflict rates</strong> periodically (>15% warrants model review)</li>
+            <li><strong>Establish localized review</strong> for high-stakes moral judgments</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section" style="background-color: #f8f9fa;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Related Work</h2>
+        <div class="content has-text-justified">
+          <p>This work builds upon our previous study on cultural moral judgments:</p>
+          <ul>
+            <li><a href="../cultural-moral-judgments/">Exploring Cultural Variations in Moral Judgments with LLMs</a> (arXiv:2506.12433)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section content-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Citation</h2>
+        <div class="content">
+          <pre><code>@inproceedings{mohammadi2025evalmoraal,
+  title={EvalMORAAL: Interpretable Chain-of-Thought and LLM-as-Judge Evaluation for Moral Alignment in Large Language Models},
+  author={Mohammadi, Hadi and Papadopoulou, Evi and Meijer, Mijntje and Bagheri, Ayoub},
+  booktitle={Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics},
+  year={2025}
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="../../index.html">
+        <i class="fas fa-home"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/mohammadi-hadi" class="external-link">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
