@@ -599,13 +599,13 @@
     <h2 class="section-title">Abstract</h2>
     <div class="abstract-text">
       <p>
-        Large Language Models (LLMs) are increasingly used for data annotation in NLP tasks, particularly for subjective tasks like hate speech detection where human annotation is expensive and potentially traumatic. However, the reliability of LLM-generated annotations, especially in the context of demographic biases and model explanations, remains understudied. This paper presents a comprehensive evaluation of LLM annotation reliability for sexism detection, examining how demographic factors influence both annotation quality and explanation consistency.
+        Large Language Models (LLMs) are increasingly used for data annotation in NLP tasks, particularly for subjective tasks like hate speech detection where human annotation is expensive and potentially traumatic. However, the reliability of LLM-generated annotations, especially in the context of demographic biases and model explanations, remains understudied. This paper presents a comprehensive evaluation of LLM annotation reliability for sexism detection.
       </p>
       <p>
-        Using a mixed-effects modeling approach on the EXIST 2021 dataset, we analyze annotations from multiple state-of-the-art LLMs (GPT-4, Claude, Llama) and compare them with human annotations. Our findings reveal significant variations in annotation reliability based on the demographic context of the content, with LLMs showing systematic biases in their predictions and explanations. We also discover that while LLMs can provide plausible explanations for their annotations, these explanations often lack consistency and may not reflect the actual decision-making process.
+        Using a Generalized Linear Mixed Model (GLMM) approach, we examine annotation variability in sexism detection tasks. Our findings reveal that demographic factors account for a minor fraction (8%) of the observed variance, with tweet content being the dominant factor. We also find that persona-based prompting approaches often fail to enhance, and sometimes degrade, performance compared to baseline models.
       </p>
       <p>
-        This work contributes to our understanding of when and how LLM annotations can be trusted, providing guidelines for researchers using LLMs for data annotation in sensitive domains. We propose a framework for assessing annotation reliability that considers both prediction accuracy and explanation quality, offering practical recommendations for improving LLM-based annotation pipelines.
+        Through Explainable AI analysis, we demonstrate that model predictions rely heavily on content-specific tokens related to sexism, rather than correlates of demographic characteristics. This work recommends prioritizing content-driven explanations and robust annotation protocols over demographic persona simulation for achieving fairness in NLP systems.
       </p>
     </div>
   </section>
@@ -641,44 +641,44 @@
         <div class="step-number"></div>
         <div class="step-content">
           <h3 class="step-title">Data Selection</h3>
-          <p class="step-desc">Stratified sampling from EXIST 2021 to ensure balanced representation across demographic groups.</p>
+          <p class="step-desc">Analysis of sexism detection tasks using established datasets for examining annotation variability.</p>
         </div>
       </div>
       <div class="step-item">
         <div class="step-number"></div>
         <div class="step-content">
           <h3 class="step-title">LLM Annotation</h3>
-          <p class="step-desc">Collected annotations from GPT-4, Claude, and Llama using standardized prompts with and without demographic information.</p>
+          <p class="step-desc">Testing generative AI as annotators, including persona-based prompting approaches compared against baseline models.</p>
         </div>
       </div>
       <div class="step-item">
         <div class="step-number"></div>
         <div class="step-content">
-          <h3 class="step-title">Human Baseline</h3>
-          <p class="step-desc">Expert annotators provided ground truth labels and explanations for comparison.</p>
+          <h3 class="step-title">Statistical Modeling</h3>
+          <p class="step-desc">Generalized Linear Mixed Model (GLMM) to examine annotation variability and quantify the impact of different factors.</p>
         </div>
       </div>
       <div class="step-item">
         <div class="step-number"></div>
         <div class="step-content">
-          <h3 class="step-title">Statistical Analysis</h3>
-          <p class="step-desc">Mixed-effects models capture complex interactions between LLM type, demographic factors, and annotation quality.</p>
+          <h3 class="step-title">Explainability Analysis</h3>
+          <p class="step-desc">Explainable AI techniques to understand which features drive model predictions in sexism detection.</p>
         </div>
       </div>
     </div>
 
     <div class="metrics-grid">
       <div class="metric-item">
-        <div class="metric-name">Agreement Metrics</div>
-        <div class="metric-desc">Cohen's kappa and Krippendorff's alpha</div>
+        <div class="metric-name">Variance Analysis</div>
+        <div class="metric-desc">Decomposing annotation variance by factor</div>
       </div>
       <div class="metric-item">
-        <div class="metric-name">Bias Metrics</div>
-        <div class="metric-desc">Demographic parity and equalized odds</div>
+        <div class="metric-name">Persona Evaluation</div>
+        <div class="metric-desc">Comparing persona-based vs baseline prompts</div>
       </div>
       <div class="metric-item">
-        <div class="metric-name">Explanation Quality</div>
-        <div class="metric-desc">Consistency, relevance, and faithfulness</div>
+        <div class="metric-name">Token Attribution</div>
+        <div class="metric-desc">Content-specific token importance analysis</div>
       </div>
     </div>
   </section>
@@ -688,39 +688,30 @@
     <h2 class="section-title">Key Findings</h2>
 
     <div class="finding-block">
-      <h3 class="finding-title">Demographic Bias in Annotations</h3>
+      <h3 class="finding-title">Demographic Factors and Annotation Variance</h3>
       <ul class="finding-list">
-        <li>GPT-4 is 23% more likely to label content as sexist when targeting women</li>
-        <li>Claude shows the most balanced performance across demographics</li>
-        <li>All models struggle with intersectional identities</li>
+        <li>Demographic factors account for a minor fraction (8%) of the observed variance in annotations</li>
+        <li>Tweet content is the dominant factor influencing annotation outcomes</li>
+        <li>Content-specific tokens related to sexism drive model predictions rather than demographic correlates</li>
       </ul>
     </div>
 
     <div class="finding-block">
-      <h3 class="finding-title">Explanation Reliability</h3>
+      <h3 class="finding-title">Persona-Based Prompting</h3>
       <ul class="finding-list">
-        <li>Only 67% of explanations are consistent with the actual prediction</li>
-        <li>Explanations often cite surface features rather than semantic content</li>
-        <li>Models generate more detailed explanations for false positives than true positives</li>
+        <li>Persona-based prompting often fails to enhance performance compared to baseline models</li>
+        <li>In some cases, persona approaches actually degrade annotation quality</li>
+        <li>Content-driven approaches prove more reliable than demographic simulation</li>
       </ul>
     </div>
 
-    <div class="model-comparison">
-      <div class="model-card">
-        <div class="model-name">GPT-4</div>
-        <div class="model-score">0.84 F1</div>
-        <div class="model-note">Highest accuracy but most demographically biased</div>
-      </div>
-      <div class="model-card">
-        <div class="model-name">Claude</div>
-        <div class="model-score">0.81 F1</div>
-        <div class="model-note">Best balance of accuracy and fairness</div>
-      </div>
-      <div class="model-card">
-        <div class="model-name">Llama</div>
-        <div class="model-score">0.76 F1</div>
-        <div class="model-note">Most consistent explanations but lower accuracy</div>
-      </div>
+    <div class="finding-block">
+      <h3 class="finding-title">Explainable AI Insights</h3>
+      <ul class="finding-list">
+        <li>Model predictions rely heavily on content-specific tokens related to sexism</li>
+        <li>Predictions are not primarily driven by correlates of demographic characteristics</li>
+        <li>Robust annotation protocols outperform demographic persona simulation for fairness</li>
+      </ul>
     </div>
   </section>
 
@@ -731,29 +722,29 @@
       <div class="recommendation-item">
         <div class="rec-number"></div>
         <div class="rec-content">
-          <div class="rec-title">Multi-Model Ensemble</div>
-          <div class="rec-desc">Use multiple LLMs and aggregate their predictions to reduce individual model biases.</div>
+          <div class="rec-title">Content-Driven Explanations</div>
+          <div class="rec-desc">Prioritize content-driven explanations over demographic persona simulation for fairness.</div>
         </div>
       </div>
       <div class="recommendation-item">
         <div class="rec-number"></div>
         <div class="rec-content">
-          <div class="rec-title">Demographic Awareness</div>
-          <div class="rec-desc">Include demographic diversity checks in annotation quality control.</div>
+          <div class="rec-title">Robust Annotation Protocols</div>
+          <div class="rec-desc">Develop annotation protocols that focus on content-specific features rather than demographic assumptions.</div>
         </div>
       </div>
       <div class="recommendation-item">
         <div class="rec-number"></div>
         <div class="rec-content">
-          <div class="rec-title">Explanation Validation</div>
-          <div class="rec-desc">Don't rely solely on LLM explanations; validate with human review for critical applications.</div>
+          <div class="rec-title">Baseline Comparison</div>
+          <div class="rec-desc">Always compare persona-based approaches against baseline models to verify actual improvement.</div>
         </div>
       </div>
       <div class="recommendation-item">
         <div class="rec-number"></div>
         <div class="rec-content">
-          <div class="rec-title">Continuous Monitoring</div>
-          <div class="rec-desc">Implement ongoing bias monitoring as LLMs are updated.</div>
+          <div class="rec-title">Content Focus</div>
+          <div class="rec-desc">Recognize that tweet content is the dominant factor; design systems that leverage this insight.</div>
         </div>
       </div>
     </div>

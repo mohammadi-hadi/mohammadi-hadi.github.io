@@ -444,17 +444,17 @@
 
   <header class="paper-header">
     <div class="paper-meta">
-      <span class="paper-type">Under Review</span>
-      <span class="paper-status">Applied Artificial Intelligence Journal</span>
+      <span class="paper-type">Preprint</span>
+      <span class="paper-status">arXiv:2506.12433</span>
     </div>
 
     <h1 class="paper-title">Exploring Cultural Variations in Moral Judgments with Large Language Models</h1>
 
     <p class="paper-authors">
-      <strong>Hadi Mohammadi</strong>, Evi Papadopoulou, Mijntje Meijer, Ayoub Bagheri
+      <strong>Hadi Mohammadi</strong>, Efthymia Papadopoulou, Yasmeen F.S.S. Meijer, Ayoub Bagheri
     </p>
     <p class="paper-affiliation">Utrecht University, The Netherlands</p>
-    <p class="paper-venue">Under review at Applied Artificial Intelligence</p>
+    <p class="paper-venue">arXiv preprint, June 2025</p>
 
     <div class="paper-links">
       <a href="https://arxiv.org/abs/2506.12433" class="paper-link primary" target="_blank">
@@ -478,13 +478,13 @@
       <h2 class="section-title">Abstract</h2>
       <div class="abstract-text">
         <p>
-          As Large Language Models (LLMs) are increasingly deployed in global applications, understanding how they represent and reason about moral values across different cultures becomes critical. This research investigates whether state-of-the-art LLMs can accurately represent cultural variations in moral thinking, or if they predominantly reflect Western moral frameworks.
+          As Large Language Models (LLMs) are increasingly deployed in global applications, understanding how they represent and reason about moral values across different cultures becomes critical. This research investigates whether LLMs can accurately capture cultural variations in moral reasoning using data from the World Values Survey (WVS).
         </p>
         <p>
-          We developed a comprehensive evaluation framework combining Hofstede's Cultural Dimensions Theory with Haidt's Moral Foundations Theory, testing models including GPT-4 and Claude across more than 50 cultures using over 10,000 carefully designed scenarios. Our findings reveal significant Western-centric biases in current LLMs, with models showing 87% alignment with individualistic moral reasoning but only 42% accuracy for collectivist perspectives.
+          We introduce log-probability-based moral justifiability scores to assess how well different LLMs align with culturally diverse moral perspectives. Our analysis compares smaller models (GPT-2, OPT, BLOOMZ, Qwen) with advanced instruction-tuned models (GPT-4o, Gemma-2-9b-it, Llama-3.3-70B-Instruct), finding that instruction-tuned models achieved substantially higher positive correlations with human moral judgments across cultures.
         </p>
         <p>
-          This work has important implications for the responsible deployment of AI systems in culturally diverse contexts and highlights the need for more inclusive training data and evaluation methodologies in AI development.
+          This work has important implications for the responsible deployment of AI systems in culturally diverse contexts and highlights the need for evaluation methodologies that account for cultural variations in moral reasoning.
         </p>
       </div>
     </section>
@@ -521,29 +521,29 @@
         <div class="method-step">
           <div class="step-number"></div>
           <div class="step-content">
-            <h4>Scenario Development</h4>
-            <p>Created 10,000+ moral dilemma scenarios validated by cultural experts from diverse backgrounds, ensuring authentic representation of cultural moral frameworks.</p>
+            <h4>Data Source</h4>
+            <p>Leveraging the World Values Survey (WVS), which captures cross-cultural variations in moral attitudes and values across diverse populations worldwide.</p>
           </div>
         </div>
         <div class="method-step">
           <div class="step-number"></div>
           <div class="step-content">
-            <h4>Model Testing</h4>
-            <p>Tested GPT-4, Claude, and other LLMs using multiple prompting approaches across 50+ cultures with systematic variation of cultural context cues.</p>
+            <h4>Model Selection</h4>
+            <p>Comparing smaller language models (GPT-2, OPT, BLOOMZ, Qwen) with advanced instruction-tuned models (GPT-4o, Gemma-2-9b-it, Llama-3.3-70B-Instruct).</p>
           </div>
         </div>
         <div class="method-step">
           <div class="step-number"></div>
           <div class="step-content">
-            <h4>Response Analysis</h4>
-            <p>Analyzed model responses with diverse human annotators from each cultural background to evaluate cultural authenticity and alignment.</p>
+            <h4>Moral Justifiability Scoring</h4>
+            <p>Introducing log-probability-based moral justifiability scores to quantify how well LLM outputs align with culturally diverse moral perspectives.</p>
           </div>
         </div>
         <div class="method-step">
           <div class="step-number"></div>
           <div class="step-content">
             <h4>Cross-Cultural Comparison</h4>
-            <p>Systematic comparison of model performance across cultural dimensions using World Values Survey metrics as ground truth.</p>
+            <p>Systematic comparison of model performance across cultural dimensions using World Values Survey data as ground truth for human moral judgments.</p>
           </div>
         </div>
       </div>
@@ -551,33 +551,19 @@
 
     <section id="results" class="section">
       <h2 class="section-title">Key Findings</h2>
-      <div class="results-grid">
-        <div class="result-item">
-          <div class="result-value">87%</div>
-          <div class="result-label">Individualistic Alignment</div>
-        </div>
-        <div class="result-item">
-          <div class="result-value">42%</div>
-          <div class="result-label">Collectivist Accuracy</div>
-        </div>
-        <div class="result-item">
-          <div class="result-value">45%</div>
-          <div class="result-label">Performance Gap</div>
-        </div>
-      </div>
 
       <div class="model-comparison">
         <div class="model-card">
-          <div class="model-name">GPT-4</div>
-          <div class="model-desc">Excels at cultural context recognition but shows systematic Western bias in moral reasoning outputs.</div>
+          <div class="model-name">Instruction-Tuned Models</div>
+          <div class="model-desc">Advanced models (GPT-4o, Gemma-2-9b-it, Llama-3.3-70B-Instruct) achieved substantially higher positive correlations with human moral judgments across cultures.</div>
         </div>
         <div class="model-card">
-          <div class="model-name">Claude</div>
-          <div class="model-desc">Demonstrates consistency across scenarios but limited depth in non-Western cultural perspectives.</div>
+          <div class="model-name">Smaller Models</div>
+          <div class="model-desc">Base models (GPT-2, OPT, BLOOMZ, Qwen) showed weaker alignment with cross-cultural moral perspectives compared to instruction-tuned variants.</div>
         </div>
         <div class="model-card">
-          <div class="model-name">Multilingual Models</div>
-          <div class="model-desc">Show improved performance in non-English cultural contexts when prompted in native languages.</div>
+          <div class="model-name">Cultural Variation</div>
+          <div class="model-desc">Log-probability-based moral justifiability scores reveal meaningful differences in how LLMs process moral reasoning across cultural contexts.</div>
         </div>
       </div>
     </section>
@@ -610,11 +596,11 @@
         <button class="copy-btn" onclick="copyBibtex()">
           <i class="fas fa-copy"></i> Copy
         </button>
-        <pre class="citation-code">@article{mohammadi2024cultural,
+        <pre class="citation-code">@article{mohammadi2025cultural,
   title={Exploring Cultural Variations in Moral Judgments with Large Language Models},
-  author={Mohammadi, Hadi and Papadopoulou, Evi and Meijer, Mijntje and Bagheri, Ayoub},
+  author={Mohammadi, Hadi and Papadopoulou, Efthymia and Meijer, Yasmeen F.S.S. and Bagheri, Ayoub},
   journal={arXiv preprint arXiv:2506.12433},
-  year={2024}
+  year={2025}
 }</pre>
       </div>
     </section>
@@ -627,7 +613,7 @@
       <a href="https://github.com/mohammadi-hadi" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
       <a href="https://scholar.google.com/citations?user=SCHOLAR_ID" title="Google Scholar" target="_blank"><i class="fas fa-graduation-cap"></i></a>
     </div>
-    <p>&copy; 2024 Hadi Mohammadi. Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
+    <p>&copy; 2025 Hadi Mohammadi. Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
   </footer>
 
   <script>
