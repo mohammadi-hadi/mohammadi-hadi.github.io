@@ -12,285 +12,427 @@
   <link href="Logo.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* Custom styles for publications page */
-    body {
-      font-family: "Poppins", sans-serif;
-      background-color: #f8f9fa;
+    :root {
+      --text-dark: #1a1a1a;
+      --text-primary: #374151;
+      --text-secondary: #6b7280;
+      --accent: #0f766e;
+      --accent-light: #14b8a6;
+      --accent-bg: #f0fdfa;
+      --bg-white: #ffffff;
+      --bg-light: #f9fafb;
+      --border: #e5e7eb;
+      --journal: #16a34a;
+      --conference: #dc2626;
+      --workshop: #d97706;
+      --preprint: #0891b2;
     }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background: var(--bg-light);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Source Serif 4', Georgia, serif;
+    }
+
+    /* Header */
     .page-header {
-      background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
-      color: white;
-      padding: 80px 0 60px;
-      margin-bottom: 50px;
+      background: var(--bg-white);
+      padding: 6rem 2rem 3rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: #0d6d66;
     }
 
     .page-header h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      margin-bottom: 20px;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
     }
 
     .page-header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
     }
 
-    .stats-container {
-      margin-top: 40px;
+    /* Stats */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
 
-    .stat-box {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 20px;
+    .stat-item {
       text-align: center;
-      margin: 10px;
+      padding: 1rem 1.5rem;
+      background: var(--accent-bg);
+      border-radius: 8px;
+      min-width: 100px;
     }
 
-    .stat-box h3 {
-      font-size: 2.5rem;
-      margin-bottom: 5px;
+    .stat-value {
+      font-size: 1.75rem;
       font-weight: 700;
+      color: var(--accent);
+      font-family: 'Source Serif 4', Georgia, serif;
     }
 
-    .stat-box p {
-      margin: 0;
-      opacity: 0.9;
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
     }
 
-    .filter-container {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
-      margin-bottom: 40px;
+    /* Main Content */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Filter */
+    .filter-section {
+      background: var(--bg-white);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .filter-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
     }
 
     .filter-btn {
-      margin: 5px;
-      padding: 8px 20px;
-      border: 2px solid #0066cc;
-      background: white;
-      color: #0066cc;
-      border-radius: 25px;
-      transition: all 0.3s;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      background: var(--bg-white);
+      color: var(--text-primary);
+      border-radius: 20px;
+      font-size: 0.85rem;
       font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
     }
 
-    .filter-btn:hover, .filter-btn.active {
-      background: #0066cc;
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
       color: white;
+      border-color: var(--accent);
     }
 
+    .search-box {
+      position: relative;
+      margin-top: 1rem;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-secondary);
+    }
+
+    /* Year Section */
+    .year-section {
+      margin-bottom: 2rem;
+    }
+
+    .year-heading {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+
+    /* Publication Cards */
     .publication-card {
-      background: white;
-      border-radius: 15px;
-      padding: 30px;
-      margin-bottom: 30px;
-      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s;
-      border-left: 5px solid #0066cc;
+      background: var(--bg-white);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      transition: box-shadow 0.2s;
     }
 
     .publication-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
     .publication-card.journal {
-      border-left-color: #28a745;
+      border-left-color: var(--journal);
     }
 
     .publication-card.conference {
-      border-left-color: #dc3545;
+      border-left-color: var(--conference);
     }
 
     .publication-card.workshop {
-      border-left-color: #ffc107;
+      border-left-color: var(--workshop);
     }
 
     .publication-card.preprint {
-      border-left-color: #17a2b8;
+      border-left-color: var(--preprint);
     }
 
     .publication-title {
-      font-size: 1.3rem;
+      font-size: 1.15rem;
       font-weight: 600;
-      color: #333;
-      margin-bottom: 15px;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
       line-height: 1.4;
     }
 
     .publication-authors {
-      color: #666;
-      margin-bottom: 10px;
-      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
     }
 
     .publication-authors strong {
-      color: #0066cc;
+      color: var(--accent);
       font-weight: 600;
     }
 
     .publication-venue {
       font-style: italic;
-      color: #888;
-      margin-bottom: 15px;
-      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
     }
 
     .publication-tags {
-      margin-bottom: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
     }
 
     .tag {
       display: inline-block;
-      padding: 4px 12px;
-      background: #f0f0f0;
-      border-radius: 15px;
-      font-size: 0.85rem;
-      margin-right: 8px;
-      margin-bottom: 5px;
-      color: #666;
+      padding: 0.2rem 0.6rem;
+      background: var(--bg-light);
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
     }
 
     .tag.highlight {
-      background: #e3f2fd;
-      color: #0066cc;
+      background: var(--accent-bg);
+      color: var(--accent);
       font-weight: 500;
     }
 
     .publication-links {
-      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
-    .publication-links a {
-      display: inline-block;
-      padding: 8px 20px;
-      margin-right: 10px;
-      margin-bottom: 10px;
-      border-radius: 25px;
+    .pub-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 4px;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 500;
-      transition: all 0.3s;
+      transition: all 0.2s;
     }
 
-    .btn-paper {
-      background: #0066cc;
+    .pub-link.details {
+      background: var(--accent);
       color: white;
     }
 
-    .btn-paper:hover {
-      background: #0052a3;
+    .pub-link.details:hover {
+      background: #0d6d66;
+    }
+
+    .pub-link.paper {
+      background: var(--bg-light);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .pub-link.paper:hover {
+      background: var(--border);
+    }
+
+    .pub-link.code {
+      background: var(--text-dark);
       color: white;
     }
 
-    .btn-code {
-      background: #333;
-      color: white;
-    }
-
-    .btn-code:hover {
+    .pub-link.code:hover {
       background: #000;
-      color: white;
     }
 
-    .btn-arxiv {
+    .pub-link.arxiv {
       background: #b31b1b;
       color: white;
     }
 
-    .btn-arxiv:hover {
+    .pub-link.arxiv:hover {
       background: #8b0000;
-      color: white;
     }
 
-    .btn-details {
-      background: #6c757d;
-      color: white;
-    }
-
-    .btn-details:hover {
-      background: #545b62;
-      color: white;
-    }
-
-    .year-separator {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #0066cc;
-      margin: 40px 0 30px;
-      padding-bottom: 10px;
-      border-bottom: 3px solid #0066cc;
-    }
-
-    .back-to-home {
+    /* Back to top */
+    .back-to-top {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 50px;
-      height: 50px;
-      background: #0066cc;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      background: var(--accent);
       color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      box-shadow: 0 5px 20px rgba(0, 102, 204, 0.3);
-      transition: all 0.3s;
-      z-index: 999;
+      box-shadow: 0 2px 8px rgba(15, 118, 110, 0.3);
+      transition: all 0.2s;
+      opacity: 0;
+      visibility: hidden;
     }
 
-    .back-to-home:hover {
-      background: #0052a3;
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: #0d6d66;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--text-dark);
       color: white;
-      transform: translateY(-3px);
+      padding: 2rem;
+      text-align: center;
+      margin-top: 3rem;
     }
 
-    .search-box {
-      position: relative;
-      max-width: 500px;
-      margin: 0 auto 30px;
+    .footer p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
     }
 
-    .search-box input {
-      width: 100%;
-      padding: 15px 50px 15px 20px;
-      border: 2px solid #e0e0e0;
-      border-radius: 50px;
-      font-size: 1rem;
-      transition: all 0.3s;
+    .footer a {
+      color: var(--accent-light);
     }
 
-    .search-box input:focus {
-      outline: none;
-      border-color: #0066cc;
-    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-header {
+        padding: 4rem 1.5rem 2rem;
+      }
 
-    .search-box i {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #999;
+      .page-header h1 {
+        font-size: 2rem;
+      }
+
+      .stats-row {
+        gap: 1rem;
+      }
+
+      .stat-item {
+        padding: 0.75rem 1rem;
+        min-width: 80px;
+      }
+
+      .stat-value {
+        font-size: 1.5rem;
+      }
+
+      .container {
+        padding: 1.5rem;
+      }
+
+      .publication-card {
+        padding: 1.25rem;
+      }
+
+      .publication-title {
+        font-size: 1.05rem;
+      }
     }
   </style>
 </head>
@@ -299,34 +441,29 @@
 
   <!-- Page Header -->
   <div class="page-header">
-    <div class="container text-center">
-      <h1 data-aos="fade-down">Publications & Research</h1>
-      <p data-aos="fade-up" data-aos-delay="100">Advancing Explainable AI and Human-AI Collaboration</p>
-      
-      <div class="row stats-container" data-aos="fade-up" data-aos-delay="200">
-        <div class="col-md-3">
-          <div class="stat-box">
-            <h3>14</h3>
-            <p>Total Publications</p>
-          </div>
+    <div class="header-content">
+      <a href="index.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </a>
+      <h1>Publications & Research</h1>
+      <p>Advancing Explainable AI and Human-AI Collaboration</p>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-value">14</div>
+          <div class="stat-label">Publications</div>
         </div>
-        <div class="col-md-3">
-          <div class="stat-box">
-            <h3>54</h3>
-            <p>Citations</p>
-          </div>
+        <div class="stat-item">
+          <div class="stat-value">54</div>
+          <div class="stat-label">Citations</div>
         </div>
-        <div class="col-md-3">
-          <div class="stat-box">
-            <h3>5</h3>
-            <p>h-index</p>
-          </div>
+        <div class="stat-item">
+          <div class="stat-value">5</div>
+          <div class="stat-label">h-index</div>
         </div>
-        <div class="col-md-3">
-          <div class="stat-box">
-            <h3>2025</h3>
-            <p>Latest Publication</p>
-          </div>
+        <div class="stat-item">
+          <div class="stat-value">2025</div>
+          <div class="stat-label">Latest</div>
         </div>
       </div>
     </div>
@@ -334,178 +471,166 @@
 
   <!-- Main Content -->
   <div class="container">
-    
+
     <!-- Filter Section -->
-    <div class="filter-container" data-aos="fade-up">
-      <h4 class="mb-3">Filter by Type:</h4>
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="journal">Journal Articles</button>
-      <button class="filter-btn" data-filter="conference">Conferences</button>
-      <button class="filter-btn" data-filter="workshop">Workshops</button>
-      <button class="filter-btn" data-filter="preprint">Preprints</button>
-      
-      <div class="search-box mt-4">
+    <div class="filter-section">
+      <div class="filter-label">Filter by type:</div>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="journal">Journal Articles</button>
+        <button class="filter-btn" data-filter="conference">Conferences</button>
+        <button class="filter-btn" data-filter="workshop">Workshops</button>
+        <button class="filter-btn" data-filter="preprint">Preprints</button>
+      </div>
+
+      <div class="search-box">
+        <i class="fas fa-search"></i>
         <input type="text" id="searchInput" placeholder="Search publications...">
-        <i class="bi bi-search"></i>
       </div>
     </div>
 
     <!-- Publications List -->
     <div id="publicationsList">
-      
+
       <!-- 2025 Publications -->
-      <h2 class="year-separator" data-aos="fade-right">2025</h2>
-      
-      <div class="publication-card workshop" data-aos="fade-up" data-year="2025">
-        <h3 class="publication-title">Assessing the Reliability of LLMs Annotations in the Context of Demographic Bias and Model Explanation</h3>
-        <p class="publication-authors">
-          <strong>Hadi Mohammadi</strong>, Tina Shahedi, Pablo Mosteiro Romero, Massimo Poesio, Ayoub Bagheri, Anastasia Giachanou
-        </p>
-        <p class="publication-venue">Workshop on Gender Bias in Natural Language Processing (GeBNLP), ACL 2025</p>
-        <div class="publication-tags">
-          <span class="tag highlight">Forthcoming</span>
-          <span class="tag">LLM Evaluation</span>
-          <span class="tag">Bias Detection</span>
-          <span class="tag">Explainability</span>
-        </div>
-        <div class="publication-links">
-          <a href="/publications/llm-annotation-reliability/" class="btn-details">View Details</a>
-          <a href="https://arxiv.org/abs/2507.13138" target="_blank" class="btn-arxiv"><i class="bi bi-file-earmark-pdf"></i> ArXiv</a>
-        </div>
-      </div>
+      <div class="year-section">
+        <h2 class="year-heading">2025</h2>
 
-      <div class="publication-card workshop" data-aos="fade-up" data-aos-delay="100" data-year="2025">
-        <h3 class="publication-title">Do Large Language Models Understand Morality Across Cultures?</h3>
-        <p class="publication-authors">
-          <strong>Hadi Mohammadi</strong>, Evi Papadopoulou, Mijntje Meijer, Ayoub Bagheri
-        </p>
-        <p class="publication-venue">2nd Workshop on Language Understanding in the Human-Machine Era, ECAI 2025</p>
-        <div class="publication-tags">
-          <span class="tag highlight">Forthcoming</span>
-          <span class="tag">Cultural AI</span>
-          <span class="tag">LLMs</span>
-          <span class="tag">Ethics</span>
+        <div class="publication-card workshop" data-year="2025">
+          <h3 class="publication-title">Assessing the Reliability of LLMs Annotations in the Context of Demographic Bias and Model Explanation</h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Tina Shahedi, Pablo Mosteiro Romero, Massimo Poesio, Ayoub Bagheri, Anastasia Giachanou
+          </p>
+          <p class="publication-venue">Workshop on Gender Bias in Natural Language Processing (GeBNLP), ACL 2025</p>
+          <div class="publication-tags">
+            <span class="tag highlight">Forthcoming</span>
+            <span class="tag">LLM Evaluation</span>
+            <span class="tag">Bias Detection</span>
+            <span class="tag">Explainability</span>
+          </div>
+          <div class="publication-links">
+            <a href="/publications/llm-annotation-reliability/" class="pub-link details">View Details</a>
+            <a href="https://arxiv.org/abs/2507.13138" target="_blank" class="pub-link arxiv"><i class="fas fa-file-pdf"></i> arXiv</a>
+          </div>
         </div>
-        <div class="publication-links">
-          <a href="/publications/cultural-moral-judgments/" class="btn-details">View Details</a>
-          <a href="https://github.com/mohammadi-hadi/cultural-moral-judgments-llms" target="_blank" class="btn-code"><i class="bi bi-github"></i> Code</a>
-        </div>
-      </div>
 
-      <!-- Under Review -->
-      <div class="publication-card preprint" data-aos="fade-up" data-aos-delay="200" data-year="2025">
-        <h3 class="publication-title">Explainability in Practice: A Survey of Explainable NLP Across Various Domains</h3>
-        <p class="publication-authors">
-          <strong>Hadi Mohammadi</strong>, Ayoub Bagheri, Anastasia Giachanou, Daniel L. Oberski
-        </p>
-        <p class="publication-venue">Under review at Journal of Information Science</p>
-        <div class="publication-tags">
-          <span class="tag">Survey</span>
-          <span class="tag">Explainable AI</span>
-          <span class="tag">NLP</span>
+        <div class="publication-card workshop" data-year="2025">
+          <h3 class="publication-title">Do Large Language Models Understand Morality Across Cultures?</h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Evi Papadopoulou, Mijntje Meijer, Ayoub Bagheri
+          </p>
+          <p class="publication-venue">2nd Workshop on Language Understanding in the Human-Machine Era, ECAI 2025</p>
+          <div class="publication-tags">
+            <span class="tag highlight">Forthcoming</span>
+            <span class="tag">Cultural AI</span>
+            <span class="tag">LLMs</span>
+            <span class="tag">Ethics</span>
+          </div>
+          <div class="publication-links">
+            <a href="/publications/cultural-moral-judgments/" class="pub-link details">View Details</a>
+            <a href="https://github.com/mohammadi-hadi/cultural-moral-judgments-llms" target="_blank" class="pub-link code"><i class="fab fa-github"></i> Code</a>
+          </div>
         </div>
-        <div class="publication-links">
-          <a href="/publications/explainability-survey/" class="btn-details">View Details</a>
-          <a href="https://arxiv.org/abs/2502.00837" target="_blank" class="btn-arxiv"><i class="bi bi-file-earmark-pdf"></i> ArXiv</a>
-        </div>
-      </div>
 
-      <div class="publication-card preprint" data-aos="fade-up" data-aos-delay="300" data-year="2025">
-        <h3 class="publication-title">Explainability-Based Token Replacement on LLM-Generated Text</h3>
-        <p class="publication-authors">
-          <strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Daniel Oberski, Ayoub Bagheri
-        </p>
-        <p class="publication-venue">Under review at Journal of Artificial Intelligence Research</p>
-        <div class="publication-tags">
-          <span class="tag">LLM</span>
-          <span class="tag">Text Generation</span>
-          <span class="tag">Explainability</span>
+        <!-- Under Review -->
+        <div class="publication-card preprint" data-year="2025">
+          <h3 class="publication-title">Explainability in Practice: A Survey of Explainable NLP Across Various Domains</h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Ayoub Bagheri, Anastasia Giachanou, Daniel L. Oberski
+          </p>
+          <p class="publication-venue">Under review at Journal of Information Science</p>
+          <div class="publication-tags">
+            <span class="tag">Survey</span>
+            <span class="tag">Explainable AI</span>
+            <span class="tag">NLP</span>
+          </div>
+          <div class="publication-links">
+            <a href="/publications/explainability-survey/" class="pub-link details">View Details</a>
+            <a href="https://arxiv.org/abs/2502.00837" target="_blank" class="pub-link arxiv"><i class="fas fa-file-pdf"></i> arXiv</a>
+          </div>
         </div>
-        <div class="publication-links">
-          <a href="/publications/ai-text-undetectability/" class="btn-details">View Details</a>
-          <a href="https://arxiv.org/abs/2506.04050" target="_blank" class="btn-arxiv"><i class="bi bi-file-earmark-pdf"></i> ArXiv</a>
-          <a href="https://github.com/mohammadi-hadi/Token-Replacement" target="_blank" class="btn-code"><i class="bi bi-github"></i> Code</a>
-        </div>
-      </div>
 
-      <div class="publication-card preprint" data-aos="fade-up" data-aos-delay="400" data-year="2025">
-        <h3 class="publication-title">Exploring Cultural Variations in Moral Judgments with Large Language Models</h3>
-        <p class="publication-authors">
-          <strong>Hadi Mohammadi</strong>, Evi Papadopoulou, Mijntje Meijer, Ayoub Bagheri
-        </p>
-        <p class="publication-venue">Under review at Applied Artificial Intelligence</p>
-        <div class="publication-tags">
-          <span class="tag">Cultural AI</span>
-          <span class="tag">LLMs</span>
-          <span class="tag">Moral Judgments</span>
+        <div class="publication-card preprint" data-year="2025">
+          <h3 class="publication-title">Explainability-Based Token Replacement on LLM-Generated Text</h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Daniel Oberski, Ayoub Bagheri
+          </p>
+          <p class="publication-venue">Under review at Journal of Artificial Intelligence Research</p>
+          <div class="publication-tags">
+            <span class="tag">LLM</span>
+            <span class="tag">Text Generation</span>
+            <span class="tag">Explainability</span>
+          </div>
+          <div class="publication-links">
+            <a href="/publications/ai-text-undetectability/" class="pub-link details">View Details</a>
+            <a href="https://arxiv.org/abs/2506.04050" target="_blank" class="pub-link arxiv"><i class="fas fa-file-pdf"></i> arXiv</a>
+            <a href="https://github.com/mohammadi-hadi/Token-Replacement" target="_blank" class="pub-link code"><i class="fab fa-github"></i> Code</a>
+          </div>
         </div>
-        <div class="publication-links">
-          <a href="/publications/cultural-moral-judgments/" class="btn-details">View Details</a>
-          <a href="https://arxiv.org/abs/2506.12433" target="_blank" class="btn-arxiv"><i class="bi bi-file-earmark-pdf"></i> ArXiv</a>
-          <a href="https://github.com/mohammadi-hadi/cultural-moral-judgments-llms" target="_blank" class="btn-code"><i class="bi bi-github"></i> Code</a>
+
+        <div class="publication-card preprint" data-year="2025">
+          <h3 class="publication-title">Exploring Cultural Variations in Moral Judgments with Large Language Models</h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Evi Papadopoulou, Mijntje Meijer, Ayoub Bagheri
+          </p>
+          <p class="publication-venue">Under review at Applied Artificial Intelligence</p>
+          <div class="publication-tags">
+            <span class="tag">Cultural AI</span>
+            <span class="tag">LLMs</span>
+            <span class="tag">Moral Judgments</span>
+          </div>
+          <div class="publication-links">
+            <a href="/publications/cultural-moral-judgments/" class="pub-link details">View Details</a>
+            <a href="https://arxiv.org/abs/2506.12433" target="_blank" class="pub-link arxiv"><i class="fas fa-file-pdf"></i> arXiv</a>
+            <a href="https://github.com/mohammadi-hadi/cultural-moral-judgments-llms" target="_blank" class="pub-link code"><i class="fab fa-github"></i> Code</a>
+          </div>
         </div>
       </div>
 
       <!-- 2024 Publications -->
-      <h2 class="year-separator" data-aos="fade-right">2024</h2>
-      
-      <div class="publication-card journal" data-aos="fade-up" data-year="2024">
-        <h3 class="publication-title">A Transparent Pipeline for Identifying Sexism in Social Media: Combining Explainability with Model Prediction</h3>
-        <p class="publication-authors">
-          <strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Ayoub Bagheri
-        </p>
-        <p class="publication-venue">Applied Sciences, Volume 14, Issue 19, 2024</p>
-        <div class="publication-tags">
-          <span class="tag highlight">Published</span>
-          <span class="tag">Sexism Detection</span>
-          <span class="tag">Social Media</span>
-          <span class="tag">Explainable AI</span>
-        </div>
-        <div class="publication-links">
-          <a href="/publications/sexism-detection/" class="btn-details">View Details</a>
-          <a href="https://www.mdpi.com/2076-3417/14/19/8620" target="_blank" class="btn-paper"><i class="bi bi-journal"></i> Journal</a>
-          <a href="https://github.com/mohammadi-hadi/Explainable-Sexim-Detection" target="_blank" class="btn-code"><i class="bi bi-github"></i> Code</a>
+      <div class="year-section">
+        <h2 class="year-heading">2024</h2>
+
+        <div class="publication-card journal" data-year="2024">
+          <h3 class="publication-title">A Transparent Pipeline for Identifying Sexism in Social Media: Combining Explainability with Model Prediction</h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Ayoub Bagheri
+          </p>
+          <p class="publication-venue">Applied Sciences, Volume 14, Issue 19, 2024</p>
+          <div class="publication-tags">
+            <span class="tag highlight">Published</span>
+            <span class="tag">Sexism Detection</span>
+            <span class="tag">Social Media</span>
+            <span class="tag">Explainable AI</span>
+          </div>
+          <div class="publication-links">
+            <a href="/publications/sexism-detection/" class="pub-link details">View Details</a>
+            <a href="https://www.mdpi.com/2076-3417/14/19/8620" target="_blank" class="pub-link paper"><i class="fas fa-external-link-alt"></i> Journal</a>
+            <a href="https://github.com/mohammadi-hadi/Explainable-Sexim-Detection" target="_blank" class="pub-link code"><i class="fab fa-github"></i> Code</a>
+          </div>
         </div>
       </div>
-
 
     </div>
   </div>
 
-  <!-- Back to Home Button -->
-  <a href="index.html" class="back-to-home" data-aos="fade-up" data-aos-delay="300">
-    <i class="bi bi-house-door-fill"></i>
+  <!-- Back to Top -->
+  <a href="#" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
   </a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 Hadi Mohammadi. Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
+  </footer>
 
   <script>
-    // Initialize AOS
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
-
     // Filter functionality
     const filterBtns = document.querySelectorAll('.filter-btn');
     const publicationCards = document.querySelectorAll('.publication-card');
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        // Remove active class from all buttons
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
@@ -515,11 +640,7 @@
           if (filter === 'all') {
             card.style.display = 'block';
           } else {
-            if (card.classList.contains(filter)) {
-              card.style.display = 'block';
-            } else {
-              card.style.display = 'none';
-            }
+            card.style.display = card.classList.contains(filter) ? 'block' : 'none';
           }
         });
       });
@@ -529,29 +650,30 @@
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', function() {
       const searchTerm = this.value.toLowerCase();
-      
+
       publicationCards.forEach(card => {
         const title = card.querySelector('.publication-title').textContent.toLowerCase();
         const authors = card.querySelector('.publication-authors').textContent.toLowerCase();
         const tags = card.querySelector('.publication-tags').textContent.toLowerCase();
-        
-        if (title.includes(searchTerm) || authors.includes(searchTerm) || tags.includes(searchTerm)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
+
+        card.style.display = (title.includes(searchTerm) || authors.includes(searchTerm) || tags.includes(searchTerm)) ? 'block' : 'none';
       });
     });
 
-    // Smooth scroll for back to top
-    document.querySelector('.back-to-home').addEventListener('click', function(e) {
-      if (this.getAttribute('href') === '#') {
-        e.preventDefault();
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
       }
+    });
+
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 
