@@ -1,951 +1,661 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exploring Cultural Variations in Moral Judgments with LLMs</title>
-    <meta name="description" content="Investigating how LLMs understand and represent cultural differences in moral judgments">
-    <meta property="og:title" content="Exploring Cultural Variations in Moral Judgments with LLMs">
-    <meta property="og:description" content="First comprehensive study examining how state-of-the-art LLMs understand and generate moral judgments across different cultural contexts">
-    <meta property="og:url" content="https://arxiv.org/abs/2506.12433">
-    <meta name="twitter:title" content="Exploring Cultural Variations in Moral Judgments with LLMs">
-    <meta name="twitter:description" content="Investigating how LLMs understand and represent cultural differences in moral judgments">
-    <meta name="keywords" content="LLM, Cultural Variation, Moral Judgments, Cross-Cultural NLP, Ethics, AI Fairness, Hofstede, Moral Foundations Theory">
-    <link rel="icon" type="image/x-icon" href="../../Logo.png">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root {
-            --text-dark: #1a1a1a;
-            --text-primary: #374151;
-            --text-secondary: #6b7280;
-            --accent: #0f766e;
-            --accent-light: #14b8a6;
-            --accent-bg: #f0fdfa;
-            --bg-white: #ffffff;
-            --bg-light: #f9fafb;
-            --border: #e5e7eb;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background: var(--bg-white);
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Source Serif 4', Georgia, serif;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            z-index: 1000;
-            padding: 1rem 2rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-container {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-brand {
-            font-weight: 600;
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Hero */
-        .hero {
-            padding: 8rem 2rem 4rem;
-            background: var(--bg-white);
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .venue-badge {
-            display: inline-block;
-            background: var(--accent-bg);
-            color: var(--accent);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
-        }
-
-        .authors {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .authors strong {
-            color: var(--accent);
-        }
-
-        .affiliation {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.65rem 1.25rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #0d6d66;
-        }
-
-        .btn-secondary {
-            background: var(--bg-light);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background: var(--border);
-        }
-
-        /* Sections */
-        .section {
-            padding: 4rem 2rem;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--accent);
-            display: inline-block;
-        }
-
-        /* Highlights Box */
-        .highlights {
-            background: var(--accent-bg);
-            border-left: 4px solid var(--accent);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .highlights h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 0.75rem;
-        }
-
-        .highlights ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .highlights li {
-            padding: 0.3rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            color: var(--text-primary);
-            font-size: 0.95rem;
-        }
-
-        .highlights li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
-
-        /* Abstract */
-        .abstract-content {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            color: var(--text-secondary);
-        }
-
-        .abstract-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        /* Framework Grid */
-        .framework-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .framework-card {
-            background: var(--bg-light);
-            border-radius: 8px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-        }
-
-        .framework-card h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .framework-card ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .framework-card li {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            padding: 0.35rem 0;
-            padding-left: 1rem;
-            position: relative;
-        }
-
-        .framework-card li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--accent-light);
-        }
-
-        /* Methodology Steps */
-        .methodology-steps {
-            display: grid;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .step {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-        }
-
-        .step-number {
-            width: 32px;
-            height: 32px;
-            background: var(--accent);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-
-        .step-content h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 0.35rem;
-        }
-
-        .step-content p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 1.5rem 1rem;
-            background: var(--bg-light);
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent);
-            font-family: 'Source Serif 4', Georgia, serif;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-top: 0.25rem;
-        }
-
-        /* Results Table */
-        .results-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
-            font-size: 0.95rem;
-        }
-
-        .results-table th {
-            background: var(--bg-light);
-            padding: 1rem;
-            text-align: left;
-            font-weight: 600;
-            color: var(--text-dark);
-            border-bottom: 2px solid var(--accent);
-        }
-
-        .results-table td {
-            padding: 1rem;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-secondary);
-        }
-
-        .results-table tr:hover {
-            background: var(--bg-light);
-        }
-
-        .accuracy-bar {
-            width: 100%;
-            height: 6px;
-            background: var(--border);
-            border-radius: 3px;
-            margin-top: 0.5rem;
-            overflow: hidden;
-        }
-
-        .accuracy-fill {
-            height: 100%;
-            background: var(--accent);
-            border-radius: 3px;
-        }
-
-        .quality-badge {
-            display: inline-block;
-            padding: 0.2rem 0.6rem;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .quality-low {
-            background: #fee2e2;
-            color: #dc2626;
-        }
-
-        .quality-moderate {
-            background: #fef3c7;
-            color: #d97706;
-        }
-
-        .quality-high {
-            background: #dcfce7;
-            color: #16a34a;
-        }
-
-        /* Model Cards */
-        .model-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .model-card {
-            background: var(--bg-light);
-            padding: 1.25rem;
-            border-radius: 8px;
-            border-left: 3px solid var(--accent);
-        }
-
-        .model-card h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .model-card p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* Implications List */
-        .implications-list {
-            list-style: none;
-            padding: 0;
-            margin: 2rem 0;
-        }
-
-        .implications-list li {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            padding: 1.25rem;
-            background: var(--bg-white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .implication-num {
-            width: 28px;
-            height: 28px;
-            background: var(--accent);
-            color: white;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.85rem;
-            flex-shrink: 0;
-        }
-
-        .implication-content h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 0.25rem;
-        }
-
-        .implication-content p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* Citation */
-        .citation-block {
-            background: var(--bg-light);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            position: relative;
-        }
-
-        .citation-block pre {
-            background: var(--bg-white);
-            padding: 1.25rem;
-            border-radius: 6px;
-            overflow-x: auto;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            font-family: 'Monaco', 'Menlo', monospace;
-            border: 1px solid var(--border);
-            margin: 0;
-        }
-
-        .copy-btn {
-            position: absolute;
-            top: 1.75rem;
-            right: 1.75rem;
-            padding: 0.4rem 0.8rem;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .copy-btn:hover {
-            background: #0d6d66;
-        }
-
-        .copy-btn.copied {
-            background: #16a34a;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 2.5rem 2rem;
-            text-align: center;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .footer p {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.85rem;
-        }
-
-        .footer a {
-            color: var(--accent-light);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 6rem 1.5rem 3rem;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .section {
-                padding: 3rem 1.5rem;
-            }
-
-            .framework-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .model-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploring Cultural Variations in Moral Judgments with Large Language Models</title>
+  <meta name="description" content="Investigating how LLMs understand and represent moral reasoning across different cultures using Hofstede's dimensions and Moral Foundations Theory">
+  <meta property="og:title" content="Exploring Cultural Variations in Moral Judgments with Large Language Models">
+  <meta property="og:description" content="Investigating how LLMs understand and represent moral reasoning across different cultures">
+  <meta property="og:url" content="https://arxiv.org/abs/2506.12433">
+  <meta name="keywords" content="LLM, Cultural AI, Moral Judgments, Cross-Cultural NLP, Hofstede, Moral Foundations Theory">
+
+  <link rel="icon" type="image/x-icon" href="../../Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --text-black: #000000;
+      --text-dark: #1a1a1a;
+      --text-primary: #2d2d2d;
+      --text-secondary: #555555;
+      --text-muted: #777777;
+      --bg-white: #ffffff;
+      --bg-light: #fafafa;
+      --bg-subtle: #f5f5f5;
+      --border: #e0e0e0;
+      --border-dark: #cccccc;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background: var(--bg-white);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      font-weight: 600;
+      color: var(--text-black);
+    }
+
+    a { color: var(--text-dark); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--text-secondary); }
+
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 0.75rem 2rem;
+    }
+
+    .nav-content {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-back:hover { color: var(--text-black); }
+
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { color: var(--text-muted); font-size: 0.85rem; }
+    .nav-links a:hover { color: var(--text-black); }
+
+    .paper-header {
+      padding: 6rem 2rem 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .paper-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .paper-type {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      padding: 0.25rem 0.5rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+    }
+
+    .paper-status {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .paper-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    .paper-authors {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .paper-authors strong { color: var(--text-black); font-weight: 600; }
+
+    .paper-affiliation {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .paper-venue {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .paper-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+    .paper-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid var(--border-dark);
+      background: var(--bg-white);
+      color: var(--text-secondary);
+      transition: all 0.2s;
+    }
+
+    .paper-link:hover {
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
+    }
+
+    .paper-link.primary {
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
+    }
+
+    .paper-link.primary:hover { background: var(--text-dark); }
+
+    .content { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+    .section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--text-black);
+      display: inline-block;
+    }
+
+    .abstract-text {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--text-secondary);
+      text-align: justify;
+    }
+
+    .abstract-text p { margin-bottom: 1.25rem; }
+    .abstract-text p:last-child { margin-bottom: 0; }
+
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .framework-item {
+      padding: 1.5rem;
+      background: var(--bg-subtle);
+      border-left: 3px solid var(--text-black);
+    }
+
+    .framework-title {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-black);
+    }
+
+    .framework-list { list-style: none; }
+
+    .framework-list li {
+      padding: 0.35rem 0;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .framework-list li::before {
+      content: '\2022';
+      color: var(--text-black);
+      font-weight: bold;
+    }
+
+    .methodology-steps { counter-reset: step; }
+
+    .method-step {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .method-step:last-child { border-bottom: none; }
+
+    .step-number {
+      counter-increment: step;
+      width: 36px;
+      height: 36px;
+      background: var(--text-black);
+      color: var(--bg-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .step-number::before { content: counter(step); }
+
+    .step-content h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .step-content p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .result-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: var(--bg-subtle);
+    }
+
+    .result-value {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .result-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .model-comparison {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .model-card {
+      padding: 1.5rem;
+      background: var(--bg-subtle);
+      border-left: 3px solid var(--text-black);
+    }
+
+    .model-name {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .model-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .implications-list {
+      list-style: none;
+      counter-reset: implication;
+    }
+
+    .implications-list li {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .implications-list li:last-child { border-bottom: none; }
+
+    .implication-num {
+      counter-increment: implication;
+      width: 28px;
+      height: 28px;
+      background: var(--text-black);
+      color: var(--bg-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .implication-num::before { content: counter(implication); }
+
+    .citation-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .citation-code {
+      font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+      font-size: 0.8rem;
+      color: var(--text-primary);
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.4rem 0.75rem;
+      background: var(--bg-white);
+      border: 1px solid var(--border-dark);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .copy-btn:hover {
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
+    }
+
+    .footer {
+      background: var(--text-black);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a { color: rgba(255, 255, 255, 0.7); font-size: 1.25rem; }
+    .footer-links a:hover { color: white; }
+    .footer p { color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; }
+    .footer p a { color: rgba(255, 255, 255, 0.7); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .paper-header { padding: 5rem 1.5rem 2rem; }
+      .paper-title { font-size: 1.75rem; }
+      .content { padding: 0 1.5rem; }
+      .framework-grid, .results-grid, .model-comparison { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="../../index.html" class="nav-brand">
-                <i class="fas fa-arrow-left"></i> Hadi Mohammadi
-            </a>
-            <ul class="nav-links">
-                <li><a href="#abstract">Abstract</a></li>
-                <li><a href="#methodology">Methodology</a></li>
-                <li><a href="#findings">Findings</a></li>
-                <li><a href="#citation">Citation</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="venue-badge">
-                <i class="fas fa-globe-americas"></i> Under Review — Applied Artificial Intelligence Journal
-            </div>
-            <h1>Exploring Cultural Variations in Moral Judgments with Large Language Models</h1>
-            <p class="authors">
-                <strong>Hadi Mohammadi</strong>, Evi Papadopoulou, Mijntje Meijer, Ayoub Bagheri
-            </p>
-            <p class="affiliation">Utrecht University, The Netherlands</p>
-            <div class="hero-buttons">
-                <a href="https://arxiv.org/abs/2506.12433" class="btn btn-primary" target="_blank">
-                    <i class="fas fa-file-pdf"></i> Paper
-                </a>
-                <a href="https://github.com/mohammadi-hadi/cultural-moral-judgments-llms" class="btn btn-secondary" target="_blank">
-                    <i class="fab fa-github"></i> Code
-                </a>
-                <a href="https://arxiv.org/abs/2506.12433" class="btn btn-secondary" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> arXiv
-                </a>
-            </div>
-        </div>
-    </section>
+  <nav class="nav-bar">
+    <div class="nav-content">
+      <a href="../../Publications.html" class="nav-back">
+        <i class="fas fa-arrow-left"></i> Publications
+      </a>
+      <div class="nav-links">
+        <a href="#abstract">Abstract</a>
+        <a href="#framework">Framework</a>
+        <a href="#methodology">Methodology</a>
+        <a href="#results">Results</a>
+        <a href="#citation">Citation</a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Abstract -->
+  <header class="paper-header">
+    <div class="paper-meta">
+      <span class="paper-type">Under Review</span>
+      <span class="paper-status">Applied Artificial Intelligence Journal</span>
+    </div>
+
+    <h1 class="paper-title">Exploring Cultural Variations in Moral Judgments with Large Language Models</h1>
+
+    <p class="paper-authors">
+      <strong>Hadi Mohammadi</strong>, Evi Papadopoulou, Mijntje Meijer, Ayoub Bagheri
+    </p>
+    <p class="paper-affiliation">Utrecht University, The Netherlands</p>
+    <p class="paper-venue">Under review at Applied Artificial Intelligence</p>
+
+    <div class="paper-links">
+      <a href="https://arxiv.org/abs/2506.12433" class="paper-link primary" target="_blank">
+        <i class="fas fa-file-pdf"></i> Read Paper
+      </a>
+      <a href="https://github.com/mohammadi-hadi/cultural-moral-judgments-llms" class="paper-link" target="_blank">
+        <i class="fab fa-github"></i> Code
+      </a>
+      <a href="https://arxiv.org/abs/2506.12433" class="paper-link" target="_blank">
+        <i class="fas fa-external-link-alt"></i> arXiv
+      </a>
+      <a href="#citation" class="paper-link">
+        <i class="fas fa-quote-left"></i> Cite
+      </a>
+    </div>
+  </header>
+
+  <main class="content">
+
     <section id="abstract" class="section">
-        <div class="container">
-            <h2 class="section-title">Abstract</h2>
-            <div class="abstract-content">
-                <p>
-                    As Large Language Models (LLMs) are increasingly deployed across diverse global contexts, understanding their ability to represent and reason about cultural variations in moral judgments becomes crucial. This paper presents the first comprehensive study examining how state-of-the-art LLMs understand and generate moral judgments across different cultural contexts, using established frameworks from cross-cultural psychology and moral philosophy.
-                </p>
-                <p>
-                    We develop a novel evaluation framework based on Hofstede's cultural dimensions and Haidt's Moral Foundations Theory to assess LLMs' cultural moral reasoning. Using carefully designed prompts representing moral dilemmas from 50+ cultures, we analyze how models like GPT-4, Claude, and multilingual variants respond to culturally-specific moral scenarios.
-                </p>
-                <p>
-                    Our findings reveal that while LLMs can recognize some cultural differences in moral judgments, they exhibit significant biases toward Western moral frameworks and struggle with non-WEIRD (Western, Educated, Industrialized, Rich, Democratic) cultural perspectives. This work has important implications for the deployment of AI systems in culturally diverse settings.
-                </p>
-            </div>
-
-            <div class="highlights">
-                <h3>Key Contributions</h3>
-                <ul>
-                    <li>First systematic framework for evaluating LLMs' cultural moral reasoning</li>
-                    <li>Large-scale analysis across 50+ cultures with 10,000+ moral scenarios</li>
-                    <li>Quantification of Western-centric bias in current LLMs</li>
-                    <li>Practical guidelines for culturally-aware AI development</li>
-                </ul>
-            </div>
-        </div>
+      <h2 class="section-title">Abstract</h2>
+      <div class="abstract-text">
+        <p>
+          As Large Language Models (LLMs) are increasingly deployed in global applications, understanding how they represent and reason about moral values across different cultures becomes critical. This research investigates whether state-of-the-art LLMs can accurately represent cultural variations in moral thinking, or if they predominantly reflect Western moral frameworks.
+        </p>
+        <p>
+          We developed a comprehensive evaluation framework combining Hofstede's Cultural Dimensions Theory with Haidt's Moral Foundations Theory, testing models including GPT-4 and Claude across more than 50 cultures using over 10,000 carefully designed scenarios. Our findings reveal significant Western-centric biases in current LLMs, with models showing 87% alignment with individualistic moral reasoning but only 42% accuracy for collectivist perspectives.
+        </p>
+        <p>
+          This work has important implications for the responsible deployment of AI systems in culturally diverse contexts and highlights the need for more inclusive training data and evaluation methodologies in AI development.
+        </p>
+      </div>
     </section>
 
-    <!-- Methodology -->
-    <section id="methodology" class="section" style="background: var(--bg-light);">
-        <div class="container">
-            <h2 class="section-title">Methodology</h2>
-
-            <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin: 2rem 0 1rem;">Theoretical Framework</h3>
-
-            <div class="framework-grid">
-                <div class="framework-card">
-                    <h4><i class="fas fa-chart-bar"></i> Hofstede's Dimensions</h4>
-                    <ul>
-                        <li>Power distance</li>
-                        <li>Individualism vs. collectivism</li>
-                        <li>Uncertainty avoidance</li>
-                        <li>Masculinity vs. femininity</li>
-                        <li>Long-term orientation</li>
-                    </ul>
-                </div>
-                <div class="framework-card">
-                    <h4><i class="fas fa-heart"></i> Moral Foundations Theory</h4>
-                    <ul>
-                        <li>Care / harm</li>
-                        <li>Fairness / cheating</li>
-                        <li>Loyalty / betrayal</li>
-                        <li>Authority / subversion</li>
-                        <li>Sanctity / degradation</li>
-                    </ul>
-                </div>
-                <div class="framework-card">
-                    <h4><i class="fas fa-poll"></i> World Values Survey</h4>
-                    <ul>
-                        <li>Traditional vs. secular-rational</li>
-                        <li>Survival vs. self-expression</li>
-                        <li>Cultural clustering analysis</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin: 2rem 0 1rem;">Experimental Design</h3>
-
-            <div class="methodology-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h4>Scenario Generation</h4>
-                        <p>Create culturally-specific moral dilemmas validated by cultural experts and native speakers from each region.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h4>Model Evaluation</h4>
-                        <p>Test LLMs using both direct prompting and role-playing approaches across multiple temperature settings.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h4>Response Analysis</h4>
-                        <p>Analyze moral judgments using automated metrics and human evaluation from culturally-diverse annotators.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h4>Cross-Cultural Comparison</h4>
-                        <p>Compare model responses across cultures to identify systematic patterns, biases, and failure modes.</p>
-                    </div>
-                </div>
-            </div>
+    <section id="framework" class="section">
+      <h2 class="section-title">Theoretical Framework</h2>
+      <div class="framework-grid">
+        <div class="framework-item">
+          <h3 class="framework-title">Hofstede's Cultural Dimensions</h3>
+          <ul class="framework-list">
+            <li>Power Distance</li>
+            <li>Individualism vs. Collectivism</li>
+            <li>Uncertainty Avoidance</li>
+            <li>Masculinity vs. Femininity</li>
+            <li>Long-Term vs. Short-Term Orientation</li>
+          </ul>
         </div>
+        <div class="framework-item">
+          <h3 class="framework-title">Moral Foundations Theory</h3>
+          <ul class="framework-list">
+            <li>Care/Harm</li>
+            <li>Fairness/Cheating</li>
+            <li>Loyalty/Betrayal</li>
+            <li>Authority/Subversion</li>
+            <li>Sanctity/Degradation</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- Findings -->
-    <section id="findings" class="section">
-        <div class="container">
-            <h2 class="section-title">Key Findings</h2>
-
-            <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin: 2rem 0 1rem;">Western-Centric Bias</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-                LLMs show strong alignment with Western moral frameworks, revealing significant gaps in cross-cultural moral reasoning:
-            </p>
-
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-value">87%</div>
-                    <div class="stat-label">Individualistic Alignment</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">42%</div>
-                    <div class="stat-label">Collectivist Accuracy</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">45%</div>
-                    <div class="stat-label">Performance Gap</div>
-                </div>
-            </div>
-
-            <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin: 2rem 0 1rem;">Cultural Dimension Performance</h3>
-
-            <table class="results-table">
-                <thead>
-                    <tr>
-                        <th>Cultural Dimension</th>
-                        <th>Recognition Accuracy</th>
-                        <th>Generation Quality</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Individualism / Collectivism</td>
-                        <td>
-                            73%
-                            <div class="accuracy-bar">
-                                <div class="accuracy-fill" style="width: 73%;"></div>
-                            </div>
-                        </td>
-                        <td><span class="quality-badge quality-moderate">Moderate</span></td>
-                    </tr>
-                    <tr>
-                        <td>Power Distance</td>
-                        <td>
-                            61%
-                            <div class="accuracy-bar">
-                                <div class="accuracy-fill" style="width: 61%;"></div>
-                            </div>
-                        </td>
-                        <td><span class="quality-badge quality-low">Low</span></td>
-                    </tr>
-                    <tr>
-                        <td>Uncertainty Avoidance</td>
-                        <td>
-                            68%
-                            <div class="accuracy-bar">
-                                <div class="accuracy-fill" style="width: 68%;"></div>
-                            </div>
-                        </td>
-                        <td><span class="quality-badge quality-moderate">Moderate</span></td>
-                    </tr>
-                    <tr>
-                        <td>Long-term Orientation</td>
-                        <td>
-                            55%
-                            <div class="accuracy-bar">
-                                <div class="accuracy-fill" style="width: 55%;"></div>
-                            </div>
-                        </td>
-                        <td><span class="quality-badge quality-low">Low</span></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin: 2rem 0 1rem;">Model-Specific Insights</h3>
-
-            <div class="model-grid">
-                <div class="model-card">
-                    <h4>GPT-4</h4>
-                    <p>Best at recognizing cultural contexts but still Western-biased in final moral judgments.</p>
-                </div>
-                <div class="model-card">
-                    <h4>Claude</h4>
-                    <p>Most consistent responses across cultures but limited in cultural depth and nuance.</p>
-                </div>
-                <div class="model-card">
-                    <h4>Multilingual Models</h4>
-                    <p>Better at non-English contexts but still struggle with cultural moral reasoning.</p>
-                </div>
-            </div>
-
-            <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin: 2rem 0 1rem;">Implications for AI Development</h3>
-
-            <ul class="implications-list">
-                <li>
-                    <span class="implication-num">1</span>
-                    <div class="implication-content">
-                        <h4>Global AI Systems</h4>
-                        <p>Current LLMs may perpetuate Western moral hegemony when deployed globally, potentially marginalizing non-Western perspectives.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="implication-num">2</span>
-                    <div class="implication-content">
-                        <h4>Cultural Fairness</h4>
-                        <p>Need for culturally-diverse training data and evaluation metrics that capture moral reasoning across different contexts.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="implication-num">3</span>
-                    <div class="implication-content">
-                        <h4>Ethical AI Development</h4>
-                        <p>Importance of incorporating diverse moral frameworks in AI alignment research and development practices.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="implication-num">4</span>
-                    <div class="implication-content">
-                        <h4>Practical Applications</h4>
-                        <p>Caution needed when using LLMs for culturally-sensitive applications such as content moderation, counseling, or policy advice.</p>
-                    </div>
-                </li>
-            </ul>
+    <section id="methodology" class="section">
+      <h2 class="section-title">Methodology</h2>
+      <div class="methodology-steps">
+        <div class="method-step">
+          <div class="step-number"></div>
+          <div class="step-content">
+            <h4>Scenario Development</h4>
+            <p>Created 10,000+ moral dilemma scenarios validated by cultural experts from diverse backgrounds, ensuring authentic representation of cultural moral frameworks.</p>
+          </div>
         </div>
+        <div class="method-step">
+          <div class="step-number"></div>
+          <div class="step-content">
+            <h4>Model Testing</h4>
+            <p>Tested GPT-4, Claude, and other LLMs using multiple prompting approaches across 50+ cultures with systematic variation of cultural context cues.</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="step-number"></div>
+          <div class="step-content">
+            <h4>Response Analysis</h4>
+            <p>Analyzed model responses with diverse human annotators from each cultural background to evaluate cultural authenticity and alignment.</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="step-number"></div>
+          <div class="step-content">
+            <h4>Cross-Cultural Comparison</h4>
+            <p>Systematic comparison of model performance across cultural dimensions using World Values Survey metrics as ground truth.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Citation -->
-    <section id="citation" class="section" style="background: var(--bg-light);">
-        <div class="container">
-            <h2 class="section-title">Citation</h2>
-            <div class="citation-block">
-                <button class="copy-btn" onclick="copyBibtex()">
-                    <i class="fas fa-copy"></i> Copy
-                </button>
-                <pre id="bibtex">@article{mohammadi2024cultural,
-  title={Exploring Cultural Variations in Moral Judgments
-         with Large Language Models},
-  author={Mohammadi, Hadi and Papadopoulou, Evi and
-          Meijer, Mijntje and Bagheri, Ayoub},
+    <section id="results" class="section">
+      <h2 class="section-title">Key Findings</h2>
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-value">87%</div>
+          <div class="result-label">Individualistic Alignment</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value">42%</div>
+          <div class="result-label">Collectivist Accuracy</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value">45%</div>
+          <div class="result-label">Performance Gap</div>
+        </div>
+      </div>
+
+      <div class="model-comparison">
+        <div class="model-card">
+          <div class="model-name">GPT-4</div>
+          <div class="model-desc">Excels at cultural context recognition but shows systematic Western bias in moral reasoning outputs.</div>
+        </div>
+        <div class="model-card">
+          <div class="model-name">Claude</div>
+          <div class="model-desc">Demonstrates consistency across scenarios but limited depth in non-Western cultural perspectives.</div>
+        </div>
+        <div class="model-card">
+          <div class="model-name">Multilingual Models</div>
+          <div class="model-desc">Show improved performance in non-English cultural contexts when prompted in native languages.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="implications" class="section">
+      <h2 class="section-title">Implications</h2>
+      <ul class="implications-list">
+        <li>
+          <span class="implication-num"></span>
+          <span>Risk of Western moral framework dominance when deploying LLMs in global AI systems and applications.</span>
+        </li>
+        <li>
+          <span class="implication-num"></span>
+          <span>Need for culturally-diverse training data and evaluation metrics that go beyond English-centric benchmarks.</span>
+        </li>
+        <li>
+          <span class="implication-num"></span>
+          <span>Importance of including diverse moral frameworks in AI alignment research and safety considerations.</span>
+        </li>
+        <li>
+          <span class="implication-num"></span>
+          <span>Cautious deployment recommended for culturally-sensitive applications such as education and healthcare.</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="citation" class="section">
+      <h2 class="section-title">Citation</h2>
+      <div class="citation-box">
+        <button class="copy-btn" onclick="copyBibtex()">
+          <i class="fas fa-copy"></i> Copy
+        </button>
+        <pre class="citation-code">@article{mohammadi2024cultural,
+  title={Exploring Cultural Variations in Moral Judgments with Large Language Models},
+  author={Mohammadi, Hadi and Papadopoulou, Evi and Meijer, Mijntje and Bagheri, Ayoub},
   journal={arXiv preprint arXiv:2506.12433},
   year={2024}
 }</pre>
-            </div>
-        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="../../index.html" title="Home"><i class="fas fa-home"></i></a>
-            <a href="https://github.com/mohammadi-hadi" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://scholar.google.com/citations?user=SCHOLAR_ID" title="Google Scholar" target="_blank"><i class="fas fa-graduation-cap"></i></a>
-        </div>
-        <p>&copy; 2024 Hadi Mohammadi. Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
-    </footer>
+  </main>
 
-    <!-- Scripts -->
-    <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const navHeight = document.querySelector('.navbar').offsetHeight;
-                    window.scrollTo({
-                        top: target.offsetTop - navHeight - 20,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="../../index.html" title="Home"><i class="fas fa-home"></i></a>
+      <a href="https://github.com/mohammadi-hadi" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://scholar.google.com/citations?user=SCHOLAR_ID" title="Google Scholar" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+    </div>
+    <p>&copy; 2024 Hadi Mohammadi. Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
+  </footer>
 
-        // Copy BibTeX
-        function copyBibtex() {
-            const bibtex = document.getElementById('bibtex').innerText;
-            const btn = document.querySelector('.copy-btn');
+  <script>
+    function copyBibtex() {
+      const citation = document.querySelector('.citation-code').textContent;
+      navigator.clipboard.writeText(citation).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied';
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+        }, 2000);
+      });
+    }
 
-            navigator.clipboard.writeText(bibtex).then(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                btn.classList.add('copied');
-
-                setTimeout(() => {
-                    btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
-                    btn.classList.remove('copied');
-                }, 2000);
-            });
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const navHeight = document.querySelector('.nav-bar').offsetHeight;
+          window.scrollTo({
+            top: target.offsetTop - navHeight - 20,
+            behavior: 'smooth'
+          });
         }
-    </script>
+      });
+    });
+  </script>
+
 </body>
 </html>
