@@ -5,7 +5,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Hadi Mohammadi - Publications</title>
   <meta name="description" content="Publications and research papers by Hadi Mohammadi on Explainable AI, NLP, and Human-AI Collaboration">
-  <meta name="keywords" content="Publications, Research Papers, Explainable AI, NLP, Machine Learning">
+  <meta name="keywords" content="Publications, Research Papers, Explainable AI, NLP, Machine Learning, Academic Research">
 
   <!-- Favicons -->
   <link href="Logo.png" rel="icon">
@@ -14,18 +14,27 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
-      --black: #1a1a1a;
-      --dark: #374151;
-      --gray: #6b7280;
-      --light-gray: #9ca3af;
-      --border: #e5e7eb;
-      --bg: #ffffff;
-      --bg-alt: #f9fafb;
+      --text-black: #000000;
+      --text-dark: #1a1a1a;
+      --text-primary: #2d2d2d;
+      --text-secondary: #555555;
+      --text-muted: #777777;
+      --bg-white: #ffffff;
+      --bg-light: #fafafa;
+      --bg-subtle: #f5f5f5;
+      --border: #e0e0e0;
+      --border-dark: #cccccc;
+      --accent: #1a1a1a;
+      --accent-hover: #333333;
+      --journal: #1a1a1a;
+      --conference: #1a1a1a;
+      --workshop: #1a1a1a;
+      --preprint: #555555;
     }
 
     * {
@@ -37,28 +46,35 @@
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.7;
-      color: var(--dark);
-      background: var(--bg);
+      color: var(--text-primary);
+      background: var(--bg-white);
     }
 
     h1, h2, h3, h4 {
-      font-family: 'Source Serif 4', Georgia, serif;
-      color: var(--black);
+      font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      font-weight: 600;
+      color: var(--text-black);
     }
 
     a {
-      color: var(--black);
+      color: var(--text-dark);
       text-decoration: none;
+      transition: color 0.2s;
     }
 
-    /* Header */
-    .header {
+    a:hover {
+      color: var(--text-secondary);
+    }
+
+    /* Page Header */
+    .page-header {
+      background: var(--bg-white);
       padding: 4rem 2rem 3rem;
       border-bottom: 1px solid var(--border);
     }
 
     .header-content {
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
     }
 
@@ -66,108 +82,138 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      color: var(--gray);
+      color: var(--text-secondary);
       font-size: 0.9rem;
       margin-bottom: 2rem;
-      transition: color 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .back-link:hover {
-      color: var(--black);
+      color: var(--text-black);
     }
 
-    .header h1 {
-      font-size: 2.5rem;
+    .page-header h1 {
+      font-size: 2.75rem;
       font-weight: 700;
+      letter-spacing: -0.5px;
       margin-bottom: 0.5rem;
     }
 
-    .header-subtitle {
-      font-size: 1.1rem;
-      color: var(--gray);
-      margin-bottom: 2rem;
+    .page-subtitle {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 2.5rem;
     }
 
-    .stats {
+    /* Stats */
+    .stats-row {
       display: flex;
       gap: 3rem;
+      flex-wrap: wrap;
       padding-top: 1.5rem;
       border-top: 1px solid var(--border);
     }
 
-    .stat {
+    .stat-item {
       text-align: left;
     }
 
     .stat-value {
-      font-size: 1.5rem;
+      font-size: 2rem;
       font-weight: 700;
+      color: var(--text-black);
       font-family: 'Source Serif 4', Georgia, serif;
-      color: var(--black);
+      line-height: 1;
     }
 
     .stat-label {
       font-size: 0.8rem;
-      color: var(--gray);
+      color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.5px;
+      margin-top: 0.25rem;
     }
 
-    /* Main */
-    .main {
-      max-width: 900px;
+    /* Main Content */
+    .container {
+      max-width: 800px;
       margin: 0 auto;
       padding: 3rem 2rem;
     }
 
-    /* Filters */
-    .filters {
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
+    /* Filter */
+    .filter-section {
+      background: var(--bg-white);
+      padding: 1.5rem 0;
+      margin-bottom: 2rem;
       border-bottom: 1px solid var(--border);
     }
 
-    .filter-row {
+    .filter-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+    }
+
+    .filter-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .filter-btn {
-      padding: 0.4rem 1rem;
-      border: 1px solid var(--border);
-      background: var(--bg);
-      color: var(--gray);
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border-dark);
+      background: var(--bg-white);
+      color: var(--text-secondary);
       font-size: 0.85rem;
-      font-family: 'Inter', sans-serif;
+      font-weight: 500;
       cursor: pointer;
       transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
     }
 
     .filter-btn:hover {
-      border-color: var(--dark);
-      color: var(--dark);
+      border-color: var(--text-dark);
+      color: var(--text-dark);
     }
 
     .filter-btn.active {
-      background: var(--black);
-      border-color: var(--black);
-      color: white;
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
     }
 
-    .search-input {
+    .search-box {
+      position: relative;
+    }
+
+    .search-box input {
       width: 100%;
-      max-width: 400px;
-      padding: 0.6rem 1rem;
-      border: 1px solid var(--border);
-      font-size: 0.9rem;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      border: 1px solid var(--border-dark);
+      font-size: 0.95rem;
       font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s;
     }
 
-    .search-input:focus {
+    .search-box input:focus {
       outline: none;
-      border-color: var(--dark);
+      border-color: var(--text-dark);
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
     }
 
     /* Year Section */
@@ -176,167 +222,205 @@
     }
 
     .year-heading {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       font-weight: 600;
-      color: var(--black);
+      color: var(--text-black);
       margin-bottom: 1.5rem;
       padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--black);
+      border-bottom: 2px solid var(--text-black);
       display: inline-block;
     }
 
-    /* Publication Entry */
-    .publication {
-      margin-bottom: 2.5rem;
-      padding-bottom: 2.5rem;
+    /* Publication Cards */
+    .publication-card {
+      background: var(--bg-white);
+      padding: 1.5rem 0;
+      margin-bottom: 0;
       border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
     }
 
-    .publication:last-child {
-      border-bottom: none;
+    .publication-card:hover {
+      background: var(--bg-subtle);
     }
 
-    .pub-type {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--gray);
-      margin-bottom: 0.75rem;
-      padding: 0.2rem 0.5rem;
-      border: 1px solid var(--border);
-    }
-
-    .pub-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      line-height: 1.4;
-      margin-bottom: 0.75rem;
-    }
-
-    .pub-title a:hover {
-      text-decoration: underline;
-    }
-
-    .pub-authors {
-      font-size: 0.95rem;
-      color: var(--dark);
+    .publication-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
       margin-bottom: 0.5rem;
     }
 
-    .pub-authors .me {
+    .publication-type {
+      font-size: 0.7rem;
       font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      padding: 0.25rem 0.5rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
     }
 
-    .pub-venue {
-      font-size: 0.9rem;
-      color: var(--gray);
+    .publication-type.journal { border-color: var(--journal); }
+    .publication-type.conference { border-color: var(--conference); }
+    .publication-type.workshop { border-color: var(--workshop); }
+    .publication-type.preprint { border-color: var(--preprint); background: var(--bg-white); }
+
+    .publication-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
       font-style: italic;
-      margin-bottom: 1rem;
     }
 
-    .pub-abstract {
-      font-size: 0.9rem;
-      color: var(--dark);
-      line-height: 1.7;
-      margin-bottom: 1rem;
-      padding-left: 1rem;
-      border-left: 2px solid var(--border);
-    }
-
-    .pub-details {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1rem;
-      padding: 1rem;
-      background: var(--bg-alt);
-    }
-
-    .pub-detail {
-      font-size: 0.85rem;
-    }
-
-    .pub-detail-label {
+    .publication-title {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.15rem;
       font-weight: 600;
-      color: var(--black);
-      display: block;
-      margin-bottom: 0.25rem;
+      color: var(--text-black);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
     }
 
-    .pub-detail-value {
-      color: var(--gray);
+    .publication-title a {
+      color: inherit;
     }
 
-    .pub-links {
+    .publication-title a:hover {
+      text-decoration: underline;
+    }
+
+    .publication-authors {
+      color: var(--text-secondary);
+      margin-bottom: 0.35rem;
+      font-size: 0.9rem;
+    }
+
+    .publication-authors strong {
+      color: var(--text-black);
+      font-weight: 600;
+    }
+
+    .publication-venue {
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .publication-links {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
-      margin-top: 1rem;
     }
 
     .pub-link {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.4rem 0.8rem;
+      gap: 0.35rem;
+      padding: 0.4rem 0.75rem;
       font-size: 0.8rem;
       font-weight: 500;
-      border: 1px solid var(--border);
       transition: all 0.2s;
+      border: 1px solid var(--border-dark);
+      background: var(--bg-white);
+      color: var(--text-secondary);
     }
 
     .pub-link:hover {
-      background: var(--black);
-      border-color: var(--black);
-      color: white;
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
     }
 
     .pub-link.primary {
-      background: var(--black);
-      border-color: var(--black);
-      color: white;
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
     }
 
     .pub-link.primary:hover {
-      background: var(--dark);
+      background: var(--accent-hover);
+    }
+
+    /* Back to top */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      background: var(--text-black);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.2s;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
     }
 
     /* Footer */
     .footer {
+      background: var(--text-black);
+      color: white;
       padding: 2rem;
       text-align: center;
-      border-top: 1px solid var(--border);
-      margin-top: 2rem;
+      margin-top: 3rem;
     }
 
     .footer p {
+      color: rgba(255, 255, 255, 0.6);
       font-size: 0.85rem;
-      color: var(--gray);
+    }
+
+    .footer a {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .footer a:hover {
+      color: white;
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .header {
+      .page-header {
         padding: 3rem 1.5rem 2rem;
       }
 
-      .header h1 {
+      .page-header h1 {
         font-size: 2rem;
       }
 
-      .stats {
-        flex-wrap: wrap;
-        gap: 1.5rem;
+      .stats-row {
+        gap: 2rem;
       }
 
-      .main {
+      .stat-value {
+        font-size: 1.75rem;
+      }
+
+      .container {
         padding: 2rem 1.5rem;
       }
 
-      .pub-details {
-        grid-template-columns: 1fr;
+      .publication-card {
+        padding: 1.25rem 0;
+      }
+
+      .publication-title {
+        font-size: 1.05rem;
       }
     }
   </style>
@@ -344,25 +428,25 @@
 
 <body>
 
-  <!-- Header -->
-  <header class="header">
+  <!-- Page Header -->
+  <header class="page-header">
     <div class="header-content">
       <a href="index.html" class="back-link">
         <i class="fas fa-arrow-left"></i> Back to Home
       </a>
       <h1>Publications</h1>
-      <p class="header-subtitle">Research in Explainable AI, NLP, and Human-AI Collaboration</p>
+      <p class="page-subtitle">Research in Explainable AI, NLP, and Human-AI Collaboration</p>
 
-      <div class="stats">
-        <div class="stat">
+      <div class="stats-row">
+        <div class="stat-item">
           <div class="stat-value">14</div>
           <div class="stat-label">Publications</div>
         </div>
-        <div class="stat">
+        <div class="stat-item">
           <div class="stat-value">54</div>
           <div class="stat-label">Citations</div>
         </div>
-        <div class="stat">
+        <div class="stat-item">
           <div class="stat-value">5</div>
           <div class="stat-label">h-index</div>
         </div>
@@ -371,203 +455,116 @@
   </header>
 
   <!-- Main Content -->
-  <main class="main">
+  <main class="container">
 
-    <!-- Filters -->
-    <div class="filters">
-      <div class="filter-row">
+    <!-- Filter Section -->
+    <div class="filter-section">
+      <div class="filter-label">Filter by type</div>
+      <div class="filter-buttons">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="journal">Journal</button>
         <button class="filter-btn" data-filter="conference">Conference</button>
         <button class="filter-btn" data-filter="workshop">Workshop</button>
-        <button class="filter-btn" data-filter="preprint">Under Review</button>
+        <button class="filter-btn" data-filter="preprint">Preprint</button>
       </div>
-      <input type="text" class="search-input" id="searchInput" placeholder="Search publications...">
+
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search publications...">
+      </div>
     </div>
 
-    <!-- Publications -->
+    <!-- Publications List -->
     <div id="publicationsList">
 
-      <!-- 2025 -->
+      <!-- 2025 Publications -->
       <section class="year-section">
         <h2 class="year-heading">2025</h2>
 
-        <!-- LLM Annotation Reliability -->
-        <article class="publication workshop" data-year="2025">
-          <span class="pub-type">Workshop Paper</span>
-          <h3 class="pub-title">
+        <article class="publication-card workshop" data-year="2025">
+          <div class="publication-meta">
+            <span class="publication-type workshop">Workshop</span>
+            <span class="publication-status">Forthcoming</span>
+          </div>
+          <h3 class="publication-title">
             <a href="/publications/llm-annotation-reliability/">Assessing the Reliability of LLMs Annotations in the Context of Demographic Bias and Model Explanation</a>
           </h3>
-          <p class="pub-authors">
-            <span class="me">Hadi Mohammadi</span>, Tina Shahedi, Pablo Mosteiro Romero, Massimo Poesio, Ayoub Bagheri, Anastasia Giachanou
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Tina Shahedi, Pablo Mosteiro Romero, Massimo Poesio, Ayoub Bagheri, Anastasia Giachanou
           </p>
-          <p class="pub-venue">Workshop on Gender Bias in Natural Language Processing (GeBNLP), ACL 2025</p>
-
-          <p class="pub-abstract">
-            This paper investigates the reliability of Large Language Models as annotators for sexism detection, examining how demographic factors influence annotation quality. We compare LLM annotations against human annotators across different demographic groups and analyze the explanations provided by both to understand systematic biases.
-          </p>
-
-          <div class="pub-details">
-            <div class="pub-detail">
-              <span class="pub-detail-label">Key Finding</span>
-              <span class="pub-detail-value">GPT-4 achieves 0.84 F1-score but shows demographic bias patterns different from human annotators</span>
-            </div>
-            <div class="pub-detail">
-              <span class="pub-detail-label">Method</span>
-              <span class="pub-detail-value">Comparative analysis of LLM vs. human annotations with SHAP-based explanation analysis</span>
-            </div>
-            <div class="pub-detail">
-              <span class="pub-detail-label">Dataset</span>
-              <span class="pub-detail-value">EDOS dataset with demographic metadata from 150+ annotators</span>
-            </div>
-          </div>
-
-          <div class="pub-links">
+          <p class="publication-venue">Workshop on Gender Bias in Natural Language Processing (GeBNLP), ACL 2025</p>
+          <div class="publication-links">
             <a href="/publications/llm-annotation-reliability/" class="pub-link primary">View Details</a>
             <a href="https://arxiv.org/abs/2507.13138" target="_blank" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
           </div>
         </article>
 
-        <!-- Cultural Morality ECAI -->
-        <article class="publication workshop" data-year="2025">
-          <span class="pub-type">Workshop Paper</span>
-          <h3 class="pub-title">
+        <article class="publication-card workshop" data-year="2025">
+          <div class="publication-meta">
+            <span class="publication-type workshop">Workshop</span>
+            <span class="publication-status">Forthcoming</span>
+          </div>
+          <h3 class="publication-title">
             <a href="/publications/cultural-moral-judgments/">Do Large Language Models Understand Morality Across Cultures?</a>
           </h3>
-          <p class="pub-authors">
-            <span class="me">Hadi Mohammadi</span>, Evi Papadopoulou, Mijntje Meijer, Ayoub Bagheri
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Evi Papadopoulou, Mijntje Meijer, Ayoub Bagheri
           </p>
-          <p class="pub-venue">2nd Workshop on Language Understanding in the Human-Machine Era, ECAI 2025</p>
-
-          <p class="pub-abstract">
-            We examine whether LLMs can understand and reason about moral judgments across different cultural contexts. Using Hofstede's cultural dimensions and Moral Foundations Theory, we evaluate how well models like GPT-4 and Claude represent non-Western moral perspectives.
-          </p>
-
-          <div class="pub-details">
-            <div class="pub-detail">
-              <span class="pub-detail-label">Key Finding</span>
-              <span class="pub-detail-value">LLMs show 87% alignment with individualistic values but only 42% with collectivist perspectives</span>
-            </div>
-            <div class="pub-detail">
-              <span class="pub-detail-label">Method</span>
-              <span class="pub-detail-value">Moral dilemma prompts evaluated across 50+ cultural contexts</span>
-            </div>
-            <div class="pub-detail">
-              <span class="pub-detail-label">Framework</span>
-              <span class="pub-detail-value">Hofstede's dimensions + Haidt's Moral Foundations Theory</span>
-            </div>
-          </div>
-
-          <div class="pub-links">
+          <p class="publication-venue">2nd Workshop on Language Understanding in the Human-Machine Era, ECAI 2025</p>
+          <div class="publication-links">
             <a href="/publications/cultural-moral-judgments/" class="pub-link primary">View Details</a>
             <a href="https://github.com/mohammadi-hadi/cultural-moral-judgments-llms" target="_blank" class="pub-link"><i class="fab fa-github"></i> Code</a>
           </div>
         </article>
 
-        <!-- Explainability Survey -->
-        <article class="publication preprint" data-year="2025">
-          <span class="pub-type">Under Review</span>
-          <h3 class="pub-title">
+        <!-- Under Review -->
+        <article class="publication-card preprint" data-year="2025">
+          <div class="publication-meta">
+            <span class="publication-type preprint">Under Review</span>
+          </div>
+          <h3 class="publication-title">
             <a href="/publications/explainability-survey/">Explainability in Practice: A Survey of Explainable NLP Across Various Domains</a>
           </h3>
-          <p class="pub-authors">
-            <span class="me">Hadi Mohammadi</span>, Ayoub Bagheri, Anastasia Giachanou, Daniel L. Oberski
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Ayoub Bagheri, Anastasia Giachanou, Daniel L. Oberski
           </p>
-          <p class="pub-venue">Under review at Journal of Information Science</p>
-
-          <p class="pub-abstract">
-            A comprehensive survey examining how explainable AI methods are applied across different NLP domains including healthcare, finance, legal, and social media. We analyze 127 papers to identify common patterns, challenges, and best practices in deploying XAI for real-world NLP applications.
-          </p>
-
-          <div class="pub-details">
-            <div class="pub-detail">
-              <span class="pub-detail-label">Scope</span>
-              <span class="pub-detail-value">127 papers across 7 application domains (2019-2024)</span>
-            </div>
-            <div class="pub-detail">
-              <span class="pub-detail-label">Contribution</span>
-              <span class="pub-detail-value">Taxonomy of XAI methods, domain-specific challenges, practical guidelines</span>
-            </div>
-            <div class="pub-detail">
-              <span class="pub-detail-label">Domains</span>
-              <span class="pub-detail-value">Healthcare, Finance, Legal, Social Media, HR, Education, Chatbots</span>
-            </div>
-          </div>
-
-          <div class="pub-links">
+          <p class="publication-venue">Under review at Journal of Information Science</p>
+          <div class="publication-links">
             <a href="/publications/explainability-survey/" class="pub-link primary">View Details</a>
             <a href="https://arxiv.org/abs/2502.00837" target="_blank" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
           </div>
         </article>
 
-        <!-- Token Replacement -->
-        <article class="publication preprint" data-year="2025">
-          <span class="pub-type">Under Review</span>
-          <h3 class="pub-title">
+        <article class="publication-card preprint" data-year="2025">
+          <div class="publication-meta">
+            <span class="publication-type preprint">Under Review</span>
+          </div>
+          <h3 class="publication-title">
             <a href="/publications/ai-text-undetectability/">Explainability-Based Token Replacement on LLM-Generated Text</a>
           </h3>
-          <p class="pub-authors">
-            <span class="me">Hadi Mohammadi</span>, Anastasia Giachanou, Daniel Oberski, Ayoub Bagheri
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Daniel Oberski, Ayoub Bagheri
           </p>
-          <p class="pub-venue">Under review at Journal of Artificial Intelligence Research</p>
-
-          <p class="pub-abstract">
-            We investigate how explainability methods can identify the most "AI-detectable" tokens in generated text and whether strategic replacement of these tokens can evade detection. This work exposes vulnerabilities in current AI detection systems and raises important ethical questions about the arms race between generation and detection.
-          </p>
-
-          <div class="pub-details">
-            <div class="pub-detail">
-              <span class="pub-detail-label">Key Finding</span>
-              <span class="pub-detail-value">SHAP-guided replacement reduces detection from 97% to 38% with minimal text changes</span>
-            </div>
-            <div class="pub-detail">
-              <span class="pub-detail-label">Method</span>
-              <span class="pub-detail-value">SHAP + LIME feature attribution to identify high-detection tokens</span>
-            </div>
-            <div class="pub-detail">
-              <span class="pub-detail-label">Detectors Tested</span>
-              <span class="pub-detail-value">GPTZero, Originality.ai, ZeroGPT, OpenAI Classifier</span>
-            </div>
-          </div>
-
-          <div class="pub-links">
+          <p class="publication-venue">Under review at Journal of Artificial Intelligence Research</p>
+          <div class="publication-links">
             <a href="/publications/ai-text-undetectability/" class="pub-link primary">View Details</a>
             <a href="https://arxiv.org/abs/2506.04050" target="_blank" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
             <a href="https://github.com/mohammadi-hadi/Token-Replacement" target="_blank" class="pub-link"><i class="fab fa-github"></i> Code</a>
           </div>
         </article>
 
-        <!-- Cultural Moral AAI -->
-        <article class="publication preprint" data-year="2025">
-          <span class="pub-type">Under Review</span>
-          <h3 class="pub-title">
+        <article class="publication-card preprint" data-year="2025">
+          <div class="publication-meta">
+            <span class="publication-type preprint">Under Review</span>
+          </div>
+          <h3 class="publication-title">
             <a href="/publications/cultural-moral-judgments/">Exploring Cultural Variations in Moral Judgments with Large Language Models</a>
           </h3>
-          <p class="pub-authors">
-            <span class="me">Hadi Mohammadi</span>, Evi Papadopoulou, Mijntje Meijer, Ayoub Bagheri
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Evi Papadopoulou, Mijntje Meijer, Ayoub Bagheri
           </p>
-          <p class="pub-venue">Under review at Applied Artificial Intelligence</p>
-
-          <p class="pub-abstract">
-            Extended version of our ECAI workshop paper. We present the first comprehensive study examining how LLMs understand and generate moral judgments across different cultural contexts, using 10,000+ culturally-grounded scenarios validated by native speakers and cultural experts.
-          </p>
-
-          <div class="pub-details">
-            <div class="pub-detail">
-              <span class="pub-detail-label">Key Finding</span>
-              <span class="pub-detail-value">45% performance gap between Western and non-WEIRD cultural contexts</span>
-            </div>
-            <div class="pub-detail">
-              <span class="pub-detail-label">Scale</span>
-              <span class="pub-detail-value">10,000+ scenarios across 50+ cultures with expert validation</span>
-            </div>
-            <div class="pub-detail">
-              <span class="pub-detail-label">Models</span>
-              <span class="pub-detail-value">GPT-4, Claude, Llama, multilingual variants</span>
-            </div>
-          </div>
-
-          <div class="pub-links">
+          <p class="publication-venue">Under review at Applied Artificial Intelligence</p>
+          <div class="publication-links">
             <a href="/publications/cultural-moral-judgments/" class="pub-link primary">View Details</a>
             <a href="https://arxiv.org/abs/2506.12433" target="_blank" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
             <a href="https://github.com/mohammadi-hadi/cultural-moral-judgments-llms" target="_blank" class="pub-link"><i class="fab fa-github"></i> Code</a>
@@ -575,41 +572,22 @@
         </article>
       </section>
 
-      <!-- 2024 -->
+      <!-- 2024 Publications -->
       <section class="year-section">
         <h2 class="year-heading">2024</h2>
 
-        <!-- Sexism Detection -->
-        <article class="publication journal" data-year="2024">
-          <span class="pub-type">Journal Article</span>
-          <h3 class="pub-title">
+        <article class="publication-card journal" data-year="2024">
+          <div class="publication-meta">
+            <span class="publication-type journal">Journal Article</span>
+          </div>
+          <h3 class="publication-title">
             <a href="/publications/sexism-detection/">A Transparent Pipeline for Identifying Sexism in Social Media: Combining Explainability with Model Prediction</a>
           </h3>
-          <p class="pub-authors">
-            <span class="me">Hadi Mohammadi</span>, Anastasia Giachanou, Ayoub Bagheri
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Ayoub Bagheri
           </p>
-          <p class="pub-venue">Applied Sciences, Volume 14, Issue 19, 2024</p>
-
-          <p class="pub-abstract">
-            We propose a novel transparent pipeline that combines transformer-based classification with explainability methods to detect and explain sexist content in social media. Our approach not only classifies content but provides human-understandable explanations for why text is flagged as sexist.
-          </p>
-
-          <div class="pub-details">
-            <div class="pub-detail">
-              <span class="pub-detail-label">Performance</span>
-              <span class="pub-detail-value">0.89 F1-score on EDOS benchmark with 94% explanation accuracy</span>
-            </div>
-            <div class="pub-detail">
-              <span class="pub-detail-label">Method</span>
-              <span class="pub-detail-value">RoBERTa + SHAP + LIME in a unified pipeline</span>
-            </div>
-            <div class="pub-detail">
-              <span class="pub-detail-label">XAI Methods</span>
-              <span class="pub-detail-value">SHAP, LIME, Attention visualization, Integrated Gradients</span>
-            </div>
-          </div>
-
-          <div class="pub-links">
+          <p class="publication-venue">Applied Sciences, Volume 14, Issue 19, 2024</p>
+          <div class="publication-links">
             <a href="/publications/sexism-detection/" class="pub-link primary">View Details</a>
             <a href="https://www.mdpi.com/2076-3417/14/19/8620" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> Journal</a>
             <a href="https://github.com/mohammadi-hadi/Explainable-Sexim-Detection" target="_blank" class="pub-link"><i class="fab fa-github"></i> Code</a>
@@ -620,38 +598,68 @@
     </div>
   </main>
 
+  <!-- Back to Top -->
+  <a href="#" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
   <!-- Footer -->
   <footer class="footer">
-    <p>&copy; 2024 Hadi Mohammadi · <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a></p>
+    <p>&copy; 2024 Hadi Mohammadi. Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
   </footer>
 
   <script>
-    // Filter
+    // Filter functionality
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const publications = document.querySelectorAll('.publication');
+    const publicationCards = document.querySelectorAll('.publication-card');
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+
         const filter = btn.getAttribute('data-filter');
 
-        publications.forEach(pub => {
-          pub.style.display = (filter === 'all' || pub.classList.contains(filter)) ? 'block' : 'none';
+        publicationCards.forEach(card => {
+          if (filter === 'all') {
+            card.style.display = 'block';
+          } else {
+            card.style.display = card.classList.contains(filter) ? 'block' : 'none';
+          }
         });
       });
     });
 
-    // Search
-    document.getElementById('searchInput').addEventListener('input', function() {
-      const term = this.value.toLowerCase();
-      publications.forEach(pub => {
-        const text = pub.textContent.toLowerCase();
-        pub.style.display = text.includes(term) ? 'block' : 'none';
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+
+      publicationCards.forEach(card => {
+        const title = card.querySelector('.publication-title').textContent.toLowerCase();
+        const authors = card.querySelector('.publication-authors').textContent.toLowerCase();
+        const venue = card.querySelector('.publication-venue').textContent.toLowerCase();
+
+        card.style.display = (title.includes(searchTerm) || authors.includes(searchTerm) || venue.includes(searchTerm)) ? 'block' : 'none';
       });
+    });
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 
 </body>
 </html>
-<!-- Updated: Sat Dec 27 18:22:49 CET 2025 -->
