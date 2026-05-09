@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Hadi Mohammadi - Publications</title>
+  <meta name="description" content="Publications and research papers by Hadi Mohammadi on Explainable AI, NLP, and Human-AI Collaboration">
+  <meta name="keywords" content="Publications, Research Papers, Explainable AI, NLP, Machine Learning, Academic Research">
+
+  <!-- Favicons -->
+  <link href="/Logo.png" rel="icon">
+  <link href="/Logo.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --text-black: #000000;
+      --text-dark: #1a1a1a;
+      --text-primary: #2d2d2d;
+      --text-secondary: #555555;
+      --text-muted: #777777;
+      --bg-white: #ffffff;
+      --bg-light: #fafafa;
+      --bg-subtle: #f5f5f5;
+      --border: #e0e0e0;
+      --border-dark: #cccccc;
+      --accent: #1a1a1a;
+      --accent-hover: #333333;
+      --journal: #1a1a1a;
+      --conference: #1a1a1a;
+      --workshop: #1a1a1a;
+      --preprint: #555555;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background: var(--bg-white);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      font-weight: 600;
+      color: var(--text-black);
+    }
+
+    a {
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: var(--text-secondary);
+    }
+
+    /* Page Header */
+    .page-header {
+      background: var(--bg-white);
+      padding: 4rem 2rem 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .back-link:hover {
+      color: var(--text-black);
+    }
+
+    .page-header h1 {
+      font-size: 2.75rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Stats */
+    .stats-row {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item {
+      text-align: left;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-black);
+      font-family: 'Source Serif 4', Georgia, serif;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 0.25rem;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* Filter */
+    .filter-section {
+      background: var(--bg-white);
+      padding: 1.5rem 0;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .filter-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+    }
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border-dark);
+      background: var(--bg-white);
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--text-dark);
+      color: var(--text-dark);
+    }
+
+    .filter-btn.active {
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      border: 1px solid var(--border-dark);
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--text-dark);
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    /* Year Section */
+    .year-section {
+      margin-bottom: 3rem;
+    }
+
+    .year-heading {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-black);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--text-black);
+      display: inline-block;
+    }
+
+    /* Publication Cards */
+    .publication-card {
+      background: var(--bg-white);
+      padding: 1.5rem 0;
+      margin-bottom: 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .publication-card:hover {
+      background: var(--bg-subtle);
+    }
+
+    .publication-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .publication-type {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      padding: 0.25rem 0.5rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+    }
+
+    .publication-type.journal { border-color: var(--journal); }
+    .publication-type.conference { border-color: var(--conference); }
+    .publication-type.workshop { border-color: var(--workshop); }
+    .publication-type.preprint { border-color: var(--preprint); background: var(--bg-white); }
+    .publication-type.book { border-color: var(--journal); }
+
+    .publication-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .publication-title {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-black);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .publication-title a {
+      color: inherit;
+    }
+
+    .publication-title a:hover {
+      text-decoration: underline;
+    }
+
+    .publication-authors {
+      color: var(--text-secondary);
+      margin-bottom: 0.35rem;
+      font-size: 0.9rem;
+    }
+
+    .publication-authors strong {
+      color: var(--text-black);
+      font-weight: 600;
+    }
+
+    .publication-venue {
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .publication-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .pub-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      border: 1px solid var(--border-dark);
+      background: var(--bg-white);
+      color: var(--text-secondary);
+    }
+
+    .pub-link:hover {
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
+    }
+
+    .pub-link.primary {
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
+    }
+
+    .pub-link.primary:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Back to top */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      background: var(--text-black);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.2s;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--text-black);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .footer p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+    }
+
+    .footer a {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .footer a:hover {
+      color: white;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-header {
+        padding: 3rem 1.5rem 2rem;
+      }
+
+      .page-header h1 {
+        font-size: 2rem;
+      }
+
+      .stats-row {
+        gap: 2rem;
+      }
+
+      .stat-value {
+        font-size: 1.75rem;
+      }
+
+      .container {
+        padding: 2rem 1.5rem;
+      }
+
+      .publication-card {
+        padding: 1.25rem 0;
+      }
+
+      .publication-title {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="header-content">
+      <a href="/" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </a>
+      <h1>Publications</h1>
+      <p class="page-subtitle">Research in Explainable AI, NLP, and Human-AI Collaboration</p>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-value">82</div>
+          <div class="stat-label">Citations</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">6</div>
+          <div class="stat-label">h-index</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">3</div>
+          <div class="stat-label">i10-index</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+      <div class="filter-label">Filter by type</div>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="journal">Journal</button>
+        <button class="filter-btn" data-filter="conference">Conference</button>
+        <button class="filter-btn" data-filter="workshop">Workshop</button>
+        <button class="filter-btn" data-filter="preprint">Preprint</button>
+        <button class="filter-btn" data-filter="book">Book</button>
+      </div>
+
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search publications...">
+      </div>
+    </div>
+
+    <!-- Publications List -->
+    <div id="publicationsList">
+
+      <!-- 2025 Publications -->
+      <section class="year-section">
+        <h2 class="year-heading">2025</h2>
+
+        <!-- arXiv:2512.22631 - December 2025 -->
+        <article class="publication-card preprint" data-year="2025">
+          <div class="publication-meta">
+            <span class="publication-type preprint">Preprint</span>
+          </div>
+          <h3 class="publication-title">
+            Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs
+          </h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, T. Kozak, Anastasia Giachanou
+          </p>
+          <p class="publication-venue">arXiv preprint arXiv:2512.22631</p>
+          <div class="publication-links">
+            <a href="https://arxiv.org/abs/2512.22631" target="_blank" class="pub-link primary"><i class="fas fa-file-pdf"></i> arXiv</a>
+          </div>
+        </article>
+
+        <!-- arXiv:2510 - October 2025 -->
+        <article class="publication-card preprint" data-year="2025">
+          <div class="publication-meta">
+            <span class="publication-type preprint">Preprint</span>
+          </div>
+          <h3 class="publication-title">
+            EvalMORAAL: Interpretable Chain-of-Thought and LLM-as-Judge Evaluation for Moral Alignment in Large Language Models
+          </h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Robert A. Bagheri
+          </p>
+          <p class="publication-venue">arXiv preprint arXiv:2510.05942</p>
+          <div class="publication-links">
+            <a href="https://arxiv.org/abs/2510.05942" target="_blank" class="pub-link primary"><i class="fas fa-file-pdf"></i> arXiv</a>
+            <a href="https://github.com/mohammadi-hadi/EvalMORAAL" target="_blank" class="pub-link"><i class="fab fa-github"></i> Code</a>
+            <a href="https://doi.org/10.5281/zenodo.20091845" target="_blank" class="pub-link"><i class="fas fa-archive"></i> Zenodo</a>
+          </div>
+        </article>
+
+        <!-- LUHME Workshop ECAI 2025 -->
+        <article class="publication-card workshop" data-year="2025">
+          <div class="publication-meta">
+            <span class="publication-type workshop">Workshop</span>
+          </div>
+          <h3 class="publication-title">
+            <a href="/publications/cultural-moral-judgments/">Do Large Language Models Understand Morality Across Cultures?</a>
+          </h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Yasmeen F.S.S. Meijer, Efthymia Papadopoulou, Robert A. Bagheri
+          </p>
+          <p class="publication-venue">Proceedings of the 2nd LUHME Workshop, ECAI 2025, 30–39</p>
+          <div class="publication-links">
+            <a href="/publications/cultural-moral-judgments/" class="pub-link primary">View Details</a>
+            <a href="https://aclanthology.org/2025.luhme-1.3/" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> ACL Anthology</a>
+            <a href="https://github.com/mohammadi-hadi/cultural-moral-judgments-llms" target="_blank" class="pub-link"><i class="fab fa-github"></i> Code</a>
+            <a href="https://doi.org/10.5281/zenodo.20091843" target="_blank" class="pub-link"><i class="fas fa-archive"></i> Zenodo</a>
+          </div>
+        </article>
+
+        <!-- arXiv:2507 - July 2025 / GeBNLP ACL 2025 -->
+        <article class="publication-card workshop" data-year="2025">
+          <div class="publication-meta">
+            <span class="publication-type workshop">Workshop</span>
+          </div>
+          <h3 class="publication-title">
+            <a href="/publications/llm-annotation-reliability/">Assessing the Reliability of LLMs Annotations in the Context of Demographic Bias and Model Explanation</a>
+          </h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong><sup>&dagger;</sup>, Tina Shahedi<sup>&dagger;</sup>, Pablo Mosteiro, Massimo Poesio, Robert A. Bagheri, Anastasia Giachanou
+          </p>
+          <p class="publication-venue">Proceedings of the 6th Workshop on Gender Bias in Natural Language Processing (GeBNLP), ACL 2025, pp. 92&ndash;104</p>
+          <p class="publication-venue" style="font-size:0.8rem;"><sup>&dagger;</sup> Equal contribution.</p>
+          <div class="publication-links">
+            <a href="/publications/llm-annotation-reliability/" class="pub-link primary">View Details</a>
+            <a href="https://doi.org/10.18653/v1/2025.gebnlp-1.9" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> ACL Anthology</a>
+            <a href="https://arxiv.org/abs/2507.13138" target="_blank" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+            <a href="https://github.com/mohammadi-hadi/Explainable_Annotations_Reliability" target="_blank" class="pub-link"><i class="fab fa-github"></i> Code</a>
+            <a href="https://doi.org/10.5281/zenodo.20091841" target="_blank" class="pub-link"><i class="fas fa-archive"></i> Zenodo</a>
+          </div>
+        </article>
+
+        <!-- arXiv:2506.12433 - June 2025 -->
+        <article class="publication-card preprint" data-year="2025">
+          <div class="publication-meta">
+            <span class="publication-type preprint">Preprint</span>
+          </div>
+          <h3 class="publication-title">
+            <a href="/publications/cultural-moral-judgments/">Exploring Cultural Variations in Moral Judgments with Large Language Models</a>
+          </h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Efthymia Papadopoulou, Yasmeen F.S.S. Meijer, Robert A. Bagheri
+          </p>
+          <p class="publication-venue">arXiv preprint arXiv:2506.12433</p>
+          <div class="publication-links">
+            <a href="/publications/cultural-moral-judgments/" class="pub-link primary">View Details</a>
+            <a href="https://arxiv.org/abs/2506.12433" target="_blank" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+            <a href="https://github.com/mohammadi-hadi/cultural-moral-judgments-llms" target="_blank" class="pub-link"><i class="fab fa-github"></i> Code</a>
+            <a href="https://doi.org/10.5281/zenodo.20091843" target="_blank" class="pub-link"><i class="fas fa-archive"></i> Zenodo</a>
+          </div>
+        </article>
+
+        <!-- arXiv:2506.04050 - June 2025 -->
+        <article class="publication-card preprint" data-year="2025">
+          <div class="publication-meta">
+            <span class="publication-type preprint">Under Review</span>
+          </div>
+          <h3 class="publication-title">
+            <a href="/publications/ai-text-undetectability/">Explainability-Based Token Replacement on LLM-Generated Text</a>
+          </h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Daniel L. Oberski, Robert A. Bagheri
+          </p>
+          <p class="publication-venue">arXiv preprint arXiv:2506.04050</p>
+          <div class="publication-links">
+            <a href="/publications/ai-text-undetectability/" class="pub-link primary">View Details</a>
+            <a href="https://arxiv.org/abs/2506.04050" target="_blank" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+            <a href="https://github.com/mohammadi-hadi/Token-Replacement" target="_blank" class="pub-link"><i class="fab fa-github"></i> Code</a>
+            <a href="https://doi.org/10.5281/zenodo.20091839" target="_blank" class="pub-link"><i class="fas fa-archive"></i> Zenodo</a>
+          </div>
+        </article>
+
+        <!-- arXiv:2502.00837 - February 2025 -->
+        <article class="publication-card preprint" data-year="2025">
+          <div class="publication-meta">
+            <span class="publication-type preprint">Under Review</span>
+          </div>
+          <h3 class="publication-title">
+            <a href="/publications/explainability-survey/">Explainability in Practice: A Survey of Explainable NLP Across Various Domains</a>
+          </h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Robert A. Bagheri, Anastasia Giachanou, Daniel L. Oberski
+          </p>
+          <p class="publication-venue">arXiv preprint arXiv:2502.00837</p>
+          <div class="publication-links">
+            <a href="/publications/explainability-survey/" class="pub-link primary">View Details</a>
+            <a href="https://arxiv.org/abs/2502.00837" target="_blank" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+            <a href="https://github.com/mohammadi-hadi/xnlp-survey" target="_blank" class="pub-link"><i class="fab fa-github"></i> Code</a>
+            <a href="https://doi.org/10.5281/zenodo.20091833" target="_blank" class="pub-link"><i class="fas fa-archive"></i> Zenodo</a>
+          </div>
+        </article>
+
+        <!-- Strategic Organization (under revision) -->
+        <article class="publication-card journal" data-year="2025">
+          <div class="publication-meta">
+            <span class="publication-type journal">Journal Article</span>
+            <span class="publication-status">Under Revision</span>
+          </div>
+          <h3 class="publication-title">
+            Measuring Firm Characteristics with Natural Language Processing (NLP) Models: An error-mitigating framework with tutorial guidance
+          </h3>
+          <p class="publication-authors">
+            Daniel L. Oberski, J. Domenech, J. Garcia-Bernardo, P. Gerbrands, W. Hassink, <strong>Hadi Mohammadi</strong>, P. Mustica, R. Schilpzand, A. Witteloostuijn
+          </p>
+          <p class="publication-venue">Strategic Organization (under revision)</p>
+        </article>
+      </section>
+
+      <!-- 2024 Publications -->
+      <section class="year-section">
+        <h2 class="year-heading">2024</h2>
+
+        <!-- arXiv:2412.00962 - December 2024 -->
+        <article class="publication-card preprint" data-year="2024">
+          <div class="publication-meta">
+            <span class="publication-type preprint">Preprint</span>
+          </div>
+          <h3 class="publication-title">
+            LLMs as Mirrors of Societal Moral Standards: Reflection of Cultural Divergence and Agreement Across Ethical Topics
+          </h3>
+          <p class="publication-authors">
+            Mijntje Meijer, <strong>Hadi Mohammadi</strong>, Robert A. Bagheri
+          </p>
+          <p class="publication-venue">arXiv preprint arXiv:2412.00962</p>
+          <div class="publication-links">
+            <a href="https://arxiv.org/abs/2412.00962" target="_blank" class="pub-link primary"><i class="fas fa-file-pdf"></i> arXiv</a>
+          </div>
+        </article>
+
+        <!-- arXiv:2412.00956 - December 2024 -->
+        <article class="publication-card preprint" data-year="2024">
+          <div class="publication-meta">
+            <span class="publication-type preprint">Preprint</span>
+          </div>
+          <h3 class="publication-title">
+            Large Language Models as Mirrors of Societal Moral Standards
+          </h3>
+          <p class="publication-authors">
+            Efthymia Papadopoulou, <strong>Hadi Mohammadi</strong>, Robert A. Bagheri
+          </p>
+          <p class="publication-venue">arXiv preprint arXiv:2412.00956</p>
+          <div class="publication-links">
+            <a href="https://arxiv.org/abs/2412.00956" target="_blank" class="pub-link primary"><i class="fas fa-file-pdf"></i> arXiv</a>
+          </div>
+        </article>
+
+        <!-- 2024 -->
+        <article class="publication-card preprint" data-year="2024">
+          <div class="publication-meta">
+            <span class="publication-type preprint">Preprint</span>
+          </div>
+          <h3 class="publication-title">
+            Novel Approaches in Financial Fraud Detection: Hybrid Machine Learning and Uncertainty-Based Deep Learning
+          </h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Milad Rahmati, Tina Shahedi
+          </p>
+          <p class="publication-venue">2024</p>
+          <div class="publication-links">
+            <a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ" target="_blank" class="pub-link"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+          </div>
+        </article>
+
+        <!-- Applied Sciences - October 2024 -->
+        <article class="publication-card journal" data-year="2024">
+          <div class="publication-meta">
+            <span class="publication-type journal">Journal Article</span>
+          </div>
+          <h3 class="publication-title">
+            <a href="/publications/sexism-detection/">A Transparent Pipeline for Identifying Sexism in Social Media: Combining Explainability with Model Prediction</a>
+          </h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Robert A. Bagheri
+          </p>
+          <p class="publication-venue">Applied Sciences, Volume 14, Issue 19, 8620, 2024</p>
+          <div class="publication-links">
+            <a href="/publications/sexism-detection/" class="pub-link primary">View Details</a>
+            <a href="https://www.mdpi.com/2076-3417/14/19/8620" target="_blank" class="pub-link"><i class="fas fa-external-link-alt"></i> Journal</a>
+            <a href="https://github.com/mohammadi-hadi/Explainable-Sexism-Detection" target="_blank" class="pub-link"><i class="fab fa-github"></i> Code</a>
+            <a href="https://doi.org/10.5281/zenodo.20091835" target="_blank" class="pub-link"><i class="fas fa-archive"></i> Zenodo</a>
+          </div>
+        </article>
+
+        <!-- CLIN Journal - March 2024 -->
+        <article class="publication-card journal" data-year="2024">
+          <div class="publication-meta">
+            <span class="publication-type journal">Journal Article</span>
+          </div>
+          <h3 class="publication-title">
+            The CLIN33 Shared Task on the Detection of Text Generated by Large Language Models
+          </h3>
+          <p class="publication-authors">
+            Pieter Fivez, Walter Daelemans, Tim Van de Cruys, Yury Kashnitsky, Savvas Chamezopoulos, <strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Robert A. Bagheri, Wessel Poelman, Juraj Vladika, Esther Ploeger, Johannes Bjerva, Florian Matthes, Hans van Halteren
+          </p>
+          <p class="publication-venue">Computational Linguistics in the Netherlands Journal, Volume 13, 233–259, 2024</p>
+          <div class="publication-links">
+            <a href="https://clinjournal.org/clinj/article/view/182" target="_blank" class="pub-link primary"><i class="fas fa-external-link-alt"></i> Journal</a>
+          </div>
+        </article>
+      </section>
+
+      <!-- 2023 Publications -->
+      <section class="year-section">
+        <h2 class="year-heading">2023</h2>
+
+        <article class="publication-card conference" data-year="2023">
+          <div class="publication-meta">
+            <span class="publication-type conference">Conference</span>
+          </div>
+          <h3 class="publication-title">
+            Towards Robust Online Sexism Detection: A Multi-Model Approach with BERT, XLM-RoBERTa, and DistilBERT for EXIST 2023 Tasks
+          </h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Robert A. Bagheri
+          </p>
+          <p class="publication-venue">CLEF 2023: Conference and Labs of the Evaluation Forum, Working Notes, 1000–1011</p>
+          <div class="publication-links">
+            <a href="https://ceur-ws.org/Vol-3497/paper-085.pdf" target="_blank" class="pub-link primary"><i class="fas fa-file-pdf"></i> PDF</a>
+          </div>
+        </article>
+      </section>
+
+      <!-- 2022 Publications -->
+      <section class="year-section">
+        <h2 class="year-heading">2022</h2>
+
+        <!-- Persian RL book - Arshadan Publication, 2022 -->
+        <article class="publication-card book" data-year="2022">
+          <div class="publication-meta">
+            <span class="publication-type book">Book</span>
+          </div>
+          <h3 class="publication-title">
+            Statistical Reinforcement Learning with Application in Dynamic Pricing Problem: Learning from Customer Interaction based on Bayesian Approach
+          </h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>
+          </p>
+          <p class="publication-venue">Tehran: Arshadan Publication, 2022 [In Persian]</p>
+        </article>
+
+        <article class="publication-card journal" data-year="2022">
+          <div class="publication-meta">
+            <span class="publication-type journal">Journal Article</span>
+          </div>
+          <h3 class="publication-title">
+            Home Health Care Problem with Synchronization Visits and Considering Samples Transferring Time: A Case Study in Tehran, Iran
+          </h3>
+          <p class="publication-authors">
+            Mahyar Mirabnejad, <strong>Hadi Mohammadi</strong>, Mehrdad Mirzabaghi, Amir Aghsami, Fariborz Jolai, Maziar Yazdani
+          </p>
+          <p class="publication-venue">International Journal of Environmental Research and Public Health, Volume 19, Issue 22, 15036, 2022</p>
+          <div class="publication-links">
+            <a href="https://www.mdpi.com/1660-4601/19/22/15036" target="_blank" class="pub-link primary"><i class="fas fa-external-link-alt"></i> Journal</a>
+          </div>
+        </article>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Back to Top -->
+  <a href="#" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Hadi Mohammadi. Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
+  </footer>
+
+  <script>
+    // Filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const publicationCards = document.querySelectorAll('.publication-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        publicationCards.forEach(card => {
+          if (filter === 'all') {
+            card.style.display = 'block';
+          } else {
+            card.style.display = card.classList.contains(filter) ? 'block' : 'none';
+          }
+        });
+      });
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+
+      publicationCards.forEach(card => {
+        const title = card.querySelector('.publication-title').textContent.toLowerCase();
+        const authors = card.querySelector('.publication-authors').textContent.toLowerCase();
+        const venue = card.querySelector('.publication-venue').textContent.toLowerCase();
+
+        card.style.display = (title.includes(searchTerm) || authors.includes(searchTerm) || venue.includes(searchTerm)) ? 'block' : 'none';
+      });
+    });
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
