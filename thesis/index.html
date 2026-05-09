@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Let Me Explain! — PhD Thesis | Hadi Mohammadi</title>
+  <meta name="description" content="Let Me Explain! Explainable NLP for Understanding Large Language Models — PhD thesis by Hadi Mohammadi, Utrecht University.">
+  <meta name="keywords" content="PhD thesis, Explainable NLP, Large Language Models, Hadi Mohammadi, Utrecht University, Explainable AI">
+  <meta name="author" content="Hadi Mohammadi">
+
+  <meta property="og:title" content="Let Me Explain! — PhD Thesis by Hadi Mohammadi">
+  <meta property="og:description" content="Explainable NLP for Understanding Large Language Models. PhD thesis, Utrecht University, 2026.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mohammadi.cv/thesis/">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/thesis/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Let Me Explain! — PhD Thesis by Hadi Mohammadi">
+  <meta name="twitter:description" content="Explainable NLP for Understanding Large Language Models. PhD thesis, Utrecht University, 2026.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/thesis/cover.jpg">
+
+  <link rel="canonical" href="https://mohammadi.cv/thesis/">
+  <link rel="icon" type="image/x-icon" href="/Logo.png">
+
+  <!-- Fonts (matches publications detail pages) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --text-black: #000000;
+      --text-dark: #1a1a1a;
+      --text-primary: #2d2d2d;
+      --text-secondary: #555555;
+      --text-muted: #777777;
+      --bg-white: #ffffff;
+      --bg-light: #fafafa;
+      --bg-subtle: #f5f5f5;
+      --border: #e0e0e0;
+      --border-dark: #cccccc;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-primary);
+      line-height: 1.7;
+      background-color: var(--bg-white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      font-weight: 600;
+      color: var(--text-black);
+      letter-spacing: -0.01em;
+    }
+
+    a { color: var(--text-dark); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--text-secondary); }
+
+    /* ---------- Navigation ---------- */
+    .nav-bar {
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-content {
+      max-width: 960px; margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex; gap: 2rem; align-items: center;
+      overflow-x: auto;
+    }
+    .nav-back {
+      color: var(--text-black); font-weight: 600; font-size: 0.9rem;
+      display: flex; align-items: center; gap: 0.5rem; white-space: nowrap;
+    }
+    .nav-back:hover { text-decoration: underline; }
+    .nav-links { display: flex; gap: 1.5rem; margin-left: auto; }
+    .nav-link { color: var(--text-secondary); font-size: 0.9rem; white-space: nowrap; }
+    .nav-link.active { color: var(--text-black); font-weight: 600; }
+    .nav-link:hover { color: var(--text-black); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      max-width: 960px; margin: 0 auto;
+      padding: 4rem 2rem 3rem;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 3rem;
+      align-items: start;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-cover {
+      width: 100%;
+      height: auto;
+      box-shadow:
+        0 1px 2px rgba(0,0,0,0.05),
+        0 8px 24px rgba(0,0,0,0.12);
+      border-radius: 2px;
+      transition: transform 0.4s cubic-bezier(.2,.7,.2,1);
+    }
+    .hero-cover:hover { transform: translateY(-4px); }
+
+    .hero-meta {
+      font-size: 0.78rem; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--text-black);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.025em;
+    }
+    .hero-subtitle {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin-bottom: 1.75rem;
+    }
+    .hero-dutch {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      margin-bottom: 1.75rem;
+    }
+    .hero-dutch strong {
+      color: var(--text-secondary);
+      font-style: italic;
+      font-weight: 500;
+    }
+    .hero-author {
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .hero-author strong { color: var(--text-black); font-weight: 600; }
+    .hero-status {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ---------- Content sections ---------- */
+    section { max-width: 960px; margin: 0 auto; padding: 3rem 2rem; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+
+    .section-title {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 1.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--text-black);
+      display: inline-block;
+    }
+
+    .prose {
+      color: var(--text-primary);
+      line-height: 1.85;
+      max-width: 760px;
+    }
+    .prose p { margin-bottom: 1.25rem; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    /* ---------- Defense info: key-value rows ---------- */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      row-gap: 0.85rem;
+      column-gap: 2rem;
+      max-width: 760px;
+    }
+    .info-key {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      padding-top: 0.15rem;
+    }
+    .info-val {
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+    .committee {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .committee-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .committee-list { list-style: none; }
+    .committee-list li {
+      padding: 0.4rem 0;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+    .committee-list li strong { color: var(--text-primary); font-weight: 500; }
+
+    /* ---------- Chapter overview ---------- */
+    .chapter-section { margin-bottom: 2rem; }
+    .chapter-section:last-child { margin-bottom: 0; }
+    .chapter-section-label {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .chapter-list { list-style: none; }
+    .chapter-item {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+    .chapter-item:last-child { border-bottom: none; }
+    .chapter-num {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-black);
+      text-align: right;
+    }
+    .chapter-title {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-black);
+      line-height: 1.4;
+      margin-bottom: 0.2rem;
+    }
+    .chapter-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ---------- Underlying papers ---------- */
+    .paper-list { list-style: none; }
+    .paper-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .paper-item:last-child { border-bottom: none; }
+    .paper-num {
+      display: inline-block;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-right: 0.5rem;
+    }
+    .paper-citation {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    .paper-citation strong { color: var(--text-black); font-weight: 600; }
+    .paper-citation em { color: var(--text-secondary); }
+    .paper-citation a {
+      color: var(--text-dark);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+    .paper-citation a:hover { color: var(--text-black); }
+    .paper-chapter-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-left: 0.4rem;
+    }
+
+    /* ---------- Citation block ---------- */
+    .citation-block {
+      background: var(--bg-subtle);
+      border-left: 3px solid var(--text-black);
+      padding: 1.5rem 1.75rem;
+      margin-top: 1rem;
+      max-width: 760px;
+      font-family: 'JetBrains Mono', Menlo, Monaco, monospace;
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+
+    /* ---------- Note callout ---------- */
+    .note-callout {
+      max-width: 760px;
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-subtle);
+      border-left: 2px solid var(--text-muted);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    /* ---------- Footer ---------- */
+    .footer {
+      background: var(--text-black);
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      margin-top: 0;
+    }
+    .footer a { color: rgba(255,255,255,0.85); }
+    .footer a:hover { color: white; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 720px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2.5rem 1.5rem 2rem;
+      }
+      .hero-cover { max-width: 240px; margin: 0 auto; display: block; }
+      .hero-title { font-size: 2.1rem; }
+      .hero-subtitle { font-size: 1.1rem; }
+      section { padding: 2.5rem 1.5rem; }
+      .info-grid { grid-template-columns: 1fr; row-gap: 0.4rem; }
+      .info-key { padding-top: 0.5rem; }
+      .info-val { padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+      .info-val:last-of-type { border-bottom: none; }
+      .chapter-item { grid-template-columns: 2rem 1fr; gap: 0.75rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sticky nav -->
+  <nav class="nav-bar">
+    <div class="nav-content">
+      <a href="/" class="nav-back">
+        <i class="fas fa-arrow-left"></i> Hadi Mohammadi
+      </a>
+      <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/publications/" class="nav-link">Publications</a>
+        <a href="/thesis/" class="nav-link active">Thesis</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div>
+      <img src="/assets/img/thesis/cover.jpg"
+           srcset="/assets/img/thesis/cover.jpg 600w, /assets/img/thesis/cover-large.jpg 800w"
+           sizes="(max-width: 720px) 240px, 280px"
+           alt="Cover of the thesis Let Me Explain!"
+           class="hero-cover">
+    </div>
+    <div>
+      <div class="hero-meta">Doctoral Thesis &middot; Utrecht University</div>
+      <h1 class="hero-title">Let Me Explain!</h1>
+      <p class="hero-subtitle">Explainable NLP for Understanding Large Language Models</p>
+
+      <div class="hero-dutch">
+        <strong>Laat me uitleggen!</strong><br>
+        Verklaarbare NLP voor het Begrijpen van Grote Taalmodellen<br>
+        <span style="font-size: 0.8rem;">(met een samenvatting in het Nederlands)</span>
+      </div>
+
+      <p class="hero-author">by <strong>Hadi Mohammadi</strong></p>
+      <p class="hero-status">Defense forthcoming, 2026 &middot; Utrecht University</p>
+    </div>
+  </header>
+
+  <!-- Synopsis -->
+  <section>
+    <h2 class="section-title">About this thesis</h2>
+    <div class="prose">
+      <p>
+        This thesis presents six connected studies on explainable Natural Language Processing (NLP) for understanding large language models (LLMs). As LLMs grow more capable and widely deployed, methods to understand, verify, and evaluate their behavior across different contexts and cultures have lagged behind their raw performance.
+      </p>
+      <p>
+        The work addresses three dimensions of this gap. The first is methodological: explanation methods that travel well from generic feature attribution to the linguistic and cultural complexity of text. The second is empirical: the reliability of LLM-produced annotations under demographic bias and prompt variation. The third is normative: cross-cultural moral alignment, asking whether large models reflect a narrow set of values when deployed globally, and how to evaluate that systematically.
+      </p>
+      <p>
+        Across nine chapters and six core studies, the thesis combines a survey of the explainable NLP literature with empirical work on sexism detection, AI-text detection, annotator demographic bias, and moral alignment evaluation against the World Values Survey and PEW Global Attitudes Survey.
+      </p>
+    </div>
+  </section>
+
+  <!-- Defense info -->
+  <section>
+    <h2 class="section-title">Defense information</h2>
+    <div class="info-grid">
+      <div class="info-key">University</div>
+      <div class="info-val">Utrecht University, The Netherlands</div>
+
+      <div class="info-key">Department</div>
+      <div class="info-val">Methodology and Statistics</div>
+
+      <div class="info-key">Promotor</div>
+      <div class="info-val">Prof. dr. Daniel L. Oberski</div>
+
+      <div class="info-key">Promotor</div>
+      <div class="info-val">Dr. Robert A. Bagheri</div>
+
+      <div class="info-key">Co-promotor</div>
+      <div class="info-val">Dr. Anastasia Giachanou</div>
+
+      <div class="info-key">Defense</div>
+      <div class="info-val">Forthcoming, 2026</div>
+    </div>
+
+    <div class="committee">
+      <div class="committee-label">Reading committee</div>
+      <ul class="committee-list">
+        <li><strong>Prof. dr. Antal van den Bosch</strong> &mdash; Utrecht University</li>
+        <li><strong>Prof. dr. Mehdi Dastani</strong> &mdash; Utrecht University</li>
+        <li><strong>Prof. dr. Els Lefever</strong> &mdash; Ghent University</li>
+        <li><strong>Prof. dr. Rens van de Schoot</strong> &mdash; Utrecht University</li>
+        <li><strong>Prof. dr. Suzan Verberne</strong> &mdash; Leiden University</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Chapter overview -->
+  <section>
+    <h2 class="section-title">Chapter overview</h2>
+
+    <div class="chapter-section">
+      <span class="chapter-section-label">Section I &middot; Opening</span>
+      <ul class="chapter-list">
+        <li class="chapter-item">
+          <span class="chapter-num">1</span>
+          <div>
+            <div class="chapter-title">Introduction</div>
+            <div class="chapter-desc">The opacity challenge of LLMs, the case for explainability across high-stakes domains, and an overview of the thesis contributions.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="chapter-section">
+      <span class="chapter-section-label">Section II &middot; Foundations of Explainable NLP</span>
+      <ul class="chapter-list">
+        <li class="chapter-item">
+          <span class="chapter-num">2</span>
+          <div>
+            <div class="chapter-title">Survey of Explainable NLP Applications</div>
+            <div class="chapter-desc">A domain-specific review of XNLP across healthcare, finance, content moderation, customer relationship management, and beyond &mdash; with a critical take on evaluation, real-world applicability, and the role of human interaction.</div>
+          </div>
+        </li>
+        <li class="chapter-item">
+          <span class="chapter-num">3</span>
+          <div>
+            <div class="chapter-title">A Transparent Pipeline for Identifying Sexism in Social Media</div>
+            <div class="chapter-desc">An explainable detection pipeline that combines a CustomBERT ensemble with LIME and SHAP explanations to identify sexism in English and Spanish social-media posts.</div>
+          </div>
+        </li>
+        <li class="chapter-item">
+          <span class="chapter-num">4</span>
+          <div>
+            <div class="chapter-title">Token-Level Robustness in AI-Generated Text Detection</div>
+            <div class="chapter-desc">Explainability-guided token replacement reveals brittle features in AI-text detectors, and shows how explanation-targeted edits flip detector outputs while preserving meaning.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="chapter-section">
+      <span class="chapter-section-label">Section III &middot; Human-Centered AI and Moral Alignment</span>
+      <ul class="chapter-list">
+        <li class="chapter-item">
+          <span class="chapter-num">5</span>
+          <div>
+            <div class="chapter-title">Benefits of Explainable NLP in the Annotation Process</div>
+            <div class="chapter-desc">A study of how explainability tools and demographic personas affect LLM annotation reliability, with mixed-effects models that quantify variability sources.</div>
+          </div>
+        </li>
+        <li class="chapter-item">
+          <span class="chapter-num">6</span>
+          <div>
+            <div class="chapter-title">Exploring Cultural Variations in Moral Judgments with LLMs</div>
+            <div class="chapter-desc">Probing whether LLMs mirror cross-cultural moral attitudes from the World Values Survey, comparing log-probability scoring against country-level ground truth.</div>
+          </div>
+        </li>
+        <li class="chapter-item">
+          <span class="chapter-num">7</span>
+          <div>
+            <div class="chapter-title">EvalMORAAL: Chain-of-Thought and LLM-as-Judge Evaluation</div>
+            <div class="chapter-desc">A transparent CoT framework evaluating moral alignment in 20 LLMs against the WVS and PEW surveys, with model-as-judge peer review and a persistent Western / non-Western alignment gap.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="chapter-section">
+      <span class="chapter-section-label">Section IV &middot; Closing</span>
+      <ul class="chapter-list">
+        <li class="chapter-item">
+          <span class="chapter-num">8</span>
+          <div>
+            <div class="chapter-title">Discussion and Conclusion</div>
+            <div class="chapter-desc">Cross-chapter synthesis, limitations, and directions for future work in explainable NLP and culturally aware language models.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Underlying papers -->
+  <section>
+    <h2 class="section-title">Underlying papers</h2>
+    <div class="prose" style="margin-bottom: 1.5rem;">
+      <p>The empirical chapters are based on six peer-reviewed and preprint papers, listed in chapter order. The full publication list, including pre-PhD work, lives on the <a href="/publications/" style="text-decoration: underline;">publications page</a>.</p>
+    </div>
+
+    <ul class="paper-list">
+      <li class="paper-item">
+        <div class="paper-citation">
+          <span class="paper-num">[1]</span>
+          <strong>Mohammadi, H.</strong>, Bagheri, R. A., Giachanou, A., &amp; Oberski, D. L. (2025). Explainability in Practice: A Survey of Explainable NLP Across Various Domains. <em>arXiv preprint</em> <a href="https://arxiv.org/abs/2502.00837" target="_blank" rel="noopener">arXiv:2502.00837</a>.
+          <span class="paper-chapter-tag">&middot; Chapter 2</span>
+        </div>
+      </li>
+      <li class="paper-item">
+        <div class="paper-citation">
+          <span class="paper-num">[2]</span>
+          <strong>Mohammadi, H.</strong>, Giachanou, A., &amp; Bagheri, R. A. (2024). A Transparent Pipeline for Identifying Sexism in Social Media: Combining Explainability with Model Prediction. <em>Applied Sciences, 14</em>(19), 8620. <a href="https://doi.org/10.3390/app14198620" target="_blank" rel="noopener">doi:10.3390/app14198620</a>.
+          <span class="paper-chapter-tag">&middot; Chapter 3</span>
+        </div>
+      </li>
+      <li class="paper-item">
+        <div class="paper-citation">
+          <span class="paper-num">[3]</span>
+          <strong>Mohammadi, H.</strong>, Giachanou, A., Oberski, D. L., &amp; Bagheri, R. A. (2025). Explainability-Based Token Replacement on LLM-Generated Text. <em>arXiv preprint</em> <a href="https://arxiv.org/abs/2506.04050" target="_blank" rel="noopener">arXiv:2506.04050</a>.
+          <span class="paper-chapter-tag">&middot; Chapter 4</span>
+        </div>
+      </li>
+      <li class="paper-item">
+        <div class="paper-citation">
+          <span class="paper-num">[4]</span>
+          <strong>Mohammadi, H.</strong><sup>&dagger;</sup>, Shahedi, T.<sup>&dagger;</sup>, Mosteiro, P., Poesio, M., Bagheri, R. A., &amp; Giachanou, A. (2025). Assessing the Reliability of LLM Annotations in the Context of Demographic Bias and Model Explanation. <em>Workshop on Gender Bias in Natural Language Processing (GeBNLP), ACL 2025</em>, pp.&nbsp;92&ndash;104. <a href="https://doi.org/10.18653/v1/2025.gebnlp-1.9" target="_blank" rel="noopener">ACL Anthology</a>.
+          <span class="paper-chapter-tag">&middot; Chapter 5</span>
+        </div>
+      </li>
+      <li class="paper-item">
+        <div class="paper-citation">
+          <span class="paper-num">[5]</span>
+          <strong>Mohammadi, H.</strong>, Meijer, Y. F. S. S., Papadopoulou, E., &amp; Bagheri, R. A. (2025). Do Large Language Models Understand Morality Across Cultures? <em>Proceedings of the 2nd LUHME Workshop</em>, pp.&nbsp;30&ndash;39. <a href="https://aclanthology.org/2025.luhme-1.3/" target="_blank" rel="noopener">ACL Anthology</a>.
+          <span class="paper-chapter-tag">&middot; Chapter 6</span>
+        </div>
+      </li>
+      <li class="paper-item">
+        <div class="paper-citation">
+          <span class="paper-num">[6]</span>
+          <strong>Mohammadi, H.</strong>, Giachanou, A., &amp; Bagheri, R. A. (2026). EvalMORAAL: Interpretable Chain-of-Thought and LLM-as-Judge Evaluation for Moral Alignment in Large Language Models. <em>Proceedings of the 15th Joint Conference on Lexical and Computational Semantics (*SEM 2026), ACL 2026</em> (in press). <a href="https://arxiv.org/abs/2510.05942" target="_blank" rel="noopener">arXiv:2510.05942</a>.
+          <span class="paper-chapter-tag">&middot; Chapter 7</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="note-callout">
+      <sup>&dagger;</sup> Equal contribution.
+    </div>
+  </section>
+
+  <!-- Citation -->
+  <section>
+    <h2 class="section-title">How to cite</h2>
+    <div class="prose">
+      <p>The full reference will be updated when the thesis is officially deposited with Utrecht University after the defense. For now, please cite as:</p>
+    </div>
+    <pre class="citation-block">@phdthesis{mohammadi2026letmeexplain,
+  author = {Mohammadi, Hadi},
+  title  = {Let Me Explain! Explainable NLP for Understanding
+            Large Language Models},
+  school = {Utrecht University},
+  year   = {2026},
+  type   = {Doctoral thesis},
+  note   = {Forthcoming}
+}</pre>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Hadi Mohammadi &middot; <a href="https://orcid.org/0000-0003-0860-9200" target="_blank" rel="noopener">ORCID 0000-0003-0860-9200</a> &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+  </footer>
+
+</body>
+</html>
