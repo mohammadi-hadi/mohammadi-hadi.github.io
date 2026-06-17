@@ -342,6 +342,52 @@
     .footer a { color: rgba(255,255,255,0.85); }
     .footer a:hover { color: white; }
 
+    /* ---------- Flipbook callout ---------- */
+    .flipbook-card {
+      display: flex; gap: 1.75rem; align-items: stretch;
+      max-width: 760px; padding: 1.5rem;
+      background: linear-gradient(180deg, #fafafa, #f2f5f7);
+      border: 1px solid var(--border); border-radius: 10px;
+    }
+    .flipbook-thumb {
+      position: relative; flex: 0 0 auto; align-self: center; display: block; width: 130px;
+      border-radius: 4px; overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.16);
+      transition: transform 0.35s cubic-bezier(.2,.7,.2,1);
+    }
+    .flipbook-thumb:hover { transform: translateY(-3px); }
+    .flipbook-thumb img { display: block; width: 100%; height: auto; }
+    .flipbook-thumb-badge {
+      position: absolute; top: 8px; right: 8px; width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(19,39,63,0.92); color: #cdeee7;
+      display: flex; align-items: center; justify-content: center; font-size: 11px;
+    }
+    .flipbook-body { display: flex; flex-direction: column; justify-content: center; gap: 0.6rem; }
+    .flipbook-tag {
+      display: inline-flex; align-items: center; gap: 0.4rem; align-self: flex-start;
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em;
+      color: #2c6e63; background: #e7f3f0; border: 1px solid #cfe7e1;
+      padding: 0.25rem 0.6rem; border-radius: 999px;
+    }
+    .flipbook-title {
+      font-family: 'Source Serif 4', Georgia, serif; font-size: 1.25rem; font-weight: 700;
+      color: var(--text-black); line-height: 1.3;
+    }
+    .flipbook-desc { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; max-width: 48ch; }
+    .flipbook-btn {
+      align-self: flex-start; display: inline-flex; align-items: center; gap: 0.55rem;
+      background: var(--text-black); color: #fff; padding: 0.7rem 1.2rem; border-radius: 8px;
+      font-size: 0.92rem; font-weight: 600; transition: 0.18s; margin-top: 0.2rem;
+    }
+    .flipbook-btn:hover { background: #333; color: #fff; transform: translateY(-1px); }
+    .flipbook-hint { font-size: 0.82rem; color: var(--text-muted); font-style: italic; }
+    @media (max-width: 720px) {
+      .flipbook-card { flex-direction: column; align-items: center; text-align: center; padding: 1.5rem 1.25rem; gap: 1.1rem; }
+      .flipbook-thumb { width: 120px; }
+      .flipbook-tag, .flipbook-btn { align-self: center; }
+      .flipbook-desc { max-width: none; }
+    }
+
     /* ---------- Responsive ---------- */
     @media (max-width: 720px) {
       .hero {
@@ -399,9 +445,27 @@
       </div>
 
       <p class="hero-author">by <strong>Hadi Mohammadi</strong></p>
-      <p class="hero-status">Defense forthcoming, 2026 &middot; Utrecht University</p>
+      <p class="hero-status">Public defense &middot; 9 September 2026, 14:15 &middot; Utrecht University</p>
     </div>
   </header>
+
+  <!-- Read the thesis (interactive flipbook) -->
+  <section id="read">
+    <h2 class="section-title">Read the thesis</h2>
+    <div class="flipbook-card">
+      <a class="flipbook-thumb" href="/thesis/flipbook/" aria-label="Open the flipbook">
+        <img src="/assets/img/thesis/cover.jpg" alt="Cover — open the flipbook">
+        <span class="flipbook-thumb-badge"><i class="fas fa-lock"></i></span>
+      </a>
+      <div class="flipbook-body">
+        <span class="flipbook-tag"><i class="fas fa-lock" style="font-size:0.65rem"></i> Private preview &middot; public after the defense</span>
+        <h3 class="flipbook-title">Flip through the full thesis online</h3>
+        <p class="flipbook-desc">An interactive, page-turning edition &mdash; read it like the printed book, right in your browser, on any device. It is password-protected during the embargo and opens to everyone after the public defense on 9&nbsp;September&nbsp;2026.</p>
+        <a class="flipbook-btn" href="/thesis/flipbook/"><i class="fas fa-book-open"></i> Open the flipbook</a>
+        <p class="flipbook-hint">Have the password? It opens instantly. Otherwise, check back after the defense.</p>
+      </div>
+    </div>
+  </section>
 
   <!-- Synopsis -->
   <section>
@@ -436,7 +500,13 @@
       <div class="info-val">Dr. Anastasia Giachanou</div>
 
       <div class="info-key">Defense</div>
-      <div class="info-val">Forthcoming, 2026</div>
+      <div class="info-val">Wednesday 9 September 2026, 14:15</div>
+
+      <div class="info-key">Layman's talk</div>
+      <div class="info-val">14:00</div>
+
+      <div class="info-key">Venue</div>
+      <div class="info-val">Academiegebouw, Domplein 29, 3512 JE Utrecht</div>
     </div>
   </section>
 
@@ -595,7 +665,7 @@
   school = {Utrecht University},
   year   = {2026},
   type   = {Doctoral thesis},
-  note   = {Forthcoming}
+  note   = {To be defended 9 September 2026}
 }</pre>
   </section>
 

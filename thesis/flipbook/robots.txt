@@ -1,0 +1,4 @@
+# Private preview — keep search engines out while unlisted.
+# When you make the flipbook public, replace this with "Allow: /" (or delete the file).
+User-agent: *
+Disallow: /
