@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Let Me Explain! — Flipbook · Hadi Mohammadi (PhD thesis)</title>
+<meta name="description" content="Let Me Explain! Explainable NLP for Understanding Large Language Models — interactive flipbook of the PhD thesis by Hadi Mohammadi, Utrecht University." />
+<meta name="author" content="Hadi Mohammadi" />
+<meta name="theme-color" content="#13273F" />
+<!-- PRIVATE preview: keep this while the flipbook is unlisted; delete this one line when you make it public -->
+<meta name="robots" content="noindex, nofollow" />
+<!-- Open Graph / social -->
+<meta property="og:type" content="book" />
+<meta property="og:title" content="Let Me Explain! — PhD thesis flipbook" />
+<meta property="og:description" content="Explainable NLP for Understanding Large Language Models — Hadi Mohammadi, Utrecht University." />
+<meta property="og:image" content="thumbs/page-001.webp" />
+<link rel="icon" href="thumbs/page-001.webp" />
+<link rel="stylesheet" href="assets/flipbook.css" />
+</head>
+<body>
+<a class="fb-skip" href="#flipbook">Skip to the book</a>
+
+<header class="fb-topbar">
+  <div class="fb-brand">
+    <span class="fb-brand-title">Let&nbsp;Me&nbsp;Explain!</span>
+    <span class="fb-brand-sub">Explainable NLP for Understanding Large Language Models</span>
+  </div>
+  <div class="fb-brand-meta">
+    <span class="fb-author">Hadi Mohammadi</span>
+    <span class="fb-dot">·</span>
+    <span>PhD thesis, Utrecht University</span>
+    <span class="fb-dot">·</span>
+    <span>Public defense 9 September 2026, 14:15</span>
+  </div>
+</header>
+
+<main class="fb-stage" id="fb-stage">
+  <div id="fb-loading" class="fb-loading" role="status" aria-live="polite">
+    <div class="fb-spinner" aria-hidden="true"></div>
+    <p>Opening the thesis…</p>
+  </div>
+  <button class="fb-edge fb-edge--prev" id="fb-edge-prev" aria-label="Previous page" title="Previous (←)">‹</button>
+  <div id="flipbook" class="fb-book" aria-label="Thesis pages"></div>
+  <button class="fb-edge fb-edge--next" id="fb-edge-next" aria-label="Next page" title="Next (→)">›</button>
+</main>
+
+<nav class="fb-controls" aria-label="Reader controls">
+  <div class="fb-controls-group">
+    <button id="fb-cover" class="fb-btn" title="Full cover overview (c)"><span class="fb-ico">⊞</span><span class="fb-label">Cover</span></button>
+    <button id="fb-toc" class="fb-btn" aria-haspopup="true" aria-expanded="false" title="Table of contents (t)"><span class="fb-ico">☰</span><span class="fb-label">Contents</span></button>
+    <button id="fb-grid" class="fb-btn" title="All pages (g)"><span class="fb-ico">▦</span><span class="fb-label">Pages</span></button>
+  </div>
+
+  <div class="fb-controls-group fb-controls-center">
+    <button id="fb-prev" class="fb-btn fb-btn--round" aria-label="Previous page" title="Previous (←)">‹</button>
+    <input id="fb-slider" class="fb-slider" type="range" min="0" max="295" value="0" step="1" aria-label="Jump to page" />
+    <button id="fb-next" class="fb-btn fb-btn--round" aria-label="Next page" title="Next (→)">›</button>
+    <span id="fb-counter" class="fb-counter" aria-live="polite">Front cover</span>
+  </div>
+
+  <div class="fb-controls-group">
+    <button id="fb-zoom" class="fb-btn" title="Zoom current page (z)"><span class="fb-ico">⤢</span><span class="fb-label">Zoom</span></button>
+    <button id="fb-full" class="fb-btn" title="Fullscreen (f)"><span class="fb-ico">⛶</span><span class="fb-label">Fullscreen</span></button>
+    <a id="fb-download" class="fb-btn fb-btn--link" href="https://mohammadi.cv/thesis/" target="_blank" rel="noopener" title="Download / source"><span class="fb-ico">⭳</span><span class="fb-label">Download</span></a>
+  </div>
+</nav>
+
+<!-- Table of contents drawer -->
+<aside id="fb-drawer" class="fb-drawer" aria-hidden="true" aria-label="Table of contents">
+  <div class="fb-drawer-head">
+    <h2>Contents</h2>
+    <button id="fb-drawer-close" class="fb-iconbtn" aria-label="Close contents">✕</button>
+  </div>
+  <ul id="fb-toc-list" class="fb-toc-list"></ul>
+</aside>
+
+<!-- All-pages thumbnail grid -->
+<div id="fb-gridview" class="fb-gridview" aria-hidden="true">
+  <div class="fb-gridview-head">
+    <h2>All pages</h2>
+    <button id="fb-grid-close" class="fb-iconbtn" aria-label="Close page grid">✕</button>
+  </div>
+  <div id="fb-grid-cells" class="fb-grid-cells"></div>
+</div>
+
+<!-- Zoom modal -->
+<div id="fb-zoommodal" class="fb-zoommodal" aria-hidden="true">
+  <button id="fb-zoom-close" class="fb-iconbtn fb-zoom-close" aria-label="Close zoom">✕</button>
+  <div class="fb-zoom-scroll"><img id="fb-zoom-img" alt="Zoomed page" /></div>
+</div>
+
+<!-- Intro overview: the full printed cover (back · spine · front) -->
+<div id="fb-intro" class="fb-intro" aria-hidden="true">
+  <div class="fb-intro-inner">
+    <img id="fb-intro-img" class="fb-intro-wrap" alt="Full printed cover — back, spine and front" />
+    <p class="fb-intro-cap">The full cover &nbsp;&middot;&nbsp; back &nbsp;·&nbsp; spine &nbsp;·&nbsp; front</p>
+    <button id="fb-intro-enter" class="fb-intro-btn">Open the book&nbsp;&rarr;</button>
+  </div>
+</div>
+
+<div id="fb-overlay" class="fb-overlay" hidden></div>
+
+<!-- Password gate (only active when the build is encrypted) -->
+<div id="fb-gate" class="fb-gate" aria-hidden="true">
+  <form id="fb-gate-form" class="fb-gate-card">
+    <div class="fb-gate-mark">Let&nbsp;Me&nbsp;Explain!</div>
+    <p class="fb-gate-sub">A private preview — opening to everyone after the<br />defense on 9 September 2026. Enter the password to read it now.</p>
+    <input id="fb-gate-pw" class="fb-gate-input" type="password" placeholder="Password" autocomplete="current-password" aria-label="Password" />
+    <button id="fb-gate-go" class="fb-gate-btn" type="submit">Unlock</button>
+    <p id="fb-gate-err" class="fb-gate-err" role="alert"></p>
+    <p id="fb-gate-prog" class="fb-gate-prog"></p>
+  </form>
+</div>
+
+<script>window.FLIPBOOK_CONFIG={encrypted:true};</script>
+<script src="assets/crypto.js"></script>
+<script src="assets/page-flip.browser.js"></script>
+<script src="assets/flipbook.js"></script>
+</body>
+</html>
