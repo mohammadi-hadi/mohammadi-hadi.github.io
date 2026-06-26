@@ -8,13 +8,13 @@
   var CFG = window.FLIPBOOK_CONFIG || {};
   var ENC = !!CFG.encrypted;
 
-  // ---- page model (openright parity; covers are thesis.pdf p1 / p295) ----
-  var INTERIOR = 292;                 // PDF pages 3..294
+  // ---- page model (openright parity; covers are thesis.pdf p1 / p291) ----
+  var INTERIOR = 288;                 // PDF pages 3..290
   var COVER_FRONT = 0, INSIDE_FRONT = 1, FIRST = 2;
-  var LAST = FIRST + INTERIOR - 1;    // 293
-  var INSIDE_BACK = LAST + 1;         // 294
-  var COVER_BACK = LAST + 2;          // 295
-  var TOTAL = COVER_BACK + 1;         // 296
+  var LAST = FIRST + INTERIOR - 1;    // 289
+  var INSIDE_BACK = LAST + 1;         // 290
+  var COVER_BACK = LAST + 2;          // 291
+  var TOTAL = COVER_BACK + 1;         // 292
   var EAGER = 5;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -23,13 +23,13 @@
   function isInside(i) { return i === INSIDE_FRONT || i === INSIDE_BACK; }
   function pageSrc(i) {
     if (i === COVER_FRONT) return "pages/page-001.webp";
-    if (i === COVER_BACK) return "pages/page-295.webp";
+    if (i === COVER_BACK) return "pages/page-291.webp";
     if (isInside(i)) return "pages/page-inside.webp";
     return "pages/page-" + pad(i + 1) + ".webp";
   }
   function thumbSrc(i) {
     if (i === COVER_FRONT) return "thumbs/page-001.webp";
-    if (i === COVER_BACK) return "thumbs/page-295.webp";
+    if (i === COVER_BACK) return "thumbs/page-291.webp";
     if (isInside(i)) return "thumbs/page-inside.webp";
     return "thumbs/page-" + pad(i + 1) + ".webp";
   }
