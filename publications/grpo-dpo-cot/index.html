@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs</title>
+  <meta name="description" content="Evaluating GRPO and DPO optimization methods for improving the faithfulness of chain-of-thought reasoning in large language models">
+  <meta property="og:title" content="Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs">
+  <meta property="og:description" content="Evaluating GRPO and DPO optimization methods for improving the faithfulness of chain-of-thought reasoning in large language models">
+  <meta property="og:url" content="https://mohammadi.cv/publications/grpo-dpo-cot/">
+  <link rel="canonical" href="https://mohammadi.cv/publications/grpo-dpo-cot/">
+  <meta name="keywords" content="GRPO, DPO, Chain-of-Thought, Faithfulness, LLM, Reasoning, Alignment, Safety, NLP">
+
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/css/site.css">
+
+  <style>
+    :root {
+      --text-black: #000000;
+      --text-dark: #1a1a1a;
+      --text-primary: #2d2d2d;
+      --text-secondary: #555555;
+      --text-muted: #777777;
+      --bg-white: #ffffff;
+      --bg-light: #fafafa;
+      --bg-subtle: #f5f5f5;
+      --border: #e0e0e0;
+      --border-dark: #cccccc;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background: var(--bg-white);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600;
+      color: var(--text-black);
+    }
+
+    a { color: var(--text-dark); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--text-secondary); }
+
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 0.75rem 2rem;
+    }
+
+    .nav-content {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    .nav-back:hover { color: var(--text-black); }
+
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { color: var(--text-muted); font-size: 0.85rem; }
+    .nav-links a:hover { color: var(--text-black); }
+
+    .paper-header {
+      padding: 6rem 2rem 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .paper-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .paper-type {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      padding: 0.25rem 0.5rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+    }
+
+    .paper-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+    }
+
+    .paper-authors {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .paper-authors strong { color: var(--text-black); font-weight: 600; }
+
+    .paper-affiliation {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .paper-venue {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .paper-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+    .paper-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid var(--border-dark);
+      background: var(--bg-white);
+      color: var(--text-secondary);
+      transition: all 0.2s;
+    }
+
+    .paper-link:hover {
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
+    }
+
+    .paper-link.primary {
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
+    }
+
+    .paper-link.primary:hover { background: var(--text-dark); }
+
+    .content { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+    .section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--text-black);
+      display: inline-block;
+    }
+
+    .abstract-text {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--text-secondary);
+      text-align: justify;
+    }
+
+    .contributions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .contribution-item {
+      padding: 1.5rem;
+      background: var(--bg-subtle);
+      border-left: 3px solid var(--text-black);
+    }
+
+    .contribution-title {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-black);
+    }
+
+    .contribution-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .methodology-steps { counter-reset: step; }
+
+    .method-step {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .method-step:last-child { border-bottom: none; }
+
+    .step-number {
+      counter-increment: step;
+      width: 36px;
+      height: 36px;
+      background: var(--text-black);
+      color: var(--bg-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .step-number::before { content: counter(step); }
+
+    .step-content h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .step-content p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+
+    .findings-box {
+      background: var(--bg-subtle);
+      border-left: 3px solid var(--text-black);
+      padding: 1.5rem;
+    }
+
+    .findings-box p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .findings-box p:last-child { margin-bottom: 0; }
+
+    .citation-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .citation-code {
+      font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+      font-size: 0.8rem;
+      color: var(--text-primary);
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.4rem 0.75rem;
+      background: var(--bg-white);
+      border: 1px solid var(--border-dark);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .copy-btn:hover {
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
+    }
+
+    .footer {
+      background: var(--text-black);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
+    .footer-links a { color: rgba(255, 255, 255, 0.7); font-size: 1.25rem; }
+    .footer-links a:hover { color: white; }
+    .footer p { color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .paper-header { padding: 5rem 1.5rem 2rem; }
+      .paper-title { font-size: 1.75rem; }
+      .content { padding: 0 1.5rem; }
+      .contributions-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <nav class="nav-bar">
+    <div class="nav-content">
+      <a href="/publications/" class="nav-back">
+        <i class="fas fa-arrow-left"></i> Publications
+      </a>
+      <div class="nav-links">
+        <a href="#abstract">Abstract</a>
+        <a href="#contributions">Contributions</a>
+        <a href="#citation">Citation</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="paper-header">
+    <div class="paper-meta">
+      <span class="paper-type">Preprint</span>
+    </div>
+
+    <h1 class="paper-title">Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs</h1>
+
+    <p class="paper-authors">
+      <strong>Hadi Mohammadi</strong>, Tam&aacute;s Koz&aacute;k, Anastasia Giachanou
+    </p>
+    <p class="paper-affiliation">Utrecht University, The Netherlands</p>
+    <p class="paper-venue">arXiv preprint arXiv:2512.22631, December 2025</p>
+
+    <div class="paper-links">
+      <a href="https://arxiv.org/abs/2512.22631" class="paper-link primary" target="_blank">
+        <i class="fas fa-file-pdf"></i> Read Paper
+      </a>
+      <a href="#citation" class="paper-link">
+        <i class="fas fa-quote-left"></i> Cite
+      </a>
+    </div>
+  </header>
+
+  <main class="content">
+
+    <section id="abstract" class="section">
+      <h2 class="section-title">Abstract</h2>
+      <div class="abstract-text">
+        <p>
+          Chain-of-thought (CoT) reasoning has emerged as a powerful technique for improving the problem-solving capabilities of large language models (LLMs), particularly for tasks requiring multi-step reasoning. However, recent studies show that CoT explanations often fail to reflect the model's actual reasoning process, as models may produce coherent yet misleading justifications or modify answers without acknowledging external cues.
+        </p>
+        <p>
+          Such discrepancies undermine the reliability of CoT-based methods for safety supervision and alignment monitoring, as models can generate plausible but deceptive rationales for incorrect answers. To better understand this limitation, we evaluate two optimization methods, Group Relative Policy Optimization (GRPO) and Direct Preference Optimization (DPO), in their ability to improve CoT faithfulness.
+        </p>
+        <p>
+          Our experiments show that GRPO achieves higher performance than DPO in larger models, with the Qwen2.5-14B-Instruct model attaining the best results across all evaluation metrics. Both approaches exhibit positive correlations between model size and performance, but GRPO shows greater potential for improving faithfulness metrics, albeit with less stable behavior at smaller scales. These results suggest that GRPO offers a promising direction for developing more transparent and trustworthy reasoning in LLMs.
+        </p>
+      </div>
+    </section>
+
+    <section id="contributions" class="section">
+      <h2 class="section-title">Key Contributions</h2>
+      <div class="contributions-grid">
+        <div class="contribution-item">
+          <h3 class="contribution-title">GRPO vs. DPO for CoT Faithfulness</h3>
+          <p class="contribution-desc">An evaluation of two optimization methods, Group Relative Policy Optimization (GRPO) and Direct Preference Optimization (DPO), in their ability to improve the faithfulness of chain-of-thought explanations.</p>
+        </div>
+        <div class="contribution-item">
+          <h3 class="contribution-title">GRPO Leads in Larger Models</h3>
+          <p class="contribution-desc">Experiments showing that GRPO achieves higher performance than DPO in larger models, with the Qwen2.5-14B-Instruct model attaining the best results across all evaluation metrics.</p>
+        </div>
+        <div class="contribution-item">
+          <h3 class="contribution-title">Model Size and Stability Analysis</h3>
+          <p class="contribution-desc">Evidence that both approaches exhibit positive correlations between model size and performance, with GRPO showing greater potential for improving faithfulness metrics, albeit with less stable behavior at smaller scales.</p>
+        </div>
+        <div class="contribution-item">
+          <h3 class="contribution-title">Implications for Trustworthy Reasoning</h3>
+          <p class="contribution-desc">Findings suggesting that GRPO offers a promising direction for developing more transparent and trustworthy reasoning in LLMs, relevant to safety supervision and alignment monitoring.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="citation" class="section">
+      <h2 class="section-title">Citation</h2>
+      <div class="citation-box">
+        <button class="copy-btn" onclick="copyBibtex()">
+          <i class="fas fa-copy"></i> Copy
+        </button>
+        <pre class="citation-code">@article{mohammadi2025grpo,
+  title={Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs},
+  author={Mohammadi, Hadi and Koz\'ak, Tam\'as and Giachanou, Anastasia},
+  journal={arXiv preprint arXiv:2512.22631},
+  year={2025}
+}</pre>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="../../index.html" title="Home"><i class="fas fa-home"></i></a>
+      <a href="https://github.com/mohammadi-hadi" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ" title="Google Scholar" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+    </div>
+    <p>&copy; 2025 Hadi Mohammadi</p>
+  </footer>
+
+  <script>
+    function copyBibtex() {
+      const citation = document.querySelector('.citation-code').textContent;
+      navigator.clipboard.writeText(citation).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied';
+        setTimeout(() => { btn.innerHTML = '<i class="fas fa-copy"></i> Copy'; }, 2000);
+      });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const navHeight = document.querySelector('.nav-bar').offsetHeight;
+          window.scrollTo({ top: target.offsetTop - navHeight - 20, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
