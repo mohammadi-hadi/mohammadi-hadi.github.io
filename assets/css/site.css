@@ -895,6 +895,189 @@ ol {
   padding-top: 0.2rem;
 }
 
+/* ---------- About grid ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (max-width: 820px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Two-column split ---------- */
+.split-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.split-2 .col-kicker {
+  margin-bottom: var(--space-3);
+}
+
+@media (max-width: 820px) {
+  .split-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Interest grid ---------- */
+.interest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.interest-card {
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  padding: var(--space-4);
+}
+
+.interest-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: var(--space-2);
+}
+
+.interest-card p {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .interest-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .interest-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- More links ---------- */
+.more-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3) var(--space-6);
+}
+
+.more-grid .link-arrow {
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--rule);
+  justify-content: space-between;
+  display: flex;
+  font-size: 1rem;
+}
+
+@media (max-width: 820px) {
+  .more-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+/* ---------- Gallery grid (certificates / recommendations) ---------- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.gallery-item {
+  margin: 0;
+}
+
+.gallery-item a {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  padding: var(--space-2);
+  transition: border-color 0.15s ease;
+}
+
+.gallery-item a:hover {
+  border-color: var(--accent);
+}
+
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: #fff;
+}
+
+.gallery-item figcaption {
+  font-size: 0.8rem;
+  color: var(--ink-2);
+  margin-top: var(--space-2);
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------- Organization strip ---------- */
+.org-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.org-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+  color: var(--ink-2);
+  font-size: 0.78rem;
+}
+
+.org-item img {
+  height: 52px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.75;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+}
+
+.org-item:hover {
+  color: var(--ink);
+}
+
+.org-item:hover img {
+  filter: none;
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .org-grid {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: var(--space-5);
+  }
+}
+
 /* ---------- Contact grid ---------- */
 .contact-grid {
   display: grid;
