@@ -117,6 +117,14 @@ ol {
 
 .prose {
   max-width: var(--measure);
+  overflow-wrap: anywhere;
+}
+
+.about-grid > *,
+.split-2 > *,
+.contact-grid > *,
+.hero-grid > * {
+  min-width: 0;
 }
 
 .section {
@@ -872,6 +880,7 @@ ol {
   list-style: none;
   padding: 0;
   font-size: 0.95rem;
+  overflow-wrap: anywhere;
 }
 
 .fact-list li {
@@ -893,6 +902,12 @@ ol {
   color: var(--ink-3);
   min-width: 120px;
   padding-top: 0.2rem;
+}
+
+@media (max-width: 480px) {
+  .fact-list .fact-key {
+    min-width: 84px;
+  }
 }
 
 /* ---------- About grid ---------- */
