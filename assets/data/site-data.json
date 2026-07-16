@@ -1,0 +1,222 @@
+{
+  "fetched_at": "2026-07-16T11:27:17+00:00",
+  "github": {
+    "public_repos": 25,
+    "total_stars": 0,
+    "repos": {
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "My webpage",
+        "language": "JavaScript",
+        "pushed_at": "2026-07-16T11:22:14Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
+      "BehAv-PO": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Behavioral cluster-driven multi-agent preference optimization (SFT / DPO / GRPO) for sexism detection on EXIST 2024",
+        "language": "Python",
+        "pushed_at": "2026-07-16T10:10:16Z",
+        "url": "https://github.com/mohammadi-hadi/BehAv-PO"
+      },
+      "mohammadi-hadi": {
+        "stars": 0,
+        "forks": 0,
+        "description": null,
+        "language": null,
+        "pushed_at": "2026-07-16T09:30:58Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi"
+      },
+      "EvalMORAAL": {
+        "stars": 0,
+        "forks": 0,
+        "description": null,
+        "language": "Python",
+        "pushed_at": "2026-07-02T15:25:08Z",
+        "url": "https://github.com/mohammadi-hadi/EvalMORAAL"
+      },
+      "Explainable_Annotations_Reliability": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Assessing Annotator Reliability in the Context of Model Predictions and Explanations",
+        "language": "R",
+        "pushed_at": "2026-06-03T15:43:21Z",
+        "url": "https://github.com/mohammadi-hadi/Explainable_Annotations_Reliability"
+      },
+      "Token-Replacement": {
+        "stars": 0,
+        "forks": 0,
+        "description": null,
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-06-02T23:21:27Z",
+        "url": "https://github.com/mohammadi-hadi/Token-Replacement"
+      },
+      "cultural-moral-judgments-llms": {
+        "stars": 0,
+        "forks": 0,
+        "description": null,
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-06-02T23:18:17Z",
+        "url": "https://github.com/mohammadi-hadi/cultural-moral-judgments-llms"
+      },
+      "xnlp-survey": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Supplementary materials for 'Explainability in Practice: A Survey of Explainable NLP' - Journal of Information Science",
+        "language": "Python",
+        "pushed_at": "2026-06-02T23:18:09Z",
+        "url": "https://github.com/mohammadi-hadi/xnlp-survey"
+      },
+      "Explainable-Sexism-Detection": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Transparent pipeline for sexism detection using explainable AI",
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-06-02T22:40:26Z",
+        "url": "https://github.com/mohammadi-hadi/Explainable-Sexism-Detection"
+      },
+      "Sexism-Detection-in-Social-Media": {
+        "stars": 0,
+        "forks": 0,
+        "description": null,
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-01-21T15:50:45Z",
+        "url": "https://github.com/mohammadi-hadi/Sexism-Detection-in-Social-Media"
+      },
+      "Automatic-Detection-of-AI-Generated-Texts": {
+        "stars": 0,
+        "forks": 0,
+        "description": null,
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-01-21T15:00:37Z",
+        "url": "https://github.com/mohammadi-hadi/Automatic-Detection-of-AI-Generated-Texts"
+      },
+      "Exist-2023": {
+        "stars": 0,
+        "forks": 0,
+        "description": "In this article, the dataset utilized is specifically associated with EXIST 2023 competition. Furthermore, the code utilized in the study was made accessible through a dedicated Zenodo.",
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-01-21T15:00:34Z",
+        "url": "https://github.com/mohammadi-hadi/Exist-2023"
+      },
+      "hadimh93.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": null,
+        "language": "HTML",
+        "pushed_at": "2026-01-19T16:35:07Z",
+        "url": "https://github.com/mohammadi-hadi/hadimh93.github.io"
+      },
+      "ACL2025": {
+        "stars": 0,
+        "forks": 0,
+        "description": "ACL 2025 Conference",
+        "language": "JavaScript",
+        "pushed_at": "2026-01-19T16:35:05Z",
+        "url": "https://github.com/mohammadi-hadi/ACL2025"
+      },
+      ".github": {
+        "stars": 0,
+        "forks": 0,
+        "description": null,
+        "language": null,
+        "pushed_at": "2026-01-19T16:35:03Z",
+        "url": "https://github.com/mohammadi-hadi/.github"
+      },
+      "BetterthenBing": {
+        "stars": 0,
+        "forks": 0,
+        "description": null,
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-01-18T21:01:23Z",
+        "url": "https://github.com/mohammadi-hadi/BetterthenBing"
+      },
+      "Bicycle-transportation-intelligence-": {
+        "stars": 0,
+        "forks": 0,
+        "description": null,
+        "language": "Python",
+        "pushed_at": "2026-01-18T21:01:19Z",
+        "url": "https://github.com/mohammadi-hadi/Bicycle-transportation-intelligence-"
+      },
+      "BitcoinPricePrediction": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Bitcoin World Price Forecasting: Time Series Analysis and Machine Learning Approach",
+        "language": null,
+        "pushed_at": "2026-01-18T21:01:08Z",
+        "url": "https://github.com/mohammadi-hadi/BitcoinPricePrediction"
+      },
+      "CreditCard": {
+        "stars": 0,
+        "forks": 0,
+        "description": "An exciting project on financial fraud detection using #Kaggle data!",
+        "language": "Python",
+        "pushed_at": "2026-01-18T21:01:05Z",
+        "url": "https://github.com/mohammadi-hadi/CreditCard"
+      },
+      "hadimh93": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Config files for my GitHub profile.",
+        "language": null,
+        "pushed_at": "2026-01-18T20:38:27Z",
+        "url": "https://github.com/mohammadi-hadi/hadimh93"
+      },
+      "sustainability_dashboard": {
+        "stars": 0,
+        "forks": 0,
+        "description": null,
+        "language": null,
+        "pushed_at": "2025-03-19T09:47:16Z",
+        "url": "https://github.com/mohammadi-hadi/sustainability_dashboard"
+      },
+      "NLPworkshop": {
+        "stars": 0,
+        "forks": 0,
+        "description": null,
+        "language": null,
+        "pushed_at": "2023-06-02T08:44:36Z",
+        "url": "https://github.com/mohammadi-hadi/NLPworkshop"
+      },
+      "Recommendation-System-Using-Autoencoders": {
+        "stars": 0,
+        "forks": 0,
+        "description": "movie and music Recommendation System",
+        "language": "Jupyter Notebook",
+        "pushed_at": "2023-03-25T11:36:41Z",
+        "url": "https://github.com/mohammadi-hadi/Recommendation-System-Using-Autoencoders"
+      },
+      "HousePricePrediction": {
+        "stars": 0,
+        "forks": 0,
+        "description": null,
+        "language": null,
+        "pushed_at": "2021-05-05T07:12:12Z",
+        "url": "https://github.com/mohammadi-hadi/HousePricePrediction"
+      },
+      "PopulationPrediction": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Investigation of Economic and Social Factors Affecting Population Growth in Iran: An Econometric Approach",
+        "language": null,
+        "pushed_at": "2021-04-21T06:36:00Z",
+        "url": "https://github.com/mohammadi-hadi/PopulationPrediction"
+      }
+    }
+  },
+  "openalex": {
+    "works_count": 0,
+    "cited_by_count": 0,
+    "h_index": 0,
+    "i10_index": 0
+  },
+  "orcid": {
+    "works_count": 14,
+    "latest_work": {
+      "title": "Exploring Cultural Variations in Moral Judgments with Large Language Models",
+      "year": "2026"
+    }
+  }
+}
