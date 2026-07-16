@@ -27,10 +27,19 @@ jobs:
         run: pip install "scholarly==1.7.11" free-proxy
 
       - name: Fetch Scholar stats
+        id: fetch
         timeout-minutes: 10
+        continue-on-error: true
         run: python scripts/fetch_scholar.py
 
+      - name: Report blocked fetch
+        if: steps.fetch.outcome != 'success'
+        run: |
+          echo "Google Scholar was unreachable from this runner (blocked or timed out)." >> "$GITHUB_STEP_SUMMARY"
+          echo "Kept the last good assets/data/scholar.json; the daily cron will retry." >> "$GITHUB_STEP_SUMMARY"
+
       - name: Commit and push if changed
+        if: steps.fetch.outcome == 'success'
         run: |
           if git diff --quiet -- assets/data/scholar.json; then
             echo "No changes to commit."
