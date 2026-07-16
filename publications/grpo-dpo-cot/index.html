@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explainability-Based Token Replacement on LLM-Generated Text</title>
-  <meta name="description" content="Using explainable AI methods to understand and reduce the detectability of AI-generated text">
-  <meta property="og:title" content="Explainability-Based Token Replacement on LLM-Generated Text">
-  <meta property="og:description" content="Using explainable AI methods to understand and reduce the detectability of AI-generated text">
-  <meta property="og:url" content="https://arxiv.org/abs/2506.04050">
-  <meta name="keywords" content="LLM, AI-Generated Text, Explainability, Token Replacement, Text Detection, NLP, SHAP, LIME">
+  <title>Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs</title>
+  <meta name="description" content="Evaluating GRPO and DPO optimization methods for improving the faithfulness of chain-of-thought reasoning in large language models">
+  <meta property="og:title" content="Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs">
+  <meta property="og:description" content="Evaluating GRPO and DPO optimization methods for improving the faithfulness of chain-of-thought reasoning in large language models">
+  <meta property="og:url" content="https://mohammadi.cv/publications/grpo-dpo-cot/">
+  <link rel="canonical" href="https://mohammadi.cv/publications/grpo-dpo-cot/">
+  <meta name="keywords" content="GRPO, DPO, Chain-of-Thought, Faithfulness, LLM, Reasoning, Alignment, Safety, NLP">
 
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -355,8 +356,6 @@
       <div class="nav-links">
         <a href="#abstract">Abstract</a>
         <a href="#contributions">Contributions</a>
-        <a href="#methodology">Methodology</a>
-        <a href="#findings">Findings</a>
         <a href="#citation">Citation</a>
       </div>
     </div>
@@ -364,23 +363,20 @@
 
   <header class="paper-header">
     <div class="paper-meta">
-      <span class="paper-type">Preprint &middot; Under review</span>
+      <span class="paper-type">Preprint</span>
     </div>
 
-    <h1 class="paper-title">Explainability-Based Token Replacement on LLM-Generated Text</h1>
+    <h1 class="paper-title">Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs</h1>
 
     <p class="paper-authors">
-      <strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Daniel L. Oberski, Robert A. Bagheri
+      <strong>Hadi Mohammadi</strong>, Tam&aacute;s Koz&aacute;k, Anastasia Giachanou
     </p>
     <p class="paper-affiliation">Utrecht University, The Netherlands</p>
-    <p class="paper-venue">arXiv preprint, June 2025</p>
+    <p class="paper-venue">arXiv preprint arXiv:2512.22631, December 2025</p>
 
     <div class="paper-links">
-      <a href="https://arxiv.org/abs/2506.04050" class="paper-link primary" target="_blank">
+      <a href="https://arxiv.org/abs/2512.22631" class="paper-link primary" target="_blank">
         <i class="fas fa-file-pdf"></i> Read Paper
-      </a>
-      <a href="https://arxiv.org/abs/2506.04050" class="paper-link" target="_blank">
-        <i class="fas fa-external-link-alt"></i> arXiv
       </a>
       <a href="#citation" class="paper-link">
         <i class="fas fa-quote-left"></i> Cite
@@ -394,13 +390,13 @@
       <h2 class="section-title">Abstract</h2>
       <div class="abstract-text">
         <p>
-          Generative models, especially large language models (LLMs), have shown remarkable progress in producing text that appears human-like. However, they often exhibit patterns that make their output easier to detect than text written by humans. In this paper, we investigate how explainable AI (XAI) methods can be used to reduce the detectability of AI-generated text (AIGT) while also introducing a robust ensemble-based detection approach.
+          Chain-of-thought (CoT) reasoning has emerged as a powerful technique for improving the problem-solving capabilities of large language models (LLMs), particularly for tasks requiring multi-step reasoning. However, recent studies show that CoT explanations often fail to reflect the model's actual reasoning process, as models may produce coherent yet misleading justifications or modify answers without acknowledging external cues.
         </p>
         <p>
-          We begin by training an ensemble classifier to distinguish AIGT from human-written text, then apply SHAP and LIME to identify tokens that most strongly influence its predictions. We propose four explainability-based token replacement strategies to modify these influential tokens.
+          Such discrepancies undermine the reliability of CoT-based methods for safety supervision and alignment monitoring, as models can generate plausible but deceptive rationales for incorrect answers. To better understand this limitation, we evaluate two optimization methods, Group Relative Policy Optimization (GRPO) and Direct Preference Optimization (DPO), in their ability to improve CoT faithfulness.
         </p>
         <p>
-          Our findings show that these token replacement approaches can significantly diminish a single classifier's ability to detect AIGT. However, our ensemble classifier maintains strong performance across multiple languages and domains, showing that a multi-model approach can mitigate the impact of token-level manipulations. These results show that XAI methods can make AIGT harder to detect by focusing on the most influential tokens. At the same time, they highlight the need for robust, ensemble-based detection strategies that can adapt to evolving approaches for hiding AIGT.
+          Our experiments show that GRPO achieves higher performance than DPO in larger models, with the Qwen2.5-14B-Instruct model attaining the best results across all evaluation metrics. Both approaches exhibit positive correlations between model size and performance, but GRPO shows greater potential for improving faithfulness metrics, albeit with less stable behavior at smaller scales. These results suggest that GRPO offers a promising direction for developing more transparent and trustworthy reasoning in LLMs.
         </p>
       </div>
     </section>
@@ -409,70 +405,21 @@
       <h2 class="section-title">Key Contributions</h2>
       <div class="contributions-grid">
         <div class="contribution-item">
-          <h3 class="contribution-title">XAI-Based Token Identification</h3>
-          <p class="contribution-desc">Application of SHAP and LIME explainability techniques to identify tokens that most strongly influence AI text detection predictions.</p>
+          <h3 class="contribution-title">GRPO vs. DPO for CoT Faithfulness</h3>
+          <p class="contribution-desc">An evaluation of two optimization methods, Group Relative Policy Optimization (GRPO) and Direct Preference Optimization (DPO), in their ability to improve the faithfulness of chain-of-thought explanations.</p>
         </div>
         <div class="contribution-item">
-          <h3 class="contribution-title">Token Replacement Strategies</h3>
-          <p class="contribution-desc">Four novel explainability-based token replacement strategies designed to modify influential tokens in AI-generated text.</p>
+          <h3 class="contribution-title">GRPO Leads in Larger Models</h3>
+          <p class="contribution-desc">Experiments showing that GRPO achieves higher performance than DPO in larger models, with the Qwen2.5-14B-Instruct model attaining the best results across all evaluation metrics.</p>
         </div>
         <div class="contribution-item">
-          <h3 class="contribution-title">Ensemble Detection Approach</h3>
-          <p class="contribution-desc">A robust ensemble-based detection classifier that maintains strong performance across multiple languages and domains.</p>
+          <h3 class="contribution-title">Model Size and Stability Analysis</h3>
+          <p class="contribution-desc">Evidence that both approaches exhibit positive correlations between model size and performance, with GRPO showing greater potential for improving faithfulness metrics, albeit with less stable behavior at smaller scales.</p>
         </div>
         <div class="contribution-item">
-          <h3 class="contribution-title">Multi-Domain Evaluation</h3>
-          <p class="contribution-desc">Comprehensive evaluation demonstrating that ensemble approaches can mitigate the impact of token-level manipulations.</p>
+          <h3 class="contribution-title">Implications for Trustworthy Reasoning</h3>
+          <p class="contribution-desc">Findings suggesting that GRPO offers a promising direction for developing more transparent and trustworthy reasoning in LLMs, relevant to safety supervision and alignment monitoring.</p>
         </div>
-      </div>
-    </section>
-
-    <section id="methodology" class="section">
-      <h2 class="section-title">Methodology</h2>
-      <div class="methodology-steps">
-        <div class="method-step">
-          <div class="step-number"></div>
-          <div class="step-content">
-            <h4>Ensemble Classifier Training</h4>
-            <p>Train an ensemble classifier to distinguish AI-generated text from human-written text across multiple domains and languages.</p>
-          </div>
-        </div>
-        <div class="method-step">
-          <div class="step-number"></div>
-          <div class="step-content">
-            <h4>Explainability Analysis</h4>
-            <p>Apply SHAP and LIME to identify tokens that most strongly influence the classifier's predictions for detecting AI-generated content.</p>
-          </div>
-        </div>
-        <div class="method-step">
-          <div class="step-number"></div>
-          <div class="step-content">
-            <h4>Token Replacement</h4>
-            <p>Implement four explainability-based token replacement strategies to modify the most influential tokens identified in the previous step.</p>
-          </div>
-        </div>
-        <div class="method-step">
-          <div class="step-number"></div>
-          <div class="step-content">
-            <h4>Robustness Evaluation</h4>
-            <p>Evaluate both single classifiers and ensemble approaches against token replacement attacks to assess detection robustness.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="findings" class="section">
-      <h2 class="section-title">Key Findings</h2>
-      <div class="findings-box">
-        <p>
-          Token replacement approaches can significantly diminish a single classifier's ability to detect AI-generated text, demonstrating that XAI methods can effectively identify and target the most influential tokens.
-        </p>
-        <p>
-          The ensemble classifier maintains strong performance across multiple languages and domains, showing that a multi-model approach can mitigate the impact of token-level manipulations.
-        </p>
-        <p>
-          These results highlight the need for robust, ensemble-based detection strategies that can adapt to evolving approaches for hiding AI-generated text, rather than relying on single-model detectors.
-        </p>
       </div>
     </section>
 
@@ -482,10 +429,10 @@
         <button class="copy-btn" onclick="copyBibtex()">
           <i class="fas fa-copy"></i> Copy
         </button>
-        <pre class="citation-code">@article{mohammadi2025token,
-  title={Explainability-Based Token Replacement on LLM-Generated Text},
-  author={Mohammadi, Hadi and Giachanou, Anastasia and Oberski, Daniel L. and Bagheri, Robert A.},
-  journal={arXiv preprint arXiv:2506.04050},
+        <pre class="citation-code">@article{mohammadi2025grpo,
+  title={Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs},
+  author={Mohammadi, Hadi and Koz\'ak, Tam\'as and Giachanou, Anastasia},
+  journal={arXiv preprint arXiv:2512.22631},
   year={2025}
 }</pre>
       </div>

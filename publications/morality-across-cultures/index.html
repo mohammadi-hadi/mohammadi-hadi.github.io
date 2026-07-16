@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explainability-Based Token Replacement on LLM-Generated Text</title>
-  <meta name="description" content="Using explainable AI methods to understand and reduce the detectability of AI-generated text">
-  <meta property="og:title" content="Explainability-Based Token Replacement on LLM-Generated Text">
-  <meta property="og:description" content="Using explainable AI methods to understand and reduce the detectability of AI-generated text">
-  <meta property="og:url" content="https://arxiv.org/abs/2506.04050">
-  <meta name="keywords" content="LLM, AI-Generated Text, Explainability, Token Replacement, Text Detection, NLP, SHAP, LIME">
+  <title>Do Large Language Models Understand Morality Across Cultures?</title>
+  <meta name="description" content="Investigating whether large language models capture cross-cultural differences and similarities in moral perspectives, compared against international survey data">
+  <meta property="og:title" content="Do Large Language Models Understand Morality Across Cultures?">
+  <meta property="og:description" content="Investigating whether large language models capture cross-cultural differences and similarities in moral perspectives, compared against international survey data">
+  <meta property="og:url" content="https://mohammadi.cv/publications/morality-across-cultures/">
+  <link rel="canonical" href="https://mohammadi.cv/publications/morality-across-cultures/">
+  <meta name="keywords" content="LLM, Large Language Models, Morality, Culture, Moral Attitudes, Bias, Fairness, NLP, LUHME, ECAI">
 
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -355,8 +356,6 @@
       <div class="nav-links">
         <a href="#abstract">Abstract</a>
         <a href="#contributions">Contributions</a>
-        <a href="#methodology">Methodology</a>
-        <a href="#findings">Findings</a>
         <a href="#citation">Citation</a>
       </div>
     </div>
@@ -364,23 +363,26 @@
 
   <header class="paper-header">
     <div class="paper-meta">
-      <span class="paper-type">Preprint &middot; Under review</span>
+      <span class="paper-type">Workshop Paper &middot; Published</span>
     </div>
 
-    <h1 class="paper-title">Explainability-Based Token Replacement on LLM-Generated Text</h1>
+    <h1 class="paper-title">Do Large Language Models Understand Morality Across Cultures?</h1>
 
     <p class="paper-authors">
-      <strong>Hadi Mohammadi</strong>, Anastasia Giachanou, Daniel L. Oberski, Robert A. Bagheri
+      <strong>Hadi Mohammadi</strong>, Yasmeen F. S. S. Meijer, Efthymia Papadopoulou, Robert A. Bagheri
     </p>
     <p class="paper-affiliation">Utrecht University, The Netherlands</p>
-    <p class="paper-venue">arXiv preprint, June 2025</p>
+    <p class="paper-venue">Proceedings of the 2nd LUHME Workshop, ECAI 2025, pp. 30&ndash;39</p>
 
     <div class="paper-links">
-      <a href="https://arxiv.org/abs/2506.04050" class="paper-link primary" target="_blank">
+      <a href="https://aclanthology.org/2025.luhme-1.3/" class="paper-link primary" target="_blank">
         <i class="fas fa-file-pdf"></i> Read Paper
       </a>
-      <a href="https://arxiv.org/abs/2506.04050" class="paper-link" target="_blank">
+      <a href="https://arxiv.org/abs/2506.12433" class="paper-link" target="_blank">
         <i class="fas fa-external-link-alt"></i> arXiv
+      </a>
+      <a href="https://github.com/mohammadi-hadi/cultural-moral-judgments-llms" class="paper-link" target="_blank">
+        <i class="fab fa-github"></i> Code
       </a>
       <a href="#citation" class="paper-link">
         <i class="fas fa-quote-left"></i> Cite
@@ -394,13 +396,13 @@
       <h2 class="section-title">Abstract</h2>
       <div class="abstract-text">
         <p>
-          Generative models, especially large language models (LLMs), have shown remarkable progress in producing text that appears human-like. However, they often exhibit patterns that make their output easier to detect than text written by humans. In this paper, we investigate how explainable AI (XAI) methods can be used to reduce the detectability of AI-generated text (AIGT) while also introducing a robust ensemble-based detection approach.
+          Recent advancements in large language models (LLMs) have established them as powerful tools across numerous domains. However, persistent concerns about embedded biases, such as gender, racial, and cultural biases arising from their training data, raise significant questions about the ethical use and societal consequences of these technologies.
         </p>
         <p>
-          We begin by training an ensemble classifier to distinguish AIGT from human-written text, then apply SHAP and LIME to identify tokens that most strongly influence its predictions. We propose four explainability-based token replacement strategies to modify these influential tokens.
+          This study investigates the extent to which LLMs capture cross-cultural differences and similarities in moral perspectives. Specifically, we examine whether LLM outputs align with patterns observed in international survey data on moral attitudes. To this end, we employ three complementary methods: (1) comparing variances in moral scores produced by models versus those reported in surveys, (2) conducting cluster alignment analyses to assess correspondence between country groupings derived from LLM outputs and survey data, and (3) directly probing models with comparative prompts using systematically chosen token pairs.
         </p>
         <p>
-          Our findings show that these token replacement approaches can significantly diminish a single classifier's ability to detect AIGT. However, our ensemble classifier maintains strong performance across multiple languages and domains, showing that a multi-model approach can mitigate the impact of token-level manipulations. These results show that XAI methods can make AIGT harder to detect by focusing on the most influential tokens. At the same time, they highlight the need for robust, ensemble-based detection strategies that can adapt to evolving approaches for hiding AIGT.
+          Our results reveal that current LLMs often fail to reproduce the full spectrum of cross-cultural moral variation, tending to compress differences and exhibit low alignment with empirical survey patterns. These findings highlight a pressing need for more robust approaches to mitigate biases and improve cultural representativeness in LLMs. We conclude by discussing the implications for the responsible development and global deployment of LLMs, emphasizing fairness and ethical alignment.
         </p>
       </div>
     </section>
@@ -409,70 +411,21 @@
       <h2 class="section-title">Key Contributions</h2>
       <div class="contributions-grid">
         <div class="contribution-item">
-          <h3 class="contribution-title">XAI-Based Token Identification</h3>
-          <p class="contribution-desc">Application of SHAP and LIME explainability techniques to identify tokens that most strongly influence AI text detection predictions.</p>
+          <h3 class="contribution-title">Cross-Cultural Moral Evaluation</h3>
+          <p class="contribution-desc">A systematic investigation of the extent to which LLMs capture cross-cultural differences and similarities in moral perspectives, tested against international survey data on moral attitudes.</p>
         </div>
         <div class="contribution-item">
-          <h3 class="contribution-title">Token Replacement Strategies</h3>
-          <p class="contribution-desc">Four novel explainability-based token replacement strategies designed to modify influential tokens in AI-generated text.</p>
+          <h3 class="contribution-title">Three Complementary Methods</h3>
+          <p class="contribution-desc">Comparison of variances in moral scores produced by models versus surveys, cluster alignment analyses of country groupings, and direct probing with comparative prompts using systematically chosen token pairs.</p>
         </div>
         <div class="contribution-item">
-          <h3 class="contribution-title">Ensemble Detection Approach</h3>
-          <p class="contribution-desc">A robust ensemble-based detection classifier that maintains strong performance across multiple languages and domains.</p>
+          <h3 class="contribution-title">Evidence of Compressed Variation</h3>
+          <p class="contribution-desc">Results showing that current LLMs often fail to reproduce the full spectrum of cross-cultural moral variation, tending to compress differences and exhibit low alignment with empirical survey patterns.</p>
         </div>
         <div class="contribution-item">
-          <h3 class="contribution-title">Multi-Domain Evaluation</h3>
-          <p class="contribution-desc">Comprehensive evaluation demonstrating that ensemble approaches can mitigate the impact of token-level manipulations.</p>
+          <h3 class="contribution-title">Implications for Responsible LLMs</h3>
+          <p class="contribution-desc">A discussion of the pressing need for more robust bias mitigation and improved cultural representativeness, with implications for the responsible development and global deployment of LLMs emphasizing fairness and ethical alignment.</p>
         </div>
-      </div>
-    </section>
-
-    <section id="methodology" class="section">
-      <h2 class="section-title">Methodology</h2>
-      <div class="methodology-steps">
-        <div class="method-step">
-          <div class="step-number"></div>
-          <div class="step-content">
-            <h4>Ensemble Classifier Training</h4>
-            <p>Train an ensemble classifier to distinguish AI-generated text from human-written text across multiple domains and languages.</p>
-          </div>
-        </div>
-        <div class="method-step">
-          <div class="step-number"></div>
-          <div class="step-content">
-            <h4>Explainability Analysis</h4>
-            <p>Apply SHAP and LIME to identify tokens that most strongly influence the classifier's predictions for detecting AI-generated content.</p>
-          </div>
-        </div>
-        <div class="method-step">
-          <div class="step-number"></div>
-          <div class="step-content">
-            <h4>Token Replacement</h4>
-            <p>Implement four explainability-based token replacement strategies to modify the most influential tokens identified in the previous step.</p>
-          </div>
-        </div>
-        <div class="method-step">
-          <div class="step-number"></div>
-          <div class="step-content">
-            <h4>Robustness Evaluation</h4>
-            <p>Evaluate both single classifiers and ensemble approaches against token replacement attacks to assess detection robustness.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="findings" class="section">
-      <h2 class="section-title">Key Findings</h2>
-      <div class="findings-box">
-        <p>
-          Token replacement approaches can significantly diminish a single classifier's ability to detect AI-generated text, demonstrating that XAI methods can effectively identify and target the most influential tokens.
-        </p>
-        <p>
-          The ensemble classifier maintains strong performance across multiple languages and domains, showing that a multi-model approach can mitigate the impact of token-level manipulations.
-        </p>
-        <p>
-          These results highlight the need for robust, ensemble-based detection strategies that can adapt to evolving approaches for hiding AI-generated text, rather than relying on single-model detectors.
-        </p>
       </div>
     </section>
 
@@ -482,11 +435,13 @@
         <button class="copy-btn" onclick="copyBibtex()">
           <i class="fas fa-copy"></i> Copy
         </button>
-        <pre class="citation-code">@article{mohammadi2025token,
-  title={Explainability-Based Token Replacement on LLM-Generated Text},
-  author={Mohammadi, Hadi and Giachanou, Anastasia and Oberski, Daniel L. and Bagheri, Robert A.},
-  journal={arXiv preprint arXiv:2506.04050},
-  year={2025}
+        <pre class="citation-code">@inproceedings{mohammadi2025morality,
+  title={Do Large Language Models Understand Morality Across Cultures?},
+  author={Mohammadi, Hadi and Meijer, Yasmeen F. S. S. and Papadopoulou, Efthymia and Bagheri, Robert A.},
+  booktitle={Proceedings of the 2nd LUHME Workshop},
+  year={2025},
+  pages={30--39},
+  url={https://aclanthology.org/2025.luhme-1.3/}
 }</pre>
       </div>
     </section>
