@@ -7,15 +7,18 @@
   <meta name="description" content="Publications and research papers by Hadi Mohammadi on Explainable AI, NLP, and Human-AI Collaboration">
   <meta name="keywords" content="Publications, Research Papers, Explainable AI, NLP, Machine Learning, Academic Research">
 
+  <link rel="canonical" href="https://mohammadi.cv/publications/">
+
   <!-- Favicons -->
-  <link href="/Logo.png" rel="icon">
-  <link href="/Logo.png" rel="apple-touch-icon">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
 
   <style>
     :root {
@@ -138,7 +141,7 @@
     }
 
     /* Main Content */
-    .container {
+    main.container {
       max-width: 800px;
       margin: 0 auto;
       padding: 3rem 2rem;
@@ -412,7 +415,7 @@
         font-size: 1.75rem;
       }
 
-      .container {
+      main.container {
         padding: 2rem 1.5rem;
       }
 
@@ -424,34 +427,81 @@
         font-size: 1.05rem;
       }
     }
+    .stats-caption {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: #6e6e6e;
+    }
+
+    .stats-caption a {
+      color: inherit;
+    }
+
+    .cite-chip {
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      font-size: 0.72rem;
+      border: 1px solid #d8d8d3;
+      border-radius: 2px;
+      color: #555;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
   </style>
 </head>
 
 <body>
 
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/" aria-current="page">Publications</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/" aria-current="page">Publications</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
   <!-- Page Header -->
   <header class="page-header">
     <div class="header-content">
-      <a href="/" class="back-link">
-        <i class="fas fa-arrow-left"></i> Back to Home
-      </a>
       <h1>Publications</h1>
       <p class="page-subtitle">Research in Explainable AI, NLP, and Human-AI Collaboration</p>
 
       <div class="stats-row">
         <div class="stat-item">
-          <div class="stat-value">82</div>
+          <div class="stat-value" data-scholar="citations">135</div>
           <div class="stat-label">Citations</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value">6</div>
+          <div class="stat-value" data-scholar="h_index">6</div>
           <div class="stat-label">h-index</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value">3</div>
+          <div class="stat-value" data-scholar="i10_index">5</div>
           <div class="stat-label">i10-index</div>
         </div>
       </div>
+      <p class="stats-caption">Source: <a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ" target="_blank" rel="noopener">Google Scholar</a> &middot; <span data-scholar-updated>updated July 2026</span></p>
     </div>
   </header>
 
@@ -479,29 +529,12 @@
     <!-- Publications List -->
     <div id="publicationsList">
 
-      <!-- 2025 Publications -->
+      <!-- 2026 Publications -->
       <section class="year-section">
-        <h2 class="year-heading">2025</h2>
-
-        <!-- arXiv:2512.22631 - December 2025 -->
-        <article class="publication-card preprint" data-year="2025">
-          <div class="publication-meta">
-            <span class="publication-type preprint">Preprint</span>
-          </div>
-          <h3 class="publication-title">
-            Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs
-          </h3>
-          <p class="publication-authors">
-            <strong>Hadi Mohammadi</strong>, T. Kozak, Anastasia Giachanou
-          </p>
-          <p class="publication-venue">arXiv preprint arXiv:2512.22631</p>
-          <div class="publication-links">
-            <a href="https://arxiv.org/abs/2512.22631" target="_blank" class="pub-link primary"><i class="fas fa-file-pdf"></i> arXiv</a>
-          </div>
-        </article>
+        <h2 class="year-heading">2026</h2>
 
         <!-- EvalMORAAL - *SEM 2026 (ACL) -->
-        <article class="publication-card conference" data-year="2026">
+        <article class="publication-card conference" data-year="2026" data-scholar-pub="evalmoraal">
           <div class="publication-meta">
             <span class="publication-type conference">Conference</span>
           </div>
@@ -521,8 +554,50 @@
           </div>
         </article>
 
+        <!-- CLIN Journal, Vol. 15 (2026), pp. 59-77 -->
+        <article class="publication-card journal" data-year="2026" data-scholar-pub="cultural-moral-judgments">
+          <div class="publication-meta">
+            <span class="publication-type journal">Journal Article</span>
+          </div>
+          <h3 class="publication-title">
+            <a href="/publications/cultural-moral-judgments/">Exploring Cultural Variations in Moral Judgments with Large Language Models</a>
+          </h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, Robert A. Bagheri
+          </p>
+          <p class="publication-venue">Computational Linguistics in the Netherlands Journal, Vol. 15 (2026), pp. 59–77</p>
+          <div class="publication-links">
+            <a href="/publications/cultural-moral-judgments/" class="pub-link primary">View Details</a>
+            <a href="https://clinjournal.org/clinj/article/view/238" target="_blank" class="pub-link"><i class="fas fa-file-pdf"></i> CLIN Journal</a>
+            <a href="https://github.com/mohammadi-hadi/cultural-moral-judgments-llms" target="_blank" class="pub-link"><i class="fab fa-github"></i> Code</a>
+            <a href="https://doi.org/10.5281/zenodo.20091842" target="_blank" class="pub-link"><i class="fas fa-archive"></i> Zenodo</a>
+          </div>
+        </article>
+      </section>
+
+      <!-- 2025 Publications -->
+      <section class="year-section">
+        <h2 class="year-heading">2025</h2>
+
+        <!-- arXiv:2512.22631 - December 2025 -->
+        <article class="publication-card preprint" data-year="2025" data-scholar-pub="grpo-dpo-cot">
+          <div class="publication-meta">
+            <span class="publication-type preprint">Preprint</span>
+          </div>
+          <h3 class="publication-title">
+            Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs
+          </h3>
+          <p class="publication-authors">
+            <strong>Hadi Mohammadi</strong>, T. Kozak, Anastasia Giachanou
+          </p>
+          <p class="publication-venue">arXiv preprint arXiv:2512.22631</p>
+          <div class="publication-links">
+            <a href="https://arxiv.org/abs/2512.22631" target="_blank" class="pub-link primary"><i class="fas fa-file-pdf"></i> arXiv</a>
+          </div>
+        </article>
+
         <!-- LUHME Workshop ECAI 2025 -->
-        <article class="publication-card workshop" data-year="2025">
+        <article class="publication-card workshop" data-year="2025" data-scholar-pub="morality-across-cultures">
           <div class="publication-meta">
             <span class="publication-type workshop">Workshop</span>
           </div>
@@ -542,7 +617,7 @@
         </article>
 
         <!-- arXiv:2507 - July 2025 / GeBNLP ACL 2025 -->
-        <article class="publication-card workshop" data-year="2025">
+        <article class="publication-card workshop" data-year="2025" data-scholar-pub="llm-annotation-reliability">
           <div class="publication-meta">
             <span class="publication-type workshop">Workshop</span>
           </div>
@@ -563,28 +638,8 @@
           </div>
         </article>
 
-        <!-- CLIN Journal, Vol. 15 (2026), pp. 59-77 -->
-        <article class="publication-card journal" data-year="2026">
-          <div class="publication-meta">
-            <span class="publication-type journal">Journal Article</span>
-          </div>
-          <h3 class="publication-title">
-            <a href="/publications/cultural-moral-judgments/">Exploring Cultural Variations in Moral Judgments with Large Language Models</a>
-          </h3>
-          <p class="publication-authors">
-            <strong>Hadi Mohammadi</strong>, Robert A. Bagheri
-          </p>
-          <p class="publication-venue">Computational Linguistics in the Netherlands Journal, Vol. 15 (2026), pp. 59–77</p>
-          <div class="publication-links">
-            <a href="/publications/cultural-moral-judgments/" class="pub-link primary">View Details</a>
-            <a href="https://clinjournal.org/clinj/article/view/238" target="_blank" class="pub-link"><i class="fas fa-file-pdf"></i> CLIN Journal</a>
-            <a href="https://github.com/mohammadi-hadi/cultural-moral-judgments-llms" target="_blank" class="pub-link"><i class="fab fa-github"></i> Code</a>
-            <a href="https://doi.org/10.5281/zenodo.20091842" target="_blank" class="pub-link"><i class="fas fa-archive"></i> Zenodo</a>
-          </div>
-        </article>
-
         <!-- arXiv:2506.04050 - June 2025 -->
-        <article class="publication-card preprint" data-year="2025">
+        <article class="publication-card preprint" data-year="2025" data-scholar-pub="ai-text-undetectability">
           <div class="publication-meta">
             <span class="publication-type preprint">Under Review</span>
           </div>
@@ -604,7 +659,7 @@
         </article>
 
         <!-- arXiv:2502.00837 - February 2025 -->
-        <article class="publication-card preprint" data-year="2025">
+        <article class="publication-card preprint" data-year="2025" data-scholar-pub="explainability-survey">
           <div class="publication-meta">
             <span class="publication-type preprint">Under Review</span>
           </div>
@@ -624,7 +679,7 @@
         </article>
 
         <!-- Strategic Organization (under revision) -->
-        <article class="publication-card journal" data-year="2025">
+        <article class="publication-card journal" data-year="2025" data-scholar-pub="firm-characteristics-nlp">
           <div class="publication-meta">
             <span class="publication-type journal">Journal Article</span>
             <span class="publication-status">Under Revision</span>
@@ -644,7 +699,7 @@
         <h2 class="year-heading">2024</h2>
 
         <!-- arXiv:2412.00962 - December 2024 -->
-        <article class="publication-card preprint" data-year="2024">
+        <article class="publication-card preprint" data-year="2024" data-scholar-pub="mirrors-cultural-divergence">
           <div class="publication-meta">
             <span class="publication-type preprint">Preprint</span>
           </div>
@@ -661,7 +716,7 @@
         </article>
 
         <!-- arXiv:2412.00956 - December 2024 -->
-        <article class="publication-card preprint" data-year="2024">
+        <article class="publication-card preprint" data-year="2024" data-scholar-pub="mirrors-societal-moral-standards">
           <div class="publication-meta">
             <span class="publication-type preprint">Preprint</span>
           </div>
@@ -678,7 +733,7 @@
         </article>
 
         <!-- 2024 -->
-        <article class="publication-card preprint" data-year="2024">
+        <article class="publication-card preprint" data-year="2024" data-scholar-pub="financial-fraud-detection">
           <div class="publication-meta">
             <span class="publication-type preprint">Preprint</span>
           </div>
@@ -695,7 +750,7 @@
         </article>
 
         <!-- Applied Sciences - October 2024 -->
-        <article class="publication-card journal" data-year="2024">
+        <article class="publication-card journal" data-year="2024" data-scholar-pub="sexism-detection">
           <div class="publication-meta">
             <span class="publication-type journal">Journal Article</span>
           </div>
@@ -715,7 +770,7 @@
         </article>
 
         <!-- CLIN Journal - March 2024 -->
-        <article class="publication-card journal" data-year="2024">
+        <article class="publication-card journal" data-year="2024" data-scholar-pub="clin33-shared-task">
           <div class="publication-meta">
             <span class="publication-type journal">Journal Article</span>
           </div>
@@ -736,7 +791,7 @@
       <section class="year-section">
         <h2 class="year-heading">2023</h2>
 
-        <article class="publication-card conference" data-year="2023">
+        <article class="publication-card conference" data-year="2023" data-scholar-pub="exist-2023">
           <div class="publication-meta">
             <span class="publication-type conference">Conference</span>
           </div>
@@ -771,7 +826,7 @@
           <p class="publication-venue">Tehran: Arshadan Publication, 2022 [In Persian]</p>
         </article>
 
-        <article class="publication-card journal" data-year="2022">
+        <article class="publication-card journal" data-year="2022" data-scholar-pub="home-health-care">
           <div class="publication-meta">
             <span class="publication-type journal">Journal Article</span>
           </div>
@@ -798,8 +853,10 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <p>&copy; 2025 Hadi Mohammadi. Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
+    <p>&copy; 2026 Hadi Mohammadi. Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
   </footer>
+
+  <script src="/assets/js/scholar-stats.js" defer></script>
 
   <script>
     // Filter functionality
