@@ -15,6 +15,9 @@
   --rule: #e3e1dc;
   --accent: #1e3a5f;
   --accent-hover: #2d5080;
+  --paper-deep: #f2f1ec;
+  --hero-ink: #16222f;
+  --hero-ink-2: #1b2a3a;
 
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -117,8 +120,22 @@ ol {
 }
 
 .section {
-  padding: var(--space-8) 0;
+  padding: var(--space-7) 0;
   border-top: 1px solid var(--rule);
+}
+
+.section-alt {
+  background: var(--surface);
+}
+
+.hero-ink + .section {
+  border-top: 0;
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: var(--space-6) 0;
+  }
 }
 
 .section:first-of-type {
@@ -143,11 +160,20 @@ ol {
 }
 
 .section-head {
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-5);
 }
 
 .section-head h2 {
   margin-bottom: var(--space-2);
+}
+
+.section-head h2::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 3px;
+  background: var(--accent);
+  margin-top: var(--space-3);
 }
 
 .section-lede {
@@ -270,92 +296,133 @@ ol {
   }
 }
 
-/* ---------- Cover hero (full-width photo band) ---------- */
-.hero-cover {
-  position: relative;
-  min-height: min(78vh, 720px);
-  display: flex;
-  align-items: flex-end;
-  isolation: isolate;
-  overflow: hidden;
+/* ---------- Ink hero (homepage only) ---------- */
+.hero-ink {
+  background-color: var(--hero-ink);
+  background-image:
+    radial-gradient(52rem 30rem at 78% -12%, rgba(45, 80, 128, 0.38), transparent 62%),
+    linear-gradient(180deg, var(--hero-ink-2) 0%, var(--hero-ink) 100%);
+  padding: var(--space-7) 0 var(--space-6);
 }
 
-.hero-cover .hero-cover-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 65% 30%;
-  z-index: -2;
-}
-
-.hero-cover::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    linear-gradient(to top, rgba(9, 13, 20, 0.82) 0%, rgba(9, 13, 20, 0.35) 55%, rgba(9, 13, 20, 0.25) 100%),
-    linear-gradient(to right, rgba(9, 13, 20, 0.55) 0%, rgba(9, 13, 20, 0.05) 70%);
-}
-
-.hero-cover .container {
-  width: 100%;
-  padding-top: var(--space-8);
-  padding-bottom: var(--space-6);
-}
-
-.hero-cover .hero-name,
-.hero-cover .hero-role {
+.hero-ink .hero-name {
   color: #fff;
 }
 
-.hero-cover .hero-role {
-  color: rgba(255, 255, 255, 0.88);
+.hero-ink .hero-role {
+  color: rgba(255, 255, 255, 0.87);
 }
 
-.hero-cover .hero-intro {
+.hero-ink .hero-intro {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.hero-ink .hero-intro a {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.38);
+}
+
+.hero-ink .hero-intro a:hover {
+  text-decoration-color: #fff;
+}
+
+.hero-ink .social-row a {
   color: rgba(255, 255, 255, 0.82);
 }
 
-.hero-cover .hero-intro a {
-  color: #fff;
-  text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.4);
-}
-
-.hero-cover .social-row a {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.hero-cover .social-row a:hover {
+.hero-ink .social-row a:hover {
   color: #fff;
 }
 
-.hero-cover .hero-caption {
+.hero-ink .hero-portrait {
+  position: relative;
+  margin: 0;
+}
+
+.hero-ink .hero-portrait::before {
+  content: "";
   position: absolute;
-  right: var(--space-4);
-  bottom: var(--space-2);
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.55);
+  inset: 14px -14px -14px 14px;
+  border: 1px solid rgba(114, 152, 197, 0.45);
+  pointer-events: none;
 }
 
-@media (max-width: 720px) {
-  .hero-cover {
-    min-height: 74vh;
+.hero-ink .hero-portrait img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.hero-ink .hero-portrait figcaption {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: var(--space-4);
+}
+
+.hero-ink .hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-7);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.hero-ink .hero-stats .stat-value {
+  font-family: var(--serif);
+  font-size: var(--step-2);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.hero-ink .hero-stats .stat-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: var(--space-1);
+}
+
+.hero-ink .hero-stats-caption {
+  flex-basis: 100%;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
+}
+
+.hero-ink .hero-stats-caption a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+@media (max-width: 820px) {
+  .hero-ink {
+    padding: var(--space-6) 0 var(--space-5);
   }
 
-  .hero-cover .hero-caption {
-    display: none;
+  .hero-ink .hero-stats {
+    gap: var(--space-4) var(--space-6);
+    margin-top: var(--space-5);
   }
 }
 
 /* ---------- Hero ---------- */
 .hero {
-  padding: var(--space-8) 0 var(--space-7);
+  padding: var(--space-7) 0 var(--space-6);
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding: var(--space-6) 0 var(--space-5);
+  }
 }
 
 .hero-grid {
@@ -445,6 +512,7 @@ ol {
 .door {
   display: block;
   border: 1px solid var(--rule);
+  border-top: 3px solid var(--accent);
   background: var(--surface);
   padding: var(--space-5);
   color: var(--ink);
@@ -454,6 +522,10 @@ ol {
 .door:hover {
   border-color: var(--accent);
   color: var(--ink);
+}
+
+.door:hover .link-arrow::after {
+  transform: translateX(4px);
 }
 
 .door .kicker {
@@ -496,50 +568,6 @@ ol {
 
 .link-arrow:hover::after {
   transform: translateX(3px);
-}
-
-/* ---------- Stat line ---------- */
-.stat-line {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-6);
-  padding: var(--space-5) 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-
-.stat-line .stat .stat-value {
-  font-family: var(--serif);
-  font-size: var(--step-2);
-  font-weight: 700;
-  line-height: 1.1;
-}
-
-.stat-line .stat .stat-label {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  margin-top: var(--space-1);
-}
-
-.stat-caption {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  color: var(--ink-3);
-  margin-top: var(--space-2);
-}
-
-.stat-caption a {
-  color: inherit;
-  text-decoration: underline;
-}
-
-@media (max-width: 720px) {
-  .stat-line {
-    gap: var(--space-4) var(--space-6);
-  }
 }
 
 /* ---------- Publication card ---------- */
@@ -783,9 +811,10 @@ ol {
 
 /* ---------- Footer ---------- */
 .site-footer {
-  border-top: 1px solid var(--rule);
+  background: var(--paper-deep);
+  border-top: 2px solid var(--ink);
   padding: var(--space-6) 0;
-  margin-top: var(--space-8);
+  margin-top: 0;
 }
 
 .site-footer .container {
@@ -869,17 +898,31 @@ ol {
 /* ---------- Contact grid ---------- */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 280px;
+  grid-template-columns: 1fr 320px;
   gap: var(--space-6);
   align-items: start;
 }
 
-.contact-grid .contact-portrait img {
-  width: 100%;
-  border: 1px solid var(--rule);
+.contact-photo {
+  margin: 0;
 }
 
-.contact-grid .contact-portrait figcaption {
+.contact-photo .duotone {
+  background: var(--accent);
+  isolation: isolate;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+}
+
+.contact-photo .duotone img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08) brightness(1.02);
+  mix-blend-mode: luminosity;
+}
+
+.contact-photo figcaption {
   font-family: var(--mono);
   font-size: 0.72rem;
   color: var(--ink-3);
@@ -891,15 +934,14 @@ ol {
     grid-template-columns: 1fr;
   }
 
-  .contact-grid .contact-portrait {
-    max-width: 280px;
+  .contact-grid .contact-photo {
+    max-width: 360px;
   }
 }
 
 /* ---------- Motion ---------- */
 @media (prefers-reduced-motion: no-preference) {
-  .hero-grid,
-  .hero-cover .container {
+  .hero-ink .container {
     animation: rise 0.5s ease-out both;
   }
 
