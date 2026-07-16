@@ -19,7 +19,8 @@
   <meta name="twitter:image" content="https://mohammadi.cv/assets/img/thesis/cover.jpg">
 
   <link rel="canonical" href="https://mohammadi.cv/thesis/">
-  <link rel="icon" type="image/x-icon" href="/Logo.png">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
   <!-- Fonts (matches publications detail pages) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +28,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <link rel="stylesheet" href="/assets/css/site.css">
   <style>
     :root {
       --text-black: #000000;
@@ -410,12 +412,38 @@
 
 <body>
 
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/thesis/" aria-current="page">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/thesis/" aria-current="page">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
   <!-- Sticky nav -->
   <nav class="nav-bar">
     <div class="nav-content">
-      <a href="/" class="nav-back">
-        <i class="fas fa-arrow-left"></i> Hadi Mohammadi
-      </a>
       <div class="nav-links">
         <a href="/" class="nav-link">Home</a>
         <a href="/publications/" class="nav-link">Publications</a>

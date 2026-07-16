@@ -10,8 +10,11 @@
   <meta name="keywords" content="IOPS, Award, LLM, Moral Alignment, Cultural AI, EvalMORAAL, Utrecht University">
 
   <!-- Favicons -->
-  <link href="../../Logo.png" rel="icon">
-  <link href="../../Logo.png" rel="apple-touch-icon">
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Shared site styles (loaded first so Bootstrap/page CSS wins conflicts) -->
+  <link rel="stylesheet" href="/assets/css/site.css">
 
   <!-- Fonts (same as main site) -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -858,6 +861,35 @@
 </head>
 <body>
 
+<header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
 <!-- ===== HERO SECTION ===== -->
 <section class="hero-award">
   <div class="container hero-content">
@@ -895,9 +927,6 @@
           </a>
           <a href="https://www.iops.nl/" target="_blank" class="btn btn-outline-light">
             <i class="fas fa-external-link-alt me-1"></i> About IOPS
-          </a>
-          <a href="../../index.html" class="btn btn-outline-light">
-            <i class="fas fa-home me-1"></i> Main Site
           </a>
         </div>
       </div>
