@@ -1,0 +1,45 @@
+name: Build CV PDF
+
+on:
+  push:
+    paths:
+      - "cv/**"
+      - ".github/workflows/cv.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cv-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install RenderCV
+        run: pip install "rendercv[full]==2.8"
+
+      - name: Render CV
+        run: rendercv render cv/Hadi_Mohammadi_CV.yaml
+
+      - name: Install PDF and commit if changed
+        run: |
+          cp cv/rendercv_output/Hadi_Mohammadi_CV.pdf assets/docs/HadiMohammadiCV.pdf
+          if git diff --quiet -- assets/docs/HadiMohammadiCV.pdf; then
+            echo "CV unchanged."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/docs/HadiMohammadiCV.pdf
+          git commit -m "chore: rebuild CV PDF from cv/Hadi_Mohammadi_CV.yaml [skip ci]"
+          git push

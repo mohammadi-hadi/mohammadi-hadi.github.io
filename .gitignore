@@ -78,3 +78,4 @@ ehthumbs.db
 Thumbs.db 
 __pycache__/
 *.pyc
+cv/rendercv_output/
