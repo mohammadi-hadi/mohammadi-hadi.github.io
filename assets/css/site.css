@@ -344,11 +344,16 @@ ol {
 }
 
 .hero-ink .hero-portrait {
-  position: relative;
   margin: 0;
 }
 
-.hero-ink .hero-portrait::before {
+.hero-ink .portrait-frame {
+  display: block;
+  position: relative;
+  margin-right: 14px;
+}
+
+.hero-ink .portrait-frame::before {
   content: "";
   position: absolute;
   inset: 14px -14px -14px 14px;
@@ -356,7 +361,7 @@ ol {
   pointer-events: none;
 }
 
-.hero-ink .hero-portrait img {
+.hero-ink .portrait-frame img {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
@@ -368,8 +373,8 @@ ol {
 .hero-ink .hero-portrait figcaption {
   font-family: var(--mono);
   font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.5);
-  margin-top: var(--space-4);
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: var(--space-5);
 }
 
 .hero-ink .hero-stats {
