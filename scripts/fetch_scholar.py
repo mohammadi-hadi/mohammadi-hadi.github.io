@@ -8,12 +8,15 @@ is never clobbered by a blocked or partial response.
 
 import json
 import re
+import socket
 import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 
 from scholarly import scholarly, ProxyGenerator
+
+socket.setdefaulttimeout(30)  # fail fast when Google blocks the runner
 
 SCHOLAR_ID = "w4Jt-FAAAAAJ"
 OUT = Path(__file__).resolve().parents[1] / "assets" / "data" / "scholar.json"
@@ -109,7 +112,7 @@ def main() -> None:
             raise
         except Exception as e:  # noqa: BLE001 - report and retry
             print(f"::warning::attempt {attempt} failed: {e}")
-            time.sleep(30 * attempt)
+            time.sleep(15 * attempt)
     sys.exit(1)
 
 
