@@ -1,9 +1,16 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
 #
 # Single source of truth for Hadi Mohammadi's CV.
-# Edit this file (even in the GitHub web editor) and push — the cv.yml GitHub
-# Action renders it with RenderCV and updates assets/docs/HadiMohammadiCV.pdf,
-# which the website links everywhere.
+#
+# HOW TO UPDATE YOUR CV:
+#   1. Edit this file — easiest way: open
+#      https://github.com/mohammadi-hadi/mohammadi-hadi.github.io/edit/main/cv/Hadi_Mohammadi_CV.yaml
+#   2. Commit the change.
+#   3. A GitHub Action rebuilds the PDF automatically (~2 min) and the website
+#      serves it at https://mohammadi.cv/assets/docs/HadiMohammadiCV.pdf
+#
+# Style rules for edits: short sentences; start bullets with a verb or a
+# number; keep every metric; no buzzwords.
 
 cv:
   name: Hadi Mohammadi
@@ -22,18 +29,69 @@ cv:
       username: w4Jt-FAAAAAJ
   sections:
     Profile:
-      - Researcher in Explainable Natural Language Processing for social-science
-        applications, having completed my PhD in the Department of Methodology &
-        Statistics at Utrecht University. Across six doctoral research projects, I
-        develop transparent and reliable methods for large language models, covering
-        LLM-as-judge evaluation, annotation quality, cultural alignment, and
-        token-level robustness, and connect them to applied data science questions.
-      - I work as an independent researcher who leads projects end to end — alongside
-        the PhD I have led five competitively funded projects, taking each from
-        proposal through to delivery. I now serve as Senior AI & Data Science Expert
-        at AcademicTransfer, where I lead applied LLM work in production and am
-        technical lead of three applied AI projects. I am committed to open,
-        reproducible research, releasing code and data with my work.
+      - Researcher in explainable NLP (PhD, Utrecht University) and Senior AI &
+        Data Science Expert at AcademicTransfer. I build production LLM systems
+        for ranking, matching, and evaluation, and I study how to make them
+        transparent, reliable, and culturally fair.
+      - 'Track record: six doctoral research projects, five competitively funded
+        projects (over €40K) led end to end, and production AI used by 22 Dutch
+        research universities. I release code and data with my work.'
+
+    Professional Experience:
+      - company: AcademicTransfer
+        position: Senior AI & Data Science Expert
+        start_date: 2025-12
+        end_date: present
+        location: Utrecht, The Netherlands
+        highlights:
+          - 'Technical lead of the AI intelligence layer and applicant-tracking system used by 22 Dutch research universities and university medical centres.'
+          - 'Own the AI stack: CV creation and revision, semantic search, talent-pool matching, and best-candidate identification.'
+          - Lead a national recognition-and-rewards policy analysis with Dr. Sanli Faez (Universiteiten van Nederland) and university policy makers.
+          - Building an e-learning programme for PhD candidates and researchers with the University of Amsterdam.
+      - company: AcademicTransfer
+        position: AI & Data Science Expert
+        start_date: 2024-01
+        end_date: 2025-12
+        location: Utrecht, The Netherlands
+        highlights:
+          - Cut HR hiring time by 20% with the CV Priority Sorter (active learning + LLMs), built with Utrecht University, TU Delft, and Maastricht University.
+          - Raised candidate–job matching accuracy by 17% and halved manual effort with generative pipelines for CV insight extraction and de-identification.
+          - Shipped transformer models on Azure ML with MLflow, Docker, and CI/CD; evaluated ranking with A/B tests, uplift analysis, and bandit simulations.
+      - company: Utrecht University, School of Economics
+        position: Researcher & NLP Developer, FIRMBACKBONE
+        start_date: 2024-02
+        end_date: 2024-03
+        location: Utrecht, The Netherlands
+        highlights:
+          - 'Built the fbb-sustainability-analysis-cli tool: keyword extraction and sustainability scoring of company websites.'
+      - company: SnowaTec (Innovation Center), Entekhab Electronic
+        position: Senior Data Scientist, Customer Behaviour
+        start_date: 2021-12
+        end_date: 2022-12
+        location: Tehran, Iran
+        highlights:
+          - Modernised the enterprise data warehouse and ETL, improving data accessibility by 16%.
+          - Defined company KPIs and a customer-satisfaction index (+2% satisfaction); built Power BI dashboards used at every management level.
+          - Deployed ML customer segmentation, lifting marketing impact by 7.5%.
+      - company: Bdood.bikes (shared bicycle system)
+        position: Head of Data Science & Business Intelligence Team
+        start_date: 2020-04
+        end_date: 2020-10
+        location: Tehran, Iran
+        highlights:
+          - Led the data science and BI team and its analytics roadmap.
+          - Launched dynamic pricing and ML usage prediction, raising revenue by 5%.
+          - Cut maintenance costs by 8% and relocation costs by 3% with fleet intelligence; raised station utilisation by 11%.
+          - Improved customer retention by 4.5% through user-behaviour analyses.
+      - company: Bdood.bikes (shared bicycle system)
+        position: Data Scientist
+        start_date: 2019-07
+        end_date: 2020-04
+        location: Tehran, Iran
+        highlights:
+          - Reduced downtime by 3.8% with predictive maintenance and battery-health algorithms.
+          - Improved rider safety by 3% with GIS models identifying high-risk riders.
+          - Delivered marketing analytics behind a 6% rise in revenue and engagement.
 
     Education:
       - institution: Utrecht University
@@ -43,10 +101,9 @@ cv:
         end_date: 2026-05
         location: Utrecht, The Netherlands
         highlights:
-          - 'Faculty of Social and Behavioural Sciences, Department of Methodology & Statistics.'
           - 'Thesis: *Let Me Explain! Explainable NLP for Understanding Large Language Models*.'
-          - 'Member of the Natural Language and Text Processing (NLTP) group and the Human Data Science (HDS) Lab.'
-          - 'Supervisors: Dr. Robert A. Bagheri, Dr. Anastasia Giachanou, and Prof. Dr. Daniel Oberski.'
+          - Department of Methodology & Statistics; member of the NLTP group and the Human Data Science Lab.
+          - 'Supervisors: Dr. Robert A. Bagheri, Dr. Anastasia Giachanou, Prof. Dr. Daniel Oberski.'
       - institution: University of Tehran
         area: Industrial Engineering, Macro Systems
         degree: MSc
@@ -54,9 +111,9 @@ cv:
         end_date: 2021-04
         location: Tehran, Iran
         highlights:
-          - 'GPA: 18.96/20 (4/4) — ranked 2nd among 50+ graduate students.'
-          - 'Thesis: dynamic pricing with demand learning using reinforcement learning in a non-stationary environment, considering customer behaviour and advertisement (a data-driven approach).'
-          - 'Cognitive Science Researcher with the Institute for Cognitive Science Studies (ICSS) on customer behaviour in dynamic pricing.'
+          - 'GPA 18.96/20 (4/4); ranked 2nd among 50+ graduate students.'
+          - 'Thesis: dynamic pricing with demand learning via reinforcement learning under non-stationary customer behaviour.'
+          - Cognitive science research on customer behaviour with the Institute for Cognitive Science Studies (ICSS).
       - institution: Isfahan University of Technology, Golpayegan College of Engineering
         area: Mechanical Engineering
         degree: BSc
@@ -64,13 +121,23 @@ cv:
         end_date: 2016-07
         location: Isfahan, Iran
 
+    Skills:
+      - label: Research
+        details: Explainable NLP, LLM evaluation and LLM-as-judge, fairness and cultural alignment, annotation reliability, human–AI collaboration.
+      - label: ML & Statistics
+        details: Bayesian statistics, reinforcement learning, multi-armed bandits (Thompson sampling), transformers, topic modelling, A/B testing and uplift analysis, geospatial analysis, high-performance computing.
+      - label: Engineering
+        details: Python (advanced), R, SQL, Bash; PyTorch, TensorFlow, Hugging Face, scikit-learn; RAG, agents, Model Context Protocol, vector databases; Azure ML, MLflow, Docker, CI/CD; Power BI; LaTeX.
+      - label: Languages
+        details: Farsi (native), English (fluent), Dutch (A2, improving).
+
     Publications:
       - title: 'EvalMORAAL: Interpretable Chain-of-Thought and LLM-as-Judge Evaluation for Moral Alignment in Large Language Models'
         authors:
           - '***Mohammadi, H.***'
           - Giachanou, A.
           - Bagheri, R. A.
-        journal: 'Proceedings of the 15th Joint Conference on Lexical and Computational Semantics (*SEM 2026), ACL, pp. 497–515'
+        journal: '*SEM 2026 (ACL), pp. 497–515'
         date: 2026
         url: https://aclanthology.org/2026.starsem-conference.34/
       - title: Exploring Cultural Variations in Moral Judgments with Large Language Models
@@ -96,7 +163,7 @@ cv:
           - Poesio, M.
           - Bagheri, R. A.
           - Giachanou, A.
-        journal: 'Workshop on Gender Bias in Natural Language Processing (GeBNLP), ACL 2025, pp. 92–104 († equal contribution)'
+        journal: 'GeBNLP Workshop, ACL 2025, pp. 92–104 († equal contribution)'
         date: 2025
         doi: 10.18653/v1/2025.gebnlp-1.9
       - title: Do Large Language Models Understand Morality Across Cultures?
@@ -105,7 +172,7 @@ cv:
           - Meijer, Y. F. S. S.
           - Papadopoulou, E.
           - Bagheri, R. A.
-        journal: 'Proceedings of the 2nd LUHME Workshop, ECAI 2025, pp. 30–39'
+        journal: '2nd LUHME Workshop, ECAI 2025, pp. 30–39'
         date: 2025
         url: https://aclanthology.org/2025.luhme-1.3/
       - title: Explainability-Based Token Replacement on LLM-Generated Text
@@ -144,7 +211,7 @@ cv:
           - '***Mohammadi, H.***'
           - Rahmati, M.
           - Shahedi, T.
-        journal: 'Proceedings of BNAIC/BeNeLearn 2024, Utrecht, The Netherlands'
+        journal: 'BNAIC/BeNeLearn 2024, Utrecht, The Netherlands'
         date: 2024
       - title: 'A Transparent Pipeline for Identifying Sexism in Social Media: Combining Explainability with Model Prediction'
         authors:
@@ -184,7 +251,7 @@ cv:
       - title: 'Statistical Reinforcement Learning with Application in Dynamic Pricing Problem: Learning from Customer Interaction based on Bayesian Approach'
         authors:
           - '***Mohammadi, H.***'
-        journal: 'Tehran: Arshadan Publication (in Persian)'
+        journal: 'Tehran: Arshadan Publication (book, in Persian)'
         date: 2022
       - title: 'Home Health Care Problem with Synchronization Visits and Considering Samples Transferring Time: A Case Study in Tehran, Iran'
         authors:
@@ -199,142 +266,47 @@ cv:
         doi: 10.3390/ijerph192215036
 
     Grants & Awards:
-      - bullet: '**Best Oral Presentation**, IOPS Winter Conference 2025, for work on cultural moral alignment in large language models (December 2025).'
-      - bullet: '**Applied Data Science Grant, Utrecht University (€5K)** — “Optimizing the CV Priority Sorter for Fair and Efficient Prioritization,” with Dr. Robert A. Bagheri, Dr. Georg Krempl (Utrecht University), and Jeroen Sparla (AcademicTransfer) (December 2025).'
-      - bullet: '**Applied Data Science Grant, Utrecht University (€5K)** — “Rule Extraction from Human Evaluation Using LLMs and Reinforcement Learning,” with Dr. Anastasia Giachanou and Dr. Shihan Wang (July 2025).'
-      - bullet: '**Centre for Unusual Collaborations (CUCo) Spark Grant (€9K)** — “ReDOSE: Towards a More Circular Pharmaceutical Industry Using AI,” with Dr. Negin Salimi (WUR), Dr. Shayegheh Ashourizadeh (WUR), Dr. Duru Bayram (TU/e), and Dr. Saeed Arbabi (UMCU) (May 2025).'
-      - bullet: '**European Lighthouse to Manifest Trustworthy and Green AI (Enfield) grant (€14.4K)** — “User Perspectives on Explainable AI” (December 2024).'
-      - bullet: '**Applied Data Science Grant, Utrecht University (€7.5K)** — “Assessing Reliability of Annotations in the Context of Model Predictions and Explanations,” with Dr. Pablo Mosteiro Romero, Dr. Anastasia Giachanou, and Prof. Dr. Massimo Poesio (December 2023).'
-      - bullet: '**Scholarship for admission**, Explainable AI (XAI) Summer School, TU Delft, The Netherlands (August 2022).'
-      - bullet: '**Ranked 2nd** among 50+ Industrial Engineering graduate students, University of Tehran (April 2021).'
-      - bullet: '**Best Paper Award**, Second National Conference of the Iranian System Dynamics Society (2019).'
-      - bullet: '**Ranked 35th** of 10,000+ participants, national Iranian MSc entrance exam in Industrial Engineering (September 2018).'
+      - bullet: '**Best Oral Presentation**, IOPS Winter Conference 2025 — cultural moral alignment in LLMs (Dec 2025).'
+      - bullet: '**Applied Data Science Grant, €5K** — CV Priority Sorter for fair prioritization; with R. A. Bagheri, G. Krempl, J. Sparla (Dec 2025).'
+      - bullet: '**Applied Data Science Grant, €5K** — rule extraction from human evaluation with LLMs and RL; with A. Giachanou, S. Wang (Jul 2025).'
+      - bullet: '**CUCo Spark Grant, €9K** — ReDOSE: circular pharmaceutical industry using AI; with WUR, TU/e, and UMCU collaborators (May 2025).'
+      - bullet: '**ENFIELD grant, €14.4K** — European Lighthouse on Trustworthy and Green AI: user perspectives on explainable AI (Dec 2024).'
+      - bullet: '**Applied Data Science Grant, €7.5K** — reliability of annotations under model predictions and explanations; with P. Mosteiro Romero, A. Giachanou, M. Poesio (Dec 2023).'
+      - bullet: '**Admission scholarship**, Explainable AI Summer School, TU Delft (Aug 2022).'
+      - bullet: '**Ranked 2nd** among 50+ Industrial Engineering graduate students, University of Tehran (2021).'
+      - bullet: '**Best Paper Award**, 2nd National Conference of the Iranian System Dynamics Society (2019).'
+      - bullet: '**Ranked 35th** of 10,000+ in the national Iranian MSc entrance exam, Industrial Engineering (2018).'
 
-    Leadership & Representation:
-      - bullet: '**Co-founder, Young Scholar Network for NLP@U** — established in November 2024 to unite PhD candidates, postdocs, and junior researchers working on NLP and text mining across Utrecht University and UMC Utrecht.'
-      - bullet: '**LERU Doctoral Summer School Representative** — selected as the representative of the Faculty of Social and Behavioural Sciences, Utrecht University, for the 2025 LERU Doctoral Summer School.'
+    Teaching & Supervision:
+      - bullet: '**MSc thesis co-supervision, Applied Data Science, Utrecht University** — 2024: M. Meijer, E. Papadopoulou, L. Santos Moitinho de Almeida (with R. A. Bagheri); 2025: H. Brouwer, T. Kozák, M. Jouhar (with A. Giachanou); 2026: A. Vos, G. Verestiuc, T. Rietman (with R. A. Bagheri).'
+      - bullet: '**Practical Assistant**, Transformers Workshop, UMC Utrecht — Python sessions with Dr. Robert A. Bagheri and Prof. Dr. Albert Gatt (Dec 2023).'
+      - bullet: '**Computer Lab Assistant**, Data Wrangling and Data Analysis, MSc Applied Data Science, Utrecht University (Sep–Oct 2023).'
+      - bullet: '**Lead Teaching Assistant**, Deep Learning Summer School, Neuromatch Academy — international cohort, remote (Aug–Sep 2021).'
 
-    Teaching Experience:
-      - company: Transformers Workshop, UMC Utrecht
-        position: Practical Assistant
-        start_date: 2023-12
-        end_date: 2023-12
-        location: Utrecht, The Netherlands
-        highlights:
-          - Supervised practical sessions in Python alongside Dr. Robert A. Bagheri and Prof. Dr. Albert Gatt.
-      - company: Data Wrangling and Data Analysis, Utrecht University
-        position: Computer Lab Assistant
-        start_date: 2023-09
-        end_date: 2023-10
-        location: Utrecht, The Netherlands
-        highlights:
-          - Assisted in the MSc Applied Data Science course, focusing on R for data visualisation, exploratory data analysis, supervised learning, and text mining.
-      - company: Deep Learning Summer School, Neuromatch Academy
-        position: Lead Teaching Assistant
-        start_date: 2021-08
-        end_date: 2021-09
-        location: Remote
-        highlights:
-          - Facilitated learning for an international student cohort and coordinated with mentors and organisers.
+    Leadership & Service:
+      - bullet: '**Co-founder, NLP@U Young Scholar Network** — community of PhD candidates, postdocs, and junior NLP researchers across Utrecht University and UMC Utrecht (Nov 2024).'
+      - bullet: '**Communications Chair, BNAIC/BeNeLearn 2024** — Joint International Scientific Conferences on AI and Machine Learning, Utrecht University.'
+      - bullet: '**LERU Doctoral Summer School representative** for the Faculty of Social and Behavioural Sciences, Utrecht University (2025).'
 
-    Supervision:
-      - bullet: 'ADS MSc theses 2024 (co-supervised with Dr. Robert A. Bagheri): Mijntje Meijer, Evi Papadopoulou, Lourenço Santos Moitinho de Almeida.'
-      - bullet: 'ADS MSc theses 2025 (co-supervised with Dr. Anastasia Giachanou): Hein Brouwer, Tamás Kozák, Mohamad Jouhar.'
-      - bullet: 'ADS MSc theses 2026 (co-supervised with Dr. Robert A. Bagheri): Aliyah Vos, Geanina Verestiuc, Thomas Rietman.'
-
-    Selected Work Experience:
-      - company: AcademicTransfer
-        position: Senior AI & Data Science Expert
-        start_date: 2025-12
-        end_date: present
-        location: Utrecht, The Netherlands
-        highlights:
-          - Lead AI strategy and applied data-science delivery for academic hiring, translating research on explainable and reliable NLP into production features.
-          - Technical lead of a recognition-and-rewards policy analysis examining how promotion and reward policies are reflected in academic positions, with Dr. Sanli Faez (national manager, Recognition & Rewards, Universiteiten van Nederland) and university policy makers across the Netherlands.
-          - 'Technical lead of a new AI intelligence layer and applicant tracking system for AcademicTransfer, used by 22 Dutch research universities and university medical centres: advanced AI spanning CV creation and revision, semantic search, talent-pool matching, and best-candidate identification.'
-          - Developing a new e-learning programme with the University of Amsterdam for PhD candidates and researchers.
-      - company: AcademicTransfer
-        position: AI & Data Science Expert
-        start_date: 2024-01
-        end_date: 2025-12
-        location: Utrecht, The Netherlands
-        highlights:
-          - Developed the CV Priority Sorter using active learning and large language models, cutting HR hiring time by 20%, in collaboration with Utrecht University, TU Delft, and Maastricht University.
-          - Built end-to-end generative-AI pipelines for automatic insight extraction and de-identification from CVs, improving candidate–job alignment accuracy by 17% and halving manual effort.
-          - Deployed transformer-based models on Azure ML with MLflow, Docker, and CI/CD; used A/B tests, uplift analysis, and bandit simulations to evaluate and improve ranking and recommendation models.
-      - company: Utrecht University, School of Economics
-        position: Researcher & NLP Developer, FIRMBACKBONE project
-        start_date: 2024-02
-        end_date: 2024-03
-        location: Utrecht, The Netherlands
-        highlights:
-          - Developed fbb-sustainability-analysis-cli, adding a keyword extractor for sustainability terms and an index generator that scores websites on sustainability content.
-      - company: SnowaTec (Innovation Center) — Entekhab Electronic
-        position: Senior Data Scientist, Customer Behaviour
-        start_date: 2021-12
-        end_date: 2022-12
-        location: Tehran, Iran
-        highlights:
-          - Managed the enterprise data warehouse with modern ETL tooling, improving data accessibility by 16%.
-          - Led the project to define, capture, and improve KPIs and a customer-satisfaction index, lifting satisfaction by 2%.
-          - Created interactive Power BI dashboards to support data-driven decisions at all management levels.
-          - Implemented ML-based customer segmentation, boosting marketing impact and customer experience by 7.5%.
-      - company: Bdood.bikes (Shared Bicycle System)
-        position: Head of Data Science & Business Intelligence Team
-        start_date: 2020-04
-        end_date: 2020-10
-        location: Tehran, Iran
-        highlights:
-          - Led the data science and business intelligence team and its analytics roadmap for the bike-sharing operation.
-          - Implemented dynamic pricing and ML-based usage predictions, increasing revenue and rider experience by 5%.
-          - Built dashboards with Power BI, Streamlit, and Dash Plotly, boosting engagement by 3%, efficiency by 7%, and station space utilisation by 11%.
-          - Optimised fleet intelligence, cutting maintenance and relocation costs by 8% and 3% respectively, and raising system performance by 2.7%.
-          - Led user-behaviour analyses that improved customer retention by 4.5%.
-      - company: Bdood.bikes (Shared Bicycle System)
-        position: Data Scientist
-        start_date: 2019-07
-        end_date: 2020-04
-        location: Tehran, Iran
-        highlights:
-          - Led predictive-maintenance analysis and battery-health algorithm development, reducing downtime by 3.8% and extending battery life.
-          - Applied GIS models to identify high-risk riders, enhancing safety by 3% and user experience by 5%.
-          - Provided marketing and business-analytics insights that contributed to a 6% rise in revenue and engagement.
-
-    Additional Professional Development:
-      - name: Generative Modeling Summer School, Eindhoven University of Technology
+    Professional Development:
+      - name: Generative Modeling Summer School, TU Eindhoven
         date: June 2024
-        location: Eindhoven, The Netherlands
-        summary: Focus on deep generative modeling.
-      - name: Machine Learning Summer School, University of Oxford
+      - name: Machine Learning Summer School, University of Oxford — finance & NLP/health
         date: May – July 2023
-        location: Oxford, UK
-        summary: Specialisation in finance & NLP/health.
-      - name: Explainable AI (XAI) Summer School, TU Delft
+      - name: Explainable AI Summer School, TU Delft — post-hoc interpretability
         date: August 2022
-        location: Delft, The Netherlands
-        summary: Focus on post-hoc interpretability in machine learning.
-      - name: Executive Master in Finance (EMFin), Sharif University of Technology
-        date: November 2021 – November 2022
-        location: Tehran, Iran
-        summary: One-year comprehensive finance programme.
-
-    Volunteer Activity:
-      - bullet: 'Communications Chair, BNAIC/BeNeLearn 2024 — Joint International Scientific Conferences on AI and Machine Learning, Utrecht University (2024).'
-
-    Skills:
-      - label: Research Interests
-        details: Explainable NLP, large language model evaluation, fairness and cultural alignment in LLMs, annotation reliability, human–AI collaboration, open and reproducible research.
-      - label: Statistical & ML Methods
-        details: Bayesian statistics, reinforcement learning and multi-armed bandits (Thompson sampling), large-scale text analysis (LLMs, transformers, topic modelling, LLM-as-judge), data visualisation, geospatial analysis, high-performance computing, privacy-preserving handling of sensitive data.
-      - label: Programming & Tools
-        details: Python (advanced), R, SQL, Bash; Git and GitHub; PyTorch, TensorFlow, Hugging Face, scikit-learn; LLM application stack (RAG, agents, Model Context Protocol, vector databases); Azure ML, MLflow, Docker, CI/CD; Power BI; LaTeX.
-      - label: Languages
-        details: Farsi (native), English (fluent), Dutch (A2, improving).
+      - name: Executive Master in Finance, Sharif University of Technology
+        date: Nov 2021 – Nov 2022
 
     References:
-      - bullet: 'Dr. Robert A. Bagheri — Associate Professor, Department of Methodology & Statistics, Utrecht University — a.bagheri@uu.nl'
-      - bullet: 'Dr. Anastasia Giachanou — Assistant Professor, Department of Methodology & Statistics, Utrecht University — a.giachanou@uu.nl'
+      - bullet: 'Dr. Robert A. Bagheri — Associate Professor, Methodology & Statistics, Utrecht University — a.bagheri@uu.nl'
+      - bullet: 'Dr. Anastasia Giachanou — Assistant Professor, Methodology & Statistics, Utrecht University — a.giachanou@uu.nl'
       - bullet: 'Prof. Dr. Daniel Oberski — Professor of Social Data Science, Utrecht University; Scientific Director, ODISSEI — d.l.oberski@uu.nl'
 
 design:
   theme: classic
+  colors:
+    name: 'rgb(30, 58, 95)'
+    section_titles: 'rgb(30, 58, 95)'
+    links: 'rgb(30, 58, 95)'
+    connections: 'rgb(30, 58, 95)'
