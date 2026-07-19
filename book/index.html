@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book draft — Hadi Mohammadi</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <style>
+    .draft-wrap { max-width: 720px; margin: 0 auto; padding: 3.5rem 1.25rem 4rem; }
+    .draft-wrap h1 { font-family: var(--serif); font-size: 2rem; margin: 0 0 .35rem; }
+    .draft-sub { color: var(--accent); font-family: var(--serif); font-style: italic; margin: 0 0 .9rem; }
+    .draft-meta { font-family: var(--mono); font-size: .78rem; color: #6b6b66; letter-spacing: .02em; margin-bottom: 2.2rem; }
+    .gate { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1.6rem 1.6rem 1.4rem; }
+    .gate p { margin: 0 0 1rem; font-size: .95rem; }
+    .gate form { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .gate input[type=password] { flex: 1 1 220px; padding: .6rem .7rem; border: 1px solid var(--rule);
+      border-radius: 6px; background: var(--paper); color: var(--ink);
+      font-family: var(--mono); font-size: .95rem; letter-spacing: .06em; }
+    .gate input[type=password]:focus { outline: none; border-color: var(--accent); }
+    .gate button { padding: .6rem 1.1rem; border: 0; border-radius: 6px; background: var(--accent);
+      color: #fff; font-family: var(--sans); font-weight: 600; font-size: .9rem; cursor: pointer; }
+    .gate button:hover { background: var(--accent-hover); }
+    .gate button:disabled { opacity: .6; cursor: default; }
+    .gate .err { color: #b3382c; font-size: .85rem; margin: .7rem 0 0; min-height: 1.2em; }
+    .gate .lock-note { font-family: var(--mono); font-size: .72rem; color: #8a8a84; margin-top: 1.1rem; }
+    .gate.no { animation: shake .45s; }
+    @keyframes shake { 10%,90% { transform: translateX(-2px) } 20%,80% { transform: translateX(3px) }
+      30%,50%,70% { transform: translateX(-4px) } 40%,60% { transform: translateX(4px) } }
+    .viewer { display: none; }
+    .viewer.on { display: block; }
+    .viewer-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      flex-wrap: wrap; margin-bottom: .8rem; }
+    .viewer-bar .stamp { font-family: var(--mono); font-size: .78rem; color: #6b6b66; }
+    .viewer-bar .actions { display: flex; gap: .5rem; }
+    .viewer-bar a { display: inline-block; padding: .45rem .85rem; border: 1px solid var(--rule);
+      border-radius: 6px; background: var(--surface); color: var(--accent); font-family: var(--sans);
+      font-size: .85rem; font-weight: 600; text-decoration: none; }
+    .viewer-bar a:hover { border-color: var(--accent); }
+    .viewer iframe { width: 100%; height: calc(100vh - 210px); min-height: 540px;
+      border: 1px solid var(--rule); border-radius: 8px; background: #525659; }
+    .viewer .fallback { font-size: .85rem; color: #6b6b66; margin-top: .6rem; }
+    .wide { max-width: 1080px; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main class="draft-wrap" id="main">
+    <h1>Hands-On Explainable AI</h1>
+    <p class="draft-sub">Interpreting, Evaluating, and Trusting Large Language Models</p>
+    <p class="draft-meta" id="meta">working draft &middot; private &middot; not for distribution</p>
+
+    <section class="gate" id="gate">
+      <p>This is the working draft of my book manuscript. It is not public &mdash; enter the access key to read it.</p>
+      <form id="form" autocomplete="off">
+        <input type="password" id="pw" placeholder="access key" aria-label="Access key" autofocus>
+        <button type="submit" id="go">Open</button>
+      </form>
+      <p class="err" id="err"></p>
+      <p class="lock-note">AES-256-GCM &middot; decrypted only in your browser &middot; nothing is sent anywhere</p>
+    </section>
+
+    <section class="viewer" id="viewer">
+      <div class="viewer-bar">
+        <span class="stamp" id="stamp">draft</span>
+        <span class="actions">
+          <a id="newtab" href="#" target="_blank" rel="noopener">Open in new tab</a>
+          <a id="dl" href="#" download="Hands-On-Explainable-AI-draft.pdf">Download PDF</a>
+        </span>
+      </div>
+      <iframe id="frame" title="Book draft PDF"></iframe>
+      <p class="fallback">If the preview stays blank on your device, use Download or Open in new tab.</p>
+    </section>
+  </main>
+
+<script>
+(function () {
+  var form = document.getElementById('form'), pw = document.getElementById('pw'),
+      go = document.getElementById('go'), err = document.getElementById('err'),
+      gate = document.getElementById('gate'), viewer = document.getElementById('viewer'),
+      main = document.getElementById('main');
+  var payload = null;
+
+  function fail(msg) {
+    err.textContent = msg;
+    go.disabled = false; go.textContent = 'Open';
+    gate.classList.remove('no'); void gate.offsetWidth; gate.classList.add('no');
+  }
+
+  async function getPayload() {
+    if (payload) return payload;
+    go.textContent = 'Downloading…';
+    var r = await fetch('book.enc', { cache: 'no-cache' });
+    if (!r.ok) throw new Error('fetch');
+    var buf = new Uint8Array(await r.arrayBuffer());
+    var magic = new TextDecoder().decode(buf.slice(0, 4));
+    if (magic !== 'HXB1' || buf.length < 33) throw new Error('format');
+    payload = { salt: buf.slice(4, 20), iv: buf.slice(20, 32), ct: buf.slice(32) };
+    return payload;
+  }
+
+  async function decrypt(pass) {
+    var p = await getPayload();
+    go.textContent = 'Decrypting…';
+    var km = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveBits']);
+    var bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', salt: p.salt, iterations: 600000, hash: 'SHA-256' }, km, 256);
+    var key = await crypto.subtle.importKey('raw', bits, 'AES-GCM', false, ['decrypt']);
+    return crypto.subtle.decrypt({ name: 'AES-GCM', iv: p.iv }, key, p.ct);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!pw.value) return;
+    err.textContent = ''; go.disabled = true;
+    decrypt(pw.value).then(function (plain) {
+      var blob = new Blob([plain], { type: 'application/pdf' });
+      var url = URL.createObjectURL(blob);
+      var mb = (plain.byteLength / 1048576).toFixed(1);
+      document.getElementById('frame').src = url + '#view=FitH';
+      document.getElementById('newtab').href = url;
+      document.getElementById('dl').href = url;
+      document.getElementById('stamp').textContent = 'decrypted locally · ' + mb + ' MB';
+      pw.value = '';
+      gate.style.display = 'none';
+      viewer.classList.add('on');
+      main.classList.add('wide');
+    }).catch(function (ex) {
+      if (ex && (ex.message === 'fetch' || ex.message === 'format')) {
+        fail('Could not load the encrypted file. Try reloading the page.');
+      } else {
+        fail('That key is not right.');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
