@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="75" height="20" role="img" aria-label="CV: PDF">
+<g shape-rendering="crispEdges">
+<rect width="34" height="20" fill="#555"/>
+<rect x="34" width="41" height="20" fill="#1E3A5F"/>
+</g>
+<g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="11">
+<text x="17.0" y="14" textLength="16">CV</text>
+<text x="54.5" y="14" textLength="23">PDF</text>
+</g>
+</svg>
