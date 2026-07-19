@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="158" height="20" role="img" aria-label="Google Scholar: profile">
+<g shape-rendering="crispEdges">
+<rect width="101" height="20" fill="#555"/>
+<rect x="101" width="57" height="20" fill="#1E3A5F"/>
+</g>
+<g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="11">
+<text x="50.5" y="14" textLength="83">Google Scholar</text>
+<text x="129.5" y="14" textLength="39">profile</text>
+</g>
+</svg>

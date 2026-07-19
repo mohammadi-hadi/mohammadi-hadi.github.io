@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="231" height="20" role="img" aria-label="Email: hadi.mohammadi@outlook.com">
+<g shape-rendering="crispEdges">
+<rect width="49" height="20" fill="#555"/>
+<rect x="49" width="182" height="20" fill="#1E3A5F"/>
+</g>
+<g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="11">
+<text x="24.5" y="14" textLength="31">Email</text>
+<text x="140.0" y="14" textLength="164">hadi.mohammadi@outlook.com</text>
+</g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="201" height="20" role="img" aria-label="ORCID: 0000-0003-0860-9200">
+<g shape-rendering="crispEdges">
+<rect width="51" height="20" fill="#555"/>
+<rect x="51" width="150" height="20" fill="#1E3A5F"/>
+</g>
+<g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="11">
+<text x="25.5" y="14" textLength="33">ORCID</text>
+<text x="126.0" y="14" textLength="132">0000-0003-0860-9200</text>
+</g>
+</svg>
