@@ -1,23 +1,79 @@
 {
-  "fetched_at": "2026-07-19T07:47:56+00:00",
+  "fetched_at": "2026-07-20T08:30:32+00:00",
   "github": {
-    "public_repos": 29,
-    "total_stars": 18,
+    "public_repos": 32,
+    "total_stars": 19,
     "repos": {
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Personal academic website — mohammadi.cv",
+        "language": "JavaScript",
+        "pushed_at": "2026-07-20T05:45:53Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
+      "awesome-explainable-nlp": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Curated list of papers, tools, and resources on explainability and interpretability for NLP and large language models",
+        "language": null,
+        "pushed_at": "2026-07-19T15:58:23Z",
+        "url": "https://github.com/mohammadi-hadi/awesome-explainable-nlp"
+      },
+      "BehAv-PO": {
+        "stars": 1,
+        "forks": 0,
+        "description": "Behavioral cluster-driven multi-agent preference optimization (SFT / DPO / GRPO) for sexism detection on EXIST 2024",
+        "language": "Python",
+        "pushed_at": "2026-07-19T14:44:50Z",
+        "url": "https://github.com/mohammadi-hadi/BehAv-PO"
+      },
+      "xnlp-survey": {
+        "stars": 1,
+        "forks": 0,
+        "description": "Supplementary materials for 'Explainability in Practice: A Survey of Explainable NLP' - Journal of Information Science",
+        "language": "Python",
+        "pushed_at": "2026-07-19T13:00:08Z",
+        "url": "https://github.com/mohammadi-hadi/xnlp-survey"
+      },
+      "spark-search-ranking": {
+        "stars": 1,
+        "forks": 0,
+        "description": "Counterfactual learning-to-rank for marketplace search logs in PySpark: position-bias estimation, IPS-weighted training, NDCG evaluation against known ground truth",
+        "language": "Python",
+        "pushed_at": "2026-07-19T12:38:30Z",
+        "url": "https://github.com/mohammadi-hadi/spark-search-ranking"
+      },
       "mohammadi-hadi": {
         "stars": 0,
         "forks": 0,
         "description": "GitHub profile README",
         "language": null,
-        "pushed_at": "2026-07-19T02:38:52Z",
+        "pushed_at": "2026-07-19T12:37:45Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi"
+      },
+      "ai-masters-netherlands": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Every AI, machine learning, and data science master's programme at Dutch research universities — admissions, costs, deadlines, and how to choose",
+        "language": null,
+        "pushed_at": "2026-07-19T12:32:39Z",
+        "url": "https://github.com/mohammadi-hadi/ai-masters-netherlands"
+      },
+      "ml-learning-paths": {
+        "stars": 0,
+        "forks": 0,
+        "description": "The best ML courses organized into five career paths — ML scientist, ML engineer, LLM engineer, data engineer, data scientist — with honest advice on what to take and what to skip",
+        "language": null,
+        "pushed_at": "2026-07-19T12:32:37Z",
+        "url": "https://github.com/mohammadi-hadi/ml-learning-paths"
       },
       "ml-summer-schools-europe": {
         "stars": 1,
         "forks": 0,
         "description": "Practical guide to machine learning summer schools in Europe: the schools, deadlines, funding, and how to make the week count — from someone who attended four",
         "language": null,
-        "pushed_at": "2026-07-19T02:38:16Z",
+        "pushed_at": "2026-07-19T09:22:13Z",
         "url": "https://github.com/mohammadi-hadi/ml-summer-schools-europe"
       },
       "modern-ai-engineering": {
@@ -25,24 +81,16 @@
         "forks": 0,
         "description": "Field notes on building production LLM systems: structured outputs, RAG, agents and MCP, LoRA/DPO/GRPO fine-tuning, LLM-as-judge evaluation, and serving with vLLM",
         "language": null,
-        "pushed_at": "2026-07-19T02:36:56Z",
+        "pushed_at": "2026-07-19T09:21:49Z",
         "url": "https://github.com/mohammadi-hadi/modern-ai-engineering"
       },
-      "spark-search-ranking": {
-        "stars": 1,
-        "forks": 0,
-        "description": "Counterfactual learning-to-rank for marketplace search logs in PySpark: position-bias estimation, IPS-weighted training, NDCG evaluation against known ground truth",
-        "language": "Python",
-        "pushed_at": "2026-07-19T02:31:50Z",
-        "url": "https://github.com/mohammadi-hadi/spark-search-ranking"
-      },
-      "mohammadi-hadi.github.io": {
+      "dynamic-pricing-dashboard": {
         "stars": 0,
         "forks": 0,
-        "description": "Personal academic website — mohammadi.cv",
-        "language": "JavaScript",
-        "pushed_at": "2026-07-19T02:04:34Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+        "description": "Interactive in-browser simulator: dynamic pricing with demand learning, forward-looking customers, and advertising",
+        "language": "Python",
+        "pushed_at": "2026-07-19T09:21:43Z",
+        "url": "https://github.com/mohammadi-hadi/dynamic-pricing-dashboard"
       },
       "ACL2025": {
         "stars": 1,
@@ -77,7 +125,7 @@
         "url": "https://github.com/mohammadi-hadi/Token-Replacement"
       },
       "Explainable_Annotations_Reliability": {
-        "stars": 2,
+        "stars": 3,
         "forks": 0,
         "description": "Assessing the reliability of LLM annotations in the context of demographic bias and model explanation (GeBNLP @ ACL 2025)",
         "language": "R",
@@ -99,30 +147,6 @@
         "language": "Python",
         "pushed_at": "2026-07-19T01:42:55Z",
         "url": "https://github.com/mohammadi-hadi/EvalMORAAL"
-      },
-      "xnlp-survey": {
-        "stars": 1,
-        "forks": 0,
-        "description": "Supplementary materials for 'Explainability in Practice: A Survey of Explainable NLP' - Journal of Information Science",
-        "language": "Python",
-        "pushed_at": "2026-07-19T01:42:54Z",
-        "url": "https://github.com/mohammadi-hadi/xnlp-survey"
-      },
-      "BehAv-PO": {
-        "stars": 1,
-        "forks": 0,
-        "description": "Behavioral cluster-driven multi-agent preference optimization (SFT / DPO / GRPO) for sexism detection on EXIST 2024",
-        "language": "Python",
-        "pushed_at": "2026-07-19T01:34:46Z",
-        "url": "https://github.com/mohammadi-hadi/BehAv-PO"
-      },
-      "awesome-explainable-nlp": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Curated list of papers, tools, and resources on explainability and interpretability for NLP and large language models",
-        "language": null,
-        "pushed_at": "2026-07-19T01:34:45Z",
-        "url": "https://github.com/mohammadi-hadi/awesome-explainable-nlp"
       },
       ".github": {
         "stars": 0,
