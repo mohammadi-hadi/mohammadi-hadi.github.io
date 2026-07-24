@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-07-23T07:56:27+00:00",
+  "fetched_at": "2026-07-24T07:53:48+00:00",
   "github": {
     "public_repos": 32,
-    "total_stars": 19,
+    "total_stars": 8,
     "repos": {
       "mohammadi-hadi.github.io": {
         "stars": 0,
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "JavaScript",
-        "pushed_at": "2026-07-22T07:44:41Z",
+        "pushed_at": "2026-07-23T07:56:29Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "mohammadi-hadi": {
@@ -37,7 +37,7 @@
         "url": "https://github.com/mohammadi-hadi/BehAv-PO"
       },
       "xnlp-survey": {
-        "stars": 1,
+        "stars": 0,
         "forks": 0,
         "description": "Supplementary materials for 'Explainability in Practice: A Survey of Explainable NLP' - Journal of Information Science",
         "language": "Python",
@@ -45,7 +45,7 @@
         "url": "https://github.com/mohammadi-hadi/xnlp-survey"
       },
       "spark-search-ranking": {
-        "stars": 1,
+        "stars": 0,
         "forks": 0,
         "description": "Counterfactual learning-to-rank for marketplace search logs in PySpark: position-bias estimation, IPS-weighted training, NDCG evaluation against known ground truth",
         "language": "Python",
@@ -69,7 +69,7 @@
         "url": "https://github.com/mohammadi-hadi/ml-learning-paths"
       },
       "ml-summer-schools-europe": {
-        "stars": 1,
+        "stars": 0,
         "forks": 0,
         "description": "Practical guide to machine learning summer schools in Europe: the schools, deadlines, funding, and how to make the week count — from someone who attended four",
         "language": null,
@@ -77,7 +77,7 @@
         "url": "https://github.com/mohammadi-hadi/ml-summer-schools-europe"
       },
       "modern-ai-engineering": {
-        "stars": 1,
+        "stars": 0,
         "forks": 0,
         "description": "Field notes on building production LLM systems: structured outputs, RAG, agents and MCP, LoRA/DPO/GRPO fine-tuning, LLM-as-judge evaluation, and serving with vLLM",
         "language": null,
@@ -93,7 +93,7 @@
         "url": "https://github.com/mohammadi-hadi/dynamic-pricing-dashboard"
       },
       "ACL2025": {
-        "stars": 1,
+        "stars": 0,
         "forks": 0,
         "description": "Project page for the GeBNLP @ ACL 2025 paper on the reliability of LLM annotations, demographic bias, and model explanations",
         "language": "JavaScript",
@@ -101,7 +101,7 @@
         "url": "https://github.com/mohammadi-hadi/ACL2025"
       },
       "Exist-2023": {
-        "stars": 1,
+        "stars": 0,
         "forks": 0,
         "description": "Sexism detection experiments for the EXIST 2023 shared task (code archived on Zenodo)",
         "language": "Jupyter Notebook",
@@ -109,7 +109,7 @@
         "url": "https://github.com/mohammadi-hadi/Exist-2023"
       },
       "Explainable-Sexism-Detection": {
-        "stars": 2,
+        "stars": 1,
         "forks": 0,
         "description": "Transparent pipeline for online sexism detection combining explainable AI, feature selection, and ensemble learning (Applied Sciences, 2024)",
         "language": "Jupyter Notebook",
@@ -117,7 +117,7 @@
         "url": "https://github.com/mohammadi-hadi/Explainable-Sexism-Detection"
       },
       "Token-Replacement": {
-        "stars": 1,
+        "stars": 0,
         "forks": 0,
         "description": "Explainability-based token replacement on LLM-generated text (arXiv:2506.04050)",
         "language": "Jupyter Notebook",
@@ -125,7 +125,7 @@
         "url": "https://github.com/mohammadi-hadi/Token-Replacement"
       },
       "Explainable_Annotations_Reliability": {
-        "stars": 3,
+        "stars": 2,
         "forks": 0,
         "description": "Assessing the reliability of LLM annotations in the context of demographic bias and model explanation (GeBNLP @ ACL 2025)",
         "language": "R",
@@ -133,7 +133,7 @@
         "url": "https://github.com/mohammadi-hadi/Explainable_Annotations_Reliability"
       },
       "cultural-moral-judgments-llms": {
-        "stars": 2,
+        "stars": 1,
         "forks": 0,
         "description": "Exploring cultural variations in moral judgments with large language models — World Values Survey & PEW analysis (CLIN Journal, in press)",
         "language": "Jupyter Notebook",
@@ -141,7 +141,7 @@
         "url": "https://github.com/mohammadi-hadi/cultural-moral-judgments-llms"
       },
       "EvalMORAAL": {
-        "stars": 2,
+        "stars": 1,
         "forks": 0,
         "description": "Interpretable chain-of-thought and LLM-as-judge evaluation for moral alignment in large language models (*SEM @ ACL 2026)",
         "language": "Python",
