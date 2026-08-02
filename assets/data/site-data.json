@@ -1,16 +1,32 @@
 {
-  "fetched_at": "2026-08-01T07:49:48+00:00",
+  "fetched_at": "2026-08-02T07:44:11+00:00",
   "github": {
     "public_repos": 33,
     "total_stars": 8,
     "repos": {
+      "MAP-PO": {
+        "stars": 1,
+        "forks": 0,
+        "description": "Behavioral cluster-driven multi-agent preference optimization (SFT / DPO / GRPO) for sexism detection on EXIST 2024",
+        "language": "Python",
+        "pushed_at": "2026-08-01T14:48:39Z",
+        "url": "https://github.com/mohammadi-hadi/MAP-PO"
+      },
       "DrHadi": {
         "stars": 0,
         "forks": 0,
         "description": null,
         "language": "JavaScript",
-        "pushed_at": "2026-07-31T16:34:05Z",
+        "pushed_at": "2026-08-01T14:19:33Z",
         "url": "https://github.com/mohammadi-hadi/DrHadi"
+      },
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Personal academic website — mohammadi.cv",
+        "language": "JavaScript",
+        "pushed_at": "2026-08-01T07:49:51Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "mohammadi-hadi": {
         "stars": 0,
@@ -19,14 +35,6 @@
         "language": null,
         "pushed_at": "2026-07-31T08:40:02Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi"
-      },
-      "mohammadi-hadi.github.io": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Personal academic website — mohammadi.cv",
-        "language": "JavaScript",
-        "pushed_at": "2026-07-31T08:22:58Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "spark-search-ranking": {
         "stars": 0,
@@ -43,14 +51,6 @@
         "language": null,
         "pushed_at": "2026-07-19T15:58:23Z",
         "url": "https://github.com/mohammadi-hadi/awesome-explainable-nlp"
-      },
-      "BehAv-PO": {
-        "stars": 1,
-        "forks": 0,
-        "description": "Behavioral cluster-driven multi-agent preference optimization (SFT / DPO / GRPO) for sexism detection on EXIST 2024",
-        "language": "Python",
-        "pushed_at": "2026-07-19T14:44:50Z",
-        "url": "https://github.com/mohammadi-hadi/BehAv-PO"
       },
       "xnlp-survey": {
         "stars": 0,
