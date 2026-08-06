@@ -1,39 +1,191 @@
 {
-  "fetched_at": "2026-08-05T08:09:01+00:00",
+  "fetched_at": "2026-08-06T08:08:09+00:00",
   "github": {
-    "public_repos": 39,
+    "public_repos": 47,
     "total_stars": 7,
     "repos": {
+      "rankkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Ranking evaluation with error bars: NDCG, MRR and MAP with confidence intervals, plus position-bias correction for click logs. No dependencies.",
+        "language": "Python",
+        "pushed_at": "2026-08-06T05:30:39Z",
+        "url": "https://github.com/mohammadi-hadi/rankkit"
+      },
+      "arenakit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Audit a pairwise model leaderboard before you trust its order",
+        "language": "Python",
+        "pushed_at": "2026-08-05T20:36:56Z",
+        "url": "https://github.com/mohammadi-hadi/arenakit"
+      },
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Personal academic website — mohammadi.cv",
+        "language": "JavaScript",
+        "pushed_at": "2026-08-05T18:14:07Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
+      "RA-DPO": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Reliability-aware preference optimization and selective prediction for subjective labelling: annotator agreement and model confidence in one score that weights DPO pairs and gates abstention, on EXIST 2023 and EDOS",
+        "language": "Python",
+        "pushed_at": "2026-08-05T18:11:01Z",
+        "url": "https://github.com/mohammadi-hadi/RA-DPO"
+      },
+      "abeval": {
+        "stars": 0,
+        "forks": 0,
+        "description": "A/B-test statistics for LLM evals: error bars, paired significance tests, sample-size planning",
+        "language": "Python",
+        "pushed_at": "2026-08-05T18:08:47Z",
+        "url": "https://github.com/mohammadi-hadi/abeval"
+      },
+      "calikit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Calibration auditing for probabilistic predictions: reliability diagrams, ECE, Brier decomposition, temperature scaling. Zero dependencies.",
+        "language": "Python",
+        "pushed_at": "2026-08-05T18:08:45Z",
+        "url": "https://github.com/mohammadi-hadi/calikit"
+      },
+      "abkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Audit an A/B-test readout before you ship the decision",
+        "language": "Python",
+        "pushed_at": "2026-08-05T18:08:43Z",
+        "url": "https://github.com/mohammadi-hadi/abkit"
+      },
+      "judgekit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Audit an LLM judge before you trust it: position, verbosity and self-preference bias, calibration and consistency, with bootstrap confidence intervals — validated on judges with implanted defects",
+        "language": "Python",
+        "pushed_at": "2026-08-05T18:08:41Z",
+        "url": "https://github.com/mohammadi-hadi/judgekit"
+      },
+      "raterkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Audit a labeled dataset before you trust it: reliability, rogue raters, bias, drift, leakage and stale gold, with a CI on every number.",
+        "language": "Python",
+        "pushed_at": "2026-08-05T18:08:39Z",
+        "url": "https://github.com/mohammadi-hadi/raterkit"
+      },
       "mohammadi-hadi": {
         "stars": 0,
         "forks": 0,
         "description": "GitHub profile README",
         "language": null,
-        "pushed_at": "2026-08-05T08:06:46Z",
+        "pushed_at": "2026-08-05T18:06:53Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi"
       },
-      "PopulationPrediction": {
+      "spark-search-ranking": {
         "stars": 0,
         "forks": 0,
-        "description": "Econometric analysis of birth and death rates in Iran using multiple regression in EViews",
+        "description": "Counterfactual learning-to-rank for marketplace search logs in PySpark: position-bias estimation, IPS-weighted training, NDCG evaluation against known ground truth",
+        "language": "Python",
+        "pushed_at": "2026-08-05T17:47:31Z",
+        "url": "https://github.com/mohammadi-hadi/spark-search-ranking"
+      },
+      "awesome-explainable-nlp": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Curated list of papers, tools, and resources on explainability and interpretability for NLP and large language models",
         "language": null,
-        "pushed_at": "2026-08-05T08:06:11Z",
-        "url": "https://github.com/mohammadi-hadi/PopulationPrediction"
+        "pushed_at": "2026-08-05T17:47:26Z",
+        "url": "https://github.com/mohammadi-hadi/awesome-explainable-nlp"
+      },
+      "dynamic-pricing-dashboard": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Interactive in-browser simulator: dynamic pricing with demand learning, forward-looking customers, and advertising",
+        "language": "Python",
+        "pushed_at": "2026-08-05T17:46:48Z",
+        "url": "https://github.com/mohammadi-hadi/dynamic-pricing-dashboard"
+      },
+      "judgepanel": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Estimate LLM-judge accuracy without gold labels: Dawid-Skene EM, agreement statistics, bootstrap uncertainty",
+        "language": "Python",
+        "pushed_at": "2026-08-05T15:21:18Z",
+        "url": "https://github.com/mohammadi-hadi/judgepanel"
+      },
+      "ml-foundations": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Machine learning fundamentals implemented from scratch in numpy — every implementation checked against an independent reference, every number in every lesson regenerated from the code by CI",
+        "language": "Python",
+        "pushed_at": "2026-08-05T15:21:16Z",
+        "url": "https://github.com/mohammadi-hadi/ml-foundations"
+      },
+      "trajectory-judge": {
+        "stars": 0,
+        "forks": 0,
+        "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.",
+        "language": "Python",
+        "pushed_at": "2026-08-05T15:21:14Z",
+        "url": "https://github.com/mohammadi-hadi/trajectory-judge"
+      },
+      "judgewatch": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Monthly bias audits of LLM judges",
+        "language": "Python",
+        "pushed_at": "2026-08-05T11:17:21Z",
+        "url": "https://github.com/mohammadi-hadi/judgewatch"
+      },
+      "MAP-PO": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Behavioral cluster-driven multi-agent preference optimization (SFT / DPO / GRPO) for sexism detection on EXIST 2024",
+        "language": "Python",
+        "pushed_at": "2026-08-05T10:14:30Z",
+        "url": "https://github.com/mohammadi-hadi/MAP-PO"
+      },
+      "hands-on-xai-labs": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-08-05T09:20:26Z",
+        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
+      },
+      "BitcoinPricePrediction": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Bitcoin price forecasting with SARIMAX and LSTM on historical market data",
+        "language": null,
+        "pushed_at": "2026-08-05T08:23:02Z",
+        "url": "https://github.com/mohammadi-hadi/BitcoinPricePrediction"
       },
       "Recommendation-System-Using-Autoencoders": {
         "stars": 0,
         "forks": 0,
         "description": "Movie recommendation system using autoencoders on the MovieLens 1M dataset",
         "language": "Jupyter Notebook",
-        "pushed_at": "2026-08-05T08:06:10Z",
+        "pushed_at": "2026-08-05T08:14:34Z",
         "url": "https://github.com/mohammadi-hadi/Recommendation-System-Using-Autoencoders"
+      },
+      "PopulationPrediction": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Econometric analysis of birth and death rates in Iran using multiple regression in EViews",
+        "language": null,
+        "pushed_at": "2026-08-05T08:14:32Z",
+        "url": "https://github.com/mohammadi-hadi/PopulationPrediction"
       },
       "HousePricePrediction": {
         "stars": 0,
         "forks": 0,
         "description": "House price prediction on the Kaggle Ames housing dataset using linear, Lasso, and Ridge regression",
         "language": null,
-        "pushed_at": "2026-08-05T08:06:09Z",
+        "pushed_at": "2026-08-05T08:14:31Z",
         "url": "https://github.com/mohammadi-hadi/HousePricePrediction"
       },
       "CreditCard": {
@@ -41,23 +193,23 @@
         "forks": 0,
         "description": "Credit card fraud detection on the Kaggle dataset with classical ML, resampling, and neural networks",
         "language": "Python",
-        "pushed_at": "2026-08-05T08:06:08Z",
+        "pushed_at": "2026-08-05T08:14:29Z",
         "url": "https://github.com/mohammadi-hadi/CreditCard"
       },
-      "BitcoinPricePrediction": {
+      "explainkit": {
         "stars": 0,
         "forks": 0,
-        "description": "Bitcoin price forecasting with SARIMAX and LSTM on historical market data",
-        "language": null,
-        "pushed_at": "2026-08-05T08:06:07Z",
-        "url": "https://github.com/mohammadi-hadi/BitcoinPricePrediction"
+        "description": "Explain the classifier, then test the explanation: word-level attributions, token selection, prompt steering, replacement probes and faithfulness metrics for any text classifier.",
+        "language": "Python",
+        "pushed_at": "2026-08-05T08:09:05Z",
+        "url": "https://github.com/mohammadi-hadi/explainkit"
       },
       "bicycle-transportation-intelligence": {
         "stars": 0,
         "forks": 0,
         "description": "Streamlit operations dashboard for a bike-sharing system: live Oracle data, geofencing with GeoPandas, and H3/folium maps for rebalancing and collection",
         "language": "Python",
-        "pushed_at": "2026-08-05T08:06:06Z",
+        "pushed_at": "2026-08-05T08:09:03Z",
         "url": "https://github.com/mohammadi-hadi/bicycle-transportation-intelligence"
       },
       "better-than-bing": {
@@ -65,72 +217,8 @@
         "forks": 0,
         "description": "Dense retrieval on the BEIR FiQA benchmark with Pyserini, sentence-transformer embeddings, and a FAISS HNSW index",
         "language": "Jupyter Notebook",
-        "pushed_at": "2026-08-05T08:06:05Z",
+        "pushed_at": "2026-08-05T08:09:02Z",
         "url": "https://github.com/mohammadi-hadi/better-than-bing"
-      },
-      "explainkit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Explain the classifier, then test the explanation: word-level attributions, token selection, prompt steering, replacement probes and faithfulness metrics for any text classifier.",
-        "language": "Python",
-        "pushed_at": "2026-08-05T08:06:04Z",
-        "url": "https://github.com/mohammadi-hadi/explainkit"
-      },
-      "judgekit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Audit an LLM judge before you trust it: position, verbosity and self-preference bias, calibration and consistency, with bootstrap confidence intervals — validated on judges with implanted defects",
-        "language": "Python",
-        "pushed_at": "2026-08-05T08:04:59Z",
-        "url": "https://github.com/mohammadi-hadi/judgekit"
-      },
-      "trajectory-judge": {
-        "stars": 0,
-        "forks": 0,
-        "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.",
-        "language": "Python",
-        "pushed_at": "2026-08-05T08:00:06Z",
-        "url": "https://github.com/mohammadi-hadi/trajectory-judge"
-      },
-      "hands-on-xai-labs": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
-        "language": "Jupyter Notebook",
-        "pushed_at": "2026-08-05T07:51:32Z",
-        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
-      },
-      "MAP-PO": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Behavioral cluster-driven multi-agent preference optimization (SFT / DPO / GRPO) for sexism detection on EXIST 2024",
-        "language": "Python",
-        "pushed_at": "2026-08-05T07:44:19Z",
-        "url": "https://github.com/mohammadi-hadi/MAP-PO"
-      },
-      "dynamic-pricing-dashboard": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Interactive in-browser simulator: dynamic pricing with demand learning, forward-looking customers, and advertising",
-        "language": "Python",
-        "pushed_at": "2026-08-05T07:20:22Z",
-        "url": "https://github.com/mohammadi-hadi/dynamic-pricing-dashboard"
-      },
-      "spark-search-ranking": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Counterfactual learning-to-rank for marketplace search logs in PySpark: position-bias estimation, IPS-weighted training, NDCG evaluation against known ground truth",
-        "language": "Python",
-        "pushed_at": "2026-08-05T07:01:20Z",
-        "url": "https://github.com/mohammadi-hadi/spark-search-ranking"
-      },
-      "RA-DPO": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Reliability-aware preference optimization and selective prediction for subjective labelling: annotator agreement and model confidence in one score that weights DPO pairs and gates abstention, on EXIST 2023 and EDOS",
-        "language": "Python",
-        "pushed_at": "2026-08-05T06:56:13Z",
-        "url": "https://github.com/mohammadi-hadi/RA-DPO"
       },
       "EvalMORAAL": {
         "stars": 1,
@@ -148,22 +236,6 @@
         "pushed_at": "2026-08-05T05:13:44Z",
         "url": "https://github.com/mohammadi-hadi/.github"
       },
-      "ml-foundations": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Machine learning fundamentals implemented from scratch in numpy — every implementation checked against an independent reference, every number in every lesson regenerated from the code by CI",
-        "language": "Python",
-        "pushed_at": "2026-08-04T23:07:53Z",
-        "url": "https://github.com/mohammadi-hadi/ml-foundations"
-      },
-      "mohammadi-hadi.github.io": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Personal academic website — mohammadi.cv",
-        "language": "JavaScript",
-        "pushed_at": "2026-08-04T20:55:15Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
-      },
       "DrHadi": {
         "stars": 0,
         "forks": 0,
@@ -171,14 +243,6 @@
         "language": "JavaScript",
         "pushed_at": "2026-08-03T13:17:56Z",
         "url": "https://github.com/mohammadi-hadi/DrHadi"
-      },
-      "awesome-explainable-nlp": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Curated list of papers, tools, and resources on explainability and interpretability for NLP and large language models",
-        "language": null,
-        "pushed_at": "2026-07-19T15:58:23Z",
-        "url": "https://github.com/mohammadi-hadi/awesome-explainable-nlp"
       },
       "xnlp-survey": {
         "stars": 0,
