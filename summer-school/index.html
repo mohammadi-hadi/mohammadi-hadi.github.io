@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opening the Black Box · summer school</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <style>
+    .school-wrap { max-width: 960px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+    .school-hero { margin-bottom: 2.4rem; }
+    .school-hero .kicker { font-family: var(--mono); font-size: .74rem; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .6rem; }
+    .school-hero h1 { font-family: var(--serif); font-size: 2.3rem; line-height: 1.12; margin: 0 0 .4rem; }
+    .school-sub { font-family: var(--serif); font-style: italic; color: var(--accent);
+      font-size: 1.1rem; margin: 0 0 1rem; }
+    .school-hero .pitch { font-size: .98rem; max-width: 62ch; margin: 0 0 1.1rem; }
+    .school-meta { font-family: var(--mono); font-size: .76rem; color: #6b6b66; letter-spacing: .02em; }
+    .points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 0 0 2.6rem; }
+    .point { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1.1rem 1.15rem; }
+    .point .num { font-family: var(--mono); font-size: 1.35rem; color: var(--accent); display: block; margin-bottom: .35rem; }
+    .point h3 { font-family: var(--sans); font-size: .92rem; margin: 0 0 .35rem; }
+    .point p { font-size: .85rem; color: #4a4a45; margin: 0; line-height: 1.5; }
+    .section-rule { border: 0; border-top: 1px solid var(--rule); margin: 0 0 2.2rem; }
+    h2.sk { font-family: var(--serif); font-size: 1.35rem; margin: 0 0 1rem; }
+    .days { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2.6rem; }
+    .day { border-left: 3px solid var(--accent); background: var(--surface);
+      border-top: 1px solid var(--rule); border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+      border-radius: 0 8px 8px 0; padding: .95rem 1.1rem; }
+    .day .tag { font-family: var(--mono); font-size: .72rem; color: var(--accent); display: block; margin-bottom: .3rem; }
+    .day h3 { font-family: var(--serif); font-size: 1.05rem; margin: 0 0 .3rem; }
+    .day p { font-size: .86rem; color: #4a4a45; margin: 0 0 .25rem; line-height: 1.55; }
+    .day p strong { font-family: var(--sans); font-weight: 600; color: var(--ink); }
+    .format-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2.6rem; }
+    .format-cell { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1rem 1.15rem; }
+    .format-cell h3 { font-family: var(--sans); font-size: .92rem; margin: 0 0 .4rem; }
+    .format-cell p, .format-cell li { font-size: .86rem; color: #4a4a45; line-height: 1.55; }
+    .format-cell ul { margin: 0; padding-left: 1.1rem; }
+    .gate { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px;
+      padding: 1.6rem 1.6rem 1.4rem; max-width: 640px; margin-bottom: 2.6rem; }
+    .gate p { margin: 0 0 1rem; font-size: .95rem; }
+    .gate form { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .gate input[type=password] { flex: 1 1 220px; padding: .6rem .7rem; border: 1px solid var(--rule);
+      border-radius: 6px; background: var(--paper); color: var(--ink);
+      font-family: var(--mono); font-size: .95rem; letter-spacing: .06em; }
+    .gate input[type=password]:focus { outline: none; border-color: var(--accent); }
+    .gate button { padding: .6rem 1.1rem; border: 0; border-radius: 6px; background: var(--accent);
+      color: #fff; font-family: var(--sans); font-weight: 600; font-size: .9rem; cursor: pointer; }
+    .gate button:hover { background: var(--accent-hover); }
+    .gate button:disabled { opacity: .6; cursor: default; }
+    .gate .err { color: #b3382c; font-size: .85rem; margin: .7rem 0 0; min-height: 1.2em; }
+    .gate .lock-note { font-family: var(--mono); font-size: .72rem; color: #8a8a84; margin-top: 1.1rem; }
+    .gate.no { animation: shake .45s; }
+    @keyframes shake { 10%,90% { transform: translateX(-2px) } 20%,80% { transform: translateX(3px) }
+      30%,50%,70% { transform: translateX(-4px) } 40%,60% { transform: translateX(4px) } }
+    .unlocked { display: none; background: var(--surface); border: 1px solid var(--rule); border-radius: 8px;
+      padding: 1.4rem 1.6rem; max-width: 640px; margin-bottom: 2.6rem; }
+    .unlocked.on { display: block; }
+    .unlocked .stamp { font-family: var(--mono); font-size: .78rem; color: #6b6b66; display: block; margin-bottom: .8rem; }
+    .unlocked a.dl { display: inline-block; padding: .55rem 1rem; border: 1px solid var(--rule);
+      border-radius: 6px; background: var(--paper); color: var(--accent); font-family: var(--sans);
+      font-size: .9rem; font-weight: 600; text-decoration: none; }
+    .unlocked a.dl:hover { border-color: var(--accent); }
+    .unlocked .hint { font-size: .82rem; color: #6b6b66; margin: .8rem 0 0; }
+    .author { display: flex; gap: 1rem; align-items: baseline; margin-bottom: 2.6rem; }
+    .author p { font-size: .92rem; max-width: 66ch; margin: 0; }
+    .foot-note { font-family: var(--mono); font-size: .74rem; color: #8a8a84; margin-top: 2.6rem; }
+    @media (max-width: 720px) {
+      .points, .format-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main class="school-wrap" id="main">
+    <section class="school-hero">
+      <span class="kicker">Summer school · proposed for summer 2027</span>
+      <h1>Opening the Black Box</h1>
+      <p class="school-sub">A Hands-On Summer School in Explainable AI for Large Language Models</p>
+      <p class="pitch">Five days on interpreting, evaluating, and trusting language models. Mornings are
+        lectures; afternoons put the instruments in your hands: feature attribution, attention analysis,
+        probing, chain-of-thought faithfulness tests, and mechanistic interpretability, all on runnable
+        labs that fit a free Colab GPU. By Friday, teams audit a model of their own choosing and present
+        what they found.</p>
+      <p class="school-meta">5 days · 10 lectures · 13 labs · Utrecht, the Netherlands (host in discussion) · 25 to 40 participants</p>
+    </section>
+
+    <div class="points">
+      <div class="point">
+        <span class="num">13 / 13</span>
+        <h3>Labs that actually run</h3>
+        <p>Every afternoon runs on published, version-pinned notebooks that execute end to end on a
+          free-tier Colab T4 in twenty minutes or less, re-verified weekly by CI.</p>
+      </div>
+      <div class="point">
+        <span class="num">&euro;0</span>
+        <h3>Compute for participants</h3>
+        <p>A laptop, a browser, and a Google account are the whole setup. No installs, no cluster,
+          no licenses.</p>
+      </div>
+      <div class="point">
+        <span class="num">1 : 15</span>
+        <h3>Hands-on support</h3>
+        <p>One teaching assistant per fifteen participants in every afternoon session, plus a daily
+          debrief with the instructor.</p>
+      </div>
+    </div>
+
+    <hr class="section-rule">
+
+    <h2 class="sk">The five days</h2>
+    <div class="days">
+      <div class="day">
+        <span class="tag">Day 1</span>
+        <h3>Why models need explaining</h3>
+        <p><strong>Lectures:</strong> shortcut learning and the Clever Hans problem; a working map of the
+          explanation method families.</p>
+        <p><strong>Lab:</strong> train two 95%-accurate classifiers and watch one collapse under
+          distribution shift; explain one prediction five different ways and see how little they agree.</p>
+      </div>
+      <div class="day">
+        <span class="tag">Day 2</span>
+        <h3>The instruments</h3>
+        <p><strong>Lectures:</strong> feature attribution done right (LIME, SHAP, Integrated Gradients);
+          attention analysis and its limits.</p>
+        <p><strong>Lab:</strong> both instrument families on one shared specimen classifier, ending with
+          the measurement of how far attribution and attention rankings diverge.</p>
+      </div>
+      <div class="day">
+        <span class="tag">Day 3</span>
+        <h3>Build it, break it</h3>
+        <p><strong>Lectures:</strong> probing, counterfactuals, and concept directions; explanation-guided
+          attacks.</p>
+        <p><strong>Lab:</strong> the red-team challenge: teams build a transparent detector, then attack it
+          through its own explanations. Leaderboard metric: fewest edits to flip a verdict.</p>
+      </div>
+      <div class="day">
+        <span class="tag">Day 4</span>
+        <h3>Trust and evaluation</h3>
+        <p><strong>Lectures:</strong> evaluating explanations (random floors, deletion tests, judge
+          audits); whether chain-of-thought reasoning is faithful.</p>
+        <p><strong>Lab:</strong> a faithfulness harness with bootstrap confidence intervals, and a test
+          bench that catches models silently adopting planted hints.</p>
+      </div>
+      <div class="day">
+        <span class="tag">Day 5</span>
+        <h3>Inside the model, into the world</h3>
+        <p><strong>Lectures:</strong> mechanistic interpretability (patching, induction heads, sparse
+          autoencoders, steering); explainability in production and the EU AI Act.</p>
+        <p><strong>Capstone:</strong> teams audit a model or prompt of their choice with the week's
+          instruments and present their findings.</p>
+      </div>
+    </div>
+
+    <h2 class="sk">Format</h2>
+    <div class="format-grid">
+      <div class="format-cell">
+        <h3>Daily rhythm</h3>
+        <ul>
+          <li>09:00 to 10:30 · lecture I</li>
+          <li>11:00 to 12:30 · lecture II</li>
+          <li>13:30 to 15:30 · guided lab</li>
+          <li>16:00 to 17:00 · exercises or challenge</li>
+          <li>17:00 to 17:15 · debrief</li>
+        </ul>
+      </div>
+      <div class="format-cell">
+        <h3>Who it is for</h3>
+        <p>Graduate students, PhD candidates, and practitioners who use large language models and need
+          to interpret or evaluate them. Working Python and basic machine learning assumed; no
+          interpretability background required. A five-day school maps to 1.5 to 2 EC with the capstone
+          as assessment.</p>
+      </div>
+    </div>
+
+    <h2 class="sk">Instructor</h2>
+    <div class="author">
+      <p><a href="/">Hadi Mohammadi</a> researches explainable NLP at Utrecht University and is a Senior
+        AI &amp; Data Science Expert at AcademicTransfer. The school is built on his book
+        <em>Hands-On Explainable AI: Interpreting, Evaluating, and Trusting Large Language Models</em>;
+        the afternoon labs are its public, citable companion notebooks
+        (<a href="https://github.com/mohammadi-hadi/hands-on-xai-labs" rel="noopener">github.com/mohammadi-hadi/hands-on-xai-labs</a>,
+        DOI <a href="https://doi.org/10.5281/zenodo.21804605" rel="noopener">10.5281/zenodo.21804605</a>).</p>
+    </div>
+
+    <hr class="section-rule">
+
+    <h2 class="sk">Course materials</h2>
+    <section class="gate" id="gate">
+      <p>The full package (syllabus, ten lecture decks, lab run sheets, the challenge and capstone
+        briefs, and organizer documents) is available to participants and reviewers. Enter the access
+        code to download it.</p>
+      <form id="form" autocomplete="off">
+        <input type="password" id="pw" placeholder="access code" aria-label="Access code" autofocus>
+        <button type="submit" id="go">Unlock</button>
+      </form>
+      <p class="err" id="err"></p>
+      <p class="lock-note">AES-256-GCM · decrypted only in your browser · nothing is sent anywhere</p>
+    </section>
+
+    <section class="unlocked" id="unlocked">
+      <span class="stamp" id="stamp"></span>
+      <a class="dl" id="dl" href="#" download="opening-the-black-box-materials.zip">Download the materials (zip)</a>
+      <p class="hint">If the download does not start by itself, use the button above. The archive
+        contains a participant folder and an organizer folder.</p>
+    </section>
+
+    <p class="foot-note">© 2026 Hadi Mohammadi · all materials all rights reserved · private page, please don't share the link</p>
+  </main>
+
+<script>
+(function () {
+  var form = document.getElementById('form'), pw = document.getElementById('pw'),
+      go = document.getElementById('go'), err = document.getElementById('err'),
+      gate = document.getElementById('gate'), unlocked = document.getElementById('unlocked');
+  var payload = null;
+
+  function fail(msg) {
+    err.textContent = msg;
+    go.disabled = false; go.textContent = 'Unlock';
+    gate.classList.remove('no'); void gate.offsetWidth; gate.classList.add('no');
+  }
+
+  async function getPayload() {
+    if (payload) return payload;
+    go.textContent = 'Downloading…';
+    var r = await fetch('https://raw.githubusercontent.com/mohammadi-hadi/opening-the-black-box/main/materials.enc', { cache: 'no-cache' });
+    if (!r.ok) throw new Error('fetch');
+    var buf = new Uint8Array(await r.arrayBuffer());
+    var magic = new TextDecoder().decode(buf.slice(0, 4));
+    if (magic !== 'HXB1' || buf.length < 33) throw new Error('format');
+    payload = { salt: buf.slice(4, 20), iv: buf.slice(20, 32), ct: buf.slice(32) };
+    return payload;
+  }
+
+  async function decrypt(pass) {
+    var p = await getPayload();
+    go.textContent = 'Decrypting…';
+    var km = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveBits']);
+    var bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', salt: p.salt, iterations: 600000, hash: 'SHA-256' }, km, 256);
+    var key = await crypto.subtle.importKey('raw', bits, 'AES-GCM', false, ['decrypt']);
+    return crypto.subtle.decrypt({ name: 'AES-GCM', iv: p.iv }, key, p.ct);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!pw.value) return;
+    err.textContent = ''; go.disabled = true;
+    decrypt(pw.value).then(function (plain) {
+      var blob = new Blob([plain], { type: 'application/zip' });
+      var url = URL.createObjectURL(blob);
+      var mb = (plain.byteLength / 1048576).toFixed(1);
+      var dl = document.getElementById('dl');
+      dl.href = url;
+      document.getElementById('stamp').textContent = 'decrypted locally · ' + mb + ' MB';
+      pw.value = '';
+      gate.style.display = 'none';
+      unlocked.classList.add('on');
+      unlocked.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      dl.click();
+    }).catch(function (ex) {
+      if (ex && (ex.message === 'fetch' || ex.message === 'format')) {
+        fail('Could not load the encrypted file. Try reloading the page.');
+      } else {
+        fail('That code is not right.');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
