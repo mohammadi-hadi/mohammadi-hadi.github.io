@@ -372,11 +372,31 @@ ol {
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
+/* Wide (landscape) hero photo, e.g. the IOPS 2025 cover shot */
+.hero-ink .hero-portrait.portrait-wide .portrait-frame img {
+  aspect-ratio: auto;
+}
+
+.hero-ink .hero-grid {
+  grid-template-columns: 1.05fr 1fr;
+}
+
 .hero-ink .hero-portrait figcaption {
   font-family: var(--mono);
   font-size: 0.72rem;
   color: rgba(255, 255, 255, 0.6);
   margin-top: var(--space-5);
+}
+
+.hero-ink .hero-portrait figcaption a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.35);
+}
+
+.hero-ink .hero-portrait figcaption a:hover {
+  color: #fff;
+  text-decoration-color: #fff;
 }
 
 .hero-ink .hero-stats {
@@ -490,6 +510,10 @@ ol {
 
   .hero-portrait {
     max-width: 340px;
+  }
+
+  .hero-portrait.portrait-wide {
+    max-width: none;
   }
 }
 
@@ -1133,6 +1157,13 @@ ol {
   object-fit: cover;
   filter: grayscale(1) contrast(1.08) brightness(1.02);
   mix-blend-mode: luminosity;
+}
+
+.contact-photo > img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border: 1px solid var(--rule);
 }
 
 .contact-photo figcaption {
