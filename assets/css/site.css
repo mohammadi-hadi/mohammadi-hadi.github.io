@@ -252,7 +252,7 @@ ol {
   display: none;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 820px) {
   .site-header .container {
     flex-wrap: wrap;
     padding-top: var(--space-2);
