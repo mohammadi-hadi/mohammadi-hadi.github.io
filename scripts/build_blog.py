@@ -90,7 +90,9 @@ def build_feed(posts: list[dict]) -> str:
 
 
 def main() -> int:
-    paths = sorted(BLOG.glob("*/index.html"))
+    # "_"-prefixed directories are drafts: not in the feed, not on the index.
+    paths = sorted(p for p in BLOG.glob("*/index.html")
+                   if not p.parent.name.startswith("_"))
     if not paths:
         raise SystemExit("no posts found under blog/")
     posts = [read_post(p) for p in paths]
