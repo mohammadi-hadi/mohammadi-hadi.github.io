@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>4,873 experiments and the winner's curse — Hadi Mohammadi</title>
+  <meta name="description" content="An audit of 4,873 real headline A/B tests from the Upworthy Research Archive: 16% fail the sample-ratio check, Benjamini-Hochberg keeps only a quarter of the significant winners, and the median winner overstates its lift by 1.27x.">
+  <link rel="canonical" href="https://mohammadi.cv/blog/4873-experiments-and-the-winners-curse/">
+  <meta name="author" content="Hadi Mohammadi">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="4,873 experiments and the winner's curse">
+  <meta property="og:description" content="An audit of 4,873 real headline A/B tests from the Upworthy Research Archive: 16% fail the sample-ratio check, Benjamini-Hochberg keeps only a quarter of the significant winners, and the median winner overstates its lift by 1.27x.">
+  <meta property="og:url" content="https://mohammadi.cv/blog/4873-experiments-and-the-winners-curse/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hadi Mohammadi">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/4873-experiments-and-the-winners-curse.png">
+  <meta property="og:image:alt" content="4,873 experiments and the winner's curse — field notes by Hadi Mohammadi">
+  <meta property="article:published_time" content="2026-01-01T09:00:00+01:00">
+  <meta property="article:author" content="Hadi Mohammadi">
+  <meta property="article:section" content="Field notes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="4,873 experiments and the winner's curse">
+  <meta name="twitter:description" content="An audit of 4,873 real headline A/B tests from the Upworthy Research Archive: 16% fail the sample-ratio check, Benjamini-Hochberg keeps only a quarter of the significant winners, and the median winner overstates its lift by 1.27x.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/4873-experiments-and-the-winners-curse.png">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammadi.cv/#person",
+        "name": "Hadi Mohammadi",
+        "url": "https://mohammadi.cv",
+        "identifier": "https://orcid.org/0000-0003-0860-9200"
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://mohammadi.cv/blog/#blog",
+        "name": "Hadi Mohammadi — Blog",
+        "url": "https://mohammadi.cv/blog/"
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://mohammadi.cv/blog/4873-experiments-and-the-winners-curse/#post",
+        "url": "https://mohammadi.cv/blog/4873-experiments-and-the-winners-curse/",
+        "mainEntityOfPage": "https://mohammadi.cv/blog/4873-experiments-and-the-winners-curse/",
+        "headline": "4,873 experiments and the winner's curse",
+        "description": "An audit of 4,873 real headline A/B tests from the Upworthy Research Archive: 16% fail the sample-ratio check, Benjamini-Hochberg keeps only a quarter of the significant winners, and the median winner overstates its lift by 1.27x.",
+        "datePublished": "2026-01-01T09:00:00+01:00",
+        "dateModified": "2026-01-01T09:00:00+01:00",
+        "inLanguage": "en",
+        "wordCount": 621,
+        "keywords": "A/B testing, sample ratio mismatch, winner's curse, multiple testing, Upworthy Research Archive, abkit",
+        "isAccessibleForFree": true,
+        "author": { "@id": "https://mohammadi.cv/#person" },
+        "publisher": { "@id": "https://mohammadi.cv/#person" },
+        "isPartOf": { "@id": "https://mohammadi.cv/blog/#blog" },
+        "position": 0
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/software/">Software</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/" aria-current="true">Blog</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/software/">Software</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/" aria-current="true">Blog</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main>
+    <article class="post">
+      <header class="post-head">
+        <div class="post-wrap">
+          <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#field-notes">Field notes</a></p>
+          <h1>4,873 experiments and the winner's curse</h1>
+          <p class="post-dek">Upworthy ran thousands of headline A/B tests and published the raw data. One in six fails a basic sanity check on its own traffic split.</p>
+          <p class="post-byline"><span><time datetime="2026-01-01">DRAFT — unpublished</time></span><span>5 min read</span></p>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <div class="post-wrap">
+          <p>An experiment readout can say &ldquo;B wins, p&nbsp;=&nbsp;0.03, ship it&rdquo; while the traffic split was broken, three whale customers carried the whole effect, the analyst stopped at the first significant refresh, the winning metric was one of forty tried, or the experiment never had the power to estimate what it now claims. None of that shows up in the p-value.</p>
+
+          <p>Those are easy failure modes to demonstrate on synthetic data, where I can implant a defect and check that the probe finds it. The harder question is how often they happen in the wild. The <a href="https://doi.org/10.1038/s41597-021-00934-7">Upworthy Research Archive</a> makes that answerable: 4,873 real headline A/B tests run between 2013 and 2015, with the per-variant data published.</p>
+
+          <h2 id="srm">One in six fails on its traffic split</h2>
+
+          <p><strong>16% of the tests fail the sample-ratio check</strong> at p &lt; 0.001, against the platform's documented equal-allocation design. A sample-ratio mismatch means the traffic did not arrive in the proportions the experiment intended, and once that is true you no longer know what the two groups differ by. The effect estimate is measuring the assignment as much as the treatment.</p>
+
+          <p>The obvious explanation is packages added mid-test, which would make the imbalance an artefact of bookkeeping rather than a problem. It does not hold: the rate is, if anything, higher among tests whose variants all launched together. Those readouts carried an exposure bias nobody could have quantified from the summary table.</p>
+
+          <h2 id="multiplicity">Most significant winners do not survive being counted</h2>
+
+          <p><strong>10.9% of the tests have a &ldquo;significant winner&rdquo;</strong> &mdash; the best headline beats the runner-up at raw p &lt; 0.05. Apply Benjamini&ndash;Hochberg across all 4,873 winner comparisons, and <strong>2.7% remain</strong>.</p>
+
+          <p>This is the part that generalises furthest beyond headline testing, because almost nobody runs one experiment. Teams run a programme of them, and each readout is judged on its own p-value as though it were the only test in the world. Across a portfolio, three quarters of the wins in this archive are what you would expect to see if you looked at 4,873 null experiments and kept the lucky ones.</p>
+
+          <h2 id="curse">Even the real winners are overstated</h2>
+
+          <p>The median significant winning lift is 0.85 CTR points, at a power of 0.62. At that power, <strong>the estimate is expected to overstate its true effect by 1.27&times;</strong> &mdash; even when the winner is genuinely better.</p>
+
+          <p>This is the winner's curse, and it is not a bias in anyone's analysis; it is a selection effect baked into the act of choosing. An underpowered experiment only reaches significance when noise happens to push in the same direction as the effect, so conditioning on &ldquo;it was significant&rdquo; conditions on a favourable draw. The winner is real and the number attached to it is too big, and the forecast built on that number will miss.</p>
+
+          <p>Which is worth sitting with, because a programme that ships only significant winners and forecasts from their measured lifts will systematically under-deliver against its own roadmap, while every individual decision in it was defensible.</p>
+
+          <h2 id="caveats">What this measures and what it does not</h2>
+
+          <p>The archive is headline testing on one platform a decade ago, and its click-through rates are far from what most product experiments look like. The sample-ratio analysis treats the archive's documented equal allocation as the intended design; if some tests intended otherwise and did not say so, those are false alarms. I would not port the exact percentages anywhere.</p>
+
+          <p>The structure, though, ports fine. These are not exotic pathologies &mdash; they are what an experimentation programme looks like when each readout is examined alone. The checks that catch them are cheap, they run on data every team already has, and they are the difference between a decision and a decision you can defend six months later.</p>
+        </div>
+      </div>
+
+      <footer class="post-foot">
+        <div class="post-wrap">
+          <p class="post-source">These checks are packaged as <a href="https://github.com/mohammadi-hadi/abkit">abkit</a>, with the full Upworthy audit committed in the repository, and are part of a wider set of <a href="/software/">audit libraries</a>. Corrections and challenges are welcome as an issue or a pull request; the release is archived at <a href="https://doi.org/10.5281/zenodo.21809478">doi.org/10.5281/zenodo.21809478</a>.</p>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a> &middot; <a href="https://github.com/mohammadi-hadi">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a> &middot; <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

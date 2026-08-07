@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>The labels under the benchmark — Hadi Mohammadi</title>
+  <meta name="description" content="An audit of the 211,225 raw crowd ratings behind GoEmotions: 27 of 28 emotions fall below the 0.667 reliability floor, rater quality spans a factor of three, and the dataset has a third of the raters per item the task needs.">
+  <link rel="canonical" href="https://mohammadi.cv/blog/the-labels-under-the-benchmark/">
+  <meta name="author" content="Hadi Mohammadi">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="The labels under the benchmark">
+  <meta property="og:description" content="An audit of the 211,225 raw crowd ratings behind GoEmotions: 27 of 28 emotions fall below the 0.667 reliability floor, rater quality spans a factor of three, and the dataset has a third of the raters per item the task needs.">
+  <meta property="og:url" content="https://mohammadi.cv/blog/the-labels-under-the-benchmark/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hadi Mohammadi">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/the-labels-under-the-benchmark.png">
+  <meta property="og:image:alt" content="The labels under the benchmark — field notes by Hadi Mohammadi">
+  <meta property="article:published_time" content="2026-01-01T09:00:00+01:00">
+  <meta property="article:author" content="Hadi Mohammadi">
+  <meta property="article:section" content="Field notes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The labels under the benchmark">
+  <meta name="twitter:description" content="An audit of the 211,225 raw crowd ratings behind GoEmotions: 27 of 28 emotions fall below the 0.667 reliability floor, rater quality spans a factor of three, and the dataset has a third of the raters per item the task needs.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/the-labels-under-the-benchmark.png">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammadi.cv/#person",
+        "name": "Hadi Mohammadi",
+        "url": "https://mohammadi.cv",
+        "identifier": "https://orcid.org/0000-0003-0860-9200"
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://mohammadi.cv/blog/#blog",
+        "name": "Hadi Mohammadi — Blog",
+        "url": "https://mohammadi.cv/blog/"
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://mohammadi.cv/blog/the-labels-under-the-benchmark/#post",
+        "url": "https://mohammadi.cv/blog/the-labels-under-the-benchmark/",
+        "mainEntityOfPage": "https://mohammadi.cv/blog/the-labels-under-the-benchmark/",
+        "headline": "The labels under the benchmark",
+        "description": "An audit of the 211,225 raw crowd ratings behind GoEmotions: 27 of 28 emotions fall below the 0.667 reliability floor, rater quality spans a factor of three, and the dataset has a third of the raters per item the task needs.",
+        "datePublished": "2026-01-01T09:00:00+01:00",
+        "dateModified": "2026-01-01T09:00:00+01:00",
+        "inLanguage": "en",
+        "wordCount": 631,
+        "keywords": "annotation quality, inter-rater reliability, Krippendorff alpha, GoEmotions, crowdsourcing, raterkit",
+        "isAccessibleForFree": true,
+        "author": { "@id": "https://mohammadi.cv/#person" },
+        "publisher": { "@id": "https://mohammadi.cv/#person" },
+        "isPartOf": { "@id": "https://mohammadi.cv/blog/#blog" },
+        "position": 0
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/software/">Software</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/" aria-current="true">Blog</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/software/">Software</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/" aria-current="true">Blog</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main>
+    <article class="post">
+      <header class="post-head">
+        <div class="post-wrap">
+          <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#field-notes">Field notes</a></p>
+          <h1>The labels under the benchmark</h1>
+          <p class="post-dek">211,225 crowd ratings sit under GoEmotions. On 27 of its 28 emotions, the raw annotation layer falls below the reliability floor the field normally requires.</p>
+          <p class="post-byline"><span><time datetime="2026-01-01">DRAFT — unpublished</time></span><span>5 min read</span></p>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <div class="post-wrap">
+          <p>Every benchmark score, every fine-tune, every &ldquo;our judge agrees with humans 92% of the time&rdquo; bottoms out in a pile of human labels. Those labels were produced by people who may have been careless, biased, tired by the end of the queue, or graded against gold that was quietly wrong. None of that is visible in the accuracy numbers computed on top &mdash; by the time you are reporting F1, the annotation layer has been flattened into ground truth and stops being questioned.</p>
+
+          <p>So I went looking underneath one of the well-known ones.</p>
+
+          <h2 id="the-dataset">211,225 ratings</h2>
+
+          <p><a href="https://aclanthology.org/2020.acl-main.372/">GoEmotions</a> is a widely used emotion-classification dataset: 58,011 Reddit comments, 28 binary emotion labels each, 211,225 individual ratings from 82 raters. The released splits aggregate and filter those raw ratings, which is standard and sensible. The raw layer is published too, and that is what I audited.</p>
+
+          <h2 id="what-the-ratings-say">What the ratings say</h2>
+
+          <p><strong>27 of the 28 emotions sit below the 0.667 reliability floor</strong> &mdash; and that is the whole 95% confidence interval, not just the point estimate. Only <em>gratitude</em> clears it, at alpha 0.72. The median emotion manages 0.23. <em>Neutral</em>, the single largest and apparently most straightforward category, scores 0.26.</p>
+
+          <p><strong>Rater quality spans a factor of three.</strong> Measured as each rater against the rest, across the 67 raters with 300 or more ratings, agreement runs from 0.11 to 0.36. Twenty of those 67 sit below 0.20. The noisiest raters agree with their co-raters at about a third of the rate the best ones do, and every one of them contributed to the pool equally.</p>
+
+          <p><strong>The rater count was never enough for the task.</strong> This is the finding I find hardest to argue with, because it does not depend on any judgement about who was careless. Given the observed per-rater reliability, Spearman&ndash;Brown says you would need roughly 13 raters per item to produce aggregated labels that are 0.8-reliable. The dataset averages 3.6, which projects to 0.52. The aggregation is doing what aggregation does; there is simply not enough of it.</p>
+
+          <p><strong>Disagreement without awareness of disagreement.</strong> 86% of multi-rated comments are contested on at least one emotion. Raters marked just 1.6% of their ratings &ldquo;very unclear.&rdquo; People were confident and divided at the same time, which is the signature of a task where the label boundary is genuinely underdetermined rather than merely difficult.</p>
+
+          <h2 id="what-this-is-not">What this is not</h2>
+
+          <p>None of this says GoEmotions is a scandal. Fine-grained emotion is genuinely hard &mdash; ask two people whether a comment expresses <em>annoyance</em> or <em>disapproval</em> and you should expect trouble. The released splits aggregate and filter these raw ratings precisely because the raw layer is noisy, and the dataset has been useful to a great many people, including me.</p>
+
+          <p>What it says is narrower and, I think, more useful: the raw layer under a famous benchmark fails the standard reliability bar almost everywhere, measurably and reproducibly. If your model scores 0.61 on an emotion whose annotation reliability is 0.23, the interesting question is no longer whether 0.61 beats 0.59. There is a ceiling in the data, and it is lower than the numbers being compared.</p>
+
+          <h2 id="the-general-point">The general point</h2>
+
+          <p>I do not think GoEmotions is unusual. I think it is unusually well documented &mdash; the raw ratings are public, which is exactly why this audit is possible at all. Most datasets do not release the annotation layer, and so the question cannot be asked.</p>
+
+          <p>The checks are not expensive: reliability per label with an interval, per-rater agreement against the rest, drift across the annotation queue, duplicate items across the train and test split, and how often the gold itself disagrees with a competent majority. Running them takes minutes. Not running them means the first time anyone learns the labels were shaky is when a model refuses to improve and nobody can say why.</p>
+        </div>
+      </div>
+
+      <footer class="post-foot">
+        <div class="post-wrap">
+          <p class="post-source">These checks are packaged as <a href="https://github.com/mohammadi-hadi/raterkit">raterkit</a>, with the full GoEmotions audit committed in the repository, and are part of a wider set of <a href="/software/">audit libraries</a>. Corrections and challenges are welcome as an issue or a pull request; the release is archived at <a href="https://doi.org/10.5281/zenodo.21810143">doi.org/10.5281/zenodo.21810143</a>.</p>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a> &middot; <a href="https://github.com/mohammadi-hadi">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a> &middot; <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

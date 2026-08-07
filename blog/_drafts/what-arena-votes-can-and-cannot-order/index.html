@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>What 106,134 arena votes can and cannot order — Hadi Mohammadi</title>
+  <meta name="description" content="An audit of 106,134 public LMArena votes over 55 models: once the comparisons are controlled for together, only one neighbouring pair is separated, and closing the median unresolved gap would take roughly 8.9 million votes.">
+  <link rel="canonical" href="https://mohammadi.cv/blog/what-arena-votes-can-and-cannot-order/">
+  <meta name="author" content="Hadi Mohammadi">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="What 106,134 arena votes can and cannot order">
+  <meta property="og:description" content="An audit of 106,134 public LMArena votes over 55 models: once the comparisons are controlled for together, only one neighbouring pair is separated, and closing the median unresolved gap would take roughly 8.9 million votes.">
+  <meta property="og:url" content="https://mohammadi.cv/blog/what-arena-votes-can-and-cannot-order/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hadi Mohammadi">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/what-arena-votes-can-and-cannot-order.png">
+  <meta property="og:image:alt" content="What 106,134 arena votes can and cannot order — field notes by Hadi Mohammadi">
+  <meta property="article:published_time" content="2026-01-01T09:00:00+01:00">
+  <meta property="article:author" content="Hadi Mohammadi">
+  <meta property="article:section" content="Field notes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What 106,134 arena votes can and cannot order">
+  <meta name="twitter:description" content="An audit of 106,134 public LMArena votes over 55 models: once the comparisons are controlled for together, only one neighbouring pair is separated, and closing the median unresolved gap would take roughly 8.9 million votes.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/what-arena-votes-can-and-cannot-order.png">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammadi.cv/#person",
+        "name": "Hadi Mohammadi",
+        "url": "https://mohammadi.cv",
+        "identifier": "https://orcid.org/0000-0003-0860-9200"
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://mohammadi.cv/blog/#blog",
+        "name": "Hadi Mohammadi — Blog",
+        "url": "https://mohammadi.cv/blog/"
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://mohammadi.cv/blog/what-arena-votes-can-and-cannot-order/#post",
+        "url": "https://mohammadi.cv/blog/what-arena-votes-can-and-cannot-order/",
+        "mainEntityOfPage": "https://mohammadi.cv/blog/what-arena-votes-can-and-cannot-order/",
+        "headline": "What 106,134 arena votes can and cannot order",
+        "description": "An audit of 106,134 public LMArena votes over 55 models: once the comparisons are controlled for together, only one neighbouring pair is separated, and closing the median unresolved gap would take roughly 8.9 million votes.",
+        "datePublished": "2026-01-01T09:00:00+01:00",
+        "dateModified": "2026-01-01T09:00:00+01:00",
+        "inLanguage": "en",
+        "wordCount": 827,
+        "keywords": "LMArena, Bradley-Terry, leaderboards, model evaluation, multiple comparisons, arenakit, MT-Bench",
+        "isAccessibleForFree": true,
+        "author": { "@id": "https://mohammadi.cv/#person" },
+        "publisher": { "@id": "https://mohammadi.cv/#person" },
+        "isPartOf": { "@id": "https://mohammadi.cv/blog/#blog" },
+        "position": 0
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/software/">Software</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/" aria-current="true">Blog</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/software/">Software</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/" aria-current="true">Blog</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main>
+    <article class="post">
+      <header class="post-head">
+        <div class="post-wrap">
+          <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#field-notes">Field notes</a></p>
+          <h1>What 106,134 arena votes can and cannot order</h1>
+          <p class="post-dek">A leaderboard is a ranked list, and the ranked list is what everyone reads. On the public LMArena sample, the votes separate exactly one neighbouring pair out of 54.</p>
+          <p class="post-byline"><span><time datetime="2026-01-01">DRAFT — unpublished</time></span><span>6 min read</span></p>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <div class="post-wrap">
+          <p>Arena leaderboards turn pairwise votes into a ranked list, and the ranked list is what everyone reads. But a rank is a claim, and the votes behind it support some of those claims and not others. Two models a hair apart may be genuinely tied. A board can look decisive because a handful of people voted a great many times. So I took the public <a href="https://huggingface.co/datasets/lmarena-ai/arena-human-preference-100k">LMArena preference sample</a> &mdash; 106,134 human votes over 55 models &mdash; fitted the same Bradley&ndash;Terry model the boards use, and asked which parts of the published order the evidence actually carries.</p>
+
+          <h2 id="the-order">One separated pair out of 54</h2>
+
+          <p>Rank 1 versus rank 2, rank 2 versus rank 3, and so on: 54 neighbouring comparisons. Judged one at a time, five of them are separated. Controlled for together &mdash; which is the right way to read 54 simultaneous claims &mdash; <strong>exactly one is</strong>. Only the top model is distinguishable from its neighbour. The other 54 models form a single block that these votes cannot order.</p>
+
+          <p>That is not the same as saying the published order is wrong. It says these votes do not establish it, which is a different and more boring claim, and the one the data supports.</p>
+
+          <p><strong>Closing the median unresolved gap would take roughly 8.9 million votes</strong> at this design, against the 106 thousand collected. For most neighbouring pairs, the honest reading is that they are tied and will stay tied. <strong>The median model's 95% rank interval spans 7 ranks</strong>; <code>gemma-2-9b-it-simpo</code>, with 468 battles, spans 16.</p>
+
+          <h2 id="position">Position matters, and it does not matter</h2>
+
+          <p>This is my favourite result in the audit, because it refuses to resolve into a headline.</p>
+
+          <p>The model shown first wins 49.53% of 65,418 decisive battles. The interval on the fitted first-slot advantage, [&minus;0.021, &minus;0.001] in log-odds, excludes zero &mdash; so at this sample size the effect is real, and anyone reporting &ldquo;no position bias&rdquo; would be wrong. The entire interval also sits inside the &plusmn;0.05 band I treat as immaterial, and fitting the advantage out reorders nothing at all.</p>
+
+          <p>Detectable and worth acting on are different questions. With 106,134 votes you can detect effects far too small to change any decision, and a leaderboard needs an answer to the second question. Reporting only the p-value answers the first and implies the second.</p>
+
+          <h2 id="the-rest">The checks that came back clean</h2>
+
+          <p>An audit that only ever finds problems is not an audit, so the negative results matter as much:</p>
+
+          <ul>
+          <li><strong>Voter clustering widens standard errors by 1.03&times;.</strong> The busiest 1% of the 49,382 voters cast 16% of all votes, so the concern is well founded &mdash; but on this data the usual battle-level bootstrap is close enough. That is a finding, not an assumption.</li>
+          <li><strong>38.4% of votes are ties</strong>, and the ranking survives both dropping them and modelling them properly (Rao&ndash;Kupper theta 2.35) instead of splitting them down the middle.</li>
+          <li><strong>Preference cycles land about where the model expects.</strong> 3.5% of the 14,164 decided triads are cyclic, against 4.3% predicted. One strength number per model is enough to describe who beats whom here; there is no rock-paper-scissors structure being flattened.</li>
+          </ul>
+
+          <h2 id="mtbench">The same six models, judged by people and by GPT-4</h2>
+
+          <p><a href="https://huggingface.co/datasets/lmsys/mt_bench_human_judgments">MT-Bench</a> publishes both halves of the same comparison: 3,355 votes from 65 people, and 2,400 verdicts from GPT-4 acting as a judge, on the same models and the same questions. Auditing both is the cleanest available test of what judge bias does to a ranking.</p>
+
+          <p>GPT-4 changes its mind on <strong>15.8% of pairs when the two answers swap places</strong> &mdash; and that figure is not estimated, because the split records those cases explicitly. It matches the human majority on <strong>71.3%</strong> of the 1,612 comparisons where the humans reached one. Both numbers look disqualifying.</p>
+
+          <p>And then it produces <strong>exactly the human leaderboard</strong>. Kendall tau between the two orders is +1.00.</p>
+
+          <p>Judge noise that looks fatal one comparison at a time can average out of a six-model ranking. That cuts in both directions, and it is worth being careful about which direction you invoke it in: it is a reason not to condemn a leaderboard because its judge is noisy, and equally a reason not to trust a leaderboard because its judge agrees with people on average. The aggregate and the individual verdict are answering different questions.</p>
+
+          <p>The judge's verdicts are also correlated within question &mdash; resampling questions rather than verdicts widens its intervals by 1.48&times;. The human votes, spread over 65 annotators, show no annotator carrying the board.</p>
+
+          <h2 id="reading-a-board">How I read a leaderboard now</h2>
+
+          <p>Mostly by asking what it would take to move. If the gap between two models is smaller than the interval, they are tied, and the ordering between them is a rendering artefact of having to print a list in some order. That is not a criticism of arenas, which are doing something genuinely hard and doing it in public. It is a criticism of reading a ranked list as though ranks were the measurement.</p>
+        </div>
+      </div>
+
+      <footer class="post-foot">
+        <div class="post-wrap">
+          <p class="post-source">These checks are packaged as <a href="https://github.com/mohammadi-hadi/arenakit">arenakit</a>, with the full LMArena and MT-Bench audits committed in the repository, and are part of a wider set of <a href="/software/">audit libraries</a>. Corrections and challenges are welcome as an issue or a pull request; the release is archived at <a href="https://doi.org/10.5281/zenodo.21813309">doi.org/10.5281/zenodo.21813309</a>.</p>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a> &middot; <a href="https://github.com/mohammadi-hadi">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a> &middot; <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>
