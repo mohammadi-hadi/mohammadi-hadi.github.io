@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Render the social share cards for the blog into assets/img/blog/.
+"""Render the site's social share cards.
 
 Each card is laid out as a 1200x630 HTML page in the site's own typography and
 screenshotted with headless Chrome, so the cards and the site never drift apart.
 
     python3 scripts/make_cards.py
 
+Cards land in assets/img/blog/ unless the entry carries an explicit "out".
 Needs Google Chrome installed and a network connection (the page pulls the
 webfonts). Re-run it after adding a post; commit the PNGs alongside it.
 """
@@ -59,6 +60,15 @@ CARDS = [
          title="Serving and inference optimization",
          subtitle="vLLM, KV caches, quantization, and cost budgets that hold",
          foot_left="mohammadi.cv/blog", foot_right="4 min read"),
+    dict(name="software-card", out="assets/img", kicker="Hadi Mohammadi",
+         title="Software",
+         subtitle="Libraries for not trusting your own numbers",
+         bullets=[
+             ("judgekit · judgepanel · arenakit", "is this judge, or this leaderboard, telling the truth?"),
+             ("abkit · abeval · calikit", "does the experiment support the decision?"),
+             ("raterkit · rankkit · explainkit", "are the labels, the ranking, the explanation sound?"),
+         ],
+         foot_left="mohammadi.cv/software", foot_right="MIT · tested · citable"),
 ]
 
 TEMPLATE = """<!DOCTYPE html>
@@ -162,8 +172,10 @@ def main() -> None:
                 pass
             if not shot.exists():
                 raise SystemExit(f"Chrome produced no screenshot for {card['name']}")
-            shutil.move(shot, OUT / f"{card['name']}.png")
-            print("assets/img/blog/%s.png" % card["name"])
+            out = ROOT / card["out"] if card.get("out") else OUT
+            out.mkdir(parents=True, exist_ok=True)
+            shutil.move(shot, out / f"{card['name']}.png")
+            print("%s/%s.png" % (out.relative_to(ROOT), card["name"]))
 
 
 if __name__ == "__main__":
