@@ -21,6 +21,10 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://mohammadi.cv/blog/what-an-llm-judge-actually-does/</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://mohammadi.cv/blog/</loc>
     <priority>0.9</priority>
   </url>
