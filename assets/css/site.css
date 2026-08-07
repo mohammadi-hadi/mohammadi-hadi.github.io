@@ -252,7 +252,8 @@ ol {
   display: none;
 }
 
-@media (max-width: 820px) {
+/* 880px, not 820: eight nav items need ~860px before the row wraps. */
+@media (max-width: 880px) {
   .site-header .container {
     flex-wrap: wrap;
     padding-top: var(--space-2);
@@ -1527,6 +1528,129 @@ ol {
   }
 }
 
+/* ---------- Software: package cards ---------- */
+.pkg-group {
+  margin-bottom: var(--space-6);
+}
+
+.pkg-group:last-child {
+  margin-bottom: 0;
+}
+
+.pkg-group-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
+  border-bottom: 2px solid var(--ink);
+}
+
+.pkg-group-head h3 {
+  font-family: var(--serif);
+  font-size: var(--step-1);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.pkg-group-head p {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.pkg-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.pkg-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+
+.pkg-name {
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.pkg-name a {
+  color: var(--ink);
+}
+
+.pkg-name a:hover {
+  color: var(--accent);
+}
+
+.pkg-lede {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.pkg-note {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.pkg-foot {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-3);
+}
+
+.pkg-cmd {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #e6e9ee;
+  background: var(--hero-ink);
+  padding: 0.5rem 0.7rem;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.pkg-cmd::before {
+  content: "$ ";
+  color: #7f93a8;
+}
+
+.pkg-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.pkg-links a {
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+@media (max-width: 720px) {
+  .pkg-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pkg-group-head p {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+}
+
 /* ---------- Motion ---------- */
 @media (prefers-reduced-motion: no-preference) {
   .hero-ink .container {
@@ -1574,9 +1698,14 @@ ol {
     display: none;
   }
 
-  .post-body pre {
+  .post-body pre,
+  .pkg-cmd {
     background: #f4f4f2;
     color: #1a1a1a;
     border: 1px solid #ddd;
+  }
+
+  .pkg-card {
+    break-inside: avoid;
   }
 }
