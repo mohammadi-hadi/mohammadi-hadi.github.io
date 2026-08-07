@@ -242,7 +242,7 @@ ol {
   color: var(--ink);
 }
 
-.site-nav a[aria-current="page"] {
+.site-nav a[aria-current] {
   color: var(--ink);
   border-bottom-color: var(--accent);
 }
@@ -1183,6 +1183,350 @@ ol {
   }
 }
 
+/* ---------- Blog: post list ---------- */
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-item {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.post-item:last-child {
+  border-bottom: none;
+}
+
+.post-index {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  padding-top: 0.45rem;
+  white-space: nowrap;
+}
+
+.post-item h3 {
+  font-size: var(--step-1);
+  margin-bottom: var(--space-2);
+}
+
+.post-item h3 a {
+  color: var(--ink);
+}
+
+.post-item h3 a:hover {
+  color: var(--accent);
+}
+
+.post-item p {
+  color: var(--ink-2);
+  font-size: 0.97rem;
+  max-width: var(--measure);
+  margin-bottom: var(--space-2);
+}
+
+.post-byline {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+  margin: 0;
+}
+
+.post-byline span + span::before {
+  content: "·";
+  margin: 0 0.6em;
+  opacity: 0.55;
+}
+
+@media (max-width: 640px) {
+  .post-item {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .post-index {
+    padding-top: 0;
+  }
+}
+
+.series-links {
+  margin-top: var(--space-5);
+}
+
+/* ---------- Blog: article ---------- */
+.post-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.post-head {
+  padding: var(--space-7) 0 var(--space-5);
+}
+
+.post-head h1 {
+  font-size: var(--step-2);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-3);
+}
+
+.post-dek {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--step-1);
+  line-height: 1.45;
+  color: var(--ink-2);
+  margin-bottom: var(--space-4);
+}
+
+.post-head .post-byline {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--rule);
+}
+
+.post-crumbs {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+  margin-bottom: var(--space-4);
+}
+
+.post-crumbs a {
+  color: var(--ink-3);
+}
+
+.post-crumbs a:hover {
+  color: var(--accent);
+}
+
+.post-crumbs .sep {
+  margin: 0 0.5em;
+  opacity: 0.55;
+}
+
+@media (max-width: 720px) {
+  .post-head {
+    padding: var(--space-6) 0 var(--space-4);
+  }
+}
+
+.post-body {
+  padding-bottom: var(--space-7);
+  overflow-wrap: anywhere;
+}
+
+.post-body > .post-wrap > :first-child {
+  margin-top: 0;
+}
+
+.post-body h2 {
+  font-size: var(--step-1);
+  margin: var(--space-6) 0 var(--space-3);
+}
+
+.post-body h3 {
+  font-family: var(--sans);
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin: var(--space-5) 0 var(--space-2);
+}
+
+.post-body p {
+  margin-bottom: var(--space-4);
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 var(--space-4);
+  padding-left: 1.3em;
+}
+
+.post-body li {
+  margin-bottom: var(--space-2);
+}
+
+.post-body li:last-child {
+  margin-bottom: 0;
+}
+
+.post-body li > ul,
+.post-body li > ol {
+  margin: var(--space-2) 0 0;
+}
+
+.post-body strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.post-body a {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  text-underline-offset: 2px;
+}
+
+.post-body a:hover {
+  text-decoration-color: var(--accent-hover);
+}
+
+.post-body code {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.08em 0.32em;
+}
+
+.post-body pre {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  background: var(--hero-ink);
+  color: #e6e9ee;
+  padding: var(--space-4);
+  margin: 0 0 var(--space-5);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.post-body pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre;
+}
+
+.post-table {
+  overflow-x: auto;
+  margin: 0 0 var(--space-5);
+  border-bottom: 1px solid var(--rule);
+}
+
+.post-body table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 440px;
+  font-size: 0.9rem;
+}
+
+.post-body th,
+.post-body td {
+  text-align: left;
+  vertical-align: top;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--rule);
+}
+
+.post-body th {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border-bottom: 1px solid var(--ink-3);
+  white-space: nowrap;
+}
+
+.post-body tr:last-child td {
+  border-bottom: 0;
+}
+
+.post-body td:first-child {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.post-body .post-figure {
+  margin: 0 0 var(--space-5);
+}
+
+.post-body .post-figure pre {
+  margin-bottom: var(--space-2);
+}
+
+.post-body figcaption {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--ink-3);
+}
+
+/* ---------- Blog: article footer ---------- */
+.post-foot {
+  border-top: 1px solid var(--rule);
+  background: var(--surface);
+  padding: var(--space-6) 0 var(--space-7);
+}
+
+.post-source {
+  font-size: 0.92rem;
+  color: var(--ink-2);
+  margin-bottom: var(--space-5);
+}
+
+.post-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.post-nav a {
+  display: block;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  padding: var(--space-3) var(--space-4);
+  transition: border-color 0.15s ease;
+}
+
+.post-nav a:hover {
+  border-color: var(--accent);
+}
+
+.post-nav .next {
+  grid-column: 2;
+  text-align: right;
+}
+
+.post-nav-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 0.2rem;
+}
+
+.post-nav-title {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.post-nav a:hover .post-nav-title {
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .post-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .post-nav .next {
+    grid-column: 1;
+    text-align: left;
+  }
+}
+
 /* ---------- Motion ---------- */
 @media (prefers-reduced-motion: no-preference) {
   .hero-ink .container {
@@ -1224,5 +1568,15 @@ ol {
 
   body {
     background: #fff;
+  }
+
+  .post-nav {
+    display: none;
+  }
+
+  .post-body pre {
+    background: #f4f4f2;
+    color: #1a1a1a;
+    border: 1px solid #ddd;
   }
 }
