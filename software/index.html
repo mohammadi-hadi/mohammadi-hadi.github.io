@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Software — Hadi Mohammadi</title>
+  <meta name="description" content="Open-source Python libraries by Hadi Mohammadi for auditing LLM judges, experiments, leaderboards, rankings and labelled data: judgekit, judgepanel, arenakit, abkit, abeval, calikit, rankkit, raterkit, trajectory-judge and explainkit. MIT-licensed, tested, DOI-archived.">
+  <link rel="canonical" href="https://mohammadi.cv/software/">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Software — Hadi Mohammadi">
+  <meta property="og:description" content="Open-source libraries for measuring whether a judge, an experiment, a leaderboard or a dataset can be trusted.">
+  <meta property="og:url" content="https://mohammadi.cv/software/">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/software-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Software — Hadi Mohammadi">
+  <meta name="twitter:description" content="Open-source libraries for measuring whether a judge, an experiment, a leaderboard or a dataset can be trusted.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/software-card.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammadi.cv/#person",
+        "name": "Hadi Mohammadi",
+        "url": "https://mohammadi.cv/",
+        "sameAs": [
+          "https://github.com/mohammadi-hadi",
+          "https://orcid.org/0000-0003-0860-9200",
+          "https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&hl=en"
+        ]
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://mohammadi.cv/software/",
+        "url": "https://mohammadi.cv/software/",
+        "name": "Software — Hadi Mohammadi",
+        "description": "Open-source libraries for measuring whether a judge, an experiment, a leaderboard or a dataset can be trusted.",
+        "author": { "@id": "https://mohammadi.cv/#person" },
+        "isPartOf": { "@type": "WebSite", "url": "https://mohammadi.cv/" }
+      },
+      {
+        "@type": "ItemList",
+        "name": "Open-source libraries by Hadi Mohammadi",
+        "itemListOrder": "https://schema.org/ItemListUnordered",
+        "numberOfItems": 13,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "item": {
+            "@type": "SoftwareSourceCode", "name": "judgekit",
+            "description": "Bias probes for LLM judges, each with a bootstrap confidence interval: position, verbosity, self-preference, calibration and stability.",
+            "codeRepository": "https://github.com/mohammadi-hadi/judgekit",
+            "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
+            "identifier": "https://doi.org/10.5281/zenodo.21802868",
+            "author": { "@id": "https://mohammadi.cv/#person" } } },
+          { "@type": "ListItem", "position": 2, "item": {
+            "@type": "SoftwareSourceCode", "name": "judgepanel",
+            "description": "Estimate LLM-judge accuracy without gold labels: Dawid-Skene expectation maximisation, agreement statistics, bootstrap uncertainty.",
+            "codeRepository": "https://github.com/mohammadi-hadi/judgepanel",
+            "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
+            "identifier": "https://doi.org/10.5281/zenodo.21809473",
+            "author": { "@id": "https://mohammadi.cv/#person" } } },
+          { "@type": "ListItem", "position": 3, "item": {
+            "@type": "SoftwareSourceCode", "name": "trajectory-judge",
+            "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults.",
+            "codeRepository": "https://github.com/mohammadi-hadi/trajectory-judge",
+            "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
+            "identifier": "https://doi.org/10.5281/zenodo.21797926",
+            "author": { "@id": "https://mohammadi.cv/#person" } } },
+          { "@type": "ListItem", "position": 4, "item": {
+            "@type": "SoftwareSourceCode", "name": "arenakit",
+            "description": "Bradley-Terry leaderboard auditing: rank volatility, position bias, intransitivity, connectivity and coverage imbalance.",
+            "codeRepository": "https://github.com/mohammadi-hadi/arenakit",
+            "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
+            "identifier": "https://doi.org/10.5281/zenodo.21813309",
+            "author": { "@id": "https://mohammadi.cv/#person" } } },
+          { "@type": "ListItem", "position": 5, "item": {
+            "@type": "SoftwareSourceCode", "name": "abkit",
+            "description": "Sample-ratio, contamination, peeking, multiple-testing and winner's-curse checks for A/B experiment readouts.",
+            "codeRepository": "https://github.com/mohammadi-hadi/abkit",
+            "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
+            "identifier": "https://doi.org/10.5281/zenodo.21809478",
+            "author": { "@id": "https://mohammadi.cv/#person" } } },
+          { "@type": "ListItem", "position": 6, "item": {
+            "@type": "SoftwareSourceCode", "name": "abeval",
+            "description": "A/B-test statistics for LLM evals: error bars, paired significance tests, sample-size planning.",
+            "codeRepository": "https://github.com/mohammadi-hadi/abeval",
+            "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
+            "identifier": "https://doi.org/10.5281/zenodo.21807421",
+            "author": { "@id": "https://mohammadi.cv/#person" } } },
+          { "@type": "ListItem", "position": 7, "item": {
+            "@type": "SoftwareSourceCode", "name": "calikit",
+            "description": "Calibration auditing for probabilistic predictions: reliability diagrams, ECE, Brier decomposition, temperature scaling.",
+            "codeRepository": "https://github.com/mohammadi-hadi/calikit",
+            "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
+            "identifier": "https://doi.org/10.5281/zenodo.21808288",
+            "author": { "@id": "https://mohammadi.cv/#person" } } },
+          { "@type": "ListItem", "position": 8, "item": {
+            "@type": "SoftwareSourceCode", "name": "raterkit",
+            "description": "Reliability, rogue-rater, drift and leakage diagnostics for labelled data.",
+            "codeRepository": "https://github.com/mohammadi-hadi/raterkit",
+            "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
+            "identifier": "https://doi.org/10.5281/zenodo.21810143",
+            "author": { "@id": "https://mohammadi.cv/#person" } } },
+          { "@type": "ListItem", "position": 9, "item": {
+            "@type": "SoftwareSourceCode", "name": "rankkit",
+            "description": "Ranking evaluation with error bars: NDCG, MRR and MAP with confidence intervals, plus position-bias correction for click logs.",
+            "codeRepository": "https://github.com/mohammadi-hadi/rankkit",
+            "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
+            "identifier": "https://doi.org/10.5281/zenodo.21811914",
+            "author": { "@id": "https://mohammadi.cv/#person" } } },
+          { "@type": "ListItem", "position": 10, "item": {
+            "@type": "SoftwareSourceCode", "name": "explainkit",
+            "description": "Word-level attributions, token selection, prompt steering, replacement probes and faithfulness metrics for any text classifier.",
+            "codeRepository": "https://github.com/mohammadi-hadi/explainkit",
+            "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
+            "identifier": "https://doi.org/10.5281/zenodo.21803833",
+            "author": { "@id": "https://mohammadi.cv/#person" } } },
+          { "@type": "ListItem", "position": 11, "item": {
+            "@type": "SoftwareSourceCode", "name": "judgewatch",
+            "description": "Monthly bias audits of public LLM judges against a frozen, versioned probe set.",
+            "codeRepository": "https://github.com/mohammadi-hadi/judgewatch",
+            "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
+            "identifier": "https://doi.org/10.5281/zenodo.21806464",
+            "author": { "@id": "https://mohammadi.cv/#person" } } },
+          { "@type": "ListItem", "position": 12, "item": {
+            "@type": "SoftwareSourceCode", "name": "spark-search-ranking",
+            "description": "Counterfactual learning-to-rank for marketplace search logs in PySpark: position-bias estimation, IPS-weighted training, NDCG evaluation.",
+            "codeRepository": "https://github.com/mohammadi-hadi/spark-search-ranking",
+            "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
+            "author": { "@id": "https://mohammadi.cv/#person" } } },
+          { "@type": "ListItem", "position": 13, "item": {
+            "@type": "SoftwareSourceCode", "name": "ml-foundations",
+            "description": "Machine learning fundamentals implemented from scratch in numpy, every implementation checked against an independent reference.",
+            "codeRepository": "https://github.com/mohammadi-hadi/ml-foundations",
+            "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
+            "identifier": "https://doi.org/10.5281/zenodo.21797931",
+            "author": { "@id": "https://mohammadi.cv/#person" } } }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/software/" aria-current="page">Software</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/software/" aria-current="page">Software</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="kicker">Software</span>
+        <h1>Software</h1>
+        <p class="section-lede">Open-source libraries for measuring whether a judge, an experiment, a leaderboard or a dataset can be trusted. Installable, tested, and archived with a DOI.</p>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker"><span class="kicker-num">01</span>How these are built</span>
+          <h2>Tools for not trusting your own numbers</h2>
+        </div>
+        <div class="prose">
+          <p>My doctoral work asks when a language model's judgment can be trusted &mdash; of text, of annotations, of another model. These libraries are that question turned into tools.</p>
+          <p>Each one does the same job for a different artefact. It reads what you already have &mdash; a file of verdicts, an experiment readout, a pile of ratings, a leaderboard's votes &mdash; measures the specific ways that artefact can mislead you, puts a confidence interval on every number, and raises a flag only when the evidence clears a stated bar.</p>
+          <p>They are validated the same way, too. Every probe is checked against synthetic cases with a defect implanted on purpose: it has to fire on the case carrying its defect and stay silent on the clean one. That table sits at the top of each README, and continuous integration regenerates it from the code, so the demonstration cannot drift away from what the package actually does.</p>
+        </div>
+        <ul class="fact-list" style="margin-top: var(--space-4);">
+          <li><span class="fact-key">Licence</span><span>MIT throughout &mdash; use them commercially, no attribution required</span></li>
+          <li><span class="fact-key">Dependencies</span><span>Several need nothing beyond the Python standard library; none pulls in a framework</span></li>
+          <li><span class="fact-key">Citable</span><span>Each release is archived on Zenodo with its own DOI</span></li>
+          <li><span class="fact-key">Written up</span><span>The reasoning behind them is in <a href="/blog/evaluation-and-llm-as-judge/">Evaluation and LLM-as-judge</a> and the rest of <a href="/blog/">the blog</a></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="toolkit">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker"><span class="kicker-num">02</span>The toolkit</span>
+          <h2>Ten libraries, one question each</h2>
+        </div>
+
+        <div class="pkg-group">
+          <div class="pkg-group-head">
+            <h3>Judges and leaderboards</h3>
+            <p>LLM-as-judge</p>
+          </div>
+          <div class="pkg-grid">
+
+            <article class="pkg-card">
+              <h4 class="pkg-name"><a href="https://github.com/mohammadi-hadi/judgekit" target="_blank" rel="noopener">judgekit</a></h4>
+              <p class="pkg-lede">Audit an LLM judge before you trust it.</p>
+              <p class="pkg-note">Position preference, verbosity bias, self-preference, central tendency and over-confidence, each with a bootstrap interval. Among the synthetic judges it ships with, one reaches 0.80 quadratic-weighted kappa against humans &mdash; a number most eval writeups would celebrate &mdash; while carrying a verbosity bias of +0.82. Agreement is not an audit.</p>
+              <div class="pkg-foot">
+                <p class="pkg-cmd">pip install judgekit</p>
+                <p class="pkg-links">
+                  <a href="https://pypi.org/project/judgekit/" target="_blank" rel="noopener">PyPI</a>
+                  <a href="https://github.com/mohammadi-hadi/judgekit" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                  <a href="https://doi.org/10.5281/zenodo.21802868" target="_blank" rel="noopener">DOI</a>
+                </p>
+              </div>
+            </article>
+
+            <article class="pkg-card">
+              <h4 class="pkg-name"><a href="https://github.com/mohammadi-hadi/judgepanel" target="_blank" rel="noopener">judgepanel</a></h4>
+              <p class="pkg-lede">Estimate judge accuracy when there are no gold labels.</p>
+              <p class="pkg-note">When several imperfect judges label the same items, the pattern of their disagreement reveals who is reliable. A Dawid&ndash;Skene fit recovers each judge's confusion matrix, the class prevalence, and a posterior over every item's true label &mdash; weighted by estimated judge quality rather than one judge, one vote. Pure NumPy, deterministic.</p>
+              <div class="pkg-foot">
+                <p class="pkg-cmd">pip install judgepanel</p>
+                <p class="pkg-links">
+                  <a href="https://pypi.org/project/judgepanel/" target="_blank" rel="noopener">PyPI</a>
+                  <a href="https://github.com/mohammadi-hadi/judgepanel" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                  <a href="https://doi.org/10.5281/zenodo.21809473" target="_blank" rel="noopener">DOI</a>
+                </p>
+              </div>
+            </article>
+
+            <article class="pkg-card">
+              <h4 class="pkg-name"><a href="https://github.com/mohammadi-hadi/trajectory-judge" target="_blank" rel="noopener">trajectory-judge</a></h4>
+              <p class="pkg-lede">What outcome-only evaluation misses about agents.</p>
+              <p class="pkg-note">Outcome-only judging cannot see a trajectory that skipped a required check, acted against what a tool returned, or promised something no observation supports &mdash; as long as the final answer came out right. A synthetic tool-using environment with those faults injected on purpose measures the gap, comparing outcome-only, step-rubric and self-consistency judging against known ground truth.</p>
+              <div class="pkg-foot">
+                <p class="pkg-cmd">pip install trajectory-judge</p>
+                <p class="pkg-links">
+                  <a href="https://pypi.org/project/trajectory-judge/" target="_blank" rel="noopener">PyPI</a>
+                  <a href="https://github.com/mohammadi-hadi/trajectory-judge" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                  <a href="https://doi.org/10.5281/zenodo.21797926" target="_blank" rel="noopener">DOI</a>
+                </p>
+              </div>
+            </article>
+
+            <article class="pkg-card">
+              <h4 class="pkg-name"><a href="https://github.com/mohammadi-hadi/arenakit" target="_blank" rel="noopener">arenakit</a></h4>
+              <p class="pkg-lede">Audit a pairwise leaderboard before you trust its order.</p>
+              <p class="pkg-note">A rank is a claim, and the votes behind it support some claims and not others. arenakit fits the same Bradley&ndash;Terry model the public boards use, then reports which parts of the published order the evidence carries: rank volatility, position bias, intransitive cycles, halves of a board that never met, and comparison budgets spent mostly at the top.</p>
+              <div class="pkg-foot">
+                <p class="pkg-cmd">pip install arenakit</p>
+                <p class="pkg-links">
+                  <a href="https://pypi.org/project/arenakit/" target="_blank" rel="noopener">PyPI</a>
+                  <a href="https://github.com/mohammadi-hadi/arenakit" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                  <a href="https://doi.org/10.5281/zenodo.21813309" target="_blank" rel="noopener">DOI</a>
+                </p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="pkg-group">
+          <div class="pkg-group-head">
+            <h3>Experiments and evals</h3>
+            <p>Applied statistics</p>
+          </div>
+          <div class="pkg-grid">
+
+            <article class="pkg-card">
+              <h4 class="pkg-name"><a href="https://github.com/mohammadi-hadi/abkit" target="_blank" rel="noopener">abkit</a></h4>
+              <p class="pkg-lede">Audit an A/B readout before you ship the decision.</p>
+              <p class="pkg-note">A readout can say &ldquo;B wins, p&nbsp;=&nbsp;0.03, ship it&rdquo; while the traffic split was broken, three whale customers carried the whole effect, the analyst stopped at the first significant refresh, or the winning metric was one of forty tried. None of that shows up in the p-value. abkit measures each failure mode from the per-unit data and flags what leaves the range a healthy experiment could occupy.</p>
+              <div class="pkg-foot">
+                <p class="pkg-cmd">pip install abkit</p>
+                <p class="pkg-links">
+                  <a href="https://pypi.org/project/abkit/" target="_blank" rel="noopener">PyPI</a>
+                  <a href="https://github.com/mohammadi-hadi/abkit" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                  <a href="https://doi.org/10.5281/zenodo.21809478" target="_blank" rel="noopener">DOI</a>
+                </p>
+              </div>
+            </article>
+
+            <article class="pkg-card">
+              <h4 class="pkg-name"><a href="https://github.com/mohammadi-hadi/abeval" target="_blank" rel="noopener">abeval</a></h4>
+              <p class="pkg-lede">Treat an eval like the A/B test it is.</p>
+              <p class="pkg-note">Eval scores are sample estimates but get reported as exact numbers: &ldquo;our prompt scores 76.5%, the old one 63.5%, ship it.&rdquo; On two hundred items, much smaller gaps than that are pure noise. Confidence intervals for one run, paired tests for two runs on the same items, and sample-size planning <em>before</em> you spend on inference. Standard library only.</p>
+              <div class="pkg-foot">
+                <p class="pkg-cmd">pip install abeval</p>
+                <p class="pkg-links">
+                  <a href="https://pypi.org/project/abeval/" target="_blank" rel="noopener">PyPI</a>
+                  <a href="/abeval/">Calculator</a>
+                  <a href="https://github.com/mohammadi-hadi/abeval" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                  <a href="https://doi.org/10.5281/zenodo.21807421" target="_blank" rel="noopener">DOI</a>
+                </p>
+              </div>
+            </article>
+
+            <article class="pkg-card">
+              <h4 class="pkg-name"><a href="https://github.com/mohammadi-hadi/calikit" target="_blank" rel="noopener">calikit</a></h4>
+              <p class="pkg-lede">A model that says 90% should be right nine times out of ten.</p>
+              <p class="pkg-note">Most are not: modern classifiers, and LLM judges scoring on a 1&ndash;10 scale, are routinely over-confident, and accuracy alone never shows it. Reliability diagrams, expected calibration error and Brier decomposition with intervals, a significance test that separates real miscalibration from sampling noise, and the temperature that fixes it. No dependencies.</p>
+              <div class="pkg-foot">
+                <p class="pkg-cmd">pip install calikit</p>
+                <p class="pkg-links">
+                  <a href="https://pypi.org/project/calikit/" target="_blank" rel="noopener">PyPI</a>
+                  <a href="/calikit/">Explorer</a>
+                  <a href="https://github.com/mohammadi-hadi/calikit" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                  <a href="https://doi.org/10.5281/zenodo.21808288" target="_blank" rel="noopener">DOI</a>
+                </p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="pkg-group">
+          <div class="pkg-group-head">
+            <h3>Labels, rankings and explanations</h3>
+            <p>Data quality</p>
+          </div>
+          <div class="pkg-grid">
+
+            <article class="pkg-card">
+              <h4 class="pkg-name"><a href="https://github.com/mohammadi-hadi/raterkit" target="_blank" rel="noopener">raterkit</a></h4>
+              <p class="pkg-lede">Audit a labelled dataset before you trust it.</p>
+              <p class="pkg-note">Every benchmark score bottoms out in a pile of human labels, produced by raters who may have been careless, biased, tired by the end of the queue, or graded against gold that was quietly wrong. raterkit measures reliability, rogue and leaning raters, competence drift, split leakage and stale gold directly. On the raw GoEmotions ratings, 27 of 28 emotions fall below the 0.667 agreement floor.</p>
+              <div class="pkg-foot">
+                <p class="pkg-cmd">pip install raterkit</p>
+                <p class="pkg-links">
+                  <a href="https://pypi.org/project/raterkit/" target="_blank" rel="noopener">PyPI</a>
+                  <a href="https://github.com/mohammadi-hadi/raterkit" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                  <a href="https://doi.org/10.5281/zenodo.21810143" target="_blank" rel="noopener">DOI</a>
+                </p>
+              </div>
+            </article>
+
+            <article class="pkg-card">
+              <h4 class="pkg-name"><a href="https://github.com/mohammadi-hadi/rankkit" target="_blank" rel="noopener">rankkit</a></h4>
+              <p class="pkg-lede">Ranking metrics with error bars, and click metrics that survive position bias.</p>
+              <p class="pkg-note">&ldquo;NDCG@10 went from 0.826 to 0.862, ship it&rdquo; is missing two things. An interval &mdash; on a few hundred queries, differences that size are routinely noise. And a correction: if your labels are clicks rather than judgements, the metric is measuring what the incumbent ranker put on top, and it will quietly tell you every candidate is worse than production.</p>
+              <div class="pkg-foot">
+                <p class="pkg-cmd">pip install rankkit</p>
+                <p class="pkg-links">
+                  <a href="https://pypi.org/project/rankkit/" target="_blank" rel="noopener">PyPI</a>
+                  <a href="/rankkit/">Explorer</a>
+                  <a href="https://github.com/mohammadi-hadi/rankkit" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                  <a href="https://doi.org/10.5281/zenodo.21811914" target="_blank" rel="noopener">DOI</a>
+                </p>
+              </div>
+            </article>
+
+            <article class="pkg-card">
+              <h4 class="pkg-name"><a href="https://github.com/mohammadi-hadi/explainkit" target="_blank" rel="noopener">explainkit</a></h4>
+              <p class="pkg-lede">Explain the classifier, then test the explanation.</p>
+              <p class="pkg-note">A token heatmap is a claim about a model, and most heatmaps are never tested. explainkit computes word-level attributions for anything behind a <code>predict_proba</code>-style callable, then makes them earn their keep: select the tokens carrying 95% of corpus importance, steer an annotator toward them, swap them out to see whether the verdict survives, and score the chain for faithfulness, plausibility and cross-method agreement. The pipeline behind <a href="/publications/">the published work</a> on transparent text classification.</p>
+              <div class="pkg-foot">
+                <p class="pkg-cmd">pip install git+https://github.com/mohammadi-hadi/explainkit</p>
+                <p class="pkg-links">
+                  <a href="https://github.com/mohammadi-hadi/explainkit" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                  <a href="https://doi.org/10.5281/zenodo.21803833" target="_blank" rel="noopener">DOI</a>
+                </p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="studies">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker"><span class="kicker-num">03</span>Studies and teaching code</span>
+          <h2>Not libraries, but built the same way</h2>
+        </div>
+
+        <article class="pub-card">
+          <div class="pub-meta"><span class="pub-type">Running audit</span></div>
+          <h3 class="pub-title">judgewatch</h3>
+          <p class="pub-desc">LLM-as-judge is now the default way to evaluate models, agents and prompts &mdash; and judges drift when providers update models behind stable API names. judgewatch runs a frozen, versioned probe set of 36 hand-written items against popular judge models on a monthly schedule and publishes the result, so a judge that changed under you is visible. It measures position flips, verbosity preference, susceptibility to a fabricated &ldquo;9 out of 10 experts prefer&hellip;&rdquo; line, and self-consistency. Parse failures are excluded from denominators and reported as their own metric &mdash; a judge that cannot follow the output format is a finding, not noise. The first monthly run is pending; the method and the probe set are public now.</p>
+          <div class="pub-links">
+            <a href="/judgewatch/">Leaderboard</a>
+            <a href="https://github.com/mohammadi-hadi/judgewatch" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+            <a href="https://doi.org/10.5281/zenodo.21806464" target="_blank" rel="noopener">DOI</a>
+          </div>
+        </article>
+
+        <article class="pub-card">
+          <div class="pub-meta"><span class="pub-type">Reference implementation</span></div>
+          <h3 class="pub-title">spark-search-ranking</h3>
+          <p class="pub-desc">Counterfactual learning-to-rank for marketplace search logs, end to end in PySpark: position-bias estimation from randomized traffic only, inverse-propensity-weighted training, and NDCG evaluation against known ground truth. Because the log is synthetic with a known generative process, correctness is provable in tests &mdash; the propensity estimator has to recover the generator's position-bias curve, and the re-ranker has to beat the logged production ordering on true relevance. No UDFs anywhere: generation, features and metrics are all column expressions and window functions.</p>
+          <div class="pub-links">
+            <a href="https://pypi.org/project/spark-search-ranking/" target="_blank" rel="noopener">PyPI</a>
+            <a href="https://github.com/mohammadi-hadi/spark-search-ranking" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+          </div>
+        </article>
+
+        <article class="pub-card">
+          <div class="pub-meta"><span class="pub-type">Teaching</span></div>
+          <h3 class="pub-title">ml-foundations</h3>
+          <p class="pub-desc">Machine learning fundamentals written from scratch in numpy. There are a great many &ldquo;ML from scratch&rdquo; repositories, and most share two problems: the implementations are never checked against anything, so subtle errors survive indefinitely, and the claims in the prose &mdash; <em>regularisation helps</em>, <em>bagging reduces variance</em> &mdash; are assertions rather than measurements. This one is built the other way round. Every estimator is pinned by a test against an independent reference, every table in every lesson is regenerated from the code, and CI fails the build if a committed number no longer follows from committed code.</p>
+          <div class="pub-links">
+            <a href="https://github.com/mohammadi-hadi/ml-foundations" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+            <a href="https://doi.org/10.5281/zenodo.21797931" target="_blank" rel="noopener">DOI</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="elsewhere">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker"><span class="kicker-num">04</span>Elsewhere</span>
+          <h2>Code that belongs to something else</h2>
+        </div>
+        <div class="prose">
+          <p>Replication code for individual papers sits with the paper. <a href="/publications/evalmoraal/">EvalMORAAL</a> is a packaged evaluation framework for moral alignment in LLMs, released with its *SEM 2026 paper; the sexism-detection, token-replacement and cultural-alignment studies each ship their own repository from <a href="/publications/">the publications page</a>. Applied and earlier engineering work &mdash; dashboards, optimisation, simulation &mdash; is on <a href="/projects/">the projects page</a>. The thirteen course notebooks for <a href="/opening-the-black-box/">Opening the Black Box</a> are open too.</p>
+        </div>
+        <div class="more-grid" style="margin-top: var(--space-4);">
+          <a class="link-arrow" href="https://github.com/mohammadi-hadi" target="_blank" rel="noopener">All repositories on GitHub</a>
+          <a class="link-arrow" href="/publications/">Publications &amp; replication code</a>
+          <a class="link-arrow" href="/projects/">Applied projects</a>
+          <a class="link-arrow" href="/blog/">Blog: field notes &amp; open guides</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a> &middot; <a href="https://github.com/mohammadi-hadi">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a></p>
+    </div>
+  </footer>
+</body>
+</html>
