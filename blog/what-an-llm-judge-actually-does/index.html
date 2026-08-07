@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>What an LLM judge actually does when you are not looking — Hadi Mohammadi</title>
+  <meta name="description" content="Three local LLM judges graded the same adversarial arithmetic benchmark in both presentation orders. One picked whichever answer came first 91% of the time; another graded effort and agreed with ground truth less often than a coin flip.">
+  <link rel="canonical" href="https://mohammadi.cv/blog/what-an-llm-judge-actually-does/">
+  <meta name="author" content="Hadi Mohammadi">
+  <meta property="og:title" content="What an LLM judge actually does when you are not looking">
+  <meta property="og:description" content="Three local LLM judges graded the same adversarial arithmetic benchmark in both presentation orders. One picked whichever answer came first 91% of the time; another graded effort and agreed with ground truth less often than a coin flip.">
+  <meta property="og:url" content="https://mohammadi.cv/blog/what-an-llm-judge-actually-does/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hadi Mohammadi">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/what-an-llm-judge-actually-does.png">
+  <meta property="og:image:alt" content="What an LLM judge actually does when you are not looking — field notes by Hadi Mohammadi">
+  <meta property="article:published_time" content="2026-08-07T09:00:00+02:00">
+  <meta property="article:author" content="Hadi Mohammadi">
+  <meta property="article:section" content="Field notes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What an LLM judge actually does when you are not looking">
+  <meta name="twitter:description" content="Three local LLM judges graded the same adversarial arithmetic benchmark in both presentation orders. One picked whichever answer came first 91% of the time; another graded effort and agreed with ground truth less often than a coin flip.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/what-an-llm-judge-actually-does.png">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammadi.cv/#person",
+        "name": "Hadi Mohammadi",
+        "url": "https://mohammadi.cv",
+        "identifier": "https://orcid.org/0000-0003-0860-9200"
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://mohammadi.cv/blog/#blog",
+        "name": "Hadi Mohammadi — Blog",
+        "url": "https://mohammadi.cv/blog/"
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://mohammadi.cv/blog/what-an-llm-judge-actually-does/#post",
+        "url": "https://mohammadi.cv/blog/what-an-llm-judge-actually-does/",
+        "mainEntityOfPage": "https://mohammadi.cv/blog/what-an-llm-judge-actually-does/",
+        "headline": "What an LLM judge actually does when you are not looking",
+        "description": "Three local LLM judges graded the same adversarial arithmetic benchmark in both presentation orders. One picked whichever answer came first 91% of the time; another graded effort and agreed with ground truth less often than a coin flip.",
+        "datePublished": "2026-08-07T09:00:00+02:00",
+        "dateModified": "2026-08-07T09:00:00+02:00",
+        "inLanguage": "en",
+        "wordCount": 772,
+        "keywords": "LLM-as-judge, position bias, verbosity bias, evaluation, judgekit, bootstrap confidence intervals",
+        "isAccessibleForFree": true,
+        "author": { "@id": "https://mohammadi.cv/#person" },
+        "publisher": { "@id": "https://mohammadi.cv/#person" },
+        "isPartOf": { "@id": "https://mohammadi.cv/blog/#blog" },
+        "position": 0
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/software/">Software</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/" aria-current="true">Blog</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/software/">Software</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/" aria-current="true">Blog</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main>
+    <article class="post">
+      <header class="post-head">
+        <div class="post-wrap">
+          <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#field-notes">Field notes</a></p>
+          <h1>What an LLM judge actually does when you are not looking</h1>
+          <p class="post-dek">Three local models were asked to grade the same arithmetic, with one answer provably correct. One of them picked whichever answer was shown first 91% of the time.</p>
+          <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>5 min read</span></p>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <div class="post-wrap">
+          <p>LLM-as-judge is now the default way to evaluate models, agents and prompts. It is cheap, it scales, and it correlates with human ratings well enough to pass review. The problem is the thing everyone knows and few people measure: a judge is a model too. It can prefer whichever answer came first, reward padding, favour its own outputs, hug the middle of the scale, and say &ldquo;90% sure&rdquo; while being right 70% of the time &mdash; all while agreeing with your annotators often enough to look fine.</p>
+
+          <p>So I built a benchmark where the right answer is not a matter of opinion, and pointed three judges at it.</p>
+
+          <h2 id="the-setup">The setup</h2>
+
+          <p>The task is adversarial arithmetic. Each item is a pair of candidate answers to a small arithmetic problem, one of which is <em>provably</em> correct by construction &mdash; there is no rubric to argue about, no style to reward, no ambiguity for a judge to hide behind. Half the time the wrong answer is the long, worked-through one, full of plausible intermediate steps that happen to end somewhere false.</p>
+
+          <p>Every pair is then judged twice, once in each presentation order. That second pass is what makes the position effect measurable rather than inferable: if a judge's verdict changes when the only thing that changed is which answer came first, slot order decided it, not content.</p>
+
+          <h2 id="three-judges">Three judges, three different ways to fail</h2>
+
+          <div class="post-table">
+          <table>
+          <thead><tr><th>Judge (temperature 0)</th><th>Truth agreement</th><th>Position preference</th><th>Verbosity excess</th><th>Flips under swap</th><th>Decisive on identical pairs</th></tr></thead>
+          <tbody>
+          <tr><td>aya-expanse:8b</td><td>0.433</td><td><strong>0.910</strong></td><td>+0.106</td><td>0.819</td><td>1.000</td></tr>
+          <tr><td>qwen2.5:14b</td><td>0.667</td><td><strong>0.768</strong></td><td>+0.131</td><td>0.568</td><td>0.200</td></tr>
+          <tr><td>llama3.1:8b</td><td>0.443</td><td>0.576</td><td><strong>+0.483</strong></td><td>0.171</td><td>1.000</td></tr>
+          </tbody>
+          </table>
+          </div>
+
+          <p>Same task, same temperature, three different failure modes at three different severities.</p>
+
+          <p>Two of the judges follow slot order. <code>aya-expanse:8b</code> picks whatever is presented first 91.0% of the time, and flips its verdict on 81.9% of pairs when the order is swapped &mdash; which is close to saying the model is reading the position and not the arithmetic. <code>qwen2.5:14b</code> is better but not well: 76.8% and 56.8%.</p>
+
+          <p>The third fails somewhere else entirely. <code>llama3.1:8b</code> is comparatively steady under swapping, at 17.1%, because it is not grading position &mdash; it is grading effort. It picks the longer answer 48 points more often than correctness warrants, and agrees with ground truth less often than a coin flip. A judge that rewards visible work will reward a confident wrong derivation over a terse right answer, every time.</p>
+
+          <p>The last column is the one I did not expect. Two of the three judges never once declared a tie between two <em>identical</em> answers. Asked to compare a string with itself, they picked a winner.</p>
+
+          <p>The usual caveats apply and they matter: n = 105 pairs, adversarial by construction, three small local models at one temperature. This is an illustration of what the probes can see, not a model leaderboard.</p>
+
+          <h2 id="agreement-is-not-an-audit">Agreement is not an audit</h2>
+
+          <p>The obvious objection is that nobody ships a judge without checking it against human labels first. That check is weaker than it looks. Among the synthetic judges I use to validate the probes themselves, there is one whose only implanted defect is that it adds standardised answer length to perceived quality. It reaches a quadratic-weighted kappa of 0.80 against its human reference &mdash; a number most eval writeups would celebrate &mdash; while carrying a verbosity bias of +0.82.</p>
+
+          <p>Agreement is an average. A bias is a direction. An average can look healthy while a direction quietly decides every close call, and close calls are exactly the comparisons an eval exists to make.</p>
+
+          <h2 id="what-to-measure-instead">What to measure instead</h2>
+
+          <p>The failure modes above are each individually measurable, and none of them requires gold labels beyond the ones you already have:</p>
+
+          <ul>
+          <li><strong>Position preference</strong> &mdash; judge every pair in both orders and count how often the verdict survives.</li>
+          <li><strong>Verbosity excess</strong> &mdash; how much perceived quality tracks length, over and above how much correctness does.</li>
+          <li><strong>Self-preference</strong> &mdash; whether the judge scores its own family higher.</li>
+          <li><strong>Central tendency</strong> &mdash; whether the scale is being used or hugged.</li>
+          <li><strong>Calibration</strong> &mdash; whether a claimed 90% is right nine times in ten.</li>
+          </ul>
+
+          <p>Each of these deserves a confidence interval rather than a point estimate, and a flag only when the interval leaves the range an innocent judge could plausibly occupy. Otherwise you have swapped an unexamined judge for an unexamined dashboard.</p>
+
+          <p>The part I keep coming back to is that none of this is exotic. The probes are cheap, the swap costs one extra inference per pair, and the answer changes what you are willing to conclude from an eval. It is the same discipline we would apply to a human annotator pool without thinking twice about it.</p>
+        </div>
+      </div>
+
+      <footer class="post-foot">
+        <div class="post-wrap">
+          <p class="post-source">The probes described here are packaged as <a href="https://github.com/mohammadi-hadi/judgekit">judgekit</a>, with the full audit committed in the repository, and are part of a wider set of <a href="/software/">audit libraries</a>. The reasoning sits alongside <a href="/blog/evaluation-and-llm-as-judge/">Evaluation and LLM-as-judge</a> in <em>Modern AI Engineering</em>. Corrections and challenges are welcome as an issue or a pull request; the release is archived at <a href="https://doi.org/10.5281/zenodo.21802868">doi.org/10.5281/zenodo.21802868</a>.</p>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a> &middot; <a href="https://github.com/mohammadi-hadi">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a> &middot; <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

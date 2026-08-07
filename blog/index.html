@@ -47,6 +47,7 @@
         "author": { "@id": "https://mohammadi.cv/#person" },
         "publisher": { "@id": "https://mohammadi.cv/#person" },
         "blogPost": [
+          { "@id": "https://mohammadi.cv/blog/what-an-llm-judge-actually-does/#post" },
           { "@id": "https://mohammadi.cv/blog/calling-llms-well/#post" },
           { "@id": "https://mohammadi.cv/blog/retrieval-augmented-generation/#post" },
           { "@id": "https://mohammadi.cv/blog/agents-and-mcp/#post" },
@@ -167,10 +168,34 @@
       </div>
     </section>
 
-    <section class="section" id="modern-ai-engineering">
+    <section class="section" id="field-notes">
       <div class="container">
         <div class="section-head">
-          <span class="kicker"><span class="kicker-num">01</span>Series</span>
+          <span class="kicker"><span class="kicker-num">01</span>Field notes</span>
+          <h2>Recent writing</h2>
+        </div>
+        <div class="prose">
+          <p>Short empirical pieces, usually built around one measurement on public data: what an LLM judge does when nobody is checking, what a benchmark's annotation layer looks like underneath, what a leaderboard's votes can and cannot establish. Each one comes with the code that produced its numbers.</p>
+        </div>
+
+        <ol class="post-list">
+          <!-- field-notes:insert -->
+          <li class="post-item">
+            <div class="post-index"><time datetime="2026-08-07">7 Aug 2026</time></div>
+            <div>
+              <h3><a href="/blog/what-an-llm-judge-actually-does/">What an LLM judge actually does when you are not looking</a></h3>
+              <p>Three local models graded the same arithmetic, with one answer provably correct. One picked whichever answer was shown first 91% of the time.</p>
+              <p class="post-byline"><span>5 min read</span></p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="modern-ai-engineering">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker"><span class="kicker-num">02</span>Series</span>
           <h2>Modern AI Engineering</h2>
         </div>
         <div class="prose">
@@ -184,7 +209,7 @@
             <div>
               <h3><a href="/blog/calling-llms-well/">Calling LLMs well</a></h3>
               <p>Structured outputs, streaming, retries, caching and cost control — the unglamorous 80%.</p>
-              <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>4 min read</span></p>
+              <p class="post-byline"><span>4 min read</span></p>
             </div>
           </li>
           <li class="post-item">
@@ -192,7 +217,7 @@
             <div>
               <h3><a href="/blog/retrieval-augmented-generation/">Retrieval-augmented generation</a></h3>
               <p>Chunking, hybrid search, rerankers, and how RAG actually fails.</p>
-              <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>4 min read</span></p>
+              <p class="post-byline"><span>4 min read</span></p>
             </div>
           </li>
           <li class="post-item">
@@ -200,7 +225,7 @@
             <div>
               <h3><a href="/blog/agents-and-mcp/">Agents and MCP</a></h3>
               <p>Tool loops, the Model Context Protocol, and when <em>not</em> to build an agent.</p>
-              <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>4 min read</span></p>
+              <p class="post-byline"><span>4 min read</span></p>
             </div>
           </li>
           <li class="post-item">
@@ -208,7 +233,7 @@
             <div>
               <h3><a href="/blog/fine-tuning-and-preference-optimization/">Fine-tuning and preference optimization</a></h3>
               <p>Prompting vs. RAG vs. LoRA vs. DPO/GRPO — a decision guide, then the mechanics.</p>
-              <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>4 min read</span></p>
+              <p class="post-byline"><span>4 min read</span></p>
             </div>
           </li>
           <li class="post-item">
@@ -216,7 +241,7 @@
             <div>
               <h3><a href="/blog/evaluation-and-llm-as-judge/">Evaluation and LLM-as-judge</a></h3>
               <p>The chapter closest to my research: evals that predict production, judges you can trust.</p>
-              <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>4 min read</span></p>
+              <p class="post-byline"><span>4 min read</span></p>
             </div>
           </li>
           <li class="post-item">
@@ -224,7 +249,7 @@
             <div>
               <h3><a href="/blog/serving-and-inference-optimization/">Serving and inference optimization</a></h3>
               <p>vLLM, quantization, KV caches, and latency and cost budgets that hold.</p>
-              <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>4 min read</span></p>
+              <p class="post-byline"><span>4 min read</span></p>
             </div>
           </li>
         </ol>
@@ -235,10 +260,10 @@
       </div>
     </section>
 
-    <section class="section section-alt" id="guides">
+    <section class="section" id="guides">
       <div class="container">
         <div class="section-head">
-          <span class="kicker"><span class="kicker-num">02</span>Guides</span>
+          <span class="kicker"><span class="kicker-num">03</span>Guides</span>
           <h2>Guides I keep up to date</h2>
         </div>
         <div class="prose">
@@ -292,10 +317,10 @@
       </div>
     </section>
 
-    <section class="section" id="more">
+    <section class="section section-alt" id="more">
       <div class="container">
         <div class="section-head">
-          <span class="kicker"><span class="kicker-num">03</span>Elsewhere</span>
+          <span class="kicker"><span class="kicker-num">04</span>Elsewhere</span>
           <h2>Related</h2>
         </div>
         <div class="prose">

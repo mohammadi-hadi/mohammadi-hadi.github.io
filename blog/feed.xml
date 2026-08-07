@@ -9,6 +9,14 @@
     <lastBuildDate>Fri, 07 Aug 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://mohammadi.cv/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>What an LLM judge actually does when you are not looking</title>
+      <link>https://mohammadi.cv/blog/what-an-llm-judge-actually-does/</link>
+      <guid isPermaLink="true">https://mohammadi.cv/blog/what-an-llm-judge-actually-does/</guid>
+      <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
+      <description>Three local LLM judges graded the same adversarial arithmetic benchmark in both presentation orders. One picked whichever answer came first 91% of the time; another graded effort and agreed with ground truth less often than a coin flip.</description>
+      <category>Field notes</category>
+    </item>
+    <item>
       <title>Calling LLMs well</title>
       <link>https://mohammadi.cv/blog/calling-llms-well/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/calling-llms-well/</guid>
