@@ -372,6 +372,15 @@ ol {
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
+/* Wide (landscape) hero photo, e.g. the IOPS 2025 cover shot */
+.hero-ink .hero-portrait.portrait-wide .portrait-frame img {
+  aspect-ratio: auto;
+}
+
+.hero-ink .hero-grid {
+  grid-template-columns: 1.05fr 1fr;
+}
+
 .hero-ink .hero-portrait figcaption {
   font-family: var(--mono);
   font-size: 0.72rem;
@@ -379,53 +388,13 @@ ol {
   margin-top: var(--space-5);
 }
 
-/* Full-width cover plate: the IOPS 2025 photo as the homepage cover */
-.hero-ink .hero-text {
-  max-width: 72ch;
-}
-
-.hero-cover-plate {
-  margin: var(--space-6) 14px 0 0;
-}
-
-.hero-cover-plate .cover-frame {
-  display: block;
-  position: relative;
-}
-
-.hero-cover-plate .cover-frame::before {
-  content: "";
-  position: absolute;
-  inset: 14px -14px -14px 14px;
-  border: 1px solid rgba(114, 152, 197, 0.45);
-  pointer-events: none;
-}
-
-.hero-cover-plate img {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: min(62vh, 600px);
-  object-fit: cover;
-  object-position: center 25%;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.hero-cover-plate figcaption {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin-top: var(--space-4);
-}
-
-.hero-cover-plate figcaption a {
+.hero-ink .hero-portrait figcaption a {
   color: inherit;
   text-decoration: underline;
   text-decoration-color: rgba(255, 255, 255, 0.35);
 }
 
-.hero-cover-plate figcaption a:hover {
+.hero-ink .hero-portrait figcaption a:hover {
   color: #fff;
   text-decoration-color: #fff;
 }
@@ -541,6 +510,10 @@ ol {
 
   .hero-portrait {
     max-width: 340px;
+  }
+
+  .hero-portrait.portrait-wide {
+    max-width: none;
   }
 }
 
