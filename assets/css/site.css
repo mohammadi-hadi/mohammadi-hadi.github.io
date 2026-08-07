@@ -1619,9 +1619,11 @@ ol {
   line-height: 1.5;
   color: #e6e9ee;
   background: var(--hero-ink);
-  padding: 0.5rem 0.7rem;
-  overflow-x: auto;
-  white-space: nowrap;
+  /* hanging indent so a wrapped URL lines up under the command, not the "$" */
+  padding: 0.5rem 0.7rem 0.5rem 1.6rem;
+  text-indent: -0.9rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .pkg-cmd::before {
