@@ -1653,6 +1653,38 @@ ol {
   }
 }
 
+/* ---------- Focus and skip link ---------- */
+/* Every page opens with sixteen nav links (desktop plus the mobile copy), so a
+   keyboard user needs a way past them. */
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: var(--space-3);
+  z-index: 200;
+  padding: 0.6rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--ink);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: var(--space-3);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* The accent is too dark to read against the navy hero band. */
+.hero-ink :focus-visible,
+.pkg-cmd :focus-visible {
+  outline-color: #9fc0e8;
+}
+
 /* ---------- Motion ---------- */
 @media (prefers-reduced-motion: no-preference) {
   .hero-ink .container {
