@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Poke the Black Box · An Interactive Explainable AI Playground | Hadi Mohammadi</title>
+  <meta name="description" content="An interactive explainable AI (XAI) playground by Hadi Mohammadi. Type a sentence, watch a sentiment model decide, see which words tipped it, test the explanation, and try to flip the prediction. Runs entirely in your browser.">
+  <link rel="canonical" href="https://mohammadi.cv/playground/">
+  <meta property="og:title" content="Poke the Black Box: an interactive explainable AI playground">
+  <meta property="og:description" content="Type a sentence, watch a model decide, see which words tipped it, and try to break it. XAI in five minutes, entirely in your browser.">
+  <meta property="og:url" content="https://mohammadi.cv/playground/">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Poke the Black Box",
+    "alternateName": "An interactive explainable AI playground",
+    "url": "https://mohammadi.cv/playground/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any (runs in the browser)",
+    "isAccessibleForFree": true,
+    "dateCreated": "2026-08-07",
+    "author": {
+      "@type": "Person",
+      "name": "Hadi Mohammadi",
+      "url": "https://mohammadi.cv",
+      "sameAs": [
+        "https://orcid.org/0000-0003-0860-9200",
+        "https://scholar.google.com/citations?user=w4Jt-FAAAAAJ",
+        "https://github.com/mohammadi-hadi",
+        "https://www.linkedin.com/in/mohammadi-hadi/"
+      ]
+    },
+    "copyrightHolder": { "@type": "Person", "name": "Hadi Mohammadi" },
+    "copyrightYear": 2026,
+    "about": "Explainable AI (XAI): feature attribution, faithfulness testing, and counterfactual explanations for text classifiers, demonstrated live in the browser.",
+    "isPartOf": { "@type": "WebSite", "name": "Hadi Mohammadi", "url": "https://mohammadi.cv" }
+  }
+  </script>
+  <style>
+    :root {
+      --rust: #9A3412; --teal: #0D9488; --amber: #F59E0B;
+      --rose: #E11D48; --stone: #A8A29E; --graphite: #57534E;
+    }
+    .pg-wrap { max-width: 900px; margin: 0 auto; padding: 0 1.25rem 4rem; }
+    .pg-hero { padding: 3.2rem 0 2.2rem; }
+    .pg-hero .kicker { color: var(--rust); }
+    .pg-hero h1 { font-family: var(--serif); font-size: var(--step-3); line-height: 1.1; margin: .35rem 0 .8rem; }
+    .pg-hero .lede { font-size: 1.06rem; color: var(--ink-2); max-width: 62ch; margin: 0 0 .9rem; }
+    .pg-meta { font-size: .85rem; color: var(--ink-3); }
+    .pg-meta a { color: inherit; }
+    .privacy { display: inline-block; margin-top: .9rem; font-size: .82rem; color: var(--teal);
+      border: 1px solid var(--teal); border-radius: 999px; padding: .25rem .75rem; }
+    .module { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
+      padding: 1.6rem 1.6rem 1.4rem; margin: 1.6rem 0; }
+    .module h2 { font-family: var(--serif); font-size: 1.45rem; margin: 0 0 .25rem; }
+    .m-num { font-family: var(--mono); font-size: .75rem; color: var(--rust); letter-spacing: .08em;
+      text-transform: uppercase; }
+    .module > p { color: var(--ink-2); font-size: .95rem; max-width: 68ch; }
+    .go-deeper { font-size: .84rem; color: var(--ink-3); border-top: 1px dashed var(--rule);
+      margin-top: 1.1rem; padding-top: .7rem; }
+    textarea#sent { width: 100%; box-sizing: border-box; font: 500 1rem/1.5 var(--sans); color: var(--ink);
+      border: 1.5px solid var(--rule); border-radius: 8px; padding: .7rem .9rem; resize: vertical;
+      min-height: 3.4rem; background: var(--paper); }
+    textarea#sent:focus { outline: none; border-color: var(--graphite); }
+    .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: .7rem 0 0; }
+    .chip { font: 500 .8rem/1 var(--sans); color: var(--ink-2); background: var(--paper-deep);
+      border: 1px solid var(--rule); border-radius: 999px; padding: .45rem .8rem; cursor: pointer; }
+    .chip:hover { border-color: var(--graphite); }
+    .btn2 { font: 600 .88rem/1 var(--sans); color: #fff; background: var(--ink); border: none;
+      border-radius: 8px; padding: .65rem 1.1rem; cursor: pointer; }
+    .btn2:hover { background: #000; }
+    .btn2[disabled] { background: var(--stone); cursor: default; }
+    .btn2.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+    .btn2.ghost:hover { background: var(--paper-deep); }
+    .verdict-row { display: flex; align-items: center; gap: .9rem; flex-wrap: wrap; margin: 1.1rem 0 .6rem; }
+    .verdict { font: 600 .8rem/1 var(--sans); letter-spacing: .06em; border-radius: 6px;
+      padding: .45rem .7rem; color: #fff; }
+    .verdict.pos { background: var(--teal); }
+    .verdict.neg { background: var(--rust); }
+    .gauge { flex: 1; min-width: 220px; height: 12px; border-radius: 999px; position: relative;
+      background: linear-gradient(90deg, var(--rust), #d8d4cd 50%, var(--teal)); }
+    .gauge .pin { position: absolute; top: -5px; width: 4px; height: 22px; background: var(--ink);
+      border-radius: 2px; transform: translateX(-2px); transition: left .25s ease; }
+    .gauge-lab { font: 500 .72rem/1 var(--mono); color: var(--ink-3); display: flex;
+      justify-content: space-between; margin-top: .3rem; }
+    .heat { font-family: var(--serif); font-size: 1.18rem; line-height: 2.05; margin: .8rem 0 .3rem; }
+    .heat .tk { border-radius: 4px; padding: .1rem .15rem; cursor: help; }
+    .legend { font-size: .76rem; color: var(--ink-3); margin-bottom: .4rem; }
+    .legend .sw { display: inline-block; width: .75rem; height: .75rem; border-radius: 3px;
+      vertical-align: -2px; margin: 0 .25rem 0 .7rem; }
+    details.math { margin-top: .7rem; font-size: .86rem; }
+    details.math summary { cursor: pointer; color: var(--graphite); font-weight: 600; }
+    table.arith { border-collapse: collapse; margin-top: .6rem; font-family: var(--mono); font-size: .78rem; }
+    table.arith td, table.arith th { border-bottom: 1px solid var(--rule); padding: .3rem .7rem .3rem 0;
+      text-align: left; }
+    table.arith td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .chart-box { margin-top: .9rem; }
+    .chart-box svg { width: 100%; height: auto; display: block; }
+    .verdict-line { font-size: .9rem; color: var(--ink); margin-top: .5rem; }
+    .flip-bar { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: .9rem; }
+    .flip-count { font-family: var(--mono); font-size: .85rem; color: var(--graphite); }
+    .flip-win { background: #FEF3C7; border: 1px solid var(--amber); border-radius: 8px;
+      padding: .7rem 1rem; margin-top: .8rem; font-size: .92rem; display: none; }
+    .status { font-size: .84rem; color: var(--graphite); font-family: var(--mono); margin-top: .6rem;
+      min-height: 1.2em; }
+    .status.err { color: var(--rose); }
+    .progress { height: 8px; background: var(--paper-deep); border: 1px solid var(--rule);
+      border-radius: 999px; overflow: hidden; margin-top: .55rem; display: none; }
+    .progress i { display: block; height: 100%; width: 0%; background: var(--teal); transition: width .2s; }
+    .duel { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin-top: 1rem; }
+    .duel .cell { border: 1px solid var(--rule); border-radius: 8px; padding: .8rem .95rem; }
+    .duel h4 { margin: 0 0 .45rem; font: 600 .8rem/1.2 var(--sans); color: var(--graphite);
+      text-transform: uppercase; letter-spacing: .05em; }
+    .tiers2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: .9rem;
+      margin-top: 1.1rem; }
+    .tier2 { border: 1px solid var(--rule); border-radius: 8px; padding: .95rem 1.05rem; background: var(--surface); }
+    .tier2.here { border-color: var(--rust); box-shadow: 0 0 0 1px var(--rust); }
+    .tier2 .t-tag { font: 600 .68rem/1 var(--sans); letter-spacing: .07em; text-transform: uppercase;
+      color: var(--graphite); }
+    .tier2.here .t-tag { color: var(--rust); }
+    .tier2 h3 { font-family: var(--serif); font-size: 1.02rem; margin: .4rem 0 .35rem; }
+    .tier2 p { font-size: .84rem; color: var(--ink-2); margin: 0 0 .4rem; }
+    .tier2 .t-link { font-size: .8rem; }
+    details.card { margin: 1.6rem 0; font-size: .88rem; border: 1px solid var(--rule); border-radius: 10px;
+      padding: 1rem 1.3rem; background: var(--paper-deep); }
+    details.card summary { cursor: pointer; font-weight: 600; color: var(--ink); }
+    details.card ul { padding-left: 1.1rem; }
+    details.card li { margin: .35rem 0; color: var(--ink-2); }
+    .pg-footer { border-top: 1px solid var(--rule); margin-top: 2.5rem; padding-top: 1.3rem;
+      font-size: .82rem; color: var(--ink-3); }
+    .pg-footer a { color: inherit; }
+    @media (max-width: 640px) { .duel { grid-template-columns: 1fr; } .module { padding: 1.2rem 1rem 1rem; } }
+    @media (prefers-reduced-motion: reduce) { .gauge .pin { transition: none; } .progress i { transition: none; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main class="pg-wrap">
+    <section class="pg-hero">
+      <span class="kicker">Interactive playground</span>
+      <h1>Poke the Black Box</h1>
+      <p class="lede">Type a sentence. Watch a model decide whether it sounds positive or negative, see exactly
+        which words tipped it, test whether that explanation actually holds, and then try to break it.
+        This is explainable AI (XAI) in five minutes, live.</p>
+      <p class="pg-meta">By <a href="https://mohammadi.cv">Hadi Mohammadi</a> · a companion to the book
+        <em>Hands-On Explainable AI</em> and the free course
+        <a href="/opening-the-black-box/">Opening the Black Box</a> · no signup, no tracking.</p>
+      <span class="privacy">Everything runs in your browser. Nothing you type leaves this page.</span>
+    </section>
+
+    <noscript><p class="module">This playground is interactive and needs JavaScript to run.</p></noscript>
+
+    <section class="module" id="m1">
+      <span class="m-num">Part 1</span>
+      <h2>Watch it decide</h2>
+      <p>The model below reads movie-review sentences and predicts positive or negative. It is deliberately
+        simple: a logistic regression over single words, trained on 67,349 sentences from the SST-2 dataset
+        (81.8% validation accuracy, seed 42). Simple is the point. For this model the explanation is
+        <strong>exact</strong>: every word carries a learned weight, the weights add up, and that sum
+        <em>is</em> the decision. Type anything, or start from an example.</p>
+      <label for="sent" style="font: 600 .82rem/1 var(--sans); color: var(--graphite);">Your sentence</label>
+      <textarea id="sent" rows="2" autocomplete="off" spellcheck="true">This movie was an absolute delight from start to finish.</textarea>
+      <div class="chips" id="chips1">
+        <button class="chip">This movie was an absolute delight from start to finish.</button>
+        <button class="chip">The plot was predictable and the acting was wooden.</button>
+        <button class="chip">The film is not good.</button>
+        <button class="chip">The cinematography is gorgeous but the story goes nowhere.</button>
+      </div>
+      <div class="verdict-row">
+        <span class="verdict pos" id="verdict">POSITIVE · 77%</span>
+        <div style="flex:1; min-width:220px;">
+          <div class="gauge"><span class="pin" id="pin" style="left:77%"></span></div>
+          <div class="gauge-lab"><span>negative</span><span>positive</span></div>
+        </div>
+      </div>
+      <div class="legend">Which words did it?
+        <span class="sw" style="background:var(--teal)"></span>pushes positive
+        <span class="sw" style="background:var(--rust)"></span>pushes negative
+        <span class="sw" style="background:var(--paper-deep); border:1px solid var(--rule)"></span>neutral or unknown
+      </div>
+      <p class="heat" id="heat" aria-live="polite"></p>
+      <details class="math">
+        <summary>Show the arithmetic (the whole model, no hand-waving)</summary>
+        <div style="overflow-x:auto;"><table class="arith" id="arith"></table></div>
+        <p style="color:var(--ink-3); font-size:.8rem;">Weights add to a score, the score goes through a
+          sigmoid, and that is the probability above. This table is the complete computation, which is why
+          this model is called a glass box.</p>
+      </details>
+      <p class="go-deeper">Now try the third example, <em>The film is not good.</em> The model calls it
+        positive. It sees a bag of words: <em>good</em> pushes up harder than <em>not</em> pushes down, and
+        word order does not exist here. Hold that thought for Part 4. Deeper: chapter 4 of the book covers
+        attribution for models where nothing is exact anymore.</p>
+    </section>
+
+    <section class="module" id="m2">
+      <span class="m-num">Part 2</span>
+      <h2>Test the explanation</h2>
+      <p>An explanation is a claim: <em>these words carried the decision</em>. Claims get tested. The standard
+        check is a deletion test: remove the words the explanation says matter most, strongest first, and watch
+        the model's confidence. If the explanation is honest, confidence should collapse quickly, much faster
+        than deleting random words. Evaluating explanations like this is what chapter 8 of the book, and my own
+        research, is about.</p>
+      <button class="btn2" id="delBtn">Run the deletion test on your sentence</button>
+      <div class="chart-box" id="delChart"></div>
+      <p class="verdict-line" id="delVerdict"></p>
+      <p class="go-deeper">For this glass-box model the test looks almost rigged: the explanation and the model
+        are the same object, so it cannot fail. Keep that as your baseline. For deep models, Part 4, the
+        explanation is a separate estimate, and this same test is the main honesty check we have.</p>
+    </section>
+
+    <section class="module" id="m3">
+      <span class="m-num">Part 3</span>
+      <h2>Flip it</h2>
+      <p>The sharpest question you can ask a model is: <em>what is the smallest change that would change your
+        mind?</em> That change is called a counterfactual explanation. Edit the sentence above and try to flip
+        the verdict in as few word changes as you can. The counter tracks how far you have drifted from your
+        starting point.</p>
+      <div class="flip-bar">
+        <button class="btn2 ghost" id="flipStart">Start counting from the current sentence</button>
+        <span class="flip-count" id="flipCount"></span>
+      </div>
+      <div class="flip-win" id="flipWin"></div>
+      <p class="go-deeper">One more experiment: starting from a positive sentence, try flipping it by only
+        adding <em>not</em> in front of the nicest word. On this model it usually fails, because a bag of words
+        has no idea what the <em>not</em> is attached to. Counterfactuals are chapter 6 of the book; using them
+        to attack models is chapter 7.</p>
+    </section>
+
+    <section class="module" id="m4">
+      <span class="m-num">Part 4</span>
+      <h2>Now the real thing</h2>
+      <p>Real systems are not glass boxes. DistilBERT is a transformer with 66 million parameters, fine-tuned
+        on the same task (its reported validation accuracy is 91%, against our 81.8%). Load it and it runs
+        <strong>locally in your browser</strong>
+        through WebAssembly; your text still goes nowhere. But there is no weight table to show you now. To
+        explain it we have to probe from outside: remove each word, rerun the model, and measure what moved.
+        That is occlusion, one of the attribution methods from chapter 4.</p>
+      <button class="btn2" id="loadBtn">Load DistilBERT (about 65 MB, one-time download)</button>
+      <div class="progress" id="prog"><i id="progBar"></i></div>
+      <p class="status" id="m4status"></p>
+      <div id="m4play" style="display:none;">
+        <div class="chips" id="chips4">
+          <button class="chip">The film is not good.</button>
+          <button class="chip">The film is not bad.</button>
+          <button class="chip">I expected garbage but this was surprisingly wonderful.</button>
+        </div>
+        <div class="duel">
+          <div class="cell">
+            <h4>Glass box · exact weights</h4>
+            <div id="duelL"></div>
+          </div>
+          <div class="cell">
+            <h4>DistilBERT · occlusion estimate</h4>
+            <div id="duelR"></div>
+          </div>
+        </div>
+        <p class="verdict-line" id="agree"></p>
+        <button class="btn2 ghost" id="delBtn2" style="margin-top:.9rem;">Run the deletion test on DistilBERT</button>
+        <div class="chart-box" id="delChart2"></div>
+        <p class="verdict-line" id="delVerdict2"></p>
+        <p class="go-deeper">Try the first two chips. The bag of words falls for both negations; the
+          transformer reads them in context. Then look at the two heatmaps side by side: sometimes they agree,
+          sometimes they tell different stories about the same sentence. Which one do you trust, and how would
+          you check? That question is the book.</p>
+      </div>
+    </section>
+
+    <section class="module" id="ladder">
+      <span class="m-num">Where this goes</span>
+      <h2>How it all fits together</h2>
+      <p>This page is the two-minute version of a larger body of work on explaining language models.</p>
+      <div class="tiers2">
+        <div class="tier2 here">
+          <span class="t-tag">You are here · 2 minutes · free</span>
+          <h3>The playground</h3>
+          <p>See, test, and break an explanation, live in your browser.</p>
+        </div>
+        <div class="tier2">
+          <span class="t-tag">Self-paced · free</span>
+          <h3>The course</h3>
+          <p>Opening the Black Box: a guided five-day path through thirteen hands-on labs on a free GPU.</p>
+          <p class="t-link"><a href="/opening-the-black-box/">start the course &rarr;</a></p>
+        </div>
+        <div class="tier2">
+          <span class="t-tag">The code · MIT</span>
+          <h3>The labs</h3>
+          <p>Thirteen open-source notebooks: the evidence base, runnable and citable.</p>
+          <p class="t-link"><a href="https://github.com/mohammadi-hadi/hands-on-xai-labs">on GitHub</a> ·
+            <a href="https://doi.org/10.5281/zenodo.21804605">DOI</a></p>
+        </div>
+        <div class="tier2">
+          <span class="t-tag">The reference</span>
+          <h3>The book</h3>
+          <p><em>Hands-On Explainable AI</em>: the full treatment, written lab-first.</p>
+          <p class="t-link"><a href="https://mohammadi.cv/">about the book &amp; author &rarr;</a></p>
+        </div>
+        <div class="tier2">
+          <span class="t-tag">For institutions</span>
+          <h3>The school</h3>
+          <p>The instructor-led five-day summer school, hosted at your university or company.</p>
+          <p class="t-link"><a href="mailto:hadi.mohammadi@outlook.com?subject=Opening%20the%20Black%20Box%20summer%20school">email me about hosting it &rarr;</a></p>
+        </div>
+      </div>
+    </section>
+
+    <details class="card" id="modelcard">
+      <summary>Model card, honest limitations, and provenance</summary>
+      <ul id="cardList">
+        <li><strong>Glass box.</strong> Logistic regression over unigram counts, SST-2 (GLUE split), 67,349
+          training and 872 validation sentences, seed 42. Shipped vocabulary pruned to the 6,000
+          strongest-weight terms, which scores 81.8% on validation (the full 13,244-term model scores 81.7%).
+          The weights file is 105 KB and you are welcome to read it in your browser's network tab.</li>
+        <li><strong>Deep model.</strong> distilbert-base-uncased-finetuned-sst-2-english (Apache-2.0),
+          downloaded by your browser from the Hugging Face Hub only if you click load, and run locally.</li>
+        <li><strong>Domain.</strong> Both models were trained on English movie-review sentences. On other
+          topics they still answer, but they are out of their depth; that is a lesson, not a bug.</li>
+        <li><strong>Quirks are real.</strong> Some learned weights are dataset accidents, like a positive
+          weight on the word <em>calls</em>. And in movie reviews, <em>devastating</em> is praise.</li>
+        <li><strong>Estimates are estimates.</strong> The transformer's occlusion heatmap is a probe from
+          outside, not a readout of its internals. Chapter 8 of the book is about how such estimates are
+          evaluated, and chapter 5 about why attention maps are not the answer either.</li>
+        <li><strong>Demo, not a product.</strong> Nothing here is a moderation or decision tool.</li>
+        <li>Every number on this page comes from a logged training run
+          (2026-08-07). The page verifies its shipped weights against reference outputs on load and refuses to
+          run if they drift.</li>
+      </ul>
+    </details>
+
+    <footer class="pg-footer">
+      <p>&copy; 2026 Hadi Mohammadi. The code, text, design, and model weights of this page are all rights
+        reserved; this page is not covered by the site's CC BY-SA license. Cite or share it by link.</p>
+      <p><a href="https://mohammadi.cv">mohammadi.cv</a> ·
+        <a href="/opening-the-black-box/">free course</a> ·
+        <a href="https://github.com/mohammadi-hadi/hands-on-xai-labs">labs</a> ·
+        <a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ">Scholar</a></p>
+    </footer>
+  </main>
+
+  <script type="module">
+    'use strict';
+    /* Poke the Black Box · (c) 2026 Hadi Mohammadi · all rights reserved
+       Palette (book constants): RUST #9A3412 model/negative, TEAL #0D9488 explanation/positive,
+       AMBER #F59E0B highlight, ROSE #E11D48 failure, STONE #A8A29E neutral series, GRAPHITE #57534E text. */
+    const TEAL = '#0D9488', RUST = '#9A3412', STONE = '#A8A29E', GRAPHITE = '#57534E', ROSE = '#E11D48';
+    const $ = (id) => document.getElementById(id);
+
+    // ---------- model ----------
+    let MODEL = null;      // {bias, vocab, meta}
+    const norm = (s) => s.replace(/’/g, "'");
+    const tokenize = (s) => (norm(s).toLowerCase().match(/[a-z']+/g) || []);
+    // Chunk the original string so the heatmap keeps casing and punctuation.
+    function chunks(s) {
+      const out = []; const re = /[A-Za-z'’]+|[^A-Za-z'’]+/g;
+      for (const m of norm(s).match(re) || []) {
+        const isTok = /[A-Za-z']/.test(m[0]);
+        out.push({ text: m, isTok, lower: isTok ? m.toLowerCase() : null });
+      }
+      return out;
+    }
+    const w = (tok) => (MODEL && Object.prototype.hasOwnProperty.call(MODEL.vocab, tok)) ? MODEL.vocab[tok] : 0;
+    const sigmoid = (z) => 1 / (1 + Math.exp(-z));
+    function score(text) {
+      const toks = tokenize(text);
+      let z = MODEL.bias;
+      for (const t of toks) z += w(t);
+      return { toks, logit: z, p: sigmoid(z) };
+    }
+    function mulberry32(seed) {
+      let a = seed >>> 0;
+      return function () {
+        a |= 0; a = (a + 0x6D2B79F5) | 0;
+        let t = Math.imul(a ^ (a >>> 15), 1 | a);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+
+    // ---------- rendering ----------
+    function fmtVerdict(p) { return (p >= 0.5 ? 'POSITIVE · ' : 'NEGATIVE · ') + Math.round((p >= 0.5 ? p : 1 - p) * 100) + '%'; }
+    function paintVerdict(el, pin, p) {
+      el.textContent = fmtVerdict(p);
+      el.className = 'verdict ' + (p >= 0.5 ? 'pos' : 'neg');
+      if (pin) pin.style.left = (p * 100).toFixed(1) + '%';
+    }
+    function heatHTML(text, weightOf, maxAbs) {
+      const cap = maxAbs || 1;
+      let html = '';
+      for (const c of chunks(text)) {
+        if (!c.isTok) { html += escapeHTML(c.text); continue; }
+        const v = weightOf(c.lower);
+        if (v === 0) { html += '<span class="tk" title="no signal">' + escapeHTML(c.text) + '</span>'; continue; }
+        const a = Math.min(1, Math.abs(v) / cap) * 0.85 + 0.1;
+        const col = v > 0 ? '13,148,136' : '154,52,18';
+        html += '<span class="tk" style="background:rgba(' + col + ',' + a.toFixed(2) + ')' +
+          (a > 0.55 ? ';color:#fff' : '') + '" title="' + (v > 0 ? '+' : '') + v.toFixed(2) + '">' +
+          escapeHTML(c.text) + '</span>';
+      }
+      return html;
+    }
+    function escapeHTML(s) { return s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+
+    function renderM1() {
+      const text = $('sent').value;
+      const { toks, logit, p } = score(text);
+      paintVerdict($('verdict'), $('pin'), p);
+      const maxAbs = Math.max(0.5, ...toks.map((t) => Math.abs(w(t))));
+      $('heat').innerHTML = heatHTML(text, w, maxAbs);
+      let rows = '<tr><th>word</th><th class="num">weight</th><th class="num">running score</th></tr>';
+      let run = MODEL.bias;
+      rows += '<tr><td>(bias)</td><td class="num">' + MODEL.bias.toFixed(2) + '</td><td class="num">' + run.toFixed(2) + '</td></tr>';
+      for (const t of toks.slice(0, 40)) {
+        run += w(t);
+        const wt = w(t);
+        rows += '<tr><td>' + escapeHTML(t) + '</td><td class="num">' + (wt === 0 ? 'not in vocab' : (wt > 0 ? '+' : '') + wt.toFixed(2)) +
+          '</td><td class="num">' + run.toFixed(2) + '</td></tr>';
+      }
+      rows += '<tr><td><strong>P(positive) = sigmoid(' + logit.toFixed(2) + ')</strong></td><td class="num" colspan="2"><strong>' +
+        p.toFixed(3) + '</strong></td></tr>';
+      $('arith').innerHTML = rows;
+      resetFlipIfStale();
+    }
+
+    // ---------- deletion test (shared chart) ----------
+    function drawChart(el, series, n, note) {
+      const W = 560, H = 280, L = 46, R = 14, T = 14, B = 40;
+      const x = (i) => L + (n === 0 ? 0 : (W - L - R) * i / n);
+      const y = (p) => T + (H - T - B) * (1 - p);
+      let s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="deletion test chart">';
+      s += '<rect x="0" y="0" width="' + W + '" height="' + H + '" fill="none"/>';
+      for (const g of [0, 0.5, 1]) {
+        s += '<line x1="' + L + '" y1="' + y(g) + '" x2="' + (W - R) + '" y2="' + y(g) + '" stroke="#e3e1dc"' +
+          (g === 0.5 ? ' stroke-dasharray="5 4"' : '') + '/>';
+        s += '<text x="' + (L - 8) + '" y="' + (y(g) + 4) + '" text-anchor="end" font-size="11" fill="' + GRAPHITE + '" font-family="JetBrains Mono, monospace">' + g.toFixed(1) + '</text>';
+      }
+      for (const g of [0, Math.round(n / 2), n]) {
+        s += '<text x="' + x(g) + '" y="' + (H - B + 18) + '" text-anchor="middle" font-size="11" fill="' + GRAPHITE + '" font-family="JetBrains Mono, monospace">' + g + '</text>';
+      }
+      s += '<text x="' + ((L + W - R) / 2) + '" y="' + (H - 6) + '" text-anchor="middle" font-size="11.5" fill="' + GRAPHITE + '" font-family="Inter, sans-serif">words deleted</text>';
+      s += '<text x="12" y="' + ((T + H - B) / 2) + '" text-anchor="middle" font-size="11.5" fill="' + GRAPHITE + '" font-family="Inter, sans-serif" transform="rotate(-90 12 ' + ((T + H - B) / 2) + ')">P(positive)</text>';
+      for (const ser of series) {
+        const pts = ser.pts.map((p, i) => x(i).toFixed(1) + ',' + y(p).toFixed(1)).join(' ');
+        s += '<polyline points="' + pts + '" fill="none" stroke="' + ser.color + '" stroke-width="2.5"' +
+          (ser.dash ? ' stroke-dasharray="6 5"' : '') + '/>';
+        for (let i = 0; i < ser.pts.length; i++) {
+          s += '<circle cx="' + x(i).toFixed(1) + '" cy="' + y(ser.pts[i]).toFixed(1) + '" r="2.6" fill="' + ser.color + '"/>';
+        }
+      }
+      let lx = L + 12;
+      for (const ser of series) {
+        s += '<rect x="' + lx + '" y="' + (T + 4) + '" width="14" height="4" fill="' + ser.color + '"/>';
+        s += '<text x="' + (lx + 20) + '" y="' + (T + 10) + '" font-size="11.5" fill="' + GRAPHITE + '" font-family="Inter, sans-serif">' + ser.label + '</text>';
+        lx += 20 + ser.label.length * 6.4 + 22;
+      }
+      s += '</svg>';
+      el.innerHTML = s + (note ? '<p class="legend">' + note + '</p>' : '');
+    }
+
+    function crossingPoint(pts, startPos) {
+      for (let i = 1; i < pts.length; i++) {
+        if (startPos ? pts[i] < 0.5 : pts[i] >= 0.5) return i;
+      }
+      return null;
+    }
+
+    function runDeletionLinear() {
+      const text = $('sent').value;
+      const base = score(text);
+      const toks = base.toks;
+      if (toks.length < 3) { $('delVerdict').textContent = 'Give it a slightly longer sentence first.'; return; }
+      const startPos = base.p >= 0.5;
+      const sign = startPos ? 1 : -1;
+      const order = toks.map((t, i) => ({ i, v: sign * w(t) })).sort((a, b) => b.v - a.v).map(o => o.i);
+      const curveFrom = (idxOrder) => {
+        const removed = new Set(); const pts = [base.p];
+        for (const idx of idxOrder) {
+          removed.add(idx);
+          let z = MODEL.bias;
+          toks.forEach((t, i) => { if (!removed.has(i)) z += w(t); });
+          pts.push(sigmoid(z));
+        }
+        return pts;
+      };
+      const guided = curveFrom(order);
+      let rnd = new Array(toks.length + 1).fill(0);
+      const R = 5;
+      for (let r = 0; r < R; r++) {
+        const rng = mulberry32(42 + r);
+        const idx = toks.map((_, i) => i);
+        for (let i = idx.length - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [idx[i], idx[j]] = [idx[j], idx[i]]; }
+        const c = curveFrom(idx);
+        rnd = rnd.map((v, i) => v + c[i] / R);
+      }
+      drawChart($('delChart'), [
+        { pts: guided, color: TEAL, label: 'delete by attribution' },
+        { pts: rnd, color: STONE, label: 'delete at random (mean of 5)', dash: true },
+      ], toks.length, 'Dashed grey line at 0.5 is the decision boundary.');
+      const g = crossingPoint(guided, startPos), rn = crossingPoint(rnd, startPos);
+      $('delVerdict').textContent = g === null
+        ? 'Attribution order never crossed the boundary here; try a sentence with a clearer verdict.'
+        : 'Attribution order crossed the boundary after ' + g + ' deletion' + (g === 1 ? '' : 's') +
+          (rn === null ? '; random order never crossed at all.' : '; random order needed ' + rn + '.');
+    }
+
+    // ---------- flip challenge ----------
+    let flipBase = null; // {toks, p}
+    function tokenEdits(a, b) {
+      const m = a.length, n = b.length;
+      const d = Array.from({ length: m + 1 }, (_, i) => [i, ...new Array(n).fill(0)]);
+      for (let j = 1; j <= n; j++) d[0][j] = j;
+      for (let i = 1; i <= m; i++) for (let j = 1; j <= n; j++) {
+        d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      }
+      return d[m][n];
+    }
+    function startFlip() {
+      const s = score($('sent').value);
+      flipBase = { toks: s.toks, p: s.p, text: $('sent').value };
+      $('flipCount').textContent = '0 edits · starting from ' + fmtVerdict(s.p);
+      $('flipWin').style.display = 'none';
+      updateFlip();
+    }
+    function resetFlipIfStale() { if (flipBase) updateFlip(); }
+    function updateFlip() {
+      if (!flipBase) return;
+      const s = score($('sent').value);
+      const edits = tokenEdits(flipBase.toks, s.toks);
+      $('flipCount').textContent = edits + ' edit' + (edits === 1 ? '' : 's') + ' · now ' + fmtVerdict(s.p);
+      const flipped = (flipBase.p >= 0.5) !== (s.p >= 0.5);
+      if (flipped && edits > 0) {
+        $('flipWin').style.display = 'block';
+        $('flipWin').innerHTML = '<strong>Flipped in ' + edits + ' word edit' + (edits === 1 ? '' : 's') + '.</strong> ' +
+          'You just built a counterfactual explanation: the smallest change that changes the decision is itself ' +
+          'an explanation of the decision.';
+      } else {
+        $('flipWin').style.display = 'none';
+      }
+    }
+
+    // ---------- part 4: DistilBERT ----------
+    let clf = null, busy = false;
+    async function pPos(text) {
+      const out = await clf(text);
+      const r = Array.isArray(out) ? out[0] : out;
+      return r.label === 'POSITIVE' ? r.score : 1 - r.score;
+    }
+    async function loadModel() {
+      const st = $('m4status'), bar = $('progBar');
+      $('loadBtn').disabled = true;
+      $('prog').style.display = 'block';
+      st.className = 'status';
+      st.textContent = 'Loading the library from jsDelivr...';
+      try {
+        const { pipeline } = await import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.2.0');
+        st.textContent = 'Downloading DistilBERT from the Hugging Face Hub...';
+        clf = await pipeline('text-classification', 'Xenova/distilbert-base-uncased-finetuned-sst-2-english', {
+          dtype: 'q8',
+          progress_callback: (x) => {
+            try {
+              if (x && typeof x.progress === 'number' && x.file && x.file.indexOf('onnx') !== -1) {
+                bar.style.width = x.progress.toFixed(0) + '%';
+                st.textContent = 'Downloading model weights: ' + x.progress.toFixed(0) + '%';
+              }
+            } catch (e) { /* progress display only */ }
+          },
+        });
+        bar.style.width = '100%';
+        st.textContent = 'Ready. It runs locally from here on; try the chips or your own sentence.';
+        $('m4play').style.display = 'block';
+        await analyzeM4();
+      } catch (e) {
+        st.className = 'status err';
+        st.textContent = 'Could not load the model (network or an unsupported browser). Reload to retry.';
+        $('loadBtn').disabled = false;
+      }
+    }
+    async function analyzeM4() {
+      if (!clf || busy) return;
+      busy = true;
+      const st = $('m4status');
+      try {
+        const text = $('sent').value;
+        const toks = chunks(text).filter(c => c.isTok);
+        if (toks.length > 24) {
+          st.textContent = 'Keep it under 24 words for the occlusion probe (it reruns the model once per word).';
+          busy = false; return;
+        }
+        const lin = score(text);
+        const maxAbsL = Math.max(0.5, ...lin.toks.map(t => Math.abs(w(t))));
+        $('duelL').innerHTML = '<span class="verdict ' + (lin.p >= 0.5 ? 'pos' : 'neg') + '">' + fmtVerdict(lin.p) +
+          '</span><p class="heat" style="font-size:1.02rem">' + heatHTML(text, w, maxAbsL) + '</p>';
+        st.textContent = 'Occlusion probe: rerunning DistilBERT once per word...';
+        const pFull = await pPos(text);
+        const cs = chunks(text);
+        const occl = new Map();
+        let done = 0;
+        for (let i = 0; i < cs.length; i++) {
+          if (!cs[i].isTok) continue;
+          const without = cs.filter((_, j) => j !== i).map(c => c.text).join('').replace(/\s+/g, ' ').trim();
+          const p = await pPos(without || '.');
+          const key = i;
+          occl.set(key, pFull - p);
+          done++;
+          st.textContent = 'Occlusion probe: ' + done + '/' + cs.filter(c => c.isTok).length + ' words...';
+        }
+        const vals = [...occl.values()];
+        const maxAbsT = Math.max(0.05, ...vals.map(Math.abs));
+        let idx = -1;
+        const heatT = cs.map((c, i) => {
+          if (!c.isTok) return escapeHTML(c.text);
+          const v = occl.get(i) || 0;
+          const a = Math.min(1, Math.abs(v) / maxAbsT) * 0.85 + 0.1;
+          const col = v > 0 ? '13,148,136' : '154,52,18';
+          return '<span class="tk" style="background:rgba(' + col + ',' + a.toFixed(2) + ')' + (a > 0.55 ? ';color:#fff' : '') +
+            '" title="removing this moves P(positive) by ' + (v > 0 ? '-' : '+') + Math.abs(v).toFixed(3) + '">' + escapeHTML(c.text) + '</span>';
+        }).join('');
+        $('duelR').innerHTML = '<span class="verdict ' + (pFull >= 0.5 ? 'pos' : 'neg') + '">' + fmtVerdict(pFull) +
+          '</span><p class="heat" style="font-size:1.02rem">' + heatT + '</p>';
+        // agreement: top-3 overlap on shared token positions
+        const linByPos = []; let k = 0;
+        for (const c of cs) if (c.isTok) { linByPos.push({ pos: k, v: Math.abs(w(c.lower)) }); k++; }
+        const occByPos = []; k = 0;
+        for (let i = 0; i < cs.length; i++) if (cs[i].isTok) { occByPos.push({ pos: k, v: Math.abs(occl.get(i) || 0) }); k++; }
+        const top = (arr) => new Set(arr.slice().sort((a, b) => b.v - a.v).slice(0, 3).map(o => o.pos));
+        const tl = top(linByPos), tt = top(occByPos);
+        const overlap = [...tl].filter(p => tt.has(p)).length;
+        $('agree').textContent = 'Do the two explanations even agree? Top-3 words overlap: ' + overlap + ' of 3. ' +
+          (overlap >= 2 ? 'Mostly the same story here.' : 'Two different stories about the same sentence; chapter 8 is about deciding which to trust.');
+        st.textContent = 'Done. Edit the sentence or hit a chip to rerun.';
+        window.__m4toks = { cs, occl, pFull };
+      } catch (e) {
+        st.className = 'status err';
+        st.textContent = 'The probe failed mid-run. Reload the page and try again.';
+      }
+      busy = false;
+    }
+    async function runDeletionBert() {
+      if (!clf || busy || !window.__m4toks) return;
+      busy = true;
+      const st = $('m4status');
+      try {
+        const { cs, occl, pFull } = window.__m4toks;
+        const tokIdx = cs.map((c, i) => ({ c, i })).filter(o => o.c.isTok).map(o => o.i);
+        const startPos = pFull >= 0.5;
+        const sign = startPos ? 1 : -1;
+        const order = tokIdx.slice().sort((a, b) => sign * (occl.get(b) || 0) - sign * (occl.get(a) || 0));
+        const build = (removed) => cs.filter((_, j) => !removed.has(j)).map(c => c.text).join('').replace(/\s+/g, ' ').trim() || '.';
+        const curve = async (idxOrder) => {
+          const removed = new Set(); const pts = [pFull];
+          for (const idx of idxOrder) { removed.add(idx); pts.push(await pPos(build(removed))); st.textContent = 'Deletion test: ' + removed.size + '/' + idxOrder.length + '...'; }
+          return pts;
+        };
+        const guided = await curve(order);
+        let rnd = new Array(tokIdx.length + 1).fill(0);
+        const R = 2;
+        for (let r = 0; r < R; r++) {
+          const rng = mulberry32(42 + r);
+          const idx = tokIdx.slice();
+          for (let i = idx.length - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [idx[i], idx[j]] = [idx[j], idx[i]]; }
+          const c = await curve(idx);
+          rnd = rnd.map((v, i) => v + c[i] / R);
+        }
+        drawChart($('delChart2'), [
+          { pts: guided, color: TEAL, label: 'delete by occlusion' },
+          { pts: rnd, color: STONE, label: 'delete at random (mean of 2)', dash: true },
+        ], tokIdx.length, 'Same test as Part 2, now on a model where the explanation is only an estimate.');
+        const g = crossingPoint(guided, startPos), rn = crossingPoint(rnd, startPos);
+        $('delVerdict2').textContent = g === null
+          ? 'Occlusion order never crossed the boundary on this sentence.'
+          : 'Occlusion order crossed the boundary after ' + g + ' deletion' + (g === 1 ? '' : 's') +
+            (rn === null ? '; random never crossed.' : '; random needed ' + rn + '.') +
+            ' When the teal line beats the grey one, the estimate earned some trust.';
+        st.textContent = 'Done.';
+      } catch (e) {
+        st.className = 'status err';
+        st.textContent = 'The deletion test failed mid-run. Reload and try again.';
+      }
+      busy = false;
+    }
+
+    // ---------- boot ----------
+    async function boot() {
+      try {
+        const [wRes, sRes] = await Promise.all([
+          fetch('weights.json', { cache: 'no-cache' }),
+          fetch('selftest.json', { cache: 'no-cache' }),
+        ]);
+        if (!wRes.ok || !sRes.ok) throw new Error('fetch');
+        MODEL = await wRes.json();
+        const selftest = await sRes.json();
+        for (const t of selftest) {
+          if (Math.abs(score(t.text).p - t.p_pos) > 1e-4) throw new Error('selftest');
+        }
+        renderM1();
+        $('sent').addEventListener('input', () => { renderM1(); });
+        for (const box of [$('chips1'), $('chips4')]) {
+          box.addEventListener('click', (ev) => {
+            if (!ev.target.classList.contains('chip')) return;
+            $('sent').value = ev.target.textContent;
+            renderM1();
+            if (clf) analyzeM4();
+            if (box.id === 'chips4') $('m4').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        }
+        $('delBtn').addEventListener('click', runDeletionLinear);
+        $('flipStart').addEventListener('click', startFlip);
+        $('loadBtn').addEventListener('click', loadModel);
+        $('delBtn2').addEventListener('click', runDeletionBert);
+        let t = null;
+        $('sent').addEventListener('input', () => {
+          if (!clf) return;
+          clearTimeout(t); t = setTimeout(analyzeM4, 900);
+        });
+      } catch (e) {
+        const el = $('heat');
+        el.innerHTML = '<span style="color:' + ROSE + '">The model files failed to load or failed verification, ' +
+          'so the playground refused to start (that is itself an XAI lesson: fail loudly). Try reloading.</span>';
+      }
+    }
+    boot();
+  </script>
+</body>
+</html>
