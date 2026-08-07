@@ -78,8 +78,11 @@
       min-height: 3.4rem; background: var(--paper); }
     textarea#sent:focus { outline: none; border-color: var(--graphite); }
     .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: .7rem 0 0; }
-    .chip { font: 500 .8rem/1 var(--sans); color: var(--ink-2); background: var(--paper-deep);
-      border: 1px solid var(--rule); border-radius: 999px; padding: .45rem .8rem; cursor: pointer; }
+    /* These chips hold whole sentences, unlike the one-word chips in site.css,
+       which set white-space: nowrap and would push the page sideways on a phone. */
+    .chip { font: 500 .8rem/1.35 var(--sans); color: var(--ink-2); background: var(--paper-deep);
+      border: 1px solid var(--rule); border-radius: 999px; padding: .45rem .8rem; cursor: pointer;
+      white-space: normal; max-width: 100%; text-align: left; }
     .chip:hover { border-color: var(--graphite); }
     .btn2 { font: 600 .88rem/1 var(--sans); color: #fff; background: var(--ink); border: none;
       border-radius: 8px; padding: .65rem 1.1rem; cursor: pointer; }
