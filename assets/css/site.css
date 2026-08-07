@@ -337,11 +337,11 @@ ol {
   text-decoration-color: #fff;
 }
 
-.hero-ink .social-row a {
+.hero-ink .profile-links a {
   color: rgba(255, 255, 255, 0.82);
 }
 
-.hero-ink .social-row a:hover {
+.hero-ink .profile-links a:hover {
   color: #fff;
 }
 
@@ -518,14 +518,14 @@ ol {
 }
 
 /* ---------- Social row ---------- */
-.social-row {
+.profile-links {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
   align-items: center;
 }
 
-.social-row a {
+.profile-links a {
   font-size: 0.9rem;
   color: var(--ink-2);
   display: inline-flex;
@@ -533,11 +533,11 @@ ol {
   gap: 0.4rem;
 }
 
-.social-row a:hover {
+.profile-links a:hover {
   color: var(--accent);
 }
 
-.social-row i {
+.profile-links i {
   font-size: 1rem;
 }
 
