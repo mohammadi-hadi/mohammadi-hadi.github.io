@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hadi Mohammadi — Blog</title>
+    <link>https://mohammadi.cv/blog/</link>
+    <description>Field notes on building and evaluating production LLM systems, and open guides for people studying AI and data science.</description>
+    <language>en</language>
+    <copyright>CC BY-SA 4.0, Hadi Mohammadi</copyright>
+    <lastBuildDate>Fri, 07 Aug 2026 09:00:00 +0200</lastBuildDate>
+    <atom:link href="https://mohammadi.cv/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Calling LLMs well</title>
+      <link>https://mohammadi.cv/blog/calling-llms-well/</link>
+      <guid isPermaLink="true">https://mohammadi.cv/blog/calling-llms-well/</guid>
+      <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
+      <description>Structured outputs, retries, streaming, caching and cost control — the unglamorous 80% of production LLM work.</description>
+      <category>Modern AI Engineering</category>
+    </item>
+    <item>
+      <title>Retrieval-augmented generation</title>
+      <link>https://mohammadi.cv/blog/retrieval-augmented-generation/</link>
+      <guid isPermaLink="true">https://mohammadi.cv/blog/retrieval-augmented-generation/</guid>
+      <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
+      <description>Chunking, hybrid search, reranking and query rewriting: RAG treated as an information-retrieval problem, and how it actually fails.</description>
+      <category>Modern AI Engineering</category>
+    </item>
+    <item>
+      <title>Agents and MCP</title>
+      <link>https://mohammadi.cv/blog/agents-and-mcp/</link>
+      <guid isPermaLink="true">https://mohammadi.cv/blog/agents-and-mcp/</guid>
+      <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
+      <description>Tool loops, the Model Context Protocol, planning patterns and agent evaluation — and when a plain workflow beats an agent.</description>
+      <category>Modern AI Engineering</category>
+    </item>
+    <item>
+      <title>Fine-tuning and preference optimization</title>
+      <link>https://mohammadi.cv/blog/fine-tuning-and-preference-optimization/</link>
+      <guid isPermaLink="true">https://mohammadi.cv/blog/fine-tuning-and-preference-optimization/</guid>
+      <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
+      <description>A decision table for RAG versus prompting versus LoRA versus DPO and GRPO, then the mechanics of each.</description>
+      <category>Modern AI Engineering</category>
+    </item>
+    <item>
+      <title>Evaluation and LLM-as-judge</title>
+      <link>https://mohammadi.cv/blog/evaluation-and-llm-as-judge/</link>
+      <guid isPermaLink="true">https://mohammadi.cv/blog/evaluation-and-llm-as-judge/</guid>
+      <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
+      <description>The five-level eval hierarchy, how to build an LLM judge you can defend, why agreement is the metric behind the metric.</description>
+      <category>Modern AI Engineering</category>
+    </item>
+    <item>
+      <title>Serving and inference optimization</title>
+      <link>https://mohammadi.cv/blog/serving-and-inference-optimization/</link>
+      <guid isPermaLink="true">https://mohammadi.cv/blog/serving-and-inference-optimization/</guid>
+      <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
+      <description>Prefill and decode, vLLM and continuous batching, KV caches, quantization, and the cost arithmetic behind API versus self-host.</description>
+      <category>Modern AI Engineering</category>
+    </item>
+  </channel>
+</rss>

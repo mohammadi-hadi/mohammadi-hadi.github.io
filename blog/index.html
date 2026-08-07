@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Blog — Hadi Mohammadi</title>
+  <meta name="description" content="Field notes on building and evaluating production LLM systems, and open guides for people studying AI and data science: master's programmes in the Netherlands, summer schools in Europe, course paths by career, and a reading list on explainable NLP.">
+  <link rel="canonical" href="https://mohammadi.cv/blog/">
+  <meta name="author" content="Hadi Mohammadi">
+  <meta property="og:title" content="Blog — Hadi Mohammadi">
+  <meta property="og:description" content="Field notes on building and evaluating production LLM systems, and open guides for people studying AI and data science.">
+  <meta property="og:url" content="https://mohammadi.cv/blog/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hadi Mohammadi">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/index.png">
+  <meta property="og:image:alt" content="Blog — field notes on production LLM systems and open guides, by Hadi Mohammadi">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog — Hadi Mohammadi">
+  <meta name="twitter:description" content="Field notes on building and evaluating production LLM systems, and open guides for people studying AI and data science.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/index.png">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammadi.cv/#person",
+        "name": "Hadi Mohammadi",
+        "url": "https://mohammadi.cv",
+        "identifier": "https://orcid.org/0000-0003-0860-9200"
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://mohammadi.cv/blog/#blog",
+        "url": "https://mohammadi.cv/blog/",
+        "name": "Hadi Mohammadi — Blog",
+        "description": "Field notes on building and evaluating production LLM systems, and open guides for people studying AI and data science.",
+        "inLanguage": "en",
+        "author": { "@id": "https://mohammadi.cv/#person" },
+        "publisher": { "@id": "https://mohammadi.cv/#person" },
+        "blogPost": [
+          { "@id": "https://mohammadi.cv/blog/calling-llms-well/#post" },
+          { "@id": "https://mohammadi.cv/blog/retrieval-augmented-generation/#post" },
+          { "@id": "https://mohammadi.cv/blog/agents-and-mcp/#post" },
+          { "@id": "https://mohammadi.cv/blog/fine-tuning-and-preference-optimization/#post" },
+          { "@id": "https://mohammadi.cv/blog/evaluation-and-llm-as-judge/#post" },
+          { "@id": "https://mohammadi.cv/blog/serving-and-inference-optimization/#post" }
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://mohammadi.cv/blog/#guides",
+        "name": "Open guides for AI and data science students",
+        "numberOfItems": 4,
+        "itemListOrder": "https://schema.org/ItemListUnordered",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "AI & Data Science Master's Programmes in the Netherlands",
+              "url": "https://github.com/mohammadi-hadi/ai-masters-netherlands",
+              "identifier": "https://doi.org/10.5281/zenodo.21837422",
+              "author": { "@id": "https://mohammadi.cv/#person" },
+              "isAccessibleForFree": true,
+              "inLanguage": "en",
+              "license": "https://opensource.org/licenses/MIT"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Machine Learning Summer Schools in Europe",
+              "url": "https://github.com/mohammadi-hadi/ml-summer-schools-europe",
+              "identifier": "https://doi.org/10.5281/zenodo.21837420",
+              "author": { "@id": "https://mohammadi.cv/#person" },
+              "isAccessibleForFree": true,
+              "inLanguage": "en",
+              "license": "https://opensource.org/licenses/MIT"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "ML Learning Paths",
+              "url": "https://github.com/mohammadi-hadi/ml-learning-paths",
+              "identifier": "https://doi.org/10.5281/zenodo.21837432",
+              "author": { "@id": "https://mohammadi.cv/#person" },
+              "isAccessibleForFree": true,
+              "inLanguage": "en",
+              "license": "https://opensource.org/licenses/MIT"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Awesome Explainable NLP",
+              "url": "https://github.com/mohammadi-hadi/awesome-explainable-nlp",
+              "identifier": "https://doi.org/10.5281/zenodo.21837426",
+              "author": { "@id": "https://mohammadi.cv/#person" },
+              "isAccessibleForFree": true,
+              "inLanguage": "en",
+              "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/" aria-current="page">Blog</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="kicker">Blog</span>
+        <h1>Blog</h1>
+        <p class="section-lede">Field notes on building and evaluating language-model systems, written from production work and from research — plus the open guides I keep up to date for people studying AI and data science. Everything here is free to read, takes corrections by pull request, and is archived with a DOI so it can be cited.</p>
+      </div>
+    </section>
+
+    <section class="section" id="modern-ai-engineering">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker"><span class="kicker-num">01</span>Series</span>
+          <h2>Modern AI Engineering</h2>
+        </div>
+        <div class="prose">
+          <p>Six chapters on the stack I use daily, from calling models well to serving them cheaply, with the trade-offs stated plainly and the failure modes named. They come from shipping LLM systems in production — matching, ranking and content generation for a recruitment marketplace — and from doctoral research on explainable NLP and LLM evaluation.</p>
+          <p>Each chapter stands alone. If you already build with LLMs, start with <a href="/blog/evaluation-and-llm-as-judge/">Evaluation</a>: it is the discipline most teams add last and need first.</p>
+        </div>
+
+        <ol class="post-list">
+          <li class="post-item">
+            <div class="post-index">Chapter 1</div>
+            <div>
+              <h3><a href="/blog/calling-llms-well/">Calling LLMs well</a></h3>
+              <p>Structured outputs, streaming, retries, caching and cost control — the unglamorous 80%.</p>
+              <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>4 min read</span></p>
+            </div>
+          </li>
+          <li class="post-item">
+            <div class="post-index">Chapter 2</div>
+            <div>
+              <h3><a href="/blog/retrieval-augmented-generation/">Retrieval-augmented generation</a></h3>
+              <p>Chunking, hybrid search, rerankers, and how RAG actually fails.</p>
+              <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>4 min read</span></p>
+            </div>
+          </li>
+          <li class="post-item">
+            <div class="post-index">Chapter 3</div>
+            <div>
+              <h3><a href="/blog/agents-and-mcp/">Agents and MCP</a></h3>
+              <p>Tool loops, the Model Context Protocol, and when <em>not</em> to build an agent.</p>
+              <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>4 min read</span></p>
+            </div>
+          </li>
+          <li class="post-item">
+            <div class="post-index">Chapter 4</div>
+            <div>
+              <h3><a href="/blog/fine-tuning-and-preference-optimization/">Fine-tuning and preference optimization</a></h3>
+              <p>Prompting vs. RAG vs. LoRA vs. DPO/GRPO — a decision guide, then the mechanics.</p>
+              <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>4 min read</span></p>
+            </div>
+          </li>
+          <li class="post-item">
+            <div class="post-index">Chapter 5</div>
+            <div>
+              <h3><a href="/blog/evaluation-and-llm-as-judge/">Evaluation and LLM-as-judge</a></h3>
+              <p>The chapter closest to my research: evals that predict production, judges you can trust.</p>
+              <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>4 min read</span></p>
+            </div>
+          </li>
+          <li class="post-item">
+            <div class="post-index">Chapter 6</div>
+            <div>
+              <h3><a href="/blog/serving-and-inference-optimization/">Serving and inference optimization</a></h3>
+              <p>vLLM, quantization, KV caches, and latency and cost budgets that hold.</p>
+              <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>4 min read</span></p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="series-links">
+          <p class="pub-links"><a href="https://github.com/mohammadi-hadi/modern-ai-engineering">The series on GitHub</a> <a href="https://doi.org/10.5281/zenodo.21837424">DOI</a> <a href="/blog/feed.xml">RSS feed</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="guides">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker"><span class="kicker-num">02</span>Guides</span>
+          <h2>Guides I keep up to date</h2>
+        </div>
+        <div class="prose">
+          <p>These are living documents rather than posts: lists and paths that only stay useful if somebody maintains them. Each one has its own repository, checks its links weekly, and takes corrections by issue or pull request.</p>
+        </div>
+
+        <article class="pub-card" id="ai-masters-netherlands">
+          <div class="pub-meta"><span class="pub-type">Guide</span></div>
+          <h3 class="pub-title">AI &amp; Data Science Master's Programmes in the Netherlands</h3>
+          <p class="pub-authors">Every master's in artificial intelligence, machine learning and data science at a Dutch research university, with how admissions actually work, what it costs, and how to choose. I did my PhD in the Netherlands and stayed; this is the overview I wanted when I was comparing options. Every programme links to its official page, checked weekly.</p>
+          <p class="pub-venue">mohammadi-hadi/ai-masters-netherlands &middot; MIT</p>
+          <div class="pub-links">
+            <a href="https://github.com/mohammadi-hadi/ai-masters-netherlands">Read the guide</a>
+            <a href="https://doi.org/10.5281/zenodo.21837422">DOI</a>
+          </div>
+        </article>
+
+        <article class="pub-card" id="ml-summer-schools-europe">
+          <div class="pub-meta"><span class="pub-type">Guide</span></div>
+          <h3 class="pub-title">Machine Learning Summer Schools in Europe</h3>
+          <p class="pub-authors">Which schools exist, how to get in, how to fund it, and how to get real value out of the week. Written from four of them — the Explainable AI Summer School at TU Delft, OxML, the Generative Modeling Summer School in Eindhoven, and a LERU doctoral school.</p>
+          <p class="pub-venue">mohammadi-hadi/ml-summer-schools-europe &middot; MIT</p>
+          <div class="pub-links">
+            <a href="https://github.com/mohammadi-hadi/ml-summer-schools-europe">Read the guide</a>
+            <a href="https://doi.org/10.5281/zenodo.21837420">DOI</a>
+          </div>
+        </article>
+
+        <article class="pub-card" id="ml-learning-paths">
+          <div class="pub-meta"><span class="pub-type">Guide</span></div>
+          <h3 class="pub-title">ML Learning Paths</h3>
+          <p class="pub-authors">The question is never “what courses exist” — it is “I want this job, what do I do next”. Five ordered paths, for ML scientist, ML engineer, LLM engineer, data engineer and data scientist. Every entry says why it is there, and every path can be completed for free.</p>
+          <p class="pub-venue">mohammadi-hadi/ml-learning-paths &middot; MIT</p>
+          <div class="pub-links">
+            <a href="https://github.com/mohammadi-hadi/ml-learning-paths">Read the guide</a>
+            <a href="https://doi.org/10.5281/zenodo.21837432">DOI</a>
+          </div>
+        </article>
+
+        <article class="pub-card" id="awesome-explainable-nlp">
+          <div class="pub-meta"><span class="pub-type">Reading list</span></div>
+          <h3 class="pub-title">Awesome Explainable NLP</h3>
+          <p class="pub-authors">A curated list of papers, tools and resources on explainability and interpretability for NLP and large language models — feature attribution, probing, counterfactuals, faithfulness, and evaluation. Companion to my survey of explainable NLP across domains.</p>
+          <p class="pub-venue">mohammadi-hadi/awesome-explainable-nlp &middot; CC0 1.0</p>
+          <div class="pub-links">
+            <a href="https://github.com/mohammadi-hadi/awesome-explainable-nlp">Browse the list</a>
+            <a href="https://doi.org/10.5281/zenodo.21837426">DOI</a>
+            <a href="/publications/explainability-survey/">The survey</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="more">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker"><span class="kicker-num">03</span>Elsewhere</span>
+          <h2>Related</h2>
+        </div>
+        <div class="prose">
+          <p><a href="/opening-the-black-box/">Opening the Black Box</a> is a free self-paced course in explainable AI for large language models — thirteen labs that run in the browser — and the same material is taught as a <a href="/summer-school/">five-day summer school</a> for universities and teams. The <a href="/playground/">playground</a> lets you poke at a model's explanations without writing any code.</p>
+          <p><a href="https://nlstudentsupport.github.io">NL Student Support</a> is a separate free directory I maintain of the support services — psychologists, counsellors, study advisers, disability and financial support — at 49 Dutch higher education institutions.</p>
+          <p>Corrections and additions to any of this are welcome as an issue or a pull request on the repository. New writing appears in the <a href="/blog/feed.xml">RSS feed</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a> &middot; <a href="https://github.com/mohammadi-hadi">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a> &middot; <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>
