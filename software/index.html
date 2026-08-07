@@ -231,7 +231,7 @@
 
             <article class="pkg-card">
               <h4 class="pkg-name"><a href="https://github.com/mohammadi-hadi/judgekit" target="_blank" rel="noopener">judgekit</a></h4>
-              <p class="pkg-lede">Audit an LLM judge before you trust it.</p>
+              <p class="pkg-lede">Which way the judge leans, and by how much.</p>
               <p class="pkg-note">Position preference, verbosity bias, self-preference, central tendency and over-confidence, each with a bootstrap interval. Among the synthetic judges it ships with, one reaches 0.80 quadratic-weighted kappa against humans &mdash; a number most eval writeups would celebrate &mdash; while carrying a verbosity bias of +0.82. Agreement is not an audit.</p>
               <div class="pkg-foot">
                 <p class="pkg-cmd">pip install judgekit</p>
@@ -274,7 +274,7 @@
 
             <article class="pkg-card">
               <h4 class="pkg-name"><a href="https://github.com/mohammadi-hadi/arenakit" target="_blank" rel="noopener">arenakit</a></h4>
-              <p class="pkg-lede">Audit a pairwise leaderboard before you trust its order.</p>
+              <p class="pkg-lede">How much of the order survives its own uncertainty.</p>
               <p class="pkg-note">A rank is a claim, and the votes behind it support some claims and not others. arenakit fits the same Bradley&ndash;Terry model the public boards use, then reports which parts of the published order the evidence carries: rank volatility, position bias, intransitive cycles, halves of a board that never met, and comparison budgets spent mostly at the top.</p>
               <div class="pkg-foot">
                 <p class="pkg-cmd">pip install arenakit</p>
@@ -298,7 +298,7 @@
 
             <article class="pkg-card">
               <h4 class="pkg-name"><a href="https://github.com/mohammadi-hadi/abkit" target="_blank" rel="noopener">abkit</a></h4>
-              <p class="pkg-lede">Audit an A/B readout before you ship the decision.</p>
+              <p class="pkg-lede">Sample-ratio mismatch, peeking, multiple testing and the winner's curse.</p>
               <p class="pkg-note">A readout can say &ldquo;B wins, p&nbsp;=&nbsp;0.03, ship it&rdquo; while the traffic split was broken, three whale customers carried the whole effect, the analyst stopped at the first significant refresh, or the winning metric was one of forty tried. None of that shows up in the p-value. abkit measures each failure mode from the per-unit data and flags what leaves the range a healthy experiment could occupy.</p>
               <div class="pkg-foot">
                 <p class="pkg-cmd">pip install abkit</p>
@@ -352,7 +352,7 @@
 
             <article class="pkg-card">
               <h4 class="pkg-name"><a href="https://github.com/mohammadi-hadi/raterkit" target="_blank" rel="noopener">raterkit</a></h4>
-              <p class="pkg-lede">Audit a labelled dataset before you trust it.</p>
+              <p class="pkg-lede">What the raters agreed on, and where they did not.</p>
               <p class="pkg-note">Every benchmark score bottoms out in a pile of human labels, produced by raters who may have been careless, biased, tired by the end of the queue, or graded against gold that was quietly wrong. raterkit measures reliability, rogue and leaning raters, competence drift, split leakage and stale gold directly. On the raw GoEmotions ratings, 27 of 28 emotions fall below the 0.667 agreement floor.</p>
               <div class="pkg-foot">
                 <p class="pkg-cmd">pip install raterkit</p>
