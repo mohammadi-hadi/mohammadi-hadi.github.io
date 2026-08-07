@@ -132,8 +132,65 @@
           <div class="pub-meta"><span class="pub-type">Research code</span></div>
           <h3 class="pub-title">Interpretable financial fraud detection</h3>
           <p class="pub-desc">Combined unsupervised and supervised learning on imbalanced credit-card data, with uncertainty-aware deep learning to stay robust as fraud patterns shift.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="tooling">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker"><span class="kicker-num">02</span>Open source</span>
+          <h2>Evaluation and experiment tooling</h2>
+          <p class="section-lede">My doctoral work asks when a language model's judgment can be trusted &mdash; of text, of annotations, of another model. These libraries are that question turned into tools: small, tested, dependency-light, and each built around a measurement that can be reproduced from the repository.</p>
+        </div>
+
+        <article class="pub-card">
+          <div class="pub-meta"><span class="pub-type">Open source</span></div>
+          <h3 class="pub-title">trajectory-judge</h3>
+          <p class="pub-desc">How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.</p>
           <div class="pub-links">
-            <a href="https://github.com/mohammadi-hadi/CreditCard" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+            <a href="https://github.com/mohammadi-hadi/trajectory-judge" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+            <a href="https://pypi.org/project/trajectory-judge/" target="_blank" rel="noopener">PyPI</a>
+          </div>
+        </article>
+
+        <article class="pub-card">
+          <div class="pub-meta"><span class="pub-type">Open source</span></div>
+          <h3 class="pub-title">judgekit</h3>
+          <p class="pub-desc">Bias probes for LLM judges, each with a bootstrap confidence interval: position, verbosity, self-preference, calibration and stability. On the models tested, qwen2.5:14b picks whichever answer is shown first 77% of the time.</p>
+          <div class="pub-links">
+            <a href="https://github.com/mohammadi-hadi/judgekit" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+            <a href="https://pypi.org/project/judgekit/" target="_blank" rel="noopener">PyPI</a>
+          </div>
+        </article>
+
+        <article class="pub-card">
+          <div class="pub-meta"><span class="pub-type">Open source</span></div>
+          <h3 class="pub-title">judgepanel</h3>
+          <p class="pub-desc">Estimating how accurate a panel of LLM judges is when there are no gold labels to check them against: Dawid&ndash;Skene expectation maximisation, agreement statistics, and bootstrap uncertainty on every estimate.</p>
+          <div class="pub-links">
+            <a href="https://github.com/mohammadi-hadi/judgepanel" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+            <a href="https://pypi.org/project/judgepanel/" target="_blank" rel="noopener">PyPI</a>
+          </div>
+        </article>
+
+        <article class="pub-card">
+          <div class="pub-meta"><span class="pub-type">Open source</span></div>
+          <h3 class="pub-title">spark-search-ranking</h3>
+          <p class="pub-desc">Counterfactual learning-to-rank for marketplace search logs in PySpark: position-bias estimation, inverse-propensity-weighted training, and NDCG evaluation against known ground truth on a simulated marketplace.</p>
+          <div class="pub-links">
+            <a href="https://github.com/mohammadi-hadi/spark-search-ranking" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+            <a href="https://pypi.org/project/spark-search-ranking/" target="_blank" rel="noopener">PyPI</a>
+          </div>
+        </article>
+
+        <article class="pub-card">
+          <div class="pub-meta"><span class="pub-type">Open source</span></div>
+          <h3 class="pub-title">The rest of the toolkit</h3>
+          <p class="pub-desc">The same idea applied to the neighbouring problems: <a href="https://github.com/mohammadi-hadi/abkit" target="_blank" rel="noopener">abkit</a> for A/B readouts, <a href="https://github.com/mohammadi-hadi/abeval" target="_blank" rel="noopener">abeval</a> for sizing an eval, <a href="https://github.com/mohammadi-hadi/arenakit" target="_blank" rel="noopener">arenakit</a> for pairwise leaderboards, <a href="https://github.com/mohammadi-hadi/rankkit" target="_blank" rel="noopener">rankkit</a> for ranking metrics with error bars, <a href="https://github.com/mohammadi-hadi/raterkit" target="_blank" rel="noopener">raterkit</a> for annotation quality, <a href="https://github.com/mohammadi-hadi/calikit" target="_blank" rel="noopener">calikit</a> for calibration, <a href="https://github.com/mohammadi-hadi/explainkit" target="_blank" rel="noopener">explainkit</a> for testing whether an explanation holds up, and <a href="https://github.com/mohammadi-hadi/judgewatch" target="_blank" rel="noopener">judgewatch</a>, a monthly bias audit of public judges. <a href="https://github.com/mohammadi-hadi/ml-foundations" target="_blank" rel="noopener">ml-foundations</a> is the teaching companion: machine learning fundamentals written from scratch in numpy, with every number in every lesson regenerated by CI.</p>
+          <div class="pub-links">
+            <a href="https://github.com/mohammadi-hadi" target="_blank" rel="noopener"><i class="fab fa-github"></i> All repositories</a>
+            <a href="/guides/">Guides</a>
           </div>
         </article>
       </div>
@@ -142,7 +199,7 @@
     <section class="section" id="earlier">
       <div class="container">
         <div class="section-head">
-          <span class="kicker"><span class="kicker-num">02</span>Archive</span>
+          <span class="kicker"><span class="kicker-num">03</span>Archive</span>
           <h2>Earlier work (2016&ndash;2021)</h2>
           <p class="section-lede">Machine learning, operations research, simulation, and business intelligence projects from industry and academia.</p>
         </div>
@@ -172,7 +229,7 @@
     <section class="section" id="books">
       <div class="container">
         <div class="section-head">
-          <span class="kicker"><span class="kicker-num">03</span>Books</span>
+          <span class="kicker"><span class="kicker-num">04</span>Books</span>
           <h2>Books</h2>
         </div>
 
