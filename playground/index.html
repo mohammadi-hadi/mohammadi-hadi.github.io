@@ -239,7 +239,7 @@
       <h2>Test the explanation</h2>
       <p>An explanation is a claim: <em>these words carried the decision</em>. Claims get tested. The standard
         check is a deletion test: remove the words the explanation says matter most, strongest first, and watch
-        the model's confidence. If the explanation is honest, confidence should collapse quickly, much faster
+        the model’s confidence. If the explanation is honest, confidence should collapse quickly, much faster
         than deleting random words. Evaluating explanations like this is what chapter 8 of the book, and my own
         research, is about.</p>
       <button class="btn2" id="delBtn">Run the deletion test on your sentence</button>
@@ -351,14 +351,14 @@
         <li><strong>Glass box.</strong> Logistic regression over unigram counts, SST-2 (GLUE split), 67,349
           training and 872 validation sentences, seed 42. Shipped vocabulary pruned to the 6,000
           strongest-weight terms, which scores 81.8% on validation (the full 13,244-term model scores 81.7%).
-          The weights file is 105 KB and you are welcome to read it in your browser's network tab.</li>
+          The weights file is 105 KB and you are welcome to read it in your browser’s network tab.</li>
         <li><strong>Deep model.</strong> distilbert-base-uncased-finetuned-sst-2-english (Apache-2.0),
           downloaded by your browser from the Hugging Face Hub only if you click load, and run locally.</li>
         <li><strong>Domain.</strong> Both models were trained on English movie-review sentences. On other
           topics they still answer, but they are out of their depth; that is a lesson, not a bug.</li>
         <li><strong>Quirks are real.</strong> Some learned weights are dataset accidents, like a positive
           weight on the word <em>calls</em>. And in movie reviews, <em>devastating</em> is praise.</li>
-        <li><strong>Estimates are estimates.</strong> The transformer's occlusion heatmap is a probe from
+        <li><strong>Estimates are estimates.</strong> The transformer’s occlusion heatmap is a probe from
           outside, not a readout of its internals. Chapter 8 of the book is about how such estimates are
           evaluated, and chapter 5 about why attention maps are not the answer either.</li>
         <li><strong>Demo, not a product.</strong> Nothing here is a moderation or decision tool.</li>
@@ -370,7 +370,7 @@
 
     <footer class="pg-footer">
       <p>&copy; 2026 Hadi Mohammadi. The code, text, design, and model weights of this page are all rights
-        reserved; this page is not covered by the site's CC BY-SA license. Cite or share it by link.</p>
+        reserved; this page is not covered by the site’s CC BY-SA license. Cite or share it by link.</p>
       <p><a href="https://mohammadi.cv">mohammadi.cv</a> ·
         <a href="/opening-the-black-box/">free course</a> ·
         <a href="https://github.com/mohammadi-hadi/hands-on-xai-labs">labs</a> ·
