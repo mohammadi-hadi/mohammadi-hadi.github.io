@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Retrieval-augmented generation — Hadi Mohammadi</title>
+  <meta name="description" content="Chunking, hybrid search, reranking and query rewriting: RAG treated as an information-retrieval problem, and how it actually fails.">
+  <link rel="canonical" href="https://mohammadi.cv/blog/retrieval-augmented-generation/">
+  <meta name="author" content="Hadi Mohammadi">
+  <meta property="og:title" content="Retrieval-augmented generation">
+  <meta property="og:description" content="Chunking, hybrid search, reranking and query rewriting: RAG treated as an information-retrieval problem, and how it actually fails.">
+  <meta property="og:url" content="https://mohammadi.cv/blog/retrieval-augmented-generation/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hadi Mohammadi">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/retrieval-augmented-generation.png">
+  <meta property="og:image:alt" content="Retrieval-augmented generation — chapter 2 of Modern AI Engineering by Hadi Mohammadi">
+  <meta property="article:published_time" content="2026-08-07T09:00:00+02:00">
+  <meta property="article:author" content="Hadi Mohammadi">
+  <meta property="article:section" content="Modern AI Engineering">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Retrieval-augmented generation">
+  <meta name="twitter:description" content="Chunking, hybrid search, reranking and query rewriting: RAG treated as an information-retrieval problem, and how it actually fails.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/retrieval-augmented-generation.png">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammadi.cv/#person",
+        "name": "Hadi Mohammadi",
+        "url": "https://mohammadi.cv",
+        "identifier": "https://orcid.org/0000-0003-0860-9200"
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://mohammadi.cv/blog/#blog",
+        "name": "Hadi Mohammadi — Blog",
+        "url": "https://mohammadi.cv/blog/"
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://mohammadi.cv/blog/retrieval-augmented-generation/#post",
+        "url": "https://mohammadi.cv/blog/retrieval-augmented-generation/",
+        "mainEntityOfPage": "https://mohammadi.cv/blog/retrieval-augmented-generation/",
+        "headline": "Retrieval-augmented generation",
+        "description": "Chunking, hybrid search, reranking and query rewriting: RAG treated as an information-retrieval problem, and how it actually fails.",
+        "datePublished": "2026-08-07T09:00:00+02:00",
+        "dateModified": "2026-08-07T09:00:00+02:00",
+        "inLanguage": "en",
+        "wordCount": 636,
+        "keywords": "RAG, retrieval-augmented generation, chunking, hybrid search, reranking, embeddings, evaluation",
+        "isAccessibleForFree": true,
+        "author": {
+          "@id": "https://mohammadi.cv/#person"
+        },
+        "publisher": {
+          "@id": "https://mohammadi.cv/#person"
+        },
+        "isPartOf": {
+          "@id": "https://mohammadi.cv/blog/#blog"
+        },
+        "position": 2
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/" aria-current="true">Blog</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/" aria-current="true">Blog</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main>
+    <article class="post">
+      <header class="post-head">
+        <div class="post-wrap">
+          <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#modern-ai-engineering">Modern AI Engineering</a></p>
+          <h1>Retrieval-augmented generation</h1>
+          <p class="post-dek">RAG is a search problem wearing an LLM costume. Teams that treat it as prompt engineering plateau at demos; teams that treat it as information retrieval ship. The generation step is rarely the bottleneck — retrieval quality is.</p>
+          <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>Chapter 2 of 6</span><span>4 min read</span></p>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <div class="post-wrap">
+          <h2 id="the-pipeline-and-where-it-actually-breaks">The pipeline, and where it actually breaks</h2>
+
+          <pre><code>ingest → chunk → embed → index → [query] → retrieve → rerank → assemble context → generate → (cite)</code></pre>
+
+          <p>In failure-analysis sessions, the distribution of blame is roughly: chunking and query mismatch first, missing content second, reranking absent third, generation last. Measure each stage separately before touching prompts.</p>
+
+          <h2 id="chunking">Chunking</h2>
+
+          <ul>
+          <li><strong>Split on structure, not on character counts.</strong> Headings, paragraphs, table boundaries. A chunk that starts mid-sentence retrieves mid-sentence.</li>
+          <li>200–500 tokens is a reasonable starting range for prose; tables and code deserve their own strategy (keep a table whole, or serialize rows with their header).</li>
+          <li><strong>Attach context to every chunk</strong>: document title, section path, date. A paragraph that says “this policy replaces the previous one” is useless without knowing which document and which date.</li>
+          <li>Overlap is a band-aid for bad boundaries. Prefer better boundaries; add 10–15% overlap only if you cannot.</li>
+          </ul>
+
+          <h2 id="embeddings-and-indexes">Embeddings and indexes</h2>
+
+          <ul>
+          <li>Pick an embedding model off the <a href="https://huggingface.co/spaces/mteb/leaderboard">MTEB leaderboard</a> <em>for your language and domain</em>, then verify on your own retrieval eval — leaderboard rank does not survive contact with domain jargon.</li>
+          <li>Index choice is a scale decision: brute-force cosine is exact and fine to ~1M vectors (<a href="https://github.com/facebookresearch/faiss">FAISS</a> flat); beyond that, HNSW gives sub-linear search with high recall. Managed options (<a href="https://qdrant.tech/">Qdrant</a>, <a href="https://www.trychroma.com/">Chroma</a>, pgvector) trade control for operations you don’t have to own — pgvector is underrated when your data already lives in Postgres.</li>
+          <li>Store the <em>text and metadata with the vector</em>. Re-fetching from a second system doubles your failure modes.</li>
+          </ul>
+
+          <h2 id="hybrid-search-and-reranking">Hybrid search and reranking</h2>
+
+          <p>Dense retrieval misses exact identifiers, rare names, and codes; lexical (BM25) misses paraphrases. Production systems run both and fuse:</p>
+
+          <ul>
+          <li><strong>Reciprocal rank fusion</strong> is a robust, tuning-free fusion baseline: <code>score(d) = Σ 1/(k + rank_i(d))</code> with k≈60.</li>
+          <li>Then <strong>rerank the top 50–100 with a cross-encoder</strong>. This is the highest-ROI component in most RAG stacks: bi-encoders buy recall cheaply, the cross-encoder buys precision where it counts.</li>
+          </ul>
+
+          <h2 id="query-understanding">Query understanding</h2>
+
+          <p>The user’s query is usually not the best retrieval query.</p>
+
+          <ul>
+          <li>Rewrite conversational queries into standalone ones (resolve “what about the second one?”).</li>
+          <li>For complex questions, decompose into sub-queries and retrieve per sub-query.</li>
+          <li>HyDE (embedding a hypothetical answer instead of the question) helps when questions and documents live in different registers — worth an experiment, not a default.</li>
+          </ul>
+
+          <h2 id="context-assembly">Context assembly</h2>
+
+          <ul>
+          <li>Order retrieved chunks by document and position, not by score — models read documents better than shuffled fragments.</li>
+          <li>Deduplicate near-identical chunks; five copies of the same paragraph crowd out the answer.</li>
+          <li>Demand citations: instruct the model to answer <em>only</em> from provided context and cite chunk IDs. Refusals (“not in the provided documents”) are a feature; measure them separately from wrong answers.</li>
+          </ul>
+
+          <h2 id="evaluating-rag-before-users-do">Evaluating RAG (before users do)</h2>
+
+          <p>Build a small gold set of (question, expected source, expected answer) triples — 50 is enough to start. Track:</p>
+
+          <ul>
+          <li><strong>Retrieval</strong>: recall@k of the expected source; MRR if order matters to your context window.</li>
+          <li><strong>Generation</strong>: faithfulness (is every claim supported by retrieved context?) and answer relevance — LLM-as-judge works here, with the caveats of <a href="/blog/evaluation-and-llm-as-judge/">chapter 5</a>.</li>
+          <li><strong>End-to-end</strong>: exact/semantic match against expected answers, plus refusal rate on unanswerable questions you deliberately include.</li>
+          </ul>
+
+          <p>The original RAG formulation is <a href="https://arxiv.org/abs/2005.11401">Lewis et al., 2020</a>; modern practice diverges from the paper but the framing — parametric memory plus non-parametric memory — still clarifies design debates.</p>
+
+          <h2 id="when-rag-is-the-wrong-tool">When RAG is the wrong tool</h2>
+
+          <ul>
+          <li>The knowledge is small and stable → put it in the prompt; a 2,000-token policy does not need a vector database.</li>
+          <li>The task needs <em>behavioral</em> change (tone, format, procedure) → fine-tune (<a href="/blog/fine-tuning-and-preference-optimization/">chapter 4</a>).</li>
+          <li>The corpus updates faster than you can re-index coherently → fix the pipeline before blaming the model.</li>
+          </ul>
+        </div>
+      </div>
+
+      <footer class="post-foot">
+        <div class="post-wrap">
+          <p class="post-source">Chapter 2 of <em>Modern AI Engineering</em>, six chapters of field notes on building production LLM systems. The living version is <a href="https://github.com/mohammadi-hadi/modern-ai-engineering">on GitHub</a>, where corrections and challenges are welcome as an issue or a pull request; the release is archived at <a href="https://doi.org/10.5281/zenodo.21837424">doi.org/10.5281/zenodo.21837424</a>.</p>
+          <nav class="post-nav" aria-label="Chapters">
+            <a class="prev" href="/blog/calling-llms-well/" rel="prev"><span class="post-nav-label">Previous</span><span class="post-nav-title">Calling LLMs well</span></a>
+            <a class="next" href="/blog/agents-and-mcp/" rel="next"><span class="post-nav-label">Next</span><span class="post-nav-title">Agents and MCP</span></a>
+          </nav>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a> &middot; <a href="https://github.com/mohammadi-hadi">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a> &middot; <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

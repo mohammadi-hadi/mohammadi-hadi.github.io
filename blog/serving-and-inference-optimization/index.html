@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Serving and inference optimization — Hadi Mohammadi</title>
+  <meta name="description" content="Prefill and decode, vLLM and continuous batching, KV caches, quantization, and the cost arithmetic behind API versus self-host.">
+  <link rel="canonical" href="https://mohammadi.cv/blog/serving-and-inference-optimization/">
+  <meta name="author" content="Hadi Mohammadi">
+  <meta property="og:title" content="Serving and inference optimization">
+  <meta property="og:description" content="Prefill and decode, vLLM and continuous batching, KV caches, quantization, and the cost arithmetic behind API versus self-host.">
+  <meta property="og:url" content="https://mohammadi.cv/blog/serving-and-inference-optimization/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hadi Mohammadi">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/serving-and-inference-optimization.png">
+  <meta property="og:image:alt" content="Serving and inference optimization — chapter 6 of Modern AI Engineering by Hadi Mohammadi">
+  <meta property="article:published_time" content="2026-08-07T09:00:00+02:00">
+  <meta property="article:author" content="Hadi Mohammadi">
+  <meta property="article:section" content="Modern AI Engineering">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Serving and inference optimization">
+  <meta name="twitter:description" content="Prefill and decode, vLLM and continuous batching, KV caches, quantization, and the cost arithmetic behind API versus self-host.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/serving-and-inference-optimization.png">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammadi.cv/#person",
+        "name": "Hadi Mohammadi",
+        "url": "https://mohammadi.cv",
+        "identifier": "https://orcid.org/0000-0003-0860-9200"
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://mohammadi.cv/blog/#blog",
+        "name": "Hadi Mohammadi — Blog",
+        "url": "https://mohammadi.cv/blog/"
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://mohammadi.cv/blog/serving-and-inference-optimization/#post",
+        "url": "https://mohammadi.cv/blog/serving-and-inference-optimization/",
+        "mainEntityOfPage": "https://mohammadi.cv/blog/serving-and-inference-optimization/",
+        "headline": "Serving and inference optimization",
+        "description": "Prefill and decode, vLLM and continuous batching, KV caches, quantization, and the cost arithmetic behind API versus self-host.",
+        "datePublished": "2026-08-07T09:00:00+02:00",
+        "dateModified": "2026-08-07T09:00:00+02:00",
+        "inLanguage": "en",
+        "wordCount": 628,
+        "keywords": "LLM serving, vLLM, PagedAttention, KV cache, quantization, speculative decoding, inference cost",
+        "isAccessibleForFree": true,
+        "author": {
+          "@id": "https://mohammadi.cv/#person"
+        },
+        "publisher": {
+          "@id": "https://mohammadi.cv/#person"
+        },
+        "isPartOf": {
+          "@id": "https://mohammadi.cv/blog/#blog"
+        },
+        "position": 6
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/" aria-current="true">Blog</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/" aria-current="true">Blog</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main>
+    <article class="post">
+      <header class="post-head">
+        <div class="post-wrap">
+          <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#modern-ai-engineering">Modern AI Engineering</a></p>
+          <h1>Serving and inference optimization</h1>
+          <p class="post-dek">Inference cost and latency are architecture problems, not procurement problems. Before comparing GPU quotes, understand the three numbers that govern everything: time-to-first-token (TTFT), inter-token latency, and tokens per second per dollar.</p>
+          <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>Chapter 6 of 6</span><span>4 min read</span></p>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <div class="post-wrap">
+          <h2 id="api-or-self-host">API or self-host?</h2>
+
+          <div class="post-table">
+          <table>
+          <thead><tr><th scope="col">Factor</th><th scope="col">Managed API</th><th scope="col">Self-hosted open weights</th></tr></thead>
+          <tbody>
+          <tr><td>Time to production</td><td>days</td><td>weeks</td></tr>
+          <tr><td>Marginal cost at low volume</td><td>lower</td><td>higher (idle GPUs bill too)</td></tr>
+          <tr><td>Marginal cost at high, steady volume</td><td>higher</td><td>lower — the crossover is real but further out than enthusiasm suggests</td></tr>
+          <tr><td>Data control / residency</td><td>contractual</td><td>physical</td></tr>
+          <tr><td>Model choice</td><td>frontier quality</td><td>best open weights + your fine-tunes</td></tr>
+          <tr><td>Ops burden</td><td>theirs</td><td>yours: CUDA, drivers, autoscaling, on-call</td></tr>
+          </tbody>
+          </table>
+          </div>
+
+          <p>The honest default: start on APIs, instrument per-request cost, and revisit when the monthly bill rivals an engineer — or when residency/fine-tuning requirements force the issue earlier.</p>
+
+          <h2 id="the-anatomy-of-a-generation">The anatomy of a generation</h2>
+
+          <p>Two phases with opposite profiles: <strong>prefill</strong> (process the prompt; compute-bound, parallel, determines TTFT) and <strong>decode</strong> (one token at a time; memory-bandwidth-bound, determines tokens/sec). Long prompts tax prefill; long outputs tax decode. This asymmetry explains most latency surprises — a 100-token answer to a 20k-token prompt is slow <em>before</em> the first token, not during.</p>
+
+          <h2 id="the-serving-stack-that-matters">The serving stack that matters</h2>
+
+          <ul>
+          <li><strong><a href="https://docs.vllm.ai/en/latest/">vLLM</a></strong> is the de-facto open-source serving baseline. Its core idea, PagedAttention, treats the KV cache like virtual memory — allocated in blocks, no fragmentation — which enables <strong>continuous batching</strong>: new requests join the running batch at token granularity instead of waiting for the batch to drain. Throughput gains vs. naive serving are routinely an order of magnitude.</li>
+          <li><strong>KV cache is your scarcest resource.</strong> Its size grows with batch × context length; it, not weights, is usually what caps concurrency. Prefix caching (sharing the KV of common prompt prefixes — system prompts, few-shot blocks) is the same trick as provider-side prompt caching in <a href="/blog/calling-llms-well/">chapter 1</a>, and it’s why prompt <em>ordering</em> is a performance decision.</li>
+          <li><strong><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a></strong> owns the CPU/edge niche (GGUF formats) — the right tool for local development, small-scale private deployments, and laptops; the wrong tool for datacenter throughput.</li>
+          </ul>
+
+          <h2 id="quantization">Quantization</h2>
+
+          <p>Weights in fewer bits: less memory, more bandwidth, faster decode.</p>
+
+          <ul>
+          <li><strong>8-bit</strong> (INT8/FP8): effectively free quality-wise for most models; the default for serving.</li>
+          <li><strong>4-bit</strong> (AWQ/GPTQ-class, GGUF K-quants): large savings, small but <em>measurable</em> degradation — acceptable for many tasks, not for all. The only defensible policy: run <strong>your</strong> eval suite (<a href="/blog/evaluation-and-llm-as-judge/">chapter 5</a>) on the quantized artifact, not someone’s perplexity table. Quantization hits reasoning-heavy and low-resource-language tasks hardest, which is exactly what generic benchmarks underweight.</li>
+          <li>Quantize weights first; KV-cache quantization (8-bit) buys concurrency when memory-capped.</li>
+          </ul>
+
+          <h2 id="latency-engineering">Latency engineering</h2>
+
+          <ul>
+          <li><strong>Stream to humans</strong> — perceived latency is TTFT, and TTFT is prefill: trim the prompt, cache the prefix.</li>
+          <li><strong>Speculative decoding</strong>: a small draft model proposes tokens, the large model verifies in parallel — 2–3× decode speedups when the draft model fits the distribution; free lunch only if acceptance rates hold on <em>your</em> traffic.</li>
+          <li><strong>Right-size the model per route</strong> (<a href="/blog/calling-llms-well/">chapter 1</a>’s routing): the cheapest optimization is not running the big model.</li>
+          <li>Set <code>max_tokens</code> from product requirements; unbounded generation is unbounded tail latency.</li>
+          </ul>
+
+          <h2 id="cost-arithmetic-do-it-before-the-meeting">Cost arithmetic (do it before the meeting)</h2>
+
+          <pre><code>tokens/month  = requests × (prompt_tokens + output_tokens)
+API cost      = tokens × per-token price (input/output priced separately; batch tier ≈ half)
+GPU cost      = GPUs × hourly rate × 730h  — divide by measured tokens/sec to get $/1M tokens</code></pre>
+
+          <p>Two numbers decide the argument: your <strong>utilization</strong> (idle GPUs destroy self-hosting economics; bursty traffic favors APIs) and your <strong>output length</strong> (output tokens are the expensive ones on APIs and the slow ones everywhere).</p>
+
+          <h2 id="production-checklist">Production checklist</h2>
+
+          <ul>
+          <li>Continuous batching on; prefix caching on; metrics for TTFT, tokens/sec, queue depth, KV-cache utilization.</li>
+          <li>Load-shedding policy: degrade to a smaller model under pressure instead of queueing into timeout.</li>
+          <li>Quantized artifact passed the same eval suite as the FP16 one, on your tasks.</li>
+          <li>Capacity math re-run when prompt templates change — a 2× prompt is a 2× prefill bill nobody announced.</li>
+          </ul>
+        </div>
+      </div>
+
+      <footer class="post-foot">
+        <div class="post-wrap">
+          <p class="post-source">Chapter 6 of <em>Modern AI Engineering</em>, six chapters of field notes on building production LLM systems. The living version is <a href="https://github.com/mohammadi-hadi/modern-ai-engineering">on GitHub</a>, where corrections and challenges are welcome as an issue or a pull request; the release is archived at <a href="https://doi.org/10.5281/zenodo.21837424">doi.org/10.5281/zenodo.21837424</a>.</p>
+          <nav class="post-nav" aria-label="Chapters">
+            <a class="prev" href="/blog/evaluation-and-llm-as-judge/" rel="prev"><span class="post-nav-label">Previous</span><span class="post-nav-title">Evaluation and LLM-as-judge</span></a>
+          </nav>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a> &middot; <a href="https://github.com/mohammadi-hadi">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a> &middot; <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

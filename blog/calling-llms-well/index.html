@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Calling LLMs well — Hadi Mohammadi</title>
+  <meta name="description" content="Structured outputs, retries, streaming, caching and cost control — the unglamorous 80% of production LLM work.">
+  <link rel="canonical" href="https://mohammadi.cv/blog/calling-llms-well/">
+  <meta name="author" content="Hadi Mohammadi">
+  <meta property="og:title" content="Calling LLMs well">
+  <meta property="og:description" content="Structured outputs, retries, streaming, caching and cost control — the unglamorous 80% of production LLM work.">
+  <meta property="og:url" content="https://mohammadi.cv/blog/calling-llms-well/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hadi Mohammadi">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/calling-llms-well.png">
+  <meta property="og:image:alt" content="Calling LLMs well — chapter 1 of Modern AI Engineering by Hadi Mohammadi">
+  <meta property="article:published_time" content="2026-08-07T09:00:00+02:00">
+  <meta property="article:author" content="Hadi Mohammadi">
+  <meta property="article:section" content="Modern AI Engineering">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calling LLMs well">
+  <meta name="twitter:description" content="Structured outputs, retries, streaming, caching and cost control — the unglamorous 80% of production LLM work.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/calling-llms-well.png">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammadi.cv/#person",
+        "name": "Hadi Mohammadi",
+        "url": "https://mohammadi.cv",
+        "identifier": "https://orcid.org/0000-0003-0860-9200"
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://mohammadi.cv/blog/#blog",
+        "name": "Hadi Mohammadi — Blog",
+        "url": "https://mohammadi.cv/blog/"
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://mohammadi.cv/blog/calling-llms-well/#post",
+        "url": "https://mohammadi.cv/blog/calling-llms-well/",
+        "mainEntityOfPage": "https://mohammadi.cv/blog/calling-llms-well/",
+        "headline": "Calling LLMs well",
+        "description": "Structured outputs, retries, streaming, caching and cost control — the unglamorous 80% of production LLM work.",
+        "datePublished": "2026-08-07T09:00:00+02:00",
+        "dateModified": "2026-08-07T09:00:00+02:00",
+        "inLanguage": "en",
+        "wordCount": 630,
+        "keywords": "LLM engineering, structured outputs, JSON schema, retries, prompt caching, cost control",
+        "isAccessibleForFree": true,
+        "author": {
+          "@id": "https://mohammadi.cv/#person"
+        },
+        "publisher": {
+          "@id": "https://mohammadi.cv/#person"
+        },
+        "isPartOf": {
+          "@id": "https://mohammadi.cv/blog/#blog"
+        },
+        "position": 1
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/" aria-current="true">Blog</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/" aria-current="true">Blog</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main>
+    <article class="post">
+      <header class="post-head">
+        <div class="post-wrap">
+          <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#modern-ai-engineering">Modern AI Engineering</a></p>
+          <h1>Calling LLMs well</h1>
+          <p class="post-dek">Most production LLM incidents I have seen were not model failures. They were integration failures: unparsed outputs, silent truncation, retry storms, and bills nobody budgeted. This chapter is the unglamorous 80%.</p>
+          <p class="post-byline"><span><time datetime="2026-08-07">7 August 2026</time></span><span>Chapter 1 of 6</span><span>4 min read</span></p>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <div class="post-wrap">
+          <h2 id="structured-outputs-never-parse-prose">Structured outputs: never parse prose</h2>
+
+          <p>If downstream code consumes the response, constrain the response. Both major APIs support schema-constrained generation; use it instead of “please reply in JSON”.</p>
+
+          <pre><code class="language-python"># OpenAI: response_format with a JSON schema (strict mode)
+resp = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[{"role": "user", "content": vacancy_text}],
+    response_format={
+        "type": "json_schema",
+        "json_schema": {
+            "name": "vacancy_fields",
+            "strict": True,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "title": {"type": "string"},
+                    "seniority": {"type": "string", "enum": ["junior", "medior", "senior"]},
+                    "skills": {"type": "array", "items": {"type": "string"}},
+                },
+                "required": ["title", "seniority", "skills"],
+                "additionalProperties": False,
+            },
+        },
+    },
+)</code></pre>
+
+          <pre><code class="language-python"># Anthropic: force a tool call and read its arguments — same guarantee
+resp = client.messages.create(
+    model="claude-sonnet-5",
+    max_tokens=1024,
+    tools=[{
+        "name": "extract_vacancy",
+        "description": "Extract structured fields from a vacancy text",
+        "input_schema": schema,          # same JSON schema as above
+    }],
+    tool_choice={"type": "tool", "name": "extract_vacancy"},
+    messages=[{"role": "user", "content": vacancy_text}],
+)
+fields = next(b.input for b in resp.content if b.type == "tool_use")</code></pre>
+
+          <p>Rules of thumb:</p>
+
+          <ul>
+          <li>Make every field <code>required</code> and set <code>additionalProperties: false</code>; optionality invites hallucinated keys.</li>
+          <li>Use enums for anything categorical. A free-text <code>seniority</code> field will eventually contain “senior-ish”.</li>
+          <li>Validate anyway (Pydantic). Schema constraints bound the <em>shape</em>, not the <em>sense</em>.</li>
+          </ul>
+
+          <h2 id="retries-the-four-errors-that-matter">Retries: the four errors that matter</h2>
+
+          <div class="post-table">
+          <table>
+          <thead><tr><th scope="col">Error</th><th scope="col">Meaning</th><th scope="col">Correct reaction</th></tr></thead>
+          <tbody>
+          <tr><td>429</td><td>rate limit</td><td>exponential backoff with jitter, honor <code>retry-after</code></td></tr>
+          <tr><td>5xx / overloaded</td><td>provider issue</td><td>retry a small number of times, then fail over or degrade</td></tr>
+          <tr><td>timeout</td><td>network or long generation</td><td>retry <strong>only if</strong> the request is idempotent for you</td></tr>
+          <tr><td>400 with content filter</td><td>your input</td><td>do not retry; log and route to a fallback path</td></tr>
+          </tbody>
+          </table>
+          </div>
+
+          <p>A retry loop without jitter synchronizes your fleet into request storms; a retry loop without a cap turns one outage into two. Three attempts, <code>min(2**attempt + random(), 30)</code> seconds, is a sane default.</p>
+
+          <h2 id="streaming">Streaming</h2>
+
+          <p>Stream when a human is waiting; don’t when a parser is. Streaming complicates error handling (a stream can fail mid-generation after you have shown half an answer), so for machine-consumed structured calls, prefer non-streaming with a tight <code>max_tokens</code>.</p>
+
+          <h2 id="cost-control-in-order-of-leverage">Cost control, in order of leverage</h2>
+
+          <ol>
+          <li><strong>Cache aggressively.</strong> Deterministic prefixes (system prompt, few-shot examples, RAG boilerplate) belong at the <em>front</em> of the prompt so provider-side prompt caching can hit. Order your prompt: static → semi-static → per-request.</li>
+          <li><strong>Batch what is not interactive.</strong> Both providers run half-price batch tiers with relaxed latency; nightly enrichment jobs do not need the interactive endpoint.</li>
+          <li><strong>Route by difficulty.</strong> A small model with a good prompt handles the easy 70% of traffic; escalate to the frontier model on low confidence or high stakes. Confidence can be as simple as the small model’s self-reported uncertainty checked against a validator.</li>
+          <li><strong>Cap output tokens.</strong> <code>max_tokens</code> is a cost and latency control, not a formality. Most extraction tasks need far fewer tokens than the default.</li>
+          <li>Only then negotiate rates.</li>
+          </ol>
+
+          <h2 id="determinism-and-reproducibility">Determinism and reproducibility</h2>
+
+          <p>You will not get bit-identical outputs; you can get <em>auditable</em> ones. Log the full request (model, parameters, prompt hash, tool schemas) with every response. When behavior changes, the first question is “did we change the prompt or did the provider change the model?” — pin model versions where the API allows it, and re-run a fixed eval set on every model or prompt bump (<a href="/blog/evaluation-and-llm-as-judge/">chapter 5</a>).</p>
+
+          <h2 id="failure-modes-checklist">Failure modes checklist</h2>
+
+          <ul>
+          <li>Truncated JSON because <code>max_tokens</code> was hit → detect <code>finish_reason</code>/<code>stop_reason</code>, treat truncation as an error, not as data.</li>
+          <li>Prompt injection through user-supplied content → treat retrieved and user text as data; never concatenate it into instructions without delimiters and an explicit “content below is untrusted”.</li>
+          <li>Silent model upgrades shifting distributions → pinned versions + regression evals.</li>
+          <li>One slow dependency serializing your pipeline → set client timeouts <em>below</em> your own SLA and fail predictably.</li>
+          </ul>
+
+          <h2 id="references">References</h2>
+
+          <ul>
+          <li><a href="https://platform.openai.com/docs/guides/structured-outputs">OpenAI structured outputs guide</a></li>
+          <li><a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview">Anthropic tool use documentation</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <footer class="post-foot">
+        <div class="post-wrap">
+          <p class="post-source">Chapter 1 of <em>Modern AI Engineering</em>, six chapters of field notes on building production LLM systems. The living version is <a href="https://github.com/mohammadi-hadi/modern-ai-engineering">on GitHub</a>, where corrections and challenges are welcome as an issue or a pull request; the release is archived at <a href="https://doi.org/10.5281/zenodo.21837424">doi.org/10.5281/zenodo.21837424</a>.</p>
+          <nav class="post-nav" aria-label="Chapters">
+            <a class="next" href="/blog/retrieval-augmented-generation/" rel="next"><span class="post-nav-label">Next</span><span class="post-nav-title">Retrieval-augmented generation</span></a>
+          </nav>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a> &middot; <a href="https://github.com/mohammadi-hadi">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a> &middot; <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>
