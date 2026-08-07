@@ -4,7 +4,8 @@
 Each card is laid out as a 1200x630 HTML page in the site's own typography and
 screenshotted with headless Chrome, so the cards and the site never drift apart.
 
-    python3 scripts/make_cards.py
+    python3 scripts/make_cards.py                    # every card
+    python3 scripts/make_cards.py book-card          # just one
 
 Cards land in assets/img/blog/ unless the entry carries an explicit "out".
 Needs Google Chrome installed and a network connection (the page pulls the
@@ -15,6 +16,7 @@ from __future__ import annotations
 import html
 import shutil
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 
@@ -64,6 +66,14 @@ CARDS = [
          title="What an LLM judge actually does",
          subtitle="One model picked whichever answer was shown first 91% of the time",
          foot_left="mohammadi.cv/blog", foot_right="5 min read"),
+    dict(name="book-card", out="assets/img", kicker="Hadi Mohammadi",
+         title="Hands-On Explainable AI",
+         subtitle="Interpreting, evaluating, and trusting large language models",
+         foot_left="mohammadi.cv/book", foot_right="13 chapters · 13 labs"),
+    dict(name="summer-school-card", out="assets/img", kicker="Summer school",
+         title="Opening the Black Box",
+         subtitle="Five hands-on days inside large language models",
+         foot_left="mohammadi.cv/summer-school", foot_right="10 lectures · 13 labs"),
     dict(name="software-card", out="assets/img", kicker="Hadi Mohammadi",
          title="Software",
          subtitle="Libraries for not trusting your own numbers",
@@ -155,10 +165,17 @@ def build(card: dict) -> str:
 def main() -> None:
     if not Path(CHROME).exists():
         raise SystemExit(f"Chrome not found at {CHROME}")
+    # Name one or more cards to render just those; re-rendering all of them
+    # rewrites PNGs that have not changed and churns the diff.
+    wanted = set(sys.argv[1:])
+    cards = [c for c in CARDS if c["name"] in wanted] if wanted else CARDS
+    if wanted and not cards:
+        raise SystemExit("no card matches %s; known: %s"
+                         % (", ".join(sorted(wanted)), ", ".join(c["name"] for c in CARDS)))
     OUT.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
-        for card in CARDS:
+        for card in cards:
             page = tmp / f"{card['name']}.html"
             shot = tmp / f"{card['name']}.png"
             page.write_text(build(card), encoding="utf-8")
