@@ -12,7 +12,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>EvalMORAAL: Moral Alignment Evaluation for LLMs</title>
-  <link rel="icon" type="image/x-icon" href="../../Logo.png">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="static/css/bulma.min.css">
@@ -79,6 +81,26 @@
   </style>
 </head>
 <body>
+
+<!-- This page uses the Bulma paper template rather than the site design system,
+     so the shared header cannot be reused here. Self-contained return bar. -->
+<style>
+  .cvbar { background: #fafaf7; border-bottom: 1px solid #e3e1dc; }
+  .cvbar-in { max-width: 1080px; margin: 0 auto; padding: 14px 24px;
+              display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .cvbar a { text-decoration: none; }
+  .cvbar-mark { font-family: "Source Serif 4", Castoro, Georgia, serif; font-weight: 600;
+                font-size: 1.05rem; letter-spacing: -0.01em; color: #1a1a1a; }
+  .cvbar-back { font-family: Inter, "Noto Sans", system-ui, sans-serif; font-size: 0.9rem; color: #1e3a5f; }
+  .cvbar-back:hover { color: #1a1a1a; }
+  @media (max-width: 560px) { .cvbar-in { padding: 12px 16px; } .cvbar-back { font-size: 0.82rem; } }
+</style>
+<header class="cvbar">
+  <div class="cvbar-in">
+    <a class="cvbar-mark" href="/">Hadi Mohammadi</a>
+    <a class="cvbar-back" href="/publications/">All publications &rarr;</a>
+  </div>
+</header>
 
 <section class="hero">
   <div class="hero-body">
