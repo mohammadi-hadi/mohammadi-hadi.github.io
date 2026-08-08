@@ -1,6 +1,14 @@
+<div align="center">
+
 # mohammadi.cv
 
-Personal academic website of Hadi Mohammadi — PhD researcher in Explainable NLP at Utrecht University.
+[![CV](https://github.com/mohammadi-hadi/mohammadi-hadi.github.io/actions/workflows/cv.yml/badge.svg)](https://github.com/mohammadi-hadi/mohammadi-hadi.github.io/actions/workflows/cv.yml)
+[![Scholar](https://github.com/mohammadi-hadi/mohammadi-hadi.github.io/actions/workflows/scholar.yml/badge.svg)](https://github.com/mohammadi-hadi/mohammadi-hadi.github.io/actions/workflows/scholar.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+*Personal academic website of Hadi Mohammadi — PhD researcher in Explainable NLP at Utrecht University.*
+
+</div>
 
 Live at https://mohammadi.cv (served by GitHub Pages with a custom domain).
 
