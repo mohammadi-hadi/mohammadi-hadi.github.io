@@ -46,8 +46,8 @@ body{
   border:1px solid rgba(54,177,166,.45); border-radius:999px; padding:5px 12px;
   white-space:nowrap; transition:.12s }
 .fb-sitelink:hover{ background:rgba(54,177,166,.12); color:#5fd3c8; border-color:var(--teal) }
-.fb-gate-site{ color:var(--muted); font-size:12.5px; text-decoration:none;
-  border-bottom:1px dotted rgba(159,179,194,.5); padding-bottom:1px; transition:.12s }
+.fb-gate-site{ display:inline-block; color:var(--muted); font-size:12.5px; text-decoration:none;
+  border-bottom:1px dotted rgba(159,179,194,.5); padding:4px 2px 2px; transition:.12s }
 .fb-gate-site:hover{ color:var(--teal); border-bottom-color:var(--teal) }
 
 /* ---------- stage / book ---------- */
@@ -88,7 +88,7 @@ body{
 .fb-controls{
   flex:0 0 auto; min-height:var(--bar-h);
   display:flex; align-items:center; justify-content:space-between; gap:14px;
-  padding:8px 16px; border-top:1px solid var(--line);
+  padding:8px 16px calc(8px + env(safe-area-inset-bottom, 0px)); border-top:1px solid var(--line);
   background:rgba(8,16,28,.62); backdrop-filter:blur(8px);
 }
 .fb-controls-group{ display:flex; align-items:center; gap:8px }
@@ -103,6 +103,9 @@ body{
 .fb-btn:active{ transform:translateY(1px) }
 .fb-btn.is-active{ background:var(--teal); color:#06231f; border-color:transparent }
 .fb-btn--round{ padding:8px 13px; font-size:20px; line-height:1 }
+.fb-btn--site{ color:var(--teal); border-color:rgba(54,177,166,.45); background:rgba(54,177,166,.08) }
+.fb-btn--site:hover{ background:rgba(54,177,166,.18); border-color:var(--teal); color:#5fd3c8 }
+.fb-btn--site .fb-ico{ font-size:16px }
 .fb-ico{ font-size:15px; line-height:1 }
 .fb-counter{ font-size:13px; color:var(--muted); min-width:104px; text-align:center; font-variant-numeric:tabular-nums }
 .fb-slider{ -webkit-appearance:none; appearance:none; width:min(46vw,360px); height:6px; border-radius:6px;
@@ -193,15 +196,16 @@ body{
 
 /* ---------- responsive ---------- */
 @media (max-width:760px){
-  .fb-brand-meta, .fb-brand-sub, .fb-label, .fb-edge{ display:none }
+  .fb-brand-meta, .fb-brand-sub, .fb-label, .fb-edge, .fb-sitelink{ display:none }
   .fb-topbar{ padding:8px 14px; min-height:46px }
   .fb-brand-title{ font-size:15px }
   .fb-stage{ padding:10px 8px }
   .fb-controls{ flex-wrap:wrap; gap:8px 6px; padding:8px; justify-content:center }
   .fb-controls-group{ gap:6px }
-  .fb-controls-center{ order:-1; flex-basis:100%; max-width:100%; gap:6px }
-  .fb-slider{ width:auto; flex:1 1 60px; min-width:60px }
-  .fb-counter{ min-width:auto; font-size:12px; white-space:nowrap }
+  .fb-controls-center{ order:-1; flex-basis:100%; max-width:100%;
+    display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:4px 6px }
+  .fb-slider{ width:100%; min-width:0 }
+  .fb-counter{ grid-column:1 / -1; min-width:auto; font-size:12px; white-space:nowrap }
   .fb-btn{ padding:9px 10px; font-size:12px }
   .fb-btn--round{ padding:7px 11px; font-size:18px }
   .fb-gate-card{ width:min(360px,90vw) }
