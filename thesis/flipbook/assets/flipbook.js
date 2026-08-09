@@ -288,6 +288,15 @@
       }
     }
     form.addEventListener("submit", attempt);
+
+    // Magic link: #k=<password> unlocks directly (fragment never reaches the server).
+    var mk = (location.hash.match(/^#k=(.+)$/) || [])[1];
+    if (mk) {
+      try { mk = decodeURIComponent(mk); } catch (e) {}
+      try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+      input.value = mk;
+      setTimeout(function () { attempt(); }, 80);
+    }
   }
 
   // ---- start ----
