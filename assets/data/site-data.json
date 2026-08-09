@@ -1,48 +1,208 @@
 {
-  "fetched_at": "2026-08-08T06:11:12+00:00",
+  "fetched_at": "2026-08-09T06:14:39+00:00",
   "github": {
     "public_repos": 49,
     "total_stars": 7,
     "repos": {
+      "spark-search-ranking": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Counterfactual learning-to-rank for marketplace search logs in PySpark: position-bias estimation, IPS-weighted training, NDCG evaluation against known ground truth",
+        "language": "Python",
+        "pushed_at": "2026-08-08T08:25:21Z",
+        "url": "https://github.com/mohammadi-hadi/spark-search-ranking"
+      },
+      "awesome-explainable-nlp": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Curated list of papers, tools, and resources on explainability and interpretability for NLP and large language models",
+        "language": null,
+        "pushed_at": "2026-08-08T08:19:31Z",
+        "url": "https://github.com/mohammadi-hadi/awesome-explainable-nlp"
+      },
+      "DrHadi": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Liber Amicorum: a password-gated keepsake site where guests write messages for the PhD defence, stored in a Google Sheet via Apps Script and printed as an A5 book",
+        "language": "JavaScript",
+        "pushed_at": "2026-08-08T08:18:00Z",
+        "url": "https://github.com/mohammadi-hadi/DrHadi"
+      },
       "mohammadi-hadi.github.io": {
         "stars": 0,
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "JavaScript",
-        "pushed_at": "2026-08-07T20:23:56Z",
+        "pushed_at": "2026-08-08T08:12:06Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
-      "abkit": {
+      "dynamic-pricing-dashboard": {
         "stars": 0,
         "forks": 0,
-        "description": "Sample-ratio, peeking, multiple-testing and winner's-curse checks for experiment readouts — across 4,873 Upworthy tests the median significant winner overstates its lift by 1.27x.",
+        "description": "Interactive in-browser simulator: dynamic pricing with demand learning, forward-looking customers, and advertising",
         "language": "Python",
-        "pushed_at": "2026-08-07T20:23:34Z",
-        "url": "https://github.com/mohammadi-hadi/abkit"
+        "pushed_at": "2026-08-08T08:10:10Z",
+        "url": "https://github.com/mohammadi-hadi/dynamic-pricing-dashboard"
+      },
+      "opening-the-black-box": {
+        "stars": 0,
+        "forks": 0,
+        "description": "A free, self-paced course in explainable AI for large language models: five days, thirteen open labs that run in your browser",
+        "language": null,
+        "pushed_at": "2026-08-08T08:10:09Z",
+        "url": "https://github.com/mohammadi-hadi/opening-the-black-box"
+      },
+      "hands-on-xai-labs": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-08-08T08:10:08Z",
+        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
+      },
+      "ai-masters-netherlands": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Every AI, machine learning, and data science master's programme at Dutch research universities — admissions, costs, deadlines, and how to choose",
+        "language": null,
+        "pushed_at": "2026-08-08T08:10:07Z",
+        "url": "https://github.com/mohammadi-hadi/ai-masters-netherlands"
+      },
+      "ml-summer-schools-europe": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Practical guide to machine learning summer schools in Europe: the schools, deadlines, funding, and how to make the week count — from someone who attended four",
+        "language": null,
+        "pushed_at": "2026-08-08T08:10:07Z",
+        "url": "https://github.com/mohammadi-hadi/ml-summer-schools-europe"
+      },
+      "ml-learning-paths": {
+        "stars": 0,
+        "forks": 0,
+        "description": "The best ML courses organized into five career paths — ML scientist, ML engineer, LLM engineer, data engineer, data scientist — with honest advice on what to take and what to skip",
+        "language": null,
+        "pushed_at": "2026-08-08T08:10:06Z",
+        "url": "https://github.com/mohammadi-hadi/ml-learning-paths"
+      },
+      "modern-ai-engineering": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Field notes on building production LLM systems: structured outputs, RAG, agents and MCP, LoRA/DPO/GRPO fine-tuning, LLM-as-judge evaluation, and serving with vLLM",
+        "language": null,
+        "pushed_at": "2026-08-08T08:10:05Z",
+        "url": "https://github.com/mohammadi-hadi/modern-ai-engineering"
+      },
+      "MAP-PO": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Behavioral cluster-driven multi-agent preference optimization (SFT / DPO / GRPO) for sexism detection on EXIST 2024",
+        "language": "Python",
+        "pushed_at": "2026-08-08T08:10:04Z",
+        "url": "https://github.com/mohammadi-hadi/MAP-PO"
+      },
+      "ml-foundations": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Machine learning fundamentals implemented from scratch in numpy — every implementation checked against an independent reference, every number in every lesson regenerated from the code by CI",
+        "language": "Python",
+        "pushed_at": "2026-08-08T08:10:03Z",
+        "url": "https://github.com/mohammadi-hadi/ml-foundations"
+      },
+      "trajectory-judge": {
+        "stars": 0,
+        "forks": 0,
+        "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.",
+        "language": "Python",
+        "pushed_at": "2026-08-08T08:10:02Z",
+        "url": "https://github.com/mohammadi-hadi/trajectory-judge"
+      },
+      "judgepanel": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Estimate LLM-judge accuracy without gold labels: Dawid-Skene EM, agreement statistics, bootstrap uncertainty",
+        "language": "Python",
+        "pushed_at": "2026-08-08T08:10:01Z",
+        "url": "https://github.com/mohammadi-hadi/judgepanel"
+      },
+      "ppofolio": {
+        "stars": 0,
+        "forks": 0,
+        "description": "ppo ensemble for multi-asset crypto portfolio allocation with pre-registered evaluation",
+        "language": "Python",
+        "pushed_at": "2026-08-08T08:10:00Z",
+        "url": "https://github.com/mohammadi-hadi/ppofolio"
       },
       "raterkit": {
         "stars": 0,
         "forks": 0,
         "description": "Reliability, rogue-rater, drift and leakage diagnostics for labelled data — on the raw GoEmotions ratings, 27 of 28 emotions fall below the 0.667 agreement floor.",
         "language": "Python",
-        "pushed_at": "2026-08-07T20:23:33Z",
+        "pushed_at": "2026-08-08T08:10:00Z",
         "url": "https://github.com/mohammadi-hadi/raterkit"
+      },
+      "rankkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Ranking evaluation with error bars: NDCG, MRR and MAP with confidence intervals, plus position-bias correction for click logs. No dependencies.",
+        "language": "Python",
+        "pushed_at": "2026-08-08T08:09:59Z",
+        "url": "https://github.com/mohammadi-hadi/rankkit"
+      },
+      "judgewatch": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Monthly bias audits of LLM judges",
+        "language": "Python",
+        "pushed_at": "2026-08-08T08:09:58Z",
+        "url": "https://github.com/mohammadi-hadi/judgewatch"
+      },
+      "explainkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Explain the classifier, then test the explanation: word-level attributions, token selection, prompt steering, replacement probes and faithfulness metrics for any text classifier.",
+        "language": "Python",
+        "pushed_at": "2026-08-08T08:09:57Z",
+        "url": "https://github.com/mohammadi-hadi/explainkit"
       },
       "judgekit": {
         "stars": 0,
         "forks": 0,
         "description": "Bias probes for LLM judges, each with a bootstrap confidence interval: position, verbosity, self-preference, calibration and stability — qwen2.5:14b picks whichever answer is shown first 77% of the time.",
         "language": "Python",
-        "pushed_at": "2026-08-07T20:23:31Z",
+        "pushed_at": "2026-08-08T08:09:57Z",
         "url": "https://github.com/mohammadi-hadi/judgekit"
+      },
+      "calikit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Calibration auditing for probabilistic predictions: reliability diagrams, ECE, Brier decomposition, temperature scaling. Zero dependencies.",
+        "language": "Python",
+        "pushed_at": "2026-08-08T08:09:56Z",
+        "url": "https://github.com/mohammadi-hadi/calikit"
       },
       "arenakit": {
         "stars": 0,
         "forks": 0,
         "description": "Bradley-Terry leaderboards with simultaneous confidence control — across 106,134 LMArena votes only 1 of 54 neighbouring pairs survives, against 5 when each is judged on its own.",
         "language": "Python",
-        "pushed_at": "2026-08-07T20:17:59Z",
+        "pushed_at": "2026-08-08T08:09:55Z",
         "url": "https://github.com/mohammadi-hadi/arenakit"
+      },
+      "abkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Sample-ratio, peeking, multiple-testing and winner's-curse checks for experiment readouts — across 4,873 Upworthy tests the median significant winner overstates its lift by 1.27x.",
+        "language": "Python",
+        "pushed_at": "2026-08-08T08:09:54Z",
+        "url": "https://github.com/mohammadi-hadi/abkit"
+      },
+      "abeval": {
+        "stars": 0,
+        "forks": 0,
+        "description": "A/B-test statistics for LLM evals: error bars, paired significance tests, sample-size planning",
+        "language": "Python",
+        "pushed_at": "2026-08-08T08:09:53Z",
+        "url": "https://github.com/mohammadi-hadi/abeval"
       },
       ".github": {
         "stars": 0,
@@ -52,14 +212,6 @@
         "pushed_at": "2026-08-07T20:06:55Z",
         "url": "https://github.com/mohammadi-hadi/.github"
       },
-      "explainkit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Explain the classifier, then test the explanation: word-level attributions, token selection, prompt steering, replacement probes and faithfulness metrics for any text classifier.",
-        "language": "Python",
-        "pushed_at": "2026-08-07T20:06:54Z",
-        "url": "https://github.com/mohammadi-hadi/explainkit"
-      },
       "mohammadi-hadi": {
         "stars": 0,
         "forks": 0,
@@ -68,14 +220,6 @@
         "pushed_at": "2026-08-07T20:06:17Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi"
       },
-      "calikit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Calibration auditing for probabilistic predictions: reliability diagrams, ECE, Brier decomposition, temperature scaling. Zero dependencies.",
-        "language": "Python",
-        "pushed_at": "2026-08-07T20:05:50Z",
-        "url": "https://github.com/mohammadi-hadi/calikit"
-      },
       "Explainable-Sexism-Detection": {
         "stars": 1,
         "forks": 0,
@@ -83,70 +227,6 @@
         "language": "Jupyter Notebook",
         "pushed_at": "2026-08-07T17:58:18Z",
         "url": "https://github.com/mohammadi-hadi/Explainable-Sexism-Detection"
-      },
-      "judgewatch": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Monthly bias audits of LLM judges",
-        "language": "Python",
-        "pushed_at": "2026-08-07T17:49:20Z",
-        "url": "https://github.com/mohammadi-hadi/judgewatch"
-      },
-      "opening-the-black-box": {
-        "stars": 0,
-        "forks": 0,
-        "description": "A free, self-paced course in explainable AI for large language models: five days, thirteen open labs that run in your browser",
-        "language": null,
-        "pushed_at": "2026-08-07T14:57:23Z",
-        "url": "https://github.com/mohammadi-hadi/opening-the-black-box"
-      },
-      "ppofolio": {
-        "stars": 0,
-        "forks": 0,
-        "description": "ppo ensemble for multi-asset crypto portfolio allocation with pre-registered evaluation",
-        "language": "Python",
-        "pushed_at": "2026-08-07T11:23:07Z",
-        "url": "https://github.com/mohammadi-hadi/ppofolio"
-      },
-      "ml-learning-paths": {
-        "stars": 0,
-        "forks": 0,
-        "description": "The best ML courses organized into five career paths — ML scientist, ML engineer, LLM engineer, data engineer, data scientist — with honest advice on what to take and what to skip",
-        "language": null,
-        "pushed_at": "2026-08-07T11:06:18Z",
-        "url": "https://github.com/mohammadi-hadi/ml-learning-paths"
-      },
-      "ml-summer-schools-europe": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Practical guide to machine learning summer schools in Europe: the schools, deadlines, funding, and how to make the week count — from someone who attended four",
-        "language": null,
-        "pushed_at": "2026-08-07T11:06:14Z",
-        "url": "https://github.com/mohammadi-hadi/ml-summer-schools-europe"
-      },
-      "modern-ai-engineering": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Field notes on building production LLM systems: structured outputs, RAG, agents and MCP, LoRA/DPO/GRPO fine-tuning, LLM-as-judge evaluation, and serving with vLLM",
-        "language": null,
-        "pushed_at": "2026-08-07T11:06:11Z",
-        "url": "https://github.com/mohammadi-hadi/modern-ai-engineering"
-      },
-      "awesome-explainable-nlp": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Curated list of papers, tools, and resources on explainability and interpretability for NLP and large language models",
-        "language": null,
-        "pushed_at": "2026-08-07T11:06:07Z",
-        "url": "https://github.com/mohammadi-hadi/awesome-explainable-nlp"
-      },
-      "ai-masters-netherlands": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Every AI, machine learning, and data science master's programme at Dutch research universities — admissions, costs, deadlines, and how to choose",
-        "language": null,
-        "pushed_at": "2026-08-07T11:06:02Z",
-        "url": "https://github.com/mohammadi-hadi/ai-masters-netherlands"
       },
       "ACL2025": {
         "stars": 0,
@@ -163,70 +243,6 @@
         "language": "Python",
         "pushed_at": "2026-08-07T10:11:31Z",
         "url": "https://github.com/mohammadi-hadi/xnlp-survey"
-      },
-      "abeval": {
-        "stars": 0,
-        "forks": 0,
-        "description": "A/B-test statistics for LLM evals: error bars, paired significance tests, sample-size planning",
-        "language": "Python",
-        "pushed_at": "2026-08-07T10:11:26Z",
-        "url": "https://github.com/mohammadi-hadi/abeval"
-      },
-      "trajectory-judge": {
-        "stars": 0,
-        "forks": 0,
-        "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.",
-        "language": "Python",
-        "pushed_at": "2026-08-07T10:07:31Z",
-        "url": "https://github.com/mohammadi-hadi/trajectory-judge"
-      },
-      "spark-search-ranking": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Counterfactual learning-to-rank for marketplace search logs in PySpark: position-bias estimation, IPS-weighted training, NDCG evaluation against known ground truth",
-        "language": "Python",
-        "pushed_at": "2026-08-07T10:07:30Z",
-        "url": "https://github.com/mohammadi-hadi/spark-search-ranking"
-      },
-      "rankkit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Ranking evaluation with error bars: NDCG, MRR and MAP with confidence intervals, plus position-bias correction for click logs. No dependencies.",
-        "language": "Python",
-        "pushed_at": "2026-08-07T10:07:27Z",
-        "url": "https://github.com/mohammadi-hadi/rankkit"
-      },
-      "ml-foundations": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Machine learning fundamentals implemented from scratch in numpy — every implementation checked against an independent reference, every number in every lesson regenerated from the code by CI",
-        "language": "Python",
-        "pushed_at": "2026-08-07T10:07:22Z",
-        "url": "https://github.com/mohammadi-hadi/ml-foundations"
-      },
-      "judgepanel": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Estimate LLM-judge accuracy without gold labels: Dawid-Skene EM, agreement statistics, bootstrap uncertainty",
-        "language": "Python",
-        "pushed_at": "2026-08-07T10:07:20Z",
-        "url": "https://github.com/mohammadi-hadi/judgepanel"
-      },
-      "hands-on-xai-labs": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
-        "language": "Jupyter Notebook",
-        "pushed_at": "2026-08-07T10:07:15Z",
-        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
-      },
-      "dynamic-pricing-dashboard": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Interactive in-browser simulator: dynamic pricing with demand learning, forward-looking customers, and advertising",
-        "language": "Python",
-        "pushed_at": "2026-08-07T10:07:13Z",
-        "url": "https://github.com/mohammadi-hadi/dynamic-pricing-dashboard"
       },
       "bicycle-transportation-intelligence": {
         "stars": 0,
@@ -267,14 +283,6 @@
         "language": "Jupyter Notebook",
         "pushed_at": "2026-08-07T10:06:58Z",
         "url": "https://github.com/mohammadi-hadi/Automatic-Detection-of-AI-Generated-Texts"
-      },
-      "MAP-PO": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Behavioral cluster-driven multi-agent preference optimization (SFT / DPO / GRPO) for sexism detection on EXIST 2024",
-        "language": "Python",
-        "pushed_at": "2026-08-07T10:05:12Z",
-        "url": "https://github.com/mohammadi-hadi/MAP-PO"
       },
       "Exist-2023": {
         "stars": 0,
@@ -331,14 +339,6 @@
         "language": "Python",
         "pushed_at": "2026-08-05T06:50:46Z",
         "url": "https://github.com/mohammadi-hadi/EvalMORAAL"
-      },
-      "DrHadi": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Liber Amicorum: a password-gated keepsake site where guests write messages for the PhD defence, stored in a Google Sheet via Apps Script and printed as an A5 book",
-        "language": "JavaScript",
-        "pushed_at": "2026-08-03T13:17:56Z",
-        "url": "https://github.com/mohammadi-hadi/DrHadi"
       },
       "Token-Replacement": {
         "stars": 0,
