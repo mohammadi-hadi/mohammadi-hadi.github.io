@@ -1,15 +1,23 @@
 {
-  "fetched_at": "2026-08-09T06:14:39+00:00",
+  "fetched_at": "2026-08-10T06:57:31+00:00",
   "github": {
     "public_repos": 49,
     "total_stars": 7,
     "repos": {
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Personal academic website — mohammadi.cv",
+        "language": "JavaScript",
+        "pushed_at": "2026-08-10T06:43:00Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
       "spark-search-ranking": {
         "stars": 0,
         "forks": 0,
         "description": "Counterfactual learning-to-rank for marketplace search logs in PySpark: position-bias estimation, IPS-weighted training, NDCG evaluation against known ground truth",
         "language": "Python",
-        "pushed_at": "2026-08-08T08:25:21Z",
+        "pushed_at": "2026-08-09T12:13:09Z",
         "url": "https://github.com/mohammadi-hadi/spark-search-ranking"
       },
       "awesome-explainable-nlp": {
@@ -27,14 +35,6 @@
         "language": "JavaScript",
         "pushed_at": "2026-08-08T08:18:00Z",
         "url": "https://github.com/mohammadi-hadi/DrHadi"
-      },
-      "mohammadi-hadi.github.io": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Personal academic website — mohammadi.cv",
-        "language": "JavaScript",
-        "pushed_at": "2026-08-08T08:12:06Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "dynamic-pricing-dashboard": {
         "stars": 0,
@@ -399,7 +399,7 @@
     }
   },
   "openalex": {
-    "works_count": 59,
+    "works_count": 83,
     "cited_by_count": 16,
     "h_index": 2,
     "i10_index": 0
