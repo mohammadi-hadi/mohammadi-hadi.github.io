@@ -21,16 +21,20 @@
   var pad = function (n) { return String(n).padStart(3, "0"); };
   function isCover(i) { return i === COVER_FRONT || i === COVER_BACK; }
   function isInside(i) { return i === INSIDE_FRONT || i === INSIDE_BACK; }
+  // the two inside covers are different halves of the printed wrap: the front one is
+  // slate, the back one teal — they are not interchangeable
   function pageSrc(i) {
     if (i === COVER_FRONT) return "pages/page-001.webp";
     if (i === COVER_BACK) return "pages/page-281.webp";
-    if (isInside(i)) return "pages/page-inside.webp";
+    if (i === INSIDE_FRONT) return "pages/page-inside-front.webp";
+    if (i === INSIDE_BACK) return "pages/page-inside-back.webp";
     return "pages/page-" + pad(i + 1) + ".webp";
   }
   function thumbSrc(i) {
     if (i === COVER_FRONT) return "thumbs/page-001.webp";
     if (i === COVER_BACK) return "thumbs/page-281.webp";
-    if (isInside(i)) return "thumbs/page-inside.webp";
+    if (i === INSIDE_FRONT) return "thumbs/page-inside-front.webp";
+    if (i === INSIDE_BACK) return "thumbs/page-inside-back.webp";
     return "thumbs/page-" + pad(i + 1) + ".webp";
   }
   var OVERVIEW = "assets/wrap-overview.webp";
@@ -59,7 +63,8 @@
   function label(i) {
     if (i === COVER_FRONT) return "Front cover";
     if (i === COVER_BACK) return "Back cover";
-    if (isInside(i)) return "Inside cover";
+    if (i === INSIDE_FRONT) return "Inside front cover";
+    if (i === INSIDE_BACK) return "Inside back cover";
     return "Page " + (i - 1) + " of " + INTERIOR;
   }
   function escapeHtml(s) {
