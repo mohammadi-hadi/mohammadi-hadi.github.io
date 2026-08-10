@@ -67,7 +67,7 @@
       return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
     });
   }
-  function syncUI(i) { counterEl.textContent = label(i); sliderEl.value = i; markCurrent(i); syncMarkBtn(i); }
+  function syncUI(i) { counterEl.textContent = label(i); sliderEl.value = i; markCurrent(i); syncMarkBtn(i); syncPageMark(i); }
   function markCurrent(i) {
     var items = tocList.querySelectorAll(".fb-toc-item");
     var bestPage = -1;
@@ -149,7 +149,7 @@
     var list = readMarks(), at = list.indexOf(i);
     if (at === -1) { if (list.length >= MARKS_MAX) return; list.push(i); list.sort(function (a, b) { return a - b; }); }
     else list.splice(at, 1);
-    writeMarks(list); renderMarks(); syncMarkBtn(i); markGridCells();
+    writeMarks(list); renderMarks(); syncMarkBtn(i); syncPageMark(i); markGridCells();
   }
   function syncMarkBtn(i) {
     var b = $("fb-mark"); if (!b) return;
@@ -159,6 +159,28 @@
     b.setAttribute("aria-pressed", on ? "true" : "false");
     b.title = !ok ? "Bookmarks work on the pages of the book" : (on ? "Remove bookmark (b)" : "Bookmark this page (b)");
     var lab = b.querySelector(".fb-label"); if (lab) lab.textContent = on ? "Bookmarked" : "Bookmark";
+  }
+  // a teal ribbon hanging out of the top edge of a bookmarked page
+  // anchor to the visible page rectangle — the flip library's own container is
+  // wider than the paper, so measuring it would float the ribbon off the page
+  function placePageMark() {
+    var el = $("fb-pagemark"), stage = $("fb-stage");
+    if (!el || !stage) return;
+    var pages = bookEl.querySelectorAll(".page"), right = -Infinity, top = Infinity, found = false;
+    for (var k = 0; k < pages.length; k++) {
+      var b = pages[k].getBoundingClientRect();
+      if (b.width > 2 && b.height > 2) { found = true; if (b.right > right) right = b.right; if (b.top < top) top = b.top; }
+    }
+    if (!found) return;
+    var s = stage.getBoundingClientRect();
+    el.style.right = Math.max(4, Math.round(s.right - right) + 26) + "px";
+    el.style.top = Math.max(0, Math.round(top - s.top) - 6) + "px";
+  }
+  function syncPageMark(i) {
+    var el = $("fb-pagemark"); if (!el) return;
+    var on = canMark(i) && isMarked(i);
+    el.classList.toggle("is-on", on);
+    if (on) { placePageMark(); setTimeout(placePageMark, 420); }   // again once the flip animation settles
   }
   function markGridCells() {
     var marks = readMarks(), cells = $("fb-grid-cells").children;
@@ -296,7 +318,7 @@
     }
   });
   var rT;
-  window.addEventListener("resize", function () { clearTimeout(rT); rT = setTimeout(function () { try { pageFlip.update(); } catch (e) {} placeResume(); }, 150); });
+  window.addEventListener("resize", function () { clearTimeout(rT); rT = setTimeout(function () { try { pageFlip.update(); } catch (e) {} placeResume(); placePageMark(); }, 150); });
 
   // ---- boot: build the book (immediately in plaintext, post-unlock when encrypted) ----
   function boot() {
@@ -339,7 +361,7 @@
     $("fb-resume-x").addEventListener("click", hideResume);
     $("fb-mark").addEventListener("click", function () { toggleMark(currentIndex()); });
     $("fb-marks-clear").addEventListener("click", function () {
-      writeMarks([]); renderMarks(); syncMarkBtn(currentIndex()); markGridCells();
+      writeMarks([]); renderMarks(); syncMarkBtn(currentIndex()); syncPageMark(currentIndex()); markGridCells();
     });
     renderMarks(); syncMarkBtn(0);
 
