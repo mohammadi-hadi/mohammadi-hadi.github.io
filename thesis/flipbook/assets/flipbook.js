@@ -254,6 +254,16 @@
     if (!window.FlipCrypto || !(window.crypto && window.crypto.subtle)) {
       err.textContent = "This browser can't decrypt (needs HTTPS + WebCrypto).";
     }
+    var eye = $("fb-gate-eye"), slash = $("fb-eye-slash");
+    if (eye) eye.addEventListener("click", function () {
+      var reveal = input.type === "password";
+      input.type = reveal ? "text" : "password";
+      if (slash) slash.style.display = reveal ? "" : "none";
+      eye.setAttribute("aria-pressed", reveal ? "true" : "false");
+      eye.setAttribute("aria-label", reveal ? "Hide password" : "Show password");
+      eye.title = reveal ? "Hide password" : "Show password";
+      try { input.focus(); } catch (e) {}
+    });
     gate.classList.add("is-open"); gate.setAttribute("aria-hidden", "false");
     setTimeout(function () { try { input.focus(); } catch (e) {} }, 60);
     var busy = false;

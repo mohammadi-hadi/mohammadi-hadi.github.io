@@ -9,12 +9,24 @@
 <meta name="theme-color" content="#13273F" />
 <!-- PRIVATE preview: keep this while the flipbook is unlisted; delete this one line when you make it public -->
 <meta name="robots" content="noindex, nofollow" />
-<!-- Open Graph / social -->
+<!-- Open Graph / social (absolute URLs — link previews in mail, chat and social) -->
 <meta property="og:type" content="book" />
-<meta property="og:title" content="Let Me Explain! — PhD thesis flipbook" />
-<meta property="og:description" content="Explainable NLP for Understanding Large Language Models — Hadi Mohammadi, Utrecht University." />
-<meta property="og:image" content="thumbs/page-001.webp" />
-<link rel="icon" href="thumbs/page-001.webp" />
+<meta property="og:site_name" content="Hadi Mohammadi" />
+<meta property="og:url" content="https://mohammadi.cv/thesis/flipbook/" />
+<meta property="og:title" content="Let Me Explain! — PhD thesis by Hadi Mohammadi" />
+<meta property="og:description" content="Explainable NLP for Understanding Large Language Models. Utrecht University — public defence 9 September 2026." />
+<meta property="og:image" content="https://mohammadi.cv/assets/img/thesis/og-thesis.jpg" />
+<meta property="og:image:secure_url" content="https://mohammadi.cv/assets/img/thesis/og-thesis.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="The thesis cover beside its title, author and defence date." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Let Me Explain! — PhD thesis by Hadi Mohammadi" />
+<meta name="twitter:description" content="Explainable NLP for Understanding Large Language Models. Utrecht University — public defence 9 September 2026." />
+<meta name="twitter:image" content="https://mohammadi.cv/assets/img/thesis/og-thesis.jpg" />
+<link rel="icon" type="image/png" href="https://mohammadi.cv/assets/img/favicon.png" />
+<link rel="apple-touch-icon" href="https://mohammadi.cv/assets/img/apple-touch-icon.png" />
 <link rel="stylesheet" href="assets/flipbook.css" />
 </head>
 <body>
@@ -106,7 +118,16 @@
   <form id="fb-gate-form" class="fb-gate-card">
     <div class="fb-gate-mark">Let&nbsp;Me&nbsp;Explain!</div>
     <p class="fb-gate-sub">A private preview — opening to everyone after the<br />defense on 9 September 2026. Enter the password to read it now.</p>
-    <input id="fb-gate-pw" class="fb-gate-input" type="password" placeholder="Password" autocomplete="current-password" aria-label="Password" />
+    <div class="fb-gate-field">
+      <input id="fb-gate-pw" class="fb-gate-input" type="password" placeholder="Password" autocomplete="current-password" aria-label="Password" />
+      <button id="fb-gate-eye" class="fb-gate-eye" type="button" aria-label="Show password" aria-pressed="false" title="Show password">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+          <path d="M1.9 12S5.6 5.6 12 5.6 22.1 12 22.1 12 18.4 18.4 12 18.4 1.9 12 1.9 12Z" />
+          <circle cx="12" cy="12" r="3.1" />
+          <line id="fb-eye-slash" x1="3.6" y1="20.4" x2="20.4" y2="3.6" style="display:none" />
+        </svg>
+      </button>
+    </div>
     <button id="fb-gate-go" class="fb-gate-btn" type="submit">Unlock</button>
     <p id="fb-gate-err" class="fb-gate-err" role="alert"></p>
     <p id="fb-gate-prog" class="fb-gate-prog"></p>
