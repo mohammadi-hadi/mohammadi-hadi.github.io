@@ -78,8 +78,55 @@
   }
   function next() { if (pageFlip) pageFlip.flipNext(); }
   function prev() { if (pageFlip) pageFlip.flipPrev(); }
-  function jumpTo(i) { if (!pageFlip) return; i = Math.max(0, Math.min(TOTAL - 1, i)); pageFlip.turnToPage(i); syncUI(i); history.replaceState(null, "", "?page=" + i); }
+  function jumpTo(i) { if (!pageFlip) return; i = Math.max(0, Math.min(TOTAL - 1, i)); pageFlip.turnToPage(i); syncUI(i); savePos(i); history.replaceState(null, "", "?page=" + i); }
   function currentIndex() { try { return pageFlip.getCurrentPageIndex(); } catch (e) { return parseInt(sliderEl.value, 10) || 0; } }
+
+  // ---- reading position: ONLY a page number is stored, never any page content ----
+  var POS_KEY = "lme-fb-pos", POS_MAX_AGE = 90 * 24 * 60 * 60 * 1000;
+  var resumeTarget = null, resumePending = false, resumeTimer = null;
+  function savePos(i) {
+    if (i < FIRST || i >= INSIDE_BACK) return;          // covers are not worth resuming
+    try { localStorage.setItem(POS_KEY, JSON.stringify({ v: 1, p: i, t: Date.now() })); } catch (e) {}
+  }
+  function readPos() {
+    try {
+      var o = JSON.parse(localStorage.getItem(POS_KEY) || "null");
+      if (!o || o.v !== 1 || typeof o.p !== "number" || o.p !== Math.floor(o.p)) return null;
+      if (o.p < FIRST || o.p >= INSIDE_BACK) return null;                    // stale build, different page count
+      if (typeof o.t === "number" && Date.now() - o.t > POS_MAX_AGE) return null;
+      return o.p;
+    } catch (e) { return null; }
+  }
+  function hideResume() {
+    resumePending = false; clearTimeout(resumeTimer);
+    var el = $("fb-resume");
+    el.classList.remove("is-open"); el.setAttribute("aria-hidden", "true");
+    setTimeout(function () { if (!el.classList.contains("is-open")) el.style.display = "none"; }, 260);
+  }
+  // a page turn dismisses the chip, but only once it is actually on screen —
+  // an early flip event from the book's own init must not cancel a pending offer
+  function dismissResumeIfVisible() { if ($("fb-resume").classList.contains("is-open")) hideResume(); }
+  // the controls bar wraps to two or three rows on phones, so measure it instead of guessing
+  function placeResume() {
+    var el = $("fb-resume"), bar = document.querySelector(".fb-controls");
+    if (el && bar) el.style.bottom = (bar.offsetHeight + 14) + "px";
+  }
+  function showResume() {
+    if (!resumePending) return;
+    resumePending = false;
+    var el = $("fb-resume");
+    el.style.display = "flex";
+    placeResume();
+    requestAnimationFrame(function () { el.classList.add("is-open"); el.setAttribute("aria-hidden", "false"); });
+    resumeTimer = setTimeout(hideResume, 25000);
+  }
+  function offerResume() {
+    var p = readPos();
+    if (p === null) return;
+    resumeTarget = p; resumePending = true;
+    $("fb-resume-label").textContent = "Continue from page " + (p - 1);
+    setTimeout(function () { if (!intro.classList.contains("is-open")) showResume(); }, 2000);
+  }
 
   // ---- TOC ----
   function renderToc(data) {
@@ -139,7 +186,11 @@
   function openGrid() { closeAll(); gridView.classList.add("is-open"); gridView.setAttribute("aria-hidden", "false"); $("fb-grid").classList.add("is-active"); ensureThumbs().then(buildGrid); }
   function openZoom() { var i = currentIndex(); $("fb-zoom-img").src = assetURL(pageSrc(i)); closeAll(); zoomModal.classList.add("is-open"); zoomModal.setAttribute("aria-hidden", "false"); }
   function showIntro() { intro.classList.add("is-open"); intro.setAttribute("aria-hidden", "false"); }
-  function hideIntro() { intro.classList.remove("is-open"); intro.setAttribute("aria-hidden", "true"); try { sessionStorage.setItem("fb-intro-seen", "1"); } catch (e) {} }
+  function hideIntro() {
+    intro.classList.remove("is-open"); intro.setAttribute("aria-hidden", "true");
+    try { sessionStorage.setItem("fb-intro-seen", "1"); } catch (e) {}
+    if (resumePending) setTimeout(showResume, 280);
+  }
 
   // ---- static control wiring (handlers guard on pageFlip until booted) ----
   $("fb-next").addEventListener("click", next);
@@ -181,7 +232,7 @@
     }
   });
   var rT;
-  window.addEventListener("resize", function () { clearTimeout(rT); rT = setTimeout(function () { try { pageFlip.update(); } catch (e) {} }, 150); });
+  window.addEventListener("resize", function () { clearTimeout(rT); rT = setTimeout(function () { try { pageFlip.update(); } catch (e) {} placeResume(); }, 150); });
 
   // ---- boot: build the book (immediately in plaintext, post-unlock when encrypted) ----
   function boot() {
@@ -216,7 +267,12 @@
     window.addEventListener("load", hideLoader);
     setTimeout(hideLoader, 1800);
 
-    pageFlip.on("flip", function (e) { var i = e.data; syncUI(i); history.replaceState(null, "", "?page=" + i); });
+    pageFlip.on("flip", function (e) {
+      var i = e.data; syncUI(i); savePos(i); dismissResumeIfVisible();
+      history.replaceState(null, "", "?page=" + i);
+    });
+    $("fb-resume-go").addEventListener("click", function () { if (resumeTarget !== null) jumpTo(resumeTarget); hideResume(); });
+    $("fb-resume-x").addEventListener("click", hideResume);
 
     var introImg = $("fb-intro-img"); if (introImg) introImg.src = assetURL(OVERVIEW);
     loadToc();
@@ -229,6 +285,7 @@
       syncUI(0);
       var seen; try { seen = sessionStorage.getItem("fb-intro-seen"); } catch (e) {}
       if (!seen) showIntro();
+      offerResume();
     }
   }
 
