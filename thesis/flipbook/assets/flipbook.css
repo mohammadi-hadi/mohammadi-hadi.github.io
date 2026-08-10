@@ -121,6 +121,26 @@ body{
   background:#fff; border:2px solid var(--teal); box-shadow:0 1px 4px rgba(0,0,0,.4) }
 .fb-slider::-moz-range-thumb{ width:16px; height:16px; border-radius:50%; background:#fff; border:2px solid var(--teal) }
 
+/* ---------- "continue reading" chip ---------- */
+.fb-resume{
+  position:fixed; left:50%; z-index:30; display:none; align-items:center; gap:2px;
+  bottom:calc(var(--bar-h) + 18px + env(safe-area-inset-bottom, 0px));
+  transform:translate(-50%,14px); opacity:0;
+  background:rgba(12,24,40,.96); border:1px solid rgba(54,177,166,.5); border-radius:999px;
+  padding:4px 5px 4px 7px; box-shadow:0 16px 36px rgba(0,0,0,.5);
+  transition:opacity .25s ease, transform .25s ease;
+}
+.fb-resume.is-open{ display:flex; opacity:1; transform:translate(-50%,0) }
+.fb-resume-go{ display:inline-flex; align-items:center; gap:9px; cursor:pointer; font-family:inherit;
+  background:none; border:0; color:var(--ink); font-size:13.5px; font-weight:600;
+  padding:8px 13px; border-radius:999px; transition:.12s; white-space:nowrap }
+.fb-resume-go svg{ color:var(--teal); flex:0 0 auto }
+.fb-resume-go:hover{ background:rgba(54,177,166,.16); color:#7fe0d6 }
+.fb-resume-x{ width:32px; height:32px; flex:0 0 auto; display:flex; align-items:center; justify-content:center;
+  background:none; border:0; border-radius:50%; color:var(--muted); font-size:13px; cursor:pointer; transition:.12s }
+.fb-resume-x:hover{ background:rgba(255,255,255,.09); color:var(--ink) }
+.fb-resume-go:focus-visible,.fb-resume-x:focus-visible{ outline:2px solid var(--teal); outline-offset:1px }
+
 /* ---------- drawer (TOC) ---------- */
 .fb-drawer{
   position:fixed; top:0; left:0; height:100%; width:min(360px,86vw); z-index:40;
@@ -224,6 +244,8 @@ body{
   .fb-btn{ padding:9px 10px; font-size:12px }
   .fb-btn--round{ padding:7px 11px; font-size:18px }
   .fb-gate-card{ width:min(360px,90vw) }
+  .fb-resume{ max-width:calc(100vw - 24px) }
+  .fb-resume-go{ font-size:12.5px; padding:8px 11px; gap:7px }
 }
 @media (prefers-reduced-motion:reduce){
   .fb-drawer{ transition:none }
