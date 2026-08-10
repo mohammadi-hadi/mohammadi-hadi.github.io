@@ -41,6 +41,7 @@
   var KEY = null;        // ENC: derived key (in memory only) for lazy thumb decrypt
   var THUMBFILES = [];   // ENC: thumbnail paths, decrypted only when the grid opens
   var thumbsDone = false;
+  var CB = "";           // ENC: cache-buster tied to the build, so a re-encrypt never serves stale ciphertext
   function assetURL(p) { return ENC ? (BLOBS[p] || "") : p; }
 
   var $ = function (id) { return document.getElementById(id); };
@@ -117,7 +118,7 @@
   function ensureThumbs() {
     if (!ENC || thumbsDone || !KEY || !THUMBFILES.length) { thumbsDone = true; return Promise.resolve(); }
     return mapLimit(THUMBFILES, 6, async function (path) {
-      var r = await fetch("enc/" + path + ".enc");
+      var r = await fetch("enc/" + path + ".enc" + CB);
       if (!r.ok) return;
       var plain = await FlipCrypto.decrypt(KEY, new Uint8Array(await r.arrayBuffer()));
       BLOBS[path] = URL.createObjectURL(new Blob([plain], { type: "image/webp" }));
@@ -262,7 +263,8 @@
       var pw = input.value; if (!pw) { err.textContent = "Enter the password."; return; }
       busy = true; input.disabled = true; err.textContent = "";
       try {
-        var man = await fetch("enc.json").then(function (r) { return r.json(); });
+        var man = await fetch("enc.json", { cache: "no-store" }).then(function (r) { return r.json(); });
+        CB = "?v=" + encodeURIComponent(String(man.salt).slice(0, 12));
         var salt = FlipCrypto.b64ToBytes(man.salt);
         var key = await FlipCrypto.deriveKey(pw, salt, man.iterations);
         var ok = await FlipCrypto.verify(key, man.verifier);
@@ -273,7 +275,7 @@
         prog.style.display = "block";
         var total = eager.length, count = 0;
         await mapLimit(eager, 6, async function (path) {
-          var r = await fetch("enc/" + path + ".enc");
+          var r = await fetch("enc/" + path + ".enc" + CB);
           if (!r.ok) throw new Error("missing " + path);
           var plain = await FlipCrypto.decrypt(key, new Uint8Array(await r.arrayBuffer()));
           if (path === "data/toc.json") { TOCDATA = JSON.parse(new TextDecoder().decode(plain)); }
