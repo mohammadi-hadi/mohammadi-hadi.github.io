@@ -34,7 +34,7 @@ body{
   min-height:var(--top-h); flex:0 0 auto;
   display:flex; align-items:center; justify-content:space-between; gap:18px;
   padding:8px 20px; border-bottom:1px solid var(--line);
-  background:rgba(8,16,28,.55); backdrop-filter:blur(8px);
+  background:rgba(8,16,28,.55); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
 }
 .fb-brand{display:flex; flex-direction:column; line-height:1.15; min-width:0}
 .fb-brand-title{font-weight:700; font-size:18px; letter-spacing:.2px}
@@ -50,6 +50,7 @@ body{
   font-size:12.5px; font-weight:700; white-space:nowrap; text-decoration:none;
   color:#06231f;
   background:linear-gradient(180deg,#4ccec0 0%,#31a49a 62%,#2a8d86 100%);
+  -webkit-clip-path:polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 11px), 0 100%);
   clip-path:polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 11px), 0 100%);
   filter:drop-shadow(0 5px 11px rgba(0,0,0,.40));
   transition:transform .15s, filter .15s;
@@ -68,7 +69,7 @@ body{
 }
 .fb-book{ width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
 .fb-book .page{ background:#fff; box-shadow:0 0 0 1px rgba(0,0,0,.04); overflow:hidden }
-.fb-book .page img{ width:100%; height:100%; display:block; object-fit:contain; background:#fff; -webkit-user-drag:none; user-select:none }
+.fb-book .page img{ width:100%; height:100%; display:block; object-fit:contain; background:#fff; -webkit-user-drag:none; -webkit-user-select:none; user-select:none }
 .fb-book .page--cover{ box-shadow:var(--shadow) }
 .fb-book .page--blank{ background:#fff }
 .stf__parent{ margin:0 auto; filter:drop-shadow(0 22px 44px rgba(0,0,0,.5)); }
@@ -99,7 +100,7 @@ body{
   flex:0 0 auto; min-height:var(--bar-h);
   display:flex; align-items:center; justify-content:space-between; gap:14px;
   padding:8px 16px calc(8px + env(safe-area-inset-bottom, 0px)); border-top:1px solid var(--line);
-  background:rgba(8,16,28,.62); backdrop-filter:blur(8px);
+  background:rgba(8,16,28,.62); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
 }
 .fb-controls-group{ display:flex; align-items:center; gap:8px }
 .fb-controls-center{ flex:1 1 auto; justify-content:center; max-width:680px; margin:0 auto }
@@ -233,6 +234,7 @@ body{
   .fb-topbar{ padding:8px 12px; min-height:46px; gap:10px }
   .fb-brand-title{ font-size:15px }
   .fb-sitelink{ font-size:11.5px; margin:-8px 0 -15px; padding:0 12px 15px;
+    -webkit-clip-path:polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 9px), 0 100%);
     clip-path:polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 9px), 0 100%) }
   .fb-stage{ padding:10px 8px }
   .fb-controls{ flex-wrap:wrap; gap:8px 6px; padding:8px; justify-content:center }
