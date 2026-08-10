@@ -122,6 +122,28 @@ body{
   background:#fff; border:2px solid var(--teal); box-shadow:0 1px 4px rgba(0,0,0,.4) }
 .fb-slider::-moz-range-thumb{ width:16px; height:16px; border-radius:50%; background:#fff; border:2px solid var(--teal) }
 
+/* ---------- bookmarks ---------- */
+.fb-ico-svg{ fill:none; stroke:currentColor; stroke-width:1.9; stroke-linejoin:round; flex:0 0 auto }
+.fb-btn--mark.is-marked{ color:var(--teal); border-color:rgba(54,177,166,.55); background:rgba(54,177,166,.13) }
+.fb-btn--mark.is-marked .fb-ico-svg{ fill:currentColor; stroke:currentColor }
+.fb-btn--mark[disabled]{ opacity:.4; cursor:default }
+.fb-marks{ border-bottom:1px solid var(--line); padding-bottom:6px }
+.fb-marks-head{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; padding-right:12px }
+.fb-toc-part--marks{ color:#7fe0d6 }
+.fb-marks-clear{ background:none; border:0; color:var(--muted); font-family:inherit; font-size:11px;
+  cursor:pointer; padding:4px 6px; border-radius:6px; transition:.12s }
+.fb-marks-clear:hover{ color:#ff9d9d; background:rgba(255,255,255,.06) }
+.fb-marks-list{ overflow:visible }
+.fb-marks-list .fb-toc-item{ align-items:center }
+.fb-mark-del{ background:none; border:0; color:var(--muted); cursor:pointer; font-size:12px; line-height:1;
+  width:24px; height:24px; border-radius:50%; flex:0 0 auto; transition:.12s }
+.fb-mark-del:hover{ color:#ff9d9d; background:rgba(255,255,255,.08) }
+.fb-cell.is-marked img{ border-color:var(--teal); box-shadow:0 0 0 1px var(--teal) }
+.fb-cell{ position:relative }
+.fb-cell.is-marked::after{ content:""; position:absolute; top:0; right:8px; width:13px; height:19px;
+  background:var(--teal); -webkit-clip-path:polygon(0 0,100% 0,100% 100%,50% 68%,0 100%);
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 68%,0 100%) }
+
 /* ---------- "continue reading" chip ---------- */
 .fb-resume{
   position:fixed; left:50%; z-index:30; display:none; align-items:center; gap:2px;

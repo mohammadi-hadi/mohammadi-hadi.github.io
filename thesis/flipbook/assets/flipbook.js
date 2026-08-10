@@ -67,7 +67,7 @@
       return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
     });
   }
-  function syncUI(i) { counterEl.textContent = label(i); sliderEl.value = i; markCurrent(i); }
+  function syncUI(i) { counterEl.textContent = label(i); sliderEl.value = i; markCurrent(i); syncMarkBtn(i); }
   function markCurrent(i) {
     var items = tocList.querySelectorAll(".fb-toc-item");
     var bestPage = -1;
@@ -128,6 +128,67 @@
     setTimeout(function () { if (!intro.classList.contains("is-open")) showResume(); }, 2000);
   }
 
+  // ---- bookmarks: an array of page numbers in localStorage, nothing else ----
+  var MARKS_KEY = "lme-fb-marks", MARKS_MAX = 200;
+  function readMarks() {
+    try {
+      var o = JSON.parse(localStorage.getItem(MARKS_KEY) || "null");
+      if (!o || o.v !== 1 || !Array.isArray(o.m)) return [];
+      return o.m.filter(function (p) {
+        return typeof p === "number" && p === Math.floor(p) && p >= FIRST && p < INSIDE_BACK;
+      }).slice(0, MARKS_MAX).sort(function (a, b) { return a - b; });
+    } catch (e) { return []; }
+  }
+  function writeMarks(list) {
+    try { localStorage.setItem(MARKS_KEY, JSON.stringify({ v: 1, m: list })); } catch (e) {}
+  }
+  function canMark(i) { return i >= FIRST && i < INSIDE_BACK; }
+  function isMarked(i) { return readMarks().indexOf(i) !== -1; }
+  function toggleMark(i) {
+    if (!canMark(i)) return;
+    var list = readMarks(), at = list.indexOf(i);
+    if (at === -1) { if (list.length >= MARKS_MAX) return; list.push(i); list.sort(function (a, b) { return a - b; }); }
+    else list.splice(at, 1);
+    writeMarks(list); renderMarks(); syncMarkBtn(i); markGridCells();
+  }
+  function syncMarkBtn(i) {
+    var b = $("fb-mark"); if (!b) return;
+    var ok = canMark(i), on = ok && isMarked(i);
+    b.disabled = !ok;
+    b.classList.toggle("is-marked", on);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    b.title = !ok ? "Bookmarks work on the pages of the book" : (on ? "Remove bookmark (b)" : "Bookmark this page (b)");
+    var lab = b.querySelector(".fb-label"); if (lab) lab.textContent = on ? "Bookmarked" : "Bookmark";
+  }
+  function markGridCells() {
+    var marks = readMarks(), cells = $("fb-grid-cells").children;
+    for (var k = 0; k < cells.length; k++) cells[k].classList.toggle("is-marked", marks.indexOf(k) !== -1);
+  }
+  function nearestTitle(page) {
+    var best = null;
+    tocEntries.forEach(function (e) { if (e.page <= page && (!best || e.page > best.page)) best = e; });
+    return best ? best.title : "";
+  }
+  function renderMarks() {
+    var wrap = $("fb-marks"), list = $("fb-marks-list"), marks = readMarks();
+    list.innerHTML = "";
+    if (!marks.length) { wrap.hidden = true; return; }
+    wrap.hidden = false;
+    marks.forEach(function (p) {
+      var li = document.createElement("li");
+      li.className = "fb-toc-item"; li.dataset.page = p;
+      var title = nearestTitle(p);
+      li.innerHTML = '<span>Page ' + (p - 1) + (title ? ' &middot; <span class="pg">' + escapeHtml(title) + '</span>' : '') + '</span>';
+      var del = document.createElement("button");
+      del.type = "button"; del.className = "fb-mark-del"; del.innerHTML = "&#10005;";
+      del.setAttribute("aria-label", "Remove bookmark on page " + (p - 1));
+      del.addEventListener("click", function (ev) { ev.stopPropagation(); toggleMark(p); });
+      li.appendChild(del);
+      li.addEventListener("click", function () { jumpTo(p); closeAll(); });
+      list.appendChild(li);
+    });
+  }
+
   // ---- TOC ----
   function renderToc(data) {
     tocEntries = data;
@@ -138,6 +199,7 @@
       li.addEventListener("click", function () { jumpTo(parseInt(li.dataset.page, 10)); closeAll(); });
       tocList.appendChild(li);
     });
+    renderMarks();   // chapter titles are only known once the TOC has loaded
   }
   function loadToc() {
     if (ENC) { if (TOCDATA) renderToc(TOCDATA); return; }
@@ -160,6 +222,7 @@
       })(i);
     }
     $("fb-grid-cells").appendChild(frag);
+    markGridCells();
   }
   // ENC: thumbnails are decrypted lazily, only when the page grid is first opened.
   function ensureThumbs() {
@@ -228,6 +291,7 @@
       case "z": case "Z": zoomModal.classList.contains("is-open") ? closeAll() : openZoom(); break;
       case "f": case "F": $("fb-full").click(); break;
       case "c": case "C": intro.classList.contains("is-open") ? hideIntro() : showIntro(); break;
+      case "b": case "B": toggleMark(currentIndex()); break;
       case "Escape": closeAll(); hideIntro(); break;
     }
   });
@@ -273,6 +337,11 @@
     });
     $("fb-resume-go").addEventListener("click", function () { if (resumeTarget !== null) jumpTo(resumeTarget); hideResume(); });
     $("fb-resume-x").addEventListener("click", hideResume);
+    $("fb-mark").addEventListener("click", function () { toggleMark(currentIndex()); });
+    $("fb-marks-clear").addEventListener("click", function () {
+      writeMarks([]); renderMarks(); syncMarkBtn(currentIndex()); markGridCells();
+    });
+    renderMarks(); syncMarkBtn(0);
 
     var introImg = $("fb-intro-img"); if (introImg) introImg.src = assetURL(OVERVIEW);
     loadToc();
