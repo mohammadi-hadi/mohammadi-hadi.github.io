@@ -72,6 +72,8 @@
   </div>
 
   <div class="fb-controls-group">
+    <button id="fb-mark" class="fb-btn fb-btn--mark" aria-pressed="false" title="Bookmark this page (b)">
+      <svg class="fb-ico-svg" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v16l-7-4.3L5 21V5a2 2 0 0 1 2-2Z"/></svg><span class="fb-label">Bookmark</span></button>
     <button id="fb-zoom" class="fb-btn" title="Zoom current page (z)"><span class="fb-ico">⤢</span><span class="fb-label">Zoom</span></button>
     <button id="fb-full" class="fb-btn" title="Fullscreen (f)"><span class="fb-ico">⛶</span><span class="fb-label">Fullscreen</span></button>
   </div>
@@ -82,6 +84,13 @@
   <div class="fb-drawer-head">
     <h2>Contents</h2>
     <button id="fb-drawer-close" class="fb-iconbtn" aria-label="Close contents">✕</button>
+  </div>
+  <div id="fb-marks" class="fb-marks" hidden>
+    <div class="fb-marks-head">
+      <span class="fb-toc-part fb-toc-part--marks">Your bookmarks</span>
+      <button id="fb-marks-clear" class="fb-marks-clear" type="button">Clear all</button>
+    </div>
+    <ul id="fb-marks-list" class="fb-toc-list fb-marks-list"></ul>
   </div>
   <ul id="fb-toc-list" class="fb-toc-list"></ul>
 </aside>
