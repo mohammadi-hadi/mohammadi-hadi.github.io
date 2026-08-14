@@ -1,9 +1,17 @@
 {
-  "fetched_at": "2026-08-13T06:51:52+00:00",
+  "fetched_at": "2026-08-14T06:59:30+00:00",
   "github": {
     "public_repos": 50,
     "total_stars": 7,
     "repos": {
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Personal academic website — mohammadi.cv",
+        "language": "JavaScript",
+        "pushed_at": "2026-08-13T06:51:54Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
       "mohammadi-hadi": {
         "stars": 0,
         "forks": 0,
@@ -27,14 +35,6 @@
         "language": "TeX",
         "pushed_at": "2026-08-12T07:42:53Z",
         "url": "https://github.com/mohammadi-hadi/xnlp-llm-survey"
-      },
-      "mohammadi-hadi.github.io": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Personal academic website — mohammadi.cv",
-        "language": "JavaScript",
-        "pushed_at": "2026-08-12T07:09:59Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "hands-on-xai-labs": {
         "stars": 0,
@@ -413,9 +413,9 @@
     "i10_index": 0
   },
   "orcid": {
-    "works_count": 15,
+    "works_count": 16,
     "latest_work": {
-      "title": "Reliability-Aware Sexism Detection: Combining DPO with Annotator Agreement and Token-Level Confidence Scoring",
+      "title": "Let Me Explain!",
       "year": "2026"
     }
   }
