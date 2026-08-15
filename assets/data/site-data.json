@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-14T06:59:30+00:00",
+  "fetched_at": "2026-08-15T05:56:50+00:00",
   "github": {
     "public_repos": 50,
     "total_stars": 7,
@@ -9,7 +9,7 @@
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "JavaScript",
-        "pushed_at": "2026-08-13T06:51:54Z",
+        "pushed_at": "2026-08-14T14:52:27Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "mohammadi-hadi": {
@@ -407,7 +407,7 @@
     }
   },
   "openalex": {
-    "works_count": 83,
+    "works_count": 85,
     "cited_by_count": 16,
     "h_index": 2,
     "i10_index": 0
