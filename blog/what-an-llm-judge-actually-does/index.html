@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light">
   <title>What an LLM judge actually does when you are not looking — Hadi Mohammadi</title>
-  <meta name="description" content="Three local LLM judges graded the same adversarial arithmetic benchmark in both presentation orders. One picked whichever answer came first 91% of the time; another graded effort and agreed with ground truth less often than a coin flip.">
+  <meta name="description" content="Three local LLM judges graded the same adversarial arithmetic benchmark in both presentation orders. One picked whichever answer came first 91% of the time; another graded effort and scored no better than chance.">
   <link rel="canonical" href="https://mohammadi.cv/blog/what-an-llm-judge-actually-does/">
   <meta name="author" content="Hadi Mohammadi">
   <meta property="og:title" content="What an LLM judge actually does when you are not looking">
-  <meta property="og:description" content="Three local LLM judges graded the same adversarial arithmetic benchmark in both presentation orders. One picked whichever answer came first 91% of the time; another graded effort and agreed with ground truth less often than a coin flip.">
+  <meta property="og:description" content="Three local LLM judges graded the same adversarial arithmetic benchmark in both presentation orders. One picked whichever answer came first 91% of the time; another graded effort and scored no better than chance.">
   <meta property="og:url" content="https://mohammadi.cv/blog/what-an-llm-judge-actually-does/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Hadi Mohammadi">
@@ -20,7 +20,7 @@
   <meta property="article:section" content="Field notes">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="What an LLM judge actually does when you are not looking">
-  <meta name="twitter:description" content="Three local LLM judges graded the same adversarial arithmetic benchmark in both presentation orders. One picked whichever answer came first 91% of the time; another graded effort and agreed with ground truth less often than a coin flip.">
+  <meta name="twitter:description" content="Three local LLM judges graded the same adversarial arithmetic benchmark in both presentation orders. One picked whichever answer came first 91% of the time; another graded effort and scored no better than chance.">
   <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/what-an-llm-judge-actually-does.png">
   <link rel="icon" href="/assets/img/favicon.png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -52,11 +52,11 @@
         "url": "https://mohammadi.cv/blog/what-an-llm-judge-actually-does/",
         "mainEntityOfPage": "https://mohammadi.cv/blog/what-an-llm-judge-actually-does/",
         "headline": "What an LLM judge actually does when you are not looking",
-        "description": "Three local LLM judges graded the same adversarial arithmetic benchmark in both presentation orders. One picked whichever answer came first 91% of the time; another graded effort and agreed with ground truth less often than a coin flip.",
+        "description": "Three local LLM judges graded the same adversarial arithmetic benchmark in both presentation orders. One picked whichever answer came first 91% of the time; another graded effort and scored no better than chance.",
         "datePublished": "2026-08-07T09:00:00+02:00",
-        "dateModified": "2026-08-07T09:00:00+02:00",
+        "dateModified": "2026-08-16T12:00:00+02:00",
         "inLanguage": "en",
-        "wordCount": 772,
+        "wordCount": 879,
         "keywords": "LLM-as-judge, position bias, verbosity bias, evaluation, judgekit, bootstrap confidence intervals",
         "isAccessibleForFree": true,
         "author": { "@id": "https://mohammadi.cv/#person" },
@@ -143,7 +143,7 @@
 
           <p>Two of the judges follow slot order. <code>aya-expanse:8b</code> picks whatever is presented first 91.0% of the time, and flips its verdict on 81.9% of pairs when the order is swapped &mdash; which is close to saying the model is reading the position and not the arithmetic. <code>qwen2.5:14b</code> is better but not well: 76.8% and 56.8%.</p>
 
-          <p>The third fails somewhere else entirely. <code>llama3.1:8b</code> is comparatively steady under swapping, at 17.1%, because it is not grading position &mdash; it is grading effort. It picks the longer answer 48 points more often than correctness warrants, and agrees with ground truth less often than a coin flip. A judge that rewards visible work will reward a confident wrong derivation over a terse right answer, every time.</p>
+          <p>The third fails somewhere else entirely. <code>llama3.1:8b</code> is comparatively steady under swapping, at 17.1%, because it is not grading position &mdash; it is grading effort. It picks the longer answer 48 points more often than correctness warrants, and scores 0.443 against ground truth. That last number is softer than it looks: 15 of the 105 items are identical pairs where a tie was the only correct answer, and this judge never ties, so it takes zero of those by construction. On the 90 adversarial pairs alone it reaches 0.517, level with chance rather than below it. A judge that rewards visible work will reward a confident wrong derivation over a terse right answer, every time.</p>
 
           <p>The last column is the one I did not expect. Two of the three judges never once declared a tie between two <em>identical</em> answers. Asked to compare a string with itself, they picked a winner.</p>
 
