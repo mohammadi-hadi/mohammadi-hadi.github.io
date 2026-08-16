@@ -34,8 +34,9 @@ cv:
         for ranking, matching, and evaluation, and I study how to make them
         transparent, reliable, and culturally fair.
       - 'Track record: six doctoral research projects, five competitively funded
-        projects (over €40K) led end to end, and production AI used by 22 Dutch
-        research universities. I release code and data with my work.'
+        projects (over €40K), four of them led end to end, and production AI used by 22 Dutch
+        research universities and university medical centres. I release code and
+        data with my work.'
 
     Professional Experience:
       - company: AcademicTransfer
@@ -98,7 +99,7 @@ cv:
         area: Explainable Natural Language Processing for Social Sciences
         degree: PhD
         start_date: 2023-02
-        end_date: 2026-05
+        end_date: 2026-09
         location: Utrecht, The Netherlands
         highlights:
           - 'Thesis: [*Let Me Explain! Explainable NLP for Understanding Large Language Models*](https://mohammadi.cv/thesis/).'
@@ -268,8 +269,8 @@ cv:
     Grants & Awards:
       - bullet: '**Best Oral Presentation**, IOPS Winter Conference 2025 — cultural moral alignment in LLMs (Dec 2025).'
       - bullet: '**Applied Data Science Grant, €5K** — CV Priority Sorter for fair prioritization; with R. A. Bagheri, G. Krempl, J. Sparla (Dec 2025).'
-      - bullet: '**Applied Data Science Grant, €5K** — rule extraction from human evaluation with LLMs and RL; with A. Giachanou, S. Wang (Jul 2025).'
-      - bullet: '**CUCo Spark Grant, €9K** — ReDOSE: circular pharmaceutical industry using AI; with WUR, TU/e, and UMCU collaborators (May 2025).'
+      - bullet: '**Applied Data Science Grant, €5K** — rule extraction from human evaluation with LLMs and RL; with A. Giachanou, S. Wang (Jun 2025).'
+      - bullet: '**CUCo Spark Grant, €9K** — ReDOSE: circular pharmaceutical industry using AI; with WUR, TU/e, and UMCU collaborators (Jul 2025).'
       - bullet: '**ENFIELD grant, €14.4K** — European Lighthouse on Trustworthy and Green AI: user perspectives on explainable AI (Dec 2024).'
       - bullet: '**Applied Data Science Grant, €7.5K** — reliability of annotations under model predictions and explanations; with P. Mosteiro Romero, A. Giachanou, M. Poesio (Dec 2023).'
       - bullet: '**Admission scholarship**, Explainable AI Summer School, TU Delft (Aug 2022).'
