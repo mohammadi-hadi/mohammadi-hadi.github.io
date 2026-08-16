@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light">
   <title>4,873 experiments and the winner’s curse — Hadi Mohammadi</title>
-  <meta name="description" content="An audit of 4,873 real headline A/B tests from the Upworthy Research Archive: 16% fail the sample-ratio check, Benjamini-Hochberg keeps only a quarter of the significant winners, and the median winner overstates its lift by 1.27x.">
+  <meta name="description" content="An audit of 4,873 real headline A/B tests from the Upworthy Research Archive: 15% fail the sample-ratio check, Benjamini-Hochberg keeps only a quarter of the significant winners, and the median winner overstates its lift by 1.27x.">
   <link rel="canonical" href="https://mohammadi.cv/blog/4873-experiments-and-the-winners-curse/">
   <meta name="author" content="Hadi Mohammadi">
   <meta name="robots" content="noindex, nofollow">
   <meta property="og:title" content="4,873 experiments and the winner's curse">
-  <meta property="og:description" content="An audit of 4,873 real headline A/B tests from the Upworthy Research Archive: 16% fail the sample-ratio check, Benjamini-Hochberg keeps only a quarter of the significant winners, and the median winner overstates its lift by 1.27x.">
+  <meta property="og:description" content="An audit of 4,873 real headline A/B tests from the Upworthy Research Archive: 15% fail the sample-ratio check, Benjamini-Hochberg keeps only a quarter of the significant winners, and the median winner overstates its lift by 1.27x.">
   <meta property="og:url" content="https://mohammadi.cv/blog/4873-experiments-and-the-winners-curse/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Hadi Mohammadi">
@@ -21,7 +21,7 @@
   <meta property="article:section" content="Field notes">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="4,873 experiments and the winner's curse">
-  <meta name="twitter:description" content="An audit of 4,873 real headline A/B tests from the Upworthy Research Archive: 16% fail the sample-ratio check, Benjamini-Hochberg keeps only a quarter of the significant winners, and the median winner overstates its lift by 1.27x.">
+  <meta name="twitter:description" content="An audit of 4,873 real headline A/B tests from the Upworthy Research Archive: 15% fail the sample-ratio check, Benjamini-Hochberg keeps only a quarter of the significant winners, and the median winner overstates its lift by 1.27x.">
   <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/4873-experiments-and-the-winners-curse.png">
   <link rel="icon" href="/assets/img/favicon.png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -53,7 +53,7 @@
         "url": "https://mohammadi.cv/blog/4873-experiments-and-the-winners-curse/",
         "mainEntityOfPage": "https://mohammadi.cv/blog/4873-experiments-and-the-winners-curse/",
         "headline": "4,873 experiments and the winner's curse",
-        "description": "An audit of 4,873 real headline A/B tests from the Upworthy Research Archive: 16% fail the sample-ratio check, Benjamini-Hochberg keeps only a quarter of the significant winners, and the median winner overstates its lift by 1.27x.",
+        "description": "An audit of 4,873 real headline A/B tests from the Upworthy Research Archive: 15% fail the sample-ratio check, Benjamini-Hochberg keeps only a quarter of the significant winners, and the median winner overstates its lift by 1.27x.",
         "datePublished": "2026-01-01T09:00:00+01:00",
         "dateModified": "2026-01-01T09:00:00+01:00",
         "inLanguage": "en",
@@ -110,7 +110,7 @@
         <div class="post-wrap">
           <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#field-notes">Field notes</a></p>
           <h1>4,873 experiments and the winner’s curse</h1>
-          <p class="post-dek">Upworthy ran thousands of headline A/B tests and published the raw data. One in six fails a basic sanity check on its own traffic split.</p>
+          <p class="post-dek">Upworthy ran thousands of headline A/B tests and published the raw data. Nearly nearly one in six fails a basic sanity check on its own traffic split.</p>
           <p class="post-byline"><span><time datetime="2026-01-01">DRAFT — unpublished</time></span><span>5 min read</span></p>
         </div>
       </header>
@@ -121,9 +121,9 @@
 
           <p>Those are easy failure modes to demonstrate on synthetic data, where I can implant a defect and check that the probe finds it. The harder question is how often they happen in the wild. The <a href="https://doi.org/10.1038/s41597-021-00934-7">Upworthy Research Archive</a> makes that answerable: 4,873 real headline A/B tests run between 2013 and 2015, with the per-variant data published.</p>
 
-          <h2 id="srm">One in six fails on its traffic split</h2>
+          <h2 id="srm">Nearly nearly one in six fails on its traffic split</h2>
 
-          <p><strong>16% of the tests fail the sample-ratio check</strong> at p &lt; 0.001, against the platform’s documented equal-allocation design. A sample-ratio mismatch means the traffic did not arrive in the proportions the experiment intended, and once that is true you no longer know what the two groups differ by. The effect estimate is measuring the assignment as much as the treatment.</p>
+          <p><strong>15% of the tests fail the sample-ratio check</strong> at p &lt; 0.001, against the platform’s documented equal-allocation design. A sample-ratio mismatch means the traffic did not arrive in the proportions the experiment intended, and once that is true you no longer know what the two groups differ by. The effect estimate is measuring the assignment as much as the treatment.</p>
 
           <p>The obvious explanation is packages added mid-test, which would make the imbalance an artefact of bookkeeping rather than a problem. It does not hold: the rate is, if anything, higher among tests whose variants all launched together. Those readouts carried an exposure bias nobody could have quantified from the summary table.</p>
 
