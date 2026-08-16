@@ -319,7 +319,7 @@
           <p>Each model evaluates other models' reasoning traces, providing VALID/INVALID verdicts with confidence scores. This enables cross-model validation without human annotation.</p>
 
           <h4>4. Conflict Detection</h4>
-          <p>Cases where dual scores diverge by more than 0.4 are flagged for human arbitration, revealing systematic reasoning failures.</p>
+          <p>When two models' direct scores differ by at least 0.38, the empirical 75th percentile of pairwise differences, the item is flagged as a conflict and resolved by majority voting across the models.</p>
         </div>
       </div>
     </div>
