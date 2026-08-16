@@ -155,7 +155,7 @@ cv:
         journal: arXiv preprint
         date: 2025
         url: https://mohammadi.cv/publications/grpo-dpo-cot/
-      - title: Assessing the Reliability of LLM Annotations in the Context of Demographic Bias and Model Explanation
+      - title: Assessing the Reliability of LLMs Annotations in the Context of Demographic Bias and Model Explanation
         authors:
           - '***Mohammadi, H.***†'
           - Shahedi, T.†
