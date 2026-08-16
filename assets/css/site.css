@@ -1165,6 +1165,9 @@ ol {
   aspect-ratio: 3 / 2;
   object-fit: cover;
   border: 1px solid var(--rule);
+  /* Same grade as the duotone treatment above, so the two agree if the
+     markup ever gains that wrapper. */
+  filter: grayscale(1) contrast(1.08) brightness(1.02);
 }
 
 .contact-photo figcaption {
