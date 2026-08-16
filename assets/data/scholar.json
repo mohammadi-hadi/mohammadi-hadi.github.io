@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-12T06:48:45+00:00",
+  "fetched_at": "2026-08-16T05:49:33+00:00",
   "citations": 147,
   "h_index": 6,
   "i10_index": 5,
@@ -89,11 +89,6 @@
       "year": 2026,
       "cited_by": 0
     },
-    "reliability-aware-sexism-detection-combining-dpo-with-annota": {
-      "title": "Reliability-Aware Sexism Detection: Combining DPO with Annotator Agreement and Token-Level Confidence Scoring",
-      "year": 2026,
-      "cited_by": 0
-    },
     "explainable-nlp-a-comprehensive-survey-and-practical-guideli": {
       "title": "Explainable NLP: A Comprehensive Survey and Practical Guidelines for Interpretable Text Models",
       "year": 2026,
@@ -152,6 +147,11 @@
     "a-dynamic-model-for-investigating-the-role-of-smoking-on-the": {
       "title": "A dynamic model for investigating the role of smoking on the incidence of lung cancer with social policy approach",
       "year": 2019,
+      "cited_by": 0
+    },
+    "reliability-aware-sexism-detection-combining-dpo-with-annota": {
+      "title": "Reliability-Aware Sexism Detection: Combining DPO with Annotator Agreement and Token-Level Confidence Scoring",
+      "year": null,
       "cited_by": 0
     }
   }
