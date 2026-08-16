@@ -559,29 +559,29 @@
         <div class="method-step">
           <div class="step-number"></div>
           <div class="step-content">
-            <h3>Scenario Development</h3>
-            <p>Created 10,000+ moral dilemma scenarios validated by cultural experts from diverse backgrounds, ensuring authentic representation of cultural moral frameworks.</p>
+            <h3>Survey Items as Ground Truth</h3>
+            <p>Moral-justifiability items drawn from the World Values Survey and the Pew Research Center Global Attitudes Survey, so the reference is existing cross-national survey data rather than newly written scenarios.</p>
           </div>
         </div>
         <div class="method-step">
           <div class="step-number"></div>
           <div class="step-content">
-            <h3>Model Testing</h3>
-            <p>Tested GPT-4, Claude, and other LLMs using multiple prompting approaches across 50+ cultures with systematic variation of cultural context cues.</p>
+            <h3>Model Scoring</h3>
+            <p>Eight decoder-only models scored the same items: GPT-2, OPT, BLOOMZ and Qwen among the smaller models, and GPT-4o, GPT-4o-mini, Gemma-2-9b-it and Llama-3.3-70B-Instruct among the instruction-tuned ones.</p>
           </div>
         </div>
         <div class="method-step">
           <div class="step-number"></div>
           <div class="step-content">
-            <h3>Response Analysis</h3>
-            <p>Analyzed model responses with diverse human annotators from each cultural background to evaluate cultural authenticity and alignment.</p>
+            <h3>Log-Probability Elicitation</h3>
+            <p>Each model's judgement is read from the log-probabilities it assigns to the survey response options, so no human annotation step is involved.</p>
           </div>
         </div>
         <div class="method-step">
           <div class="step-number"></div>
           <div class="step-content">
             <h3>Cross-Cultural Comparison</h3>
-            <p>Systematic comparison of model performance across cultural dimensions using World Values Survey metrics as ground truth.</p>
+            <p>Model scores are correlated against each country's survey responses, which is what exposes the gap between W.E.I.R.D. and non-W.E.I.R.D. nations.</p>
           </div>
         </div>
       </div>
@@ -591,31 +591,31 @@
       <h2 class="section-title">Key Findings</h2>
       <div class="results-grid">
         <div class="result-item">
-          <div class="result-value">87%</div>
-          <div class="result-label">Individualistic Alignment</div>
+          <div class="result-value">8</div>
+          <div class="result-label">Models evaluated</div>
         </div>
         <div class="result-item">
-          <div class="result-value">42%</div>
-          <div class="result-label">Collectivist Accuracy</div>
+          <div class="result-value">2</div>
+          <div class="result-label">Cross-national value surveys</div>
         </div>
         <div class="result-item">
-          <div class="result-value">45%</div>
-          <div class="result-label">Performance Gap</div>
+          <div class="result-value">W.E.I.R.D.</div>
+          <div class="result-label">Where alignment is strongest</div>
         </div>
       </div>
 
       <div class="model-comparison">
         <div class="model-card">
-          <div class="model-name">GPT-4</div>
-          <div class="model-desc">Excels at cultural context recognition but shows systematic Western bias in moral reasoning outputs.</div>
+          <div class="model-name">Smaller models</div>
+          <div class="model-desc">GPT-2, OPT, BLOOMZ and Qwen often produce near-zero or negative correlations with the survey data.</div>
         </div>
         <div class="model-card">
-          <div class="model-name">Claude</div>
-          <div class="model-desc">Demonstrates consistency across scenarios but limited depth in non-Western cultural perspectives.</div>
+          <div class="model-name">Instruction-tuned models</div>
+          <div class="model-desc">GPT-4o, GPT-4o-mini, Gemma-2-9b-it and Llama-3.3-70B-Instruct reach substantially higher positive correlations.</div>
         </div>
         <div class="model-card">
-          <div class="model-name">Multilingual Models</div>
-          <div class="model-desc">Show improved performance in non-English cultural contexts when prompted in native languages.</div>
+          <div class="model-name">Regional coverage</div>
+          <div class="model-desc">Alignment is strongest for W.E.I.R.D. nations and weaker elsewhere, across every model tested.</div>
         </div>
       </div>
     </section>
