@@ -649,10 +649,10 @@
         Sexism, a form of discrimination based on gender, is increasingly prevalent on social media platforms, where it often manifests as hate speech targeted at individuals or groups based on their gender. While machine learning models can detect such content, their "black box" nature obscures their decision-making processes, making it difficult for users to understand why certain posts are flagged as sexist.
       </p>
       <p>
-        This paper addresses the critical need for transparency in automated sexism detection by proposing a new approach that combines multiple BERT architectures with a CNN framework. By integrating explainability techniques like LIME and SHAP, our approach provides valuable insights into model behavior, revealing which words and phrases most strongly indicate sexist content.
+        This paper addresses the critical need for transparency in automated sexism detection by proposing a new approach that combines multiple BERT architectures with a CNN framework. By integrating Shapley Additive Explanations (SHAP), our approach provides valuable insights into model behavior, revealing which words and phrases most strongly indicate sexist content.
       </p>
       <p>
-        Through evaluation on the EXIST 2021 dataset, we demonstrate that SHAP values show clear correlation between Sexism Scores and model performance. Texts with higher Sexism Scores are more reliably identified as sexist, highlighting the efficacy of our explainability-driven approach that moves beyond binary classification to provide deeper understanding of the detection process.
+        Through evaluation on the EDOS (SemEval-2023 Task 10) and EXIST 2023 datasets, we demonstrate that SHAP values show clear correlation between Sexism Scores and model performance. Texts with higher Sexism Scores are more reliably identified as sexist, highlighting the efficacy of our explainability-driven approach that moves beyond binary classification to provide deeper understanding of the detection process.
       </p>
     </div>
   </section>
@@ -751,7 +751,7 @@
     <h2 class="section-title">Results</h2>
     <div class="results-details">
       <ul>
-        <li>The approach combines multiple BERT architectures with CNN framework for sexism detection, evaluated on the EXIST 2021 dataset</li>
+        <li>The approach combines multiple BERT architectures with CNN framework for sexism detection, evaluated on the EDOS (SemEval-2023 Task 10) and EXIST 2023 datasets</li>
         <li>SHAP values demonstrate clear correlation between Sexism Scores and model performance</li>
         <li>Texts with higher Sexism Scores are more reliably identified as sexist, validating the explainability-driven approach</li>
         <li>The pipeline provides interpretable explanations alongside predictions, moving beyond binary classification</li>
@@ -826,7 +826,7 @@
         <a href="https://github.com/mohammadi-hadi" class="footer-link" title="GitHub">
           <i class="fab fa-github"></i>
         </a>
-        <a href="https://www.linkedin.com/in/hadi-mohammadi-phd/" class="footer-link" title="LinkedIn">
+        <a href="https://www.linkedin.com/in/mohammadi-hadi/" class="footer-link" title="LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </div>
