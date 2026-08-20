@@ -1,7 +1,7 @@
 {
-  "fetched_at": "2026-08-16T05:49:33+00:00",
-  "citations": 147,
-  "h_index": 6,
+  "fetched_at": "2026-08-20T05:52:03+00:00",
+  "citations": 148,
+  "h_index": 7,
   "i10_index": 5,
   "publications": {
     "explainability-survey": {
@@ -84,8 +84,18 @@
       "year": 2023,
       "cited_by": 2
     },
+    "let-me-explain-explainable-nlp-for-understanding-large-langu": {
+      "title": "Let Me Explain! Explainable NLP for Understanding Large Language Models",
+      "year": 2026,
+      "cited_by": 0
+    },
     "learning-sexism-detection-using-multi-agent-perspectivist-pr": {
       "title": "Learning Sexism Detection Using Multi-Agent Perspectivist Preference Optimization",
+      "year": 2026,
+      "cited_by": 0
+    },
+    "reliability-aware-sexism-detection-combining-dpo-with-annota": {
+      "title": "Reliability-Aware Sexism Detection: Combining DPO with Annotator Agreement and Token-Level Confidence Scoring",
       "year": 2026,
       "cited_by": 0
     },
@@ -147,11 +157,6 @@
     "a-dynamic-model-for-investigating-the-role-of-smoking-on-the": {
       "title": "A dynamic model for investigating the role of smoking on the incidence of lung cancer with social policy approach",
       "year": 2019,
-      "cited_by": 0
-    },
-    "reliability-aware-sexism-detection-combining-dpo-with-annota": {
-      "title": "Reliability-Aware Sexism Detection: Combining DPO with Annotator Agreement and Token-Level Confidence Scoring",
-      "year": null,
       "cited_by": 0
     }
   }
