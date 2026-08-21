@@ -1,15 +1,23 @@
 {
-  "fetched_at": "2026-08-20T05:52:03+00:00",
+  "fetched_at": "2026-08-21T05:52:58+00:00",
   "github": {
-    "public_repos": 50,
+    "public_repos": 51,
     "total_stars": 7,
     "repos": {
+      "Ray": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Private page",
+        "language": "HTML",
+        "pushed_at": "2026-08-20T08:13:38Z",
+        "url": "https://github.com/mohammadi-hadi/Ray"
+      },
       "mohammadi-hadi.github.io": {
         "stars": 0,
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "JavaScript",
-        "pushed_at": "2026-08-19T14:33:20Z",
+        "pushed_at": "2026-08-20T05:52:06Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "DrHadi": {
@@ -148,14 +156,6 @@
         "pushed_at": "2026-08-08T08:10:01Z",
         "url": "https://github.com/mohammadi-hadi/judgepanel"
       },
-      "raterkit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Reliability, rogue-rater, drift and leakage diagnostics for labelled data — on the raw GoEmotions ratings, 27 of 28 emotions fall below the 0.667 agreement floor.",
-        "language": "Python",
-        "pushed_at": "2026-08-08T08:10:00Z",
-        "url": "https://github.com/mohammadi-hadi/raterkit"
-      },
       "ppofolio": {
         "stars": 0,
         "forks": 0,
@@ -163,6 +163,14 @@
         "language": "Python",
         "pushed_at": "2026-08-08T08:10:00Z",
         "url": "https://github.com/mohammadi-hadi/ppofolio"
+      },
+      "raterkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Reliability, rogue-rater, drift and leakage diagnostics for labelled data — on the raw GoEmotions ratings, 27 of 28 emotions fall below the 0.667 agreement floor.",
+        "language": "Python",
+        "pushed_at": "2026-08-08T08:10:00Z",
+        "url": "https://github.com/mohammadi-hadi/raterkit"
       },
       "rankkit": {
         "stars": 0,
