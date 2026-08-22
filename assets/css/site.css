@@ -1457,6 +1457,13 @@ ol {
   margin-bottom: var(--space-2);
 }
 
+/* Charts sit on the same paper as the page, so they need an edge to read as
+   figures rather than as bleed. */
+.post-body .post-figure img {
+  border: 1px solid var(--rule);
+  margin-bottom: var(--space-2);
+}
+
 .post-body figcaption {
   font-family: var(--mono);
   font-size: 0.7rem;
