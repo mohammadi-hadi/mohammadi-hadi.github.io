@@ -9,6 +9,14 @@
     <lastBuildDate>Sat, 22 Aug 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://mohammadi.cv/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>How much text a watermark needs before it shows up</title>
+      <link>https://mohammadi.cv/blog/how-much-text-a-watermark-needs/</link>
+      <guid isPermaLink="true">https://mohammadi.cv/blog/how-much-text-a-watermark-needs/</guid>
+      <pubDate>Sat, 22 Aug 2026 09:00:00 +0200</pubDate>
+      <description>Anthropic began watermarking Claude&amp;#x27;s output this month. A circulating simulation of a simplified green-list scheme puts detection at a couple of hundred words. The arithmetic holds. Its assumption that every token is a real choice does not, and that moves the number by a factor of six.</description>
+      <category>Field notes</category>
+    </item>
+    <item>
       <title>The labels under the benchmark</title>
       <link>https://mohammadi.cv/blog/the-labels-under-the-benchmark/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/the-labels-under-the-benchmark/</guid>

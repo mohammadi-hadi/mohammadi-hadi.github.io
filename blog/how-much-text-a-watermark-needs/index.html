@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>How much text a watermark needs before it shows up — Hadi Mohammadi</title>
+  <meta name="description" content="Anthropic began watermarking Claude&#x27;s output this month. A circulating simulation of a simplified green-list scheme puts detection at a couple of hundred words. The arithmetic holds. Its assumption that every token is a real choice does not, and that moves the number by a factor of six.">
+  <link rel="canonical" href="https://mohammadi.cv/blog/how-much-text-a-watermark-needs/">
+  <meta name="author" content="Hadi Mohammadi">
+  <meta property="og:title" content="How much text a watermark needs before it shows up">
+  <meta property="og:description" content="Anthropic began watermarking Claude&#x27;s output this month. A circulating simulation of a simplified green-list scheme puts detection at a couple of hundred words. The arithmetic holds. Its assumption that every token is a real choice does not, and that moves the number by a factor of six.">
+  <meta property="og:url" content="https://mohammadi.cv/blog/how-much-text-a-watermark-needs/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hadi Mohammadi">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/how-much-text-a-watermark-needs.png">
+  <meta property="og:image:alt" content="How much text a watermark needs before it shows up — field notes by Hadi Mohammadi">
+  <meta property="article:published_time" content="2026-08-22T09:00:00+02:00">
+  <meta property="article:author" content="Hadi Mohammadi">
+  <meta property="article:section" content="Field notes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How much text a watermark needs before it shows up">
+  <meta name="twitter:description" content="Anthropic began watermarking Claude&#x27;s output this month. A circulating simulation of a simplified green-list scheme puts detection at a couple of hundred words. The arithmetic holds. Its assumption that every token is a real choice does not, and that moves the number by a factor of six.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/how-much-text-a-watermark-needs.png">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammadi.cv/#person",
+        "name": "Hadi Mohammadi",
+        "url": "https://mohammadi.cv",
+        "identifier": "https://orcid.org/0000-0003-0860-9200"
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://mohammadi.cv/blog/#blog",
+        "name": "Hadi Mohammadi — Blog",
+        "url": "https://mohammadi.cv/blog/"
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://mohammadi.cv/blog/how-much-text-a-watermark-needs/#post",
+        "url": "https://mohammadi.cv/blog/how-much-text-a-watermark-needs/",
+        "mainEntityOfPage": "https://mohammadi.cv/blog/how-much-text-a-watermark-needs/",
+        "headline": "How much text a watermark needs before it shows up",
+        "description": "Anthropic began watermarking Claude&#x27;s output this month. A circulating simulation of a simplified green-list scheme puts detection at a couple of hundred words. The arithmetic holds. Its assumption that every token is a real choice does not, and that moves the number by a factor of six.",
+        "datePublished": "2026-08-22T09:00:00+02:00",
+        "dateModified": "2026-08-22T09:00:00+02:00",
+        "inLanguage": "en",
+        "wordCount": 1342,
+        "keywords": "watermarking, SynthID, AI text detection, EU AI Act, explainable AI, token replacement",
+        "isAccessibleForFree": true,
+        "author": { "@id": "https://mohammadi.cv/#person" },
+        "publisher": { "@id": "https://mohammadi.cv/#person" },
+        "isPartOf": { "@id": "https://mohammadi.cv/blog/#blog" },
+        "position": 0
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/software/">Software</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/" aria-current="true">Blog</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/software/">Software</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/" aria-current="true">Blog</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="post">
+      <header class="post-head">
+        <div class="post-wrap">
+          <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#field-notes">Field notes</a></p>
+          <h1>How much text a watermark needs before it shows up</h1>
+          <p class="post-dek">A circulating simulation of a simplified watermark puts detection at roughly two hundred words. The arithmetic checks out. What it assumes about prose does not.</p>
+          <p class="post-byline"><span><time datetime="2026-08-22">22 August 2026</time></span><span>6 min read</span></p>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <div class="post-wrap">
+          <p>Anthropic started watermarking Claude&rsquo;s text output this month, using a version of the <a href="https://www.nature.com/articles/s41586-024-08025-4">SynthID-Text</a> scheme published by Google DeepMind. Article 50 of the EU AI Act became enforceable on 2 August, which is what put a date on it. The mark does not change which words are allowed; it changes the randomness used to pick among them.</p>
+
+          <p>A simulation of the idea has been going round, and it asks the right question: how much text do you need before the mark is visible to a detector? Its answer is a couple of hundred words, and its author was careful to label the model a simplification. It is a simplification in a specific way, and following that through is what the rest of this is about.</p>
+
+<p>Two things before the arithmetic. The scheme in the simulation is not the scheme Anthropic shipped, and I come back to what that costs at the end. And the arithmetic itself holds: I worked it through and got the same answer.</p>
+
+          <h2 id="the-arithmetic">The arithmetic</h2>
+
+          <p>The simplified version is a green-list watermark. At every step, a pseudo-random subset of the vocabulary is favoured slightly, in the simulation by 55 to 45. Which words are favoured reshuffles constantly, so nothing looks wrong to a reader. The detector then asks one question: did favoured tokens turn up more often than chance would give?</p>
+
+          <p>That is a proportion test. With a per-token bias of 0.55 against a null of 0.5, the number of scored tokens needed for a one-sided 95% call is <em>n</em> = (1.645 &times; &radic;0.25 / 0.05)&sup2; &asymp; 271. At roughly 1.3 tokens per English word, that is about <strong>208 words</strong>. The claim holds.</p>
+
+<p>It is worth being precise about which 95% that is. At 271 tokens the expected score of a watermarked text sits exactly on the threshold, so the detector catches it about half the time. Wanting to catch 95% of watermarked texts, rather than half of them, costs roughly four times as much: about 1,077 scored tokens, or 828 words. That factor sits on top of everything below.</p>
+
+          <h2 id="the-assumption">The assumption underneath it</h2>
+
+          <p>Every token in that calculation is a coin you can weight. Prose is not built that way. A watermark can only bias a choice where the model actually had one, and much of any real paragraph is close to determined: the second half of a name, the preposition a verb demands, the back end of a phrase the sentence has already committed to. Those positions carry nothing.</p>
+
+          <p>Anthropic say as much in their own announcement. The watermark works poorly on &ldquo;small samples, where there are fewer word choices&rdquo;, and it is &ldquo;sparser on factual passages&rdquo;. Entropy is the binding constraint, not length.</p>
+
+          <p>So the honest version of the chart has a second axis: what share of positions carry any signal at all.</p>
+
+          <figure class="post-figure">
+            <img src="/assets/img/blog/watermark-length.png" alt="A curve showing words needed for a 95% call against the share of tokens where the model had a real choice. At 100% it is 208 words, at a third it is 624 words, and at a sixth it is 1,249 words." width="1200" height="640" loading="lazy">
+            <figcaption>Same bias, same test, one extra variable.</figcaption>
+          </figure>
+
+          <p>If a third of positions carry signal, 208 words becomes 624. At a sixth, 1,249. Nothing about the watermark changed. Only the amount of text you need before the total separates from chance.</p>
+
+          <h2 id="which-tokens">Which tokens carry the signal is the whole question</h2>
+
+          <p>This is where it meets something we published. In <a href="/publications/ai-text-undetectability/">Explainability-Based Token Replacement on LLM-Generated Text</a> we trained an ensemble to separate AI-generated from human-written text in English and Dutch, across news, tweets and reviews. Then we used SHAP and LIME to find the tokens the detector was leaning on, and replaced only those.</p>
+
+          <p>Two of the four strategies swap in a nearest neighbour drawn from human-written text, optionally matching the part of speech. Depending on which explainer picks the targets, BLEU against the original runs from 0.84 to 0.97, so the writing is largely left alone.</p>
+
+          <p>The surgical version did the most damage. Under LIME-guided nearest-neighbour replacement, at BLEU 0.84, XGBoost&rsquo;s F1 fell from 0.81 to <strong>0.25</strong> and it flipped on up to 65% of samples. BERT-base fell to 0.56, DistilBERT to 0.62.</p>
+
+          <p>Our own ensemble was not spared. Its F1 went from 0.83 to <strong>0.64</strong> under the same edit, a nineteen point drop and its worst result in the study. It was steadier elsewhere, holding 0.82 under part-of-speech-constrained replacement and 0.83 under GPT rewriting, where XGBoost sat at 0.57. But the edit aimed most precisely at what the detectors were reading took the ensemble down with them.</p>
+
+          <h2 id="why-it-transfers">Why that transfers</h2>
+
+          <p>On robustness, Anthropic write that &ldquo;light editing probably won&rsquo;t remove the watermark completely; a complete rewrite where every word is replaced will&rdquo;. That is true of light editing in the ordinary sense, where you change whatever you happen to notice.</p>
+
+          <p>Our result was about the other kind. Once you know which positions the decision rests on, you do not need a complete rewrite. You need to touch the positions that matter, and you can leave the rest of the sentence alone.</p>
+
+          <p>The difference between a classifier and a watermark is how big that set is. For a classifier, the informative tokens are a small learned collection of tells, which is why a handful of substitutions moved XGBoost&rsquo;s verdict on most of our samples. For a watermark, the informative positions are every place the model had a real choice, scattered through the text and defined by the sampler rather than by style.</p>
+
+<p>Which of those positions were favoured is keyed and cannot be read off the page. The positions themselves are another matter: run the text through any open model and the high-entropy slots light up, which is our SHAP and LIME move with the explainer swapped out. So the watermark is sturdier on edit budget rather than on secrecy. The curve above is the price list read backwards, and the second thing I want measured below is the experiment that would settle what the edit actually costs.</p>
+
+          <p>Our ensemble is not really an instance of the same principle, and it is worth saying so. Several transformers reading the same sentence are not several independent signals. They were trained on overlapping data and lean on overlapping tells, so one well chosen substitution moves more than one of them at once, which is why the surgical edit pulled the ensemble down nineteen points along with everything else. A watermark aggregates differently. Its evidence sits in positions that do not overlap, and an editor has to pay for each one separately. Redundancy across models did not buy us much. Redundancy across positions is a different bet.</p>
+
+          <h2 id="what-id-want">What I would want measured</h2>
+
+          <p>Anthropic say a detection API is coming. Three things worth putting numbers on when it lands:</p>
+
+          <ul>
+            <li>What share of positions actually score in ordinary writing, by genre. The gap between a product description and an essay is the gap between the two ends of that curve.</li>
+            <li>How the score decays when only high-entropy positions are edited, against how it decays under the same number of random edits.</li>
+            <li>How much of the score translation removes. Anthropic already say a complete rewrite defeats the mark, and translation is a complete rewrite that keeps the meaning, so the number worth having is the cost rather than the fact.</li>
+          </ul>
+
+          <h2 id="caveat">The caveat that matters</h2>
+
+          <p>My arithmetic describes the simplified green-list model, because that is what the simulation implements and what a closed form can speak to. SynthID-Text is not a green list, and its detector is not a proportion test on a favoured subset. The shape of the argument survives the difference, because entropy is the constraint either way and Anthropic name it themselves. The exact thresholds on my chart are not Claude&rsquo;s thresholds, and I would not read them as though they were.</p>
+
+          <p>What I take from this is narrower than the argument around it. A watermark is not a lie detector for text. It is a statistical claim with a sample size requirement, and the sample it needs is measured in choices rather than in words, which means the same detector is close to free on an essay and close to useless on a product description. No amount of policy language changes that, and any rule written as a word count will land in the wrong place.</p>
+        </div>
+      </div>
+
+      <footer class="post-foot">
+        <div class="post-wrap">
+          <p class="post-source">These numbers come from a closed form in <a href="https://github.com/mohammadi-hadi/mohammadi-hadi.github.io/blob/main/scripts/fig_watermark.py">scripts/fig_watermark.py</a>. The token-replacement results are from <a href="/publications/ai-text-undetectability/">the preprint</a>, also on <a href="https://arxiv.org/abs/2506.04050">arXiv</a>. Corrections are welcome.</p>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a> &middot; <a href="https://github.com/mohammadi-hadi">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a> &middot; <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>
