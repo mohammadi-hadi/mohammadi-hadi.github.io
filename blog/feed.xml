@@ -6,8 +6,16 @@
     <description>Field notes on building and evaluating production LLM systems, and open guides for people studying AI and data science.</description>
     <language>en</language>
     <copyright>CC BY-SA 4.0, Hadi Mohammadi</copyright>
-    <lastBuildDate>Fri, 07 Aug 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://mohammadi.cv/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The labels under the benchmark</title>
+      <link>https://mohammadi.cv/blog/the-labels-under-the-benchmark/</link>
+      <guid isPermaLink="true">https://mohammadi.cv/blog/the-labels-under-the-benchmark/</guid>
+      <pubDate>Sat, 22 Aug 2026 09:00:00 +0200</pubDate>
+      <description>An audit of the 211,225 raw crowd ratings behind GoEmotions: 27 of 28 emotions fall below the 0.667 reliability floor, rater quality spans a factor of three, and the dataset has a third of the raters per item the task needs.</description>
+      <category>Field notes</category>
+    </item>
     <item>
       <title>What an LLM judge actually does when you are not looking</title>
       <link>https://mohammadi.cv/blog/what-an-llm-judge-actually-does/</link>
