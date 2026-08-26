@@ -45,7 +45,7 @@
       <link>https://mohammadi.cv/blog/calling-llms-well/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/calling-llms-well/</guid>
       <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
-      <description>Structured outputs, retries, streaming, caching and cost control — the unglamorous 80% of production LLM work.</description>
+      <description>Structured outputs, retries, streaming, caching and cost control: the unglamorous 80% of production LLM work.</description>
       <category>Modern AI Engineering</category>
     </item>
     <item>
@@ -61,7 +61,7 @@
       <link>https://mohammadi.cv/blog/agents-and-mcp/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/agents-and-mcp/</guid>
       <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
-      <description>Tool loops, the Model Context Protocol, planning patterns and agent evaluation — and when a plain workflow beats an agent.</description>
+      <description>Tool loops, the Model Context Protocol, planning patterns and agent evaluation, and when a plain workflow beats an agent.</description>
       <category>Modern AI Engineering</category>
     </item>
     <item>

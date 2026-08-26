@@ -14,7 +14,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Hadi Mohammadi">
   <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/evaluation-and-llm-as-judge.png">
-  <meta property="og:image:alt" content="Evaluation and LLM-as-judge — chapter 5 of Modern AI Engineering by Hadi Mohammadi">
+  <meta property="og:image:alt" content="Evaluation and LLM-as-judge, chapter 5 of Modern AI Engineering by Hadi Mohammadi">
   <meta property="article:published_time" content="2026-08-07T09:00:00+02:00">
   <meta property="article:author" content="Hadi Mohammadi">
   <meta property="article:section" content="Modern AI Engineering">
@@ -56,7 +56,7 @@
         "datePublished": "2026-08-07T09:00:00+02:00",
         "dateModified": "2026-08-07T09:00:00+02:00",
         "inLanguage": "en",
-        "wordCount": 709,
+        "wordCount": 672,
         "keywords": "LLM evaluation, LLM-as-judge, golden sets, inter-annotator agreement, judge bias, A/B testing",
         "isAccessibleForFree": true,
         "author": {
@@ -127,11 +127,11 @@
           <p>From cheapest to most trustworthy:</p>
 
           <ol>
-          <li><strong>Assertions</strong> — schema validity, required fields, length bounds, banned content. Free, run on every request in production, catch a shocking share of regressions.</li>
-          <li><strong>Golden sets</strong> — 50–500 curated input/expected pairs with programmatic scoring (exact match, semantic similarity, rubric points). Run on every prompt/model change; this is your regression suite.</li>
-          <li><strong>LLM-as-judge</strong> — a model grading outputs against a rubric. Scales human-like judgment; inherits model-like biases (below).</li>
-          <li><strong>Human evaluation</strong> — the calibration standard. Too expensive to run always; essential to run <em>periodically against the judge</em> (see agreement, below).</li>
-          <li><strong>Online experiments</strong> — A/B tests on real traffic with business metrics. The only level that measures what you actually care about; everything above exists to predict this level cheaply.</li>
+          <li><strong>Assertions</strong>: schema validity, required fields, length bounds, banned content. Free, run on every request in production, catch a shocking share of regressions.</li>
+          <li><strong>Golden sets</strong>: 50–500 curated input/expected pairs with programmatic scoring (exact match, semantic similarity, rubric points). Run on every prompt/model change; this is your regression suite.</li>
+          <li><strong>LLM-as-judge</strong>: a model grading outputs against a rubric. Scales human-like judgment; inherits model-like biases (below).</li>
+          <li><strong>Human evaluation</strong>: the calibration standard. Too expensive to run always; essential to run <em>periodically against the judge</em> (see agreement, below).</li>
+          <li><strong>Online experiments</strong>: A/B tests on real traffic with business metrics. The only level that measures what you actually care about; everything above exists to predict this level cheaply.</li>
           </ol>
 
           <p>The classic trap is living at level 3 without ever paying for level 4, which means you never learn whether your judge measures quality or measures <em>judge-pleasing</em>.</p>
@@ -142,15 +142,15 @@
 
           <ul>
           <li><strong>Rubric, not vibes.</strong> Enumerate the criteria and anchor each score with a short description; force the judge to quote evidence before scoring. Structured output (<a href="/blog/calling-llms-well/">chapter 1</a>) for the verdict.</li>
-          <li><strong>Known biases</strong> (<a href="https://arxiv.org/abs/2306.05685">Zheng et al., 2023</a>): position bias in pairwise comparison (swap order and average, or reject inconsistent pairs), verbosity bias (longer ≠ better — penalize explicitly), self-preference (a model grading its own family scores it higher — use a different family, or an ensemble of judge models).</li>
+          <li><strong>Known biases</strong> (<a href="https://arxiv.org/abs/2306.05685">Zheng et al., 2023</a>): position bias in pairwise comparison (swap order and average, or reject inconsistent pairs), verbosity bias (longer ≠ better; penalize explicitly), self-preference (a model grading its own family scores it higher; use a different family, or an ensemble of judge models).</li>
           <li><strong>Pointwise vs. pairwise.</strong> Pairwise is more sensitive for close comparisons (prompt A vs. prompt B); pointwise gives absolute tracking over time. Mature setups keep both: pairwise for decisions, pointwise for dashboards.</li>
           <li><strong>Measure judge–human agreement</strong> on a labeled slice (Cohen’s κ, or rank correlation for scores) <em>before</em> trusting it, and re-measure when the judged distribution shifts. An unvalidated judge is an unvalidated metric with confident formatting.</li>
-          <li><strong>Chain-of-thought before verdict</strong> improves judge reliability and, equally important, produces <em>auditable</em> explanations — in my <a href="/publications/evalmoraal/">EvalMORAAL</a> work (*SEM 2026) we benchmark 20 LLMs across 64 countries’ moral norms with exactly this pattern: reasoning first, score second, disagreement between judges surfaced rather than averaged away.</li>
+          <li><strong>Chain-of-thought before verdict</strong> improves judge reliability and, equally important, produces <em>auditable</em> explanations. In my <a href="/publications/evalmoraal/">EvalMORAAL</a> work (*SEM 2026) we benchmark 20 LLMs across 64 countries’ moral norms with exactly this pattern: reasoning first, score second, disagreement between judges surfaced rather than averaged away.</li>
           </ul>
 
           <h2 id="agreement-is-the-metric-behind-the-metric">Agreement is the metric behind the metric</h2>
 
-          <p>Whenever multiple judges (human or model) score the same items, report agreement, not just means. Two judges at 0.9 average score with κ = 0.2 are not measuring the same construct. Disagreement is signal: in cross-cultural evaluation we found model consensus varies systematically by topic — averaging would have hidden precisely the interesting part.</p>
+          <p>Whenever multiple judges (human or model) score the same items, report agreement, not just means. Two judges at 0.9 average score with κ = 0.2 are not measuring the same construct. Disagreement is signal: in cross-cultural evaluation we found model consensus varies systematically by topic; averaging would have hidden precisely the interesting part.</p>
 
           <h2 id="production-evaluation">Production evaluation</h2>
 
@@ -158,8 +158,8 @@
 
           <ul>
           <li><strong>Log everything</strong> (prompt hash, model version, retrieval IDs, judge scores) so any production complaint can be replayed into the offline suite. Yesterday’s incident is tomorrow’s golden-set row.</li>
-          <li><strong>Sample continuously</strong>: judge a few percent of live traffic asynchronously; alert on drift in score distributions, refusal rates, latency, and token counts — distribution shifts precede metric drops.</li>
-          <li><strong>A/B test the system, not the model.</strong> Prompt, retrieval, and model changes interact; ship them as versioned bundles behind an experiment. Offline gains that don’t survive an A/B are the norm in ranking systems — treat offline evals as a filter for what <em>earns</em> an experiment slot, not as a substitute for one.</li>
+          <li><strong>Sample continuously</strong>: judge a few percent of live traffic asynchronously; alert on drift in score distributions, refusal rates, latency, and token counts, because distribution shifts precede metric drops.</li>
+          <li><strong>A/B test the system, not the model.</strong> Prompt, retrieval, and model changes interact; ship them as versioned bundles behind an experiment. Offline gains that don’t survive an A/B are the norm in ranking systems. Treat offline evals as a filter for what <em>earns</em> an experiment slot, not as a substitute for one.</li>
           </ul>
 
           <h2 id="a-minimal-eval-harness">A minimal eval harness</h2>
@@ -178,7 +178,7 @@
         })
     return summarize(rows)   # means + CIs + regressions vs. last run, per slice</code></pre>
 
-          <p>Slice results (by language, input length, topic) — aggregate scores hide exactly the failures that hurt.</p>
+          <p>Slice results (by language, input length, topic); aggregate scores hide exactly the failures that hurt.</p>
 
           <h2 id="what-good-looks-like">What “good” looks like</h2>
 

@@ -14,7 +14,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Hadi Mohammadi">
   <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/the-labels-under-the-benchmark.png">
-  <meta property="og:image:alt" content="The labels under the benchmark — field notes by Hadi Mohammadi">
+  <meta property="og:image:alt" content="The labels under the benchmark, field notes by Hadi Mohammadi">
   <meta property="article:published_time" content="2026-08-22T09:00:00+02:00">
   <meta property="article:author" content="Hadi Mohammadi">
   <meta property="article:section" content="Field notes">
@@ -56,7 +56,7 @@
         "datePublished": "2026-08-22T09:00:00+02:00",
         "dateModified": "2026-08-22T09:00:00+02:00",
         "inLanguage": "en",
-        "wordCount": 631,
+        "wordCount": 628,
         "keywords": "annotation quality, inter-rater reliability, Krippendorff alpha, GoEmotions, crowdsourcing, raterkit",
         "isAccessibleForFree": true,
         "author": { "@id": "https://mohammadi.cv/#person" },
@@ -116,7 +116,7 @@
 
       <div class="post-body">
         <div class="post-wrap">
-          <p>Every benchmark score, every fine-tune, every &ldquo;our judge agrees with humans 92% of the time&rdquo; bottoms out in a pile of human labels. Those labels were produced by people who may have been careless, biased, tired by the end of the queue, or graded against gold that was quietly wrong. None of that is visible in the accuracy numbers computed on top &mdash; by the time you are reporting F1, the annotation layer has been flattened into ground truth and stops being questioned.</p>
+          <p>Every benchmark score, every fine-tune, every &ldquo;our judge agrees with humans 92% of the time&rdquo; bottoms out in a pile of human labels. Those labels were produced by people who may have been careless, biased, tired by the end of the queue, or graded against gold that was quietly wrong. None of that is visible in the accuracy numbers computed on top. By the time you are reporting F1, the annotation layer has been flattened into ground truth and stops being questioned.</p>
 
           <p>So I went looking underneath one of the well-known ones.</p>
 
@@ -126,7 +126,7 @@
 
           <h2 id="what-the-ratings-say">What the ratings say</h2>
 
-          <p><strong>27 of the 28 emotions sit below the 0.667 reliability floor</strong> &mdash; and that is the whole 95% confidence interval, not just the point estimate. Only <em>gratitude</em> clears it, at alpha 0.72. The median emotion manages 0.23. <em>Neutral</em>, the single largest and apparently most straightforward category, scores 0.26.</p>
+          <p><strong>27 of the 28 emotions sit below the 0.667 reliability floor</strong>, and that is the whole 95% confidence interval, not only the point estimate. Only <em>gratitude</em> clears it, at alpha 0.72. The median emotion manages 0.23. <em>Neutral</em>, the single largest and apparently most straightforward category, scores 0.26.</p>
 
           <p><strong>Rater quality spans a factor of three.</strong> Measured as each rater against the rest, across the 67 raters with 300 or more ratings, agreement runs from 0.11 to 0.36. Twenty of those 67 sit below 0.20. The noisiest raters agree with their co-raters at about a third of the rate the best ones do, and every one of them contributed to the pool equally.</p>
 
@@ -136,13 +136,13 @@
 
           <h2 id="what-this-is-not">What this is not</h2>
 
-          <p>None of this says GoEmotions is a scandal. Fine-grained emotion is genuinely hard &mdash; ask two people whether a comment expresses <em>annoyance</em> or <em>disapproval</em> and you should expect trouble. The released splits aggregate and filter these raw ratings precisely because the raw layer is noisy, and the dataset has been useful to a great many people, including me.</p>
+          <p>None of this says GoEmotions is a scandal. Fine-grained emotion is genuinely hard. Ask two people whether a comment expresses <em>annoyance</em> or <em>disapproval</em> and you should expect trouble. The released splits aggregate and filter these raw ratings precisely because the raw layer is noisy, and the dataset has been useful to a great many people, including me.</p>
 
           <p>What it says is narrower and, I think, more useful: the raw layer under a famous benchmark fails the standard reliability bar almost everywhere, measurably and reproducibly. If your model scores 0.61 on an emotion whose annotation reliability is 0.23, the interesting question is no longer whether 0.61 beats 0.59. There is a ceiling in the data, and it is lower than the numbers being compared.</p>
 
           <h2 id="the-general-point">The general point</h2>
 
-          <p>I do not think GoEmotions is unusual. I think it is unusually well documented &mdash; the raw ratings are public, which is exactly why this audit is possible at all. Most datasets do not release the annotation layer, and so the question cannot be asked.</p>
+          <p>I do not think GoEmotions is unusual. I think it is unusually well documented: the raw ratings are public, which is exactly why this audit is possible at all. Most datasets do not release the annotation layer, and so the question cannot be asked.</p>
 
           <p>The checks are not expensive: reliability per label with an interval, per-rater agreement against the rest, drift across the annotation queue, duplicate items across the train and test split, and how often the gold itself disagrees with a competent majority. Running them takes minutes. Not running them means the first time anyone learns the labels were shaky is when a model refuses to improve and nobody can say why.</p>
         </div>
