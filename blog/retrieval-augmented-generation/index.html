@@ -14,7 +14,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Hadi Mohammadi">
   <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/retrieval-augmented-generation.png">
-  <meta property="og:image:alt" content="Retrieval-augmented generation — chapter 2 of Modern AI Engineering by Hadi Mohammadi">
+  <meta property="og:image:alt" content="Retrieval-augmented generation, chapter 2 of Modern AI Engineering by Hadi Mohammadi">
   <meta property="article:published_time" content="2026-08-07T09:00:00+02:00">
   <meta property="article:author" content="Hadi Mohammadi">
   <meta property="article:section" content="Modern AI Engineering">
@@ -56,7 +56,7 @@
         "datePublished": "2026-08-07T09:00:00+02:00",
         "dateModified": "2026-08-07T09:00:00+02:00",
         "inLanguage": "en",
-        "wordCount": 636,
+        "wordCount": 607,
         "keywords": "RAG, retrieval-augmented generation, chunking, hybrid search, reranking, embeddings, evaluation",
         "isAccessibleForFree": true,
         "author": {
@@ -115,7 +115,7 @@
         <div class="post-wrap">
           <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#modern-ai-engineering">Modern AI Engineering</a></p>
           <h1>Retrieval-augmented generation</h1>
-          <p class="post-dek">RAG is a search problem wearing an LLM costume. Teams that treat it as prompt engineering plateau at demos; teams that treat it as information retrieval ship. The generation step is rarely the bottleneck — retrieval quality is.</p>
+          <p class="post-dek">RAG is a search problem wearing an LLM costume. Teams that treat it as prompt engineering plateau at demos; teams that treat it as information retrieval ship. The generation step is rarely the bottleneck; retrieval quality is.</p>
           <p class="post-byline"><span>Chapter 2 of 6</span><span>4 min read</span></p>
         </div>
       </header>
@@ -140,8 +140,8 @@
           <h2 id="embeddings-and-indexes">Embeddings and indexes</h2>
 
           <ul>
-          <li>Pick an embedding model off the <a href="https://huggingface.co/spaces/mteb/leaderboard">MTEB leaderboard</a> <em>for your language and domain</em>, then verify on your own retrieval eval — leaderboard rank does not survive contact with domain jargon.</li>
-          <li>Index choice is a scale decision: brute-force cosine is exact and fine to ~1M vectors (<a href="https://github.com/facebookresearch/faiss">FAISS</a> flat); beyond that, HNSW gives sub-linear search with high recall. Managed options (<a href="https://qdrant.tech/">Qdrant</a>, <a href="https://www.trychroma.com/">Chroma</a>, pgvector) trade control for operations you don’t have to own — pgvector is underrated when your data already lives in Postgres.</li>
+          <li>Pick an embedding model off the <a href="https://huggingface.co/spaces/mteb/leaderboard">MTEB leaderboard</a> <em>for your language and domain</em>, then verify on your own retrieval eval, because leaderboard rank does not survive contact with domain jargon.</li>
+          <li>Index choice is a scale decision: brute-force cosine is exact and fine to ~1M vectors (<a href="https://github.com/facebookresearch/faiss">FAISS</a> flat); beyond that, HNSW gives sub-linear search with high recall. Managed options (<a href="https://qdrant.tech/">Qdrant</a>, <a href="https://www.trychroma.com/">Chroma</a>, pgvector) trade control for operations you don’t have to own. pgvector is underrated when your data already lives in Postgres.</li>
           <li>Store the <em>text and metadata with the vector</em>. Re-fetching from a second system doubles your failure modes.</li>
           </ul>
 
@@ -161,28 +161,28 @@
           <ul>
           <li>Rewrite conversational queries into standalone ones (resolve “what about the second one?”).</li>
           <li>For complex questions, decompose into sub-queries and retrieve per sub-query.</li>
-          <li>HyDE (embedding a hypothetical answer instead of the question) helps when questions and documents live in different registers — worth an experiment, not a default.</li>
+          <li>HyDE (embedding a hypothetical answer instead of the question) helps when questions and documents live in different registers: worth an experiment, not a default.</li>
           </ul>
 
           <h2 id="context-assembly">Context assembly</h2>
 
           <ul>
-          <li>Order retrieved chunks by document and position, not by score — models read documents better than shuffled fragments.</li>
+          <li>Order retrieved chunks by document and position, not by score, since models read documents better than shuffled fragments.</li>
           <li>Deduplicate near-identical chunks; five copies of the same paragraph crowd out the answer.</li>
           <li>Demand citations: instruct the model to answer <em>only</em> from provided context and cite chunk IDs. Refusals (“not in the provided documents”) are a feature; measure them separately from wrong answers.</li>
           </ul>
 
           <h2 id="evaluating-rag-before-users-do">Evaluating RAG (before users do)</h2>
 
-          <p>Build a small gold set of (question, expected source, expected answer) triples — 50 is enough to start. Track:</p>
+          <p>Build a small gold set of (question, expected source, expected answer) triples; 50 is enough to start. Track:</p>
 
           <ul>
           <li><strong>Retrieval</strong>: recall@k of the expected source; MRR if order matters to your context window.</li>
-          <li><strong>Generation</strong>: faithfulness (is every claim supported by retrieved context?) and answer relevance — LLM-as-judge works here, with the caveats of <a href="/blog/evaluation-and-llm-as-judge/">chapter 5</a>.</li>
+          <li><strong>Generation</strong>: faithfulness (is every claim supported by retrieved context?) and answer relevance. LLM-as-judge works here, with the caveats of <a href="/blog/evaluation-and-llm-as-judge/">chapter 5</a>.</li>
           <li><strong>End-to-end</strong>: exact/semantic match against expected answers, plus refusal rate on unanswerable questions you deliberately include.</li>
           </ul>
 
-          <p>The original RAG formulation is <a href="https://arxiv.org/abs/2005.11401">Lewis et al., 2020</a>; modern practice diverges from the paper but the framing — parametric memory plus non-parametric memory — still clarifies design debates.</p>
+          <p>The original RAG formulation is <a href="https://arxiv.org/abs/2005.11401">Lewis et al., 2020</a>; modern practice diverges from the paper but the framing, parametric memory plus non-parametric memory, still clarifies design debates.</p>
 
           <h2 id="when-rag-is-the-wrong-tool">When RAG is the wrong tool</h2>
 

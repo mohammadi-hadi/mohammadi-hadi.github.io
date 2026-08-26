@@ -14,7 +14,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Hadi Mohammadi">
   <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/fine-tuning-and-preference-optimization.png">
-  <meta property="og:image:alt" content="Fine-tuning and preference optimization — chapter 4 of Modern AI Engineering by Hadi Mohammadi">
+  <meta property="og:image:alt" content="Fine-tuning and preference optimization, chapter 4 of Modern AI Engineering by Hadi Mohammadi">
   <meta property="article:published_time" content="2026-08-07T09:00:00+02:00">
   <meta property="article:author" content="Hadi Mohammadi">
   <meta property="article:section" content="Modern AI Engineering">
@@ -56,7 +56,7 @@
         "datePublished": "2026-08-07T09:00:00+02:00",
         "dateModified": "2026-08-07T09:00:00+02:00",
         "inLanguage": "en",
-        "wordCount": 620,
+        "wordCount": 586,
         "keywords": "fine-tuning, LoRA, QLoRA, DPO, GRPO, preference optimization, distillation",
         "isAccessibleForFree": true,
         "author": {
@@ -115,7 +115,7 @@
         <div class="post-wrap">
           <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#modern-ai-engineering">Modern AI Engineering</a></p>
           <h1>Fine-tuning and preference optimization</h1>
-          <p class="post-dek">Fine-tuning is the most over-reached-for tool in applied LLM work — and, on the right problem, the highest-leverage one. This chapter is a decision guide first and mechanics second, because choosing wrongly costs months.</p>
+          <p class="post-dek">Fine-tuning is the most over-reached-for tool in applied LLM work, and on the right problem the highest-leverage one. This chapter is a decision guide first and mechanics second, because choosing wrongly costs months.</p>
           <p class="post-byline"><span>Chapter 4 of 6</span><span>4 min read</span></p>
         </div>
       </header>
@@ -128,11 +128,11 @@
           <table>
           <thead><tr><th scope="col">Your problem</th><th scope="col">Reach for</th></tr></thead>
           <tbody>
-          <tr><td>Model lacks <em>knowledge</em> (your docs, your data)</td><td>RAG — knowledge changes; weights shouldn’t have to</td></tr>
+          <tr><td>Model lacks <em>knowledge</em> (your docs, your data)</td><td>RAG: knowledge changes; weights shouldn’t have to</td></tr>
           <tr><td>Model lacks <em>format/tone/procedure</em> consistency</td><td>Few-shot prompting first; fine-tune when examples stop helping</td></tr>
           <tr><td>Model is right but too expensive/slow at scale</td><td>Fine-tune a small model on the big model’s validated outputs (distillation)</td></tr>
           <tr><td>Model must make <em>judgment calls</em> matching your policy</td><td>Preference optimization on human-labeled comparisons</td></tr>
-          <tr><td>Task is narrow, high-volume, latency-critical</td><td>Fine-tuned small model — this is the sweet spot</td></tr>
+          <tr><td>Task is narrow, high-volume, latency-critical</td><td>Fine-tuned small model: this is the sweet spot</td></tr>
           <tr><td>You have &lt; ~500 good examples</td><td>You don’t have a fine-tuning problem yet</td></tr>
           </tbody>
           </table>
@@ -142,7 +142,7 @@
 
           <h2 id="supervised-fine-tuning-with-lora">Supervised fine-tuning with LoRA</h2>
 
-          <p>Full fine-tuning updates all weights; <a href="https://arxiv.org/abs/2106.09685">LoRA</a> freezes them and learns low-rank adapters — a few percent of parameters — which makes single-GPU adaptation of 7–8B models routine. <a href="https://arxiv.org/abs/2305.14314">QLoRA</a> adds 4-bit quantization of the frozen base, pushing memory down another ~4×.</p>
+          <p>Full fine-tuning updates all weights; <a href="https://arxiv.org/abs/2106.09685">LoRA</a> freezes them and learns low-rank adapters, a few percent of parameters, which makes single-GPU adaptation of 7–8B models routine. <a href="https://arxiv.org/abs/2305.14314">QLoRA</a> adds 4-bit quantization of the frozen base, pushing memory down another ~4×.</p>
 
           <pre><code class="language-python">from peft import LoraConfig, get_peft_model
 
@@ -158,7 +158,7 @@ model = get_peft_model(base_model, config)   # prints ~0.5–2% trainable params
           <ol>
           <li><strong>Data quality.</strong> A hundred meticulously correct, diverse examples beat ten thousand scraped ones. Deduplicate near-identical items; they overweight one behavior.</li>
           <li><strong>Data format = production format.</strong> Train on exactly the prompt template you serve. Template drift is the classic silent regression.</li>
-          <li><strong>Held-out eval from day one</strong> (<a href="/blog/evaluation-and-llm-as-judge/">chapter 5</a>) — including a <em>general-capability</em> probe, because narrow SFT can degrade everything else the model does.</li>
+          <li><strong>Held-out eval from day one</strong> (<a href="/blog/evaluation-and-llm-as-judge/">chapter 5</a>): including a <em>general-capability</em> probe, because narrow SFT can degrade everything else the model does.</li>
           <li>Hyperparameters, distantly: r ∈ {8,16,32}, LR ~1e-4–2e-4 for adapters, 1–3 epochs. More epochs mostly buy memorization.</li>
           </ol>
 
@@ -166,14 +166,14 @@ model = get_peft_model(base_model, config)   # prints ~0.5–2% trainable params
 
           <h2 id="preference-optimization-dpo-and-grpo">Preference optimization: DPO and GRPO</h2>
 
-          <p>SFT teaches “output things like these.” Preference methods teach “prefer this over that” — which is the natural label when correctness is graded, not binary (helpfulness, tone, policy compliance, ranking quality).</p>
+          <p>SFT teaches “output things like these.” Preference methods teach “prefer this over that”, which is the natural label when correctness is graded, not binary (helpfulness, tone, policy compliance, ranking quality).</p>
 
           <ul>
-          <li><strong>DPO</strong> (<a href="https://arxiv.org/abs/2305.18290">Rafailov et al., 2023</a>) trains directly on (prompt, chosen, rejected) pairs — no reward model, no rollout infrastructure. It is the pragmatic default for preference data, stable and cheap. Watch its known failure mode: pushing down the rejected response can drag down fluency wholesale if pairs are low-contrast; filter pairs where the margin is meaningful.</li>
-          <li><strong>GRPO</strong> (<a href="https://arxiv.org/abs/2402.03300">Shao et al., 2024</a>) is an online policy-gradient method that normalizes rewards within a <em>group</em> of sampled responses per prompt, dispensing with a value model. It shines when you have a <strong>programmatic reward</strong> (verifiable answers, unit tests, format validators, a ranking metric) rather than pairwise human labels — the reasoning-model recipe.</li>
+          <li><strong>DPO</strong> (<a href="https://arxiv.org/abs/2305.18290">Rafailov et al., 2023</a>) trains directly on (prompt, chosen, rejected) pairs: no reward model, no rollout infrastructure. It is the pragmatic default for preference data, stable and cheap. Watch its known failure mode: pushing down the rejected response can drag down fluency wholesale if pairs are low-contrast; filter pairs where the margin is meaningful.</li>
+          <li><strong>GRPO</strong> (<a href="https://arxiv.org/abs/2402.03300">Shao et al., 2024</a>) is an online policy-gradient method that normalizes rewards within a <em>group</em> of sampled responses per prompt, dispensing with a value model. It shines when you have a <strong>programmatic reward</strong> (verifiable answers, unit tests, format validators, a ranking metric) rather than pairwise human labels: the reasoning-model recipe.</li>
           </ul>
 
-          <p>Rule of thumb from my own experiments (my <a href="https://github.com/mohammadi-hadi/MAP-PO">MAP-PO</a> work applies SFT/DPO/GRPO to sexism-detection agents): SFT establishes the format floor, preference optimization buys the last points of judgment quality — and the reward/pair definition matters more than the algorithm choice.</p>
+          <p>Rule of thumb from my own experiments (my <a href="https://github.com/mohammadi-hadi/MAP-PO">MAP-PO</a> work applies SFT/DPO/GRPO to sexism-detection agents): SFT establishes the format floor, preference optimization buys the last points of judgment quality, and the reward/pair definition matters more than the algorithm choice.</p>
 
           <h2 id="distillation-briefly">Distillation, briefly</h2>
 
@@ -184,8 +184,8 @@ model = get_peft_model(base_model, config)   # prints ~0.5–2% trainable params
           <ul>
           <li>Base model license permits your use; adapter weights stored and versioned with their training-data snapshot.</li>
           <li>Eval delta documented: target task ↑, general probes flat, safety probes flat.</li>
-          <li>Rollback path: adapters make this easy — serve base + adapter, and removal is a config change.</li>
-          <li>Re-train trigger defined (data drift, template change, base-model deprecation) — a fine-tune is a <em>product with a lifecycle</em>, not a one-off artifact.</li>
+          <li>Rollback path: adapters make this easy: serve base + adapter, and removal is a config change.</li>
+          <li>Re-train trigger defined (data drift, template change, base-model deprecation): a fine-tune is a <em>product with a lifecycle</em>, not a one-off artifact.</li>
           </ul>
         </div>
       </div>
