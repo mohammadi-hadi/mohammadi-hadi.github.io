@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>What a benchmark can actually tell apart — Hadi Mohammadi</title>
+  <meta name="description" content="HumanEval has 164 problems, which means it cannot resolve a gap under 9 points. Of five benchmarks people quote weekly, only MMLU comes within reach of a one-point claim. The floor for each, and the one-minute calculation to run before building an eval.">
+  <link rel="canonical" href="https://mohammadi.cv/blog/what-a-benchmark-can-tell-apart/">
+  <meta name="author" content="Hadi Mohammadi">
+  <meta property="og:title" content="What a benchmark can actually tell apart">
+  <meta property="og:description" content="HumanEval has 164 problems, which means it cannot resolve a gap under 9 points. Of five benchmarks people quote weekly, only MMLU comes within reach of a one-point claim. The floor for each, and the one-minute calculation to run before building an eval.">
+  <meta property="og:url" content="https://mohammadi.cv/blog/what-a-benchmark-can-tell-apart/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hadi Mohammadi">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/what-a-benchmark-can-tell-apart.png">
+  <meta property="og:image:alt" content="What a benchmark can actually tell apart — field notes by Hadi Mohammadi">
+  <meta property="article:published_time" content="2026-08-26T09:00:00+02:00">
+  <meta property="article:author" content="Hadi Mohammadi">
+  <meta property="article:section" content="Field notes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What a benchmark can actually tell apart">
+  <meta name="twitter:description" content="HumanEval has 164 problems, which means it cannot resolve a gap under 9 points. Of five benchmarks people quote weekly, only MMLU comes within reach of a one-point claim. The floor for each, and the one-minute calculation to run before building an eval.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/what-a-benchmark-can-tell-apart.png">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammadi.cv/#person",
+        "name": "Hadi Mohammadi",
+        "url": "https://mohammadi.cv",
+        "identifier": "https://orcid.org/0000-0003-0860-9200"
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://mohammadi.cv/blog/#blog",
+        "name": "Hadi Mohammadi — Blog",
+        "url": "https://mohammadi.cv/blog/"
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://mohammadi.cv/blog/what-a-benchmark-can-tell-apart/#post",
+        "url": "https://mohammadi.cv/blog/what-a-benchmark-can-tell-apart/",
+        "mainEntityOfPage": "https://mohammadi.cv/blog/what-a-benchmark-can-tell-apart/",
+        "headline": "What a benchmark can actually tell apart",
+        "description": "HumanEval has 164 problems, which means it cannot resolve a gap under 9 points. Of five benchmarks people quote weekly, only MMLU comes within reach of a one-point claim. The floor for each, and the one-minute calculation to run before building an eval.",
+        "datePublished": "2026-08-26T09:00:00+02:00",
+        "dateModified": "2026-08-26T09:00:00+02:00",
+        "inLanguage": "en",
+        "wordCount": 773,
+        "keywords": "LLM evaluation, statistical power, sample size, HumanEval, GPQA, benchmark, abeval",
+        "isAccessibleForFree": true,
+        "author": { "@id": "https://mohammadi.cv/#person" },
+        "publisher": { "@id": "https://mohammadi.cv/#person" },
+        "isPartOf": { "@id": "https://mohammadi.cv/blog/#blog" },
+        "position": 0
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/software/">Software</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/" aria-current="true">Blog</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/software/">Software</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/" aria-current="true">Blog</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="post">
+      <header class="post-head">
+        <div class="post-wrap">
+          <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#field-notes">Field notes</a></p>
+          <h1>What a benchmark can actually tell apart</h1>
+          <p class="post-dek">HumanEval catches a true three-point gap about one time in seven. The floor for five familiar benchmarks, computed rather than assumed.</p>
+          <p class="post-byline"><span><time datetime="2026-08-26">26 August 2026</time></span><span>4 min read</span></p>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <div class="post-wrap">
+          <p>A leaderboard row says 78.2 against 75.4 and everyone reads it as a result. Whether it is one depends on something the row never shows you: how many items the benchmark has. If the row is an average over ten benchmarks it has more items behind it than any single column, so what follows is about the columns.</p>
+
+          <p>Every eval score is an estimate from a sample. Run two systems on the same items and the gap between them is part real difference and part luck of the draw. The item count puts a floor under how small a real difference you can reliably notice through that noise. By the floor I mean the smallest true gap the benchmark catches four times in five; below it, a real difference is more likely to be missed than found.</p>
+
+          <p>So I went and worked out the floor for five benchmarks people quote every week.</p>
+
+          <figure class="post-figure">
+            <img src="/assets/img/blog/eval-size.png" alt="Bar chart of the smallest score gap five benchmarks can resolve. HumanEval with 164 items needs 9.3 points, GPQA Diamond with 198 items needs 8.4, SWE-bench Verified with 500 needs 5.3, GSM8K with 1,319 needs 3.3, and MMLU with 14,042 needs 1.0. A dashed line marks three points." width="1200" height="640" loading="lazy">
+            <figcaption>A true gap shorter than the bar is one the benchmark misses more often than it finds.</figcaption>
+          </figure>
+
+          <h2 id="the-floors">The floors</h2>
+
+          <table class="post-table">
+            <thead><tr><th>Benchmark</th><th>Items</th><th>Smallest gap it can resolve</th></tr></thead>
+            <tbody>
+              <tr><td>HumanEval</td><td>164</td><td>9.3 points</td></tr>
+              <tr><td>GPQA Diamond</td><td>198</td><td>8.4 points</td></tr>
+              <tr><td>SWE-bench Verified</td><td>500</td><td>5.3 points</td></tr>
+              <tr><td>GSM8K (test)</td><td>1,319</td><td>3.3 points</td></tr>
+              <tr><td>MMLU (test)</td><td>14,042</td><td>1.0 points</td></tr>
+            </tbody>
+          </table>
+
+          <p>Only MMLU gets near a one-point floor, and it lands almost exactly on it. For the other four, a true three-point gap, which most of us would read off a table and treat as settled, is one they catch well under half the time.</p>
+
+          <p>HumanEval is the one that stops me. It has 164 problems. A twenty-point gap on it was always real, and the early comparisons had gaps like that. The floor only bites the close calls, and the calls got closer as the benchmark saturated. For two models a true three points apart today, the ordering still comes out right about four times in five, but the benchmark can certify it about one time in seven. You will usually see the right winner and almost never be able to prove it.</p>
+
+          <h2 id="assumptions">What is behind the numbers</h2>
+
+          <p>These come out of a paired power calculation: 80% power, 95% confidence, both systems scored on the same items, a baseline around 75%, and an item-level correlation of 0.5 between the two runs. One thing that does not help: sampling many completions per problem. That averages out decoding noise, but 164 problems are still 164 draws from the space of problems, and the floor counts problems. Every assumption matters, so here is what happens when you move them.</p>
+
+          <p>A higher baseline shrinks the floor, because scores near the ceiling vary less. At 90% instead of 75% the floors become 6.1 for HumanEval, 5.6 for GPQA Diamond, 3.5 for SWE-bench Verified, 2.2 for GSM8K and 0.7 for MMLU. Three of the five are still above three points.</p>
+
+          <p>Correlation is the other lever, and it is the reason paired designs are worth the trouble. When two systems succeed and fail on the same items, and they usually do, the shared difficulty cancels out and you need far fewer items than two independent runs would need. I used 0.5, a middling assumption for two variants of one system. More alike than that and your floor is lower; two genuinely different models can sit nearer 0.3, where HumanEval's floor grows to 11 points.</p>
+
+          <p>One thing this is not: a claim that any particular published gap is wrong. A floor tells you what the benchmark could have detected, not what happened. A gap under the floor might still be real. You just cannot tell from that benchmark, which is a different and more awkward position than being wrong.</p>
+
+          <h2 id="what-to-do">Doing the arithmetic first</h2>
+
+          <p>The useful version of this is not auditing other people's numbers. It is running the calculation before you spend on inference, which takes about a minute.</p>
+
+          <pre><code>pip install abeval</code></pre>
+
+          <p>Ask how many items you need before you build the set:</p>
+
+          <pre><code>abeval power --baseline 0.75 --delta 0.03</code></pre>
+
+          <p>That prints the item count for the difference you care about, plus what you could detect with 100, 200, 500 and 1,000 items. For a three-point difference at a 75% baseline the answer is 1,568 paired items, which is more than most eval sets anyone builds in an afternoon.</p>
+
+          <p>Then, once you have two runs scored on the same items:</p>
+
+          <pre><code>abeval compare run_a.jsonl run_b.jsonl</code></pre>
+
+          <p>It gives the difference with a confidence interval and a sign-flip permutation test, which needs no normality assumption, and it drops any item that is not in both files rather than quietly comparing different sets.</p>
+
+          <h2 id="small-is-not-bad">Small is not the same as bad</h2>
+
+          <p>None of this makes small benchmarks worthless. GPQA Diamond is small because graduate-level questions written and validated by domain experts are expensive, and that expense is the whole point of it. HumanEval has been useful to a very large number of people at 164 problems.</p>
+
+          <p>The problem is not the size. It is reading a two-point gap off a 198-item benchmark as though it settled an argument, when the same benchmark would show a two-point gap between a system and itself often enough to be unremarkable.</p>
+
+          <p>The approach here follows Miller&rsquo;s <a href="https://arxiv.org/abs/2411.00640">Adding Error Bars to Evals</a>, which makes the case at length: report standard errors, use paired designs, plan the sample size. abeval is that advice with a command line attached, so the arithmetic happens before the claim rather than after somebody questions it.</p>
+        </div>
+      </div>
+
+      <footer class="post-foot">
+        <div class="post-wrap">
+          <p class="post-source">The floors come from <a href="https://github.com/mohammadi-hadi/mohammadi-hadi.github.io/blob/main/scripts/fig_evalsize.py">scripts/fig_evalsize.py</a>, which calls <a href="https://github.com/mohammadi-hadi/abeval">abeval</a>&rsquo;s own power functions; the item counts are the released test-split sizes (MMLU from the HuggingFace cais/mmlu release). abeval is MIT licensed and archived at <a href="https://doi.org/10.5281/zenodo.21807421">doi.org/10.5281/zenodo.21807421</a>. Corrections are welcome.</p>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a> &middot; <a href="https://github.com/mohammadi-hadi">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a> &middot; <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

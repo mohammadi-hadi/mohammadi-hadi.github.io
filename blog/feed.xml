@@ -6,8 +6,16 @@
     <description>Field notes on building and evaluating production LLM systems, and open guides for people studying AI and data science.</description>
     <language>en</language>
     <copyright>CC BY-SA 4.0, Hadi Mohammadi</copyright>
-    <lastBuildDate>Sat, 22 Aug 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://mohammadi.cv/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>What a benchmark can actually tell apart</title>
+      <link>https://mohammadi.cv/blog/what-a-benchmark-can-tell-apart/</link>
+      <guid isPermaLink="true">https://mohammadi.cv/blog/what-a-benchmark-can-tell-apart/</guid>
+      <pubDate>Wed, 26 Aug 2026 09:00:00 +0200</pubDate>
+      <description>HumanEval has 164 problems, which means it cannot resolve a gap under 9 points. Of five benchmarks people quote weekly, only MMLU comes within reach of a one-point claim. The floor for each, and the one-minute calculation to run before building an eval.</description>
+      <category>Field notes</category>
+    </item>
     <item>
       <title>How much text a watermark needs before it shows up</title>
       <link>https://mohammadi.cv/blog/how-much-text-a-watermark-needs/</link>
