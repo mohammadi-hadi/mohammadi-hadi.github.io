@@ -1,0 +1,152 @@
+[
+ {
+  "title": "Contents",
+  "level": 0,
+  "page": 8
+ },
+ {
+  "title": "List of Figures",
+  "level": 0,
+  "page": 12
+ },
+ {
+  "title": "List of Tables",
+  "level": 0,
+  "page": 16
+ },
+ {
+  "title": "List of Acronyms",
+  "level": 0,
+  "page": 20
+ },
+ {
+  "title": "I Opening Remarks",
+  "level": 0,
+  "page": 22
+ },
+ {
+  "title": "1 Introduction",
+  "level": 1,
+  "page": 24
+ },
+ {
+  "title": "II Explainability Methods and Applications",
+  "level": 0,
+  "page": 38
+ },
+ {
+  "title": "2 A Survey of Explainable NLP Applications",
+  "level": 1,
+  "page": 40
+ },
+ {
+  "title": "3 A Transparent Pipeline for Sexism Detection",
+  "level": 1,
+  "page": 76
+ },
+ {
+  "title": "4 Explainability-Based Token Replacement on LLM-Generated Text",
+  "level": 1,
+  "page": 104
+ },
+ {
+  "title": "III Human-Centered AI and Moral Alignment",
+  "level": 0,
+  "page": 130
+ },
+ {
+  "title": "5 Reliability of Explainable LLM Annotations under Demographic Bias",
+  "level": 1,
+  "page": 132
+ },
+ {
+  "title": "6 Cultural Variations in LLM Moral Judgments",
+  "level": 1,
+  "page": 150
+ },
+ {
+  "title": "7 EvalMORAAL: Interpretable Moral Alignment in LLMs",
+  "level": 1,
+  "page": 168
+ },
+ {
+  "title": "IV Closing Remarks",
+  "level": 0,
+  "page": 186
+ },
+ {
+  "title": "8 Discussion and Conclusion",
+  "level": 1,
+  "page": 188
+ },
+ {
+  "title": "V References & Appendices",
+  "level": 0,
+  "page": 191
+ },
+ {
+  "title": "References",
+  "level": 1,
+  "page": 194
+ },
+ {
+  "title": "Appendix A Supplementary Materials for the Survey of Explainable NLP Applications",
+  "level": 1,
+  "page": 230
+ },
+ {
+  "title": "Appendix B Supplementary Materials for the Transparent Sexism Detection Pipeline",
+  "level": 1,
+  "page": 236
+ },
+ {
+  "title": "Appendix C Supplementary Materials for Explainability-Based Token Replacement",
+  "level": 1,
+  "page": 240
+ },
+ {
+  "title": "Appendix D Supplementary Materials for LLM Annotation Reliability",
+  "level": 1,
+  "page": 244
+ },
+ {
+  "title": "Appendix E Supplementary Materials for Cultural Variations in LLM Moral Judgments",
+  "level": 1,
+  "page": 252
+ },
+ {
+  "title": "Appendix F Supplementary Materials for the EvalMORAAL Framework",
+  "level": 1,
+  "page": 256
+ },
+ {
+  "title": "Nederlandse samenvatting",
+  "level": 1,
+  "page": 266
+ },
+ {
+  "title": "Summary",
+  "level": 1,
+  "page": 268
+ },
+ {
+  "title": "Curriculum Vitae",
+  "level": 1,
+  "page": 270
+ },
+ {
+  "title": "List of Publications",
+  "level": 1,
+  "page": 272
+ },
+ {
+  "title": "Acknowledgments",
+  "level": 1,
+  "page": 274
+ },
+ {
+  "title": "Colophon",
+  "level": 1,
+  "page": 278
+ }
+]
