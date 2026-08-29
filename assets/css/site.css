@@ -1149,9 +1149,25 @@ h3[id] {
   }
 }
 
+/* Phones: two 131px columns turned twenty certificates into twenty white
+   squares over 2,000px of scroll. A swipe row makes each one big enough to
+   read and gives the section back to the page. */
 @media (max-width: 620px) {
   .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    padding-bottom: var(--space-3);
+  }
+
+  .gallery-item {
+    flex: 0 0 62%;
+    scroll-snap-align: start;
+  }
+
+  .gallery-item img {
+    aspect-ratio: 3 / 4;
   }
 }
 
