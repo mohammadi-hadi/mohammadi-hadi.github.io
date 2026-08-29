@@ -53,8 +53,8 @@
     a:hover { color: var(--text-secondary); }
 
     .nav-bar {
-      position: fixed;
-      top: 0;
+      position: sticky;
+      top: 65px;
       left: 0;
       right: 0;
       background: var(--bg-white);
@@ -88,7 +88,7 @@
     .nav-links a:hover { color: var(--text-black); }
 
     .paper-header {
-      padding: 6rem 2rem 3rem;
+      padding: 3rem 2rem 3rem;
       max-width: 900px;
       margin: 0 auto;
       border-bottom: 1px solid var(--border);
@@ -422,7 +422,7 @@
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .paper-header { padding: 5rem 1.5rem 2rem; }
+      .paper-header { padding: 2rem 1.5rem 2rem; }
       .paper-title { font-size: 1.75rem; }
       .content { padding: 0 1.5rem; }
       .framework-grid, .results-grid, .model-comparison { grid-template-columns: 1fr; }
