@@ -504,7 +504,8 @@ ol {
 }
 
 @media (max-width: 820px) {
-  .hero-grid {
+  .hero-grid,
+  .hero-ink .hero-grid {
     grid-template-columns: 1fr;
     gap: var(--space-5);
   }
