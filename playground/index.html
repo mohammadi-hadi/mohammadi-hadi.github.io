@@ -103,6 +103,7 @@
       justify-content: space-between; margin-top: .3rem; }
     .heat { font-family: var(--serif); font-size: 1.18rem; line-height: 2.05; margin: .8rem 0 .3rem; }
     .heat .tk { border-radius: 4px; padding: .1rem .15rem; cursor: help; }
+    .topwords { font-size: .84rem; color: var(--ink-2); margin: .1rem 0 .4rem; line-height: 1.7; }
     .legend { font-size: .76rem; color: var(--ink-3); margin-bottom: .4rem; }
     .legend .sw { display: inline-block; width: .75rem; height: .75rem; border-radius: 3px;
       vertical-align: -2px; margin: 0 .25rem 0 .7rem; }
@@ -433,6 +434,18 @@
       el.className = 'verdict ' + (p >= 0.5 ? 'pos' : 'neg');
       if (pin) pin.style.left = (p * 100).toFixed(1) + '%';
     }
+    // The colour band carries a number in its title attribute, and a phone has
+    // no hover, so the strongest words get written out under the sentence too.
+    function topLine(pairs, digits) {
+      const top = pairs
+        .filter(o => o.t && typeof o.v === 'number' && o.v !== 0)
+        .sort((a, b) => Math.abs(b.v) - Math.abs(a.v))
+        .slice(0, 5);
+      if (!top.length) return '';
+      return '<p class="topwords">Strongest words: ' + top.map(o =>
+        '<b>' + escapeHTML(o.t) + '</b> ' + (o.v > 0 ? '+' : '-') + Math.abs(o.v).toFixed(digits)
+      ).join(', ') + '</p>';
+    }
     function heatHTML(text, weightOf, maxAbs) {
       const cap = maxAbs || 1;
       let html = '';
@@ -638,7 +651,8 @@
         const lin = score(text);
         const maxAbsL = Math.max(0.5, ...lin.toks.map(t => Math.abs(w(t))));
         $('duelL').innerHTML = '<span class="verdict ' + (lin.p >= 0.5 ? 'pos' : 'neg') + '">' + fmtVerdict(lin.p) +
-          '</span><p class="heat" style="font-size:1.02rem">' + heatHTML(text, w, maxAbsL) + '</p>';
+          '</span><p class="heat" style="font-size:1.02rem">' + heatHTML(text, w, maxAbsL) + '</p>' +
+          topLine(lin.toks.map(t => ({ t: t, v: w(t) })), 2);
         st.textContent = 'Occlusion probe: rerunning DistilBERT once per word...';
         const pFull = await pPos(text);
         const cs = chunks(text);
@@ -665,7 +679,8 @@
             '" title="removing this moves P(positive) by ' + (v > 0 ? '-' : '+') + Math.abs(v).toFixed(3) + '">' + escapeHTML(c.text) + '</span>';
         }).join('');
         $('duelR').innerHTML = '<span class="verdict ' + (pFull >= 0.5 ? 'pos' : 'neg') + '">' + fmtVerdict(pFull) +
-          '</span><p class="heat" style="font-size:1.02rem">' + heatT + '</p>';
+          '</span><p class="heat" style="font-size:1.02rem">' + heatT + '</p>' +
+          topLine(cs.map((c, i) => ({ t: c.isTok ? c.text.trim() : '', v: occl.get(i) })), 3);
         // agreement: top-3 overlap on shared token positions
         const linByPos = []; let k = 0;
         for (const c of cs) if (c.isTok) { linByPos.push({ pos: k, v: Math.abs(w(c.lower)) }); k++; }
