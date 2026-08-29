@@ -551,6 +551,19 @@ h3[id] {
   gap: 0.4rem;
 }
 
+/* Phones: the row is the same shape, the targets are just tall enough to hit. */
+@media (max-width: 720px) {
+  .profile-links {
+    gap: 0.25rem 0;
+    margin-left: -0.5rem;
+  }
+
+  .profile-links a {
+    padding: 0 0.5rem;
+    min-height: 42px;
+  }
+}
+
 .profile-links a:hover {
   color: var(--accent);
 }
@@ -616,6 +629,13 @@ h3[id] {
   font-weight: 500;
   font-size: 0.9rem;
   color: var(--accent);
+}
+
+/* These are how you leave a section, so on a phone they get a thumb-sized box. */
+@media (max-width: 720px) {
+  .link-arrow {
+    min-height: 40px;
+  }
 }
 
 .link-arrow::after {
@@ -704,6 +724,16 @@ h3[id] {
 .pub-links a {
   font-size: 0.85rem;
   font-weight: 500;
+}
+
+@media (max-width: 720px) {
+  .pub-links {
+    gap: 0 var(--space-4);
+  }
+
+  .pub-links a {
+    padding: 0.55rem 0;
+  }
 }
 
 /* ---------- Timeline (experience / education / news) ---------- */
@@ -953,9 +983,26 @@ h3[id] {
   padding-top: 0.2rem;
 }
 
+/* Phones: stack the label over the value so long values (the email address,
+   the ORCID) get the full width instead of breaking mid-word. */
 @media (max-width: 480px) {
+  .fact-list {
+    overflow-wrap: break-word;
+  }
+
+  .fact-list li {
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-3) 0;
+  }
+
   .fact-list .fact-key {
-    min-width: 84px;
+    min-width: 0;
+    padding-top: 0;
+  }
+
+  .fact-list li a {
+    padding: 0.25rem 0;
   }
 }
 
@@ -1667,6 +1714,16 @@ h3[id] {
 .pkg-links a {
   font-size: 0.82rem;
   font-weight: 500;
+}
+
+@media (max-width: 720px) {
+  .pkg-links {
+    gap: 0 var(--space-4);
+  }
+
+  .pkg-links a {
+    padding: 0.55rem 0;
+  }
 }
 
 @media (max-width: 720px) {
