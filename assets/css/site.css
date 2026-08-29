@@ -108,6 +108,15 @@ ol {
   color: #fff;
 }
 
+/* The header is sticky, so anything a #link jumps to has to clear it. */
+main[id],
+section[id],
+h1[id],
+h2[id],
+h3[id] {
+  scroll-margin-top: 81px;
+}
+
 /* ---------- Layout shells ---------- */
 .container {
   max-width: var(--container);
@@ -273,7 +282,8 @@ ol {
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--ink-2);
-    padding: 0.5rem 0.25rem;
+    padding: 0.7rem 0.6rem;
+    margin-right: -0.6rem;
   }
 
   .nav-toggle summary::-webkit-details-marker {
@@ -288,6 +298,8 @@ ol {
     background: var(--paper);
     border-bottom: 1px solid var(--rule);
     padding: var(--space-3) var(--space-4) var(--space-4);
+    max-height: calc(100dvh - 100%);
+    overflow-y: auto;
   }
 
   .nav-toggle .site-nav ul {
@@ -300,6 +312,10 @@ ol {
     padding: 0.6rem 0;
     font-size: 1rem;
     border-bottom: 1px solid var(--rule);
+  }
+
+  .nav-toggle .site-nav a[aria-current] {
+    border-bottom-color: var(--accent);
   }
 
   .site-nav:not(.nav-toggle .site-nav) {
