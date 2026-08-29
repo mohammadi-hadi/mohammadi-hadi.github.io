@@ -129,8 +129,9 @@
 
           <h2 id="the-floors">The floors</h2>
 
-          <table class="post-table">
-            <thead><tr><th>Benchmark</th><th>Items</th><th>Smallest gap it can resolve</th></tr></thead>
+          <div class="post-table">
+          <table>
+            <thead><tr><th scope="col">Benchmark</th><th scope="col">Items</th><th scope="col">Smallest gap it can resolve</th></tr></thead>
             <tbody>
               <tr><td>HumanEval</td><td>164</td><td>9.3 points</td></tr>
               <tr><td>GPQA Diamond</td><td>198</td><td>8.4 points</td></tr>
@@ -139,6 +140,7 @@
               <tr><td>MMLU (test)</td><td>14,042</td><td>1.0 points</td></tr>
             </tbody>
           </table>
+          </div>
 
           <p>Only MMLU gets near a one-point floor, and it lands almost exactly on it. For the other four, a true three-point gap, which most of us would read off a table and treat as settled, is one they catch well under half the time.</p>
 
