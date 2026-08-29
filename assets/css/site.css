@@ -446,7 +446,7 @@ h3[id] {
   flex-basis: 100%;
   font-family: var(--mono);
   font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.62);
   margin: 0;
 }
 
@@ -463,6 +463,16 @@ h3[id] {
   .hero-ink .hero-stats {
     gap: var(--space-4) var(--space-6);
     margin-top: var(--space-5);
+  }
+
+  /* Captions carry sentences, not labels, so they get a readable size on a phone. */
+  .hero-ink .hero-portrait figcaption,
+  .hero-ink .hero-stats-caption {
+    font-size: 0.8rem;
+  }
+
+  .hero-ink .hero-portrait figcaption {
+    margin-top: var(--space-3);
   }
 }
 
@@ -1530,7 +1540,7 @@ h3[id] {
 
 .post-body figcaption {
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   color: var(--ink-3);
 }
 
