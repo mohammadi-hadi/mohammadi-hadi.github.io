@@ -1,15 +1,47 @@
 {
-  "fetched_at": "2026-08-28T17:40:27+00:00",
+  "fetched_at": "2026-08-29T11:52:31+00:00",
   "github": {
     "public_repos": 51,
     "total_stars": 7,
     "repos": {
+      "judgepanel": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Estimate LLM-judge accuracy without gold labels: Dawid-Skene EM, agreement statistics, bootstrap uncertainty",
+        "language": "Python",
+        "pushed_at": "2026-08-29T10:04:19Z",
+        "url": "https://github.com/mohammadi-hadi/judgepanel"
+      },
+      "trajectory-judge": {
+        "stars": 0,
+        "forks": 0,
+        "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.",
+        "language": "Python",
+        "pushed_at": "2026-08-29T10:04:17Z",
+        "url": "https://github.com/mohammadi-hadi/trajectory-judge"
+      },
+      "abeval": {
+        "stars": 0,
+        "forks": 0,
+        "description": "A/B-test statistics for LLM evals: error bars, paired significance tests, sample-size planning",
+        "language": "Python",
+        "pushed_at": "2026-08-29T09:07:44Z",
+        "url": "https://github.com/mohammadi-hadi/abeval"
+      },
+      "abkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Sample-ratio, peeking, multiple-testing and winner's-curse checks for experiment readouts — across 4,873 Upworthy tests the median significant winner overstates its lift by 1.27x.",
+        "language": "Python",
+        "pushed_at": "2026-08-29T09:07:43Z",
+        "url": "https://github.com/mohammadi-hadi/abkit"
+      },
       "mohammadi-hadi.github.io": {
         "stars": 0,
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-08-28T14:26:00Z",
+        "pushed_at": "2026-08-29T08:56:30Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "mohammadi-hadi": {
@@ -92,14 +124,6 @@
         "pushed_at": "2026-08-08T08:10:09Z",
         "url": "https://github.com/mohammadi-hadi/opening-the-black-box"
       },
-      "ml-summer-schools-europe": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Practical guide to machine learning summer schools in Europe: the schools, deadlines, funding, and how to make the week count — from someone who attended four",
-        "language": null,
-        "pushed_at": "2026-08-08T08:10:07Z",
-        "url": "https://github.com/mohammadi-hadi/ml-summer-schools-europe"
-      },
       "ai-masters-netherlands": {
         "stars": 0,
         "forks": 0,
@@ -107,6 +131,14 @@
         "language": null,
         "pushed_at": "2026-08-08T08:10:07Z",
         "url": "https://github.com/mohammadi-hadi/ai-masters-netherlands"
+      },
+      "ml-summer-schools-europe": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Practical guide to machine learning summer schools in Europe: the schools, deadlines, funding, and how to make the week count — from someone who attended four",
+        "language": null,
+        "pushed_at": "2026-08-08T08:10:07Z",
+        "url": "https://github.com/mohammadi-hadi/ml-summer-schools-europe"
       },
       "ml-learning-paths": {
         "stars": 0,
@@ -139,22 +171,6 @@
         "language": "Python",
         "pushed_at": "2026-08-08T08:10:03Z",
         "url": "https://github.com/mohammadi-hadi/ml-foundations"
-      },
-      "trajectory-judge": {
-        "stars": 0,
-        "forks": 0,
-        "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.",
-        "language": "Python",
-        "pushed_at": "2026-08-08T08:10:02Z",
-        "url": "https://github.com/mohammadi-hadi/trajectory-judge"
-      },
-      "judgepanel": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Estimate LLM-judge accuracy without gold labels: Dawid-Skene EM, agreement statistics, bootstrap uncertainty",
-        "language": "Python",
-        "pushed_at": "2026-08-08T08:10:01Z",
-        "url": "https://github.com/mohammadi-hadi/judgepanel"
       },
       "raterkit": {
         "stars": 0,
@@ -219,22 +235,6 @@
         "language": "Python",
         "pushed_at": "2026-08-08T08:09:55Z",
         "url": "https://github.com/mohammadi-hadi/arenakit"
-      },
-      "abkit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Sample-ratio, peeking, multiple-testing and winner's-curse checks for experiment readouts — across 4,873 Upworthy tests the median significant winner overstates its lift by 1.27x.",
-        "language": "Python",
-        "pushed_at": "2026-08-08T08:09:54Z",
-        "url": "https://github.com/mohammadi-hadi/abkit"
-      },
-      "abeval": {
-        "stars": 0,
-        "forks": 0,
-        "description": "A/B-test statistics for LLM evals: error bars, paired significance tests, sample-size planning",
-        "language": "Python",
-        "pushed_at": "2026-08-08T08:09:53Z",
-        "url": "https://github.com/mohammadi-hadi/abeval"
       },
       ".github": {
         "stars": 0,
