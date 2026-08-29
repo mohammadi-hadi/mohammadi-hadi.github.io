@@ -337,7 +337,8 @@
       img.src = assetURL(pageSrc(i));
       img.alt = label(i);
       img.decoding = "async";
-      if (!ENC && i >= EAGER && i < COVER_BACK) img.loading = "lazy";
+      // The inside front cover is half a megabyte and nobody sees it first.
+      if (!ENC && (i === INSIDE_FRONT || i >= EAGER)) img.loading = "lazy";
       page.appendChild(img);
       bookEl.appendChild(page);
     }
