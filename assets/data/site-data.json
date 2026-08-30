@@ -1,9 +1,33 @@
 {
-  "fetched_at": "2026-08-29T11:52:31+00:00",
+  "fetched_at": "2026-08-30T10:42:31+00:00",
   "github": {
-    "public_repos": 51,
+    "public_repos": 52,
     "total_stars": 7,
     "repos": {
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Personal academic website — mohammadi.cv",
+        "language": "HTML",
+        "pushed_at": "2026-08-30T10:00:08Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
+      "hands-on-xai-labs": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-08-30T08:47:24Z",
+        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
+      },
+      "grpo_dpo_comparison": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Code and per-example evaluation data for a controlled comparison of GRPO and DPO fine-tuning on chain-of-thought faithfulness (Qwen2.5 1.5B-14B, GSM8K).",
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-08-29T14:36:07Z",
+        "url": "https://github.com/mohammadi-hadi/grpo_dpo_comparison"
+      },
       "judgepanel": {
         "stars": 0,
         "forks": 0,
@@ -35,14 +59,6 @@
         "language": "Python",
         "pushed_at": "2026-08-29T09:07:43Z",
         "url": "https://github.com/mohammadi-hadi/abkit"
-      },
-      "mohammadi-hadi.github.io": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Personal academic website — mohammadi.cv",
-        "language": "HTML",
-        "pushed_at": "2026-08-29T08:56:30Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "mohammadi-hadi": {
         "stars": 0,
@@ -83,14 +99,6 @@
         "language": "TeX",
         "pushed_at": "2026-08-12T07:42:53Z",
         "url": "https://github.com/mohammadi-hadi/xnlp-llm-survey"
-      },
-      "hands-on-xai-labs": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
-        "language": "Jupyter Notebook",
-        "pushed_at": "2026-08-11T15:55:06Z",
-        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
       },
       "spark-search-ranking": {
         "stars": 0,
