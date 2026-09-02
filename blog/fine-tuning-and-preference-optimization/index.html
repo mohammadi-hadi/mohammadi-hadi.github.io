@@ -156,7 +156,7 @@ model = get_peft_model(base_model, config)   # prints ~0.5–2% trainable params
           <p>What actually moves the needle, in order:</p>
 
           <ol>
-          <li><strong>Data quality.</strong> A hundred meticulously correct, diverse examples beat ten thousand scraped ones. Deduplicate near-identical items; they overweight one behavior.</li>
+          <li><strong>Data quality.</strong> A hundred hand-checked, varied examples beat ten thousand scraped ones. Deduplicate near-identical items; they overweight one behavior.</li>
           <li><strong>Data format = production format.</strong> Train on exactly the prompt template you serve. Template drift is the classic silent regression.</li>
           <li><strong>Held-out eval from day one</strong> (<a href="/blog/evaluation-and-llm-as-judge/">chapter 5</a>): including a <em>general-capability</em> probe, because narrow SFT can degrade everything else the model does.</li>
           <li>Hyperparameters, distantly: r ∈ {8,16,32}, LR ~1e-4–2e-4 for adapters, 1–3 epochs. More epochs mostly buy memorization.</li>
