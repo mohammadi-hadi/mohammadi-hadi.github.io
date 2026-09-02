@@ -110,22 +110,22 @@
         <div class="post-wrap">
           <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#field-notes">Field notes</a></p>
           <h1>What 106,134 arena votes can and cannot order</h1>
-          <p class="post-dek">A leaderboard is a ranked list, and the ranked list is what everyone reads. On the public LMArena sample, the votes separate exactly one neighbouring pair out of 54.</p>
+          <p class="post-dek">A leaderboard is a ranked list, and the ranked list is what everyone reads. On the public LMArena sample, the votes separate one neighbouring pair out of 54.</p>
           <p class="post-byline"><span><time datetime="2026-01-01">DRAFT — unpublished</time></span><span>6 min read</span></p>
         </div>
       </header>
 
       <div class="post-body">
         <div class="post-wrap">
-          <p>Arena leaderboards turn pairwise votes into a ranked list, and the ranked list is what everyone reads. But a rank is a claim, and the votes behind it support some of those claims and not others. Two models a hair apart may be genuinely tied. A board can look decisive because a handful of people voted a great many times. So I took the public <a href="https://huggingface.co/datasets/lmarena-ai/arena-human-preference-100k">LMArena preference sample</a> (106,134 human votes over 55 models), fitted the same Bradley&ndash;Terry model the boards use, and asked which parts of the published order the evidence actually carries.</p>
+          <p>Arena leaderboards turn pairwise votes into a ranked list, and the ranked list is what everyone reads. But a rank is a claim, and the votes behind it support some of those claims and not others. Two models a hair apart may be tied. A board can look decisive because a handful of people voted a great many times. So I took the public <a href="https://huggingface.co/datasets/lmarena-ai/arena-human-preference-100k">LMArena preference sample</a> (106,134 human votes over 55 models), fitted the same Bradley&ndash;Terry model the boards use, and asked which parts of the published order the evidence actually carries.</p>
 
           <h2 id="the-order">One separated pair out of 54</h2>
 
-          <p>Rank 1 versus rank 2, rank 2 versus rank 3, and so on: 54 neighbouring comparisons. Judged one at a time, five of them are separated. Controlled for together, which is the right way to read 54 simultaneous claims, <strong>exactly one is</strong>. Only the top model is distinguishable from its neighbour. The other 54 models form a single block that these votes cannot order.</p>
+          <p>Rank 1 versus rank 2, rank 2 versus rank 3, and so on: 54 neighbouring comparisons. Judged one at a time, five of them are separated. Controlled for together, the right way to read 54 simultaneous claims, <strong>only one is</strong>. Only the top model is distinguishable from its neighbour. The other 54 models form a single block that these votes cannot order.</p>
 
-          <p>That is not the same as saying the published order is wrong. It says these votes do not establish it, which is a different and more boring claim, and the one the data supports.</p>
+          <p>That is not the same as saying the published order is wrong. These votes do not establish it, a more boring claim and the one the data supports.</p>
 
-          <p><strong>Closing the median unresolved gap would take roughly 8.9 million votes</strong> at this design, against the 106 thousand collected. For most neighbouring pairs, the honest reading is that they are tied and will stay tied. <strong>The median model’s 95% rank interval spans 7 ranks</strong>; <code>gemma-2-9b-it-simpo</code>, with 468 battles, spans 16.</p>
+          <p><strong>Closing the median unresolved gap would take roughly 8.9 million votes</strong> at this design, against the 106 thousand collected. For most neighbouring pairs, the right reading is that they are tied and will stay tied. <strong>The median model’s 95% rank interval spans 7 ranks</strong>; <code>gemma-2-9b-it-simpo</code>, with 468 battles, spans 16.</p>
 
           <h2 id="position">Position matters, and it does not matter</h2>
 
@@ -140,7 +140,7 @@
           <p>An audit that only ever finds problems is not an audit, so the negative results matter as much:</p>
 
           <ul>
-          <li><strong>Voter clustering widens standard errors by 1.03&times;.</strong> The busiest 1% of the 49,382 voters cast 16% of all votes, so the concern is well founded. On this data, though, the usual battle-level bootstrap is close enough. That is a finding, not an assumption.</li>
+          <li><strong>Voter clustering widens standard errors by 1.03&times;.</strong> The busiest 1% of the 49,382 voters cast 16% of all votes, so the concern is well founded. On this data, though, the usual battle-level bootstrap is close enough. That was checked, and it could have come out the other way.</li>
           <li><strong>38.4% of votes are ties</strong>, and the ranking survives both dropping them and modelling them properly (Rao&ndash;Kupper theta 2.35) instead of splitting them down the middle.</li>
           <li><strong>Preference cycles land about where the model expects.</strong> 3.5% of the 14,164 decided triads are cyclic, against 4.3% predicted. One strength number per model is enough to describe who beats whom here; there is no rock-paper-scissors structure being flattened.</li>
           </ul>
@@ -151,15 +151,15 @@
 
           <p>GPT-4 changes its mind on <strong>15.8% of pairs when the two answers swap places</strong>. That figure is not estimated: the split records those cases explicitly. It matches the human majority on <strong>71.3%</strong> of the 1,612 comparisons where the humans reached one. Both numbers look disqualifying.</p>
 
-          <p>And then it produces <strong>exactly the human leaderboard</strong>. Kendall tau between the two orders is +1.00.</p>
+          <p>Then it produces <strong>the human leaderboard, rank for rank</strong>. Kendall tau between the two orders is +1.00.</p>
 
           <p>Judge noise that looks fatal one comparison at a time can average out of a six-model ranking. That cuts in both directions, and it is worth being careful about which direction you invoke it in: it is a reason not to condemn a leaderboard because its judge is noisy, and equally a reason not to trust a leaderboard because its judge agrees with people on average. The aggregate and the individual verdict are answering different questions.</p>
 
-          <p>The judge’s verdicts are also correlated within question: resampling questions rather than verdicts widens its intervals by 1.48&times;. The human votes, spread over 65 annotators, show no annotator carrying the board.</p>
+          <p>The judge’s verdicts are also correlated within question: resampling at the question level widens its intervals by 1.48&times;. The human votes, spread over 65 annotators, show no annotator carrying the board.</p>
 
           <h2 id="reading-a-board">How I read a leaderboard now</h2>
 
-          <p>Mostly by asking what it would take to move. If the gap between two models is smaller than the interval, they are tied, and the ordering between them is a rendering artefact of having to print a list in some order. That is not a criticism of arenas, which are doing something genuinely hard and doing it in public. It is a criticism of reading a ranked list as though ranks were the measurement.</p>
+          <p>Mostly by asking what it would take to move. If the gap between two models is smaller than the interval, they are tied, and the ordering between them is a rendering artefact of having to print a list in some order. That is not a criticism of arenas, which are doing something hard and doing it in public. It is a criticism of reading a ranked list as though ranks were the measurement.</p>
         </div>
       </div>
 

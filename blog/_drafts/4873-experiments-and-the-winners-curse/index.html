@@ -125,7 +125,7 @@
 
           <p><strong>15% of the tests fail the sample-ratio check</strong> at p &lt; 0.001, against the platform’s documented equal-allocation design. A sample-ratio mismatch means the traffic did not arrive in the proportions the experiment intended, and once that is true you no longer know what the two groups differ by. The effect estimate is measuring the assignment as much as the treatment.</p>
 
-          <p>The obvious explanation is packages added mid-test, which would make the imbalance an artefact of bookkeeping rather than a problem. It does not hold: the rate is, if anything, higher among tests whose variants all launched together. Those readouts carried an exposure bias nobody could have quantified from the summary table.</p>
+          <p>The obvious explanation is packages added mid-test, which would make the imbalance a bookkeeping artefact and nothing worse. It does not hold: the rate is, if anything, higher among tests whose variants all launched together. Those readouts carried an exposure bias nobody could have quantified from the summary table.</p>
 
           <h2 id="multiplicity">Most significant winners do not survive being counted</h2>
 
@@ -135,7 +135,7 @@
 
           <h2 id="curse">Even the real winners are overstated</h2>
 
-          <p>The median significant winning lift is 0.85 CTR points, at a power of 0.62. At that power, <strong>the estimate is expected to overstate its true effect by 1.27&times;</strong>, even when the winner is genuinely better.</p>
+          <p>The median significant winning lift is 0.85 CTR points, at a power of 0.62. At that power, <strong>the estimate is expected to overstate its true effect by 1.27&times;</strong>, even when the winner really is better.</p>
 
           <p>This is the winner’s curse, and it is not a bias in anyone’s analysis; it is a selection effect baked into the act of choosing. An underpowered experiment only reaches significance when noise happens to push in the same direction as the effect, so conditioning on &ldquo;it was significant&rdquo; conditions on a favourable draw. The winner is real and the number attached to it is too big, and the forecast built on that number will miss.</p>
 

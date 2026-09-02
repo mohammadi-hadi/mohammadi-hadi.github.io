@@ -109,7 +109,7 @@
         <div class="post-wrap">
           <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#field-notes">Field notes</a></p>
           <h1>What a benchmark can actually tell apart</h1>
-          <p class="post-dek">HumanEval catches a true three-point gap about one time in seven. The floor for five familiar benchmarks, computed rather than assumed.</p>
+          <p class="post-dek">HumanEval catches a true three-point gap about one time in seven. The floor for five familiar benchmarks, worked out from their item counts.</p>
           <p class="post-byline"><span><time datetime="2026-08-26">26 August 2026</time></span><span>4 min read</span></p>
         </div>
       </header>
@@ -142,7 +142,7 @@
           </table>
           </div>
 
-          <p>Only MMLU gets near a one-point floor, and it lands almost exactly on it. For the other four, a true three-point gap, which most of us would read off a table and treat as settled, is one they catch well under half the time.</p>
+          <p>Only MMLU gets near a one-point floor, and it lands on it at 1.0 points. For the other four, a true three-point gap, which most of us would read off a table and treat as settled, is one they catch well under half the time.</p>
 
           <p>HumanEval is the one that stops me. It has 164 problems. A twenty-point gap on it was always real, and the early comparisons had gaps like that. The floor only bites the close calls, and the calls got closer as the benchmark saturated. For two models a true three points apart today, the ordering still comes out right about four times in five, but the benchmark can certify it about one time in seven. You will usually see the right winner and almost never be able to prove it.</p>
 
@@ -152,13 +152,13 @@
 
           <p>A higher baseline shrinks the floor, because scores near the ceiling vary less. At 90% instead of 75% the floors become 6.1 for HumanEval, 5.6 for GPQA Diamond, 3.5 for SWE-bench Verified, 2.2 for GSM8K and 0.7 for MMLU. Three of the five are still above three points.</p>
 
-          <p>Correlation is the other lever, and it is the reason paired designs are worth the trouble. When two systems succeed and fail on the same items, and they usually do, the shared difficulty cancels out and you need far fewer items than two independent runs would need. I used 0.5, a middling assumption for two variants of one system. More alike than that and your floor is lower; two genuinely different models can sit nearer 0.3, where HumanEval's floor grows to 11 points.</p>
+          <p>Correlation is the other lever, and it is the reason paired designs are worth the trouble. When two systems succeed and fail on the same items, and they usually do, the shared difficulty cancels out and you need far fewer items than two independent runs would need. I used 0.5, a middling assumption for two variants of one system. More alike than that and your floor is lower; two models from different families can sit nearer 0.3, where HumanEval's floor grows to 11 points.</p>
 
-          <p>One thing this is not: a claim that any particular published gap is wrong. A floor tells you what the benchmark could have detected, not what happened. A gap under the floor might still be real. You just cannot tell from that benchmark, which is a different and more awkward position than being wrong.</p>
+          <p>One thing this is not: a claim that any particular published gap is wrong. A floor tells you what the benchmark could have detected. It says nothing about what happened, and a gap under the floor might still be real. You just cannot tell from that benchmark, a different and more awkward position than being wrong.</p>
 
           <h2 id="what-to-do">Doing the arithmetic first</h2>
 
-          <p>The useful version of this is not auditing other people's numbers. It is running the calculation before you spend on inference, which takes about a minute.</p>
+          <p>The useful version of this is running the calculation before you spend on inference, which takes about a minute.</p>
 
           <pre><code>pip install abeval</code></pre>
 
@@ -172,15 +172,15 @@
 
           <pre><code>abeval compare run_a.jsonl run_b.jsonl</code></pre>
 
-          <p>It gives the difference with a confidence interval and a sign-flip permutation test, which needs no normality assumption, and it drops any item that is not in both files rather than quietly comparing different sets.</p>
+          <p>It gives the difference with a confidence interval and a sign-flip permutation test, which needs no normality assumption, and it drops any item that is not in both files, so it never compares different sets by accident.</p>
 
           <h2 id="small-is-not-bad">Small is not the same as bad</h2>
 
-          <p>None of this makes small benchmarks worthless. GPQA Diamond is small because graduate-level questions written and validated by domain experts are expensive, and that expense is the whole point of it. HumanEval has been useful to a very large number of people at 164 problems.</p>
+          <p>None of this makes small benchmarks worthless. GPQA Diamond is small because graduate-level questions written and validated by domain experts are expensive, and that expense is what it buys. HumanEval has been useful to a very large number of people at 164 problems.</p>
 
-          <p>The problem is not the size. It is reading a two-point gap off a 198-item benchmark as though it settled an argument, when the same benchmark would show a two-point gap between a system and itself often enough to be unremarkable.</p>
+          <p>The problem is reading a two-point gap off a 198-item benchmark as though it settled an argument, when the same benchmark would show a two-point gap between a system and itself often enough to be unremarkable.</p>
 
-          <p>The approach here follows Miller&rsquo;s <a href="https://arxiv.org/abs/2411.00640">Adding Error Bars to Evals</a>, which makes the case at length: report standard errors, use paired designs, plan the sample size. abeval is that advice with a command line attached, so the arithmetic happens before the claim rather than after somebody questions it.</p>
+          <p>The approach here follows Miller&rsquo;s <a href="https://arxiv.org/abs/2411.00640">Adding Error Bars to Evals</a>, which makes the case at length: report standard errors, use paired designs, plan the sample size. abeval is that advice with a command line attached, so the arithmetic happens before the claim goes out.</p>
         </div>
       </div>
 
