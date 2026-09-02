@@ -116,11 +116,11 @@
 
       <div class="post-body">
         <div class="post-wrap">
-          <p>Anthropic started watermarking Claude&rsquo;s text output this month, using a version of the <a href="https://www.nature.com/articles/s41586-024-08025-4">SynthID-Text</a> scheme published by Google DeepMind. Article 50 of the EU AI Act became enforceable on 2 August, which is what put a date on it. The mark does not change which words are allowed; it changes the randomness used to pick among them.</p>
+          <p>Anthropic started watermarking Claude&rsquo;s text output this month, using a version of the <a href="https://www.nature.com/articles/s41586-024-08025-4">SynthID-Text</a> scheme published by Google DeepMind. Article 50 of the EU AI Act became enforceable on 2 August, and that put a date on it. The mark does not change which words are allowed; it changes the randomness used to pick among them.</p>
 
           <p>A simulation of the idea has been going round, and it asks the right question: how much text do you need before the mark is visible to a detector? Its answer is a couple of hundred words, and its author was careful to label the model a simplification. It is a simplification in a specific way, and following that through is what the rest of this is about.</p>
 
-<p>Two things before the arithmetic. The scheme in the simulation is not the scheme Anthropic shipped, and I come back to what that costs at the end. And the arithmetic itself holds: I worked it through and got the same answer.</p>
+<p>Before the arithmetic: the scheme in the simulation is not the scheme Anthropic shipped, and I come back to what that costs at the end. The arithmetic itself holds. I worked it through and got the same answer.</p>
 
           <h2 id="the-arithmetic">The arithmetic</h2>
 
@@ -128,15 +128,15 @@
 
           <p>That is a proportion test. With a per-token bias of 0.55 against a null of 0.5, the number of scored tokens needed for a one-sided 95% call is <em>n</em> = (1.645 &times; &radic;0.25 / 0.05)&sup2; &asymp; 271. At roughly 1.3 tokens per English word, that is about <strong>208 words</strong>. The claim holds.</p>
 
-<p>It is worth being precise about which 95% that is. At 271 tokens the expected score of a watermarked text sits exactly on the threshold, so the detector catches it about half the time. Wanting to catch 95% of watermarked texts, rather than half of them, costs roughly four times as much: about 1,077 scored tokens, or 828 words. That factor sits on top of everything below.</p>
+<p>Which 95% that is matters. At 271 tokens the expected score of a watermarked text sits on the threshold, so the detector catches it about half the time. Catching 95% of watermarked texts costs roughly four times as much as catching half of them: about 1,077 scored tokens, or 828 words. That factor sits on top of everything below.</p>
 
           <h2 id="the-assumption">The assumption underneath it</h2>
 
           <p>Every token in that calculation is a coin you can weight. Prose is not built that way. A watermark can only bias a choice where the model actually had one, and much of any real paragraph is close to determined: the second half of a name, the preposition a verb demands, the back end of a phrase the sentence has already committed to. Those positions carry nothing.</p>
 
-          <p>Anthropic say as much in their own announcement. The watermark works poorly on &ldquo;small samples, where there are fewer word choices&rdquo;, and it is &ldquo;sparser on factual passages&rdquo;. Entropy is the binding constraint, not length.</p>
+          <p>Anthropic say as much in their own announcement. The watermark works poorly on &ldquo;small samples, where there are fewer word choices&rdquo;, and it is &ldquo;sparser on factual passages&rdquo;. Entropy is the binding constraint, and length matters only through it.</p>
 
-          <p>So the honest version of the chart has a second axis: what share of positions carry any signal at all.</p>
+          <p>So the chart needs a second axis: what share of positions carry any signal at all.</p>
 
           <figure class="post-figure">
             <img src="/assets/img/blog/watermark-length.png" alt="A curve showing words needed for a 95% call against the share of tokens where the model had a real choice. At 100% it is 208 words, at a third it is 624 words, and at a sixth it is 1,249 words." width="1200" height="640" loading="lazy">
@@ -145,7 +145,7 @@
 
           <p>If a third of positions carry signal, 208 words becomes 624. At a sixth, 1,249. Nothing about the watermark changed. Only the amount of text you need before the total separates from chance.</p>
 
-          <h2 id="which-tokens">Which tokens carry the signal is the whole question</h2>
+          <h2 id="which-tokens">Which tokens carry the signal</h2>
 
           <p>This is where it meets something we published. In <a href="/publications/ai-text-undetectability/">Explainability-Based Token Replacement on LLM-Generated Text</a> we trained an ensemble to separate AI-generated from human-written text in English and Dutch, across news, tweets and reviews. Then we used SHAP and LIME to find the tokens the detector was leaning on, and replaced only those.</p>
 
@@ -153,7 +153,7 @@
 
           <p>The surgical version did the most damage. Under LIME-guided nearest-neighbour replacement, at BLEU 0.84, XGBoost&rsquo;s F1 fell from 0.81 to <strong>0.25</strong> and it flipped on up to 65% of samples. BERT-base fell to 0.56, DistilBERT to 0.62.</p>
 
-          <p>Our own ensemble was not spared. Its F1 went from 0.83 to <strong>0.64</strong> under the same edit, a nineteen point drop and its worst result in the study. It was steadier elsewhere, holding 0.82 under part-of-speech-constrained replacement and 0.83 under GPT rewriting, where XGBoost sat at 0.57. But the edit aimed most precisely at what the detectors were reading took the ensemble down with them.</p>
+          <p>Our own ensemble was not spared. Its F1 went from 0.83 to <strong>0.64</strong> under the same edit, a nineteen point drop and its worst result in the study. It was steadier elsewhere, holding 0.82 under part-of-speech-constrained replacement and 0.83 under GPT rewriting, where XGBoost sat at 0.57. The edit aimed most directly at what the detectors were reading took the ensemble down with them.</p>
 
           <h2 id="why-it-transfers">Why that transfers</h2>
 
@@ -161,11 +161,11 @@
 
           <p>Our result was about the other kind. Once you know which positions the decision rests on, you do not need a complete rewrite. You need to touch the positions that matter, and you can leave the rest of the sentence alone.</p>
 
-          <p>The difference between a classifier and a watermark is how big that set is. For a classifier, the informative tokens are a small learned collection of tells, which is why a handful of substitutions moved XGBoost&rsquo;s verdict on most of our samples. For a watermark, the informative positions are every place the model had a real choice, scattered through the text and defined by the sampler rather than by style.</p>
+          <p>The difference between a classifier and a watermark is how big that set is. For a classifier, the informative tokens are a small learned collection of tells, so a handful of substitutions moved XGBoost&rsquo;s verdict on most of our samples. For a watermark, the informative positions are every place the model had a real choice, scattered through the text and defined by the sampler rather than by style.</p>
 
-<p>Which of those positions were favoured is keyed and cannot be read off the page. The positions themselves are another matter: run the text through any open model and the high-entropy slots light up, which is our SHAP and LIME move with the explainer swapped out. So the watermark is sturdier on edit budget rather than on secrecy. The curve above is the price list read backwards, and the second thing I want measured below is the experiment that would settle what the edit actually costs.</p>
+<p>Which of those positions were favoured is keyed and cannot be read off the page. The positions themselves are another matter: run the text through any open model and the high-entropy slots light up, our SHAP and LIME move with the explainer swapped out. What protects the watermark is the size of the edit budget, since the positions themselves are no secret. The curve above is the price list read backwards, and the second thing I want measured below is the experiment that would settle what the edit actually costs.</p>
 
-          <p>Our ensemble is not really an instance of the same principle, and it is worth saying so. Several transformers reading the same sentence are not several independent signals. They were trained on overlapping data and lean on overlapping tells, so one well chosen substitution moves more than one of them at once, which is why the surgical edit pulled the ensemble down nineteen points along with everything else. A watermark aggregates differently. Its evidence sits in positions that do not overlap, and an editor has to pay for each one separately. Redundancy across models did not buy us much. Redundancy across positions is a different bet.</p>
+          <p>Our ensemble is not really an instance of the same principle. Several transformers reading the same sentence do not give several independent signals: they were trained on overlapping data and lean on overlapping tells, so one well chosen substitution moves more than one of them at once. That is why the surgical edit pulled the ensemble down nineteen points along with everything else. A watermark aggregates differently. Its evidence sits in positions that do not overlap, and an editor has to pay for each one separately. Redundancy across models did not buy us much. Redundancy across positions is a different bet.</p>
 
           <h2 id="what-id-want">What I would want measured</h2>
 
@@ -174,14 +174,14 @@
           <ul>
             <li>What share of positions actually score in ordinary writing, by genre. The gap between a product description and an essay is the gap between the two ends of that curve.</li>
             <li>How the score decays when only high-entropy positions are edited, against how it decays under the same number of random edits.</li>
-            <li>How much of the score translation removes. Anthropic already say a complete rewrite defeats the mark, and translation is a complete rewrite that keeps the meaning, so the number worth having is the cost rather than the fact.</li>
+            <li>How much of the score translation removes. Anthropic already say a complete rewrite defeats the mark, and translation is a complete rewrite that keeps the meaning, so the number to measure is the cost.</li>
           </ul>
 
           <h2 id="caveat">The caveat that matters</h2>
 
           <p>My arithmetic describes the simplified green-list model, because that is what the simulation implements and what a closed form can speak to. SynthID-Text is not a green list, and its detector is not a proportion test on a favoured subset. The shape of the argument survives the difference, because entropy is the constraint either way and Anthropic name it themselves. The exact thresholds on my chart are not Claude&rsquo;s thresholds, and I would not read them as though they were.</p>
 
-          <p>What I take from this is narrower than the argument around it. A watermark is not a lie detector for text. It is a statistical claim with a sample size requirement, and the sample it needs is measured in choices rather than in words, which means the same detector is close to free on an essay and close to useless on a product description. No amount of policy language changes that, and any rule written as a word count will land in the wrong place.</p>
+          <p>What I take from this is narrower than the argument around it. A watermark is a statistical claim with a sample size requirement, and the sample it needs is measured in choices, so the same detector is close to free on an essay and close to useless on a product description. No amount of policy language changes that, and any rule written as a word count will land in the wrong place.</p>
         </div>
       </div>
 
