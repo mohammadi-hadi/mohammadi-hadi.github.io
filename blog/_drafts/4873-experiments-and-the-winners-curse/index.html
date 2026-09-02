@@ -15,7 +15,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Hadi Mohammadi">
   <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/4873-experiments-and-the-winners-curse.png">
-  <meta property="og:image:alt" content="4,873 experiments and the winner's curse — field notes by Hadi Mohammadi">
+  <meta property="og:image:alt" content="4,873 experiments and the winner’s curse, field notes by Hadi Mohammadi">
   <meta property="article:published_time" content="2026-01-01T09:00:00+01:00">
   <meta property="article:author" content="Hadi Mohammadi">
   <meta property="article:section" content="Field notes">
@@ -110,7 +110,7 @@
         <div class="post-wrap">
           <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#field-notes">Field notes</a></p>
           <h1>4,873 experiments and the winner’s curse</h1>
-          <p class="post-dek">Upworthy ran thousands of headline A/B tests and published the raw data. Nearly nearly one in six fails a basic sanity check on its own traffic split.</p>
+          <p class="post-dek">Upworthy ran thousands of headline A/B tests and published the raw data. Nearly one in six fails a basic sanity check on its own traffic split.</p>
           <p class="post-byline"><span><time datetime="2026-01-01">DRAFT — unpublished</time></span><span>5 min read</span></p>
         </div>
       </header>
@@ -121,7 +121,7 @@
 
           <p>Those are easy failure modes to demonstrate on synthetic data, where I can implant a defect and check that the probe finds it. The harder question is how often they happen in the wild. The <a href="https://doi.org/10.1038/s41597-021-00934-7">Upworthy Research Archive</a> makes that answerable: 4,873 real headline A/B tests run between 2013 and 2015, with the per-variant data published.</p>
 
-          <h2 id="srm">Nearly nearly one in six fails on its traffic split</h2>
+          <h2 id="srm">Nearly one in six fails on its traffic split</h2>
 
           <p><strong>15% of the tests fail the sample-ratio check</strong> at p &lt; 0.001, against the platform’s documented equal-allocation design. A sample-ratio mismatch means the traffic did not arrive in the proportions the experiment intended, and once that is true you no longer know what the two groups differ by. The effect estimate is measuring the assignment as much as the treatment.</p>
 
@@ -129,13 +129,13 @@
 
           <h2 id="multiplicity">Most significant winners do not survive being counted</h2>
 
-          <p><strong>10.9% of the tests have a &ldquo;significant winner&rdquo;</strong> &mdash; the best headline beats the runner-up at raw p &lt; 0.05. Apply Benjamini&ndash;Hochberg across all 4,873 winner comparisons, and <strong>2.7% remain</strong>.</p>
+          <p><strong>10.9% of the tests have a &ldquo;significant winner&rdquo;</strong>: the best headline beats the runner-up at raw p &lt; 0.05. Apply Benjamini&ndash;Hochberg across all 4,873 winner comparisons, and <strong>2.7% remain</strong>.</p>
 
           <p>This is the part that generalises furthest beyond headline testing, because almost nobody runs one experiment. Teams run a programme of them, and each readout is judged on its own p-value as though it were the only test in the world. Across a portfolio, three quarters of the raw winners in this archive do not survive being counted alongside the other 4,872 comparisons, and under a pure null you would still expect roughly 244 of them, about half, to clear p &lt; 0.05 by luck alone.</p>
 
           <h2 id="curse">Even the real winners are overstated</h2>
 
-          <p>The median significant winning lift is 0.85 CTR points, at a power of 0.62. At that power, <strong>the estimate is expected to overstate its true effect by 1.27&times;</strong> &mdash; even when the winner is genuinely better.</p>
+          <p>The median significant winning lift is 0.85 CTR points, at a power of 0.62. At that power, <strong>the estimate is expected to overstate its true effect by 1.27&times;</strong>, even when the winner is genuinely better.</p>
 
           <p>This is the winner’s curse, and it is not a bias in anyone’s analysis; it is a selection effect baked into the act of choosing. An underpowered experiment only reaches significance when noise happens to push in the same direction as the effect, so conditioning on &ldquo;it was significant&rdquo; conditions on a favourable draw. The winner is real and the number attached to it is too big, and the forecast built on that number will miss.</p>
 
@@ -145,7 +145,7 @@
 
           <p>The archive is headline testing on one platform a decade ago, and its click-through rates are far from what most product experiments look like. The sample-ratio analysis treats the archive’s documented equal allocation as the intended design; if some tests intended otherwise and did not say so, those are false alarms. I would not port the exact percentages anywhere.</p>
 
-          <p>The structure, though, ports fine. These are not exotic pathologies &mdash; they are what an experimentation programme looks like when each readout is examined alone. The checks that catch them are cheap, they run on data every team already has, and they are the difference between a decision and a decision you can defend six months later.</p>
+          <p>The structure, though, ports fine. None of this is exotic. It is what an experimentation programme looks like when each readout is examined alone. The checks that catch them are cheap, they run on data every team already has, and they are the difference between a decision and a decision you can defend six months later.</p>
         </div>
       </div>
 
