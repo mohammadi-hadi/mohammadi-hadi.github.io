@@ -70,12 +70,13 @@ def main() -> None:
         hi = [(p, y) for p, y in zip(probs, labels) if p >= 0.9]
         acc_hi = sum(y for _, y in hi) / len(hi)
 
-        # One bin per stated percentage point: with values this clustered the
-        # bins are the values themselves.
+        # One bin per stated percentage point for the dots: with values this
+        # clustered the bins are the values themselves. The table's ECE uses
+        # calikit's default ten equal-mass bins, so it matches `calikit audit`.
         per_value = bin_predictions(probs, labels, k=100, scheme="width")
-        ten = bin_predictions(probs, labels, k=10, scheme="width")
+        ten = bin_predictions(probs, labels, k=10, scheme="mass")
         lo, hi_ci = bootstrap_ci(
-            probs, labels, lambda ps, ys: ece(bin_predictions(ps, ys, k=10, scheme="width")),
+            probs, labels, lambda ps, ys: ece(bin_predictions(ps, ys, k=10, scheme="mass")),
             reps=1000, seed=0)
         base = acc * (1 - acc)  # Brier of always predicting the model's own hit rate
         values = ", ".join(f"{100 * b.conf:.0f}:{b.n}" for b in per_value)
@@ -101,8 +102,8 @@ def main() -> None:
         held = [(p, y) for p, y, i in zip(probs, labels, idx) if i % 2 == 0]
         mapping = fit_platt([p for p, _ in fit], [y for _, y in fit])
         hp, hy = [p for p, _ in held], [y for _, y in held]
-        before = ece(bin_predictions(hp, hy, k=10, scheme="width"))
-        after = ece(bin_predictions(mapping.apply(hp), hy, k=10, scheme="width"))
+        before = ece(bin_predictions(hp, hy, k=10, scheme="mass"))
+        after = ece(bin_predictions(mapping.apply(hp), hy, k=10, scheme="mass"))
         sends = ", ".join(f"{v}->{100 * mapping.apply_one(v / 100):.0f}" for v in (80, 90, 95, 100))
         print(f"{'':16s} platt a={mapping.params['a']:+.3f} b={mapping.params['b']:.3f}  "
               f"held-out ECE {before:.3f} -> {after:.3f}  Brier {brier(hp, hy):.4f} -> "
