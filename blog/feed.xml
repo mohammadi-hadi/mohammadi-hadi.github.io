@@ -6,8 +6,16 @@
     <description>Field notes on building and evaluating production LLM systems, and open guides for people studying AI and data science.</description>
     <language>en</language>
     <copyright>CC BY-SA 4.0, Hadi Mohammadi</copyright>
-    <lastBuildDate>Wed, 26 Aug 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://mohammadi.cv/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Ask a model how sure it is</title>
+      <link>https://mohammadi.cv/blog/ask-a-model-how-sure-it-is/</link>
+      <guid isPermaLink="true">https://mohammadi.cv/blog/ask-a-model-how-sure-it-is/</guid>
+      <pubDate>Wed, 02 Sep 2026 09:00:00 +0200</pubDate>
+      <description>Three local models answered 1,000 MMLU questions each and rated their own confidence from 0 to 100. Mean stated confidence ran from 88 to 98 while accuracy ran from 62 to 78, and on all three a constant base rate beat the stated number. What the audit looks like, with calikit.</description>
+      <category>Field notes</category>
+    </item>
     <item>
       <title>What a benchmark can actually tell apart</title>
       <link>https://mohammadi.cv/blog/what-a-benchmark-can-tell-apart/</link>
