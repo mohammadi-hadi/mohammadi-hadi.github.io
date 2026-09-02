@@ -150,7 +150,7 @@
           <p>Dense retrieval misses exact identifiers, rare names, and codes; lexical (BM25) misses paraphrases. Production systems run both and fuse:</p>
 
           <ul>
-          <li><strong>Reciprocal rank fusion</strong> is a robust, tuning-free fusion baseline: <code>score(d) = Σ 1/(k + rank_i(d))</code> with k≈60.</li>
+          <li><strong>Reciprocal rank fusion</strong> is a tuning-free baseline that works on ranks rather than scores, so nothing needs normalising: <code>score(d) = Σ 1/(k + rank_i(d))</code> with k≈60.</li>
           <li>Then <strong>rerank the top 50–100 with a cross-encoder</strong>. This is the highest-ROI component in most RAG stacks: bi-encoders buy recall cheaply, the cross-encoder buys precision where it counts.</li>
           </ul>
 
