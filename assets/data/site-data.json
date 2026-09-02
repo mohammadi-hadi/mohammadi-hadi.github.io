@@ -1,15 +1,63 @@
 {
-  "fetched_at": "2026-09-01T10:25:07+00:00",
+  "fetched_at": "2026-09-02T09:54:11+00:00",
   "github": {
     "public_repos": 52,
     "total_stars": 7,
     "repos": {
+      "judgewatch": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Monthly bias audits of LLM judges",
+        "language": "Python",
+        "pushed_at": "2026-09-02T08:08:36Z",
+        "url": "https://github.com/mohammadi-hadi/judgewatch"
+      },
+      "abeval": {
+        "stars": 0,
+        "forks": 0,
+        "description": "A/B-test statistics for LLM evals: error bars, paired significance tests, sample-size planning",
+        "language": "Python",
+        "pushed_at": "2026-09-02T08:07:58Z",
+        "url": "https://github.com/mohammadi-hadi/abeval"
+      },
+      "calikit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Calibration auditing for probabilistic predictions: reliability diagrams, ECE, Brier decomposition, temperature scaling. Zero dependencies.",
+        "language": "Python",
+        "pushed_at": "2026-09-02T08:07:20Z",
+        "url": "https://github.com/mohammadi-hadi/calikit"
+      },
+      "rankkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Ranking evaluation with error bars: NDCG, MRR and MAP with confidence intervals, plus position-bias correction for click logs. No dependencies.",
+        "language": "Python",
+        "pushed_at": "2026-09-02T08:06:28Z",
+        "url": "https://github.com/mohammadi-hadi/rankkit"
+      },
+      "trajectory-judge": {
+        "stars": 0,
+        "forks": 0,
+        "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.",
+        "language": "Python",
+        "pushed_at": "2026-09-02T08:06:10Z",
+        "url": "https://github.com/mohammadi-hadi/trajectory-judge"
+      },
+      "spark-search-ranking": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Counterfactual learning-to-rank for marketplace search logs in PySpark: position-bias estimation, IPS-weighted training, NDCG evaluation against known ground truth",
+        "language": "Python",
+        "pushed_at": "2026-09-02T08:06:08Z",
+        "url": "https://github.com/mohammadi-hadi/spark-search-ranking"
+      },
       "mohammadi-hadi": {
         "stars": 0,
         "forks": 0,
         "description": "GitHub profile README",
         "language": null,
-        "pushed_at": "2026-08-31T15:49:00Z",
+        "pushed_at": "2026-09-01T12:54:33Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi"
       },
       "mohammadi-hadi.github.io": {
@@ -17,7 +65,7 @@
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-08-31T11:40:55Z",
+        "pushed_at": "2026-09-01T10:25:10Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "hands-on-xai-labs": {
@@ -31,7 +79,7 @@
       "grpo_dpo_comparison": {
         "stars": 0,
         "forks": 0,
-        "description": "Code and per-example evaluation data for a controlled comparison of GRPO and DPO fine-tuning on chain-of-thought faithfulness (Qwen2.5 1.5B-14B, GSM8K).",
+        "description": "Code, adapters, and per-example evaluation data for a controlled comparison of GRPO and DPO fine-tuning on reasoning-answer entailment (Qwen2.5 1.5B-14B, GSM8K). INLG 2026.",
         "language": "Jupyter Notebook",
         "pushed_at": "2026-08-29T14:36:07Z",
         "url": "https://github.com/mohammadi-hadi/grpo_dpo_comparison"
@@ -43,22 +91,6 @@
         "language": "Python",
         "pushed_at": "2026-08-29T10:04:19Z",
         "url": "https://github.com/mohammadi-hadi/judgepanel"
-      },
-      "trajectory-judge": {
-        "stars": 0,
-        "forks": 0,
-        "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.",
-        "language": "Python",
-        "pushed_at": "2026-08-29T10:04:17Z",
-        "url": "https://github.com/mohammadi-hadi/trajectory-judge"
-      },
-      "abeval": {
-        "stars": 0,
-        "forks": 0,
-        "description": "A/B-test statistics for LLM evals: error bars, paired significance tests, sample-size planning",
-        "language": "Python",
-        "pushed_at": "2026-08-29T09:07:44Z",
-        "url": "https://github.com/mohammadi-hadi/abeval"
       },
       "abkit": {
         "stars": 0,
@@ -100,14 +132,6 @@
         "pushed_at": "2026-08-12T07:42:53Z",
         "url": "https://github.com/mohammadi-hadi/xnlp-llm-survey"
       },
-      "spark-search-ranking": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Counterfactual learning-to-rank for marketplace search logs in PySpark: position-bias estimation, IPS-weighted training, NDCG evaluation against known ground truth",
-        "language": "Python",
-        "pushed_at": "2026-08-09T12:13:09Z",
-        "url": "https://github.com/mohammadi-hadi/spark-search-ranking"
-      },
       "awesome-explainable-nlp": {
         "stars": 0,
         "forks": 0,
@@ -132,14 +156,6 @@
         "pushed_at": "2026-08-08T08:10:09Z",
         "url": "https://github.com/mohammadi-hadi/opening-the-black-box"
       },
-      "ai-masters-netherlands": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Every AI, machine learning, and data science master's programme at Dutch research universities — admissions, costs, deadlines, and how to choose",
-        "language": null,
-        "pushed_at": "2026-08-08T08:10:07Z",
-        "url": "https://github.com/mohammadi-hadi/ai-masters-netherlands"
-      },
       "ml-summer-schools-europe": {
         "stars": 0,
         "forks": 0,
@@ -147,6 +163,14 @@
         "language": null,
         "pushed_at": "2026-08-08T08:10:07Z",
         "url": "https://github.com/mohammadi-hadi/ml-summer-schools-europe"
+      },
+      "ai-masters-netherlands": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Every AI, machine learning, and data science master's programme at Dutch research universities — admissions, costs, deadlines, and how to choose",
+        "language": null,
+        "pushed_at": "2026-08-08T08:10:07Z",
+        "url": "https://github.com/mohammadi-hadi/ai-masters-netherlands"
       },
       "ml-learning-paths": {
         "stars": 0,
@@ -180,14 +204,6 @@
         "pushed_at": "2026-08-08T08:10:03Z",
         "url": "https://github.com/mohammadi-hadi/ml-foundations"
       },
-      "raterkit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Reliability, rogue-rater, drift and leakage diagnostics for labelled data — on the raw GoEmotions ratings, 27 of 28 emotions fall below the 0.667 agreement floor.",
-        "language": "Python",
-        "pushed_at": "2026-08-08T08:10:00Z",
-        "url": "https://github.com/mohammadi-hadi/raterkit"
-      },
       "ppofolio": {
         "stars": 0,
         "forks": 0,
@@ -196,21 +212,13 @@
         "pushed_at": "2026-08-08T08:10:00Z",
         "url": "https://github.com/mohammadi-hadi/ppofolio"
       },
-      "rankkit": {
+      "raterkit": {
         "stars": 0,
         "forks": 0,
-        "description": "Ranking evaluation with error bars: NDCG, MRR and MAP with confidence intervals, plus position-bias correction for click logs. No dependencies.",
+        "description": "Reliability, rogue-rater, drift and leakage diagnostics for labelled data — on the raw GoEmotions ratings, 27 of 28 emotions fall below the 0.667 agreement floor.",
         "language": "Python",
-        "pushed_at": "2026-08-08T08:09:59Z",
-        "url": "https://github.com/mohammadi-hadi/rankkit"
-      },
-      "judgewatch": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Monthly bias audits of LLM judges",
-        "language": "Python",
-        "pushed_at": "2026-08-08T08:09:58Z",
-        "url": "https://github.com/mohammadi-hadi/judgewatch"
+        "pushed_at": "2026-08-08T08:10:00Z",
+        "url": "https://github.com/mohammadi-hadi/raterkit"
       },
       "judgekit": {
         "stars": 0,
@@ -227,14 +235,6 @@
         "language": "Python",
         "pushed_at": "2026-08-08T08:09:57Z",
         "url": "https://github.com/mohammadi-hadi/explainkit"
-      },
-      "calikit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Calibration auditing for probabilistic predictions: reliability diagrams, ECE, Brier decomposition, temperature scaling. Zero dependencies.",
-        "language": "Python",
-        "pushed_at": "2026-08-08T08:09:56Z",
-        "url": "https://github.com/mohammadi-hadi/calikit"
       },
       "arenakit": {
         "stars": 0,
