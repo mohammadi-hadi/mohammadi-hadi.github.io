@@ -156,9 +156,10 @@
 
           <h2 id="what-to-do-with-the-number">What to do with the number</h2>
 
-          <p>The audit takes one command once the answers sit in a file with the stated confidence and the outcome:</p>
+          <p>The audit takes one command once the answers sit in a file with the stated confidence and the outcome. My three files are on the site, so you can run it on them first:</p>
 
           <pre><code>pip install calikit
+curl -O https://mohammadi.cv/assets/data/blog/calibration/llama3.1-8b.jsonl
 calikit audit llama3.1-8b.jsonl --rescale 0,100</code></pre>
 
           <p>It prints the Brier score next to the score a constant base rate would get, the calibration error with a bootstrap interval, a significance test, and a reliability diagram if you ask for one. The three files behind this post are committed with the site and it reads them as they are.</p>
