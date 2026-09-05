@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light">
   <title>Software — Hadi Mohammadi</title>
-  <meta name="description" content="Open-source Python libraries by Hadi Mohammadi for auditing LLM judges, experiments, leaderboards, rankings and labelled data: judgekit, judgepanel, arenakit, abkit, abeval, calikit, rankkit, raterkit, trajectory-judge and explainkit. MIT-licensed, tested, DOI-archived.">
+  <meta name="description" content="Open-source Python libraries by Hadi Mohammadi for auditing LLM judges, experiments, leaderboards, rankings and labelled data: judgekit, judgepanel, arenakit, abkit, abeval, calikit, rankkit, raterkit, retainkit, trajectory-judge and explainkit. MIT-licensed, tested, DOI-archived.">
   <link rel="canonical" href="https://mohammadi.cv/software/">
   <link rel="icon" href="/assets/img/favicon.png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -56,7 +56,7 @@
         "@type": "ItemList",
         "name": "Open-source libraries by Hadi Mohammadi",
         "itemListOrder": "https://schema.org/ItemListUnordered",
-        "numberOfItems": 13,
+        "numberOfItems": 14,
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "item": {
             "@type": "SoftwareSourceCode", "name": "judgekit",
@@ -148,6 +148,13 @@
             "codeRepository": "https://github.com/mohammadi-hadi/ml-foundations",
             "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
             "identifier": "https://doi.org/10.5281/zenodo.21797931",
+            "author": { "@id": "https://mohammadi.cv/#person" } } },
+          { "@type": "ListItem", "position": 14, "item": {
+            "@type": "SoftwareSourceCode", "name": "retainkit",
+            "description": "Context and memory policies for LLM agents, scored by whether the turns that answer a question survive the token budget.",
+            "codeRepository": "https://github.com/mohammadi-hadi/retainkit",
+            "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
+            "identifier": "https://doi.org/10.5281/zenodo.22352964",
             "author": { "@id": "https://mohammadi.cv/#person" } } }
         ]
       }
@@ -223,7 +230,7 @@
       <div class="container">
         <div class="section-head">
           <span class="kicker"><span class="kicker-num">02</span>The toolkit</span>
-          <h2>Ten libraries, one question each</h2>
+          <h2>Eleven libraries, one question each</h2>
         </div>
 
         <div class="pkg-group">
@@ -286,6 +293,30 @@
                   <a href="https://pypi.org/project/arenakit/" target="_blank" rel="noopener">PyPI</a>
                   <a href="https://github.com/mohammadi-hadi/arenakit" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
                   <a href="https://doi.org/10.5281/zenodo.21813309" target="_blank" rel="noopener">DOI</a>
+                </p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="pkg-group">
+          <div class="pkg-group-head">
+            <h3>Agents and memory</h3>
+            <p>Context management</p>
+          </div>
+          <div class="pkg-grid">
+
+            <article class="pkg-card">
+              <h4 class="pkg-name"><a href="https://github.com/mohammadi-hadi/retainkit" target="_blank" rel="noopener">retainkit</a></h4>
+              <p class="pkg-lede">How much of the conversation is still in front of the model.</p>
+              <p class="pkg-note">An agent that has talked to someone for thirty sessions drops most of it on every turn, and what it drops decides what it can still answer. retainkit takes a transcript, a question and the turns that answer it, and reports whether those turns survived the budget. Over 1,527 LoCoMo questions at 2,048 tokens a sliding window holds the evidence for 7.7% and a searched long-term store for 62.7%; three sessions back the window holds none of it.</p>
+              <div class="pkg-foot">
+                <p class="pkg-cmd">pip install retainkit</p>
+                <p class="pkg-links">
+                  <a href="https://pypi.org/project/retainkit/" target="_blank" rel="noopener">PyPI</a>
+                  <a href="https://github.com/mohammadi-hadi/retainkit" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                  <a href="https://doi.org/10.5281/zenodo.22352964" target="_blank" rel="noopener">DOI</a>
                 </p>
               </div>
             </article>
