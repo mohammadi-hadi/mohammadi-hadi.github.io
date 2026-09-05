@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-09-02T12:10:58+00:00",
-  "citations": 149,
+  "fetched_at": "2026-09-05T22:52:22+00:00",
+  "citations": 155,
   "h_index": 7,
   "i10_index": 5,
   "publications": {
@@ -29,18 +29,28 @@
       "year": 2022,
       "cited_by": 13
     },
-    "mirrors-cultural-divergence": {
-      "title": "LLMs as mirrors of societal moral standards: reflection of cultural divergence and agreement across ethical topics",
-      "year": 2024,
-      "cited_by": 9
-    },
     "evalmoraal": {
       "title": "EvalMORAAL: Interpretable Chain-of-Thought and LLM-as-Judge Evaluation",
       "year": 2025,
       "cited_by": 0
     },
+    "mirrors-cultural-divergence": {
+      "title": "LLMs as mirrors of societal moral standards: reflection of cultural divergence and agreement across ethical topics",
+      "year": 2024,
+      "cited_by": 9
+    },
     "morality-across-cultures": {
       "title": "Do Large Language Models Understand Morality Across Cultures?",
+      "year": 2025,
+      "cited_by": 7
+    },
+    "llm-annotation-reliability": {
+      "title": "Assessing the reliability of llms annotations in the context of demographic bias and model explanation",
+      "year": 2025,
+      "cited_by": 6
+    },
+    "ai-text-undetectability": {
+      "title": "Explainability-based token replacement on LLM-generated text",
       "year": 2025,
       "cited_by": 6
     },
@@ -49,20 +59,10 @@
       "year": 2024,
       "cited_by": 6
     },
-    "llm-annotation-reliability": {
-      "title": "Assessing the reliability of llms annotations in the context of demographic bias and model explanation",
-      "year": 2025,
-      "cited_by": 5
-    },
-    "ai-text-undetectability": {
-      "title": "Explainability-based token replacement on LLM-generated text",
-      "year": 2025,
-      "cited_by": 5
-    },
     "grpo-dpo-cot": {
       "title": "Evaluating grpo and dpo for faithful chain-of-thought reasoning in llms",
       "year": 2025,
-      "cited_by": 4
+      "cited_by": 5
     },
     "neural-end-to-end-learning-of-reach-for-grasp-ability-with-a": {
       "title": "Neural End-to-End Learning of Reach for Grasp Ability with a 6-DoF Robot Arm",
@@ -86,6 +86,11 @@
     },
     "let-me-explain-explainable-nlp-for-understanding-large-langu": {
       "title": "Let Me Explain! Explainable NLP for Understanding Large Language Models",
+      "year": 2026,
+      "cited_by": 1
+    },
+    "trajectory-judge-what-outcome-only-llm-judges-miss-on-agent-": {
+      "title": "trajectory-judge: What Outcome-Only LLM Judges Miss on Agent Trajectories",
       "year": 2026,
       "cited_by": 0
     },
