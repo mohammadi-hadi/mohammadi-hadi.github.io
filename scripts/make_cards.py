@@ -30,13 +30,6 @@ SERIES = "Modern AI Engineering"
 CARDS = [
     dict(name="index", kicker="Hadi Mohammadi", title="Blog",
          subtitle="field notes and open guides",
-         bullets=[
-             ("Modern AI Engineering", "six chapters on production LLM systems"),
-             ("Master’s programmes in the Netherlands", "every degree, and how Dutch admissions work"),
-             ("Machine learning summer schools in Europe", "which ones, how to get in, how to fund it"),
-             ("ML learning paths", "ordered course paths for five different jobs"),
-             ("Awesome explainable NLP", "papers, tools and resources"),
-         ],
          foot_left="mohammadi.cv/blog", foot_right="Free · open · citable"),
     dict(name="calling-llms-well", kicker=f"{SERIES} · Chapter 1",
          title="Calling LLMs well",
@@ -129,11 +122,6 @@ CARDS = [
     dict(name="software-card", out="assets/img", kicker="Hadi Mohammadi",
          title="Software",
          subtitle="Libraries for not trusting your own numbers",
-         bullets=[
-             ("judgekit · judgepanel · arenakit", "is this judge, or this leaderboard, telling the truth?"),
-             ("abkit · abeval · calikit", "does the experiment support the decision?"),
-             ("raterkit · rankkit · explainkit", "are the labels, the ranking, the explanation sound?"),
-         ],
          foot_left="mohammadi.cv/software", foot_right="MIT · tested · citable"),
 ]
 
