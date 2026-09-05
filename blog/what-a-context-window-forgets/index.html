@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>What a context window forgets — Hadi Mohammadi</title>
+  <meta name="description" content="Across 1,527 questions on conversations that run for thirty sessions, a sliding window at 2,048 tokens still has the supporting turn in front of the model 7.7% of the time. Reading the question first takes that to 59.5% for the same money, and three sessions back the window holds nothing.">
+  <link rel="canonical" href="https://mohammadi.cv/blog/what-a-context-window-forgets/">
+  <meta name="author" content="Hadi Mohammadi">
+  <meta property="og:title" content="What a context window forgets">
+  <meta property="og:description" content="Across 1,527 questions on conversations that run for thirty sessions, a sliding window at 2,048 tokens still has the supporting turn in front of the model 7.7% of the time. Reading the question first takes that to 59.5% for the same money, and three sessions back the window holds nothing.">
+  <meta property="og:url" content="https://mohammadi.cv/blog/what-a-context-window-forgets/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hadi Mohammadi">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/what-a-context-window-forgets.png">
+  <meta property="og:image:alt" content="What a context window forgets, field notes by Hadi Mohammadi">
+  <meta property="article:published_time" content="2026-09-05T09:00:00+02:00">
+  <meta property="article:author" content="Hadi Mohammadi">
+  <meta property="article:section" content="Field notes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What a context window forgets">
+  <meta name="twitter:description" content="Across 1,527 questions on conversations that run for thirty sessions, a sliding window at 2,048 tokens still has the supporting turn in front of the model 7.7% of the time. Reading the question first takes that to 59.5% for the same money, and three sessions back the window holds nothing.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/what-a-context-window-forgets.png">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammadi.cv/#person",
+        "name": "Hadi Mohammadi",
+        "url": "https://mohammadi.cv",
+        "identifier": "https://orcid.org/0000-0003-0860-9200"
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://mohammadi.cv/blog/#blog",
+        "name": "Hadi Mohammadi — Blog",
+        "url": "https://mohammadi.cv/blog/"
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://mohammadi.cv/blog/what-a-context-window-forgets/#post",
+        "url": "https://mohammadi.cv/blog/what-a-context-window-forgets/",
+        "mainEntityOfPage": "https://mohammadi.cv/blog/what-a-context-window-forgets/",
+        "headline": "What a context window forgets",
+        "description": "Across 1,527 questions on conversations that run for thirty sessions, a sliding window at 2,048 tokens still has the supporting turn in front of the model 7.7% of the time. Reading the question first takes that to 59.5% for the same money, and three sessions back the window holds nothing.",
+        "datePublished": "2026-09-05T09:00:00+02:00",
+        "dateModified": "2026-09-05T09:00:00+02:00",
+        "inLanguage": "en",
+        "wordCount": 950,
+        "keywords": "LLM agents, context management, long-term memory, retrieval, LoCoMo, agent evaluation, retainkit",
+        "isAccessibleForFree": true,
+        "author": { "@id": "https://mohammadi.cv/#person" },
+        "publisher": { "@id": "https://mohammadi.cv/#person" },
+        "isPartOf": { "@id": "https://mohammadi.cv/blog/#blog" },
+        "position": 0
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/software/">Software</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/" aria-current="true">Blog</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/software/">Software</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/" aria-current="true">Blog</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="post">
+      <header class="post-head">
+        <div class="post-wrap">
+          <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#field-notes">Field notes</a></p>
+          <h1>What a context window forgets</h1>
+          <p class="post-dek">A sliding window at 2,048 tokens has the supporting turn in front of the model for 8% of 1,527 questions. Searching the transcript first takes that to 60% for the same money.</p>
+          <p class="post-byline"><span><time datetime="2026-09-05">5 September 2026</time></span><span>5 min read</span></p>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <div class="post-wrap">
+          <p>Every agent framework ships a knob for this. Keep the last twenty messages, summarise what falls off the end, and move on. The knob is set once, usually to whatever the quickstart used, and after that nobody looks at it again. An assistant that has been booking trips for the same person since April is having a conversation that no longer fits in a prompt, and that knob decides what it is allowed to remember.</p>
+
+          <p>So I measured what the knob throws away.</p>
+
+          <h2 id="the-measurement">The measurement</h2>
+
+          <p><a href="https://github.com/snap-research/locomo">LoCoMo</a> is a set of ten conversations that run for 19 to 32 sessions each, released with the ACL 2024 paper on very long-term conversational memory. What makes it useful here is that every question comes with the ids of the turns that answer it. That lets you take a context policy, hand it a budget and a question, and ask a narrow question back: is the turn that carries the answer still in there?</p>
+
+          <p>What that measures is a ceiling. A model handed the right turn can still answer wrongly, so a policy that keeps the evidence has only cleared the first bar. The reason to measure the ceiling anyway is that it costs nothing. No API calls, no judge, no variance between runs, and a policy that has already lost the evidence is not worth taking to a full evaluation.</p>
+
+          <p>One number sets the scale. An average LoCoMo conversation is 23,056 tokens. The evidence for an average question is 84 of them. Four tenths of one percent of the transcript carries the answer, and every context policy is a guess about which four tenths.</p>
+
+          <figure class="post-figure">
+            <img src="/assets/img/blog/context-budget.png" alt="Line chart of evidence recall against context budget on LoCoMo for five context policies. At 2,048 tokens a long-term store reaches 63% and a sliding window 8%. The two search-based policies stay far above the window until 32,768 tokens, where every policy holds the whole conversation. Session summaries flatten at 13%." width="1200" height="640" loading="lazy">
+            <figcaption>Five policies over 1,527 questions. The two that read the question before choosing sit twenty points above the rest until the budget is large enough to keep everything.</figcaption>
+          </figure>
+
+          <h2 id="the-gap">Eight percent against sixty</h2>
+
+          <p>At 2,048 tokens, which is 8.9% of the conversation, a sliding window holds the evidence for 7.7% of questions. Keeping the opening of the conversation as well as the end lifts that to 8.2%. Searching the transcript against the incoming question reaches 59.5%, and a long-term store searched at sentence level reaches 62.7%. Same budget, same conversations, seven times the hit rate.</p>
+
+          <p>The other way to read it is in tokens. Search reaches 50% recall on a budget of 1,024. The window needs 16,384 to get there, sixteen times the context for the same result, and every one of those tokens is paid for on every turn.</p>
+
+          <h2 id="the-cliff">Where the window actually dies</h2>
+
+          <p>The averages hide the shape of the failure. Split the questions by how many sessions sit between the evidence and the question, and the window does not decay. It falls off a cliff. In the session in progress it holds everything. One or two sessions back it holds 62.3%. Three to five sessions back, at the same 2,048 tokens, it holds 0.0%, while search is still at 72.1%.</p>
+
+          <p>That is zero of the 140 questions in that bucket. Widening the window does not rescue it either: a budget that reaches five sessions back reaches the whole conversation, at which point nothing is being managed and every turn pays for all of it.</p>
+
+          <h2 id="multi-hop">The part search does not fix</h2>
+
+          <p>Broken out by question type at the same budget, the best policy holds the evidence for 76.8% of single-hop questions and 16.2% of multi-hop ones. A multi-hop question needs several turns from several sessions at once, and one query against a store tends to bring back one of them. Partial credit is higher, so it is not that nothing is found; it is that all of it has to be found together and usually is not.</p>
+
+          <p>This is the number I would want on the table before anyone claims a memory system works. A single averaged recall figure over a mixed question set moves with the mix, and the multi-hop share is where the difficulty actually lives.</p>
+
+          <p>There is a second catch in the same direction. The long-term store wins by 3 points over plain search, and it wins because it stores sentences rather than whole turns, which fits more of the conversation into the same budget. But the complete evidence turn survives only 3.9% of the time. The rest of its wins hand the model one sentence out of several, and whether that sentence is the one carrying the answer is not something this measurement can see. Whichever column you believe, it has to be the same column for every policy.</p>
+
+          <h2 id="doing-it">Running it on your own transcripts</h2>
+
+          <p>The code is a small package with no runtime dependencies:</p>
+
+          <pre><code>pip install retainkit</code></pre>
+
+          <p>Conversations go in as JSON, with turn ids, session numbers and the questions you care about:</p>
+
+          <pre><code>retainkit eval conversations.json --budget 2048 --budget 8192</code></pre>
+
+          <p>It prints recall against budget for each policy with a bootstrap interval, the split by evidence age, and the cheapest budget at which each policy reaches a recall target. A policy is any object with a <code>select</code> method, so a scheme you already run in production goes into the same sweep as the built-in ones and gets compared on the same questions.</p>
+
+          <p>Two limits apply before you use the numbers. An abstractive summariser rewrites what it keeps, and a rewritten sentence cannot be traced back to a turn, so the summary policy here is extractive and an LLM summariser is outside what this can score. The token counts are also a four-characters-per-token estimate, which moves a window policy's absolute recall by up to 22 points, though not the ordering. Pass your own tokenizer when the budget has to be exact.</p>
+
+          <p>In most stacks that knob still holds whatever the quickstart put there. An afternoon of measurement will say what it is throwing away.</p>
+        </div>
+      </div>
+
+      <footer class="post-foot">
+        <div class="post-wrap">
+          <p class="post-source">Numbers from <a href="https://github.com/mohammadi-hadi/retainkit">retainkit</a>, run over the released LoCoMo file; the full sweep across seven budgets is in the repository at <a href="https://github.com/mohammadi-hadi/retainkit/blob/main/examples/locomo/results/locomo.md">examples/locomo/results/locomo.md</a> and the figure comes from <a href="https://github.com/mohammadi-hadi/mohammadi-hadi.github.io/blob/main/scripts/fig_context_budget.py">scripts/fig_context_budget.py</a>, which reads those committed results. 1,527 questions were scored; the adversarial category has no answer in the conversation and was excluded, and 13 questions naming a turn absent from the transcript were dropped. LoCoMo is by Maharana et al., <a href="https://arxiv.org/abs/2402.17753">Evaluating Very Long-Term Conversational Memory of LLM Agents</a>, ACL 2024. Corrections are welcome.</p>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a> &middot; <a href="https://github.com/mohammadi-hadi">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a> &middot; <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>
