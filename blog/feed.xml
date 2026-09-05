@@ -6,8 +6,16 @@
     <description>Field notes on building and evaluating production LLM systems, and open guides for people studying AI and data science.</description>
     <language>en</language>
     <copyright>CC BY-SA 4.0, Hadi Mohammadi</copyright>
-    <lastBuildDate>Wed, 02 Sep 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://mohammadi.cv/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>What a context window forgets</title>
+      <link>https://mohammadi.cv/blog/what-a-context-window-forgets/</link>
+      <guid isPermaLink="true">https://mohammadi.cv/blog/what-a-context-window-forgets/</guid>
+      <pubDate>Sat, 05 Sep 2026 09:00:00 +0200</pubDate>
+      <description>Across 1,527 questions on conversations that run for thirty sessions, a sliding window at 2,048 tokens still has the supporting turn in front of the model 7.7% of the time. Reading the question first takes that to 59.5% for the same money, and three sessions back the window holds nothing.</description>
+      <category>Field notes</category>
+    </item>
     <item>
       <title>Ask a model how sure it is</title>
       <link>https://mohammadi.cv/blog/ask-a-model-how-sure-it-is/</link>
