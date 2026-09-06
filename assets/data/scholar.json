@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-09-05T22:52:22+00:00",
-  "citations": 155,
+  "fetched_at": "2026-09-06T11:34:57+00:00",
+  "citations": 151,
   "h_index": 7,
   "i10_index": 5,
   "publications": {
@@ -30,9 +30,9 @@
       "cited_by": 13
     },
     "evalmoraal": {
-      "title": "EvalMORAAL: Interpretable Chain-of-Thought and LLM-as-Judge Evaluation",
-      "year": 2025,
-      "cited_by": 0
+      "title": "EvalMORAAL: Interpretable Chain-of-Thought and LLM-as-Judge evaluation for moral alignment in large language models",
+      "year": 2026,
+      "cited_by": 9
     },
     "mirrors-cultural-divergence": {
       "title": "LLMs as mirrors of societal moral standards: reflection of cultural divergence and agreement across ethical topics",
@@ -63,11 +63,6 @@
       "title": "Evaluating grpo and dpo for faithful chain-of-thought reasoning in llms",
       "year": 2025,
       "cited_by": 5
-    },
-    "neural-end-to-end-learning-of-reach-for-grasp-ability-with-a": {
-      "title": "Neural End-to-End Learning of Reach for Grasp Ability with a 6-DoF Robot Arm",
-      "year": null,
-      "cited_by": 0
     },
     "cultural-moral-judgments": {
       "title": "Exploring cultural variations in moral judgments with large language models",
@@ -152,11 +147,6 @@
     "investigation-of-economic-and-social-factors-affecting-popul": {
       "title": "Investigation of Economic and Social Factors Affecting Population Growth in Iran: An Econometric Approach",
       "year": 2021,
-      "cited_by": 0
-    },
-    "adaptive-model-mediated-control-using-reinforcement-learning": {
-      "title": "Adaptive Model Mediated Control Using Reinforcement Learning",
-      "year": 2020,
       "cited_by": 0
     },
     "a-dynamic-model-for-investigating-the-role-of-smoking-on-the": {
