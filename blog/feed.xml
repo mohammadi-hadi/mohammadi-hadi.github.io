@@ -6,8 +6,16 @@
     <description>Field notes on building and evaluating production LLM systems, and open guides for people studying AI and data science.</description>
     <language>en</language>
     <copyright>CC BY-SA 4.0, Hadi Mohammadi</copyright>
-    <lastBuildDate>Sat, 05 Sep 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 06 Sep 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://mohammadi.cv/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>What 106,134 arena votes can and cannot order</title>
+      <link>https://mohammadi.cv/blog/what-arena-votes-can-and-cannot-order/</link>
+      <guid isPermaLink="true">https://mohammadi.cv/blog/what-arena-votes-can-and-cannot-order/</guid>
+      <pubDate>Sun, 06 Sep 2026 09:00:00 +0200</pubDate>
+      <description>An audit of 106,134 public LMArena votes over 55 models: once the comparisons are controlled for together, only one neighbouring pair is separated, and closing the median unresolved gap would take roughly 8.9 million votes.</description>
+      <category>Field notes</category>
+    </item>
     <item>
       <title>What a context window forgets</title>
       <link>https://mohammadi.cv/blog/what-a-context-window-forgets/</link>
