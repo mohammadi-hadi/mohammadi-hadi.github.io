@@ -73,7 +73,7 @@ CARDS = [
          foot_left="mohammadi.cv/blog", foot_right="8 min read"),
     dict(name="the-ai-layer-behind-an-academic-job-board", kicker="Field notes",
          title="The AI layer behind an academic job board",
-         subtitle="Two thirds of the model spend went to de-identification",
+         subtitle="Two thirds of the pipeline spend went to de-identification",
          foot_left="mohammadi.cv/blog", foot_right="7 min read"),
     dict(name="two-systems-that-agree-on-almost-nothing", kicker="Field notes",
          title="Two systems that agree on almost nothing",
