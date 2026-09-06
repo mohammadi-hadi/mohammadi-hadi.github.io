@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Two systems that agree on almost nothing — Hadi Mohammadi</title>
+  <meta name="description" content="Two production candidate-matching systems ranked the same 18,002 jobs against the same candidate pool. They picked the same top candidate 3.6% of the time, and widening to the top hundred only reached 8.4%.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://mohammadi.cv/blog/two-systems-that-agree-on-almost-nothing/">
+  <meta name="author" content="Hadi Mohammadi">
+  <meta property="og:title" content="Two systems that agree on almost nothing">
+  <meta property="og:description" content="Two production candidate-matching systems ranked the same 18,002 jobs against the same candidate pool. They picked the same top candidate 3.6% of the time, and widening to the top hundred only reached 8.4%.">
+  <meta property="og:url" content="https://mohammadi.cv/blog/two-systems-that-agree-on-almost-nothing/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hadi Mohammadi">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/two-systems-that-agree-on-almost-nothing.png">
+  <meta property="og:image:alt" content="Two systems that agree on almost nothing, field notes by Hadi Mohammadi">
+  <meta property="article:published_time" content="2026-01-01T09:00:00+01:00">
+  <meta property="article:author" content="Hadi Mohammadi">
+  <meta property="article:section" content="Field notes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Two systems that agree on almost nothing">
+  <meta name="twitter:description" content="Two production candidate-matching systems ranked the same 18,002 jobs against the same candidate pool. They picked the same top candidate 3.6% of the time, and widening to the top hundred only reached 8.4%.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/two-systems-that-agree-on-almost-nothing.png">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammadi.cv/#person",
+        "name": "Hadi Mohammadi",
+        "url": "https://mohammadi.cv",
+        "identifier": "https://orcid.org/0000-0003-0860-9200"
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://mohammadi.cv/blog/#blog",
+        "name": "Hadi Mohammadi — Blog",
+        "url": "https://mohammadi.cv/blog/"
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://mohammadi.cv/blog/two-systems-that-agree-on-almost-nothing/#post",
+        "url": "https://mohammadi.cv/blog/two-systems-that-agree-on-almost-nothing/",
+        "mainEntityOfPage": "https://mohammadi.cv/blog/two-systems-that-agree-on-almost-nothing/",
+        "headline": "Two systems that agree on almost nothing",
+        "description": "Two production candidate-matching systems ranked the same 18,002 jobs against the same candidate pool. They picked the same top candidate 3.6% of the time, and widening to the top hundred only reached 8.4%.",
+        "datePublished": "2026-01-01T09:00:00+01:00",
+        "dateModified": "2026-01-01T09:00:00+01:00",
+        "inLanguage": "en",
+        "wordCount": 900,
+        "keywords": "ranking systems, agreement, inter-system reliability, recruitment, evaluation without gold labels, judge disagreement, production ML",
+        "isAccessibleForFree": true,
+        "author": { "@id": "https://mohammadi.cv/#person" },
+        "publisher": { "@id": "https://mohammadi.cv/#person" },
+        "isPartOf": { "@id": "https://mohammadi.cv/blog/#blog" },
+        "position": 0
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/software/">Software</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/" aria-current="true">Blog</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/software/">Software</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/" aria-current="true">Blog</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="post">
+      <header class="post-head">
+        <div class="post-wrap">
+          <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#field-notes">Field notes</a></p>
+          <h1>Two systems that agree on almost nothing</h1>
+          <p class="post-dek">Two matching systems, the same 18,002 jobs, the same candidates. They agreed on the best candidate 3.6% of the time. Neither of them had a ground truth to be wrong against.</p>
+          <p class="post-byline"><span><time datetime="2026-01-01">DRAFT &mdash; unpublished</time></span><span>6 min read</span></p>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <div class="post-wrap">
+          <p>Two systems ranked candidates for the same jobs on the platform I work on. Both took a vacancy and a pool of applicants and returned an ordered shortlist. One had been running for a while; the other was a candidate to replace or complement it. The obvious question before swapping anything is how much they actually differ.</p>
+
+          <p>The answer surprised me enough that I went back and checked the join twice. Across <strong>18,002 jobs</strong> and roughly 3.2 million candidate-job scores, the two systems named the same best candidate <strong>3.6% of the time</strong>.</p>
+
+          <h2 id="not-ranking-noise">This is not two rankings that mostly agree</h2>
+
+          <p>My first thought was that top-1 is a brittle statistic. Two systems can rank almost identically and still disagree about which of two near-tied candidates goes first, and that would show up as terrible top-1 agreement while meaning very little. So I widened the window.</p>
+
+          <table>
+            <thead><tr><th>Shortlist</th><th>Overlap</th></tr></thead>
+            <tbody>
+              <tr><td>Top 1</td><td>3.6%</td></tr>
+              <tr><td>Top 3</td><td>6.0%</td></tr>
+              <tr><td>Top 5</td><td>6.6%</td></tr>
+              <tr><td>Top 10</td><td>7.3%</td></tr>
+              <tr><td>Top 20</td><td>7.6%</td></tr>
+              <tr><td>Top 50</td><td>8.1%</td></tr>
+              <tr><td>Top 100</td><td>8.4%</td></tr>
+            </tbody>
+          </table>
+
+          <p>If the disagreement were tie-breaking noise, overlap would climb steeply as the window widened, because two similar rankings drawn from the same pool have to converge once you take enough of them. It climbs from 3.6% to 8.4% and then stops. <strong>Take a hundred candidates from each and roughly ninety-two of them are in only one list.</strong> Whatever these two are doing, it is not two views of one ordering.</p>
+
+          <p>The scores say the same thing from another direction. Mean match score was 58.7% for one system and 40.9% for the other, a gap of 17.7 points with a Cohen&rsquo;s d of 1.12. That is a large effect by any convention, and it is not a scale artefact you can calibrate away, because the rank correlation is weak underneath it.</p>
+
+          <h2 id="no-ground-truth">The part that makes this hard</h2>
+
+          <p>On a benchmark, this would be a solved problem: score both against the labels and the better system wins. In production there are no labels. Nobody knows which candidate would have been the best hire, most of the shortlist is never interviewed, and the ones who are get filtered by a human who saw the shortlist the system produced. The outcome data is a function of the thing being evaluated.</p>
+
+          <p>So the disagreement is not evidence that one system is wrong. It is evidence that <strong>at most one of them can be close to right, and quite possibly neither is</strong>. A 3.6% agreement rate puts a ceiling on how good both can simultaneously be, without saying anything about which one to keep.</p>
+
+          <p>That ceiling is worth stating plainly, because the alternative framing is the comfortable one. Both systems were in use. Both produced shortlists that looked reasonable to the people reading them. Neither had ever been checked against the other, and a reasonable-looking shortlist is exactly what you get from a system that is ranking on something irrelevant, because the pool is full of plausible candidates and almost any hundred of them look fine.</p>
+
+          <h2 id="what-it-took">What the check cost, and why nobody had run it</h2>
+
+          <p>The comparison itself was a join and an overlap count: 3.2 million scores, about a minute of compute. It had not been run because there was no owner for the question. Each system had been evaluated on its own terms, against its own examples, and each passed. Nothing in either evaluation could have surfaced this, because the finding only exists in the comparison.</p>
+
+          <p>This is the same shape as a problem I keep meeting in LLM evaluation. A judge model gets validated against a small hand-labelled set, agrees with the humans acceptably often, and is then pointed at a hundred thousand items where nobody will ever check it again. Run two judges over the same items and their agreement is the cheapest evidence available about how much either can be trusted, and it needs no labels at all.</p>
+
+          <h2 id="what-i-do">What I take from it</h2>
+
+          <p>Two things changed in how I evaluate a ranking system I cannot get labels for.</p>
+
+          <p>The first is that agreement between independent systems is now the first thing I measure, before any accuracy claim. It is cheap, it needs no ground truth, and a low number is informative in a way a high accuracy claim is not: it puts a hard bound on how good both can be at once.</p>
+
+          <p>The second is that disagreement is a starting point and not a verdict. Given several systems and no labels, the disagreement pattern itself carries information about which of them is behaving like a coin: this is what latent-class methods such as Dawid&ndash;Skene do, and packaging that for judge panels is what became <a href="https://github.com/mohammadi-hadi/judgepanel">judgepanel</a>. Two systems will not support that. Two systems are enough to know you have a problem.</p>
+        </div>
+      </div>
+
+      <footer class="post-foot">
+        <div class="post-wrap">
+          <p class="post-source">From a July 2025 comparison of two candidate-matching systems in production on an academic recruitment platform. The systems are not named and no candidate data appears here; the numbers are aggregate overlap and score statistics over 18,002 jobs. The label-free estimation this points at is packaged as <a href="https://github.com/mohammadi-hadi/judgepanel">judgepanel</a>, part of a wider set of <a href="/software/">evaluation libraries</a>.</p>
+        </div>
+      </footer>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a> &middot; <a href="https://github.com/mohammadi-hadi">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a> &middot; <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

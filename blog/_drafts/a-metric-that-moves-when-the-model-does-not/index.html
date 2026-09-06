@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>A metric that moves when the model does not — Hadi Mohammadi</title>
+  <meta name="description" content="Weighted kappa rose to 0.92 and fell back to 0.87 while the model's ranking stayed flat at 0.95. The tiers came from fixed thresholds on a probability, so the metric was tracking confidence.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://mohammadi.cv/blog/a-metric-that-moves-when-the-model-does-not/">
+  <meta name="author" content="Hadi Mohammadi">
+  <meta property="og:title" content="A metric that moves when the model does not">
+  <meta property="og:description" content="Weighted kappa rose to 0.92 and fell back to 0.87 while the model's ranking stayed flat at 0.95. The tiers came from fixed thresholds on a probability, so the metric was tracking confidence.">
+  <meta property="og:url" content="https://mohammadi.cv/blog/a-metric-that-moves-when-the-model-does-not/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hadi Mohammadi">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/a-metric-that-moves-when-the-model-does-not.png">
+  <meta property="og:image:alt" content="A metric that moves when the model does not, field notes by Hadi Mohammadi">
+  <meta property="article:published_time" content="2026-01-01T09:00:00+01:00">
+  <meta property="article:author" content="Hadi Mohammadi">
+  <meta property="article:section" content="Field notes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A metric that moves when the model does not">
+  <meta name="twitter:description" content="Weighted kappa rose to 0.92 and fell back to 0.87 while the model's ranking stayed flat at 0.95. The tiers came from fixed thresholds on a probability, so the metric was tracking confidence.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/a-metric-that-moves-when-the-model-does-not.png">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammadi.cv/#person",
+        "name": "Hadi Mohammadi",
+        "url": "https://mohammadi.cv",
+        "identifier": "https://orcid.org/0000-0003-0860-9200"
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://mohammadi.cv/blog/#blog",
+        "name": "Hadi Mohammadi — Blog",
+        "url": "https://mohammadi.cv/blog/"
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://mohammadi.cv/blog/a-metric-that-moves-when-the-model-does-not/#post",
+        "url": "https://mohammadi.cv/blog/a-metric-that-moves-when-the-model-does-not/",
+        "mainEntityOfPage": "https://mohammadi.cv/blog/a-metric-that-moves-when-the-model-does-not/",
+        "headline": "A metric that moves when the model does not",
+        "description": "Weighted kappa rose to 0.92 and fell back to 0.87 while the model's ranking stayed flat at 0.95. The tiers came from fixed thresholds on a probability, so the metric was tracking confidence.",
+        "datePublished": "2026-01-01T09:00:00+01:00",
+        "dateModified": "2026-01-01T09:00:00+01:00",
+        "inLanguage": "en",
+        "wordCount": 880,
+        "keywords": "weighted kappa, Cohen kappa, calibration, active learning, evaluation metrics, CV screening, threshold effects",
+        "isAccessibleForFree": true,
+        "author": { "@id": "https://mohammadi.cv/#person" },
+        "publisher": { "@id": "https://mohammadi.cv/#person" },
+        "isPartOf": { "@id": "https://mohammadi.cv/blog/#blog" },
+        "position": 0
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/software/">Software</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/" aria-current="true">Blog</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/software/">Software</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/" aria-current="true">Blog</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="post">
+      <header class="post-head">
+        <div class="post-wrap">
+          <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#field-notes">Field notes</a></p>
+          <h1>A metric that moves when the model does not</h1>
+          <p class="post-dek">Weighted kappa climbed, peaked, and fell. Spearman never moved. I had nearly written up the climb as a finding about which labels teach the most.</p>
+          <p class="post-byline"><span><time datetime="2026-01-01">DRAFT &mdash; unpublished</time></span><span>6 min read</span></p>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <div class="post-wrap">
+          <p>The tool ranks academic job applications so a hiring committee reads the strongest first. A reviewer labels a handful of CVs, the model learns from those, and every remaining CV comes back scored and sorted into four tiers: relevant, somewhat relevant, somewhat not, not. The question I cared about was how many labels a committee has to supply before the ordering is worth trusting.</p>
+
+          <p>So I ran the label budget from 12 up to 120, twenty seeds each, and watched the agreement between the tool&rsquo;s tiers and the true ones. Weighted kappa went up steeply, and kept going. That looked like the answer: more labels, better agreement, and somewhere past 60 the curve flattens out. I had a paragraph written about which part of the difficulty range teaches the model the most.</p>
+
+          <p>Then I plotted a threshold-free statistic beside it.</p>
+
+          <h2 id="the-table">The two curves disagree</h2>
+
+          <p>Same runs, same test set, same seeds. Spearman correlation between the tool&rsquo;s score and the true tier is on the right.</p>
+
+          <table>
+            <thead>
+              <tr><th>Labels</th><th>Weighted kappa</th><th>Spearman</th><th>Mean |p &minus; 0.5|</th><th>Predicted tiers</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>12</td><td>0.270</td><td>0.850</td><td>0.146</td><td>22 / 65 / 13 / 0</td></tr>
+              <tr><td>24</td><td>0.458</td><td>0.950</td><td>0.117</td><td>0 / 56 / 40 / 4</td></tr>
+              <tr><td>40</td><td>0.857</td><td>0.953</td><td>0.160</td><td>20 / 35 / 24 / 21</td></tr>
+              <tr><td>60</td><td><strong>0.924</strong></td><td>0.952</td><td>0.195</td><td>26 / 29 / 20 / 25</td></tr>
+              <tr><td>80</td><td>0.906</td><td>0.954</td><td>0.218</td><td>28 / 27 / 19 / 26</td></tr>
+              <tr><td>120</td><td>0.869</td><td>0.954</td><td>0.251</td><td>31 / 24 / 17 / 29</td></tr>
+            </tbody>
+          </table>
+
+          <p><strong>Discrimination is flat from 24 labels onward.</strong> The model&rsquo;s ability to put the right CVs above the wrong ones reaches 0.950 and stays within 0.004 of it for the rest of the budget. Whatever the extra 96 labels bought, it was not ordering.</p>
+
+          <p>Weighted kappa meanwhile climbs to 0.924 at 60 labels and then <em>falls</em> to 0.869 by 120. On its own that curve says the tool gets worse if you label too much, which is not a thing that happens.</p>
+
+          <h2 id="why">Where the movement comes from</h2>
+
+          <p>The four-tier output is not a four-class model. It is a binary probability pushed through a fixed temperature, a fixed probability-to-score curve, and fixed tier cut-points. None of those are re-fitted as labels arrive; they ship as constants.</p>
+
+          <p>So watch the fourth column. Mean distance from 0.5 rises monotonically: the classifier is getting more confident, which is what training on more labels should do. Confidence pushes probability mass outward across cut-points that never move, and the <em>distribution</em> of predicted tiers changes even though the ranking underneath is identical.</p>
+
+          <p>The true distribution here is an even 25 / 25 / 25 / 25. Read the last column against that. At 24 labels the model is timid and predicts almost nothing as relevant or not relevant. At 120 it is confident and overshoots into the extremes. At 60 it happens to pass through the middle, and the induced distribution lines up with the truth almost exactly. <strong>That is where kappa peaks: not where the model is best, but where its confidence and a fixed set of thresholds happen to agree.</strong></p>
+
+          <p>Binary accuracy settles the argument. It is 0.913 at 24 labels and 0.925 at 120, a flat line that tracks Spearman and ignores kappa entirely. Two of the three metrics say the model stopped improving early. Only the one with thresholds in it disagreed.</p>
+
+          <h2 id="near-miss">The write-up I nearly published</h2>
+
+          <p>There was a second version of this. Two configurations, 100 labels each: label the extremes and reach kappa 0.891, or label the ambiguous middle and reach 0.852. A four-point gap, an obvious story about extremes teaching more, and a recommendation to go with it.</p>
+
+          <p>Spearman for those two runs is 0.954 and 0.949. Either half teaches the same ordering. The gap was calibration, and the recommendation would have sent reviewers to label the wrong CVs for a reason that does not exist.</p>
+
+          <h2 id="what-to-do">What I do about it now</h2>
+
+          <p>Whenever tiers, grades or buckets come out of thresholding a probability, report a threshold-free ordinal statistic next to the agreement number. Spearman, Kendall tau, AUC: anything that reads the ranking without asking where the cut-points fell. If the two disagree, the agreement metric is telling you about calibration and the threshold-free one is telling you about the model. Both are worth knowing, and they are different facts.</p>
+
+          <p>The product fix is the other half. Fixed cut-points shipped as constants are a bet that the model&rsquo;s confidence will not drift, and confidence drifts every time the model is retrained. Fitting the cut-points on the reviewer&rsquo;s own labels as they arrive costs almost nothing and removes the artefact at the source.</p>
+
+          <p>This is not an argument against weighted kappa, which is the right statistic for the thing it measures and is standard in the screening literature for good reasons. It is an argument against reading it as a learning curve when a threshold sits between the model and the metric. I read that curve as a learning curve for about a week.</p>
+        </div>
+      </div>
+
+      <footer class="post-foot">
+        <div class="post-wrap">
+          <p class="post-source">From the evaluation of a CV screening tool built with Utrecht University, TU Delft and Maastricht University, on 300 synthetic academic CVs. The metric-artefact analysis and the figures behind it are part of a paper now in preparation. The threshold-free calibration checks are packaged as <a href="https://github.com/mohammadi-hadi/calikit">calikit</a>, part of a wider set of <a href="/software/">evaluation libraries</a>.</p>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a> &middot; <a href="https://github.com/mohammadi-hadi">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a> &middot; <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>
