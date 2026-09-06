@@ -137,7 +137,7 @@
 
           <p>Per-call cost tracking by model and by function, over one month, produced the only genuinely surprising operational result I have had from this system.</p>
 
-          <p><strong>Two thirds of the pipeline&rsquo;s spend went to de-identification.</strong> Stripping names, emails and phone numbers out of CVs before anything else touches them took 65% of what the extraction pipeline billed in the month I measured. Reading the PDFs took another 31%. Everything I would have guessed the money was going to, matching and classification together, came to under 4%. The actual intelligence, the part anyone would describe as the AI, was a rounding error on the bill.</p>
+          <p><strong>Two thirds of the pipeline&rsquo;s spend went to de-identification.</strong> Stripping names, emails and phone numbers out of CVs before anything else touches them took 65% of what the CV pipeline billed in the month I measured. Reading the PDFs took another 31%. Everything I would have guessed the money was going to, matching and classification together, came to under 4%. The actual intelligence, the part anyone would describe as the AI, was a rounding error on the bill.</p>
 
           <p>In hindsight it is obvious. Matching runs on structured text, and getting to structured text means reading every page of every CV with a model. The lesson I took is that the cost profile of an LLM system is usually dominated by whatever has to touch the raw input, and that this is invisible until you break the bill down by function instead of by model. Breaking it down by model tells you which vendor to negotiate with. Breaking it down by function tells you what to go and fix.</p>
 
