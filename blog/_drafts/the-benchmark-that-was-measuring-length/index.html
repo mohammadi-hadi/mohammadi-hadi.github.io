@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>The benchmark that was measuring document length — Hadi Mohammadi</title>
+  <meta name="description" content="Sorting an evaluation pool of CVs by character count scored nDCG 0.994. The deployed semantic encoder scored 0.918. What the repair fixed, what it did not, and the active-learning strategy that improved the model while costing more human work.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://mohammadi.cv/blog/the-benchmark-that-was-measuring-length/">
+  <meta name="author" content="Hadi Mohammadi">
+  <meta property="og:title" content="The benchmark that was measuring document length">
+  <meta property="og:description" content="Sorting an evaluation pool of CVs by character count scored nDCG 0.994. The deployed semantic encoder scored 0.918. What the repair fixed, what it did not, and the active-learning strategy that improved the model while costing more human work.">
+  <meta property="og:url" content="https://mohammadi.cv/blog/the-benchmark-that-was-measuring-length/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hadi Mohammadi">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/blog/the-benchmark-that-was-measuring-length.png">
+  <meta property="og:image:alt" content="The benchmark that was measuring document length, field notes by Hadi Mohammadi">
+  <meta property="article:published_time" content="2026-01-01T09:00:00+01:00">
+  <meta property="article:author" content="Hadi Mohammadi">
+  <meta property="article:section" content="Field notes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The benchmark that was measuring document length">
+  <meta name="twitter:description" content="Sorting an evaluation pool of CVs by character count scored nDCG 0.994. The deployed semantic encoder scored 0.918. What the repair fixed, what it did not, and the active-learning strategy that improved the model while costing more human work.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/blog/the-benchmark-that-was-measuring-length.png">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammadi.cv/#person",
+        "name": "Hadi Mohammadi",
+        "url": "https://mohammadi.cv",
+        "identifier": "https://orcid.org/0000-0003-0860-9200"
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://mohammadi.cv/blog/#blog",
+        "name": "Hadi Mohammadi — Blog",
+        "url": "https://mohammadi.cv/blog/"
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://mohammadi.cv/blog/the-benchmark-that-was-measuring-length/#post",
+        "url": "https://mohammadi.cv/blog/the-benchmark-that-was-measuring-length/",
+        "mainEntityOfPage": "https://mohammadi.cv/blog/the-benchmark-that-was-measuring-length/",
+        "headline": "The benchmark that was measuring document length",
+        "description": "Sorting an evaluation pool of CVs by character count scored nDCG 0.994. The deployed semantic encoder scored 0.918. What the repair fixed, what it did not, and the active-learning strategy that improved the model while costing more human work.",
+        "datePublished": "2026-01-01T09:00:00+01:00",
+        "dateModified": "2026-01-01T09:00:00+01:00",
+        "inLanguage": "en",
+        "wordCount": 900,
+        "keywords": "benchmark design, shortcut learning, active learning, synthetic data, nDCG, evaluation, CV screening, confounds",
+        "isAccessibleForFree": true,
+        "author": { "@id": "https://mohammadi.cv/#person" },
+        "publisher": { "@id": "https://mohammadi.cv/#person" },
+        "isPartOf": { "@id": "https://mohammadi.cv/blog/#blog" },
+        "position": 0
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/software/">Software</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/" aria-current="true">Blog</a></li>
+          <li><a href="/thesis/">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/software/">Software</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/" aria-current="true">Blog</a></li>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="post">
+      <header class="post-head">
+        <div class="post-wrap">
+          <p class="post-crumbs"><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/#field-notes">Field notes</a></p>
+          <h1>The benchmark that was measuring document length</h1>
+          <p class="post-dek">Sorting the CVs by character count scored nDCG 0.994 on my own benchmark. The semantic encoder underneath the product scored 0.918. That is the whole problem in two numbers.</p>
+          <p class="post-byline"><span><time datetime="2026-01-01">DRAFT &mdash; unpublished</time></span><span>8 min read</span></p>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <div class="post-wrap">
+          <p>We built a tool that ranks job applications so a hiring committee reads the strongest CVs first. To evaluate it without touching anyone&rsquo;s real application, we generated 300 synthetic academic CVs against a written rubric, 75 in each of four relevance tiers, for one real vacancy.</p>
+
+          <p>Everything scored well on that pool, which should have been the first warning. Before writing any of it up, I ran the check I now run first on every evaluation set: score the pool with rankers that have no model in them at all.</p>
+
+          <table>
+            <thead><tr><th>Ranker, no labels</th><th>nDCG</th><th>P@75</th><th>Spearman vs tier</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Document length in characters</strong></td><td><strong>0.994</strong></td><td><strong>1.000</strong></td><td><strong>0.862</strong></td></tr>
+              <tr><td>Line count</td><td>0.992</td><td>1.000</td><td>0.841</td></tr>
+              <tr><td>BM25 against the posting</td><td>0.991</td><td>0.987</td><td>0.805</td></tr>
+              <tr><td>Count of top-venue mentions</td><td>0.960</td><td>1.000</td><td>0.766</td></tr>
+              <tr><td>The deployed encoder, zero-shot</td><td>0.918</td><td>0.787</td><td>0.634</td></tr>
+            </tbody>
+          </table>
+
+          <p><code>wc -c</code> beat the encoder we had deployed. Sorting the CVs by how many characters they contained put all 75 top-tier CVs at the top of the list and scored higher, on every column, than the semantic model underneath the product.</p>
+
+          <h2 id="why">Why the pool was broken</h2>
+
+          <p>The generator had written longer CVs for stronger candidates, because a stronger academic record contains more publications, more grants and more of everything else, and nobody told it to hold length constant. Correlation between length and true tier was 0.862. <strong>The shortest top-tier CV was longer than every single CV in the other three tiers.</strong> The classes were linearly separable on a feature that has nothing to do with the task.</p>
+
+          <p>This is not an exotic failure. It is the ordinary one: a synthetic pool built by asking a model to write examples of category X will encode category X in whatever surface property the model varies while writing. The evaluation then measures that property, and every number in it looks excellent.</p>
+
+          <h2 id="survived">Which numbers survived</h2>
+
+          <p>Not all of them died. Length ranks the top of the pool perfectly and the bottom of it badly, so measures that depend on the tail still separated the model from the shortcut. Reading depth to 95% recall, how much of the pile a committee has to get through to find almost everyone worth finding, was 0.640 for length and 0.490 for the trained model.</p>
+
+          <p>So the reporting changed. Precision at k and nDCG came out of the headline, because on this collection they cannot distinguish a relevance model from a character count. Reading depth and total screening effort went in, because they still can. Reporting the metrics that survive an audit, and saying why the others were dropped, is more informative than reporting the flattering ones.</p>
+
+          <h2 id="repair">The repair, and what it taught</h2>
+
+          <p>We regenerated the pool with the same rubric and the same vacancy, plus a word budget every tier had to hit. Length correlation fell from 0.862 to 0.395, and the tier ranges now overlap heavily where they had been disjoint.</p>
+
+          <p>Two things came out of that, and the second is the one I did not expect.</p>
+
+          <p>The pipeline survived. Trained on 24 random labels, it reaches reading depth 0.482 on held-out data from the repaired pool, against a theoretical optimum of 0.475. Near-optimal after a couple of dozen labels, on a pool where length cannot help.</p>
+
+          <p>And <strong>controlling one proxy promoted the next</strong>. With length neutralised, counting mentions of top venues now separates the tiers almost perfectly, at 0.934 against true tier. The rubric quantifies itself in venues and publication counts, so squeezing the length signal out concentrated it somewhere else. A rubric-constructed pool encodes its labels in whichever surface feature the rubric happens to quantify, and removing one does not make the pool clean. It promotes the runner-up.</p>
+
+          <p>Which means the model-free ranker check is not a repair you perform once. It is a test to re-run on every regeneration, and I now treat a synthetic evaluation set as something with a shelf life.</p>
+
+          <h2 id="uncertainty">The strategy that improved the model and cost more work</h2>
+
+          <p>One more result worth having, because it goes the opposite way from the textbook.</p>
+
+          <p>Uncertainty sampling is the standard active-learning move: ask the reviewer to label the cases the model is least sure about, because those teach it the most. On model quality it does roughly what it should, trailing random selection by only 0.04 in rank correlation.</p>
+
+          <p>It still loses, badly, on the thing anyone actually cares about. <strong>82% of the CVs it asks a human to label are irrelevant ones</strong>, because the ambiguous middle of the pool is mostly made of near-misses. Add the labelling to the screening and total human effort rises to 0.82 of the pool, against 0.69 for picking at random.</p>
+
+          <p>The reviewer does not care which selection strategy produced a better model. They care how many CVs they read in total, and that total includes the ones the strategy asked them to label. Optimising the model in isolation optimised the wrong quantity, and the gap is arithmetic: no improvement in ranking can close it, because it is composed of labels the ranker never sees a return on.</p>
+
+          <h2 id="lesson">What I do differently now</h2>
+
+          <p>Score every evaluation set with rankers that cannot work, before scoring it with the system. Character count, line count, a keyword match, a random permutation. If a shortcut beats the model, the benchmark is measuring the shortcut, and this costs about ten minutes to find out.</p>
+
+          <p>Then measure the whole loop rather than the model in it. The tool exists to reduce how much a committee reads, so the number to optimise is how much they read, and it has to include whatever the tool asks them to do first.</p>
+
+          <p>Both of these findings are ones I published against myself. The 95.7% accuracy figure is real and it is in the write-up, but a case study containing only that number would be worth less, to me and to anyone reading it, than one that also says the first benchmark was measuring document length.</p>
+        </div>
+      </div>
+
+      <footer class="post-foot">
+        <div class="post-wrap">
+          <p class="post-source">From the evaluation of a CV screening tool built with Utrecht University, TU Delft and Maastricht University. Every CV in this study is synthetic: no real application, and no real applicant, appears anywhere in it. Full results and the code that regenerates them are part of a paper in preparation. The threshold-free and calibration checks used here are packaged as <a href="/software/">open-source audit libraries</a>.</p>
+        </div>
+      </footer>
+
+
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a> &middot; <a href="https://github.com/mohammadi-hadi">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a> &middot; <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>
