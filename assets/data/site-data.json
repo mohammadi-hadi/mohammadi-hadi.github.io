@@ -1,40 +1,136 @@
 {
-  "fetched_at": "2026-09-06T09:41:41+00:00",
+  "fetched_at": "2026-09-07T10:40:26+00:00",
   "github": {
-    "public_repos": 53,
-    "total_stars": 7,
+    "public_repos": 55,
+    "total_stars": 8,
     "repos": {
-      "mohammadi-hadi.github.io": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Personal academic website — mohammadi.cv",
-        "language": "HTML",
-        "pushed_at": "2026-09-05T22:57:36Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
-      },
       "mohammadi-hadi": {
         "stars": 0,
         "forks": 0,
         "description": "GitHub profile README",
         "language": null,
-        "pushed_at": "2026-09-05T22:57:11Z",
+        "pushed_at": "2026-09-07T09:27:44Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi"
       },
-      "retainkit": {
+      "fsdp-reward-scaling": {
         "stars": 0,
         "forks": 0,
-        "description": "Context and memory policies for LLM agents, scored by the evidence that survives the token budget — across 1,527 LoCoMo questions a sliding window keeps 7.7% of the supporting turns at 2,048 tokens, where retrieval keeps 59.5%",
+        "description": "Full-parameter reward-model training sharded across GPUs with FSDP2, measured end to end: throughput, memory, scaling efficiency, and recovery from a killed rank.",
         "language": "Python",
-        "pushed_at": "2026-09-05T15:55:36Z",
-        "url": "https://github.com/mohammadi-hadi/retainkit"
+        "pushed_at": "2026-09-06T16:16:36Z",
+        "url": "https://github.com/mohammadi-hadi/fsdp-reward-scaling"
+      },
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Personal academic website — mohammadi.cv",
+        "language": "HTML",
+        "pushed_at": "2026-09-06T16:16:35Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
+      "trajectory-judge": {
+        "stars": 0,
+        "forks": 0,
+        "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.",
+        "language": "Python",
+        "pushed_at": "2026-09-06T16:04:09Z",
+        "url": "https://github.com/mohammadi-hadi/trajectory-judge"
+      },
+      "abkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Sample-ratio, peeking, multiple-testing and winner's-curse checks for experiment readouts — across 4,873 Upworthy tests the median significant winner overstates its lift by 1.27x.",
+        "language": "Python",
+        "pushed_at": "2026-09-06T15:01:35Z",
+        "url": "https://github.com/mohammadi-hadi/abkit"
       },
       "spark-search-ranking": {
         "stars": 0,
         "forks": 0,
         "description": "Counterfactual learning-to-rank for marketplace search logs in PySpark: position-bias estimation, IPS-weighted training, NDCG evaluation against known ground truth",
         "language": "Python",
-        "pushed_at": "2026-09-05T09:11:44Z",
+        "pushed_at": "2026-09-06T12:13:17Z",
         "url": "https://github.com/mohammadi-hadi/spark-search-ranking"
+      },
+      "evalstack": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Eleven tools for measuring how model evaluation goes wrong, and what they each found.",
+        "language": null,
+        "pushed_at": "2026-09-06T11:40:29Z",
+        "url": "https://github.com/mohammadi-hadi/evalstack"
+      },
+      "raterkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Reliability, rogue-rater, drift and leakage diagnostics for labelled data — on the raw GoEmotions ratings, 27 of 28 emotions fall below the 0.667 agreement floor.",
+        "language": "Python",
+        "pushed_at": "2026-09-06T11:36:33Z",
+        "url": "https://github.com/mohammadi-hadi/raterkit"
+      },
+      "arenakit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Bradley-Terry leaderboards with simultaneous confidence control — across 106,134 LMArena votes only 1 of 54 neighbouring pairs survives, against 5 when each is judged on its own.",
+        "language": "Python",
+        "pushed_at": "2026-09-06T11:36:31Z",
+        "url": "https://github.com/mohammadi-hadi/arenakit"
+      },
+      "rankkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Ranking evaluation with error bars: NDCG, MRR and MAP with confidence intervals, plus position-bias correction for click logs. No dependencies.",
+        "language": "Python",
+        "pushed_at": "2026-09-06T11:36:29Z",
+        "url": "https://github.com/mohammadi-hadi/rankkit"
+      },
+      "judgewatch": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Monthly bias audits of LLM judges",
+        "language": "Python",
+        "pushed_at": "2026-09-06T11:36:28Z",
+        "url": "https://github.com/mohammadi-hadi/judgewatch"
+      },
+      "calikit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Calibration auditing for probabilistic predictions: reliability diagrams, ECE, Brier decomposition, temperature scaling. Zero dependencies.",
+        "language": "Python",
+        "pushed_at": "2026-09-06T11:36:26Z",
+        "url": "https://github.com/mohammadi-hadi/calikit"
+      },
+      "abeval": {
+        "stars": 1,
+        "forks": 0,
+        "description": "A/B-test statistics for LLM evals: error bars, paired significance tests, sample-size planning",
+        "language": "Python",
+        "pushed_at": "2026-09-06T11:36:25Z",
+        "url": "https://github.com/mohammadi-hadi/abeval"
+      },
+      "judgekit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Bias probes for LLM judges, each with a bootstrap confidence interval: position, verbosity, self-preference, calibration and stability — qwen2.5:14b picks whichever answer is shown first 77% of the time.",
+        "language": "Python",
+        "pushed_at": "2026-09-06T11:35:32Z",
+        "url": "https://github.com/mohammadi-hadi/judgekit"
+      },
+      "retainkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Context and memory policies for LLM agents, scored by the evidence that survives the token budget — across 1,527 LoCoMo questions a sliding window keeps 7.7% of the supporting turns at 2,048 tokens, where retrieval keeps 59.5%",
+        "language": "Python",
+        "pushed_at": "2026-09-06T11:35:30Z",
+        "url": "https://github.com/mohammadi-hadi/retainkit"
+      },
+      "judgepanel": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Estimate LLM-judge accuracy without gold labels: Dawid-Skene EM, agreement statistics, bootstrap uncertainty",
+        "language": "Python",
+        "pushed_at": "2026-09-06T11:35:28Z",
+        "url": "https://github.com/mohammadi-hadi/judgepanel"
       },
       "opening-the-black-box": {
         "stars": 0,
@@ -100,54 +196,6 @@
         "pushed_at": "2026-09-05T09:09:48Z",
         "url": "https://github.com/mohammadi-hadi/Explainable-Sexism-Detection"
       },
-      "judgewatch": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Monthly bias audits of LLM judges",
-        "language": "Python",
-        "pushed_at": "2026-09-05T08:55:43Z",
-        "url": "https://github.com/mohammadi-hadi/judgewatch"
-      },
-      "abeval": {
-        "stars": 0,
-        "forks": 0,
-        "description": "A/B-test statistics for LLM evals: error bars, paired significance tests, sample-size planning",
-        "language": "Python",
-        "pushed_at": "2026-09-05T08:55:36Z",
-        "url": "https://github.com/mohammadi-hadi/abeval"
-      },
-      "calikit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Calibration auditing for probabilistic predictions: reliability diagrams, ECE, Brier decomposition, temperature scaling. Zero dependencies.",
-        "language": "Python",
-        "pushed_at": "2026-09-05T08:55:30Z",
-        "url": "https://github.com/mohammadi-hadi/calikit"
-      },
-      "rankkit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Ranking evaluation with error bars: NDCG, MRR and MAP with confidence intervals, plus position-bias correction for click logs. No dependencies.",
-        "language": "Python",
-        "pushed_at": "2026-09-05T08:55:22Z",
-        "url": "https://github.com/mohammadi-hadi/rankkit"
-      },
-      "judgekit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Bias probes for LLM judges, each with a bootstrap confidence interval: position, verbosity, self-preference, calibration and stability — qwen2.5:14b picks whichever answer is shown first 77% of the time.",
-        "language": "Python",
-        "pushed_at": "2026-09-05T08:54:34Z",
-        "url": "https://github.com/mohammadi-hadi/judgekit"
-      },
-      "trajectory-judge": {
-        "stars": 0,
-        "forks": 0,
-        "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.",
-        "language": "Python",
-        "pushed_at": "2026-09-02T08:06:10Z",
-        "url": "https://github.com/mohammadi-hadi/trajectory-judge"
-      },
       "hands-on-xai-labs": {
         "stars": 0,
         "forks": 0,
@@ -163,22 +211,6 @@
         "language": "Jupyter Notebook",
         "pushed_at": "2026-08-29T14:36:07Z",
         "url": "https://github.com/mohammadi-hadi/grpo_dpo_comparison"
-      },
-      "judgepanel": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Estimate LLM-judge accuracy without gold labels: Dawid-Skene EM, agreement statistics, bootstrap uncertainty",
-        "language": "Python",
-        "pushed_at": "2026-08-29T10:04:19Z",
-        "url": "https://github.com/mohammadi-hadi/judgepanel"
-      },
-      "abkit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Sample-ratio, peeking, multiple-testing and winner's-curse checks for experiment readouts — across 4,873 Upworthy tests the median significant winner overstates its lift by 1.27x.",
-        "language": "Python",
-        "pushed_at": "2026-08-29T09:07:43Z",
-        "url": "https://github.com/mohammadi-hadi/abkit"
       },
       "Ray": {
         "stars": 0,
@@ -283,22 +315,6 @@
         "language": "Python",
         "pushed_at": "2026-08-08T08:10:00Z",
         "url": "https://github.com/mohammadi-hadi/ppofolio"
-      },
-      "raterkit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Reliability, rogue-rater, drift and leakage diagnostics for labelled data — on the raw GoEmotions ratings, 27 of 28 emotions fall below the 0.667 agreement floor.",
-        "language": "Python",
-        "pushed_at": "2026-08-08T08:10:00Z",
-        "url": "https://github.com/mohammadi-hadi/raterkit"
-      },
-      "arenakit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Bradley-Terry leaderboards with simultaneous confidence control — across 106,134 LMArena votes only 1 of 54 neighbouring pairs survives, against 5 when each is judged on its own.",
-        "language": "Python",
-        "pushed_at": "2026-08-08T08:09:55Z",
-        "url": "https://github.com/mohammadi-hadi/arenakit"
       },
       ".github": {
         "stars": 0,
@@ -431,7 +447,7 @@
     }
   },
   "openalex": {
-    "works_count": 88,
+    "works_count": 90,
     "cited_by_count": 16,
     "h_index": 2,
     "i10_index": 0
