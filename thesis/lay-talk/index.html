@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Layman’s talk — Let Me Explain! | Hadi Mohammadi</title>
+  <meta name="description" content="Slides from the Layman’s talk (lekenpraatje) Hadi Mohammadi gave on 9 September 2026 at Utrecht University, before the public defence of his PhD thesis Let Me Explain!">
+  <meta name="author" content="Hadi Mohammadi">
+
+  <meta property="og:title" content="Layman’s talk — Let Me Explain! by Hadi Mohammadi">
+  <meta property="og:description" content="The 20 slides from the Layman’s talk given before the public defence at Utrecht University, 9 September 2026.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mohammadi.cv/thesis/lay-talk/">
+  <meta property="og:image" content="https://mohammadi.cv/assets/img/thesis/og-lay-talk.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The title slide of the talk: Let Me Explain! Explainable NLP for Understanding Large Language Models, by Hadi Mohammadi, Utrecht University.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Layman’s talk — Let Me Explain! by Hadi Mohammadi">
+  <meta name="twitter:description" content="The 20 slides from the Layman’s talk given before the public defence at Utrecht University, 9 September 2026.">
+  <meta name="twitter:image" content="https://mohammadi.cv/assets/img/thesis/og-lay-talk.jpg">
+  <meta name="twitter:image:alt" content="The title slide of the talk: Let Me Explain! Explainable NLP for Understanding Large Language Models, by Hadi Mohammadi, Utrecht University.">
+
+  <link rel="canonical" href="https://mohammadi.cv/thesis/lay-talk/">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+
+  <script>document.documentElement.classList.add('js');</script>
+
+  <style>
+    /* A #slide-N link should jump, not glide: a smooth scroll aims at where the
+       slide was before the web fonts arrived and overshoots under the header. */
+    html:has(.slide:target) { scroll-behavior: auto; }
+
+    :root {
+      --uu-yellow: #ffcd00;
+      --slide-edge: rgba(26, 26, 26, 0.09);
+      --slide-shadow: 0 1px 2px rgba(26, 26, 26, 0.06), 0 18px 40px -18px rgba(26, 26, 26, 0.28);
+      --header-h: 65px;
+      /* Everything stacked above and below the slide on the first screen:
+         site header, intro, band padding, progress bar and the controls row.
+         The slide shrinks until all of it fits. */
+      --stage-chrome: 360px;
+    }
+
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px; height: 1px;
+      margin: -1px; padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ---------- Intro ---------- */
+    .lt-intro { padding: 20px 0 22px; }
+
+    .lt-crumbs {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 12px;
+    }
+    .lt-crumbs ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0 0.6em;
+    }
+    .lt-crumbs li + li::before {
+      content: "/";
+      margin-right: 0.6em;
+      color: #b3b0aa;
+    }
+    .lt-crumbs a {
+      color: var(--ink-3);
+      text-decoration: underline;
+      text-decoration-color: #cfccc4;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+      padding: 0.3rem 0;
+    }
+    .lt-crumbs a:hover { color: var(--accent); text-decoration-color: currentColor; }
+    .lt-crumbs [aria-current="page"] { color: var(--ink); }
+    .lt-crumbs .nl { color: var(--ink-3); }
+    .lt-crumbs .nl::before { content: "·"; margin: 0 0.6em; color: #b3b0aa; }
+
+    .lt-intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--space-4) var(--space-6);
+      align-items: end;
+    }
+
+    .lt-title {
+      font-size: clamp(2rem, 1.3rem + 1.9vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.022em;
+      line-height: 1.05;
+      margin: 0;
+    }
+    /* the short yellow rule that sits under every slide title */
+    .lt-title::after {
+      content: "";
+      display: block;
+      width: 56px;
+      height: 4px;
+      margin: 10px 0 12px;
+      background: var(--uu-yellow);
+    }
+
+    .lt-dek {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.08rem, 1rem + 0.3vw, 1.2rem);
+      line-height: 1.35;
+      color: var(--ink-2);
+      margin: 0 0 4px;
+      text-wrap: balance;
+    }
+
+    .lt-meta {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.02em;
+      line-height: 1.7;
+      color: var(--ink-3);
+      margin: 0;
+    }
+    /* Dots sit in the gap before each item; one that starts a line is clipped away. */
+    .lt-meta {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 1.3em;
+      overflow: hidden;
+    }
+    .lt-meta > span { position: relative; white-space: nowrap; }
+    .lt-meta > span::before {
+      content: "·";
+      position: absolute;
+      left: -0.9em;
+      color: #b3b0aa;
+    }
+
+    .lt-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+      padding-bottom: 2px;
+    }
+    /* the black button of the thesis page */
+    .lt-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: #000;
+      color: #fff;
+      padding: 0.7rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background-color 0.18s ease, transform 0.18s ease;
+    }
+    .lt-download:hover { background: #333; color: #fff; transform: translateY(-1px); }
+    .lt-download:focus-visible { outline-offset: 3px; }
+    .lt-download i { font-size: 0.85rem; }
+    .lt-filemeta {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      color: var(--ink-3);
+    }
+
+    @media (max-width: 720px) {
+      .lt-intro { padding: var(--space-4) 0; }
+      .lt-crumbs { letter-spacing: 0.08em; margin-bottom: var(--space-3); }
+      .lt-intro-grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+      .lt-actions { flex-direction: row; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); }
+      .lt-download { min-height: 44px; }
+    }
+
+    /* ---------- Stage band ---------- */
+    .lt-band {
+      background: var(--paper-deep);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 20px 0 var(--space-5);
+    }
+
+    .stage-col {
+      width: 100%;
+      width: min(100%, max(440px, calc((100vh - var(--stage-chrome)) * 16 / 9)));
+      width: min(100%, max(440px, calc((100svh - var(--stage-chrome)) * 16 / 9)));
+      margin: 0 auto;
+    }
+
+    .stage { scroll-margin-top: calc(var(--header-h) + 16px); }
+    .js .stage { container-type: inline-size; }
+
+    /* Without JS the slides are one plain column. */
+    .slides {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: var(--space-6);
+    }
+
+    .slide { scroll-margin-top: calc(var(--header-h) + 16px); }
+    .slide figure { margin: 0; }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      background: #fff;
+      border: 1px solid var(--slide-edge);
+      box-shadow: var(--slide-shadow);
+    }
+
+    .slide figcaption {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.15rem 0.75rem;
+      margin-top: var(--space-3);
+    }
+
+    .cap-n {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-3);
+      font-variant-numeric: tabular-nums;
+    }
+    .cap-k {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .cap-t {
+      flex-basis: 100%;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+    .cap-note,
+    .stage-note {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--ink-2);
+    }
+    .cap-note { flex-basis: 100%; max-width: 72ch; }
+    .cap-note b,
+    .stage-note b { font-style: normal; font-weight: 600; color: var(--ink); }
+
+    .stage-bar,
+    .stage-progress,
+    .stage-hint,
+    .strip-wrap { display: none; }
+
+    /* ---------- Stage (JS) ---------- */
+    .js .stage-frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #fff;
+      border: 1px solid var(--slide-edge);
+      box-shadow: var(--slide-shadow);
+      overflow: hidden;
+      touch-action: pan-y pinch-zoom;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .js .stage-frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+    .js .slides {
+      display: block;
+      position: absolute;
+      inset: 0;
+    }
+
+    .js .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      background: #fff center / cover no-repeat;
+    }
+    .js .slide.is-active { display: block; }
+
+    .js .slide figure { height: 100%; }
+    .js .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border: 0;
+      box-shadow: none;
+      background: transparent;
+    }
+    .js .slide figcaption { display: none; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .js .slide.is-entering { animation: lt-fade 0.24s ease-out both; }
+      @keyframes lt-fade { from { opacity: 0; } to { opacity: 1; } }
+    }
+
+    /* edge hints: a mouse sees which way a click will go */
+    .js .stage-hint {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      width: 44px;
+      height: 44px;
+      margin-top: -22px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(26, 26, 26, 0.78);
+      color: #fff;
+      font-size: 0.85rem;
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      pointer-events: none;
+    }
+    .stage-hint.is-prev { left: 18px; }
+    .stage-hint.is-next { right: 18px; }
+    @media (hover: hover) and (pointer: fine) {
+      .js .stage-frame[data-side="prev"],
+      .js .stage-frame[data-side="next"] { cursor: pointer; }
+      .stage-frame[data-side="prev"]:hover .stage-hint.is-prev,
+      .stage-frame[data-side="next"]:hover .stage-hint.is-next { opacity: 1; transform: scale(1); }
+    }
+
+    /* progress: twenty segments, passed ones dim yellow, the current one solid */
+    .js .stage-progress {
+      display: grid;
+      grid-template-columns: repeat(20, minmax(0, 1fr));
+      align-items: center;
+      gap: 3px;
+      height: 5px;
+      margin-top: 12px;
+    }
+    .stage-progress span {
+      height: 3px;
+      background: rgba(26, 26, 26, 0.11);
+      transition: background-color 0.2s ease, height 0.2s ease;
+    }
+    .stage-progress span.is-past { background: #efd98f; }
+    .stage-progress span.is-now { height: 5px; background: var(--uu-yellow); }
+
+    .js .stage-bar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: "cap controls" "note note";
+      align-items: start;
+      align-content: start;
+      gap: 0 var(--space-5);
+      padding-top: 14px;
+    }
+
+    .stage-cap {
+      grid-area: cap;
+      min-width: 0;
+      margin: 0;
+      line-height: 1.3;
+    }
+    .stage-cap-k {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 0.2rem;
+    }
+    .stage-cap-t {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-wrap: pretty;
+    }
+    .stage-note {
+      grid-area: note;
+      max-width: 78ch;
+      margin: 6px 0 0;
+    }
+
+    .stage-controls {
+      grid-area: controls;
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .stage-btn {
+      width: 42px;
+      height: 42px;
+      display: inline-grid;
+      place-items: center;
+      background: var(--surface);
+      color: var(--ink);
+      border: 1px solid #d6d3cc;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+    }
+    .stage-btn:hover { border-color: var(--ink); }
+    .stage-btn:active { background: var(--paper); }
+    .stage-btn[aria-disabled="true"] {
+      color: #b3b0aa;
+      border-color: var(--rule);
+      background: transparent;
+      cursor: default;
+    }
+    .stage-btn.is-fs { margin-left: var(--space-2); }
+
+    .stage-count {
+      min-width: 4.6em;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--ink-3);
+      white-space: nowrap;
+    }
+    .stage-count b { font-weight: 500; color: var(--ink); }
+
+    /* ---------- Filmstrip ---------- */
+    .js .strip-wrap {
+      display: block;
+      margin-top: var(--space-3);
+    }
+
+    .strip-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0 var(--space-3);
+      margin-bottom: var(--space-2);
+    }
+    .strip-head .kicker { margin: 0; }
+
+    .strip-hint {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--ink-3);
+      letter-spacing: 0.02em;
+    }
+    .strip-hint.is-keys { display: none; }
+    @media (hover: hover) and (pointer: fine) {
+      .strip-hint.is-keys { display: block; }
+      .strip-hint.is-touch { display: none; }
+    }
+    .strip-hint kbd {
+      display: inline-block;
+      min-width: 1.7em;
+      padding: 0.05em 0.4em;
+      margin: 0 0.1em;
+      font-family: inherit;
+      font-size: 0.68rem;
+      text-align: center;
+      color: var(--ink-2);
+      background: var(--surface);
+      border: 1px solid #d6d3cc;
+      border-bottom-width: 2px;
+      border-radius: 3px;
+    }
+
+    .strip {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      list-style: none;
+      margin: 0 -8px;
+      padding: 6px 8px 14px;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x proximity;
+      scroll-padding: 0 8px;
+      scrollbar-width: thin;
+      scrollbar-color: #cfccc4 transparent;
+    }
+    .strip-group {
+      flex: 0 0 auto;
+      border-top: 1px solid #d6d3cc;
+      transition: border-color 0.15s ease;
+    }
+    .strip-group.is-current { border-top-color: var(--ink); }
+    /* The label stays pinned to the left edge while any of its group is in view. */
+    .strip-label {
+      position: sticky;
+      left: 0;
+      display: block;
+      width: max-content;
+      max-width: 100%;
+      padding: 6px 0 8px;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      line-height: 1.3;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: var(--ink-2);
+      transition: color 0.15s ease, opacity 0.15s ease;
+    }
+    .strip-group.is-current .strip-label { color: var(--ink); }
+    /* a label the strip edge would cut into a fragment is hidden until it fits */
+    .strip-label.is-cut { opacity: 0; }
+    .strip-row {
+      display: flex;
+      gap: 12px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .strip-row li { flex: 0 0 auto; scroll-snap-align: start; }
+
+    .thumb {
+      display: block;
+      width: 150px;
+      color: var(--ink-3);
+    }
+    .thumb img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      background: #fff;
+      border: 1px solid var(--slide-edge);
+      opacity: 0.8;
+      transition: opacity 0.15s ease, transform 0.2s cubic-bezier(.2, .7, .2, 1), box-shadow 0.15s ease;
+    }
+    .thumb:hover { color: var(--ink); }
+    .thumb:hover img { opacity: 1; transform: translateY(-2px); box-shadow: 0 8px 18px -10px rgba(26, 26, 26, 0.35); }
+    .thumb:focus-visible { outline: none; }
+    .thumb:focus-visible img { outline: 2px solid var(--accent); outline-offset: 3px; opacity: 1; }
+
+    .thumb-n {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      margin-top: 7px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .thumb-n::before {
+      content: "";
+      width: 0;
+      height: 3px;
+      background: var(--uu-yellow);
+      transition: width 0.2s ease;
+    }
+
+    .thumb[aria-current="true"] { color: var(--ink); }
+    /* current slide: a yellow frame; keyboard focus keeps the navy outline */
+    .thumb[aria-current="true"] img {
+      opacity: 1;
+      box-shadow: 0 0 0 1px rgba(26, 26, 26, 0.35), 0 0 0 4px var(--uu-yellow);
+    }
+    .thumb:focus-visible img { outline-offset: 6px; }
+    .thumb[aria-current="true"] .thumb-n { font-weight: 500; }
+    .thumb[aria-current="true"] .thumb-n::before { width: 14px; }
+
+    /* ---------- Full screen ---------- */
+    .stage.is-full {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      width: auto;
+      max-width: none;
+      margin: 0;
+      padding: 16px 24px 20px;
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .stage.is-full > * {
+      width: min(100%, calc((100vh - 124px) * 16 / 9));
+      width: min(100%, calc((100dvh - 124px) * 16 / 9));
+    }
+    .stage.is-full .stage-bar { min-height: 0 !important; }
+    .stage.is-full .stage-note { display: none; }
+    .stage.is-full .stage-frame { border-color: transparent; box-shadow: none; }
+    .stage.is-full .stage-progress span { background: rgba(255, 255, 255, 0.18); }
+    .stage.is-full .stage-progress span.is-past { background: rgba(255, 205, 0, 0.45); }
+    .stage.is-full .stage-progress span.is-now { background: var(--uu-yellow); }
+    .stage.is-full .stage-cap-k { color: rgba(255, 255, 255, 0.6); }
+    .stage.is-full .stage-cap-t { color: #fff; }
+    .stage.is-full .stage-count { color: rgba(255, 255, 255, 0.6); }
+    .stage.is-full .stage-count b { color: #fff; }
+    .stage.is-full .stage-btn { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.24); }
+    .stage.is-full .stage-btn:hover { border-color: #fff; }
+    .stage.is-full .stage-btn[aria-disabled="true"] { color: rgba(255, 255, 255, 0.3); border-color: rgba(255, 255, 255, 0.1); }
+    .stage.is-full :focus-visible { outline-color: var(--uu-yellow); }
+    .stage:fullscreen { background: #111; }
+    .stage::backdrop { background: #111; }
+    html.lt-lock, html.lt-lock body { overflow: hidden; }
+
+    /* A narrow stage (phones, short landscape windows) puts the controls first. */
+    @container (max-width: 600px) {
+      .js .stage-bar {
+        grid-template-columns: 1fr;
+        grid-template-areas: "controls" "cap" "note";
+        gap: 0;
+      }
+      .js .stage-cap { margin-top: var(--space-3); }
+      .js .stage-controls { justify-content: space-between; }
+      .js .stage-count { flex: 1; }
+      .js .stage-btn { width: 44px; height: 44px; }
+      .js .stage-btn.is-fs { margin-left: 0; }
+      .js .stage-cap-t { font-size: 1.05rem; }
+      .js .stage-note { font-size: 0.95rem; }
+    }
+
+    /* ---------- Phones ---------- */
+    @media (max-width: 640px) {
+      .lt-band { padding: var(--space-4) 0 var(--space-4); }
+      .slide figcaption { margin-top: var(--space-2); }
+      .thumb { width: 118px; }
+      .strip { gap: 18px; }
+      .strip-row { gap: 10px; }
+      .strip-label { white-space: normal; max-width: min(100%, 150px); min-height: calc(2 * 1.3em + 14px); }
+      .stage.is-full { padding: 12px 12px 16px; }
+      .stage.is-full .stage-cap { display: none; }
+      .stage.is-full > * { width: min(100%, calc((100dvh - 84px) * 16 / 9)); }
+    }
+
+    /* ---------- About ---------- */
+    .lt-about { padding: var(--space-6) 0 var(--space-7); }
+    .lt-about h2 {
+      font-size: var(--step-1);
+      margin: 0 0 var(--space-4);
+    }
+    .lt-facts {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0 var(--space-5);
+      margin: 0;
+      border-top: 1px solid var(--ink);
+    }
+    .lt-facts > div {
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--rule);
+      min-width: 0;
+    }
+    .lt-facts > .is-wide {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-3);
+      border-bottom: 0;
+    }
+    .lt-facts dt {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 4px;
+    }
+    .lt-facts > .is-wide dt { margin: 0; flex: 0 0 auto; }
+    .lt-facts dd {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--ink);
+      overflow-wrap: break-word;
+      text-wrap: balance;
+    }
+    .lt-facts a {
+      text-decoration: underline;
+      text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    .lt-facts a:hover { text-decoration-color: var(--accent-hover); }
+    .lt-facts .quiet { color: var(--ink-3); white-space: nowrap; }
+
+    @media (max-width: 1100px) {
+      .lt-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 480px) {
+      .lt-about { padding: var(--space-6) 0; }
+      .lt-facts { grid-template-columns: 1fr; }
+      .lt-facts > .is-wide { display: block; }
+      .lt-facts > .is-wide dt { margin-bottom: 4px; }
+    }
+
+    /* ---------- Footer (as on the thesis page) ---------- */
+    .footer {
+      background: #000;
+      color: rgba(255, 255, 255, 0.65);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      margin-top: 0;
+    }
+    .footer p { margin: 0; }
+    .footer a { color: rgba(255, 255, 255, 0.85); }
+    .footer a:hover { color: white; }
+    .footer a { white-space: nowrap; }
+    @media (max-width: 480px) {
+      .footer { padding: 1.75rem var(--space-4); }
+    }
+
+    /* ---------- Print: every slide on its own landscape page ---------- */
+    @page { size: A4 landscape; margin: 12mm; }
+    @media print {
+      .skip-link, .lt-crumbs, .lt-actions, .stage-progress, .stage-bar, .stage-hint, .strip-wrap, .footer { display: none !important; }
+      body, .lt-band { background: #fff; }
+      .lt-intro { padding: 0 0 12px; }
+      .lt-band { border: 0; padding: 0; }
+      .stage-col, .stage { width: 100% !important; }
+      .js .stage-frame { aspect-ratio: auto; overflow: visible; border: 0; box-shadow: none; }
+      .slides, .js .slides { position: static; display: block; }
+      .js .slide { position: static; display: block !important; background: none !important; animation: none !important; }
+      .slide { break-inside: avoid; break-after: page; }
+      .slide img, .js .slide img { height: auto; border: 1px solid #ccc; box-shadow: none; }
+      .js .slide figcaption { display: flex; }
+      .slide figure { max-width: 210mm; margin: 0 auto; }
+      .lt-about { padding: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Hadi Mohammadi</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/software/">Software</a></li>
+          <li><a href="/experience/">Experience</a></li>
+          <li><a href="/teaching/">Teaching</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/thesis/" aria-current="page">Thesis</a></li>
+          <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <details class="nav-toggle">
+        <summary>Menu</summary>
+        <nav class="site-nav" aria-label="Mobile">
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/software/">Software</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/thesis/" aria-current="page">Thesis</a></li>
+            <li><a href="/assets/docs/HadiMohammadiCV.pdf">CV</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <header class="lt-intro">
+      <div class="container">
+        <nav class="lt-crumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/thesis/">Thesis</a></li>
+            <li><span aria-current="page">Layman’s talk</span><span class="nl" lang="nl">Lekenpraatje</span></li>
+          </ol>
+        </nav>
+        <div class="lt-intro-grid">
+          <div>
+            <h1 class="lt-title">Let Me Explain!</h1>
+            <p class="lt-dek">Making large language models say why.</p>
+            <p class="lt-meta"><span>Hadi Mohammadi</span> <span><time datetime="2026-09-09T14:00">9 September 2026, 14:00</time></span> <span>Academiegebouw, Utrecht</span></p>
+          </div>
+          <div class="lt-actions">
+            <a class="lt-download" href="/thesis/lay-talk/Mohammadi_Let-Me-Explain_lay-talk_2026.pdf" type="application/pdf" download><i class="fas fa-arrow-down" aria-hidden="true"></i> Download the slides</a>
+            <span class="lt-filemeta">PDF · 20 slides · 1.5 MB</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="lt-band" aria-labelledby="slides-title">
+      <div class="container">
+        <h2 id="slides-title" class="visually-hidden">Slides</h2>
+
+        <div class="stage-col">
+          <div class="stage" id="stage">
+            <div class="stage-frame">
+              <span class="stage-hint is-prev" aria-hidden="true"><i class="fas fa-chevron-left"></i></span>
+              <span class="stage-hint is-next" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+
+              <ol class="slides">
+                <li class="slide is-active" id="slide-1" data-section="Let Me Explain!">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-01-960.webp" srcset="/thesis/lay-talk/slides/slide-01-960.webp 960w, /thesis/lay-talk/slides/slide-01.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" fetchpriority="high" decoding="async" alt="Title slide with the Utrecht University logo. Let Me Explain! Explainable NLP for Understanding Large Language Models. Hadi Mohammadi, Methodology, Statistics &amp; Data Science, Utrecht University. Public defence · 9 September 2026.">
+                    <figcaption><span class="cap-n">01</span><span class="cap-t">Let Me Explain!</span><span class="cap-note">Explainable NLP for Understanding Large Language Models</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-2" data-section="Let Me Explain!">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-02-960.webp" srcset="/thesis/lay-talk/slides/slide-02-960.webp 960w, /thesis/lay-talk/slides/slide-02.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="Pale yellow slide with the words: Making large language models say why.">
+                    <figcaption><span class="cap-n">02</span><span class="cap-t">Making large language models say why.</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-3" data-section="The problem">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-03-960.webp" srcset="/thesis/lay-talk/slides/slide-03-960.webp 960w, /thesis/lay-talk/slides/slide-03.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="How fast this happened: It took two months. Bar chart, time to reach 100 million users: Spotify 11 years, Netflix 10 years, Airbnb 8 years, Twitter 5 years, Facebook 4.5 years, Dropbox 4 years, WhatsApp 3.5 years, Instagram 2.5 years, TikTok 9 months, ChatGPT 2 months, highlighted in red. Source: World of Statistics.">
+                    <figcaption><span class="cap-n">03</span><span class="cap-k">How fast this happened</span><span class="cap-t">It took two months</span><span class="cap-note">Source: World of Statistics</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-4" data-section="The problem">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-04-960.webp" srcset="/thesis/lay-talk/slides/slide-04-960.webp 960w, /thesis/lay-talk/slides/slide-04.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="Before my PhD: You will not always be told why. Three boxes joined by arrows: Your application (income, job, address), then The model, a black box with a question mark, then DENIED (no reason given). Below: You apply for a loan. The answer is no. Nobody can tell you why.">
+                    <figcaption><span class="cap-n">04</span><span class="cap-k">Before my PhD</span><span class="cap-t">You will not always be told why</span><span class="cap-note">You apply for a loan. The answer is no. Nobody can tell you why.</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-5" data-section="The problem">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-05-960.webp" srcset="/thesis/lay-talk/slides/slide-05-960.webp 960w, /thesis/lay-talk/slides/slide-05.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="The problem: What is inside the box? Left, Traditional approach: a magnifying glass over a black box shows a decision tree. Income above €30,000? No leads to NO. Yes leads to Steady job?, where yes leads to YES and no leads to NO. Caption: a rule you can read. An arrow points to Neural network: the magnifying glass shows columns of numbers such as -1.01, +0.22 and -1.47. Caption: billions of numbers · no rule to read.">
+                    <figcaption><span class="cap-n">05</span><span class="cap-k">The problem</span><span class="cap-t">What is inside the box?</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-6" data-section="The problem">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-06-960.webp" srcset="/thesis/lay-talk/slides/slide-06-960.webp 960w, /thesis/lay-talk/slides/slide-06.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="And it got worse: How large is a large language model? About 1,600 times bigger in two years. A tiny blue dot, labelled (that dot), is BERT, 2018, 110 million parameters. Next to it a large red square: GPT-3, 175 billion, two years later. A bigger dashed outline: GPT-4, larger still.">
+                    <figcaption><span class="cap-n">06</span><span class="cap-k">And it got worse</span><span class="cap-t">How large is a large language model?</span><span class="cap-note">About 1,600 times bigger in two years</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-7" data-section="The problem">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-07-960.webp" srcset="/thesis/lay-talk/slides/slide-07-960.webp 960w, /thesis/lay-talk/slides/slide-07.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="Screenshot of a BBC News web page with the headline &#x27;A predator in your home&#x27;: Mothers say chatbots encouraged their sons to kill themselves, dated 8 November 2025. Below: Nobody could say why it answered the way it did. BBC News, 8 November 2025.">
+                    <figcaption><span class="cap-n">07</span><span class="cap-k">The problem</span><span class="cap-t">Nobody could say why it answered the way it did.</span><span class="cap-note">BBC News, 8 November 2025</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-8" data-section="Why did it say that?">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-08-960.webp" srcset="/thesis/lay-talk/slides/slide-08-960.webp 960w, /thesis/lay-talk/slides/slide-08.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="Yellow slide: Why did it say that? Three years, six studies, one question.">
+                    <figcaption><span class="cap-n">08</span><span class="cap-t">Why did it say that?</span><span class="cap-note">Three years, six studies, one question.</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-9" data-section="Why did it say that?">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-09-960.webp" srcset="/thesis/lay-talk/slides/slide-09-960.webp 960w, /thesis/lay-talk/slides/slide-09.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="How we look inside: Ask which words did the work. An example post: Women who study engineering should stay in the kitchen anyway. Five words are highlighted in yellow, darkest on kitchen, then Women, stay and should, lightest on anyway. An arrow points to: the darker the highlight, the more that word drove the decision.">
+                    <figcaption><span class="cap-n">09</span><span class="cap-k">How we look inside</span><span class="cap-t">Ask which words did the work</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-10" data-section="Chapters 3, 4, 5, 7">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-10-960.webp" srcset="/thesis/lay-talk/slides/slide-10-960.webp 960w, /thesis/lay-talk/slides/slide-10.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="Chapter 3: Online harm is not all or nothing. What a yes/no label sees: two boxes, FINE and HARMFUL. What actually happens online: a colour bar running from pale yellow to deep red, labelled a clumsy joke, a stereotype, a put-down, open abuse. Proposition 5 · Online harm is not all or nothing, so a simple yes-or-no label misses most of the picture.">
+                    <figcaption><span class="cap-n">10</span><span class="cap-k">Chapter 3</span><span class="cap-t">Online harm is not all or nothing</span><span class="cap-note"><b>Proposition 5</b> · Online harm is not all or nothing, so a simple yes-or-no label misses most of the picture.</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-11" data-section="Chapters 3, 4, 5, 7">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-11-960.webp" srcset="/thesis/lay-talk/slides/slide-11-960.webp 960w, /thesis/lay-talk/slides/slide-11.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="Chapter 4: We used our own tool to fool our own detector. 1. Swap the give-away words. Written by a machine: We delve into the data and demonstrate a significant gain, with delve, demonstrate and significant highlighted. Three words swapped: We look into the data and show a clear gain. 2. Can the detector still tell? Bar chart, before and after the swap: one detector on its own, 0.81 before, 0.25 after. The ensemble (several detectors together), 0.83 before, 0.64 after. Proposition 4 · The same explanation that makes us trust a model can also show someone how to trick it.">
+                    <figcaption><span class="cap-n">11</span><span class="cap-k">Chapter 4</span><span class="cap-t">We used our own tool to fool our own detector</span><span class="cap-note"><b>Proposition 4</b> · The same explanation that makes us trust a model can also show someone how to trick it.</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-12" data-section="Chapters 3, 4, 5, 7">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-12-960.webp" srcset="/thesis/lay-talk/slides/slide-12-960.webp 960w, /thesis/lay-talk/slides/slide-12.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="Chapter 5: A persona does not make a model more human. Why people disagree: donut chart, 92% what the tweet says, the other 8% is who they are. Does a persona help? A boxed quote: “You are a female individual, aged 18–22, who identifies as White, has a Bachelor’s degree, and currently resides in Europe.” It did not help. Bar chart, accuracy, English, just ask and with the persona: GPT-4o 0.76 and 0.75, smallest model 0.50 and 0.47. Four models tested, none got clearly better. Proposition 6 · Asking a model to act like a certain group does not make it more human. Often it just makes it worse.">
+                    <figcaption><span class="cap-n">12</span><span class="cap-k">Chapter 5</span><span class="cap-t">A persona does not make a model more human</span><span class="cap-note"><b>Proposition 6</b> · Asking a model to act like a certain group does not make it more human. Often it just makes it worse.</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-13" data-section="Chapters 3, 4, 5, 7">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-13-960.webp" srcset="/thesis/lay-talk/slides/slide-13-960.webp 960w, /thesis/lay-talk/slides/slide-13.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="Chapter 7: They answer with a Western accent. Bar chart, how well the model matches what people really said: Western countries 0.82, Everyone else 0.61, a gap marked 21 points. 20 models · 64 countries · 23 moral topics. Proposition 9 · Large language models are not neutral judges of right and wrong. They answer with a Western accent.">
+                    <figcaption><span class="cap-n">13</span><span class="cap-k">Chapter 7</span><span class="cap-t">They answer with a Western accent</span><span class="cap-note"><b>Proposition 9</b> · Large language models are not neutral judges of right and wrong. They answer with a Western accent.</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-14" data-section="The whole PhD, in one picture">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-14-960.webp" srcset="/thesis/lay-talk/slides/slide-14-960.webp 960w, /thesis/lay-talk/slides/slide-14.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="The whole PhD, in one picture. A large circle labelled everything humans know. Below: Imagine everything humans know.">
+                    <figcaption><span class="cap-n">14</span><span class="cap-k">The whole PhD, in one picture</span><span class="cap-t">Imagine everything humans know.</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-15" data-section="The whole PhD, in one picture">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-15-960.webp" srcset="/thesis/lay-talk/slides/slide-15-960.webp 960w, /thesis/lay-talk/slides/slide-15.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="Close-up of the top edge of the circle, with a red arrow inside it pointing up at the edge. Text: You pick one tiny spot. And you push.">
+                    <figcaption><span class="cap-n">15</span><span class="cap-k">The whole PhD, in one picture</span><span class="cap-t">You pick one tiny spot. And you push.</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-16" data-section="The whole PhD, in one picture">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-16-960.webp" srcset="/thesis/lay-talk/slides/slide-16-960.webp 960w, /thesis/lay-talk/slides/slide-16.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="Close-up of the circle edge, now with a small bump pushed out past the original curve, which is shown dashed. A red dot at the tip of the bump is labelled This is my PhD.">
+                    <figcaption><span class="cap-n">16</span><span class="cap-k">The whole PhD, in one picture</span><span class="cap-t">This is my PhD.</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-17" data-section="The whole PhD, in one picture">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-17-960.webp" srcset="/thesis/lay-talk/slides/slide-17-960.webp 960w, /thesis/lay-talk/slides/slide-17.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="The whole circle again. A tiny red mark on its top edge is ringed by a dashed red circle, with an arrow and the label that dent is mine. Below: Now zoom back out.">
+                    <figcaption><span class="cap-n">17</span><span class="cap-k">The whole PhD, in one picture</span><span class="cap-t">Now zoom back out.</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-18" data-section="Why it still matters">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-18-960.webp" srcset="/thesis/lay-talk/slides/slide-18-960.webp 960w, /thesis/lay-talk/slides/slide-18.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="Why it still matters: But the dent is the point. Three cards. Builders can catch a model that is right for the wrong reason. Rule-makers can ask for the reasons, not only the results. All of us can stop treating it like magic. Below: If you take one thing home: ask it why. If it cannot tell you, do not let it decide anything that matters.">
+                    <figcaption><span class="cap-n">18</span><span class="cap-k">Why it still matters</span><span class="cap-t">But the dent is the point</span><span class="cap-note">If you take one thing home: ask it why. If it cannot tell you, do not let it decide anything that matters.</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-19" data-section="At 14:15">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-19-960.webp" srcset="/thesis/lay-talk/slides/slide-19-960.webp 960w, /thesis/lay-talk/slides/slide-19.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="At 14:15: In a few minutes, the conversation continues. Chair: Prof. dr. Marian Jongmans. Supervisors: Dr. Robert A. Bagheri, Prof. dr. Daniel L. Oberski, Dr. Anastasia Giachanou. Assessment committee: Prof. dr. Antal van den Bosch, Prof. dr. Mehdi Dastani, Prof. dr. Els Lefever, Prof. dr. Rens van de Schoot, Prof. dr. Suzan Verberne. Also in the doctoral examination committee: Prof. dr. Peter van der Heijden.">
+                    <figcaption><span class="cap-n">19</span><span class="cap-k">At 14:15</span><span class="cap-t">In a few minutes, the conversation continues</span></figcaption>
+                  </figure>
+                </li>
+                <li class="slide" id="slide-20" data-section="Thank you">
+                  <figure>
+                    <img src="/thesis/lay-talk/slides/slide-20-960.webp" srcset="/thesis/lay-talk/slides/slide-20-960.webp 960w, /thesis/lay-talk/slides/slide-20.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="Closing slide on yellow with the Utrecht University logo. “These propositions were written by a human, even if my own research has made that hard to prove.” Proposition 14. Thank you.">
+                    <figcaption><span class="cap-n">20</span><span class="cap-t">Thank you</span><span class="cap-note"><b>Proposition 14</b> · “These propositions were written by a human, even if my own research has made that hard to prove.”</span></figcaption>
+                  </figure>
+                </li>
+              </ol>
+            </div>
+
+            <div class="stage-progress" aria-hidden="true"></div>
+
+            <div class="stage-bar">
+              <p class="stage-cap"><span class="stage-cap-k"></span><span class="stage-cap-t"></span></p>
+              <div class="stage-controls">
+                <button type="button" class="stage-btn" data-go="prev" aria-label="Previous slide"><i class="fas fa-arrow-left" aria-hidden="true"></i></button>
+                <span class="stage-count"><b>1</b> / 20</span>
+                <button type="button" class="stage-btn" data-go="next" aria-label="Next slide"><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                <button type="button" class="stage-btn is-fs" data-fs aria-label="Full screen"><i class="fas fa-expand" aria-hidden="true"></i></button>
+              </div>
+              <p class="stage-note" hidden></p>
+            </div>
+            <p class="visually-hidden" id="stage-help">The left and right arrow keys move between slides. Home and End go to the first and last slide. F turns full screen on and off.</p>
+            <p class="visually-hidden" aria-live="polite" id="stage-live"></p>
+          </div>
+
+          <div class="strip-wrap" id="strip-wrap">
+            <div class="strip-head">
+              <span class="kicker">All 20 slides</span>
+              <span class="strip-hint is-keys" aria-hidden="true"><kbd>←</kbd><kbd>→</kbd> to move · <kbd>F</kbd> full screen</span>
+              <span class="strip-hint is-touch" aria-hidden="true">Swipe the slide to move</span>
+            </div>
+            <ol class="strip" id="strip" aria-label="All slides"></ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lt-about" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title">About the talk</h2>
+        <dl class="lt-facts">
+          <div><dt>Date</dt><dd><time datetime="2026-09-09">Wednesday 9&nbsp;September 2026</time></dd></div>
+          <div><dt>Time</dt><dd>14:00, before the public defence at&nbsp;14:15</dd></div>
+          <div><dt>Venue</dt><dd>Academiegebouw, Domplein&nbsp;29, Utrecht</dd></div>
+          <div><dt>Slides</dt><dd>20, in English · <a href="/thesis/lay-talk/Mohammadi_Let-Me-Explain_lay-talk_2026.pdf" type="application/pdf">PDF</a> <span class="quiet">(1.5 MB)</span></dd></div>
+          <div class="is-wide"><dt>Thesis</dt><dd><a href="/thesis/">Let Me Explain! Explainable NLP for Understanding Large Language Models</a></dd></div>
+        </dl>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Hadi Mohammadi &middot; <a href="https://orcid.org/0000-0003-0860-9200" target="_blank" rel="noopener">ORCID 0000-0003-0860-9200</a> &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    var root = document.getElementById('stage');
+    if (!root || !root.querySelector || !('classList' in root)) return;
+
+    var frame = root.querySelector('.stage-frame');
+    var list = root.querySelector('.slides');
+    var slides = Array.prototype.slice.call(root.querySelectorAll('.slide'));
+    var total = slides.length;
+    var bar = root.querySelector('.stage-bar');
+    var prevBtn = root.querySelector('[data-go="prev"]');
+    var nextBtn = root.querySelector('[data-go="next"]');
+    var fsBtn = root.querySelector('[data-fs]');
+    var countNow = root.querySelector('.stage-count b');
+    var capK = root.querySelector('.stage-cap-k');
+    var capT = root.querySelector('.stage-cap-t');
+    var capNote = root.querySelector('.stage-note');
+    var progress = root.querySelector('.stage-progress');
+    var live = document.getElementById('stage-live');
+    var stripWrap = document.getElementById('strip-wrap');
+    var strip = document.getElementById('strip');
+    function media(q, fallback) { return window.matchMedia ? window.matchMedia(q) : { matches: fallback }; }
+    var reduce = media('(prefers-reduced-motion: reduce)', false);
+    var finePointer = media('(hover: hover) and (pointer: fine)', true);
+
+    var current = 0;
+    var thumbs = [];
+    var segs = [];
+    var groups = [];
+
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+    function thumbSrc(n) { return '/thesis/lay-talk/slides/slide-' + pad(n) + '-960.webp'; }
+    function text(li, sel) { var el = li.querySelector(sel); return el ? el.textContent : ''; }
+
+    /* ---- progress segments ---- */
+    for (var s = 0; s < total; s++) {
+      segs.push(progress.appendChild(document.createElement('span')));
+    }
+
+    /* ---- filmstrip, built from the slide list and grouped by section ---- */
+    slides.forEach(function (li, i) {
+      var n = i + 1;
+      var name = li.getAttribute('data-section') || '';
+      var g = groups[groups.length - 1];
+
+      if (!g || g.name !== name) {
+        var item = document.createElement('li');
+        item.className = 'strip-group';
+        var label = document.createElement('span');
+        label.className = 'strip-label';
+        label.textContent = name;
+        var row = document.createElement('ol');
+        row.className = 'strip-row';
+        item.appendChild(label);
+        item.appendChild(row);
+        strip.appendChild(item);
+        g = { name: name, el: item, row: row, label: label, from: n, to: n };
+        groups.push(g);
+      }
+      g.to = n;
+
+      var cell = document.createElement('li');
+      var a = document.createElement('a');
+      a.className = 'thumb';
+      a.href = '#slide-' + n;
+      a.setAttribute('aria-label', 'Slide ' + n + ': ' + text(li, '.cap-t'));
+
+      var img = document.createElement('img');
+      img.src = thumbSrc(n);
+      img.width = 960;
+      img.height = 540;
+      img.alt = '';
+      img.loading = 'lazy';
+      img.decoding = 'async';
+
+      var num = document.createElement('span');
+      num.className = 'thumb-n';
+      num.textContent = pad(n);
+
+      a.appendChild(img);
+      a.appendChild(num);
+      a.addEventListener('click', function (e) {
+        if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        go(n);
+        bringStageIntoView();
+        /* Enter on a thumb: the stage scrolls up and can push the thumb off
+           screen, so hand focus to the slide, where the arrow keys work. */
+        if (e.detail === 0) frame.focus({ preventScroll: true });
+      });
+      cell.appendChild(a);
+      g.row.appendChild(cell);
+      thumbs.push(a);
+
+      li.setAttribute('role', 'group');
+      li.setAttribute('aria-roledescription', 'slide');
+      li.setAttribute('aria-label', n + ' of ' + total);
+    });
+    list.setAttribute('role', 'none');
+
+    /* ---- caption under the stage ---- */
+    function fill(n) {
+      var li = slides[n - 1];
+      var note = li.querySelector('.cap-note');
+      capK.textContent = text(li, '.cap-k') || ' ';
+      capT.textContent = text(li, '.cap-t');
+      capNote.innerHTML = note ? note.innerHTML : '';
+      capNote.hidden = !note;
+    }
+
+    /* Keep the controls row one height on wide stages, so the filmstrip
+       below does not jump when a slide has a longer caption. */
+    function reserve() {
+      bar.style.minHeight = '';
+      if (isFull() || root.clientWidth <= 600) return;
+      var max = 0;
+      for (var n = 1; n <= total; n++) {
+        fill(n);
+        max = Math.max(max, bar.offsetHeight);
+      }
+      fill(current);
+      bar.style.minHeight = max + 'px';
+    }
+
+    /* ---- core ---- */
+    function eager(m) {
+      var li = slides[m - 1];
+      var img = li && li.querySelector('img');
+      if (img && img.getAttribute('loading') === 'lazy') img.setAttribute('loading', 'eager');
+    }
+
+    function go(n, o) {
+      o = o || {};
+      n = Math.max(1, Math.min(total, n | 0));
+      if (n === current && !o.force) return;
+      var first = current === 0;
+      current = n;
+
+      slides.forEach(function (li, i) {
+        var on = i === n - 1;
+        li.classList.toggle('is-active', on);
+        li.classList.toggle('is-entering', on && !first);
+        if (on && !li.style.backgroundImage) li.style.backgroundImage = 'url("' + thumbSrc(n) + '")';
+      });
+      eager(n); eager(n - 1); eager(n + 1);
+
+      fill(n);
+      countNow.textContent = n;
+      segs.forEach(function (seg, i) {
+        seg.className = i < n - 1 ? 'is-past' : (i === n - 1 ? 'is-now' : '');
+      });
+      prevBtn.setAttribute('aria-disabled', n === 1 ? 'true' : 'false');
+      nextBtn.setAttribute('aria-disabled', n === total ? 'true' : 'false');
+
+      thumbs.forEach(function (a, i) {
+        if (i === n - 1) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+      groups.forEach(function (g) {
+        g.el.classList.toggle('is-current', n >= g.from && n <= g.to);
+      });
+      centerThumb(n, first);
+      markCut();
+      updateSide(lastX);
+
+      if (!first) {
+        live.textContent = 'Slide ' + n + ' of ' + total + '. ' + text(slides[n - 1], '.cap-t');
+        if (o.hash !== false && window.history && history.replaceState) {
+          try { history.replaceState(null, '', '#slide-' + n); } catch (err) { /* file:// or sandboxed */ }
+        }
+      }
+    }
+
+    function centerThumb(n, instant) {
+      var a = thumbs[n - 1];
+      if (!a) return;
+      var item = a.parentNode;
+      var left = item.offsetLeft - (strip.clientWidth - item.offsetWidth) / 2;
+      var behavior = (instant || reduce.matches) ? 'auto' : 'smooth';
+      if (strip.scrollTo) strip.scrollTo({ left: Math.max(0, left), behavior: behavior });
+      else strip.scrollLeft = left;
+    }
+
+    /* Hide any other section label the strip edge cuts into a fragment. The
+       current one stays: it is sticky and always fits once its thumb is centred. */
+    function markCut() {
+      var s = strip.getBoundingClientRect();
+      groups.forEach(function (g) {
+        var r = g.label.getBoundingClientRect();
+        var cut = !g.el.classList.contains('is-current') && (r.left < s.left - 1 || r.right > s.right + 1);
+        g.label.classList.toggle('is-cut', cut);
+      });
+    }
+    var cutRaf = 0;
+    strip.addEventListener('scroll', function () {
+      if (!cutRaf) cutRaf = requestAnimationFrame(function () { cutRaf = 0; markCut(); });
+    }, { passive: true });
+
+    function bringStageIntoView() {
+      var r = root.getBoundingClientRect();
+      var header = document.querySelector('.site-header');
+      var top = header ? header.getBoundingClientRect().bottom : 0;
+      if (r.top < top || r.top > window.innerHeight * 0.5) {
+        root.scrollIntoView({ block: 'start', behavior: reduce.matches ? 'auto' : 'smooth' });
+      }
+    }
+
+    function fromHash() {
+      var m = /^#slide-(\d{1,3})$/.exec(window.location.hash);
+      var n = m ? parseInt(m[1], 10) : 0;
+      /* an unknown slide number is ignored, as it is without JS */
+      return n >= 1 && n <= total ? n : 0;
+    }
+
+    prevBtn.addEventListener('click', function () { go(current - 1); });
+    nextBtn.addEventListener('click', function () { go(current + 1); });
+
+    window.addEventListener('hashchange', function () {
+      var n = fromHash();
+      if (n) go(n, { hash: false });
+    });
+
+    /* ---- click halves and edge hints (mouse) ---- */
+    var lastX = -1;
+    function updateSide(x) {
+      if (!(x >= 0)) return;
+      var side = x < 0.35 ? (current > 1 ? 'prev' : '') : (current < total ? 'next' : '');
+      if (frame.getAttribute('data-side') !== side) frame.setAttribute('data-side', side);
+    }
+    frame.addEventListener('mousemove', function (e) {
+      var r = frame.getBoundingClientRect();
+      lastX = (e.clientX - r.left) / r.width;
+      updateSide(lastX);
+    });
+    frame.addEventListener('mouseleave', function () { lastX = -1; frame.setAttribute('data-side', ''); });
+
+    var swipedAt = 0;
+    frame.addEventListener('click', function (e) {
+      if (Date.now() - swipedAt < 450) return;
+      if (!finePointer.matches && !isFull()) return;
+      var r = frame.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width;
+      go(current + (x < 0.35 ? -1 : 1));
+    });
+
+    /* ---- swipe (touch) ---- */
+    var sx = 0, sy = 0, tracking = false;
+    frame.addEventListener('touchstart', function (e) {
+      if (e.touches.length !== 1) { tracking = false; return; }
+      tracking = true;
+      sx = e.touches[0].clientX;
+      sy = e.touches[0].clientY;
+    }, { passive: true });
+    frame.addEventListener('touchmove', function (e) {
+      if (e.touches.length !== 1) tracking = false;
+    }, { passive: true });
+    frame.addEventListener('touchend', function (e) {
+      if (!tracking) return;
+      tracking = false;
+      var t = e.changedTouches[0];
+      var dx = t.clientX - sx;
+      var dy = t.clientY - sy;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+        swipedAt = Date.now();
+        go(current + (dx < 0 ? 1 : -1));
+      }
+    }, { passive: true });
+
+    /* ---- full screen (native where it exists, a fixed overlay where it does not) ---- */
+    var pseudo = false;
+    var nativeFs = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+
+    function fsElement() { return document.fullscreenElement || document.webkitFullscreenElement || null; }
+    function isFull() { return pseudo || fsElement() === root; }
+
+    /* While the viewer fills the screen, the rest of the page is inert, so Tab
+       and screen readers stay inside it (the fixed overlay has no top layer). */
+    var inertEls = [];
+    function setInert(on) {
+      if (on === (inertEls.length > 0)) return;
+      if (on) {
+        for (var el = root; el && el.parentElement && el !== document.body; el = el.parentElement) {
+          Array.prototype.forEach.call(el.parentElement.children, function (sib) {
+            if (sib === el || sib.tagName === 'SCRIPT' || sib.hasAttribute('inert')) return;
+            sib.setAttribute('inert', '');
+            inertEls.push(sib);
+          });
+        }
+        if (!root.contains(document.activeElement)) frame.focus({ preventScroll: true });
+      } else {
+        inertEls.forEach(function (sib) { sib.removeAttribute('inert'); });
+        inertEls = [];
+      }
+    }
+
+    function syncFull() {
+      var on = isFull();
+      setInert(on);
+      root.classList.toggle('is-full', on);
+      fsBtn.setAttribute('aria-label', on ? 'Exit full screen' : 'Full screen');
+      fsBtn.firstElementChild.className = on ? 'fas fa-compress' : 'fas fa-expand';
+      reserve();
+      centerThumb(current, true);
+    }
+
+    function setPseudo(on) {
+      pseudo = on;
+      document.documentElement.classList.toggle('lt-lock', on);
+      syncFull();
+      if (on) frame.focus({ preventScroll: true });
+      else fsBtn.focus({ preventScroll: true });
+    }
+
+    function enterFull() {
+      if (nativeFs) {
+        var req = root.requestFullscreen || root.webkitRequestFullscreen;
+        try {
+          var p = req.call(root);
+          if (p && p.catch) p.catch(function () { setPseudo(true); });
+        } catch (err) { setPseudo(true); }
+      } else {
+        setPseudo(true);
+      }
+    }
+
+    function exitFull() {
+      if (pseudo) { setPseudo(false); return; }
+      if (fsElement()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    }
+
+    function toggleFull() { if (isFull()) exitFull(); else enterFull(); }
+
+    fsBtn.addEventListener('click', toggleFull);
+    document.addEventListener('fullscreenchange', syncFull);
+    document.addEventListener('webkitfullscreenchange', syncFull);
+
+    /* ---- keyboard ---- */
+    var inView = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        inView = entries[0].isIntersecting;
+      }, { threshold: 0.35 }).observe(frame);
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+      var t = e.target;
+      if (t && t.closest && t.closest('input, textarea, select, [contenteditable="true"]')) return;
+
+      var inside = !!(t && t.nodeType === 1 && (root.contains(t) || stripWrap.contains(t)));
+      var full = isFull();
+      if (!inside && !full && !inView) return;
+
+      var k = e.key;
+      var onControl = t && t.closest && t.closest('button, a, summary');
+      var scoped = inside || full;
+      var handled = true;
+
+      if (k === 'ArrowRight' || (k === 'PageDown' && scoped) || (k === ' ' && full && !onControl)) go(current + 1);
+      else if (k === 'ArrowLeft' || (k === 'PageUp' && scoped)) go(current - 1);
+      else if (k === 'Home' && scoped) go(1);
+      else if (k === 'End' && scoped) go(total);
+      /* single-key shortcut: only while the viewer has focus or is full screen */
+      else if ((k === 'f' || k === 'F') && scoped) toggleFull();
+      else if (k === 'Escape' && pseudo) setPseudo(false);
+      else handled = false;
+
+      if (handled) e.preventDefault();
+    });
+
+    frame.setAttribute('tabindex', '0');
+    frame.setAttribute('role', 'group');
+    frame.setAttribute('aria-label', 'Current slide');
+    frame.setAttribute('aria-describedby', 'stage-help');
+
+    /* ---- printing: load every slide first ---- */
+    window.addEventListener('beforeprint', function () {
+      for (var n = 1; n <= total; n++) eager(n);
+    });
+
+    /* ---- resize ---- */
+    var raf = 0;
+    window.addEventListener('resize', function () {
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        raf = 0;
+        reserve();
+        centerThumb(current, true);
+        markCut();
+      });
+    });
+
+    /* ---- start ---- */
+    var startAt = fromHash();
+    if (startAt > 1) {
+      var firstImg = slides[0].querySelector('img');
+      if (firstImg) firstImg.removeAttribute('fetchpriority');
+    }
+    go(startAt || 1, { force: true, hash: false });
+    reserve();
+    root.addEventListener('animationend', function (e) {
+      if (e.target.classList) e.target.classList.remove('is-entering');
+    });
+
+    /* A #slide-N link lands the slide under the header. Fonts arriving late
+       can move it a little, so line it up again unless the reader has moved. */
+    var userMoved = false;
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (type) {
+      window.addEventListener(type, function () { userMoved = true; }, { passive: true, once: true });
+    });
+    function realign() {
+      if (!startAt || userMoved) return;
+      var el = slides[current - 1];
+      var want = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+      var off = el.getBoundingClientRect().top - want;
+      if (Math.abs(off) > 2) {
+        var html = document.documentElement;
+        var before = html.style.scrollBehavior;
+        html.style.scrollBehavior = 'auto';
+        window.scrollBy(0, off);
+        html.style.scrollBehavior = before;
+      }
+    }
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { reserve(); markCut(); realign(); });
+    }
+    window.addEventListener('load', function () { reserve(); markCut(); realign(); });
+  })();
+  </script>
+</body>
+</html>
