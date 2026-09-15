@@ -93,6 +93,10 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://mohammadi.cv/thesis/lay-talk/</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://mohammadi.cv/book/</loc>
     <priority>0.7</priority>
   </url>
