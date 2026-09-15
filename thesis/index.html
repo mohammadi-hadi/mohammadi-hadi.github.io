@@ -387,6 +387,25 @@
       .flipbook-tag, .flipbook-btn { align-self: center; }
     }
 
+    /* ---------- Layman’s talk callout ---------- */
+    .laytalk-card { background: linear-gradient(180deg, #fafafa, #f8f5ea); }
+    .laytalk-card .flipbook-title { text-wrap: balance; }
+    .flipbook-thumb.laytalk-thumb { width: 250px; border-radius: 3px; }
+    .laytalk-thumb img { aspect-ratio: 16 / 9; }
+    .laytalk-tag { color: #6b5300; background: #fff4c7; border-color: #f1dc8a; }
+    .laytalk-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1.25rem; margin-top: 0.2rem; }
+    .laytalk-actions .flipbook-btn { margin-top: 0; align-self: auto; }
+    .laytalk-pdf {
+      font-size: 0.88rem; color: var(--text-secondary);
+      text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px;
+    }
+    .laytalk-pdf:hover { color: var(--text-black); }
+    .info-val a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    @media (max-width: 720px) {
+      .flipbook-thumb.laytalk-thumb { width: 100%; max-width: 320px; }
+      .laytalk-actions { justify-content: center; }
+    }
+
     /* ---------- Responsive ---------- */
     @media (max-width: 720px) {
       .hero {
@@ -490,6 +509,24 @@
     </div>
   </section>
 
+  <!-- Layman’s talk (slides) -->
+  <section id="lay-talk">
+    <h2 class="section-title">Layman’s talk</h2>
+    <div class="flipbook-card laytalk-card">
+      <a class="flipbook-thumb laytalk-thumb" href="/thesis/lay-talk/" aria-label="View the slides">
+        <img src="/thesis/lay-talk/slides/slide-01-960.webp" width="960" height="540" loading="lazy" decoding="async" alt="Title slide, opens the slides">
+      </a>
+      <div class="flipbook-body">
+        <span class="flipbook-tag laytalk-tag"><i class="fas fa-person-chalkboard" style="font-size:0.65rem"></i> <span lang="nl">Lekenpraatje</span> &middot; 14:00</span>
+        <h3 class="flipbook-title">The 20 slides from the talk before the defence</h3>
+        <div class="laytalk-actions">
+          <a class="flipbook-btn" href="/thesis/lay-talk/"><i class="fas fa-person-chalkboard"></i> View the slides</a>
+          <a class="laytalk-pdf" href="/thesis/lay-talk/Mohammadi_Let-Me-Explain_lay-talk_2026.pdf" type="application/pdf" download>Download the PDF (1.5 MB)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Synopsis -->
   <section>
     <h2 class="section-title">About this thesis</h2>
@@ -526,7 +563,7 @@
       <div class="info-val">Wednesday 9 September 2026, 14:15</div>
 
       <div class="info-key">Layman’s talk</div>
-      <div class="info-val">14:00</div>
+      <div class="info-val">14:00 &middot; <a href="/thesis/lay-talk/">slides</a></div>
 
       <div class="info-key">Venue</div>
       <div class="info-val">Academiegebouw, Domplein 29, 3512 JE Utrecht</div>
