@@ -40,11 +40,12 @@ cv:
 
     Professional Experience:
       - company: AcademicTransfer
-        position: Senior AI & Data Science Expert
+        position: Senior AI & Data Science Expert - R&D Specialist
         start_date: 2025-12
         end_date: present
         location: Utrecht, The Netherlands
         highlights:
+          - 'Lead the 2026 WBSO R&D programme as R&D Specialist (since Mar 2026), two projects approved for Mar–Dec 2026: an MCP-based academic query engine and an explainable CV matching engine with recruiters in the loop.'
           - 'Technical lead of the AI intelligence layer and applicant-tracking system used by 22 Dutch research universities and university medical centres.'
           - 'Own the AI stack: CV creation and revision, semantic search, talent-pool matching, and best-candidate identification.'
           - Lead a national recognition-and-rewards policy analysis with Dr. Sanli Faez (Universiteiten van Nederland) and university policy makers.
