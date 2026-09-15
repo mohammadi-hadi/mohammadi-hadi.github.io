@@ -6,7 +6,7 @@
 [![Scholar](https://github.com/mohammadi-hadi/mohammadi-hadi.github.io/actions/workflows/scholar.yml/badge.svg)](https://github.com/mohammadi-hadi/mohammadi-hadi.github.io/actions/workflows/scholar.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-*Personal academic website of Hadi Mohammadi — PhD researcher in Explainable NLP at Utrecht University.*
+*Personal academic website of Hadi Mohammadi, researcher in explainable NLP at Utrecht University (PhD 2026) and Senior AI & Data Science Expert - R&D Specialist at AcademicTransfer.*
 
 </div>
 

@@ -117,7 +117,7 @@ CARDS = [
          foot_left="mohammadi.cv/projects", foot_right="Papers · grants · code"),
     dict(name="experience-card", out="assets/img", kicker="Hadi Mohammadi",
          title="Experience",
-         subtitle="Six years from data scientist to Senior AI & Data Science Expert",
+         subtitle="Five years from data scientist to Senior AI & Data Science Expert",
          foot_left="mohammadi.cv/experience", foot_right="Production ML and LLM systems"),
     dict(name="teaching-card", out="assets/img", kicker="Hadi Mohammadi",
          title="Teaching",
