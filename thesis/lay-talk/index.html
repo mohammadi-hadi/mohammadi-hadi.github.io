@@ -957,7 +957,7 @@
               </div>
               <p class="stage-note" hidden></p>
             </div>
-            <p class="visually-hidden" id="stage-help">The left and right arrow keys move between slides. Home and End go to the first and last slide. F turns full screen on and off.</p>
+            <p class="visually-hidden" id="stage-help">The left and right arrow keys move between slides, and the space bar moves to the next one. Home and End go to the first and last slide. F turns full screen on and off.</p>
             <p class="visually-hidden" aria-live="polite" id="stage-live"></p>
           </div>
 
@@ -1193,6 +1193,14 @@
       if (!cutRaf) cutRaf = requestAnimationFrame(function () { cutRaf = 0; markCut(); });
     }, { passive: true });
 
+    /* tabbing the strip: centre the focused thumbnail, so its focus ring is never
+       cut off by the strip edge (scroll-snap wins over scroll-padding here) */
+    strip.addEventListener('focusin', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('.thumb') : null;
+      var i = a ? Array.prototype.indexOf.call(thumbs, a) : -1;
+      if (i >= 0) centerThumb(i + 1, true);
+    });
+
     function bringStageIntoView() {
       var r = root.getBoundingClientRect();
       var header = document.querySelector('.site-header');
@@ -1351,10 +1359,13 @@
       var k = e.key;
       var onControl = t && t.closest && t.closest('button, a, summary');
       var scoped = inside || full;
+      /* arrows also work while the slide is in view, but only when nothing else holds focus */
+      var loose = !t || t === document.body || t === document.documentElement;
+      var arrows = scoped || (inView && loose);
       var handled = true;
 
-      if (k === 'ArrowRight' || (k === 'PageDown' && scoped) || (k === ' ' && full && !onControl)) go(current + 1);
-      else if (k === 'ArrowLeft' || (k === 'PageUp' && scoped)) go(current - 1);
+      if ((k === 'ArrowRight' && arrows) || (k === 'PageDown' && scoped) || (k === ' ' && scoped && !onControl)) go(current + 1);
+      else if ((k === 'ArrowLeft' && arrows) || (k === 'PageUp' && scoped)) go(current - 1);
       else if (k === 'Home' && scoped) go(1);
       else if (k === 'End' && scoped) go(total);
       /* single-key shortcut: only while the viewer has focus or is full screen */
