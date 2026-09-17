@@ -95,8 +95,6 @@
     }
     .lt-crumbs a:hover { color: var(--accent); text-decoration-color: currentColor; }
     .lt-crumbs [aria-current="page"] { color: var(--ink); }
-    .lt-crumbs .nl { color: var(--ink-3); }
-    .lt-crumbs .nl::before { content: "·"; margin: 0 0.6em; color: #b3b0aa; }
 
     .lt-intro-grid {
       display: grid;
@@ -653,67 +651,6 @@
       .stage.is-full > * { width: min(100%, calc((100dvh - 84px) * 16 / 9)); }
     }
 
-    /* ---------- About ---------- */
-    .lt-about { padding: var(--space-6) 0 var(--space-7); }
-    .lt-about h2 {
-      font-size: var(--step-1);
-      margin: 0 0 var(--space-4);
-    }
-    .lt-facts {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0 var(--space-5);
-      margin: 0;
-      border-top: 1px solid var(--ink);
-    }
-    .lt-facts > div {
-      padding: var(--space-3) 0;
-      border-bottom: 1px solid var(--rule);
-      min-width: 0;
-    }
-    .lt-facts > .is-wide {
-      grid-column: 1 / -1;
-      display: flex;
-      align-items: baseline;
-      gap: var(--space-3);
-      border-bottom: 0;
-    }
-    .lt-facts dt {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 4px;
-    }
-    .lt-facts > .is-wide dt { margin: 0; flex: 0 0 auto; }
-    .lt-facts dd {
-      margin: 0;
-      font-size: 0.95rem;
-      line-height: 1.55;
-      color: var(--ink);
-      overflow-wrap: break-word;
-      text-wrap: balance;
-    }
-    .lt-facts a {
-      text-decoration: underline;
-      text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
-    .lt-facts a:hover { text-decoration-color: var(--accent-hover); }
-    .lt-facts .quiet { color: var(--ink-3); white-space: nowrap; }
-
-    @media (max-width: 1100px) {
-      .lt-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 480px) {
-      .lt-about { padding: var(--space-6) 0; }
-      .lt-facts { grid-template-columns: 1fr; }
-      .lt-facts > .is-wide { display: block; }
-      .lt-facts > .is-wide dt { margin-bottom: 4px; }
-    }
-
     /* ---------- Footer (as on the thesis page) ---------- */
     .footer {
       background: #000;
@@ -746,7 +683,6 @@
       .slide img, .js .slide img { height: auto; border: 1px solid #ccc; box-shadow: none; }
       .js .slide figcaption { display: flex; }
       .slide figure { max-width: 210mm; margin: 0 auto; }
-      .lt-about { padding: 0; }
     }
   </style>
 </head>
@@ -794,18 +730,17 @@
         <nav class="lt-crumbs" aria-label="Breadcrumb">
           <ol>
             <li><a href="/thesis/">Thesis</a></li>
-            <li><span aria-current="page">Layman’s talk</span><span class="nl" lang="nl">Lekenpraatje</span></li>
           </ol>
         </nav>
         <div class="lt-intro-grid">
           <div>
-            <h1 class="lt-title">Let Me Explain!</h1>
+            <h1 class="lt-title">Layman’s talk</h1>
             <p class="lt-dek">Making large language models say why.</p>
-            <p class="lt-meta"><span>Hadi Mohammadi</span> <span><time datetime="2026-09-09T14:00">9 September 2026, 14:00</time></span> <span>Academiegebouw, Utrecht</span></p>
+            <p class="lt-meta"><span><time datetime="2026-09-09T14:00">9 September 2026, 14:00</time>, before the defence</span> <span>Academiegebouw, Utrecht</span></p>
           </div>
           <div class="lt-actions">
             <a class="lt-download" href="/thesis/lay-talk/Mohammadi_Let-Me-Explain_lay-talk_2026.pdf" type="application/pdf" download><i class="fas fa-arrow-down" aria-hidden="true"></i> Download the slides</a>
-            <span class="lt-filemeta">PDF · 20 slides · 1.5 MB</span>
+            <span class="lt-filemeta">PDF · 1.5 MB</span>
           </div>
         </div>
       </div>
@@ -822,13 +757,13 @@
               <span class="stage-hint is-next" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
 
               <ol class="slides">
-                <li class="slide is-active" id="slide-1" data-section="Let Me Explain!">
+                <li class="slide is-active" id="slide-1" data-section="Opening">
                   <figure>
                     <img src="/thesis/lay-talk/slides/slide-01-960.webp" srcset="/thesis/lay-talk/slides/slide-01-960.webp 960w, /thesis/lay-talk/slides/slide-01.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" fetchpriority="high" decoding="async" alt="Title slide with the Utrecht University logo. Let Me Explain! Explainable NLP for Understanding Large Language Models. Hadi Mohammadi, Methodology, Statistics &amp; Data Science, Utrecht University. Public defence · 9 September 2026.">
                     <figcaption><span class="cap-n">01</span><span class="cap-t">Let Me Explain!</span><span class="cap-note">Explainable NLP for Understanding Large Language Models</span></figcaption>
                   </figure>
                 </li>
-                <li class="slide" id="slide-2" data-section="Let Me Explain!">
+                <li class="slide" id="slide-2" data-section="Opening">
                   <figure>
                     <img src="/thesis/lay-talk/slides/slide-02-960.webp" srcset="/thesis/lay-talk/slides/slide-02-960.webp 960w, /thesis/lay-talk/slides/slide-02.webp 1920w" sizes="(max-width: 1080px) calc(100vw - 48px), 1032px" width="1920" height="1080" loading="lazy" decoding="async" alt="Pale yellow slide with the words: Making large language models say why.">
                     <figcaption><span class="cap-n">02</span><span class="cap-t">Making large language models say why.</span></figcaption>
@@ -963,26 +898,13 @@
 
           <div class="strip-wrap" id="strip-wrap">
             <div class="strip-head">
-              <span class="kicker">All 20 slides</span>
+              <span class="kicker">All slides</span>
               <span class="strip-hint is-keys" aria-hidden="true"><kbd>←</kbd><kbd>→</kbd> to move · <kbd>F</kbd> full screen</span>
               <span class="strip-hint is-touch" aria-hidden="true">Swipe the slide to move</span>
             </div>
             <ol class="strip" id="strip" aria-label="All slides"></ol>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="lt-about" aria-labelledby="about-title">
-      <div class="container">
-        <h2 id="about-title">About the talk</h2>
-        <dl class="lt-facts">
-          <div><dt>Date</dt><dd><time datetime="2026-09-09">Wednesday 9&nbsp;September 2026</time></dd></div>
-          <div><dt>Time</dt><dd>14:00, before the public defence at&nbsp;14:15</dd></div>
-          <div><dt>Venue</dt><dd>Academiegebouw, Domplein&nbsp;29, Utrecht</dd></div>
-          <div><dt>Slides</dt><dd>20, in English · <a href="/thesis/lay-talk/Mohammadi_Let-Me-Explain_lay-talk_2026.pdf" type="application/pdf">PDF</a> <span class="quiet">(1.5 MB)</span></dd></div>
-          <div class="is-wide"><dt>Thesis</dt><dd><a href="/thesis/">Let Me Explain! Explainable NLP for Understanding Large Language Models</a></dd></div>
-        </dl>
       </div>
     </section>
 
