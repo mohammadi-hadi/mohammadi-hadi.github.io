@@ -62,7 +62,7 @@ cv:
       - company: Utrecht University, School of Economics
         position: Researcher & NLP Developer, FIRMBACKBONE
         start_date: 2024-02
-        end_date: 2024-03
+        end_date: 2025-03
         location: Utrecht, The Netherlands
         highlights:
           - 'Built the fbb-sustainability-analysis-cli tool: keyword extraction and sustainability scoring of company websites.'
