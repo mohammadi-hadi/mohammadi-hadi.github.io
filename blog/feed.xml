@@ -6,8 +6,16 @@
     <description>Field notes on building and evaluating production LLM systems, and open guides for people studying AI and data science.</description>
     <language>en</language>
     <copyright>CC BY-SA 4.0, Hadi Mohammadi</copyright>
-    <lastBuildDate>Sun, 06 Sep 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://mohammadi.cv/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>4,873 experiments and the winner's curse</title>
+      <link>https://mohammadi.cv/blog/4873-experiments-and-the-winners-curse/</link>
+      <guid isPermaLink="true">https://mohammadi.cv/blog/4873-experiments-and-the-winners-curse/</guid>
+      <pubDate>Sat, 19 Sep 2026 09:00:00 +0200</pubDate>
+      <description>An audit of 4,873 real headline A/B tests from the Upworthy Research Archive: 15% fail the sample-ratio check, Benjamini-Hochberg keeps only a quarter of the significant winners, and the median winner overstates its lift by 1.27x.</description>
+      <category>Field notes</category>
+    </item>
     <item>
       <title>What 106,134 arena votes can and cannot order</title>
       <link>https://mohammadi.cv/blog/what-arena-votes-can-and-cannot-order/</link>
