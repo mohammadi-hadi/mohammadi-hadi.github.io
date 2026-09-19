@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-09-06T11:34:57+00:00",
-  "citations": 151,
-  "h_index": 7,
-  "i10_index": 5,
+  "fetched_at": "2026-09-19T14:14:13+00:00",
+  "citations": 155,
+  "h_index": 8,
+  "i10_index": 6,
   "publications": {
     "explainability-survey": {
       "title": "Explainability in practice: A survey of explainable nlp across various domains",
       "year": 2025,
-      "cited_by": 26
+      "cited_by": 27
     },
     "exist-2023": {
       "title": "Towards robust online sexism detection: a multi-model approach with bert, xlm-roberta, and distilbert for exist 2023 tasks",
@@ -32,7 +32,7 @@
     "evalmoraal": {
       "title": "EvalMORAAL: Interpretable Chain-of-Thought and LLM-as-Judge evaluation for moral alignment in large language models",
       "year": 2026,
-      "cited_by": 9
+      "cited_by": 10
     },
     "mirrors-cultural-divergence": {
       "title": "LLMs as mirrors of societal moral standards: reflection of cultural divergence and agreement across ethical topics",
@@ -42,7 +42,12 @@
     "morality-across-cultures": {
       "title": "Do Large Language Models Understand Morality Across Cultures?",
       "year": 2025,
-      "cited_by": 7
+      "cited_by": 8
+    },
+    "grpo-dpo-cot": {
+      "title": "Evaluating grpo and dpo for faithful chain-of-thought reasoning in llms",
+      "year": 2025,
+      "cited_by": 6
     },
     "llm-annotation-reliability": {
       "title": "Assessing the reliability of llms annotations in the context of demographic bias and model explanation",
@@ -58,11 +63,6 @@
       "title": "Large language models as mirrors of societal moral standards",
       "year": 2024,
       "cited_by": 6
-    },
-    "grpo-dpo-cot": {
-      "title": "Evaluating grpo and dpo for faithful chain-of-thought reasoning in llms",
-      "year": 2025,
-      "cited_by": 5
     },
     "cultural-moral-judgments": {
       "title": "Exploring cultural variations in moral judgments with large language models",
