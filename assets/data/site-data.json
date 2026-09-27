@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-09-26T09:57:54+00:00",
+  "fetched_at": "2026-09-27T10:37:10+00:00",
   "github": {
     "public_repos": 57,
     "total_stars": 8,
@@ -9,7 +9,7 @@
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-09-25T22:14:15Z",
+        "pushed_at": "2026-09-26T09:57:57Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "weekend-learning": {
@@ -463,7 +463,7 @@
     }
   },
   "openalex": {
-    "works_count": 90,
+    "works_count": 110,
     "cited_by_count": 16,
     "h_index": 2,
     "i10_index": 0
