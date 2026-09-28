@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """Publish a drafted blog post.
 
-Drafts live finished under blog/_drafts/<slug>/. Publishing one moves it into
+Drafts are kept outside this repository, so nothing unpublished is public.
+Each one is a finished folder <drafts>/<slug>/. Publishing one moves it into
 blog/<slug>/, stamps it with the time it goes live, links it from the top of
 the field notes list, adds it to the sitemap, and rebuilds the feed.
 
-    python3 scripts/publish_post.py the-labels-under-the-benchmark
-    python3 scripts/publish_post.py --list
+    WL_DRAFTS=/path/to/site-drafts python3 scripts/publish_post.py <slug>
+    python3 scripts/publish_post.py --drafts /path/to/site-drafts --list
+
+The drafts directory comes from --drafts, else the WL_DRAFTS environment
+variable, else ~/Documents/Weekend-Learning/site-drafts if that exists.
 
 The date a post carries is the moment it goes live, which is why this stamps
 the current time in Europe/Amsterdam rather than letting a draft keep an
@@ -17,7 +21,10 @@ needs a share card.
 """
 from __future__ import annotations
 
+import argparse
+import os
 import re
+import shutil
 import subprocess
 import sys
 from datetime import datetime
@@ -26,7 +33,7 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 BLOG = ROOT / "blog"
-DRAFTS = BLOG / "_drafts"
+DEFAULT_DRAFTS = Path.home() / "Documents" / "Weekend-Learning" / "site-drafts"
 INDEX = BLOG / "index.html"
 SITEMAP = ROOT / "sitemap.xml"
 MARKER = "<!-- field-notes:insert -->"
@@ -36,32 +43,58 @@ def die(msg: str) -> None:
     raise SystemExit(f"publish_post: {msg}")
 
 
-def list_drafts() -> None:
-    found = sorted(p.parent.name for p in DRAFTS.glob("*/index.html"))
+def drafts_dir(arg: str | None) -> Path:
+    """Resolve the drafts directory: --drafts, then WL_DRAFTS, then the default."""
+    if arg:
+        chosen, source = Path(arg).expanduser(), "--drafts"
+    elif os.environ.get("WL_DRAFTS"):
+        chosen, source = Path(os.environ["WL_DRAFTS"]).expanduser(), "WL_DRAFTS"
+    elif DEFAULT_DRAFTS.is_dir():
+        return DEFAULT_DRAFTS
+    else:
+        die("no drafts directory. Drafts live outside this repository: pass "
+            "--drafts <dir> or set WL_DRAFTS=<dir> to the folder that holds "
+            "<slug>/index.html.")
+    if not chosen.is_dir():
+        die(f"{source} points at {chosen}, which is not a directory")
+    return chosen
+
+
+def list_drafts(drafts: Path) -> None:
+    found = sorted(p.parent.name for p in drafts.glob("*/index.html"))
     if not found:
-        print("no drafts under blog/_drafts/")
+        print(f"no drafts under {drafts}")
         return
     print("drafts ready to publish:")
     for slug in found:
         title = re.search(r"<h1>(.*?)</h1>",
-                          (DRAFTS / slug / "index.html").read_text(encoding="utf-8"))
+                          (drafts / slug / "index.html").read_text(encoding="utf-8"))
         print(f"  {slug}\n      {title.group(1) if title else ''}")
 
 
 def main() -> int:
-    args = [a for a in sys.argv[1:] if a]
-    if not args or args[0] in {"-h", "--help"}:
-        print(__doc__)
-        return 0
-    if args[0] == "--list":
-        list_drafts()
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("slug", nargs="?", help="folder name of the draft to publish")
+    parser.add_argument("--list", action="store_true", help="list the drafts and exit")
+    parser.add_argument("--drafts", metavar="DIR",
+                        help="drafts directory (default: $WL_DRAFTS, then "
+                             "~/Documents/Weekend-Learning/site-drafts)")
+    opts = parser.parse_args()
+    if not opts.slug and not opts.list:
+        parser.print_help()
         return 0
 
-    slug = args[0].strip("/")
-    src = DRAFTS / slug
+    drafts = drafts_dir(opts.drafts)
+    if opts.list:
+        list_drafts(drafts)
+        return 0
+
+    slug = opts.slug.strip("/")
+    src = drafts / slug
     dst = BLOG / slug
     if not (src / "index.html").is_file():
-        die(f"no draft at blog/_drafts/{slug}/index.html (try --list)")
+        die(f"no draft at {src / 'index.html'} (try --list)")
     if dst.exists():
         die(f"blog/{slug}/ already exists")
 
@@ -88,7 +121,7 @@ def main() -> int:
     (dst / "index.html").write_text(html, encoding="utf-8")
     for extra in src.iterdir():
         if extra.name != "index.html":
-            extra.rename(dst / extra.name)
+            shutil.move(str(extra), str(dst / extra.name))
     (src / "index.html").unlink()
     src.rmdir()
 
