@@ -130,7 +130,7 @@
             "author": { "@id": "https://mohammadi.cv/#person" } } },
           { "@type": "ListItem", "position": 11, "item": {
             "@type": "SoftwareSourceCode", "name": "judgewatch",
-            "description": "Monthly bias audits of public LLM judges against a frozen, versioned probe set.",
+            "description": "A frozen, versioned bias probe set for LLM judges, and a harness that runs it. No audit has been published yet.",
             "codeRepository": "https://github.com/mohammadi-hadi/judgewatch",
             "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT",
             "identifier": "https://doi.org/10.5281/zenodo.21806464",
@@ -440,11 +440,11 @@
         </div>
 
         <article class="pub-card">
-          <div class="pub-meta"><span class="pub-type">Running audit</span></div>
+          <div class="pub-meta"><span class="pub-type">Probe set and harness</span></div>
           <h3 class="pub-title">judgewatch</h3>
-          <p class="pub-desc">Judges drift when providers update models behind stable API names. judgewatch runs a frozen probe set of 36 hand-written items against popular judge models every month and publishes the result, so a judge that changed under you is visible. It measures position flips, verbosity preference, susceptibility to a fabricated &ldquo;9 out of 10 experts prefer&hellip;&rdquo; line, and self-consistency. The first run is pending; the method and the probe set are public now.</p>
+          <p class="pub-desc">Judges drift when providers update models behind stable API names. judgewatch is a frozen, versioned probe set of 36 hand-written items and a harness that runs it against a judge model and scores the verdicts. The probes measure position flips, verbosity preference, susceptibility to a fabricated &ldquo;9 out of 10 experts prefer&hellip;&rdquo; line, and self-consistency. No audit has been run or published yet; the method and the probe set are public.</p>
           <div class="pub-links">
-            <a href="/judgewatch/">Leaderboard</a>
+            <a href="/judgewatch/">Project page</a>
             <a href="https://github.com/mohammadi-hadi/judgewatch" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
             <a href="https://doi.org/10.5281/zenodo.21806464" target="_blank" rel="noopener">DOI</a>
           </div>
