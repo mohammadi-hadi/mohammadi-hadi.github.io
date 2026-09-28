@@ -6,13 +6,13 @@
     <description>Field notes on building and evaluating production LLM systems, and open guides for people studying AI and data science.</description>
     <language>en</language>
     <copyright>CC BY-SA 4.0, Hadi Mohammadi</copyright>
-    <lastBuildDate>Sat, 19 Sep 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2026 12:40:08 +0200</lastBuildDate>
     <atom:link href="https://mohammadi.cv/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>4,873 experiments and the winner's curse</title>
       <link>https://mohammadi.cv/blog/4873-experiments-and-the-winners-curse/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/4873-experiments-and-the-winners-curse/</guid>
-      <pubDate>Sat, 19 Sep 2026 09:00:00 +0200</pubDate>
+      <pubDate>Sat, 19 Sep 2026 12:40:08 +0200</pubDate>
       <description>An audit of 4,873 real headline A/B tests from the Upworthy Research Archive: 15% fail the sample-ratio check, Benjamini-Hochberg keeps only a quarter of the significant winners, and the median winner overstates its lift by 1.27x.</description>
       <category>Field notes</category>
     </item>
@@ -20,7 +20,7 @@
       <title>What 106,134 arena votes can and cannot order</title>
       <link>https://mohammadi.cv/blog/what-arena-votes-can-and-cannot-order/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/what-arena-votes-can-and-cannot-order/</guid>
-      <pubDate>Sun, 06 Sep 2026 09:00:00 +0200</pubDate>
+      <pubDate>Sun, 06 Sep 2026 13:35:28 +0200</pubDate>
       <description>An audit of 106,134 public LMArena votes over 55 models: once the comparisons are controlled for together, only one neighbouring pair is separated, and closing the median unresolved gap would take roughly 8.9 million votes.</description>
       <category>Field notes</category>
     </item>
@@ -28,7 +28,7 @@
       <title>What a context window forgets</title>
       <link>https://mohammadi.cv/blog/what-a-context-window-forgets/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/what-a-context-window-forgets/</guid>
-      <pubDate>Sat, 05 Sep 2026 09:00:00 +0200</pubDate>
+      <pubDate>Sat, 05 Sep 2026 16:23:54 +0200</pubDate>
       <description>Across 1,527 questions on conversations that run for thirty sessions, a sliding window at 2,048 tokens still has the supporting turn in front of the model 7.7% of the time. Reading the question first takes that to 59.5% for the same money, and three sessions back the window holds nothing.</description>
       <category>Field notes</category>
     </item>
@@ -36,7 +36,7 @@
       <title>Ask a model how sure it is</title>
       <link>https://mohammadi.cv/blog/ask-a-model-how-sure-it-is/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/ask-a-model-how-sure-it-is/</guid>
-      <pubDate>Wed, 02 Sep 2026 09:00:00 +0200</pubDate>
+      <pubDate>Wed, 02 Sep 2026 14:09:56 +0200</pubDate>
       <description>Three local models answered 1,000 MMLU questions each and rated their own confidence from 0 to 100. Mean stated confidence ran from 88 to 98 while accuracy ran from 62 to 78, and on all three a constant base rate beat the stated number. What the audit looks like, with calikit.</description>
       <category>Field notes</category>
     </item>
@@ -44,7 +44,7 @@
       <title>What a benchmark can actually tell apart</title>
       <link>https://mohammadi.cv/blog/what-a-benchmark-can-tell-apart/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/what-a-benchmark-can-tell-apart/</guid>
-      <pubDate>Wed, 26 Aug 2026 09:00:00 +0200</pubDate>
+      <pubDate>Wed, 26 Aug 2026 15:03:56 +0200</pubDate>
       <description>HumanEval has 164 problems, which means it cannot resolve a gap under 9 points. Of five benchmarks people quote weekly, only MMLU comes within reach of a one-point claim. The floor for each, and the one-minute calculation to run before building an eval.</description>
       <category>Field notes</category>
     </item>
@@ -52,7 +52,7 @@
       <title>How much text a watermark needs before it shows up</title>
       <link>https://mohammadi.cv/blog/how-much-text-a-watermark-needs/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/how-much-text-a-watermark-needs/</guid>
-      <pubDate>Sat, 22 Aug 2026 09:00:00 +0200</pubDate>
+      <pubDate>Sat, 22 Aug 2026 18:33:04 +0200</pubDate>
       <description>Anthropic began watermarking Claude&amp;#x27;s output this month. A circulating simulation of a simplified green-list scheme puts detection at a couple of hundred words. The arithmetic holds. Its assumption that every token is a real choice does not, and that moves the number by a factor of six.</description>
       <category>Field notes</category>
     </item>
@@ -60,7 +60,7 @@
       <title>The labels under the benchmark</title>
       <link>https://mohammadi.cv/blog/the-labels-under-the-benchmark/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/the-labels-under-the-benchmark/</guid>
-      <pubDate>Sat, 22 Aug 2026 09:00:00 +0200</pubDate>
+      <pubDate>Sat, 22 Aug 2026 09:11:34 +0200</pubDate>
       <description>An audit of the 211,225 raw crowd ratings behind GoEmotions: 27 of 28 emotions fall below the 0.667 reliability floor, rater quality spans a factor of three, and the dataset has a third of the raters per item the task needs.</description>
       <category>Field notes</category>
     </item>
@@ -68,7 +68,7 @@
       <title>What an LLM judge actually does when you are not looking</title>
       <link>https://mohammadi.cv/blog/what-an-llm-judge-actually-does/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/what-an-llm-judge-actually-does/</guid>
-      <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
+      <pubDate>Fri, 07 Aug 2026 19:47:27 +0200</pubDate>
       <description>Three local LLM judges graded the same adversarial arithmetic benchmark in both presentation orders. One picked whichever answer came first 91% of the time; another graded effort and scored no better than chance.</description>
       <category>Field notes</category>
     </item>
@@ -76,7 +76,7 @@
       <title>Calling LLMs well</title>
       <link>https://mohammadi.cv/blog/calling-llms-well/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/calling-llms-well/</guid>
-      <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
+      <pubDate>Fri, 07 Aug 2026 17:49:46 +0200</pubDate>
       <description>Structured outputs, retries, streaming, caching and cost control: the unglamorous 80% of production LLM work.</description>
       <category>Modern AI Engineering</category>
     </item>
@@ -84,7 +84,7 @@
       <title>Retrieval-augmented generation</title>
       <link>https://mohammadi.cv/blog/retrieval-augmented-generation/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/retrieval-augmented-generation/</guid>
-      <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
+      <pubDate>Fri, 07 Aug 2026 17:49:46 +0200</pubDate>
       <description>Chunking, hybrid search, reranking and query rewriting: RAG treated as an information-retrieval problem, and how it actually fails.</description>
       <category>Modern AI Engineering</category>
     </item>
@@ -92,7 +92,7 @@
       <title>Agents and MCP</title>
       <link>https://mohammadi.cv/blog/agents-and-mcp/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/agents-and-mcp/</guid>
-      <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
+      <pubDate>Fri, 07 Aug 2026 17:49:46 +0200</pubDate>
       <description>Tool loops, the Model Context Protocol, planning patterns and agent evaluation, and when a plain workflow beats an agent.</description>
       <category>Modern AI Engineering</category>
     </item>
@@ -100,7 +100,7 @@
       <title>Fine-tuning and preference optimization</title>
       <link>https://mohammadi.cv/blog/fine-tuning-and-preference-optimization/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/fine-tuning-and-preference-optimization/</guid>
-      <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
+      <pubDate>Fri, 07 Aug 2026 17:49:46 +0200</pubDate>
       <description>A decision table for RAG versus prompting versus LoRA versus DPO and GRPO, then the mechanics of each.</description>
       <category>Modern AI Engineering</category>
     </item>
@@ -108,7 +108,7 @@
       <title>Evaluation and LLM-as-judge</title>
       <link>https://mohammadi.cv/blog/evaluation-and-llm-as-judge/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/evaluation-and-llm-as-judge/</guid>
-      <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
+      <pubDate>Fri, 07 Aug 2026 17:49:46 +0200</pubDate>
       <description>The five-level eval hierarchy, how to build an LLM judge you can defend, why agreement is the metric behind the metric.</description>
       <category>Modern AI Engineering</category>
     </item>
@@ -116,7 +116,7 @@
       <title>Serving and inference optimization</title>
       <link>https://mohammadi.cv/blog/serving-and-inference-optimization/</link>
       <guid isPermaLink="true">https://mohammadi.cv/blog/serving-and-inference-optimization/</guid>
-      <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
+      <pubDate>Fri, 07 Aug 2026 17:49:46 +0200</pubDate>
       <description>Prefill and decode, vLLM and continuous batching, KV caches, quantization, and the cost arithmetic behind API versus self-host.</description>
       <category>Modern AI Engineering</category>
     </item>
