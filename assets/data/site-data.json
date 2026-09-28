@@ -1,15 +1,55 @@
 {
-  "fetched_at": "2026-09-27T10:37:10+00:00",
+  "fetched_at": "2026-09-28T11:48:40+00:00",
   "github": {
     "public_repos": 57,
     "total_stars": 8,
     "repos": {
+      "judgepanel": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Estimate LLM-judge accuracy without gold labels: Dawid-Skene EM, agreement statistics, bootstrap uncertainty",
+        "language": "Python",
+        "pushed_at": "2026-09-28T10:04:04Z",
+        "url": "https://github.com/mohammadi-hadi/judgepanel"
+      },
+      "mohammadi-hadi": {
+        "stars": 0,
+        "forks": 0,
+        "description": "GitHub profile README",
+        "language": null,
+        "pushed_at": "2026-09-28T10:04:02Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi"
+      },
+      "hands-on-xai-labs": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-09-28T10:04:00Z",
+        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
+      },
+      "explainkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Explain the classifier, then test the explanation: word-level attributions, token selection, prompt steering, replacement probes and faithfulness metrics for any text classifier.",
+        "language": "Python",
+        "pushed_at": "2026-09-28T10:03:58Z",
+        "url": "https://github.com/mohammadi-hadi/explainkit"
+      },
+      "judgewatch": {
+        "stars": 0,
+        "forks": 0,
+        "description": "A frozen probe set and a harness for auditing LLM judges for bias. No audit published yet.",
+        "language": "Python",
+        "pushed_at": "2026-09-28T10:03:56Z",
+        "url": "https://github.com/mohammadi-hadi/judgewatch"
+      },
       "mohammadi-hadi.github.io": {
         "stars": 0,
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-09-26T09:57:57Z",
+        "pushed_at": "2026-09-28T10:03:51Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "weekend-learning": {
@@ -27,14 +67,6 @@
         "language": "Jupyter Notebook",
         "pushed_at": "2026-09-25T22:13:34Z",
         "url": "https://github.com/mohammadi-hadi/weekend-learning-fa"
-      },
-      "mohammadi-hadi": {
-        "stars": 0,
-        "forks": 0,
-        "description": "GitHub profile README",
-        "language": null,
-        "pushed_at": "2026-09-25T09:56:59Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi"
       },
       "fsdp-reward-scaling": {
         "stars": 0,
@@ -100,14 +132,6 @@
         "pushed_at": "2026-09-06T11:36:29Z",
         "url": "https://github.com/mohammadi-hadi/rankkit"
       },
-      "judgewatch": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Monthly bias audits of LLM judges",
-        "language": "Python",
-        "pushed_at": "2026-09-06T11:36:28Z",
-        "url": "https://github.com/mohammadi-hadi/judgewatch"
-      },
       "calikit": {
         "stars": 0,
         "forks": 0,
@@ -140,14 +164,6 @@
         "pushed_at": "2026-09-06T11:35:30Z",
         "url": "https://github.com/mohammadi-hadi/retainkit"
       },
-      "judgepanel": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Estimate LLM-judge accuracy without gold labels: Dawid-Skene EM, agreement statistics, bootstrap uncertainty",
-        "language": "Python",
-        "pushed_at": "2026-09-06T11:35:28Z",
-        "url": "https://github.com/mohammadi-hadi/judgepanel"
-      },
       "opening-the-black-box": {
         "stars": 0,
         "forks": 0,
@@ -163,14 +179,6 @@
         "language": "Jupyter Notebook",
         "pushed_at": "2026-09-05T09:10:58Z",
         "url": "https://github.com/mohammadi-hadi/Automatic-Detection-of-AI-Generated-Texts"
-      },
-      "explainkit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Explain the classifier, then test the explanation: word-level attributions, token selection, prompt steering, replacement probes and faithfulness metrics for any text classifier.",
-        "language": "Python",
-        "pushed_at": "2026-09-05T09:10:48Z",
-        "url": "https://github.com/mohammadi-hadi/explainkit"
       },
       "Sexism-Detection-in-Social-Media": {
         "stars": 1,
@@ -211,14 +219,6 @@
         "language": "Jupyter Notebook",
         "pushed_at": "2026-09-05T09:09:48Z",
         "url": "https://github.com/mohammadi-hadi/Explainable-Sexism-Detection"
-      },
-      "hands-on-xai-labs": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
-        "language": "Jupyter Notebook",
-        "pushed_at": "2026-08-30T08:47:24Z",
-        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
       },
       "grpo_dpo_comparison": {
         "stars": 0,
@@ -463,9 +463,9 @@
     }
   },
   "openalex": {
-    "works_count": 110,
-    "cited_by_count": 16,
-    "h_index": 2,
+    "works_count": 114,
+    "cited_by_count": 19,
+    "h_index": 3,
     "i10_index": 0
   },
   "orcid": {
