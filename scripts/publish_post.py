@@ -2,15 +2,15 @@
 """Publish a drafted blog post.
 
 Drafts live finished under blog/_drafts/<slug>/. Publishing one moves it into
-blog/<slug>/, stamps it with today's date, links it from the top of the field
-notes list, adds it to the sitemap, and rebuilds the feed.
+blog/<slug>/, stamps it with the time it goes live, links it from the top of
+the field notes list, adds it to the sitemap, and rebuilds the feed.
 
     python3 scripts/publish_post.py the-labels-under-the-benchmark
     python3 scripts/publish_post.py --list
 
-The date a post carries is the date it goes live, which is why this stamps
-today rather than letting a draft keep an invented one. Write whenever; publish
-when you want it read.
+The date a post carries is the moment it goes live, which is why this stamps
+the current time in Europe/Amsterdam rather than letting a draft keep an
+invented one. Write whenever; publish when you want it read.
 
 Standard library only. Re-run scripts/make_cards.py afterwards if the post
 needs a share card.
@@ -20,8 +20,9 @@ from __future__ import annotations
 import re
 import subprocess
 import sys
-from datetime import date, datetime
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 BLOG = ROOT / "blog"
@@ -64,8 +65,9 @@ def main() -> int:
     if dst.exists():
         die(f"blog/{slug}/ already exists")
 
-    today = date.today()
-    iso = f"{today:%Y-%m-%d}T09:00:00+02:00"
+    now = datetime.now(ZoneInfo("Europe/Amsterdam"))
+    today = now.date()
+    iso = now.isoformat(timespec="seconds")
     human = f"{today.day} {today:%B %Y}"
 
     html = (src / "index.html").read_text(encoding="utf-8")
