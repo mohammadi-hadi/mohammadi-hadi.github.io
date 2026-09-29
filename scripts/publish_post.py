@@ -4,9 +4,10 @@
 Drafts are kept outside this repository, so nothing unpublished is public.
 Each one is a finished folder <drafts>/<slug>/. Publishing one moves it into
 blog/<slug>/, stamps it with the time it goes live, links it from the top of
-the field notes list, adds it to the sitemap, and rebuilds the feed.
+the field notes list under a topic label, adds it to the sitemap, and rebuilds
+the feed.
 
-    WL_DRAFTS=/path/to/site-drafts python3 scripts/publish_post.py <slug>
+    WL_DRAFTS=/path/to/site-drafts python3 scripts/publish_post.py <slug> --topic "LLM judges"
     python3 scripts/publish_post.py --drafts /path/to/site-drafts --list
 
 The drafts directory comes from --drafts, else the WL_DRAFTS environment
@@ -14,7 +15,9 @@ variable, else ~/Documents/Weekend-Learning/site-drafts if that exists.
 
 The date a post carries is the moment it goes live, which is why this stamps
 the current time in Europe/Amsterdam rather than letting a draft keep an
-invented one. Write whenever; publish when you want it read.
+invented one. Write whenever; publish when you want it read. The date goes
+into the post's metadata, the sitemap and the feed; the pages themselves show
+no dates, and the field notes list shows the topic instead.
 
 Standard library only. Re-run scripts/make_cards.py afterwards if the post
 needs a share card.
@@ -77,6 +80,7 @@ def main() -> int:
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("slug", nargs="?", help="folder name of the draft to publish")
     parser.add_argument("--list", action="store_true", help="list the drafts and exit")
+    parser.add_argument("--topic", help='short label shown in the field notes list, e.g. "LLM judges"')
     parser.add_argument("--drafts", metavar="DIR",
                         help="drafts directory (default: $WL_DRAFTS, then "
                              "~/Documents/Weekend-Learning/site-drafts)")
@@ -90,6 +94,8 @@ def main() -> int:
         list_drafts(drafts)
         return 0
 
+    if not opts.topic:
+        die('pass --topic "<label>" for the field notes list, e.g. --topic "Calibration"')
     slug = opts.slug.strip("/")
     src = drafts / slug
     dst = BLOG / slug
@@ -107,8 +113,8 @@ def main() -> int:
 
     # Stamp the real publication date everywhere the draft carried a placeholder.
     html = re.sub(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+\d{2}:\d{2}', iso, html)
-    html = re.sub(r'<time datetime="\d{4}-\d{2}-\d{2}">[^<]*</time>',
-                  f'<time datetime="{today:%Y-%m-%d}">{human}</time>', html)
+    # The page shows no date: drop the byline's date if the draft has one.
+    html = re.sub(r'<span><time datetime="\d{4}-\d{2}-\d{2}">[^<]*</time></span>', "", html)
     html = re.sub(r'\n *<meta name="robots" content="noindex, nofollow">', "", html)
 
     title = re.search(r"<h1>(.*?)</h1>", html)
@@ -131,7 +137,7 @@ def main() -> int:
         die(f"marker {MARKER} not found in blog/index.html")
     entry = f"""{MARKER}
           <li class="post-item">
-            <div class="post-index"><time datetime="{today:%Y-%m-%d}">{today.day} {today:%b %Y}</time></div>
+            <div class="post-index">{opts.topic}</div>
             <div>
               <h3><a href="/blog/{slug}/">{title.group(1)}</a></h3>
               <p>{' '.join(dek.group(1).split())}</p>
