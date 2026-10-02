@@ -1,15 +1,47 @@
 {
-  "fetched_at": "2026-10-01T11:41:38+00:00",
+  "fetched_at": "2026-10-02T11:11:05+00:00",
   "github": {
     "public_repos": 57,
     "total_stars": 8,
     "repos": {
+      "trajectory-judge": {
+        "stars": 0,
+        "forks": 0,
+        "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.",
+        "language": "Python",
+        "pushed_at": "2026-10-02T07:55:40Z",
+        "url": "https://github.com/mohammadi-hadi/trajectory-judge"
+      },
+      "abeval": {
+        "stars": 1,
+        "forks": 0,
+        "description": "A/B-test statistics for LLM evals: error bars, paired significance tests, sample-size planning",
+        "language": "Python",
+        "pushed_at": "2026-10-01T23:18:10Z",
+        "url": "https://github.com/mohammadi-hadi/abeval"
+      },
+      "mohammadi-hadi": {
+        "stars": 0,
+        "forks": 0,
+        "description": "GitHub profile README",
+        "language": null,
+        "pushed_at": "2026-10-01T14:33:26Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi"
+      },
+      "calikit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Calibration auditing for probabilistic predictions: reliability diagrams, ECE, Brier decomposition, temperature scaling. Zero dependencies.",
+        "language": "Python",
+        "pushed_at": "2026-10-01T13:38:31Z",
+        "url": "https://github.com/mohammadi-hadi/calikit"
+      },
       "mohammadi-hadi.github.io": {
         "stars": 0,
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-09-30T11:14:29Z",
+        "pushed_at": "2026-10-01T11:41:41Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "weekend-learning": {
@@ -35,14 +67,6 @@
         "language": "Python",
         "pushed_at": "2026-09-28T10:04:04Z",
         "url": "https://github.com/mohammadi-hadi/judgepanel"
-      },
-      "mohammadi-hadi": {
-        "stars": 0,
-        "forks": 0,
-        "description": "GitHub profile README",
-        "language": null,
-        "pushed_at": "2026-09-28T10:04:02Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi"
       },
       "hands-on-xai-labs": {
         "stars": 0,
@@ -75,14 +99,6 @@
         "language": "Python",
         "pushed_at": "2026-09-06T16:16:36Z",
         "url": "https://github.com/mohammadi-hadi/fsdp-reward-scaling"
-      },
-      "trajectory-judge": {
-        "stars": 0,
-        "forks": 0,
-        "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.",
-        "language": "Python",
-        "pushed_at": "2026-09-06T16:04:09Z",
-        "url": "https://github.com/mohammadi-hadi/trajectory-judge"
       },
       "abkit": {
         "stars": 0,
@@ -131,22 +147,6 @@
         "language": "Python",
         "pushed_at": "2026-09-06T11:36:29Z",
         "url": "https://github.com/mohammadi-hadi/rankkit"
-      },
-      "calikit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Calibration auditing for probabilistic predictions: reliability diagrams, ECE, Brier decomposition, temperature scaling. Zero dependencies.",
-        "language": "Python",
-        "pushed_at": "2026-09-06T11:36:26Z",
-        "url": "https://github.com/mohammadi-hadi/calikit"
-      },
-      "abeval": {
-        "stars": 1,
-        "forks": 0,
-        "description": "A/B-test statistics for LLM evals: error bars, paired significance tests, sample-size planning",
-        "language": "Python",
-        "pushed_at": "2026-09-06T11:36:25Z",
-        "url": "https://github.com/mohammadi-hadi/abeval"
       },
       "judgekit": {
         "stars": 0,
@@ -276,14 +276,6 @@
         "pushed_at": "2026-08-08T08:10:10Z",
         "url": "https://github.com/mohammadi-hadi/dynamic-pricing-dashboard"
       },
-      "ai-masters-netherlands": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Every AI, machine learning, and data science master's programme at Dutch research universities — admissions, costs, deadlines, and how to choose",
-        "language": null,
-        "pushed_at": "2026-08-08T08:10:07Z",
-        "url": "https://github.com/mohammadi-hadi/ai-masters-netherlands"
-      },
       "ml-summer-schools-europe": {
         "stars": 0,
         "forks": 0,
@@ -291,6 +283,14 @@
         "language": null,
         "pushed_at": "2026-08-08T08:10:07Z",
         "url": "https://github.com/mohammadi-hadi/ml-summer-schools-europe"
+      },
+      "ai-masters-netherlands": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Every AI, machine learning, and data science master's programme at Dutch research universities — admissions, costs, deadlines, and how to choose",
+        "language": null,
+        "pushed_at": "2026-08-08T08:10:07Z",
+        "url": "https://github.com/mohammadi-hadi/ai-masters-netherlands"
       },
       "ml-learning-paths": {
         "stars": 0,
