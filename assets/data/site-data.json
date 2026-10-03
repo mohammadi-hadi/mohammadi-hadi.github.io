@@ -1,9 +1,17 @@
 {
-  "fetched_at": "2026-10-02T11:11:05+00:00",
+  "fetched_at": "2026-10-03T10:28:45+00:00",
   "github": {
     "public_repos": 57,
     "total_stars": 8,
     "repos": {
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Personal academic website — mohammadi.cv",
+        "language": "HTML",
+        "pushed_at": "2026-10-02T11:11:09Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
       "trajectory-judge": {
         "stars": 0,
         "forks": 0,
@@ -35,14 +43,6 @@
         "language": "Python",
         "pushed_at": "2026-10-01T13:38:31Z",
         "url": "https://github.com/mohammadi-hadi/calikit"
-      },
-      "mohammadi-hadi.github.io": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Personal academic website — mohammadi.cv",
-        "language": "HTML",
-        "pushed_at": "2026-10-01T11:41:41Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "weekend-learning": {
         "stars": 0,
