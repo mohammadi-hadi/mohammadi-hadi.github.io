@@ -1,15 +1,23 @@
 {
-  "fetched_at": "2026-10-03T10:28:45+00:00",
+  "fetched_at": "2026-10-04T11:10:17+00:00",
   "github": {
     "public_repos": 57,
     "total_stars": 8,
     "repos": {
+      "xnlp-llm-survey": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Supplementary materials for 'Explainable NLP in the Era of Large Language Models: A Unified Taxonomy, Evaluation Frameworks, and Decision Guidance' - Journal of Artificial Intelligence Research",
+        "language": "TeX",
+        "pushed_at": "2026-10-04T10:40:20Z",
+        "url": "https://github.com/mohammadi-hadi/xnlp-llm-survey"
+      },
       "mohammadi-hadi.github.io": {
         "stars": 0,
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-10-02T11:11:09Z",
+        "pushed_at": "2026-10-03T10:28:48Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "trajectory-judge": {
@@ -251,14 +259,6 @@
         "language": "TeX",
         "pushed_at": "2026-08-12T07:47:00Z",
         "url": "https://github.com/mohammadi-hadi/xnlp-survey"
-      },
-      "xnlp-llm-survey": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Supplementary materials for 'Explainable NLP in the Era of Large Language Models: A Unified Taxonomy, Evaluation Frameworks, and Decision Guidance' - Journal of Artificial Intelligence Research",
-        "language": "TeX",
-        "pushed_at": "2026-08-12T07:42:53Z",
-        "url": "https://github.com/mohammadi-hadi/xnlp-llm-survey"
       },
       "awesome-explainable-nlp": {
         "stars": 0,
