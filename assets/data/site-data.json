@@ -1,24 +1,32 @@
 {
-  "fetched_at": "2026-10-04T11:10:17+00:00",
+  "fetched_at": "2026-10-05T12:23:57+00:00",
   "github": {
     "public_repos": 57,
     "total_stars": 8,
     "repos": {
-      "xnlp-llm-survey": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Supplementary materials for 'Explainable NLP in the Era of Large Language Models: A Unified Taxonomy, Evaluation Frameworks, and Decision Guidance' - Journal of Artificial Intelligence Research",
-        "language": "TeX",
-        "pushed_at": "2026-10-04T10:40:20Z",
-        "url": "https://github.com/mohammadi-hadi/xnlp-llm-survey"
-      },
       "mohammadi-hadi.github.io": {
         "stars": 0,
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-10-03T10:28:48Z",
+        "pushed_at": "2026-10-04T19:28:27Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
+      "hands-on-xai-labs": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-10-04T19:09:29Z",
+        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
+      },
+      "xnlp-llm-survey": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Supplementary materials for 'Explainable NLP in the Era of Large Language Models: A Unified Taxonomy, Evaluation Frameworks, and Decision Guidance' - Journal of Artificial Intelligence Research",
+        "language": "TeX",
+        "pushed_at": "2026-10-04T14:17:06Z",
+        "url": "https://github.com/mohammadi-hadi/xnlp-llm-survey"
       },
       "trajectory-judge": {
         "stars": 0,
@@ -75,14 +83,6 @@
         "language": "Python",
         "pushed_at": "2026-09-28T10:04:04Z",
         "url": "https://github.com/mohammadi-hadi/judgepanel"
-      },
-      "hands-on-xai-labs": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
-        "language": "Jupyter Notebook",
-        "pushed_at": "2026-09-28T10:04:00Z",
-        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
       },
       "explainkit": {
         "stars": 0,
