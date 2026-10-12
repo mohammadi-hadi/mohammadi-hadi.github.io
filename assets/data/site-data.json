@@ -1,19 +1,19 @@
 {
-  "fetched_at": "2026-10-11T11:28:49+00:00",
+  "fetched_at": "2026-10-12T13:18:49+00:00",
   "github": {
     "public_repos": 57,
-    "total_stars": 8,
+    "total_stars": 9,
     "repos": {
       "mohammadi-hadi.github.io": {
         "stars": 0,
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-10-10T11:15:29Z",
+        "pushed_at": "2026-10-11T11:28:51Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "hands-on-xai-labs": {
-        "stars": 0,
+        "stars": 1,
         "forks": 0,
         "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
         "language": "Jupyter Notebook",
