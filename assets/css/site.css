@@ -2083,3 +2083,35 @@ details.fold > summary:focus-visible {
   font-size: 0.95rem;
   color: var(--ink-2);
 }
+
+/* "Show the rest" fold under a list. */
+.fold-more {
+  margin-top: var(--space-3);
+}
+
+.fold-more > summary {
+  display: inline-block;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.fold-more > summary::before {
+  content: "+ ";
+}
+
+.fold-more[open] > summary::before {
+  content: "− ";
+}
+
+.fold-more > summary:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.fold-more > .news-list,
+.fold-more > .fact-list {
+  border-top: 1px solid var(--rule);
+  margin-top: var(--space-2);
+}
