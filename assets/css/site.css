@@ -1890,3 +1890,54 @@ h3[id] {
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
+
+/* On-this-page bar under the hero. It scrolls inside itself on a phone so
+   the page never scrolls sideways. */
+.page-index {
+  background: var(--surface);
+  border-bottom: 1px solid var(--rule);
+}
+
+.page-index ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--space-5);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.page-index ul::-webkit-scrollbar {
+  display: none;
+}
+
+.page-index a {
+  display: inline-block;
+  padding: 0.85rem 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.page-index a:hover {
+  color: var(--accent);
+}
+
+/* The scrolling row clips anything drawn outside it, so the focus ring goes inside. */
+.page-index a:focus-visible {
+  outline-offset: -2px;
+}
+
+/* The bar already draws the rule above the first section. */
+.page-index + .section {
+  border-top: 0;
+}
+
+@media (max-width: 720px) {
+  .page-index ul {
+    gap: var(--space-4);
+  }
+}
