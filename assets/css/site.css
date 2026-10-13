@@ -2059,3 +2059,27 @@ details.fold > summary:focus-visible {
     white-space: normal;
   }
 }
+
+/* Four research themes: 4, then 2, then 1 column. These come after the
+   .interest-grid rules, so they carry their own breakpoints. */
+.theme-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 980px) {
+  .theme-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .theme-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.thesis-line {
+  margin-top: var(--space-5);
+  font-size: 0.95rem;
+  color: var(--ink-2);
+}
