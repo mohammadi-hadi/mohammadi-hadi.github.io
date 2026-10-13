@@ -2039,8 +2039,12 @@ details.fold > summary:focus-visible {
   color: var(--ink-2);
 }
 
+/* The cue is visual only: the details element already reports open and
+   closed, so the empty alt text keeps it out of the summary's name. The
+   plain declaration is the fallback for browsers without the alt syntax. */
 .tl-fold > summary .tl-hook::after {
   content: "Details +";
+  content: "Details +" / "";
   margin-left: 0.6em;
   font-size: 0.8rem;
   font-weight: 500;
@@ -2050,6 +2054,7 @@ details.fold > summary:focus-visible {
 
 .tl-fold[open] > summary .tl-hook::after {
   content: "Less −";
+  content: "Less −" / "";
 }
 
 .tl-fold > summary:hover .tl-hook::after {
