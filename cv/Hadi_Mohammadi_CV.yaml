@@ -145,9 +145,9 @@ cv:
         authors:
           - '***Mohammadi, H.***'
           - Giachanou, A.
-        journal: 'INLG 2026, Utrecht (long paper, accepted)'
+        journal: 'INLG 2026, Utrecht (long paper, accepted); preprint arXiv:2512.22631'
         date: 2026
-        url: https://2026.inlgmeeting.org/accepted-papers.html
+        url: https://mohammadi.cv/publications/grpo-dpo-cot/
       - title: 'EvalMORAAL: Interpretable Chain-of-Thought and LLM-as-Judge Evaluation for Moral Alignment in Large Language Models'
         authors:
           - '***Mohammadi, H.***'
@@ -163,14 +163,6 @@ cv:
         journal: 'Computational Linguistics in the Netherlands Journal, Vol. 15, pp. 59–77'
         date: 2026
         url: https://mohammadi.cv/publications/cultural-moral-judgments/
-      - title: Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs
-        authors:
-          - '***Mohammadi, H.***'
-          - Kozák, T.
-          - Giachanou, A.
-        journal: arXiv preprint
-        date: 2025
-        url: https://mohammadi.cv/publications/grpo-dpo-cot/
       - title: Assessing the Reliability of LLMs Annotations in the Context of Demographic Bias and Model Explanation
         authors:
           - '***Mohammadi, H.***†'
