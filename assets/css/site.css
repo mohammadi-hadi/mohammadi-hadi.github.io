@@ -2180,3 +2180,14 @@ details.fold > summary:focus-visible {
     content: none;
   }
 }
+
+/* Newsletter cards: two doors whose links sit at the bottom of each card. */
+.doors-2 .door {
+  display: flex;
+  flex-direction: column;
+}
+
+.door-issue {
+  margin-top: var(--space-3);
+  font-size: 0.9rem;
+}
