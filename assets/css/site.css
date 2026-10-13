@@ -1853,3 +1853,40 @@ h3[id] {
     break-inside: avoid;
   }
 }
+
+/* ==========================================================================
+   Homepage: layered layout, Oct 2026
+   Every area stays on the homepage; each shows its key items and folds or
+   links the rest to its own page.
+   ========================================================================== */
+
+/* Hero action row. The default .btn is navy, which disappears on the navy
+   hero band, so the hero gets a solid white and an outline variant. */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+}
+
+.hero-ink .btn-on-ink {
+  background: #fff;
+  color: var(--hero-ink);
+  border-color: #fff;
+}
+
+.hero-ink .btn-on-ink:hover {
+  background: #e6edf6;
+  color: var(--hero-ink);
+}
+
+.hero-ink .btn-line-on-ink {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.hero-ink .btn-line-on-ink:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
