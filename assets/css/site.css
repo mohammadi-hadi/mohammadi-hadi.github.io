@@ -1052,6 +1052,20 @@ h3[id] {
   }
 }
 
+/* Between the one-column switch and full container width, a 140px date
+   column leaves the role text only 190-290px inside a half column, so the
+   date goes above the title. */
+@media (min-width: 821px) and (max-width: 1079px) {
+  .split-2 .timeline > li {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+
+  .split-2 .timeline .tl-date {
+    padding-top: 0;
+  }
+}
+
 /* ---------- Interest grid ---------- */
 .interest-grid {
   display: grid;
