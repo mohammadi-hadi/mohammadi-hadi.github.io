@@ -596,16 +596,6 @@ h3[id] {
   background: var(--surface);
   padding: var(--space-5);
   color: var(--ink);
-  transition: border-color 0.15s ease;
-}
-
-.door:hover {
-  border-color: var(--accent);
-  color: var(--ink);
-}
-
-.door:hover .link-arrow::after {
-  transform: translateX(4px);
 }
 
 .door .kicker {
@@ -1977,7 +1967,8 @@ h3[id] {
 }
 
 /* Three audience paths inside About. Each card is a short sentence and
-   three links, so the card itself is not one big link. */
+   three links, so the card itself is not one big link and has no hover
+   state; each link nudges its own arrow. */
 .doors.doors-3 {
   grid-template-columns: repeat(3, 1fr);
   margin-top: var(--space-6);
@@ -1986,11 +1977,6 @@ h3[id] {
 .doors-3 .door {
   display: flex;
   flex-direction: column;
-}
-
-.doors-3 .door:hover {
-  border-color: var(--rule);
-  border-top-color: var(--accent);
 }
 
 .door-links {
