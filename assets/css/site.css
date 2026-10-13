@@ -2115,3 +2115,7 @@ details.fold > summary:focus-visible {
   border-top: 1px solid var(--rule);
   margin-top: var(--space-2);
 }
+
+.teach-course {
+  margin-top: var(--space-4);
+}
