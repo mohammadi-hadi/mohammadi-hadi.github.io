@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-12T13:18:49+00:00",
+  "fetched_at": "2026-10-13T12:47:56+00:00",
   "github": {
     "public_repos": 57,
     "total_stars": 9,
@@ -9,7 +9,7 @@
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-10-11T11:28:51Z",
+        "pushed_at": "2026-10-12T13:18:52Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "hands-on-xai-labs": {
@@ -463,7 +463,7 @@
     }
   },
   "openalex": {
-    "works_count": 58,
+    "works_count": 57,
     "cited_by_count": 9,
     "h_index": 1,
     "i10_index": 0
