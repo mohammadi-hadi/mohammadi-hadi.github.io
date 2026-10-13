@@ -135,6 +135,19 @@ cv:
         details: Farsi (native), English (fluent), Dutch (A2, improving).
 
     Publications:
+      - title: 'trajectory-judge: What Outcome-Only LLM Judges Miss on Agent Trajectories'
+        authors:
+          - '***Mohammadi, H.***'
+        journal: 'NeurIPS 2026 Workshop "Who Verifies the Agents?" (accepted)'
+        date: 2026
+        url: https://arxiv.org/abs/2609.00038
+      - title: Chain-of-Thought Faithfulness Under GRPO and DPO Fine-Tuning
+        authors:
+          - '***Mohammadi, H.***'
+          - Giachanou, A.
+        journal: 'INLG 2026, Utrecht (long paper, accepted)'
+        date: 2026
+        url: https://2026.inlgmeeting.org/accepted-papers.html
       - title: 'EvalMORAAL: Interpretable Chain-of-Thought and LLM-as-Judge Evaluation for Moral Alignment in Large Language Models'
         authors:
           - '***Mohammadi, H.***'
