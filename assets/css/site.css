@@ -2092,10 +2092,12 @@ details.fold > summary:focus-visible {
   margin-bottom: 0;
 }
 
-/* The longest chip is wider than a 320px screen's text column. */
+/* The longest chip is wider than a 320px screen's text column. Slimmer
+   side padding lets the chips pair up at 390px instead of one per row. */
 @media (max-width: 400px) {
   .core-chips .chip {
     white-space: normal;
+    padding-inline: 0.55rem;
   }
 }
 
