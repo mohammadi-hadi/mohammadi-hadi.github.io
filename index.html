@@ -596,6 +596,12 @@
   </footer>
 
   <script src="/assets/js/scholar-stats.js" defer></script>
+  <script>
+    // A printed page cannot open a fold, so print them all open.
+    window.addEventListener("beforeprint", () => {
+      document.querySelectorAll("details.fold").forEach((d) => { d.open = true; });
+    });
+  </script>
 
 </body>
 </html>

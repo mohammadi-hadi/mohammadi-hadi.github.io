@@ -2155,3 +2155,18 @@ details.fold > summary:focus-visible {
   display: inline-block;
   padding: 0.5rem 0;
 }
+
+@media print {
+  .page-index,
+  .to-top {
+    display: none;
+  }
+
+  /* Folds print open, so the [open] cue rules need matching weight here. */
+  .tl-fold > summary .tl-hook::after,
+  .tl-fold[open] > summary .tl-hook::after,
+  .fold-more > summary::before,
+  .fold-more[open] > summary::before {
+    content: none;
+  }
+}
