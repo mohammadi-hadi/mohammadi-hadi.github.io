@@ -928,7 +928,11 @@ h3[id] {
   margin: 0;
 }
 
+/* Inline-block with a little vertical padding gives each footer link a
+   tap target at least 24px tall without changing the row's look. */
 .site-footer a {
+  display: inline-block;
+  padding-block: 0.2rem;
   color: var(--ink-2);
 }
 
