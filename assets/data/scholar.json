@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-09-19T14:14:13+00:00",
-  "citations": 155,
+  "fetched_at": "2026-10-13T16:55:53+00:00",
+  "citations": 167,
   "h_index": 8,
   "i10_index": 6,
   "publications": {
     "explainability-survey": {
       "title": "Explainability in practice: A survey of explainable nlp across various domains",
       "year": 2025,
-      "cited_by": 27
+      "cited_by": 30
     },
     "exist-2023": {
       "title": "Towards robust online sexism detection: a multi-model approach with bert, xlm-roberta, and distilbert for exist 2023 tasks",
@@ -22,35 +22,35 @@
     "sexism-detection": {
       "title": "A transparent pipeline for identifying sexism in social media: Combining explainability with model prediction",
       "year": 2024,
-      "cited_by": 16
+      "cited_by": 18
     },
     "home-health-care": {
       "title": "Home health care problem with synchronization visits and considering samples transferring time: a case study in tehran, Iran",
       "year": 2022,
-      "cited_by": 13
+      "cited_by": 14
     },
     "evalmoraal": {
       "title": "EvalMORAAL: Interpretable Chain-of-Thought and LLM-as-Judge evaluation for moral alignment in large language models",
       "year": 2026,
-      "cited_by": 10
+      "cited_by": 11
+    },
+    "morality-across-cultures": {
+      "title": "Do Large Language Models Understand Morality Across Cultures?",
+      "year": 2025,
+      "cited_by": 9
     },
     "mirrors-cultural-divergence": {
       "title": "LLMs as mirrors of societal moral standards: reflection of cultural divergence and agreement across ethical topics",
       "year": 2024,
       "cited_by": 9
     },
-    "morality-across-cultures": {
-      "title": "Do Large Language Models Understand Morality Across Cultures?",
+    "llm-annotation-reliability": {
+      "title": "Assessing the reliability of llms annotations in the context of demographic bias and model explanation",
       "year": 2025,
       "cited_by": 8
     },
     "grpo-dpo-cot": {
       "title": "Evaluating grpo and dpo for faithful chain-of-thought reasoning in llms",
-      "year": 2025,
-      "cited_by": 6
-    },
-    "llm-annotation-reliability": {
-      "title": "Assessing the reliability of llms annotations in the context of demographic bias and model explanation",
       "year": 2025,
       "cited_by": 6
     },
@@ -65,14 +65,19 @@
       "cited_by": 6
     },
     "cultural-moral-judgments": {
-      "title": "Exploring cultural variations in moral judgments with large language models",
-      "year": 2025,
+      "title": "Exploring Cultural Variations in Moral Judgments with Large Language Models",
+      "year": 2026,
       "cited_by": 3
     },
     "financial-fraud-detection": {
       "title": "Novel Approaches in Financial Fraud Detection: Hybrid Machine Learning and Uncertainty-Based Deep Learning",
       "year": 2024,
       "cited_by": 3
+    },
+    "trajectory-judge-what-outcome-only-llm-judges-miss-on-agent-": {
+      "title": "trajectory-judge: What Outcome-Only LLM Judges Miss on Agent Trajectories",
+      "year": 2026,
+      "cited_by": 2
     },
     "code-for-towards-robust-online-sexism-detection-a-multi-mode": {
       "title": "Code for\" Towards Robust Online Sexism Detection: A Multi-Model Approach with BERT, XLM-RoBERTa, and DistilBERT for EXIST 2023 Tasks\"",
@@ -84,8 +89,8 @@
       "year": 2026,
       "cited_by": 1
     },
-    "trajectory-judge-what-outcome-only-llm-judges-miss-on-agent-": {
-      "title": "trajectory-judge: What Outcome-Only LLM Judges Miss on Agent Trajectories",
+    "explainable-nlp-in-the-era-of-large-language-models-a-unifie": {
+      "title": "Explainable NLP in the Era of Large Language Models: A Unified Taxonomy, Evaluation Frameworks, and Decision Guidance",
       "year": 2026,
       "cited_by": 0
     },
@@ -96,11 +101,6 @@
     },
     "reliability-aware-sexism-detection-combining-dpo-with-annota": {
       "title": "Reliability-Aware Sexism Detection: Combining DPO with Annotator Agreement and Token-Level Confidence Scoring",
-      "year": 2026,
-      "cited_by": 0
-    },
-    "explainable-nlp-a-comprehensive-survey-and-practical-guideli": {
-      "title": "Explainable NLP: A Comprehensive Survey and Practical Guidelines for Interpretable Text Models",
       "year": 2026,
       "cited_by": 0
     },
