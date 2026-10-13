@@ -129,7 +129,6 @@ h3[id] {
   overflow-wrap: anywhere;
 }
 
-.about-grid > *,
 .split-2 > *,
 .contact-grid > *,
 .hero-grid > * {
@@ -143,10 +142,6 @@ h3[id] {
 
 .section-alt {
   background: var(--surface);
-}
-
-.hero-ink + .section {
-  border-top: 0;
 }
 
 @media (max-width: 720px) {
@@ -1007,20 +1002,6 @@ h3[id] {
 
   .fact-list li a {
     padding: 0.25rem 0;
-  }
-}
-
-/* ---------- About grid ---------- */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: var(--space-6);
-  align-items: start;
-}
-
-@media (max-width: 820px) {
-  .about-grid {
-    grid-template-columns: 1fr;
   }
 }
 
