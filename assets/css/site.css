@@ -1978,3 +1978,84 @@ h3[id] {
     gap: var(--space-4);
   }
 }
+
+/* "More on its own page" links under a section. */
+.section-more {
+  margin-top: var(--space-4);
+}
+
+.col-kicker-gap {
+  margin-top: var(--space-5);
+}
+
+/* Native disclosure: the summary is the whole visible row, so its marker
+   goes and a text cue takes its place. */
+details.fold > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+details.fold > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.fold > summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* A folded role: title, organisation and one result stay visible. */
+.tl-fold > summary .tl-org,
+.tl-fold > summary .tl-hook {
+  display: block;
+}
+
+.tl-fold > summary .tl-org {
+  margin-bottom: 0.15rem;
+}
+
+.tl-fold > summary .tl-hook {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+}
+
+.tl-fold > summary .tl-hook::after {
+  content: "Details +";
+  margin-left: 0.6em;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.tl-fold[open] > summary .tl-hook::after {
+  content: "Less −";
+}
+
+.tl-fold > summary:hover .tl-hook::after {
+  text-decoration: underline;
+}
+
+.tl-fold > ul {
+  margin-top: var(--space-2);
+}
+
+/* Older roles keep one plain result line instead of a bullet list. */
+.timeline .tl-note {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+/* One row of core skills under the two columns. */
+.core-chips {
+  margin-top: var(--space-5);
+  margin-bottom: 0;
+}
+
+/* The longest chip is wider than a 320px screen's text column. */
+@media (max-width: 400px) {
+  .core-chips .chip {
+    white-space: normal;
+  }
+}
