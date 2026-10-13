@@ -523,14 +523,19 @@
     }
 
     .page-footer h5 {
-      color: var(--gold);
+      color: #fff;
       font-size: 1.1rem;
       font-weight: 700;
       margin-bottom: 15px;
     }
 
+    /* --gold is near-black on this page, so the dark footer sets its own colours. */
     .page-footer a {
-      color: var(--gold);
+      color: rgba(255,255,255,0.7);
+    }
+
+    .page-footer a:hover {
+      color: #fff;
     }
 
     .citation-box {
@@ -551,7 +556,7 @@
     }
 
     .footer-links a:hover {
-      color: var(--gold);
+      color: #fff;
     }
 
     .back-link {
@@ -1126,13 +1131,13 @@
     <hr style="border-color: rgba(255,255,255,0.1); margin: 40px 0 30px;">
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
       <div>
-        <a href="../../index.html" class="back-link text-white-50">
+        <a href="../../index.html" class="back-link">
           <i class="fas fa-arrow-left me-2"></i>Back to Main Site
         </a>
         &nbsp;|&nbsp;
-        <a href="mailto:hadi.mohammadi@outlook.com" class="back-link text-white-50">Email</a>
+        <a href="mailto:hadi.mohammadi@outlook.com" class="back-link">Email</a>
         &nbsp;|&nbsp;
-        <a href="/assets/docs/HadiMohammadiCV.pdf" class="back-link text-white-50">CV (PDF)</a>
+        <a href="/assets/docs/HadiMohammadiCV.pdf" class="back-link">CV (PDF)</a>
       </div>
       <div class="footer-links">
         <a href="../../index.html" title="Home"><i class="fas fa-home"></i></a>
