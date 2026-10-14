@@ -14,7 +14,7 @@ Live at https://mohammadi.cv (served by GitHub Pages with a custom domain).
 
 ## Overview
 
-A static HTML/CSS/JavaScript site (based on a Bootstrap template) with pages for research, publications, projects, experience, news, and CV. No build system is required for the pages themselves; the repository is published as-is (`.nojekyll`).
+A static HTML/CSS/JavaScript site with pages for research, publications, projects, experience, news, and CV. No build system is required for the pages themselves; the repository is published as-is (`.nojekyll`).
 
 Two GitHub Actions workflows keep the content fresh:
 
