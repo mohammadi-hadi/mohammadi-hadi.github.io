@@ -27,5 +27,3 @@ Two GitHub Actions workflows keep the content fresh:
 python3 -m http.server 8000
 # then open http://localhost:8000
 ```
-
-See `local_testing_guide.md` for more detail.
