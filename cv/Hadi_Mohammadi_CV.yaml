@@ -141,12 +141,6 @@ cv:
         journal: 'NeurIPS 2026 Workshop "Who Verifies the Agents?" (accepted)'
         date: 2026
         url: https://arxiv.org/abs/2609.00038
-      - title: 'Judging Without Gold: Gold-Free Estimation of LLM-Judge Accuracy and Its Failure Modes'
-        authors:
-          - '***Mohammadi, H.***'
-        journal: 'NeurIPS 2026 Workshop "Can We Trust the Judge?" (JUDGe, accepted)'
-        date: 2026
-        url: https://github.com/mohammadi-hadi/judgepanel
       - title: Chain-of-Thought Faithfulness Under GRPO and DPO Fine-Tuning
         authors:
           - '***Mohammadi, H.***'
