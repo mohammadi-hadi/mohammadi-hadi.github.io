@@ -176,4 +176,12 @@
     <loc>https://mohammadi.cv/dynamic-pricing-dashboard/</loc>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://mohammadi.cv/weekend-learning/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mohammadi.cv/weekend-learning-fa/</loc>
+    <priority>0.6</priority>
+  </url>
 </urlset>
