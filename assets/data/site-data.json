@@ -1,15 +1,23 @@
 {
-  "fetched_at": "2026-10-19T10:57:56+00:00",
+  "fetched_at": "2026-10-20T10:11:47+00:00",
   "github": {
     "public_repos": 55,
     "total_stars": 9,
     "repos": {
+      "hands-on-xai-labs": {
+        "stars": 1,
+        "forks": 0,
+        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-10-19T23:21:22Z",
+        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
+      },
       "mohammadi-hadi.github.io": {
         "stars": 0,
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-10-18T09:43:25Z",
+        "pushed_at": "2026-10-19T10:57:59Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "MAP-PO": {
@@ -91,14 +99,6 @@
         "language": "Python",
         "pushed_at": "2026-10-15T07:08:22Z",
         "url": "https://github.com/mohammadi-hadi/trajectory-judge"
-      },
-      "hands-on-xai-labs": {
-        "stars": 1,
-        "forks": 0,
-        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
-        "language": "Jupyter Notebook",
-        "pushed_at": "2026-10-15T07:08:20Z",
-        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
       },
       "spark-search-ranking": {
         "stars": 0,
