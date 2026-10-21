@@ -1,9 +1,25 @@
 {
-  "fetched_at": "2026-10-20T10:11:47+00:00",
+  "fetched_at": "2026-10-21T10:19:30+00:00",
   "github": {
-    "public_repos": 55,
+    "public_repos": 56,
     "total_stars": 9,
     "repos": {
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Personal academic website — mohammadi.cv",
+        "language": "HTML",
+        "pushed_at": "2026-10-20T22:52:16Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
+      "neurips": {
+        "stars": 0,
+        "forks": 0,
+        "description": "NeurIPS Atlas: what NeurIPS papers are about and how the conference changes. 2026 edition: 9,110 papers on one map, growth since 2025, three cities, and every paper with its links.",
+        "language": "Python",
+        "pushed_at": "2026-10-20T15:18:00Z",
+        "url": "https://github.com/mohammadi-hadi/neurips"
+      },
       "hands-on-xai-labs": {
         "stars": 1,
         "forks": 0,
@@ -11,14 +27,6 @@
         "language": "Jupyter Notebook",
         "pushed_at": "2026-10-19T23:21:22Z",
         "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
-      },
-      "mohammadi-hadi.github.io": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Personal academic website — mohammadi.cv",
-        "language": "HTML",
-        "pushed_at": "2026-10-19T10:57:59Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "MAP-PO": {
         "stars": 0,
