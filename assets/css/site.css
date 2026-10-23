@@ -1484,7 +1484,7 @@ h3[id] {
 
   .post-body th,
   .post-body td {
-    padding-inline: 0 0.75rem;
+    padding-inline: 0 1rem;
   }
 
   .post-body th:first-child,
@@ -1901,7 +1901,7 @@ h3[id] {
   .page-index ul {
     flex-wrap: wrap;
     overflow: visible;
-    gap: 0 var(--space-4);
+    gap: 0 12px;
   }
 
   .page-index a {
