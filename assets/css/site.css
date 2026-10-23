@@ -550,6 +550,7 @@ h3[id] {
 .door h3 {
   font-size: 1.15rem;
   margin-bottom: var(--space-2);
+  text-wrap: balance;
 }
 
 .door p {
@@ -1007,6 +1008,7 @@ h3[id] {
 .interest-card h3 {
   font-size: 1.15rem;
   margin-bottom: var(--space-2);
+  text-wrap: balance;
 }
 
 .interest-card p {
