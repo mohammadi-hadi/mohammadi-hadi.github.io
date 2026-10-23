@@ -126,11 +126,16 @@
           </div>
           <figure class="hero-portrait portrait-wide">
             <span class="portrait-frame">
-              <img src="/assets/img/cover-960.jpg"
-                   srcset="/assets/img/cover-960.jpg 960w, /assets/img/cover-1920.jpg 1920w"
-                   sizes="(max-width: 820px) 92vw, 520px"
-                   width="960" height="541"
-                   alt="Hadi Mohammadi presenting research on moral alignment in LLMs at the IOPS Winter Conference 2025" fetchpriority="high">
+              <picture>
+                <source type="image/webp"
+                        srcset="/assets/img/cover-640.webp 640w, /assets/img/cover-960.webp 960w, /assets/img/cover-1280.webp 1280w, /assets/img/cover-1920.webp 1920w"
+                        sizes="(max-width: 820px) 92vw, 520px">
+                <img src="/assets/img/cover-960.jpg"
+                     srcset="/assets/img/cover-960.jpg 960w, /assets/img/cover-1920.jpg 1920w"
+                     sizes="(max-width: 820px) 92vw, 520px"
+                     width="960" height="541"
+                     alt="Hadi Mohammadi presenting research on moral alignment in LLMs at the IOPS Winter Conference 2025" fetchpriority="high">
+              </picture>
             </span>
             <figcaption><a href="/events/IOPS2025/">Best Oral Presentation, IOPS Winter Conference 2025 →</a></figcaption>
           </figure>
