@@ -1848,8 +1848,7 @@ h3[id] {
   }
 }
 
-/* On-this-page bar under the hero. It scrolls inside itself on a phone so
-   the page never scrolls sideways. */
+/* On-this-page bar under the hero. */
 .page-index {
   background: var(--surface);
   border-bottom: 1px solid var(--rule);
@@ -1893,14 +1892,16 @@ h3[id] {
   border-top: 0;
 }
 
-/* On a phone the last links sit off-screen, so the right edge fades to show
-   the row scrolls. The end padding lets the last link clear the fade. */
+/* On a phone the jump links wrap to two rows so every section is visible. */
 @media (max-width: 720px) {
   .page-index ul {
-    gap: var(--space-4);
-    padding-right: var(--space-5);
-    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - var(--space-5)), transparent);
-    mask-image: linear-gradient(to right, #000 calc(100% - var(--space-5)), transparent);
+    flex-wrap: wrap;
+    overflow: visible;
+    gap: 0 var(--space-4);
+  }
+
+  .page-index a {
+    padding: 0.5rem 0;
   }
 }
 
