@@ -183,13 +183,13 @@ h3[id] {
 
 /* Links inside running text carry a light underline, so colour is not
    the only sign that they are links. Lists of paper links stay plain. */
-:is(.prose, .section-lede, .news-text, .tl-body, .thesis-line, .fact-list, .teach-course, .post-source) a:not(.link-arrow):not(.btn):not(.pub-links a) {
+:is(.prose, .section-lede, .news-text, .tl-body, .thesis-line, .fact-list, .teach-course, .post-source, .publication-venue) a:not(.link-arrow):not(.btn):not(.pub-links a) {
   text-decoration: underline;
   text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
   text-underline-offset: 2px;
 }
 
-:is(.prose, .section-lede, .news-text, .tl-body, .thesis-line, .fact-list, .teach-course, .post-source) a:not(.link-arrow):not(.btn):not(.pub-links a):hover {
+:is(.prose, .section-lede, .news-text, .tl-body, .thesis-line, .fact-list, .teach-course, .post-source, .publication-venue) a:not(.link-arrow):not(.btn):not(.pub-links a):hover {
   text-decoration-color: currentColor;
 }
 
