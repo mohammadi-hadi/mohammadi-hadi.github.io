@@ -171,15 +171,6 @@ h3[id] {
   margin-bottom: var(--space-2);
 }
 
-.section-head h2::after {
-  content: "";
-  display: block;
-  width: 44px;
-  height: 3px;
-  background: var(--accent);
-  margin-top: var(--space-3);
-}
-
 .section-lede {
   color: var(--ink-2);
   max-width: var(--measure);
