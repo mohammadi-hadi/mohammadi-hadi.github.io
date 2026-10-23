@@ -127,6 +127,43 @@ CARDS = [
          title="Software",
          subtitle="Libraries for not trusting your own numbers",
          foot_left="mohammadi.cv/software", foot_right="MIT · tested · citable"),
+    dict(name="iops-2025-card", out="assets/img", kicker="Best Oral Presentation Award",
+         title="IOPS Winter Conference 2025",
+         subtitle="EvalMORAAL: moral alignment in large language models",
+         foot_left="mohammadi.cv/events/IOPS2025", foot_right="Utrecht · December 2025"),
+    # Paper pages under /publications/<name>/. Long titles get a smaller size in build().
+    dict(name="grpo-dpo-cot", out="assets/img/papers", kicker="INLG 2026 · Long paper",
+         title="Reasoning–Answer Entailment Under GRPO and DPO Fine-Tuning",
+         subtitle="Does the reasoning a model states support the answer it gives?",
+         foot_left="mohammadi.cv/publications", foot_right="Mohammadi & Giachanou"),
+    dict(name="evalmoraal", out="assets/img/papers", kicker="*SEM 2026 · ACL",
+         title="EvalMORAAL",
+         subtitle="Interpretable chain-of-thought and LLM-as-judge evaluation for moral alignment in large language models",
+         foot_left="mohammadi.cv/publications", foot_right="Mohammadi, Giachanou & Bagheri"),
+    dict(name="cultural-moral-judgments", out="assets/img/papers", kicker="CLIN Journal · 2026",
+         title="Exploring Cultural Variations in Moral Judgments with Large Language Models",
+         subtitle="How closely do models track moral views across countries?",
+         foot_left="mohammadi.cv/publications", foot_right="Mohammadi & Bagheri"),
+    dict(name="explainability-survey", out="assets/img/papers", kicker="Survey · under review",
+         title="Explainability in Practice",
+         subtitle="A survey of explainable NLP across various domains",
+         foot_left="mohammadi.cv/publications", foot_right="Mohammadi et al."),
+    dict(name="llm-annotation-reliability", out="assets/img/papers", kicker="GeBNLP · ACL 2025",
+         title="Assessing the Reliability of LLMs Annotations in the Context of Demographic Bias and Model Explanation",
+         subtitle="Demographics, personas and what the model attends to",
+         foot_left="mohammadi.cv/publications", foot_right="Mohammadi et al."),
+    dict(name="morality-across-cultures", out="assets/img/papers", kicker="LUHME · ECAI 2025",
+         title="Do Large Language Models Understand Morality Across Cultures?",
+         subtitle="Model judgments compared with international survey data",
+         foot_left="mohammadi.cv/publications", foot_right="Mohammadi et al."),
+    dict(name="ai-text-undetectability", out="assets/img/papers", kicker="Preprint · 2025",
+         title="Explainability-Based Token Replacement on LLM-Generated Text",
+         subtitle="Using explainable AI to find the tokens that give AI-written text away",
+         foot_left="mohammadi.cv/publications", foot_right="Mohammadi et al."),
+    dict(name="sexism-detection", out="assets/img/papers", kicker="Applied Sciences · 2024",
+         title="A Transparent Pipeline for Identifying Sexism in Social Media",
+         subtitle="Combining explainability with model prediction",
+         foot_left="mohammadi.cv/publications", foot_right="Mohammadi, Giachanou & Bagheri"),
 ]
 
 TEMPLATE = """<!DOCTYPE html>
@@ -189,7 +226,8 @@ TEMPLATE = """<!DOCTYPE html>
 
 def build(card: dict) -> str:
     title = html.escape(card["title"])
-    size = 92 if len(card["title"]) <= 18 else (74 if len(card["title"]) <= 30 else 62)
+    n = len(card["title"])
+    size = 92 if n <= 18 else 74 if n <= 30 else 62 if n <= 60 else 54 if n <= 80 else 48
     if card.get("bullets"):
         size = 92
         items = "\n    ".join(
