@@ -484,44 +484,6 @@
       background: var(--text-dark);
     }
 
-    /* Footer */
-    .paper-footer {
-      background: var(--text-black);
-      color: var(--bg-white);
-      padding: 3rem 2rem;
-      margin-top: 2rem;
-    }
-
-    .footer-content {
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .footer-link {
-      color: var(--bg-white);
-      text-decoration: none;
-      font-size: 1.25rem;
-      opacity: 0.8;
-      transition: opacity 0.2s;
-    }
-
-    .footer-link:hover {
-      opacity: 1;
-    }
-
-    .footer-copy {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.85rem;
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
       .paper-title {
@@ -544,11 +506,6 @@
         display: none;
       }
 
-      .footer-content {
-        flex-direction: column;
-        gap: 1.5rem;
-        text-align: center;
-      }
     }
   </style>
 </head>
@@ -812,21 +769,10 @@
 
     </main>
 
-  <!-- Footer -->
-  <footer class="paper-footer">
-    <div class="footer-content">
-      <div class="footer-links">
-        <a href="/" class="footer-link" title="Home">
-          <i class="fas fa-home"></i>
-        </a>
-        <a href="https://github.com/mohammadi-hadi" class="footer-link" title="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/mohammadi-hadi/" class="footer-link" title="LinkedIn">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </div>
-      <p class="footer-copy">&copy; 2024 Hadi Mohammadi</p>
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="mailto:hadi.mohammadi@outlook.com">Email</a> <span class="nobreak">&middot; <a href="/assets/docs/HadiMohammadiCV.pdf">CV (PDF)</a></span> <span class="nobreak">&middot; <a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a></span> <span class="nobreak">&middot; <a href="https://github.com/mohammadi-hadi">GitHub</a></span> <span class="nobreak">&middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a></span></p>
     </div>
   </footer>
 
