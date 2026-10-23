@@ -2030,6 +2030,18 @@ details.fold > summary:focus-visible {
   color: var(--ink-2);
 }
 
+.thesis-with-cover {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.thesis-with-cover img {
+  display: block;
+  width: 72px;
+  border: 1px solid var(--rule);
+}
+
 /* "Show the rest" fold under a list. */
 .fold-more {
   margin-top: var(--space-3);
