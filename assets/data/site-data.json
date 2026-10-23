@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-10-22T10:19:52+00:00",
+  "fetched_at": "2026-10-23T10:14:38+00:00",
   "github": {
     "public_repos": 57,
-    "total_stars": 9,
+    "total_stars": 10,
     "repos": {
       "hands-on-xai-labs": {
         "stars": 1,
         "forks": 0,
         "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
         "language": "Jupyter Notebook",
-        "pushed_at": "2026-10-22T10:13:49Z",
+        "pushed_at": "2026-10-23T05:37:50Z",
         "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
       },
       "emnlp": {
@@ -17,7 +17,7 @@
         "forks": 0,
         "description": "An open, interactive map of all 5,534 EMNLP 2026 papers, and what changed since 2025",
         "language": "Python",
-        "pushed_at": "2026-10-22T09:09:12Z",
+        "pushed_at": "2026-10-22T10:55:26Z",
         "url": "https://github.com/mohammadi-hadi/emnlp"
       },
       "neurips": {
@@ -25,7 +25,7 @@
         "forks": 0,
         "description": "NeurIPS Atlas: what NeurIPS papers are about and how the conference changes. 2026 edition: 9,110 papers on one map, growth since 2025, three cities, and every paper with its links.",
         "language": "Python",
-        "pushed_at": "2026-10-22T09:09:09Z",
+        "pushed_at": "2026-10-22T10:55:23Z",
         "url": "https://github.com/mohammadi-hadi/neurips"
       },
       "mohammadi-hadi.github.io": {
@@ -33,7 +33,7 @@
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-10-22T06:43:10Z",
+        "pushed_at": "2026-10-22T10:19:56Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "MAP-PO": {
@@ -109,7 +109,7 @@
         "url": "https://github.com/mohammadi-hadi/judgewatch"
       },
       "trajectory-judge": {
-        "stars": 0,
+        "stars": 1,
         "forks": 0,
         "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.",
         "language": "Python",
