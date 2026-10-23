@@ -40,7 +40,7 @@
   --space-8: 96px;
 
   --container: 1080px;
-  --measure: 72ch;
+  --measure: 60ch;
 }
 
 /* ---------- Reset / base ---------- */
@@ -698,9 +698,12 @@ h3[id] {
   margin-bottom: var(--space-2);
 }
 
+.timeline .tl-body {
+  max-width: var(--measure);
+}
+
 .timeline .tl-body ul {
   color: var(--ink-2);
-  font-size: 0.95rem;
   padding-left: 1.1em;
 }
 
@@ -774,7 +777,7 @@ h3[id] {
 
 .news-list .news-text {
   color: var(--ink-2);
-  font-size: 0.97rem;
+  max-width: var(--measure);
 }
 
 .news-list .news-text strong {
