@@ -101,7 +101,7 @@ CARDS = [
          foot_left="mohammadi.cv/projects", foot_right="Papers · grants · code"),
     dict(name="experience-card", out="assets/img", kicker="Hadi Mohammadi",
          title="Experience",
-         subtitle="Five years from data scientist to Senior AI & Data Science Expert",
+         subtitle="Since 2019, from data scientist to Senior AI & Data Science Expert",
          foot_left="mohammadi.cv/experience", foot_right="Production ML and LLM systems"),
     dict(name="teaching-card", out="assets/img", kicker="Hadi Mohammadi",
          title="Teaching",
@@ -135,7 +135,7 @@ TEMPLATE = """<!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
   html, body {{ width: 1200px; height: 630px; }}
@@ -149,9 +149,7 @@ TEMPLATE = """<!DOCTYPE html>
     flex-direction: column;
   }}
   .kicker {{
-    font-family: "JetBrains Mono", monospace;
-    font-size: 20px; font-weight: 500;
-    letter-spacing: 0.16em; text-transform: uppercase;
+    font-size: 24px; font-weight: 500;
     color: #6e6e6e;
   }}
   h1 {{
