@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs</title>
-  <meta name="description" content="Evaluating GRPO and DPO optimization methods for improving the faithfulness of chain-of-thought reasoning in large language models">
-  <meta property="og:title" content="Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs">
-  <meta property="og:description" content="Evaluating GRPO and DPO optimization methods for improving the faithfulness of chain-of-thought reasoning in large language models">
+  <title>Reasoning&ndash;Answer Entailment Under GRPO and DPO Fine-Tuning</title>
+  <meta name="description" content="INLG 2026 long paper comparing GRPO and DPO fine-tuning on whether the reasoning a model states supports the answer it gives, across four Qwen2.5-Instruct scales on GSM8K.">
+  <meta property="og:title" content="Reasoning&ndash;Answer Entailment Under GRPO and DPO Fine-Tuning">
+  <meta property="og:description" content="INLG 2026 long paper comparing GRPO and DPO fine-tuning on whether the reasoning a model states supports the answer it gives, across four Qwen2.5-Instruct scales on GSM8K.">
   <meta property="og:url" content="https://mohammadi.cv/publications/grpo-dpo-cot/">
   <link rel="canonical" href="https://mohammadi.cv/publications/grpo-dpo-cot/">
-  <meta name="keywords" content="GRPO, DPO, Chain-of-Thought, Faithfulness, LLM, Reasoning, Alignment, Safety, NLP">
+  <meta name="keywords" content="GRPO, DPO, Chain-of-Thought, Reasoning-Answer Entailment, LLM-as-a-Judge, Qwen2.5, GSM8K, INLG 2026">
 
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -344,20 +344,29 @@
 
   <header class="paper-header">
     <div class="paper-meta">
-      <span class="paper-type">Preprint</span>
+      <span class="paper-type">Long paper &middot; INLG 2026</span>
     </div>
 
-    <h1 class="paper-title">Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs</h1>
+    <h1 class="paper-title">Reasoning&ndash;Answer Entailment Under GRPO and DPO Fine-Tuning</h1>
 
     <p class="paper-authors">
-      <strong>Hadi Mohammadi</strong>, Tam&aacute;s Koz&aacute;k, Anastasia Giachanou
+      <strong>Hadi Mohammadi</strong>, Anastasia Giachanou
     </p>
     <p class="paper-affiliation">Utrecht University, The Netherlands</p>
-    <p class="paper-venue">arXiv preprint arXiv:2512.22631, December 2025. Accepted at INLG 2026 (Utrecht) as &ldquo;Chain-of-Thought Faithfulness Under GRPO and DPO Fine-Tuning&rdquo;.</p>
+    <p class="paper-venue">Proceedings of the 19th International Natural Language Generation Conference (INLG 2026): Long Papers, pages 718&ndash;730, Utrecht, October 2026</p>
 
     <div class="paper-links">
-      <a href="https://arxiv.org/abs/2512.22631" class="paper-link primary" target="_blank">
+      <a href="https://2026.inlgmeeting.org/static/proceedings/long/watermarked_pdfs/40.pdf" class="paper-link primary" target="_blank" rel="noopener">
         Read paper
+      </a>
+      <a href="https://arxiv.org/abs/2512.22631" class="paper-link" target="_blank" rel="noopener">
+        arXiv (earlier version)
+      </a>
+      <a href="https://github.com/mohammadi-hadi/grpo_dpo_comparison" class="paper-link" target="_blank" rel="noopener">
+        Code
+      </a>
+      <a href="https://huggingface.co/hadimh93/qwen2.5-gsm8k-grpo-dpo-adapters" class="paper-link" target="_blank" rel="noopener">
+        Adapters
       </a>
       <a href="#citation" class="paper-link">
         Cite
@@ -371,13 +380,13 @@
       <h2 class="section-title">Abstract</h2>
       <div class="abstract-text">
         <p>
-          Chain-of-thought (CoT) reasoning has emerged as a powerful technique for improving the problem-solving capabilities of large language models (LLMs), particularly for tasks requiring multi-step reasoning. However, recent studies show that CoT explanations often fail to reflect the model’s actual reasoning process, as models may produce coherent yet misleading justifications or modify answers without acknowledging external cues.
+          Chain-of-thought (CoT) prompting can improve the problem-solving ability of large language models (LLMs), but a generated rationale does not always reflect the process by which a model reaches its answer, which limits the value of CoT for oversight and safety monitoring. We compare two post-training methods, Group Relative Policy Optimization (GRPO) and Direct Preference Optimization (DPO), on one measurable component of this problem: reasoning&ndash;answer entailment, whether the reasoning a model states supports the answer it gives. Entailment is a necessary condition for faithful reasoning, not a certificate of it, and we scope our claims accordingly.
         </p>
         <p>
-          Such discrepancies undermine the reliability of CoT-based methods for safety supervision and alignment monitoring, as models can generate plausible but deceptive rationales for incorrect answers. To better understand this limitation, we evaluate two optimization methods, Group Relative Policy Optimization (GRPO) and Direct Preference Optimization (DPO), in their ability to improve CoT faithfulness.
+          Across four scales of the Qwen2.5-Instruct family (1.5B&ndash;14B) on GSM8K, we evaluate eight fine-tuned models on accuracy, reliability, and entailment metrics computed from persisted per-example generations, report bootstrap confidence intervals and paired significance tests, and assess the robustness of LLM-as-a-judge scoring with two independent judges. GRPO yields significantly higher entailment at every scale (margins of +.14 to +.31, all p &lt; 10<sup>&minus;7</sup>) and sweeps all metrics at 7B, while DPO matches GRPO&rsquo;s greedy and pass@1 accuracy at 14B at lower training cost (self-consistency still favors GRPO).
         </p>
         <p>
-          Our experiments show that GRPO achieves higher performance than DPO in larger models, with the Qwen2.5-14B-Instruct model attaining the best results across all evaluation metrics. Both approaches exhibit positive correlations between model size and performance, but GRPO shows greater potential for improving faithfulness metrics, albeit with less stable behavior at smaller scales. These results suggest that GRPO offers a promising direction for developing more transparent and trustworthy reasoning in LLMs.
+          The methods fail differently. GRPO produces internally consistent rationales even when its answers are wrong; DPO&rsquo;s stated reasoning fails to entail a majority of its correct answers at every scale, consistent with the DPO recipe optimizing answer style rather than the reasoning&ndash;answer link. A forensic analysis attributes the mid-scale (3B) collapse of both methods largely to output-format failure rather than lost reasoning ability, and a headline 14B judge-score gap does not survive re-evaluation with a second judge.
         </p>
       </div>
     </section>
@@ -386,20 +395,20 @@
       <h2 class="section-title">Key contributions</h2>
       <div class="contributions-grid">
         <div class="contribution-item">
-          <h3 class="contribution-title">GRPO vs. DPO for CoT faithfulness</h3>
-          <p class="contribution-desc">An evaluation of two optimization methods, Group Relative Policy Optimization (GRPO) and Direct Preference Optimization (DPO), in their ability to improve the faithfulness of chain-of-thought explanations.</p>
+          <h3 class="contribution-title">A scale-controlled comparison</h3>
+          <p class="contribution-desc">GRPO and DPO compared at four scales of Qwen2.5-Instruct (1.5B&ndash;14B) on six metrics (accuracy, reliability, entailment and judge scores), with bootstrap confidence intervals and paired significance tests computed from per-example scores.</p>
         </div>
         <div class="contribution-item">
-          <h3 class="contribution-title">GRPO leads in larger models</h3>
-          <p class="contribution-desc">Experiments showing that GRPO achieves higher performance than DPO in larger models, with the Qwen2.5-14B-Instruct model attaining the best results across all evaluation metrics.</p>
+          <h3 class="contribution-title">Two judges, not one</h3>
+          <p class="contribution-desc">An LLM-as-a-judge protocol that measures agreement between two independent judges instead of assuming the judge is reliable.</p>
         </div>
         <div class="contribution-item">
-          <h3 class="contribution-title">Model size and stability analysis</h3>
-          <p class="contribution-desc">Evidence that both approaches exhibit positive correlations between model size and performance, with GRPO showing greater potential for improving faithfulness metrics, albeit with less stable behavior at smaller scales.</p>
+          <h3 class="contribution-title">Two ways of failing</h3>
+          <p class="contribution-desc">An error analysis over accuracy &times; entailment quadrants: GRPO ties its answers to its stated reasoning even when it is wrong, while DPO&rsquo;s answers are often decoupled from the reasoning it states.</p>
         </div>
         <div class="contribution-item">
-          <h3 class="contribution-title">Implications for trustworthy reasoning</h3>
-          <p class="contribution-desc">Findings suggesting that GRPO offers a promising direction for developing more transparent and trustworthy reasoning in LLMs, relevant to safety supervision and alignment monitoring.</p>
+          <h3 class="contribution-title">Open release</h3>
+          <p class="contribution-desc">Code, per-example evaluation data and all eight fine-tuned adapters are public.</p>
         </div>
       </div>
     </section>
@@ -410,11 +419,13 @@
         <button class="copy-btn" onclick="copyBibtex()">
           <i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 448 512"><use href="/assets/img/icons.svg#fa-copy"/></svg></i> Copy
         </button>
-        <pre class="citation-code">@article{mohammadi2025grpo,
-  title={Evaluating GRPO and DPO for Faithful Chain-of-Thought Reasoning in LLMs},
-  author={Mohammadi, Hadi and Koz\'ak, Tam\'as and Giachanou, Anastasia},
-  journal={arXiv preprint arXiv:2512.22631},
-  year={2025}
+        <pre class="citation-code">@inproceedings{mohammadi2026reasoning,
+  title={Reasoning--Answer Entailment Under {GRPO} and {DPO} Fine-Tuning},
+  author={Mohammadi, Hadi and Giachanou, Anastasia},
+  booktitle={Proceedings of the 19th International Natural Language Generation Conference: Long Papers},
+  pages={718--730},
+  year={2026},
+  publisher={Association for Computational Linguistics}
 }</pre>
       </div>
     </section>
