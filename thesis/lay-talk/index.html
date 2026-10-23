@@ -128,9 +128,7 @@
     }
 
     .lt-meta {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.02em;
+      font-size: 0.85rem;
       line-height: 1.7;
       color: var(--ink-3);
       margin: 0;
@@ -157,27 +155,25 @@
       gap: 6px;
       padding-bottom: 2px;
     }
-    /* the black button of the thesis page */
+    /* the navy button of the thesis page */
     .lt-download {
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
-      background: #000;
+      background: var(--accent);
       color: #fff;
       padding: 0.7rem 1.2rem;
-      border-radius: 8px;
+      border-radius: 2px;
       font-size: 0.92rem;
       font-weight: 600;
       white-space: nowrap;
-      transition: background-color 0.18s ease, transform 0.18s ease;
+      transition: background-color 0.15s ease;
     }
-    .lt-download:hover { background: #333; color: #fff; transform: translateY(-1px); }
+    .lt-download:hover { background: var(--accent-hover); color: #fff; }
     .lt-download:focus-visible { outline-offset: 3px; }
     .lt-download i { font-size: 0.85rem; }
     .lt-filemeta {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.04em;
+      font-size: 0.82rem;
       color: var(--ink-3);
     }
 
