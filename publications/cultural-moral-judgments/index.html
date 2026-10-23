@@ -17,7 +17,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <link rel="stylesheet" href="/assets/css/site.css">
 
@@ -162,7 +161,6 @@
 
     .paper-link.primary:hover { background: var(--accent-hover); color: #fff; }
 
-    .paper-link i { display: none; }
 
     .content { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
 
@@ -435,7 +433,7 @@
   <nav class="nav-bar">
     <div class="nav-content">
       <a href="/publications/" class="nav-back">
-        <i class="fas fa-arrow-left"></i> Publications
+        <i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 448 512"><use href="/assets/img/icons.svg#fa-arrow-left"/></svg></i> Publications
       </a>
       <div class="nav-links">
         <a href="#abstract">Abstract</a>
@@ -463,16 +461,16 @@
 
     <div class="paper-links">
       <a href="https://clinjournal.org/clinj/article/view/238" class="paper-link primary" target="_blank">
-        <i class="fas fa-file-pdf"></i> Read paper
+        Read paper
       </a>
       <a href="https://github.com/mohammadi-hadi/cultural-moral-judgments-llms" class="paper-link" target="_blank">
-        <i class="fab fa-github"></i> Code
+        Code
       </a>
       <a href="https://arxiv.org/abs/2506.12433" class="paper-link" target="_blank">
-        <i class="fas fa-external-link-alt"></i> arXiv
+        arXiv
       </a>
       <a href="#citation" class="paper-link">
-        <i class="fas fa-quote-left"></i> Cite
+        Cite
       </a>
     </div>
   </header>
@@ -613,7 +611,7 @@
       <h2 class="section-title">Citation</h2>
       <div class="citation-box">
         <button class="copy-btn" onclick="copyBibtex()">
-          <i class="fas fa-copy"></i> Copy
+          <i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 448 512"><use href="/assets/img/icons.svg#fa-copy"/></svg></i> Copy
         </button>
         <pre class="citation-code">@article{mohammadi2024cultural,
   title={Exploring Cultural Variations in Moral Judgments with Large Language Models},
@@ -640,9 +638,9 @@
       const citation = document.querySelector('.citation-code').textContent;
       navigator.clipboard.writeText(citation).then(() => {
         const btn = document.querySelector('.copy-btn');
-        btn.innerHTML = '<i class="fas fa-check"></i> Copied';
+        btn.innerHTML = '<i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 448 512"><use href="/assets/img/icons.svg#fa-check"/></svg></i> Copied';
         setTimeout(() => {
-          btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+          btn.innerHTML = '<i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 448 512"><use href="/assets/img/icons.svg#fa-copy"/></svg></i> Copy';
         }, 2000);
       });
     }

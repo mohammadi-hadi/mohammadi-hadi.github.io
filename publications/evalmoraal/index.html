@@ -21,12 +21,9 @@
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
@@ -79,6 +76,9 @@
     .tier-low {
       border-left: 4px solid #dc3545;
     }
+    /* Icons: inline SVGs drawn from /assets/img/icons.svg */
+    .svg-icon { display: inline-block; font-style: normal; line-height: 1; vertical-align: -0.125em; }
+    .svg-icon svg { display: block; width: auto; height: 1em; fill: currentColor; overflow: visible; }
   </style>
 </head>
 <body>
@@ -135,7 +135,7 @@
                 <a href="https://aclanthology.org/2026.starsem-conference.34/"
                    class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
                   <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
+                      <i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 512 512"><use href="/assets/img/icons.svg#fa-file-pdf"/></svg></i>
                   </span>
                   <span>Paper (ACL Anthology)</span>
                 </a>
@@ -144,7 +144,7 @@
                 <a href="https://github.com/mohammadi-hadi/EvalMORAAL"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="fab fa-github"></i>
+                      <i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 496 512"><use href="/assets/img/icons.svg#fa-github"/></svg></i>
                   </span>
                   <span>Code</span>
                 </a>
@@ -153,7 +153,7 @@
                 <a href="https://arxiv.org/abs/2510.05942"
                    class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
                   <span class="icon">
-                      <i class="ai ai-arxiv"></i>
+                      <i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 448 512"><use href="/assets/img/icons.svg#ai-arxiv"/></svg></i>
                   </span>
                   <span>arXiv</span>
                 </a>
@@ -162,7 +162,7 @@
                 <a href="https://doi.org/10.5281/zenodo.20292113"
                    class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
                   <span class="icon">
-                      <i class="fas fa-archive"></i>
+                      <i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 512 512"><use href="/assets/img/icons.svg#fa-archive"/></svg></i>
                   </span>
                   <span>Zenodo</span>
                 </a>
@@ -171,7 +171,7 @@
                 <a href="/"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="fas fa-home"></i>
+                      <i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 576 512"><use href="/assets/img/icons.svg#fa-home"/></svg></i>
                   </span>
                   <span>Back to Main</span>
                 </a>
@@ -440,10 +440,10 @@
   <div class="container">
     <div class="content has-text-centered">
       <a class="icon-link" href="/">
-        <i class="fas fa-home"></i>
+        <i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 576 512"><use href="/assets/img/icons.svg#fa-home"/></svg></i>
       </a>
       <a class="icon-link" href="https://github.com/mohammadi-hadi" class="external-link">
-        <i class="fab fa-github"></i>
+        <i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 496 512"><use href="/assets/img/icons.svg#fa-github"/></svg></i>
       </a>
     </div>
     <div class="columns is-centered">

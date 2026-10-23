@@ -17,9 +17,6 @@
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="alternate" type="application/rss+xml" title="Hadi Mohammadi — Blog" href="https://mohammadi.cv/blog/feed.xml">
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <script defer src="static/js/fontawesome.all.min.js"></script>
 
   <link rel="stylesheet" href="/assets/css/site.css">
 
@@ -170,7 +167,6 @@
 
     .paper-link.primary:hover { background: var(--accent-hover); color: #fff; }
 
-    .paper-link i, .paper-link svg { display: none; }
 
     /* Content Sections */
     .content-section {
@@ -544,7 +540,7 @@
   <nav class="nav-bar">
     <div class="nav-content">
       <a href="/publications/" class="nav-back">
-        <i class="fas fa-arrow-left"></i> Publications
+        <i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 448 512"><use href="/assets/img/icons.svg#fa-arrow-left"/></svg></i> Publications
       </a>
       <div class="nav-links">
         <a href="#abstract" class="nav-link">Abstract</a>
@@ -572,16 +568,16 @@
     </div>
     <div class="paper-links">
       <a href="https://aclanthology.org/2025.gebnlp-1.9/" class="paper-link primary" target="_blank" rel="noopener">
-        <i class="fas fa-file-pdf"></i> Read paper
+        Read paper
       </a>
       <a href="https://arxiv.org/abs/2507.13138" class="paper-link">
-        <i class="ai ai-arxiv"></i> arXiv
+        arXiv
       </a>
       <a href="https://github.com/mohammadi-hadi/Explainable_Annotations_Reliability" class="paper-link" target="_blank" rel="noopener">
-        <i class="fab fa-github"></i> Code
+        Code
       </a>
       <a href="#citation" class="paper-link">
-        <i class="fas fa-quote-left"></i> Cite
+        Cite
       </a>
     </div>
   </header>
@@ -747,7 +743,7 @@
     <h2 class="section-title">Citation</h2>
     <div class="citation-box">
       <button class="copy-button" onclick="copyToClipboard()">
-        <i class="fas fa-copy"></i> Copy
+        <i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 448 512"><use href="/assets/img/icons.svg#fa-copy"/></svg></i> Copy
       </button>
       <pre class="citation-code">@inproceedings{mohammadi2025assessing,
   title={Assessing the Reliability of LLMs Annotations in the Context of Demographic Bias and Model Explanation},
@@ -773,9 +769,9 @@
       const citation = document.querySelector('.citation-code').textContent;
       navigator.clipboard.writeText(citation).then(() => {
         const button = document.querySelector('.copy-button');
-        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        button.innerHTML = '<i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 448 512"><use href="/assets/img/icons.svg#fa-check"/></svg></i> Copied!';
         setTimeout(() => {
-          button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+          button.innerHTML = '<i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 448 512"><use href="/assets/img/icons.svg#fa-copy"/></svg></i> Copy';
         }, 2000);
       });
     }
