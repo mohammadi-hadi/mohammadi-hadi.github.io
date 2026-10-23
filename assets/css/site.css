@@ -176,6 +176,23 @@ h3[id] {
   max-width: var(--measure);
 }
 
+/* An inner page's title sits a little apart from the line under it. */
+.hero > .container > h1 {
+  margin-bottom: var(--space-3);
+}
+
+/* Links inside running text carry a light underline, so colour is not
+   the only sign that they are links. */
+:is(.prose, .section-lede, .news-text, .tl-body, .thesis-line, .fact-list) a:not(.link-arrow):not(.btn) {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  text-underline-offset: 2px;
+}
+
+:is(.prose, .section-lede, .news-text, .tl-body, .thesis-line, .fact-list) a:not(.link-arrow):not(.btn):hover {
+  text-decoration-color: currentColor;
+}
+
 /* ---------- Site header ---------- */
 .site-header {
   position: sticky;
