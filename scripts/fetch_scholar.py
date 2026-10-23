@@ -32,6 +32,7 @@ SLUGS = {
     "explainability based token replacement": "ai-text-undetectability",
     "explainability in practice": "explainability-survey",
     "evaluating grpo and dpo": "grpo-dpo-cot",
+    "reasoning answer entailment under grpo": "grpo-dpo-cot",
     "measuring firm characteristics": "firm-characteristics-nlp",
     "llms as mirrors of societal moral standards": "mirrors-cultural-divergence",
     "large language models as mirrors of societal moral standards": "mirrors-societal-moral-standards",
@@ -65,10 +66,15 @@ def fetch() -> dict:
     for p in author["publications"]:
         title = p["bib"]["title"]
         year = p["bib"].get("pub_year")
-        pubs[slug_for(title)] = {
+        slug = slug_for(title)
+        cited_by = p.get("num_citations", 0)
+        # A preprint and its published version share a slug; keep the better-cited one.
+        if slug in pubs and pubs[slug]["cited_by"] >= cited_by:
+            continue
+        pubs[slug] = {
             "title": title,
             "year": int(year) if year else None,
-            "cited_by": p.get("num_citations", 0),
+            "cited_by": cited_by,
         }
     return {
         "fetched_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
