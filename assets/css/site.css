@@ -721,6 +721,7 @@ h3[id] {
 
 .timeline .tl-body ul {
   color: var(--ink-2);
+  font-size: 0.95rem;
   padding-left: 1.1em;
 }
 
@@ -794,6 +795,7 @@ h3[id] {
 
 .news-list .news-text {
   color: var(--ink-2);
+  font-size: 0.95rem;
   max-width: var(--measure);
 }
 
