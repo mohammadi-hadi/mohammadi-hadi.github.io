@@ -71,8 +71,7 @@
     .module { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
       padding: 1.6rem 1.6rem 1.4rem; margin: 1.6rem 0; }
     .module h2 { font-family: var(--serif); font-size: 1.45rem; margin: 0 0 .25rem; }
-    .m-num { font-family: var(--mono); font-size: .75rem; color: var(--rust); letter-spacing: .08em;
-      text-transform: uppercase; }
+    .m-num { font-size: .85rem; font-weight: 500; color: var(--rust); }
     .module > p { color: var(--ink-2); font-size: .95rem; max-width: 68ch; }
     .go-deeper { font-size: .84rem; color: var(--ink-3); border-top: 1px dashed var(--rule);
       margin-top: 1.1rem; padding-top: .7rem; }
@@ -94,7 +93,7 @@
     .btn2.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
     .btn2.ghost:hover { background: var(--paper-deep); }
     .verdict-row { display: flex; align-items: center; gap: .9rem; flex-wrap: wrap; margin: 1.1rem 0 .6rem; }
-    .verdict { font: 600 .8rem/1 var(--sans); letter-spacing: .06em; border-radius: 6px;
+    .verdict { font: 600 .8rem/1 var(--sans); border-radius: 6px;
       padding: .45rem .7rem; color: #fff; }
     .verdict.pos { background: var(--teal); }
     .verdict.neg { background: var(--rust); }
@@ -131,14 +130,12 @@
     .progress i { display: block; height: 100%; width: 0%; background: var(--teal); transition: width .2s; }
     .duel { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin-top: 1rem; }
     .duel .cell { border: 1px solid var(--rule); border-radius: 8px; padding: .8rem .95rem; }
-    .duel h3 { margin: 0 0 .45rem; font: 600 .8rem/1.2 var(--sans); color: var(--graphite);
-      text-transform: uppercase; letter-spacing: .05em; }
+    .duel h3 { margin: 0 0 .45rem; font: 600 .85rem/1.2 var(--sans); color: var(--graphite); }
     .tiers2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: .9rem;
       margin-top: 1.1rem; }
     .tier2 { border: 1px solid var(--rule); border-radius: 8px; padding: .95rem 1.05rem; background: var(--surface); }
     .tier2.here { border-color: var(--rust); box-shadow: 0 0 0 1px var(--rust); }
-    .tier2 .t-tag { font: 600 .68rem/1 var(--sans); letter-spacing: .07em; text-transform: uppercase;
-      color: var(--graphite); }
+    .tier2 .t-tag { font: 600 .85rem/1.2 var(--sans); color: var(--graphite); }
     .tier2.here .t-tag { color: var(--rust); }
     .tier2 h3 { font-family: var(--serif); font-size: 1.02rem; margin: .4rem 0 .35rem; }
     .tier2 p { font-size: .84rem; color: var(--ink-2); margin: 0 0 .4rem; }
