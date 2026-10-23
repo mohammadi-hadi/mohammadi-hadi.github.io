@@ -141,11 +141,11 @@ cv:
         journal: 'NeurIPS 2026 Workshop "Who Verifies the Agents?" (accepted)'
         date: 2026
         url: https://arxiv.org/abs/2609.00038
-      - title: Chain-of-Thought Faithfulness Under GRPO and DPO Fine-Tuning
+      - title: Reasoning–Answer Entailment Under GRPO and DPO Fine-Tuning
         authors:
           - '***Mohammadi, H.***'
           - Giachanou, A.
-        journal: 'INLG 2026, Utrecht (long paper, accepted); preprint arXiv:2512.22631'
+        journal: 'INLG 2026 (ACL), Utrecht, long paper, pp. 718–730'
         date: 2026
         url: https://mohammadi.cv/publications/grpo-dpo-cot/
       - title: 'EvalMORAAL: Interpretable Chain-of-Thought and LLM-as-Judge Evaluation for Moral Alignment in Large Language Models'
