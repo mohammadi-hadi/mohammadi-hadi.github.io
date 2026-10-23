@@ -148,38 +148,29 @@
       margin-bottom: 2rem;
     }
 
-    .paper-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    .paper-links { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); }
 
     .paper-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.6rem 1.25rem;
-      background: var(--text-black);
-      color: var(--bg-white);
-      text-decoration: none;
-      font-size: 0.9rem;
+      padding: 0.55rem 0;
+      font-size: 0.92rem;
       font-weight: 500;
-      transition: background 0.2s;
+      color: var(--accent);
+      text-decoration: none;
     }
 
-    .paper-link:hover {
-      background: var(--text-dark);
+    .paper-link:hover { color: var(--accent-hover); }
+
+    .paper-link.primary {
+      padding: 0.7rem 1.2rem;
+      border-radius: 2px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
     }
 
-    .paper-link.secondary {
-      background: var(--bg-white);
-      color: var(--text-black);
-      border: 1px solid var(--text-black);
-    }
+    .paper-link.primary:hover { background: var(--accent-hover); color: #fff; }
 
-    .paper-link.secondary:hover {
-      background: var(--bg-subtle);
-    }
+    .paper-link i { display: none; }
 
     /* Content Sections */
     .content-section {
@@ -583,16 +574,16 @@
       Workshop on Gender Bias in Natural Language Processing (GeBNLP), ACL 2025
     </div>
     <div class="paper-links">
-      <a href="https://aclanthology.org/2025.gebnlp-1.9/" class="paper-link" target="_blank" rel="noopener">
+      <a href="https://aclanthology.org/2025.gebnlp-1.9/" class="paper-link primary" target="_blank" rel="noopener">
         <i class="fas fa-file-pdf"></i> Read paper
       </a>
-      <a href="https://arxiv.org/abs/2507.13138" class="paper-link secondary">
+      <a href="https://arxiv.org/abs/2507.13138" class="paper-link">
         <i class="ai ai-arxiv"></i> arXiv
       </a>
-      <a href="https://github.com/mohammadi-hadi/Explainable_Annotations_Reliability" class="paper-link secondary" target="_blank" rel="noopener">
+      <a href="https://github.com/mohammadi-hadi/Explainable_Annotations_Reliability" class="paper-link" target="_blank" rel="noopener">
         <i class="fab fa-github"></i> Code
       </a>
-      <a href="#citation" class="paper-link secondary">
+      <a href="#citation" class="paper-link">
         <i class="fas fa-quote-left"></i> Cite
       </a>
     </div>
