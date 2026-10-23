@@ -548,12 +548,12 @@ h3[id] {
 }
 
 .door h3 {
+  font-size: 1.15rem;
   margin-bottom: var(--space-2);
 }
 
 .door p {
   color: var(--ink-2);
-  font-size: 0.95rem;
 }
 
 .door .link-arrow {
@@ -1003,12 +1003,11 @@ h3[id] {
 }
 
 .interest-card h3 {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   margin-bottom: var(--space-2);
 }
 
 .interest-card p {
-  font-size: 0.9rem;
   color: var(--ink-2);
   margin: 0;
 }
