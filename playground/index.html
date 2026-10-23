@@ -145,9 +145,6 @@
     details.card summary { cursor: pointer; font-weight: 600; color: var(--ink); }
     details.card ul { padding-left: 1.1rem; }
     details.card li { margin: .35rem 0; color: var(--ink-2); }
-    .pg-footer { border-top: 1px solid var(--rule); margin-top: 2.5rem; padding-top: 1.3rem;
-      font-size: .82rem; color: var(--ink-3); }
-    .pg-footer a { color: inherit; }
     @media (max-width: 640px) { .duel { grid-template-columns: 1fr; } .module { padding: 1.2rem 1rem 1rem; } }
     @media (prefers-reduced-motion: reduce) { .gauge .pin { transition: none; } .progress i { transition: none; } }
   </style>
@@ -378,17 +375,14 @@
       </ul>
     </details>
 
-    <footer class="pg-footer">
-      <p>&copy; 2026 Hadi Mohammadi. The code, text, design, and model weights of this page are all rights
-        reserved; this page is not covered by the site’s CC BY-SA license. Cite or share it by link.</p>
-      <p><a href="https://mohammadi.cv">mohammadi.cv</a>
-        <span class="nobreak">· <a href="mailto:hadi.mohammadi@outlook.com">Email</a></span>
-        <span class="nobreak">· <a href="/assets/docs/HadiMohammadiCV.pdf">CV (PDF)</a></span>
-        <span class="nobreak">· <a href="/opening-the-black-box/">free course</a></span>
-        <span class="nobreak">· <a href="https://github.com/mohammadi-hadi/hands-on-xai-labs">labs</a></span>
-        <span class="nobreak">· <a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ">Scholar</a></span></p>
-    </footer>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi. The code, text, design, and model weights of this page are all rights reserved; this page is not covered by the site’s CC BY-SA license. Cite or share it by link.</p>
+      <p><a href="mailto:hadi.mohammadi@outlook.com">Email</a> <span class="nobreak">&middot; <a href="/assets/docs/HadiMohammadiCV.pdf">CV (PDF)</a></span> <span class="nobreak">&middot; <a href="/opening-the-black-box/">Free course</a></span> <span class="nobreak">&middot; <a href="https://github.com/mohammadi-hadi/hands-on-xai-labs">Labs</a></span> <span class="nobreak">&middot; <a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a></span></p>
+    </div>
+  </footer>
 
   <script type="module">
     'use strict';

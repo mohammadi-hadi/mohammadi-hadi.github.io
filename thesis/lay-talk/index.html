@@ -639,27 +639,10 @@
       .stage.is-full > * { width: min(100%, calc((100dvh - 84px) * 16 / 9)); }
     }
 
-    /* ---------- Footer (as on the thesis page) ---------- */
-    .footer {
-      background: #000;
-      color: rgba(255, 255, 255, 0.65);
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.85rem;
-      margin-top: 0;
-    }
-    .footer p { margin: 0; }
-    .footer a { color: rgba(255, 255, 255, 0.85); }
-    .footer a:hover { color: white; }
-    .footer a { white-space: nowrap; }
-    @media (max-width: 480px) {
-      .footer { padding: 1.75rem var(--space-4); }
-    }
-
     /* ---------- Print: every slide on its own landscape page ---------- */
     @page { size: A4 landscape; margin: 12mm; }
     @media print {
-      .skip-link, .lt-crumbs, .lt-actions, .stage-progress, .stage-bar, .stage-hint, .strip-wrap, .footer { display: none !important; }
+      .skip-link, .lt-crumbs, .lt-actions, .stage-progress, .stage-bar, .stage-hint, .strip-wrap, .site-footer { display: none !important; }
       body, .lt-band { background: #fff; }
       .lt-intro { padding: 0 0 12px; }
       .lt-band { border: 0; padding: 0; }
@@ -898,10 +881,11 @@
 
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2026 Hadi Mohammadi <span class="nobreak">&middot; <a href="https://orcid.org/0000-0003-0860-9200" target="_blank" rel="noopener">ORCID 0000-0003-0860-9200</a></span> <span class="nobreak">&middot; <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></span></p>
-    <p><a href="mailto:hadi.mohammadi@outlook.com">Email</a> <span class="nobreak">&middot; <a href="/assets/docs/HadiMohammadiCV.pdf">CV (PDF)</a></span></p>
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi <span class="nobreak">&middot; <a href="https://orcid.org/0000-0003-0860-9200" target="_blank" rel="noopener">ORCID 0000-0003-0860-9200</a></span> <span class="nobreak">&middot; <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></span></p>
+      <p><a href="mailto:hadi.mohammadi@outlook.com">Email</a> <span class="nobreak">&middot; <a href="/assets/docs/HadiMohammadiCV.pdf">CV (PDF)</a></span> <span class="nobreak">&middot; <a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a></span> <span class="nobreak">&middot; <a href="https://github.com/mohammadi-hadi">GitHub</a></span> <span class="nobreak">&middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a></span></p>
+    </div>
   </footer>
 
   <script>
