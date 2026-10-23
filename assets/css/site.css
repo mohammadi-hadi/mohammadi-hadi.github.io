@@ -2056,6 +2056,10 @@ details.fold > summary:focus-visible {
   align-items: center;
 }
 
+.thesis-with-cover > a {
+  flex: none;
+}
+
 .thesis-with-cover img {
   display: block;
   width: 72px;
