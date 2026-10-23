@@ -22,7 +22,7 @@
   <!-- Fonts (same as main site) -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Raleway:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Bootstrap & Icons -->
   <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: var(--sans);
       color: var(--text-color);
       line-height: 1.7;
       overflow-x: hidden;
@@ -59,7 +59,7 @@
     }
 
     h1, h2, h3, h4 {
-      font-family: 'Raleway', sans-serif;
+      font-family: var(--serif);
       color: var(--heading-color);
     }
 
@@ -823,12 +823,6 @@
         max-width: 260px;
       }
 
-      .hero-buttons .btn {
-        padding: 6px 8px;
-        font-size: 0.68rem;
-        min-height: 34px;
-      }
-
       .stats-row {
         gap: 15px;
       }
@@ -864,6 +858,40 @@
       .contribution-card {
         padding: 15px;
       }
+    }
+
+    /* --gold is near-black here, so the gold accents are set plainly. */
+    .award-badge {
+      background: none;
+      box-shadow: none;
+      color: rgba(255, 255, 255, 0.75);
+      text-transform: none;
+      letter-spacing: 0;
+      padding: 0;
+    }
+
+    .btn-gold,
+    .btn-gold:hover {
+      background: #fff;
+      color: #16222f;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .floating-badge,
+    .finding-icon,
+    .hero-meta-item i,
+    .gallery-caption i {
+      display: none;
+    }
+
+    .finding-section {
+      border-color: var(--rule);
+      border-width: 1px;
+    }
+
+    .citation-box {
+      font-family: var(--mono);
     }
   </style>
 </head>
