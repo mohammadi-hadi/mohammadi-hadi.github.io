@@ -626,6 +626,7 @@
 
       .hero-meta {
         justify-content: center;
+        align-items: center;
         flex-direction: column;
         gap: 8px;
       }
@@ -871,11 +872,23 @@
     }
 
     .btn-gold,
-    .btn-gold:hover {
+    .btn-gold:hover,
+    .btn.btn-gold:focus-visible,
+    .btn.btn-gold:active,
+    .btn.btn-gold:first-child:active {
       background: #fff;
       color: #16222f;
       box-shadow: none;
       transform: none;
+    }
+
+    .btn.btn-gold:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+
+    .finding-text {
+      text-wrap: pretty;
     }
 
     .floating-badge,
@@ -892,6 +905,7 @@
 
     .citation-box {
       font-family: var(--mono);
+      font-variant-ligatures: none;
     }
   </style>
 </head>
