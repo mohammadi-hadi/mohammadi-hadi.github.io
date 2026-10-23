@@ -465,19 +465,15 @@
       position: absolute;
       top: 1rem;
       right: 1rem;
-      padding: 0.5rem 1rem;
-      background: var(--text-black);
-      color: var(--bg-white);
-      border: none;
+      padding: 0.4rem 0.75rem;
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-dark);
       cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: background 0.2s;
+      font-size: 0.8rem;
+      transition: all 0.2s;
     }
-
-    .copy-button:hover {
-      background: var(--text-dark);
-    }
+    .copy-button:hover { border-color: var(--accent); color: var(--accent); }
 
     /* Responsive */
     @media (max-width: 768px) {
