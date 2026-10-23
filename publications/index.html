@@ -283,56 +283,6 @@
       display: none;
     }
 
-    /* Back to top */
-    .back-to-top {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 44px;
-      height: 44px;
-      background: var(--text-black);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: all 0.2s;
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .back-to-top.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .back-to-top:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-    }
-
-    /* Footer */
-    .footer {
-      background: var(--text-black);
-      color: white;
-      padding: 2rem;
-      text-align: center;
-      margin-top: 3rem;
-    }
-
-    .footer p {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.85rem;
-    }
-
-    .footer a {
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .footer a:hover {
-      color: white;
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
       .page-header {
@@ -849,15 +799,11 @@
     </div>
   </main>
 
-  <!-- Back to Top -->
-  <a href="#" class="back-to-top" id="backToTop">
-    <i class="fas fa-arrow-up"></i>
-  </a>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2026 Hadi Mohammadi. Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
-    <p><a href="mailto:hadi.mohammadi@outlook.com">Email</a> &middot; <a href="/assets/docs/HadiMohammadiCV.pdf">CV (PDF)</a></p>
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Hadi Mohammadi &middot; <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p><a href="mailto:hadi.mohammadi@outlook.com">Email</a> <span class="nobreak">&middot; <a href="/assets/docs/HadiMohammadiCV.pdf">CV (PDF)</a></span> <span class="nobreak">&middot; <a href="https://scholar.google.com/citations?user=w4Jt-FAAAAAJ&amp;hl=en">Scholar</a></span> <span class="nobreak">&middot; <a href="https://github.com/mohammadi-hadi">GitHub</a></span> <span class="nobreak">&middot; <a href="https://www.linkedin.com/in/mohammadi-hadi/">LinkedIn</a></span></p>
+    </div>
   </footer>
 
   <script src="/assets/js/scholar-stats.js" defer></script>
@@ -896,22 +842,6 @@
 
         card.style.display = (title.includes(searchTerm) || authors.includes(searchTerm) || venue.includes(searchTerm)) ? 'block' : 'none';
       });
-    });
-
-    // Back to top button
-    const backToTop = document.getElementById('backToTop');
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
-    });
-
-    backToTop.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 
