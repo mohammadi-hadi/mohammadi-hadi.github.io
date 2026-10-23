@@ -58,7 +58,7 @@
     .gate button:hover { background: var(--accent-hover); }
     .gate button:disabled { opacity: .6; cursor: default; }
     .gate .err { color: #b3382c; font-size: .85rem; margin: .7rem 0 0; min-height: 1.2em; }
-    .gate .lock-note { font-family: var(--mono); font-size: .72rem; color: #8a8a84; margin-top: 1.1rem; }
+    .gate .lock-note { font-size: .82rem; color: var(--ink-3); margin-top: 1.1rem; }
     .gate.no { animation: shake .45s; }
     @keyframes shake { 10%,90% { transform: translateX(-2px) } 20%,80% { transform: translateX(3px) }
       30%,50%,70% { transform: translateX(-4px) } 40%,60% { transform: translateX(4px) } }
@@ -66,7 +66,7 @@
     .viewer.on { display: block; }
     .viewer-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem;
       flex-wrap: wrap; margin-bottom: .8rem; }
-    .viewer-bar .stamp { font-family: var(--mono); font-size: .78rem; color: #6b6b66; }
+    .viewer-bar .stamp { font-size: .82rem; color: #6b6b66; }
     .viewer-bar .actions { display: flex; gap: .5rem; }
     .viewer-bar a { display: inline-block; padding: .45rem .85rem; border: 1px solid var(--rule);
       border-radius: 6px; background: var(--surface); color: var(--accent); font-family: var(--sans);
@@ -84,6 +84,7 @@
     .part p { font-size: .84rem; color: #4a4a45; margin: 0; line-height: 1.5; }
     .author { display: flex; gap: 1rem; align-items: baseline; }
     .author p { font-size: .92rem; max-width: 64ch; margin: 0; }
+    .author p a { text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent); text-underline-offset: 2px; }
     @media (max-width: 720px) {
       .book-hero { grid-template-columns: 1fr; }
       .book-cover { max-width: 240px; }
