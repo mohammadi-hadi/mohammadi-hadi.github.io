@@ -1,24 +1,48 @@
 {
-  "fetched_at": "2026-10-23T10:14:38+00:00",
+  "fetched_at": "2026-10-24T09:38:03+00:00",
   "github": {
     "public_repos": 57,
     "total_stars": 10,
     "repos": {
-      "hands-on-xai-labs": {
-        "stars": 1,
-        "forks": 0,
-        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
-        "language": "Jupyter Notebook",
-        "pushed_at": "2026-10-23T05:37:50Z",
-        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
-      },
       "emnlp": {
         "stars": 0,
         "forks": 0,
         "description": "An open, interactive map of all 5,534 EMNLP 2026 papers, and what changed since 2025",
         "language": "Python",
-        "pushed_at": "2026-10-22T10:55:26Z",
+        "pushed_at": "2026-10-24T07:59:00Z",
         "url": "https://github.com/mohammadi-hadi/emnlp"
+      },
+      "explainkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Explain the classifier, then test the explanation: word-level attributions, token selection, prompt steering, replacement probes and faithfulness metrics for any text classifier.",
+        "language": "Python",
+        "pushed_at": "2026-10-24T06:14:00Z",
+        "url": "https://github.com/mohammadi-hadi/explainkit"
+      },
+      "judgekit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Bias probes for LLM judges, each with a bootstrap confidence interval: position, verbosity, self-preference, calibration and stability — qwen2.5:14b picks whichever answer is shown first 77% of the time.",
+        "language": "Python",
+        "pushed_at": "2026-10-24T06:05:57Z",
+        "url": "https://github.com/mohammadi-hadi/judgekit"
+      },
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Personal academic website — mohammadi.cv",
+        "language": "HTML",
+        "pushed_at": "2026-10-23T23:15:22Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
+      "hands-on-xai-labs": {
+        "stars": 1,
+        "forks": 0,
+        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-10-23T13:37:28Z",
+        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
       },
       "neurips": {
         "stars": 0,
@@ -27,14 +51,6 @@
         "language": "Python",
         "pushed_at": "2026-10-22T10:55:23Z",
         "url": "https://github.com/mohammadi-hadi/neurips"
-      },
-      "mohammadi-hadi.github.io": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Personal academic website — mohammadi.cv",
-        "language": "HTML",
-        "pushed_at": "2026-10-22T10:19:56Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "MAP-PO": {
         "stars": 0,
@@ -163,14 +179,6 @@
         "language": "Python",
         "pushed_at": "2026-10-15T07:08:09Z",
         "url": "https://github.com/mohammadi-hadi/judgepanel"
-      },
-      "judgekit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Bias probes for LLM judges, each with a bootstrap confidence interval: position, verbosity, self-preference, calibration and stability — qwen2.5:14b picks whichever answer is shown first 77% of the time.",
-        "language": "Python",
-        "pushed_at": "2026-10-15T07:08:07Z",
-        "url": "https://github.com/mohammadi-hadi/judgekit"
       },
       "calikit": {
         "stars": 0,
@@ -355,14 +363,6 @@
         "language": "HTML",
         "pushed_at": "2026-09-29T06:47:56Z",
         "url": "https://github.com/mohammadi-hadi/weekend-learning-fa"
-      },
-      "explainkit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Explain the classifier, then test the explanation: word-level attributions, token selection, prompt steering, replacement probes and faithfulness metrics for any text classifier.",
-        "language": "Python",
-        "pushed_at": "2026-09-28T10:03:58Z",
-        "url": "https://github.com/mohammadi-hadi/explainkit"
       },
       "fsdp-reward-scaling": {
         "stars": 0,
