@@ -1,24 +1,56 @@
 {
-  "fetched_at": "2026-10-24T09:38:03+00:00",
+  "fetched_at": "2026-10-25T09:55:45+00:00",
   "github": {
-    "public_repos": 57,
-    "total_stars": 10,
+    "public_repos": 58,
+    "total_stars": 11,
     "repos": {
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Personal academic website — mohammadi.cv",
+        "language": "HTML",
+        "pushed_at": "2026-10-24T14:54:40Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
       "emnlp": {
         "stars": 0,
         "forks": 0,
         "description": "An open, interactive map of all 5,534 EMNLP 2026 papers, and what changed since 2025",
         "language": "Python",
-        "pushed_at": "2026-10-24T07:59:00Z",
+        "pushed_at": "2026-10-24T14:54:10Z",
         "url": "https://github.com/mohammadi-hadi/emnlp"
+      },
+      "neurips": {
+        "stars": 1,
+        "forks": 0,
+        "description": "NeurIPS Atlas: what NeurIPS papers are about and how the conference changes. 2026 edition: 9,110 papers on one map, growth since 2025, three cities, and every paper with its links.",
+        "language": "Python",
+        "pushed_at": "2026-10-24T14:54:08Z",
+        "url": "https://github.com/mohammadi-hadi/neurips"
       },
       "explainkit": {
         "stars": 0,
         "forks": 0,
         "description": "Explain the classifier, then test the explanation: word-level attributions, token selection, prompt steering, replacement probes and faithfulness metrics for any text classifier.",
         "language": "Python",
-        "pushed_at": "2026-10-24T06:14:00Z",
+        "pushed_at": "2026-10-24T13:34:36Z",
         "url": "https://github.com/mohammadi-hadi/explainkit"
+      },
+      "ai-conferences": {
+        "stars": 0,
+        "forks": 0,
+        "description": "NeurIPS and EMNLP 2025-2026 on one map: did the two conferences move closer?",
+        "language": "Python",
+        "pushed_at": "2026-10-24T13:22:56Z",
+        "url": "https://github.com/mohammadi-hadi/ai-conferences"
+      },
+      "weekend-learning": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Index of Weekend Learning, a biweekly newsletter on how LLM evaluation breaks, with the commands to rerun each finding",
+        "language": "Python",
+        "pushed_at": "2026-10-24T12:13:23Z",
+        "url": "https://github.com/mohammadi-hadi/weekend-learning"
       },
       "judgekit": {
         "stars": 0,
@@ -28,14 +60,6 @@
         "pushed_at": "2026-10-24T06:05:57Z",
         "url": "https://github.com/mohammadi-hadi/judgekit"
       },
-      "mohammadi-hadi.github.io": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Personal academic website — mohammadi.cv",
-        "language": "HTML",
-        "pushed_at": "2026-10-23T23:15:22Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
-      },
       "hands-on-xai-labs": {
         "stars": 1,
         "forks": 0,
@@ -43,14 +67,6 @@
         "language": "Jupyter Notebook",
         "pushed_at": "2026-10-23T13:37:28Z",
         "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
-      },
-      "neurips": {
-        "stars": 0,
-        "forks": 0,
-        "description": "NeurIPS Atlas: what NeurIPS papers are about and how the conference changes. 2026 edition: 9,110 papers on one map, growth since 2025, three cities, and every paper with its links.",
-        "language": "Python",
-        "pushed_at": "2026-10-22T10:55:23Z",
-        "url": "https://github.com/mohammadi-hadi/neurips"
       },
       "MAP-PO": {
         "stars": 0,
@@ -347,14 +363,6 @@
         "language": "Python",
         "pushed_at": "2026-10-14T08:18:40Z",
         "url": "https://github.com/mohammadi-hadi/dynamic-pricing-dashboard"
-      },
-      "weekend-learning": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Index of Weekend Learning, a biweekly newsletter on how LLM evaluation breaks, with the commands to rerun each finding",
-        "language": "Python",
-        "pushed_at": "2026-10-13T19:36:47Z",
-        "url": "https://github.com/mohammadi-hadi/weekend-learning"
       },
       "weekend-learning-fa": {
         "stars": 0,
