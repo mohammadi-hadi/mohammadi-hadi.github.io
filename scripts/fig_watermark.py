@@ -38,39 +38,40 @@ def words_needed(f: float) -> float:
 
 def main() -> None:
     plt.rcParams.update({"font.family": ["Helvetica Neue", "Helvetica", "DejaVu Sans"]})
-    fig, ax = plt.subplots(figsize=(12, 6.4), dpi=100)
+    fig, ax = plt.subplots(figsize=(7.2, 4.2), dpi=200)
     fig.patch.set_facecolor(PAPER); ax.set_facecolor(PAPER)
 
     fs = [x / 100 for x in range(10, 101)]
     ax.plot([f * 100 for f in fs], [words_needed(f) for f in fs],
-            color=ACCENT, lw=2.6, zorder=3)
+            color=ACCENT, lw=2.2, zorder=3)
 
     # offsets chosen so no label crosses the axis or the curve
     for f, label, colour, dx, dy, ha in [
-            (1.00, "every token carries signal", ACCENT, -16, 26, "right"),
-            (1/3, "a third of tokens", FLAG, 22, 18, "left"),
-            (1/6, "a sixth of tokens", FLAG, 26, 6, "left")]:
+            (1.00, "every token carries signal", ACCENT, -10, 16, "right"),
+            (1/3, "a third of tokens", FLAG, 14, 10, "left"),
+            (1/6, "a sixth of tokens", FLAG, 16, 2, "left")]:
         w = words_needed(f)
-        ax.plot(f * 100, w, "o", ms=10, color=colour, zorder=4)
+        ax.plot(f * 100, w, "o", ms=7, color=colour, zorder=4)
         ax.annotate(f"{w:,.0f} words\n{label}", (f * 100, w),
                     textcoords="offset points", xytext=(dx, dy),
-                    ha=ha, fontsize=13, fontweight="600", color=colour)
+                    ha=ha, fontsize=12, fontweight="600", color=colour)
 
     ax.set_xlim(8, 104); ax.set_ylim(0, 2100)
     ax.set_xlabel("share of tokens where the model had a real choice (%)",
-                  fontsize=13, color=INK)
-    ax.set_ylabel("words needed for a 95% call", fontsize=13, color=INK)
+                  fontsize=12, color=INK)
+    ax.set_ylabel("words needed for a 95% call", fontsize=12, color=INK)
     ax.set_title("How much text a 55:45 watermark needs before it shows up",
-                 fontsize=17, fontweight="600", loc="left", pad=34)
-    ax.text(0, 1.015,
-            "the 208-word figure holds when every token is a real choice; the share that are is the variable",
-            transform=ax.transAxes, fontsize=12.5, color=INK3)
+                 fontsize=15, fontweight="600", loc="left", pad=40)
+    ax.text(0, 1.02,
+            "the 208-word figure assumes every token is a real choice\n"
+            "in real text only some are, and that share sets the length",
+            transform=ax.transAxes, fontsize=11, color=INK3, linespacing=1.3)
     ax.grid(axis="y", color=RULE, lw=1)
     ax.set_axisbelow(True)
     for side in ("top", "right"):
         ax.spines[side].set_visible(False)
     ax.spines["left"].set_color(RULE); ax.spines["bottom"].set_color(RULE)
-    ax.tick_params(colors=INK3, labelsize=12)
+    ax.tick_params(colors=INK3, labelsize=11)
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     fig.tight_layout()
