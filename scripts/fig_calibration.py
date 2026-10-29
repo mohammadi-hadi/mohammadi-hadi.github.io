@@ -34,6 +34,7 @@ MODELS = [  # name, file stem, colour (validated as a set: CVD and normal-vision
     ("aya-expanse:8b", "aya-expanse-8b", "#7a4e8c"),
 ]
 MIN_N = 10  # stated values given fewer times than this are not drawn
+AREA, MIN_AREA = 1.2, 40  # marker area in points squared per answer, and its floor
 
 
 def load(stem: str) -> tuple[list[float], list[int], list[int]]:
@@ -52,13 +53,13 @@ def load(stem: str) -> tuple[list[float], list[int], list[int]]:
 
 def main() -> None:
     plt.rcParams.update({"font.family": ["Helvetica Neue", "Helvetica", "DejaVu Sans"]})
-    fig, ax = plt.subplots(figsize=(12, 6.4), dpi=100)
+    fig, ax = plt.subplots(figsize=(7.2, 4.2), dpi=200)
     fig.patch.set_facecolor(PAPER)
     ax.set_facecolor(PAPER)
 
     ax.plot([70, 100], [70, 100], color=INK3, lw=1.2, zorder=2)
     ax.annotate("stated = observed", (100, 100), textcoords="offset points",
-                xytext=(-2, 8), ha="right", fontsize=12, color=INK3)
+                xytext=(-2, 6), ha="right", fontsize=11, color=INK3)
 
     print(f"{'model':16s} {'acc':>6s} {'conf':>6s} {'gap':>5s} {'>=90':>6s} {'acc>=90':>8s} "
           f"{'ECE':>6s} {'CI':>15s} {'Brier':>6s} {'base':>6s} values")
@@ -87,15 +88,19 @@ def main() -> None:
         drawn = [b for b in per_value if b.n >= MIN_N]
         xs = [100 * b.conf for b in drawn]
         ys = [100 * b.acc for b in drawn]
-        sizes = [3.2 * b.n for b in drawn]
+        # Area follows the count, with a floor so a rarely given value still shows.
+        sizes = [max(AREA * b.n, MIN_AREA) for b in drawn]
         ax.scatter(xs, ys, s=sizes, color=colour, alpha=0.92, zorder=4,
-                   edgecolors=PAPER, linewidths=2,
+                   edgecolors=PAPER, linewidths=1.2,
                    label=f"{name}: says {100 * conf:.0f} on average, right {100 * acc:.0f}%")
         big = max(drawn, key=lambda b: b.n)
-        radius = (3.2 * big.n / 3.14159) ** 0.5  # marker size is an area in points squared
+        radius = (max(AREA * big.n, MIN_AREA) / 3.14159) ** 0.5  # marker size is an area in points squared
+        # qwen's biggest dot sits right above aya's 95, so its label goes on top.
+        above = name == "qwen2.5:14b"
         ax.annotate(f"{big.n:,} answers", (100 * big.conf, 100 * big.acc),
-                    textcoords="offset points", xytext=(0, -(radius + 4)), ha="center", va="top",
-                    fontsize=11.5, color=INK3, zorder=5)
+                    textcoords="offset points", xytext=(0, (radius + 3) if above else -(radius + 4)),
+                    ha="center", va="bottom" if above else "top",
+                    fontsize=10.5, color=INK3, zorder=5)
 
         # Platt scaling fitted on the odd-numbered questions, scored on the even ones.
         fit = [(p, y) for p, y, i in zip(probs, labels, idx) if i % 2 == 1]
@@ -110,32 +115,37 @@ def main() -> None:
               f"{brier(mapping.apply(hp), hy):.4f}   {sends}")
 
     ax.set_xlim(72, 103)
-    ax.set_ylim(45, 104)
-    ax.set_xlabel("confidence the model stated (%)", fontsize=13, color=INK)
-    ax.set_ylabel("share of those answers that were right (%)", fontsize=13, color=INK)
-    ax.set_title("Ask a model how sure it is", fontsize=17, fontweight="600", loc="left", pad=34)
-    ax.text(0, 1.015,
-            "1,000 MMLU questions each, temperature 0; a dot's area is how often the model gave that number",
-            transform=ax.transAxes, fontsize=12, color=INK3)
+    ax.set_ylim(45, 117)
+    ax.set_yticks([50, 60, 70, 80, 90, 100])
+    ax.set_xlabel("confidence the model stated (%)", fontsize=12, color=INK)
+    ax.set_ylabel("share of those answers right (%)", fontsize=12, color=INK)
+    ax.set_title("Ask a model how sure it is", fontsize=16, fontweight="600", loc="left", pad=40)
+    ax.text(0, 1.02,
+            "1,000 MMLU questions each, temperature 0\n"
+            "a dot's area is how often the model gave that number",
+            transform=ax.transAxes, fontsize=11, color=INK3, linespacing=1.3)
     ax.grid(color=RULE, lw=1)
     ax.set_axisbelow(True)
     for side in ("top", "right"):
         ax.spines[side].set_visible(False)
     for side in ("bottom", "left"):
         ax.spines[side].set_color(RULE)
-    ax.tick_params(colors=INK3, labelsize=12)
-    leg = ax.legend(loc="upper left", frameon=False, fontsize=12, markerscale=0.35,
+    ax.tick_params(colors=INK3, labelsize=11)
+    leg = ax.legend(loc="upper left", frameon=False, fontsize=10.5, markerscale=0.35,
                     labelcolor=INK, handletextpad=0.6)
     for handle in leg.legend_handles:
-        handle.set_sizes([70])
+        handle.set_sizes([45])
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     fig.tight_layout()
     fig.savefig(OUT, facecolor=PAPER)
-    OUT2.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(OUT2, facecolor=PAPER)
+    # The newsletter copy is what went out with the issue, so it is only
+    # written once; later restyles of the blog chart leave it alone.
+    if not OUT2.exists():
+        OUT2.parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(OUT2, facecolor=PAPER)
+        print(OUT2.relative_to(ROOT))
     print(OUT.relative_to(ROOT))
-    print(OUT2.relative_to(ROOT))
 
 
 if __name__ == "__main__":
