@@ -1511,6 +1511,13 @@ h3[id] {
   margin-bottom: var(--space-2);
 }
 
+/* A chart links to its full-size file so it can be zoomed on a phone. */
+.post-body .figure-link {
+  display: block;
+  cursor: zoom-in;
+  text-decoration: none;
+}
+
 .post-body figcaption {
   font-size: 0.85rem;
   color: var(--ink-3);
