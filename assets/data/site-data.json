@@ -1,15 +1,39 @@
 {
-  "fetched_at": "2026-10-29T11:36:57+00:00",
+  "fetched_at": "2026-10-30T11:28:46+00:00",
   "github": {
     "public_repos": 58,
     "total_stars": 11,
     "repos": {
+      "hands-on-xai-labs": {
+        "stars": 1,
+        "forks": 0,
+        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-10-30T10:31:09Z",
+        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
+      },
+      "explainkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Explain the classifier, then test the explanation: word-level attributions, token selection, prompt steering, replacement probes and faithfulness metrics for any text classifier.",
+        "language": "Python",
+        "pushed_at": "2026-10-30T08:56:58Z",
+        "url": "https://github.com/mohammadi-hadi/explainkit"
+      },
+      "judgekit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Bias probes for LLM judges, each with a bootstrap confidence interval: position, verbosity, self-preference, calibration and stability — qwen2.5:14b picks whichever answer is shown first 77% of the time.",
+        "language": "Python",
+        "pushed_at": "2026-10-30T08:56:51Z",
+        "url": "https://github.com/mohammadi-hadi/judgekit"
+      },
       "mohammadi-hadi.github.io": {
         "stars": 0,
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-10-28T11:26:46Z",
+        "pushed_at": "2026-10-29T11:36:59Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "spark-search-ranking": {
@@ -36,14 +60,6 @@
         "pushed_at": "2026-10-24T14:54:08Z",
         "url": "https://github.com/mohammadi-hadi/neurips"
       },
-      "explainkit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Explain the classifier, then test the explanation: word-level attributions, token selection, prompt steering, replacement probes and faithfulness metrics for any text classifier.",
-        "language": "Python",
-        "pushed_at": "2026-10-24T13:34:36Z",
-        "url": "https://github.com/mohammadi-hadi/explainkit"
-      },
       "ai-conferences": {
         "stars": 0,
         "forks": 0,
@@ -59,22 +75,6 @@
         "language": "Python",
         "pushed_at": "2026-10-24T12:13:23Z",
         "url": "https://github.com/mohammadi-hadi/weekend-learning"
-      },
-      "judgekit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Bias probes for LLM judges, each with a bootstrap confidence interval: position, verbosity, self-preference, calibration and stability — qwen2.5:14b picks whichever answer is shown first 77% of the time.",
-        "language": "Python",
-        "pushed_at": "2026-10-24T06:05:57Z",
-        "url": "https://github.com/mohammadi-hadi/judgekit"
-      },
-      "hands-on-xai-labs": {
-        "stars": 1,
-        "forks": 0,
-        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
-        "language": "Jupyter Notebook",
-        "pushed_at": "2026-10-23T13:37:28Z",
-        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
       },
       "MAP-PO": {
         "stars": 0,
