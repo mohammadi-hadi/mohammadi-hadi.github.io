@@ -1,15 +1,39 @@
 {
-  "fetched_at": "2026-10-31T10:59:16+00:00",
+  "fetched_at": "2026-11-01T11:54:48+00:00",
   "github": {
     "public_repos": 58,
     "total_stars": 11,
     "repos": {
+      "rankkit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Ranking evaluation with error bars: NDCG, MRR and MAP with confidence intervals, plus position-bias correction for click logs. No dependencies.",
+        "language": "Python",
+        "pushed_at": "2026-11-01T00:10:43Z",
+        "url": "https://github.com/mohammadi-hadi/rankkit"
+      },
+      "weekend-learning-fa": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Persian lessons on machine learning and language models for beginners (یادگیری آخر هفته): a page, an offline widget, a notebook and a zip per lesson",
+        "language": "HTML",
+        "pushed_at": "2026-10-31T16:07:14Z",
+        "url": "https://github.com/mohammadi-hadi/weekend-learning-fa"
+      },
+      "ai-masters-netherlands": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Every AI, machine learning, and data science master's programme at Dutch research universities — admissions, costs, deadlines, and how to choose",
+        "language": null,
+        "pushed_at": "2026-10-31T16:05:33Z",
+        "url": "https://github.com/mohammadi-hadi/ai-masters-netherlands"
+      },
       "mohammadi-hadi.github.io": {
         "stars": 0,
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-10-30T11:28:50Z",
+        "pushed_at": "2026-10-31T13:00:36Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "hands-on-xai-labs": {
@@ -171,14 +195,6 @@
         "language": "Python",
         "pushed_at": "2026-10-15T07:08:16Z",
         "url": "https://github.com/mohammadi-hadi/raterkit"
-      },
-      "rankkit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Ranking evaluation with error bars: NDCG, MRR and MAP with confidence intervals, plus position-bias correction for click logs. No dependencies.",
-        "language": "Python",
-        "pushed_at": "2026-10-15T07:08:13Z",
-        "url": "https://github.com/mohammadi-hadi/rankkit"
       },
       "ppofolio": {
         "stars": 0,
@@ -364,14 +380,6 @@
         "pushed_at": "2026-10-14T08:18:40Z",
         "url": "https://github.com/mohammadi-hadi/dynamic-pricing-dashboard"
       },
-      "weekend-learning-fa": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Persian lessons on machine learning and language models for beginners (یادگیری آخر هفته): a page, an offline widget, a notebook and a zip per lesson",
-        "language": "HTML",
-        "pushed_at": "2026-09-29T06:47:56Z",
-        "url": "https://github.com/mohammadi-hadi/weekend-learning-fa"
-      },
       "fsdp-reward-scaling": {
         "stars": 0,
         "forks": 0,
@@ -403,14 +411,6 @@
         "language": "HTML",
         "pushed_at": "2026-08-26T12:43:42Z",
         "url": "https://github.com/mohammadi-hadi/Ray"
-      },
-      "ai-masters-netherlands": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Every AI, machine learning, and data science master's programme at Dutch research universities — admissions, costs, deadlines, and how to choose",
-        "language": null,
-        "pushed_at": "2026-08-08T08:10:07Z",
-        "url": "https://github.com/mohammadi-hadi/ai-masters-netherlands"
       },
       "ml-learning-paths": {
         "stars": 0,
