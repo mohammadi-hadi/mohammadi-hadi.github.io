@@ -1,9 +1,41 @@
 {
-  "fetched_at": "2026-11-01T11:54:48+00:00",
+  "fetched_at": "2026-11-02T13:46:56+00:00",
   "github": {
     "public_repos": 58,
     "total_stars": 11,
     "repos": {
+      "abeval": {
+        "stars": 1,
+        "forks": 0,
+        "description": "A/B-test statistics for LLM evals: error bars, paired significance tests, sample-size planning",
+        "language": "Python",
+        "pushed_at": "2026-11-01T23:15:25Z",
+        "url": "https://github.com/mohammadi-hadi/abeval"
+      },
+      "trajectory-judge": {
+        "stars": 1,
+        "forks": 0,
+        "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.",
+        "language": "Python",
+        "pushed_at": "2026-11-01T21:21:00Z",
+        "url": "https://github.com/mohammadi-hadi/trajectory-judge"
+      },
+      "calikit": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Calibration auditing for probabilistic predictions: reliability diagrams, ECE, Brier decomposition, temperature scaling. Zero dependencies.",
+        "language": "Python",
+        "pushed_at": "2026-11-01T13:36:19Z",
+        "url": "https://github.com/mohammadi-hadi/calikit"
+      },
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Personal academic website — mohammadi.cv",
+        "language": "HTML",
+        "pushed_at": "2026-11-01T11:54:51Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
       "rankkit": {
         "stars": 0,
         "forks": 0,
@@ -27,14 +59,6 @@
         "language": null,
         "pushed_at": "2026-10-31T16:05:33Z",
         "url": "https://github.com/mohammadi-hadi/ai-masters-netherlands"
-      },
-      "mohammadi-hadi.github.io": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Personal academic website — mohammadi.cv",
-        "language": "HTML",
-        "pushed_at": "2026-10-31T13:00:36Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "hands-on-xai-labs": {
         "stars": 1,
@@ -172,14 +196,6 @@
         "pushed_at": "2026-10-15T07:08:40Z",
         "url": "https://github.com/mohammadi-hadi/judgewatch"
       },
-      "trajectory-judge": {
-        "stars": 1,
-        "forks": 0,
-        "description": "How much an LLM judge misses when an agent reaches the right answer the wrong way: a synthetic tool-using environment with injected faults, and a controlled comparison of outcome-only, step-rubric and self-consistency judges against known ground truth.",
-        "language": "Python",
-        "pushed_at": "2026-10-15T07:08:22Z",
-        "url": "https://github.com/mohammadi-hadi/trajectory-judge"
-      },
       "retainkit": {
         "stars": 0,
         "forks": 0,
@@ -212,14 +228,6 @@
         "pushed_at": "2026-10-15T07:08:09Z",
         "url": "https://github.com/mohammadi-hadi/judgepanel"
       },
-      "calikit": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Calibration auditing for probabilistic predictions: reliability diagrams, ECE, Brier decomposition, temperature scaling. Zero dependencies.",
-        "language": "Python",
-        "pushed_at": "2026-10-15T07:08:04Z",
-        "url": "https://github.com/mohammadi-hadi/calikit"
-      },
       "arenakit": {
         "stars": 0,
         "forks": 0,
@@ -235,14 +243,6 @@
         "language": "Python",
         "pushed_at": "2026-10-15T07:08:00Z",
         "url": "https://github.com/mohammadi-hadi/abkit"
-      },
-      "abeval": {
-        "stars": 1,
-        "forks": 0,
-        "description": "A/B-test statistics for LLM evals: error bars, paired significance tests, sample-size planning",
-        "language": "Python",
-        "pushed_at": "2026-10-15T07:07:57Z",
-        "url": "https://github.com/mohammadi-hadi/abeval"
       },
       "awesome-explainable-nlp": {
         "stars": 0,
