@@ -1,9 +1,25 @@
 {
-  "fetched_at": "2026-11-03T18:04:03+00:00",
+  "fetched_at": "2026-11-03T18:06:21+00:00",
   "github": {
     "public_repos": 58,
     "total_stars": 11,
     "repos": {
+      "judgewatch": {
+        "stars": 0,
+        "forks": 0,
+        "description": "A frozen probe set and a harness for auditing LLM judges for bias. No audit published yet.",
+        "language": "Python",
+        "pushed_at": "2026-11-03T18:05:31Z",
+        "url": "https://github.com/mohammadi-hadi/judgewatch"
+      },
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Personal academic website — mohammadi.cv",
+        "language": "HTML",
+        "pushed_at": "2026-11-03T18:05:05Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
       "modern-ai-engineering": {
         "stars": 0,
         "forks": 0,
@@ -180,14 +196,6 @@
         "pushed_at": "2026-11-03T17:52:09Z",
         "url": "https://github.com/mohammadi-hadi/ppofolio"
       },
-      "mohammadi-hadi.github.io": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Personal academic website — mohammadi.cv",
-        "language": "HTML",
-        "pushed_at": "2026-11-03T17:51:06Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
-      },
       "evalstack": {
         "stars": 0,
         "forks": 0,
@@ -307,14 +315,6 @@
         "language": "Jupyter Notebook",
         "pushed_at": "2026-10-15T07:09:34Z",
         "url": "https://github.com/mohammadi-hadi/Token-Replacement"
-      },
-      "judgewatch": {
-        "stars": 0,
-        "forks": 0,
-        "description": "A frozen probe set and a harness for auditing LLM judges for bias. No audit published yet.",
-        "language": "Python",
-        "pushed_at": "2026-10-15T07:08:40Z",
-        "url": "https://github.com/mohammadi-hadi/judgewatch"
       },
       ".github": {
         "stars": 0,
