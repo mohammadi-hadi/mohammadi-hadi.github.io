@@ -184,4 +184,28 @@
     <loc>https://mohammadi.cv/weekend-learning-fa/</loc>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://mohammadi.cv/ai-conferences/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mohammadi.cv/ai-conferences/2026/</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohammadi.cv/neurips/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mohammadi.cv/neurips/2026/</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohammadi.cv/emnlp/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mohammadi.cv/emnlp/2026/</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>
