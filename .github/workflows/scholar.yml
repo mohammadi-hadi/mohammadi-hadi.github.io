@@ -32,10 +32,17 @@ jobs:
         id: fetch
         timeout-minutes: 10
         continue-on-error: true
-        run: python scripts/fetch_scholar.py
+        # Exit 2 means Scholar blocked the runner; any other failure is a crash.
+        run: |
+          set +e
+          python scripts/fetch_scholar.py
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit $code
 
       - name: Report blocked fetch
-        if: steps.fetch.outcome != 'success'
+        # An empty code means the step hit its timeout, which is also a block.
+        if: steps.fetch.outcome != 'success' && (steps.fetch.outputs.code == '2' || steps.fetch.outputs.code == '')
         run: |
           echo "Google Scholar was unreachable from this runner (blocked or timed out)." >> "$GITHUB_STEP_SUMMARY"
           echo "Kept the last good assets/data/scholar.json; the daily cron will retry." >> "$GITHUB_STEP_SUMMARY"
@@ -58,3 +65,10 @@ jobs:
           git add assets/data/
           git commit -m "chore: update site data [skip ci]"
           git push
+
+      - name: Fail if the Scholar fetch crashed
+        if: steps.fetch.outcome != 'success' && steps.fetch.outputs.code != '2' && steps.fetch.outputs.code != ''
+        run: |
+          echo "::error::fetch_scholar.py crashed (exit ${{ steps.fetch.outputs.code }}), so this was not a Scholar block. See the Fetch Scholar stats log."
+          echo "fetch_scholar.py crashed (exit ${{ steps.fetch.outputs.code }}). This is a bug or a broken dependency, not a Scholar block." >> "$GITHUB_STEP_SUMMARY"
+          exit 1

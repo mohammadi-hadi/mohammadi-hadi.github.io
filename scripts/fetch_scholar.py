@@ -4,6 +4,11 @@
 Run by .github/workflows/scholar.yml daily (or manually: python scripts/fetch_scholar.py).
 On any failure the script exits nonzero WITHOUT writing, so the last good JSON
 is never clobbered by a blocked or partial response.
+
+Exit codes: 0 updated or unchanged; 2 Scholar blocked or unreachable on every
+attempt (expected now and then, the workflow stays green); anything else is a
+crash or bad data (an import error, a bug, a failed sanity check) and turns the
+workflow run red.
 """
 
 import json
@@ -14,9 +19,23 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from scholarly import scholarly, ProxyGenerator
+import httpx
+import requests
+from scholarly import scholarly, ProxyGenerator, DOSException, MaxTriesExceededException
 
 socket.setdefaulttimeout(30)  # fail fast when Google blocks the runner
+
+EXIT_BLOCKED = 2
+
+# Errors that mean Google refused or dropped the connection. Anything else is a
+# real failure and is not retried.
+BLOCKED_ERRORS = (
+    MaxTriesExceededException,
+    DOSException,
+    httpx.HTTPError,
+    requests.RequestException,
+    OSError,  # includes socket timeouts and connection resets
+)
 
 SCHOLAR_ID = "w4Jt-FAAAAAJ"
 OUT = Path(__file__).resolve().parents[1] / "assets" / "data" / "scholar.json"
@@ -114,12 +133,10 @@ def main() -> None:
             OUT.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
             print(f"Updated {OUT}")
             return
-        except SystemExit:
-            raise
-        except Exception as e:  # noqa: BLE001 - report and retry
-            print(f"::warning::attempt {attempt} failed: {e}")
+        except BLOCKED_ERRORS as e:
+            print(f"::warning::attempt {attempt} failed: {type(e).__name__}: {e}")
             time.sleep(15 * attempt)
-    sys.exit(1)
+    sys.exit(EXIT_BLOCKED)
 
 
 if __name__ == "__main__":
