@@ -35,7 +35,7 @@ jobs:
         # Exit 2 means Scholar blocked the runner; any other failure is a crash.
         run: |
           set +e
-          python scripts/fetch_scholar.py
+          python -u scripts/fetch_scholar.py  # unbuffered, so a timeout still shows the attempts
           code=$?
           echo "code=$code" >> "$GITHUB_OUTPUT"
           exit $code

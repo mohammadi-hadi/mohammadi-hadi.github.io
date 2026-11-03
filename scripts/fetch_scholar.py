@@ -117,6 +117,8 @@ def sane(new: dict, old: dict | None) -> bool:
 def main() -> None:
     old = json.loads(OUT.read_text()) if OUT.exists() else None
     for attempt, use_proxy in enumerate((False, False, True), start=1):
+        via = " through free proxies" if use_proxy else ""
+        print(f"attempt {attempt}: fetching Scholar profile {SCHOLAR_ID}{via}")
         try:
             if use_proxy:  # last-ditch attempt through free proxies (flaky)
                 pg = ProxyGenerator()
