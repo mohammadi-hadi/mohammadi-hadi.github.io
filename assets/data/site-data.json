@@ -1,9 +1,17 @@
 {
-  "fetched_at": "2026-11-02T13:46:56+00:00",
+  "fetched_at": "2026-11-03T12:53:17+00:00",
   "github": {
     "public_repos": 58,
     "total_stars": 11,
     "repos": {
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Personal academic website — mohammadi.cv",
+        "language": "HTML",
+        "pushed_at": "2026-11-02T13:46:59Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
       "abeval": {
         "stars": 1,
         "forks": 0,
@@ -27,14 +35,6 @@
         "language": "Python",
         "pushed_at": "2026-11-01T13:36:19Z",
         "url": "https://github.com/mohammadi-hadi/calikit"
-      },
-      "mohammadi-hadi.github.io": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Personal academic website — mohammadi.cv",
-        "language": "HTML",
-        "pushed_at": "2026-11-01T11:54:51Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "rankkit": {
         "stars": 0,
@@ -246,7 +246,7 @@
       },
       "awesome-explainable-nlp": {
         "stars": 0,
-        "forks": 0,
+        "forks": 1,
         "description": "Curated list of papers, tools, and resources on explainability and interpretability for NLP and large language models",
         "language": null,
         "pushed_at": "2026-10-14T22:31:09Z",
