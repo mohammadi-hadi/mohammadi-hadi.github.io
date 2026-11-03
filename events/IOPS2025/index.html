@@ -476,7 +476,14 @@
     .resource-icon.slides { background: linear-gradient(135deg, #e17055 0%, #d63031 100%); }
     .resource-icon.arxiv { background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%); }
 
-    .resource-card h5 {
+    .resource-card h3,
+    .contribution-card h3,
+    .page-footer h3 {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    .resource-card h3 {
       font-size: 1.1rem;
       font-weight: 700;
       margin-bottom: 8px;
@@ -508,7 +515,7 @@
       box-shadow: 0 8px 30px rgba(0,0,0,0.1);
     }
 
-    .contribution-card h5 {
+    .contribution-card h3 {
       font-size: 1.05rem;
       font-weight: 700;
       margin-bottom: 10px;
@@ -528,7 +535,7 @@
       padding: 60px 0 40px;
     }
 
-    .page-footer h5 {
+    .page-footer h3 {
       color: #fff;
       font-size: 1.1rem;
       font-weight: 700;
@@ -756,7 +763,7 @@
         font-size: 1.3rem;
       }
 
-      .resource-card h5 {
+      .resource-card h3 {
         font-size: 1rem;
       }
 
@@ -766,7 +773,7 @@
         margin-bottom: 15px;
       }
 
-      .contribution-card h5 {
+      .contribution-card h3 {
         font-size: 1rem;
       }
 
@@ -780,7 +787,7 @@
         text-align: center;
       }
 
-      .page-footer h5 {
+      .page-footer h3 {
         font-size: 1rem;
       }
 
@@ -1084,7 +1091,7 @@
       <div class="col-md-4 mb-4">
         <div class="resource-card">
           <div class="resource-icon paper"><i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 512 512"><use href="/assets/img/icons.svg#fa-file-pdf"/></svg></i></div>
-          <h5>Research Paper</h5>
+          <h3>Research Paper</h3>
           <p>Full paper with methodology and results</p>
           <a href="../../assets/docs/Events/IOPS2025/2510.05942v2.pdf" class="resource-link" target="_blank">
             Download PDF <i class="svg-icon ms-1" aria-hidden="true"><svg viewBox="0 0 512 512"><use href="/assets/img/icons.svg#fa-download"/></svg></i>
@@ -1094,7 +1101,7 @@
       <div class="col-md-4 mb-4">
         <div class="resource-card">
           <div class="resource-icon slides"><i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 384 512"><use href="/assets/img/icons.svg#fa-file-powerpoint"/></svg></i></div>
-          <h5>Presentation Slides</h5>
+          <h3>Presentation Slides</h3>
           <p>Slides from the IOPS presentation</p>
           <a href="../../assets/docs/Events/IOPS2025/EvalMORAAL.pdf" class="resource-link" target="_blank">
             Download PDF <i class="svg-icon ms-1" aria-hidden="true"><svg viewBox="0 0 512 512"><use href="/assets/img/icons.svg#fa-download"/></svg></i>
@@ -1104,7 +1111,7 @@
       <div class="col-md-4 mb-4">
         <div class="resource-card">
           <div class="resource-icon arxiv"><i class="svg-icon" aria-hidden="true"><svg viewBox="0 0 448 512"><use href="/assets/img/icons.svg#ai-arxiv"/></svg></i></div>
-          <h5>arXiv Preprint</h5>
+          <h3>arXiv Preprint</h3>
           <p>Open access on arXiv</p>
           <a href="https://arxiv.org/abs/2510.05942" class="resource-link" target="_blank">
             View on arXiv <i class="svg-icon ms-1" aria-hidden="true"><svg viewBox="0 0 512 512"><use href="/assets/img/icons.svg#fa-external-link-alt"/></svg></i>
@@ -1124,21 +1131,21 @@
     <div class="row">
       <div class="col-md-6">
         <div class="contribution-card">
-          <h5>Dual Scoring Framework</h5>
+          <h3>Dual Scoring Framework</h3>
           <p>Two complementary methods (log-probabilities and direct ratings) for fair cross-model comparison</p>
         </div>
         <div class="contribution-card">
-          <h5>Structured CoT Protocol</h5>
+          <h3>Structured CoT Protocol</h3>
           <p>Chain-of-thought reasoning with self-consistency checks to stabilize moral judgments</p>
         </div>
       </div>
       <div class="col-md-6">
         <div class="contribution-card">
-          <h5>LLM-as-Judge Peer Review</h5>
+          <h3>LLM-as-Judge Peer Review</h3>
           <p>Novel peer-review methodology where models evaluate each other's reasoning quality</p>
         </div>
         <div class="contribution-card">
-          <h5>Cultural Bias Quantification</h5>
+          <h3>Cultural Bias Quantification</h3>
           <p>Systematic measurement of Western vs. non-Western performance gaps in AI moral alignment</p>
         </div>
       </div>
@@ -1151,7 +1158,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 mb-4 mb-md-0">
-        <h5>About IOPS</h5>
+        <h3>About IOPS</h3>
         <p>
           The <strong>Interuniversity Graduate School of Psychometrics and Sociometrics (IOPS)</strong> is a collaborative research school in the Netherlands focusing on methodological and statistical research in the social and behavioral sciences.
         </p>
@@ -1161,7 +1168,7 @@
         </p>
       </div>
       <div class="col-md-6">
-        <h5>Citation</h5>
+        <h3>Citation</h3>
         <div class="citation-box">
 @inproceedings{mohammadi2026evalmoraal,
   title={EvalMORAAL: Interpretable CoT and
