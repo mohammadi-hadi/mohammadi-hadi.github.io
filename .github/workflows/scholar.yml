@@ -24,7 +24,9 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install "scholarly==1.7.11" free-proxy
+        # scholarly 1.7.11 imports bibtexparser 1.x APIs and passes `proxies=` to
+        # httpx.Client, which httpx 0.28 removed. Keep both below the releases that broke it.
+        run: pip install "scholarly==1.7.11" "bibtexparser<2" "httpx<0.28" free-proxy
 
       - name: Fetch Scholar stats
         id: fetch
