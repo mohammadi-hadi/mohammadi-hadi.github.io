@@ -1,15 +1,23 @@
 {
-  "fetched_at": "2026-11-06T13:13:39+00:00",
+  "fetched_at": "2026-11-07T11:59:02+00:00",
   "github": {
     "public_repos": 58,
     "total_stars": 11,
     "repos": {
+      "mohammadi-hadi": {
+        "stars": 0,
+        "forks": 0,
+        "description": "GitHub profile README",
+        "language": null,
+        "pushed_at": "2026-11-06T13:15:40Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi"
+      },
       "mohammadi-hadi.github.io": {
         "stars": 0,
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-11-05T13:30:16Z",
+        "pushed_at": "2026-11-06T13:13:44Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "trajectory-judge": {
@@ -323,14 +331,6 @@
         "language": null,
         "pushed_at": "2026-11-03T17:53:23Z",
         "url": "https://github.com/mohammadi-hadi/ml-learning-paths"
-      },
-      "mohammadi-hadi": {
-        "stars": 0,
-        "forks": 0,
-        "description": "GitHub profile README",
-        "language": null,
-        "pushed_at": "2026-11-03T17:52:58Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi"
       },
       "grpo_dpo_comparison": {
         "stars": 0,
