@@ -1,9 +1,17 @@
 {
-  "fetched_at": "2026-11-07T11:59:02+00:00",
+  "fetched_at": "2026-11-08T12:10:39+00:00",
   "github": {
     "public_repos": 58,
     "total_stars": 11,
     "repos": {
+      "mohammadi-hadi.github.io": {
+        "stars": 0,
+        "forks": 0,
+        "description": "Personal academic website — mohammadi.cv",
+        "language": "HTML",
+        "pushed_at": "2026-11-07T11:59:06Z",
+        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
+      },
       "mohammadi-hadi": {
         "stars": 0,
         "forks": 0,
@@ -11,14 +19,6 @@
         "language": null,
         "pushed_at": "2026-11-06T13:15:40Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi"
-      },
-      "mohammadi-hadi.github.io": {
-        "stars": 0,
-        "forks": 0,
-        "description": "Personal academic website — mohammadi.cv",
-        "language": "HTML",
-        "pushed_at": "2026-11-06T13:13:44Z",
-        "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "trajectory-judge": {
         "stars": 1,
@@ -472,8 +472,8 @@
   },
   "openalex": {
     "works_count": 63,
-    "cited_by_count": 38,
-    "h_index": 3,
+    "cited_by_count": 75,
+    "h_index": 5,
     "i10_index": 2
   },
   "orcid": {
