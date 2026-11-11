@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-11-10T13:47:19+00:00",
+  "fetched_at": "2026-11-11T12:59:49+00:00",
   "github": {
     "public_repos": 58,
-    "total_stars": 11,
+    "total_stars": 12,
     "repos": {
       "mohammadi-hadi.github.io": {
         "stars": 0,
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-11-09T14:14:18Z",
+        "pushed_at": "2026-11-10T13:47:23Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "spark-search-ranking": {
@@ -293,7 +293,7 @@
         "url": "https://github.com/mohammadi-hadi/calikit"
       },
       "fsdp-reward-scaling": {
-        "stars": 0,
+        "stars": 1,
         "forks": 0,
         "description": "Full-parameter reward-model training sharded with FSDP2, verified on CPU (collective counts, bitwise resume from a sharded checkpoint), with a GPU sweep on 4x L40S planned for throughput, memory, scaling efficiency and recovery from a killed rank.",
         "language": "Python",
@@ -472,7 +472,7 @@
   },
   "openalex": {
     "works_count": 63,
-    "cited_by_count": 75,
+    "cited_by_count": 78,
     "h_index": 5,
     "i10_index": 2
   },
