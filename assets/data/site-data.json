@@ -1,15 +1,23 @@
 {
-  "fetched_at": "2026-11-13T13:25:38+00:00",
+  "fetched_at": "2026-11-14T12:29:21+00:00",
   "github": {
     "public_repos": 58,
     "total_stars": 12,
     "repos": {
+      "hands-on-xai-labs": {
+        "stars": 1,
+        "forks": 0,
+        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
+        "language": "Jupyter Notebook",
+        "pushed_at": "2026-11-13T23:26:08Z",
+        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
+      },
       "mohammadi-hadi.github.io": {
         "stars": 0,
         "forks": 0,
         "description": "Personal academic website — mohammadi.cv",
         "language": "HTML",
-        "pushed_at": "2026-11-12T14:02:27Z",
+        "pushed_at": "2026-11-13T13:25:42Z",
         "url": "https://github.com/mohammadi-hadi/mohammadi-hadi.github.io"
       },
       "spark-search-ranking": {
@@ -46,7 +54,7 @@
       },
       "judgewatch": {
         "stars": 0,
-        "forks": 0,
+        "forks": 1,
         "description": "A frozen probe set and a harness for auditing LLM judges for bias. No audit published yet.",
         "language": "Python",
         "pushed_at": "2026-11-03T18:41:04Z",
@@ -307,14 +315,6 @@
         "language": null,
         "pushed_at": "2026-11-03T17:54:24Z",
         "url": "https://github.com/mohammadi-hadi/ai-masters-netherlands"
-      },
-      "hands-on-xai-labs": {
-        "stars": 1,
-        "forks": 0,
-        "description": "Companion labs for Hands-On Explainable AI: 13 executed Colab notebooks on interpreting, evaluating, and trusting LLMs",
-        "language": "Jupyter Notebook",
-        "pushed_at": "2026-11-03T17:54:10Z",
-        "url": "https://github.com/mohammadi-hadi/hands-on-xai-labs"
       },
       "explainkit": {
         "stars": 0,
