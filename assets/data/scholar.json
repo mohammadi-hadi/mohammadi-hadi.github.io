@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-11-03T18:06:21+00:00",
-  "citations": 179,
+  "fetched_at": "2026-11-17T21:45:27+00:00",
+  "citations": 182,
   "h_index": 9,
   "i10_index": 7,
   "publications": {
     "explainability-survey": {
       "title": "Explainability in practice: A survey of explainable nlp across various domains",
       "year": 2025,
-      "cited_by": 32
+      "cited_by": 34
     },
     "exist-2023": {
       "title": "Towards robust online sexism detection: a multi-model approach with bert, xlm-roberta, and distilbert for exist 2023 tasks",
@@ -67,7 +67,7 @@
     "trajectory-judge-what-outcome-only-llm-judges-miss-on-agent-": {
       "title": "trajectory-judge: What outcome-only LLM judges miss on agent trajectories",
       "year": 2026,
-      "cited_by": 4
+      "cited_by": 5
     },
     "cultural-moral-judgments": {
       "title": "Exploring Cultural Variations in Moral Judgments with Large Language Models",
@@ -88,6 +88,11 @@
       "title": "Let Me Explain! Explainable NLP for Understanding Large Language Models",
       "year": 2026,
       "cited_by": 1
+    },
+    "learning-to-bid-and-bundle-a-posterior-sampling-agent-for-on": {
+      "title": "Learning to bid and bundle: a posterior-sampling agent for online retail",
+      "year": 2026,
+      "cited_by": 0
     },
     "explainable-nlp-in-the-era-of-large-language-models-a-unifie": {
       "title": "Explainable NLP in the Era of Large Language Models: A Unified Taxonomy, Evaluation Frameworks, and Decision Guidance",
