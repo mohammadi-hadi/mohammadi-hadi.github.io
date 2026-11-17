@@ -135,6 +135,15 @@ cv:
         details: Farsi (native), English (fluent), Dutch (A2, improving).
 
     Publications:
+      - title: 'RA-DPO: Reliability-Aware Preference Optimization and Selective Prediction for Sexism Detection'
+        authors:
+          - '***Mohammadi, H.***'
+          - Wang, S.
+          - Raeissi, M. M.
+          - Giachanou, A.
+        journal: 'Findings of EACL 2027 (accepted)'
+        date: 2026
+        url: https://arxiv.org/abs/2608.12330
       - title: 'trajectory-judge: What Outcome-Only LLM Judges Miss on Agent Trajectories'
         authors:
           - '***Mohammadi, H.***'
