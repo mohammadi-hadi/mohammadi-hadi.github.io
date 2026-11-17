@@ -1,8 +1,8 @@
-name: Update site data (Scholar, GitHub, ORCID, OpenAlex)
+name: Update Scholar figures
 
+# Google Scholar blocks GitHub runners, so the daily update runs from a Mac
+# and pushes scholar.json itself. This workflow stays for manual runs.
 on:
-  schedule:
-    - cron: "23 5 * * *"
   workflow_dispatch:
 
 permissions:
@@ -45,25 +45,18 @@ jobs:
         if: steps.fetch.outcome != 'success' && (steps.fetch.outputs.code == '2' || steps.fetch.outputs.code == '')
         run: |
           echo "Google Scholar was unreachable from this runner (blocked or timed out)." >> "$GITHUB_STEP_SUMMARY"
-          echo "Kept the last good assets/data/scholar.json; the daily cron will retry." >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Fetch GitHub / ORCID / OpenAlex data
-        timeout-minutes: 5
-        continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python scripts/fetch_site_data.py
+          echo "Kept the last good assets/data/scholar.json." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Commit and push if changed
         run: |
-          if git diff --quiet -- assets/data/; then
+          if git diff --quiet -- assets/data/scholar.json; then
             echo "No changes to commit."
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/data/
-          git commit -m "chore: update site data [skip ci]"
+          git add assets/data/scholar.json
+          git commit -m "Update citation counts from Google Scholar [skip ci]"
           git push
 
       - name: Fail if the Scholar fetch crashed

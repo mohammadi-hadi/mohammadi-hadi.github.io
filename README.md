@@ -19,7 +19,7 @@ A static HTML/CSS/JavaScript site with pages for research, publications, project
 Two GitHub Actions workflows keep the content fresh:
 
 - `.github/workflows/cv.yml` — rebuilds the CV PDF with [RenderCV](https://github.com/rendercv/rendercv) whenever `cv/Hadi_Mohammadi_CV.yaml` changes.
-- `.github/workflows/scholar.yml` — a daily job that refreshes publication and profile data (Google Scholar, GitHub, ORCID, OpenAlex) via the scripts in `scripts/`.
+- `.github/workflows/scholar.yml` — refreshes the Google Scholar figures in `assets/data/scholar.json` with `scripts/fetch_scholar.py`. Scholar blocks GitHub's runners, so the daily run happens on a Mac and this workflow is kept for manual runs.
 
 ## Local development
 
