@@ -105,7 +105,7 @@ cv:
         highlights:
           - Defended 9 September 2026.
           - 'Thesis: [*Let Me Explain! Explainable NLP for Understanding Large Language Models*](https://mohammadi.cv/thesis/).'
-          - Department of Methodology & Statistics; member of the NLTP group and the Human Data Science Lab.
+          - Department of Methodology, Statistics & Data Science; member of the NLTP group and the Human Data Science Lab.
           - 'Supervisors: Dr. Robert A. Bagheri, Prof. Dr. Daniel Oberski, Dr. Anastasia Giachanou.'
       - institution: University of Tehran
         area: Industrial Engineering, Macro Systems
@@ -307,8 +307,8 @@ cv:
         date: Nov 2021 – Nov 2022
 
     References:
-      - bullet: 'Dr. Robert A. Bagheri — Associate Professor, Methodology & Statistics, Utrecht University — a.bagheri@uu.nl'
-      - bullet: 'Dr. Anastasia Giachanou — Assistant Professor, Methodology & Statistics, Utrecht University — a.giachanou@uu.nl'
+      - bullet: 'Dr. Robert A. Bagheri — Associate Professor, Methodology, Statistics & Data Science, Utrecht University — a.bagheri@uu.nl'
+      - bullet: 'Dr. Anastasia Giachanou — Assistant Professor, Methodology, Statistics & Data Science, Utrecht University — a.giachanou@uu.nl'
       - bullet: 'Prof. Dr. Daniel Oberski — Professor of Social Data Science, Utrecht University; Scientific Director, ODISSEI — d.l.oberski@uu.nl'
 
 design:
