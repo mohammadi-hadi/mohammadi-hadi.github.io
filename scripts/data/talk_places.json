@@ -1,22 +1,101 @@
 {
-  "about": "Where each talk, poster and workshop on /research/ took place. City-level coordinates only. Every card in the Presentations section must be listed under exactly one place, and its venue line must name that city; scripts/build_talk_map.py checks both. A place with 'attended' instead of 'cards' is an event I took part in without presenting, marked with an open ring; its value is the id of the element on the page that says so.",
+  "about": "Where each talk, poster and workshop on /research/ took place. City-level coordinates only. Every card in the Presentations section must be listed under exactly one place, and its venue line must name that city; scripts/build_talk_map.py checks both. A place with 'attended' instead of 'cards' is an event I took part in without presenting, marked with an open ring; its value is the id of the element on the page that says so. A place with 'upcoming' is drawn as a dashed ring and left out of the counts until it has happened. 'source' is where the host city was checked.",
   "places": [
     {
-      "city": "Utrecht", "lat": 52.0907, "lon": 5.1214, "label": "right",
-      "cards": ["talk-2026-hai-sig-day", "talk-2025-iops", "talk-2025-nltp", "poster-2024-bnaic",
-                "talk-2023-ai-lab", "talk-2023-human-data-science", "workshop-2023-skills-lab"]
+      "city": "Utrecht",
+      "lat": 52.0907,
+      "lon": 5.1214,
+      "label": "right",
+      "cards": [
+        "paper-2026-inlg",
+        "talk-2026-hai-sig-day",
+        "talk-2025-iops",
+        "talk-2025-nltp",
+        "poster-2024-bnaic",
+        "talk-2023-ai-lab",
+        "talk-2023-human-data-science",
+        "workshop-2023-skills-lab"
+      ],
+      "source": "https://2026.inlgmeeting.org/ (INLG 2026); the other Utrecht cards name the city themselves"
     },
     {
-      "city": "Amsterdam", "lat": 52.3676, "lon": 4.9041, "label": "left",
-      "cards": ["poster-2023-iops"]
+      "city": "Amsterdam",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "label": "above",
+      "cards": [
+        "poster-2023-iops"
+      ]
     },
     {
-      "city": "Antwerp", "lat": 51.2194, "lon": 4.4025, "label": "left",
-      "cards": ["talk-2023-clin33", "poster-2023-clin33"]
+      "city": "Antwerp",
+      "lat": 51.2194,
+      "lon": 4.4025,
+      "label": "left",
+      "cards": [
+        "talk-2023-clin33",
+        "poster-2023-clin33"
+      ]
     },
     {
-      "city": "Copenhagen", "lat": 55.6761, "lon": 12.5683, "label": "right",
-      "attended": "leru-2025", "what": "LERU Doctoral Summer School on AI, 2025"
+      "city": "Copenhagen",
+      "lat": 55.6761,
+      "lon": 12.5683,
+      "label": "right",
+      "attended": "leru-2025",
+      "what": "LERU Doctoral Summer School on AI, 2025"
+    },
+    {
+      "city": "Vienna",
+      "lat": 48.2082,
+      "lon": 16.3738,
+      "label": "right",
+      "cards": [
+        "paper-2025-gebnlp"
+      ],
+      "source": "https://aclanthology.org/2025.gebnlp-1.9.bib"
+    },
+    {
+      "city": "Bologna",
+      "lat": 44.4949,
+      "lon": 11.3426,
+      "label": "right",
+      "cards": [
+        "paper-2025-luhme"
+      ],
+      "source": "https://aclanthology.org/2025.luhme-1.3.bib"
+    },
+    {
+      "city": "Thessaloniki",
+      "lat": 40.6401,
+      "lon": 22.9444,
+      "label": "left",
+      "cards": [
+        "paper-2023-clef"
+      ],
+      "source": "https://ceur-ws.org/Vol-3497/"
+    },
+    {
+      "city": "San Diego",
+      "lat": 32.7157,
+      "lon": -117.1611,
+      "label": "right",
+      "cards": [
+        "paper-2026-starsem"
+      ],
+      "source": "https://aclanthology.org/2026.starsem-conference.34.bib"
+    },
+    {
+      "city": "Sydney",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "label": "left",
+      "cards": [
+        "paper-2026-neurips-workshop"
+      ],
+      "upcoming": true,
+      "when": "December 2026",
+      "source": "https://neurips.cc/virtual/2026/workshop/137488"
     }
   ]
 }

@@ -1,22 +1,25 @@
 #!/usr/bin/env python3
-"""Draw the map of talks and posters at the top of /research/#talks.
+"""Draw the map of talks, posters and papers at the top of /research/#talks.
 
     python3 scripts/build_talk_map.py            # rewrite the map in research/index.html
     python3 scripts/build_talk_map.py --check    # exit 1 if the page and the data disagree
 
-The places come from scripts/data/talk_places.json. The map is plain inline
-SVG for the land and HTML links for the dots, so it needs no script, no tiles
-and no request to another site, and the labels stay readable at phone width.
+The places come from scripts/data/talk_places.json. Places in Europe go on the
+main map; anything further away goes on a small world inset beside it. Land is
+plain inline SVG and the dots are HTML links, so the map needs no script, no
+tiles and no request to another site, and the labels stay readable at phone
+width.
 
 The run refuses to write (exit 1) when the map and the list below it could
 drift apart: a presentation card without an id, a card listed under no place
 or under two, a listed id that is not on the page, or a card whose venue line
 does not name the city it is filed under.
 
-The outline is Natural Earth's 1:50m countries (public domain), cropped to
-Europe and simplified once with --outline-from:
+The outlines are Natural Earth's countries (public domain): 1:50m cropped to
+Europe for the main map, 1:110m for the inset. Each is simplified once:
 
     python3 scripts/build_talk_map.py --outline-from ne_50m_admin_0_countries.geojson
+    python3 scripts/build_talk_map.py --world-outline-from ne_110m_admin_0_countries.geojson
 """
 from __future__ import annotations
 
@@ -32,12 +35,19 @@ ROOT = Path(__file__).resolve().parent.parent
 PAGE = ROOT / "research" / "index.html"
 PLACES = ROOT / "scripts" / "data" / "talk_places.json"
 OUTLINE = ROOT / "scripts" / "data" / "europe_outline.json"
+WORLD = ROOT / "scripts" / "data" / "world_outline.json"
 START, END = "<!-- talk-map:start -->", "<!-- talk-map:end -->"
 
-REGION = (-25.0, 33.0, 45.0, 72.0)  # lon_min, lat_min, lon_max, lat_max kept in the outline
-WIDTH = 720                         # viewBox width; the height follows the extent
-ASPECT = 1.5                        # width / height of the drawn area
+REGION = (-25.0, 33.0, 45.0, 72.0)  # lon_min, lat_min, lon_max, lat_max: "Europe" here
+WIDTH, ASPECT = 720, 1.25           # main map viewBox width, and width / height
 PAD_LON, PAD_LAT = 2.6, 1.7         # degrees of context around the outermost places
+INSET_WIDTH = 360                   # inset viewBox width
+INSET_EXTENT = (-180.0, -56.0, 180.0, 78.0)
+TYPE_ORDER = ("talk", "paper", "poster", "workshop")
+NUMBER = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven",
+          8: "Eight", 9: "Nine", 10: "Ten", 11: "Eleven", 12: "Twelve", 13: "Thirteen",
+          14: "Fourteen", 15: "Fifteen", 16: "Sixteen", 17: "Seventeen", 18: "Eighteen",
+          19: "Nineteen", 20: "Twenty"}
 
 
 # ------------------------------------------------------------------ geometry
@@ -107,25 +117,22 @@ def area(ring):
     return abs(sum(a[0] * b[1] - b[0] * a[1] for a, b in zip(ring, ring[1:] + ring[:1]))) / 2
 
 
-# ------------------------------------------------------------------ outline
+# ------------------------------------------------------------------ outlines
 
-def make_outline(source: Path) -> None:
+def make_outline(source: Path, target: Path, region, tol: float, label: str) -> None:
     data = json.loads(source.read_text(encoding="utf-8"))
     rings = []
     for feature in data["features"]:
         geom = feature["geometry"]
         polys = geom["coordinates"] if geom["type"] == "MultiPolygon" else [geom["coordinates"]]
         for poly in polys:
-            for ring in poly[:1]:  # outer rings; holes are lakes, not needed at this scale
-                pts = clip([tuple(p) for p in ring[:-1]], *REGION)
-                pts = simplify_ring(pts, 0.02)
-                if len(pts) >= 4 and area(pts) > 0.01:
-                    rings.append([[round(x, 3), round(y, 3)] for x, y in pts])
-    OUTLINE.write_text(json.dumps({
-        "source": "Natural Earth 1:50m Admin 0 Countries, v5.1.2 (public domain), "
-                  "outer rings cropped to lon -25..45, lat 33..72 and simplified at 0.02 degrees",
-        "rings": rings}, separators=(",", ":")) + "\n", encoding="utf-8")
-    print(f"wrote {OUTLINE.relative_to(ROOT)}: {len(rings)} rings")
+            pts = clip([tuple(p) for p in poly[0][:-1]], *region)  # outer ring; holes are lakes
+            pts = simplify_ring(pts, tol)
+            if len(pts) >= 4 and area(pts) > tol * tol:
+                rings.append([[round(x, 3), round(y, 3)] for x, y in pts])
+    target.write_text(json.dumps({"source": label, "rings": rings}, separators=(",", ":")) + "\n",
+                      encoding="utf-8")
+    print(f"wrote {target.relative_to(ROOT)}: {len(rings)} rings")
 
 
 # ------------------------------------------------------------------ the page
@@ -164,6 +171,8 @@ def problems_with(page: str, places: list[dict], found: dict[str, dict]) -> list
                 out.append(f"{place['city']} points at #{place['attended']}, which is not on the page")
             elif place["city"] not in text:
                 out.append(f"#{place['attended']} does not mention {place['city']}")
+        if place.get("upcoming") and not place.get("when"):
+            out.append(f"{place['city']} is upcoming but has no 'when'")
     for cid in found:
         if cid not in filed:
             out.append(f"{cid} is not filed under any place")
@@ -173,9 +182,7 @@ def problems_with(page: str, places: list[dict], found: dict[str, dict]) -> list
 
 
 def plural(n: int, word: str) -> str:
-    if n == 1:
-        return f"a {word}"
-    return f"{n} {word}s"
+    return f"a {word}" if n == 1 else f"{n} {word}s"
 
 
 def listing(counts: dict[str, int]) -> str:
@@ -183,22 +190,66 @@ def listing(counts: dict[str, int]) -> str:
     return parts[0] if len(parts) == 1 else ", ".join(parts[:-1]) + " and " + parts[-1]
 
 
-NUMBER = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven", 8: "Eight",
-          9: "Nine", 10: "Ten", 11: "Eleven", 12: "Twelve"}
+def in_europe(place: dict) -> bool:
+    return REGION[0] <= place["lon"] <= REGION[2] and REGION[1] <= place["lat"] <= REGION[3]
 
 
-def build(page: str, places: list[dict], found: dict[str, dict]) -> str:
-    rings = json.loads(OUTLINE.read_text(encoding="utf-8"))["rings"]
-    lons = [p["lon"] for p in places]
-    lats = [p["lat"] for p in places]
+def land_path(rings, xy, width, height, tol, min_area):
+    paths = []
+    for ring in rings:
+        pts = clip([xy(*p) for p in ring], -3, -3, width + 3, height + 3)
+        if len(pts) < 3:
+            continue
+        pts = simplify_ring(pts, tol)
+        if len(pts) < 3 or area(pts) < min_area:
+            continue
+        coords = [f"{x:.0f} {y:.0f}" for x, y in pts]
+        coords = [c for i, c in enumerate(coords) if i == 0 or c != coords[i - 1]]
+        if len(coords) >= 3:
+            paths.append("M" + "L".join(coords) + "Z")
+    return "".join(paths)
+
+
+def pin(place: dict, found: dict[str, dict], x: float, y: float, width: float, height: float) -> str:
+    side = {"left": " talk-map__pin--left", "above": " talk-map__pin--above"}.get(
+        place.get("label", "right"), "")
+    where = f"left:{100 * x / width:.2f}%;top:{100 * y / height:.2f}%"
+    if "attended" in place:
+        label = f"{place['city']}: attended the {place['what']}"
+        return (f'<a class="talk-map__pin talk-map__pin--attended{side}" href="#{place["attended"]}" '
+                f'style="{where};--d:10px" aria-label="{html.escape(label)}">'
+                f'<span class="talk-map__dot"></span><span class="talk-map__label">{place["city"]}'
+                f'</span></a>')
+    counts: dict[str, int] = {}
+    for cid in place["cards"]:
+        counts[found[cid]["type"]] = counts.get(found[cid]["type"], 0) + 1
+    n = len(place["cards"])
+    if place.get("upcoming"):
+        label = f"{place['city']}: {listing(counts)}, coming up in {place['when']}"
+        return (f'<a class="talk-map__pin talk-map__pin--upcoming{side}" href="#{place["cards"][0]}" '
+                f'style="{where};--d:10px" aria-label="{html.escape(label)}">'
+                f'<span class="talk-map__dot"></span><span class="talk-map__label">{place["city"]} '
+                f'<span class="talk-map__when">{place["when"][:3]} {place["when"].split()[-1]}</span></span></a>')
+    size = 10 + 2 * (math.sqrt(n) - 1)
+    label = f"{place['city']}: {listing(counts)}"
+    return (f'<a class="talk-map__pin{side}" href="#{place["cards"][0]}" '
+            f'style="{where};--d:{size:.0f}px" aria-label="{html.escape(label)}">'
+            f'<span class="talk-map__dot"></span><span class="talk-map__label">{place["city"]} '
+            f'<span class="talk-map__count">{n}</span></span></a>')
+
+
+def build(places: list[dict], found: dict[str, dict]) -> str:
+    europe = [p for p in places if in_europe(p)]
+    world = [p for p in places if not in_europe(p)]
+    pad = "        "
+
+    # main map: Europe, framed on the places it holds
+    lons, lats = [p["lon"] for p in europe], [p["lat"] for p in europe]
     lon0, lon1 = min(lons) - PAD_LON, max(lons) + PAD_LON
     lat0, lat1 = min(lats) - PAD_LAT, max(lats) + PAD_LAT
-    if lon0 < REGION[0] or lon1 > REGION[2] or lat0 < REGION[1] or lat1 > REGION[3]:
-        raise SystemExit("a place lies outside the outline's region; widen REGION and rerun "
-                         "--outline-from")
     k = math.cos(math.radians((lat0 + lat1) / 2))
     w, h = (lon1 - lon0) * k, lat1 - lat0
-    if w / h < ASPECT:  # widen to the aspect, keeping the places centred
+    if w / h < ASPECT:
         extra = (ASPECT * h - w) / k / 2
         lon0, lon1 = lon0 - extra, lon1 + extra
     else:
@@ -210,76 +261,82 @@ def build(page: str, places: list[dict], found: dict[str, dict]) -> str:
     def xy(lon, lat):
         return (lon - lon0) * k * scale, (lat1 - lat) * scale
 
-    paths = []
-    for ring in rings:
-        pts = clip([xy(*p) for p in ring], -3, -3, WIDTH + 3, height + 3)
-        if len(pts) < 3:
-            continue
-        pts = simplify_ring(pts, 0.45)
-        if len(pts) < 3 or area(pts) < 2:
-            continue
-        paths.append("M" + "L".join(f"{x:.1f} {y:.1f}" for x, y in pts) + "Z")
+    rings = json.loads(OUTLINE.read_text(encoding="utf-8"))["rings"]
+    main = [f'{pad}  <div class="talk-map__frame talk-map__frame--main">',
+            f'{pad}    <svg viewBox="0 0 {WIDTH} {height}" aria-hidden="true" focusable="false">'
+            f'<path class="talk-map__land" d="{land_path(rings, xy, WIDTH, height, 1.2, 8)}"/></svg>']
+    main += [f"{pad}    {pin(p, found, *xy(p['lon'], p['lat']), WIDTH, height)}" for p in europe]
+    main.append(f"{pad}  </div>")
 
-    pins, totals, years, cities = [], {}, [], 0
+    # inset: the world, with a box where the main map sits
+    inset = []
+    if world:
+        ix0, iy0, ix1, iy1 = INSET_EXTENT
+        iscale = INSET_WIDTH / (ix1 - ix0)
+        iheight = round((iy1 - iy0) * iscale)
+
+        def ixy(lon, lat):
+            return (lon - ix0) * iscale, (iy1 - lat) * iscale
+
+        wrings = json.loads(WORLD.read_text(encoding="utf-8"))["rings"]
+        (bx0, by0), (bx1, by1) = ixy(lon0, lat1), ixy(lon1, lat0)
+        inset = [f'{pad}  <div class="talk-map__frame talk-map__frame--inset">',
+                 f'{pad}    <svg viewBox="0 0 {INSET_WIDTH} {iheight}" aria-hidden="true" '
+                 f'focusable="false"><path class="talk-map__land" '
+                 f'd="{land_path(wrings, ixy, INSET_WIDTH, iheight, 1.0, 4)}"/>'
+                 f'<rect class="talk-map__box" x="{bx0:.1f}" y="{by0:.1f}" width="{bx1 - bx0:.1f}" '
+                 f'height="{by1 - by0:.1f}"/></svg>',
+                 f'{pad}    <span class="talk-map__inset-title">Outside Europe</span>']
+        inset += [f"{pad}    {pin(p, found, *ixy(p['lon'], p['lat']), INSET_WIDTH, iheight)}"
+                  for p in world]
+        inset.append(f"{pad}  </div>")
+
+    # caption, counted from the cards so it cannot disagree with the list
+    totals: dict[str, int] = {}
+    years: list[int] = []
+    cities = 0
     for place in places:
-        x, y = xy(place["lon"], place["lat"])
-        left, top = f"{100 * x / WIDTH:.2f}%", f"{100 * y / height:.2f}%"
-        side = " talk-map__pin--left" if place.get("label") == "left" else ""
-        if "cards" in place:
-            cities += 1
-            counts: dict[str, int] = {}
-            for cid in place["cards"]:
-                counts[found[cid]["type"]] = counts.get(found[cid]["type"], 0) + 1
-                totals[found[cid]["type"]] = totals.get(found[cid]["type"], 0) + 1
-                years += [int(v) for v in re.findall(r"\b(20\d\d)\b", found[cid]["venue"])]
-            n = len(place["cards"])
-            size = 12 + 5 * (math.sqrt(n) - 1)
-            label = f"{place['city']}: {listing(counts)}"
-            pins.append(
-                f'<a class="talk-map__pin{side}" href="#{place["cards"][0]}" '
-                f'style="left:{left};top:{top};--d:{size:.0f}px" aria-label="{html.escape(label)}">'
-                f'<span class="talk-map__dot"></span><span class="talk-map__label">{place["city"]} '
-                f'<span class="talk-map__count">{n}</span></span></a>')
-        else:
-            label = f"{place['city']}: attended the {place['what']}"
-            pins.append(
-                f'<a class="talk-map__pin talk-map__pin--attended{side}" href="#{place["attended"]}" '
-                f'style="left:{left};top:{top};--d:12px" aria-label="{html.escape(label)}">'
-                f'<span class="talk-map__dot"></span><span class="talk-map__label">{place["city"]}'
-                f'</span></a>')
-
-    order = {t: totals[t] for t in ("talk", "poster", "workshop") if t in totals}
+        if "cards" not in place or place.get("upcoming"):
+            continue
+        cities += 1
+        for cid in place["cards"]:
+            totals[found[cid]["type"]] = totals.get(found[cid]["type"], 0) + 1
+            years += [int(v) for v in re.findall(r"\b(20\d\d)\b", found[cid]["venue"])]
+    order = {t: totals[t] for t in TYPE_ORDER if t in totals}
     order.update({t: n for t, n in totals.items() if t not in order})
     total = sum(totals.values())
     span = f"{min(years)} to {max(years)}" if min(years) != max(years) else str(min(years))
-    attended = [p for p in places if "attended" in p]
     caption = (f"{NUMBER.get(total, total)} presentations in {NUMBER.get(cities, cities).lower()} "
                f"cities, {span}: {listing(order)}.")
+    attended = [p for p in places if "attended" in p]
     if attended:
         caption += (" The open ring is a summer school I attended." if len(attended) == 1
                     else " Open rings are events I attended.")
-    caption += " Each dot links to its entry below."
-    pad = "        "
-    return "\n".join([
-        START,
-        f'{pad}<figure class="talk-map">',
-        f'{pad}  <div class="talk-map__frame">',
-        f'{pad}    <svg viewBox="0 0 {WIDTH} {height}" aria-hidden="true" focusable="false">'
-        f'<path class="talk-map__land" d="{"".join(paths)}"/></svg>',
-        *[f"{pad}    {p}" for p in pins],
-        f"{pad}  </div>",
-        f"{pad}  <figcaption>{caption} Outlines: Natural Earth.</figcaption>",
-        f"{pad}</figure>",
-        f"{pad}{END}"])
+    for p in places:
+        if p.get("upcoming"):
+            caption += f" The dashed ring is still to come: {p['city']}, {p['when']}."
+    caption += " Each dot links to its entry below. Outlines: Natural Earth."
+
+    return "\n".join([START, f'{pad}<figure class="talk-map">', *main, *inset,
+                      f"{pad}  <figcaption>{caption}</figcaption>", f"{pad}</figure>",
+                      f"{pad}{END}"])
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--outline-from", type=Path)
+    ap.add_argument("--world-outline-from", type=Path)
     args = ap.parse_args()
     if args.outline_from:
-        make_outline(args.outline_from)
+        make_outline(args.outline_from, OUTLINE, REGION, 0.02,
+                     "Natural Earth 1:50m Admin 0 Countries, v5.1.2 (public domain), outer rings "
+                     "cropped to lon -25..45, lat 33..72 and simplified at 0.02 degrees")
+    if args.world_outline_from:
+        make_outline(args.world_outline_from, WORLD, INSET_EXTENT, 0.3,
+                     "Natural Earth 1:110m Admin 0 Countries, v5.1.2 (public domain), outer rings "
+                     "cropped to lat -56..78 and simplified at 0.3 degrees")
+    if args.outline_from or args.world_outline_from:
         return 0
 
     page = PAGE.read_text(encoding="utf-8")
@@ -293,7 +350,7 @@ def main() -> int:
     if page.count(START) != 1 or page.count(END) != 1:
         print(f"FAIL the page needs exactly one {START} and one {END}")
         return 1
-    block = build(page, places, found)
+    block = build(places, found)
     new = page[:page.index(START)] + block + page[page.index(END) + len(END):]
     if args.check:
         if new != page:
