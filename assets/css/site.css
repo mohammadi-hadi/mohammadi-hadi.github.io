@@ -2186,3 +2186,94 @@ details.fold > summary:focus-visible {
   fill: currentColor;
   overflow: visible;
 }
+
+/* ---------- Talk map (/research/#talks), drawn by scripts/build_talk_map.py ---------- */
+.talk-map {
+  margin: 0 0 var(--space-5);
+  max-width: 720px;
+}
+.talk-map__frame {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.talk-map__frame svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.talk-map__land {
+  fill: var(--paper-deep);
+  stroke: #d6d3cb;
+  stroke-width: 0.6;
+  stroke-linejoin: round;
+}
+.talk-map__pin {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transform: translate(calc(var(--d) / -2), -50%);
+  color: var(--ink);
+  font: 500 var(--step--1)/1.2 var(--sans);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.talk-map__pin--left {
+  flex-direction: row-reverse;
+  transform: translate(calc(-100% + var(--d) / 2), -50%);
+}
+.talk-map__dot {
+  flex: none;
+  width: var(--d);
+  height: var(--d);
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--surface);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.talk-map__pin--attended .talk-map__dot {
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  box-shadow: none;
+}
+.talk-map__label {
+  padding: 1px 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.85);
+}
+.talk-map__count {
+  color: var(--accent);
+  font-weight: 600;
+}
+.talk-map__pin:hover .talk-map__label,
+.talk-map__pin:focus-visible .talk-map__label {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+.talk-map__pin:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.talk-map figcaption {
+  margin-top: var(--space-2);
+  font-size: var(--step--1);
+  color: var(--ink-3);
+  max-width: var(--measure);
+}
+.pub-card[id],
+li[id] {
+  scroll-margin-top: 81px;
+}
+@media (max-width: 480px) {
+  .talk-map__pin {
+    font-size: 0.78rem;
+    gap: 3px;
+  }
+  .talk-map__dot {
+    transform: scale(0.72);
+  }
+}
