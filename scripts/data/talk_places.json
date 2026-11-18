@@ -1,0 +1,22 @@
+{
+  "about": "Where each talk, poster and workshop on /research/ took place. City-level coordinates only. Every card in the Presentations section must be listed under exactly one place, and its venue line must name that city; scripts/build_talk_map.py checks both. A place with 'attended' instead of 'cards' is an event I took part in without presenting, marked with an open ring; its value is the id of the element on the page that says so.",
+  "places": [
+    {
+      "city": "Utrecht", "lat": 52.0907, "lon": 5.1214, "label": "right",
+      "cards": ["talk-2026-hai-sig-day", "talk-2025-iops", "talk-2025-nltp", "poster-2024-bnaic",
+                "talk-2023-ai-lab", "talk-2023-human-data-science", "workshop-2023-skills-lab"]
+    },
+    {
+      "city": "Amsterdam", "lat": 52.3676, "lon": 4.9041, "label": "left",
+      "cards": ["poster-2023-iops"]
+    },
+    {
+      "city": "Antwerp", "lat": 51.2194, "lon": 4.4025, "label": "left",
+      "cards": ["talk-2023-clin33", "poster-2023-clin33"]
+    },
+    {
+      "city": "Copenhagen", "lat": 55.6761, "lon": 12.5683, "label": "right",
+      "attended": "leru-2025", "what": "LERU Doctoral Summer School on AI, 2025"
+    }
+  ]
+}
